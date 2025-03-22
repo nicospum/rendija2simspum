@@ -1,0 +1,76 @@
+.start-button {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  transition: transform 0.3s ease;
+}
+
+.start-button:hover {
+  transform: scale(1.05);
+}
+
+.button-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-svg {
+  filter: drop-shadow(0 0 10px rgba(0, 255, 100, 0.5));
+  transition: all 0.3s ease;
+}
+
+.button-background {
+  fill: rgba(0, 60, 30, 0.9);
+  stroke: rgba(0, 255, 150, 0.8);
+  stroke-width: 5;
+  transition: all 0.3s ease;
+}
+
+.hovered .button-background {
+  fill: rgba(0, 80, 40, 0.95);
+  stroke: rgba(0, 255, 150, 1);
+  stroke-width: 8;
+  filter: drop-shadow(0 0 15px rgba(0, 255, 150, 0.8));
+}
+
+.button-glow {
+  filter: blur(10px);
+}
+
+.button-text {
+  position: absolute;
+  font-family: 'Arial', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: rgba(220, 255, 230, 0.95);
+  text-shadow: 0 0 10px rgba(0, 255, 100, 0.7);
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.hovered .button-text {
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0 0 15px rgba(0, 255, 150, 1);
+}
+
+@keyframes pulse {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(0, 255, 100, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(0, 255, 100, 0.8));
+  }
+  100% {
+    filter: drop-shadow(0 0 5px rgba(0, 255, 100, 0.5));
+  }
+}
+
+.start-button .button-svg {
+  animation: pulse 3s infinite ease-in-out;
+} 
