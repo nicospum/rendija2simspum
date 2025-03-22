@@ -5,6 +5,7 @@ import { useStore } from '../../store/store';
 import { ParticleEmitter } from './ParticleEmitter';
 import { SlitBarrier } from './SlitBarrier';
 import { DetectionScreen } from './DetectionScreen';
+import { Particles } from './Particles';
 // import { WaveFunction } from './WaveFunction';
 
 interface DoubleSlitExperimentProps {
@@ -78,14 +79,21 @@ export function DoubleSlitExperiment({ isObserved }: DoubleSlitExperimentProps) 
         isObserved={isObserved}
       />
       
+      {/* Sistema de partículas */}
+      <Particles />
+      
       {/* Plano de referencia (suelo) */}
       <mesh 
         rotation={[-Math.PI / 2, 0, 0]} 
-        position={[0, -0.5, 0]} 
+        position={[0, -0.5, 0]}
         receiveShadow
       >
-        <planeGeometry args={[10, 5]} />
-        <meshStandardMaterial color="#1A1A2E" />
+        <planeGeometry args={[10, 6]} />
+        <meshStandardMaterial 
+          color="#1A1A2E" 
+          roughness={0.7}
+          metalness={0.3}
+        />
       </mesh>
     </group>
   );

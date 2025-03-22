@@ -326,6 +326,17 @@ button:focus-visible {
   color: var(--color-text-light);
 }
 
+/* Estilos para el botón AUTO */
+.control-button.auto-active {
+  background-color: var(--color-success);
+  color: var(--color-text-dark);
+}
+
+.control-button:not(.auto-active):not(.playing):not(.paused) {
+  background-color: var(--color-panel);
+  color: var(--color-text-light);
+}
+
 .control-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -429,4 +440,36 @@ button:focus-visible {
   overflow-x: auto;
   font-size: 0.8rem;
   color: #ddd;
+}
+
+/* Estilos para el botón de reinicio */
+.reset-button-container {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.reset-button {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-error);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.reset-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  background-color: #ff6b6b;
+}
+
+.reset-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }

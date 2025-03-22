@@ -5,6 +5,7 @@ import { DoubleSlitExperiment } from './components/simulation/DoubleSlitExperime
 import { ExperimentControls } from './components/ui/ExperimentControls';
 import { CanvasErrorBoundary } from './components/simulation/CanvasErrorBoundary';
 import { StartButton } from './components/ui/StartButton';
+import { HelpButton } from './components/ui/HelpButton';
 import { useStore } from './store/store';
 
 /**
@@ -41,6 +42,9 @@ export default function App() {
       ) : (
         <>
           <div className="simulation-container">
+            {/* Botón de ayuda */}
+            <HelpButton />
+            
             <CanvasErrorBoundary>
               {canvasReady && (
                 <Canvas
