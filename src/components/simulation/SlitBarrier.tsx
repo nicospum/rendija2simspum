@@ -1,5 +1,6 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import * as THREE from 'three';
+import { useStore } from '../../store/store';
 
 interface SlitBarrierProps {
   position: [number, number, number];
@@ -20,6 +21,36 @@ export function SlitBarrier({
   isObserved
 }: SlitBarrierProps) {
   const groupRef = useRef<THREE.Group>(null);
+  
+  // Obtener funciones para incrementar estadísticas
+  const incrementBarrierCollisions = useStore(state => state.incrementBarrierCollisions);
+  const incrementSlitPassCount = useStore(state => state.incrementSlitPassCount);
+  
+  // Registrar eventos de partículas que pasan por rendijas o colisionan con barrera
+  useEffect(() => {
+    // Función para manejar el evento de paso por las rendijas
+    const handleSlitPass = (event: CustomEvent) => {
+      const { slitIndex } = event.detail;
+      if (isObserved && slitIndex >= 0 && slitIndex < slitCount) {
+        incrementSlitPassCount(slitIndex);
+      }
+    };
+    
+    // Función para manejar el evento de colisión con la barrera
+    const handleBarrierCollision = () => {
+      incrementBarrierCollisions(1);
+    };
+    
+    // Registrar escuchadores de eventos
+    window.addEventListener('slitPass', handleSlitPass as EventListener);
+    window.addEventListener('barrierCollision', handleBarrierCollision);
+    
+    // Limpiar escuchadores al desmontar
+    return () => {
+      window.removeEventListener('slitPass', handleSlitPass as EventListener);
+      window.removeEventListener('barrierCollision', handleBarrierCollision);
+    };
+  }, [incrementSlitPassCount, incrementBarrierCollisions, isObserved, slitCount]);
 
   // Dimensiones de la barrera
   const barrierWidth = 2;

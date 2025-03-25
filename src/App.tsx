@@ -6,6 +6,7 @@ import { ExperimentControls } from './components/ui/ExperimentControls';
 import { CanvasErrorBoundary } from './components/simulation/CanvasErrorBoundary';
 import { StartButton } from './components/ui/StartButton';
 import { HelpButton } from './components/ui/HelpButton';
+import { InfoPanel } from './components/ui/InfoPanel';
 import { useStore } from './store/store';
 
 /**
@@ -42,6 +43,9 @@ export default function App() {
       ) : (
         <>
           <div className="simulation-container">
+            {/* Panel de información */}
+            <InfoPanel />
+            
             {/* Botón de ayuda */}
             <HelpButton />
             

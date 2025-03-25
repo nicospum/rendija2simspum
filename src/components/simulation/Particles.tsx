@@ -50,8 +50,8 @@ export function Particles() {
     });
   }, []);
   
-  // Función para verificar si una partícula pasa por alguna rendija
-  const passesSlits = (position: THREE.Vector3): boolean => {
+  // Función para verificar si una partícula pasa por alguna rendija y devuelve el índice de la rendija
+  const checkSlitPassage = (position: THREE.Vector3): { passes: boolean, slitIndex: number } => {
     // Posición de las rendijas
     const slitStart = -slitSeparation * 0.5 * (slitCount - 1);
     
@@ -63,12 +63,12 @@ export function Particles() {
       
       // Si la partícula está dentro de la rendija en Y, pasa
       if (position.y >= slitBottom && position.y <= slitTop) {
-        return true;
+        return { passes: true, slitIndex: i };
       }
     }
     
     // No pasó por ninguna rendija
-    return false;
+    return { passes: false, slitIndex: -1 };
   };
   
   // Función para calcular la trayectoria cuántica de una partícula
@@ -110,10 +110,17 @@ export function Particles() {
           particle.position.x < barrierPosition.x - 0.05) {
         
         // Comprobar si pasa por alguna rendija
-        if (passesSlits(newPosition)) {
+        const slitCheck = checkSlitPassage(newPosition);
+        
+        if (slitCheck.passes) {
           // Log para depuración - pasa por rendija
-          console.log(`Partícula ${particle.id} pasó por una rendija`);
+          console.log(`Partícula ${particle.id} pasó por la rendija ${slitCheck.slitIndex + 1}`);
           statsRef.current.passedSlits++;
+          
+          // Emitir evento de paso por rendija para el panel de información
+          window.dispatchEvent(new CustomEvent('slitPass', {
+            detail: { slitIndex: slitCheck.slitIndex }
+          }));
           
           // Aplicar comportamiento cuántico si pasa por la rendija
           const quantumVelocity = applyQuantumBehavior(particle);
@@ -131,6 +138,9 @@ export function Particles() {
           // Log para depuración - colisión con barrera
           console.log(`Partícula ${particle.id} colisionó con la barrera`);
           statsRef.current.collisionsBarrier++;
+          
+          // Emitir evento de colisión con barrera para el panel de información
+          window.dispatchEvent(new CustomEvent('barrierCollision'));
           
           // Colisión con la barrera, desactivar partícula
           deactivateParticle(particle.id);

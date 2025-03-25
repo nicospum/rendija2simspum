@@ -18,6 +18,17 @@ export interface Particle {
 }
 
 /**
+ * Interfaz para las estadísticas del experimento
+ */
+export interface ExperimentStats {
+  particlesFired: number;      // Total de partículas disparadas
+  particlesDetected: number;   // Partículas que llegaron a la pantalla
+  barrierCollisions: number;   // Partículas que chocaron con la barrera
+  slitPassCount: number[];     // Conteo por rendija (solo con observación)
+  startTime: number;           // Tiempo de inicio del experimento (timestamp)
+}
+
+/**
  * Genera un número aleatorio con distribución gaussiana.
  * Utiliza el algoritmo de Box-Muller para transformar números aleatorios uniformes.
  * @param mean Media de la distribución (valor central)
@@ -93,6 +104,9 @@ interface ExperimentState {
   emissionSpeed: number;
   updateFrequency: number;
   
+  // Estadísticas del experimento
+  stats: ExperimentStats;
+  
   // Acciones para actualizar el estado
   setSlitWidth: (width: number) => void;
   setSlitSeparation: (separation: number) => void;
@@ -110,6 +124,13 @@ interface ExperimentState {
   togglePause: () => void;
   toggleAutoMode: () => void;
   resetExperiment: () => void;
+  
+  // Estadísticas 
+  incrementParticlesFired: (count: number) => void;
+  incrementParticlesDetected: (count: number) => void;
+  incrementBarrierCollisions: (count: number) => void;
+  incrementSlitPassCount: (slitIndex: number) => void;
+  resetStats: () => void;
   
   // Acciones para partículas
   fireParticles: (count: number, direction?: THREE.Vector3) => void;
@@ -147,6 +168,15 @@ export const useStore = create<ExperimentState>((set) => ({
   emissionSpeed: 5, // Velocidad media por defecto (1-10)
   updateFrequency: 5, // Actualizar cada 5 frames
   
+  // Estadísticas iniciales
+  stats: {
+    particlesFired: 0,
+    particlesDetected: 0,
+    barrierCollisions: 0,
+    slitPassCount: [0, 0, 0, 0, 0], // Para hasta 5 rendijas
+    startTime: Date.now(),
+  },
+  
   // Acciones
   setSlitWidth: (width: number) => set({ slitWidth: width }),
   setSlitSeparation: (separation: number) => set({ slitSeparation: separation }),
@@ -166,6 +196,51 @@ export const useStore = create<ExperimentState>((set) => ({
   togglePause: () => set((state) => ({ isPaused: !state.isPaused })),
   toggleAutoMode: () => set((state) => ({ isAutoMode: !state.isAutoMode })),
   
+  // Estadísticas 
+  incrementParticlesFired: (count: number) => set(state => ({
+    stats: {
+      ...state.stats,
+      particlesFired: state.stats.particlesFired + count
+    }
+  })),
+  
+  incrementParticlesDetected: (count: number) => set(state => ({
+    stats: {
+      ...state.stats,
+      particlesDetected: state.stats.particlesDetected + count
+    }
+  })),
+  
+  incrementBarrierCollisions: (count: number) => set(state => ({
+    stats: {
+      ...state.stats,
+      barrierCollisions: state.stats.barrierCollisions + count
+    }
+  })),
+  
+  incrementSlitPassCount: (slitIndex: number) => set(state => {
+    const newSlitPassCount = [...state.stats.slitPassCount];
+    if (slitIndex >= 0 && slitIndex < newSlitPassCount.length) {
+      newSlitPassCount[slitIndex]++;
+    }
+    return {
+      stats: {
+        ...state.stats,
+        slitPassCount: newSlitPassCount
+      }
+    };
+  }),
+  
+  resetStats: () => set({
+    stats: {
+      particlesFired: 0,
+      particlesDetected: 0,
+      barrierCollisions: 0,
+      slitPassCount: [0, 0, 0, 0, 0],
+      startTime: Date.now(),
+    }
+  }),
+  
   // Reiniciar el experimento
   resetExperiment: () => set((state) => {
     console.log('Reiniciando experimento...');
@@ -173,10 +248,18 @@ export const useStore = create<ExperimentState>((set) => ({
     // Disparar evento para limpiar la pantalla de detección
     window.dispatchEvent(new CustomEvent('resetDetectionScreen'));
     
-    // Mantener la configuración pero resetear las partículas
+    // Mantener la configuración pero resetear las partículas y estadísticas
     return { 
       particles: [],
       nextParticleId: 1, 
+      // Resetear estadísticas
+      stats: {
+        particlesFired: 0,
+        particlesDetected: 0,
+        barrierCollisions: 0,
+        slitPassCount: [0, 0, 0, 0, 0],
+        startTime: Date.now(),
+      },
       // Si está en modo auto, mantenerlo, pero asegurar que no está en pausa
       isPaused: state.isAutoMode ? false : state.isPaused
     };
@@ -187,6 +270,9 @@ export const useStore = create<ExperimentState>((set) => ({
     if (state.isPaused) return { particles: state.particles }; // No hacer nada si está en pausa
     
     console.log(`Store: Disparando ${count} partículas`);
+    
+    // Incrementar contador de partículas disparadas
+    state.incrementParticlesFired(count);
     
     const newParticles: Particle[] = [];
     
@@ -235,6 +321,9 @@ export const useStore = create<ExperimentState>((set) => ({
   
   registerParticleImpact: (id: number, position: THREE.Vector3) => set((state) => {
     console.log(`Store: Registrando impacto de partícula ${id} en posición (${position.x.toFixed(2)}, ${position.y.toFixed(2)}, ${position.z.toFixed(2)})`);
+    
+    // Incrementar el contador de partículas detectadas
+    state.incrementParticlesDetected(1);
     
     // Encontrar la partícula por ID para obtener su tipo
     const particle = state.particles.find(p => p.id === id);
