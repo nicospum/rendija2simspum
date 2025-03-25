@@ -8,7 +8,7 @@ import { useStore } from '../../store/store';
  * Utiliza React-Three-Fiber para renderizar la escena 3D y OrbitControls para la navegación.
  */
 export function QuantumSimulation() {
-  const observationMode = useStore(state => state.observationMode);
+  const isObserved = useStore(state => state.isObserved);
   
   return (
     <div className="quantum-container bg-bg-dark">
@@ -39,7 +39,7 @@ export function QuantumSimulation() {
         />
         
         {/* Componente del experimento de la doble rendija */}
-        <DoubleSlitExperiment isObserved={observationMode === 'observed'} />
+        <DoubleSlitExperiment isObserved={isObserved} />
       </Canvas>
     </div>
   );
