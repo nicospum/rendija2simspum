@@ -13,6 +13,11 @@ interface SlitBarrierProps {
 
 /**
  * Componente que representa la barrera con rendijas en el experimento
+ * 
+ * Características:
+ * - Soporta de 1 a 5 rendijas
+ * - Con 1 rendija: No muestra detectores (no tienen sentido físico)
+ * - Con 2+ rendijas: Puede mostrar detectores si isObserved es true
  */
 export function SlitBarrier({
   position,
@@ -27,12 +32,15 @@ export function SlitBarrier({
   const incrementBarrierCollisions = useStore(state => state.incrementBarrierCollisions);
   const incrementSlitPassCount = useStore(state => state.incrementSlitPassCount);
   
+  // Detectores solo visibles para 2+ rendijas si hay observación
+  const showDetectors = slitCount >= 2 && isObserved;
+  
   // Registrar eventos de partículas que pasan por rendijas o colisionan con barrera
   useEffect(() => {
     // Función para manejar el evento de paso por las rendijas
     const handleSlitPass = (event: CustomEvent) => {
       const { slitIndex } = event.detail;
-      if (isObserved && slitIndex >= 0 && slitIndex < slitCount) {
+      if (showDetectors && slitIndex >= 0 && slitIndex < slitCount) {
         incrementSlitPassCount(slitIndex);
       }
     };
@@ -51,7 +59,7 @@ export function SlitBarrier({
       window.removeEventListener('slitPass', handleSlitPass as EventListener);
       window.removeEventListener('barrierCollision', handleBarrierCollision);
     };
-  }, [incrementSlitPassCount, incrementBarrierCollisions, isObserved, slitCount]);
+  }, [incrementSlitPassCount, incrementBarrierCollisions, showDetectors, slitCount]);
 
   // Dimensiones de la barrera
   const barrierWidth = 2;
@@ -81,8 +89,6 @@ export function SlitBarrier({
   };
 
   const slitPositions = calculateSlitPositions();
-
-  // Ya no necesitamos pre-calcular la geometría, ahora la creamos para cada rendija
   
   return (
     <group ref={groupRef} position={position} rotation={[0, Math.PI/2, 0]}>
@@ -170,7 +176,7 @@ export function SlitBarrier({
             fontSize={0.08}
             anchorX="center"
             anchorY="bottom"
-            rotation={[0, 0, 0]} 
+            rotation={[0, -Math.PI/2, 0]} 
           >
             {index + 1}
           </Text>
@@ -182,7 +188,7 @@ export function SlitBarrier({
             fontSize={0.08}
             anchorX="center"
             anchorY="bottom"
-            rotation={[0, Math.PI, 0]} // Girado 180 grados para que se vea correctamente desde atrás
+            rotation={[0, Math.PI/2, 0]} 
           >
             {index + 1}
           </Text>
@@ -193,8 +199,8 @@ export function SlitBarrier({
             <lineBasicMaterial color="#00B8D4" linewidth={1} />
           </lineSegments>
           
-          {/* Detector (solo visible cuando se observa) */}
-          {isObserved && (
+          {/* Detector (solo visible cuando se observa y hay 2+ rendijas) */}
+          {showDetectors && (
             <pointLight
               color="#FF5252"
               intensity={0.5}

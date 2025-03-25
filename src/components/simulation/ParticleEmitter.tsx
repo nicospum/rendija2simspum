@@ -1,16 +1,16 @@
 import { useRef, useState, useEffect } from 'react';
 import { useFrame, ThreeEvent } from '@react-three/fiber';
 import * as THREE from 'three';
-import { useStore } from '../../store/store';
+import { useStore, ParticleType, PARTICLE_PROPERTIES } from '../../store/store';
 
 interface ParticleEmitterProps {
   position: [number, number, number];
-  particleType: 'electron' | 'photon';
+  particleType: ParticleType;
   speed: number;
 }
 
 /**
- * Componente que emite partículas (electrones o fotones) hacia la barrera con rendijas
+ * Componente que emite partículas (electrones, fotones o neutrinos) hacia la barrera con rendijas
  */
 export function ParticleEmitter({ position, particleType, speed }: ParticleEmitterProps) {
   const meshRef = useRef<THREE.Mesh>(null);
@@ -30,11 +30,9 @@ export function ParticleEmitter({ position, particleType, speed }: ParticleEmitt
   // Crear un vector para la posición 3D del emisor
   const emitterPosition = new THREE.Vector3(...position);
   
-  // Colores para los diferentes tipos de partículas
-  const particleColors = {
-    electron: '#64B5F6', // Azul para electrones
-    photon: '#FFEE58'    // Amarillo para fotones
-  };
+  // Obtener los colores y propiedades de la partícula seleccionada
+  const particleColor = PARTICLE_PROPERTIES[particleType].color;
+  const particleEmissive = PARTICLE_PROPERTIES[particleType].emissiveColor;
   
   // Efecto de hover
   useEffect(() => {
@@ -167,14 +165,14 @@ export function ParticleEmitter({ position, particleType, speed }: ParticleEmitt
     >
       <sphereGeometry args={[0.3, 32, 32]} />
       <meshStandardMaterial 
-        color={particleColors[particleType]} 
-        emissive={particleColors[particleType]}
+        color={particleColor} 
+        emissive={particleEmissive}
         emissiveIntensity={hovered || clicked || isAutoMode ? 2 : 0.5}
       />
       
       {/* Luz que emana del emisor */}
       <pointLight 
-        color={particleColors[particleType]} 
+        color={particleColor} 
         intensity={clicked || isAutoMode ? 2 : 1} 
         distance={3} 
       />

@@ -3,8 +3,55 @@ import * as THREE from 'three';
 
 /**
  * Tipos de partículas disponibles para el experimento
+ * 
+ * - electron: Partícula con masa, colapsa ante observación
+ * - photon: Partícula sin masa, colapsa ante observación
+ * - neutrino: Partícula casi sin interacción, apenas afectada por la observación
  */
-export type ParticleType = 'electron' | 'photon';
+export type ParticleType = 'electron' | 'photon' | 'neutrino';
+
+/**
+ * Propiedades físicas de cada tipo de partícula
+ */
+export interface ParticleProperties {
+  // Masa efectiva de la partícula para cálculos cuánticos (unidades arbitrarias)
+  mass: number;
+  // Factor que determina cuánto colapsa la función de onda al ser observada (0-1)
+  observationCollapseFactor: number;
+  // Color visual de la partícula en la simulación
+  color: string;
+  // Color de emisión para efectos luminosos
+  emissiveColor: string;
+  // Longitud de onda característica (en unidades arbitrarias)
+  defaultWavelength: number;
+}
+
+/**
+ * Catálogo de propiedades físicas para cada tipo de partícula
+ */
+export const PARTICLE_PROPERTIES: Record<ParticleType, ParticleProperties> = {
+  electron: {
+    mass: 1.0,
+    observationCollapseFactor: 1.0, // Colapso total
+    color: '#64B5F6', // Azul
+    emissiveColor: '#64B5F6',
+    defaultWavelength: 0.05
+  },
+  photon: {
+    mass: 0.0001, // Casi cero pero no exactamente para evitar divisiones por cero
+    observationCollapseFactor: 1.0, // Colapso total
+    color: '#FFEE58', // Amarillo
+    emissiveColor: '#FFEE58',
+    defaultWavelength: 0.07
+  },
+  neutrino: {
+    mass: 0.00001,
+    observationCollapseFactor: 0.05, // Apenas afectado por observación (5%)
+    color: '#A5D6A7', // Verde claro
+    emissiveColor: '#A5D6A7',
+    defaultWavelength: 0.03
+  }
+};
 
 /**
  * Interfaz que define una partícula individual en el experimento
@@ -15,6 +62,8 @@ export interface Particle {
   velocity: THREE.Vector3;
   type: ParticleType;
   isActive: boolean;
+  // Rendija por la que pasó la partícula (si fue observada)
+  slitIndex?: number;
 }
 
 /**
@@ -77,6 +126,106 @@ export const applyAngularDispersion = (direction: THREE.Vector3, dispersionFacto
 };
 
 /**
+ * Calcula el patrón de intensidad para difracción de una sola rendija
+ * Basado en la función sinc² para una rendija rectangular
+ * 
+ * I(θ) = I₀·sinc²(πa·sin(θ)/λ)
+ * donde:
+ * - a: ancho de la rendija
+ * - λ: longitud de onda
+ * - θ: ángulo de difracción
+ * 
+ * @param y - Posición vertical en la pantalla
+ * @param screenDistance - Distancia a la pantalla
+ * @param slitWidth - Ancho de la rendija
+ * @param wavelength - Longitud de onda de la partícula
+ * @returns Intensidad relativa en el punto y (0-1)
+ */
+export function calculateSingleSlitPattern(
+  y: number,
+  screenDistance: number,
+  slitWidth: number,
+  wavelength: number
+): number {
+  // Simplificación del ángulo para ángulos pequeños: sin(θ) ≈ y/L
+  const angle = y / screenDistance;
+  
+  // Argumento para la función sinc
+  const arg = Math.PI * slitWidth * angle / wavelength;
+  
+  // Para evitar división por cero en sinc(0)
+  if (Math.abs(arg) < 0.0001) return 1.0;
+  
+  // Función sinc²(x) = (sin(x)/x)²
+  const sinc = Math.sin(arg) / arg;
+  return sinc * sinc;
+}
+
+/**
+ * Calcula el patrón de intensidad para interferencia de múltiples rendijas
+ * Basado en la fórmula: I(y) = I₀·cos²(πd·y/λL)
+ * 
+ * @param y - Posición vertical en la pantalla
+ * @param screenDistance - Distancia a la pantalla
+ * @param slitSeparation - Separación entre rendijas
+ * @param slitCount - Número de rendijas
+ * @param wavelength - Longitud de onda de la partícula
+ * @returns Intensidad relativa en el punto y (0-1)
+ */
+export function calculateMultiSlitPattern(
+  y: number,
+  screenDistance: number,
+  slitSeparation: number,
+  slitCount: number,
+  wavelength: number
+): number {
+  // Para ángulos pequeños
+  const angle = y / screenDistance;
+  
+  // Desfase entre rendijas
+  const phase = 2 * Math.PI * slitSeparation * angle / wavelength;
+  
+  // Patrón básico para 2 rendijas: cos²(phase/2)
+  const basicPattern = Math.pow(Math.cos(phase / 2), 2);
+  
+  // Modificación para múltiples rendijas (simplificación)
+  // Aumenta la nitidez de los máximos con más rendijas
+  const sharpnessFactor = 1 + 0.5 * (slitCount - 2);
+  
+  // Intensidad normalizada (0-1)
+  const intensity = Math.pow(basicPattern, sharpnessFactor);
+  
+  // Aplicar modulación de la envolvente de difracción de una rendija
+  const diffractionEnvelope = calculateSingleSlitPattern(y, screenDistance, slitSeparation / 5, wavelength);
+  
+  return intensity * diffractionEnvelope;
+}
+
+/**
+ * Aplica el factor de colapso a una partícula observada, según su tipo
+ * 
+ * @param particleType - Tipo de partícula
+ * @param pattern - Patrón de intensidad sin observación
+ * @returns Patrón de intensidad alterado por la observación
+ */
+export function applyObservationEffect(
+  particleType: ParticleType, 
+  pattern: number
+): number {
+  const collapseFactor = PARTICLE_PROPERTIES[particleType].observationCollapseFactor;
+  
+  // Si es neutrino, casi no afecta la observación
+  if (particleType === 'neutrino') {
+    // Reducción muy pequeña del patrón
+    return pattern * (1 - collapseFactor * 0.2);
+  }
+  
+  // Para otras partículas, colapso significativo
+  // Reduce dramáticamente la interferencia
+  return pattern * (1 - collapseFactor);
+}
+
+/**
  * Interfaz que define el estado de la aplicación
  */
 interface ExperimentState {
@@ -137,6 +286,7 @@ interface ExperimentState {
   updateParticlePosition: (id: number, position: THREE.Vector3) => void;
   deactivateParticle: (id: number) => void;
   registerParticleImpact: (id: number, position: THREE.Vector3) => void;
+  registerSlitPass: (id: number, slitIndex: number) => void;
 }
 
 /**
@@ -181,20 +331,26 @@ export const useStore = create<ExperimentState>((set) => ({
   setSlitWidth: (width: number) => set({ slitWidth: width }),
   setSlitSeparation: (separation: number) => set({ slitSeparation: separation }),
   setSlitCount: (count: number) => set({ slitCount: count }),
-  setParticleType: (type: ParticleType) => set({ particleType: type }),
+  setParticleType: (type: ParticleType) => set({ 
+    particleType: type,
+    // Actualizar la longitud de onda al cambiar el tipo de partícula
+    wavelength: PARTICLE_PROPERTIES[type].defaultWavelength 
+  }),
   setParticleSpeed: (speed: number) => set({ particleSpeed: speed }),
   setWavelength: (wavelength: number) => set({ wavelength: wavelength }),
-  setObserved: (observed: boolean) => set({ isObserved: observed }),
+  setObserved: (observed: boolean) => set(state => {
+    // No permitir observación con 1 rendija (no tiene sentido físico)
+    if (state.slitCount === 1) {
+      return { isObserved: false };
+    }
+    return { isObserved: observed };
+  }),
   setIsPaused: (paused: boolean) => set({ isPaused: paused }),
   setIsAutoMode: (auto: boolean) => set({ isAutoMode: auto }),
   setParticlesPerEmission: (count: number) => set({ particlesPerEmission: count }),
   setEmissionSpeed: (speed: number) => set({ emissionSpeed: speed }),
   setUpdateFrequency: (frequency: number) => set({ updateFrequency: frequency }),
   setDispersionFactor: (factor: number) => set({ dispersionFactor: factor }),
-  
-  // Funciones para alternar estados
-  togglePause: () => set((state) => ({ isPaused: !state.isPaused })),
-  toggleAutoMode: () => set((state) => ({ isAutoMode: !state.isAutoMode })),
   
   // Estadísticas 
   incrementParticlesFired: (count: number) => set(state => ({
@@ -241,6 +397,10 @@ export const useStore = create<ExperimentState>((set) => ({
     }
   }),
   
+  // Funciones para alternar estados
+  togglePause: () => set((state) => ({ isPaused: !state.isPaused })),
+  toggleAutoMode: () => set((state) => ({ isAutoMode: !state.isAutoMode })),
+  
   // Reiniciar el experimento
   resetExperiment: () => set((state) => {
     console.log('Reiniciando experimento...');
@@ -264,6 +424,13 @@ export const useStore = create<ExperimentState>((set) => ({
       isPaused: state.isAutoMode ? false : state.isPaused
     };
   }),
+  
+  // Acción para registrar el paso por una rendija específica
+  registerSlitPass: (id: number, slitIndex: number) => set(state => ({
+    particles: state.particles.map(p => 
+      p.id === id ? { ...p, slitIndex } : p
+    )
+  })),
   
   // Acciones para partículas
   fireParticles: (count: number, direction?: THREE.Vector3) => set((state) => {
@@ -337,16 +504,20 @@ export const useStore = create<ExperimentState>((set) => ({
       detail: { 
         id, 
         position, 
-        type: particle.type 
+        type: particle.type,
+        slitIndex: particle.slitIndex,
+        isObserved: state.isObserved && state.slitCount > 1
       } 
     });
+    
+    // Disparar el evento para que lo capture DetectionScreen
     window.dispatchEvent(impactEvent);
     
-    // Desactivar la partícula
+    // Desactivar la partícula después de impactar
     return {
       particles: state.particles.map(p => 
         p.id === id ? { ...p, isActive: false } : p
       )
     };
-  })
+  }),
 })); 

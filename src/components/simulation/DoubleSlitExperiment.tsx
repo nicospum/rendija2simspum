@@ -15,6 +15,11 @@ interface DoubleSlitExperimentProps {
 /**
  * Componente que representa el experimento completo de la doble rendija
  * Organiza los elementos principales: emisor, barrera con rendijas y pantalla de detección
+ * 
+ * Características principales:
+ * - Coordina los componentes del experimento
+ * - Implementa física cuántica con patrones de interferencia o difracción
+ * - Con una sola rendija, no aplica observación (no tiene sentido físico)
  */
 export function DoubleSlitExperiment({ isObserved }: DoubleSlitExperimentProps) {
   const groupRef = useRef<THREE.Group>(null);
@@ -26,6 +31,9 @@ export function DoubleSlitExperiment({ isObserved }: DoubleSlitExperimentProps) 
   const slitCount = useStore(state => state.slitCount);
   const particleType = useStore(state => state.particleType);
   const particleSpeed = useStore(state => state.particleSpeed);
+  
+  // Desactivar observador en configuración de 1 rendija
+  const effectiveObservation = slitCount === 1 ? false : isObserved;
 
   return (
     <group ref={groupRef} position={[0, 0, 0]}>
@@ -70,13 +78,13 @@ export function DoubleSlitExperiment({ isObserved }: DoubleSlitExperimentProps) 
         slitWidth={slitWidth}
         slitSeparation={slitSeparation}
         slitCount={slitCount}
-        isObserved={isObserved}
+        isObserved={effectiveObservation}
       />
       
       {/* Pantalla de detección */}
       <DetectionScreen 
         position={[2, 0, 0]}
-        isObserved={isObserved}
+        isObserved={effectiveObservation}
       />
       
       {/* Sistema de partículas */}

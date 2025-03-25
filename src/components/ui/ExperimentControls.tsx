@@ -28,6 +28,9 @@ export function ExperimentControls() {
     resetExperiment
   } = useStore(state => state);
 
+  // Determinar si el observador debe estar deshabilitado (para 1 rendija)
+  const isObserverDisabled = slitCount === 1;
+
   return (
     <div className="controls-panel">
       <h2 className="panel-title">Controles del Experimento</h2>
@@ -90,6 +93,31 @@ export function ExperimentControls() {
               />
               Fotón
             </label>
+            <label>
+              <input
+                type="radio"
+                name="particle-type"
+                value="neutrino"
+                checked={particleType === 'neutrino'}
+                onChange={() => setParticleType('neutrino')}
+              />
+              Neutrino
+            </label>
+          </div>
+        </div>
+        
+        {/* Descripción del tipo de partícula seleccionada */}
+        <div className="control-item">
+          <div className="particle-description">
+            {particleType === 'electron' && (
+              <p>Electrón: Partícula con masa que colapsa completamente bajo observación.</p>
+            )}
+            {particleType === 'photon' && (
+              <p>Fotón: Partícula sin masa que colapsa completamente bajo observación.</p>
+            )}
+            {particleType === 'neutrino' && (
+              <p>Neutrino: Partícula que interactúa muy débilmente con la materia, casi inmune a la observación.</p>
+            )}
           </div>
         </div>
         
@@ -144,20 +172,28 @@ export function ExperimentControls() {
         <h3>Observación</h3>
         
         <div className="control-item">
-          <label className="toggle-switch">
+          <label className={`toggle-switch ${isObserverDisabled ? 'disabled' : ''}`}>
             <input
               type="checkbox"
-              checked={isObserved}
+              checked={isObserved && !isObserverDisabled}
               onChange={(e) => setObserved(e.target.checked)}
+              disabled={isObserverDisabled}
             />
             <span className="toggle-slider"></span>
-            {isObserved ? 'Con Observación' : 'Sin Observación'}
+            {isObserved && !isObserverDisabled ? 'Con Observación' : 'Sin Observación'}
           </label>
-          <p className="observation-description">
-            {isObserved 
-              ? 'Observando las partículas en las rendijas (comportamiento corpuscular)' 
-              : 'Sin observar las partículas (interferencia cuántica)'}
-          </p>
+          {isObserverDisabled && (
+            <p className="observation-disabled-note">
+              El observador está deshabilitado con 1 rendija (no tiene sentido físico)
+            </p>
+          )}
+          {!isObserverDisabled && (
+            <p className="observation-description">
+              {isObserved 
+                ? `Observando las partículas en las rendijas (${particleType === 'neutrino' ? 'interferencia parcial' : 'comportamiento corpuscular'})` 
+                : 'Sin observar las partículas (interferencia cuántica)'}
+            </p>
+          )}
         </div>
       </div>
       
@@ -199,7 +235,13 @@ export function ExperimentControls() {
             max="5"
             step="1"
             value={slitCount}
-            onChange={(e) => setSlitCount(parseInt(e.target.value))}
+            onChange={(e) => {
+              // Desactivar observador si cambiamos a 1 rendija
+              if (e.target.value === "1" && isObserved) {
+                setObserved(false);
+              }
+              setSlitCount(parseInt(e.target.value));
+            }}
           />
         </div>
       </div>

@@ -1,7 +1,13 @@
 import { useRef, useEffect, useState, useCallback } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { useStore, ParticleType } from '../../store/store';
+import { 
+  useStore, 
+  ParticleType, 
+  PARTICLE_PROPERTIES,
+  calculateSingleSlitPattern,
+  calculateMultiSlitPattern
+} from '../../store/store';
 
 interface DetectionScreenProps {
   position: [number, number, number];
@@ -10,7 +16,10 @@ interface DetectionScreenProps {
 
 /**
  * Componente que representa la pantalla de detección en el experimento de doble rendija
- * Muestra diferentes patrones según si hay observación o no
+ * Muestra diferentes patrones según:
+ * - Número de rendijas (1: difracción simple, 2+: interferencia)
+ * - Si hay observación o no (colapso cuántico)
+ * - Tipo de partícula (electrón/fotón: colapso completo, neutrino: colapso parcial)
  */
 export function DetectionScreen({ position, isObserved }: DetectionScreenProps) {
   const meshRef = useRef<THREE.Mesh>(null);
@@ -25,6 +34,10 @@ export function DetectionScreen({ position, isObserved }: DetectionScreenProps) 
   const isPaused = useStore(state => state.isPaused);
   const updateFrequency = useStore(state => state.updateFrequency);
   const particles = useStore(state => state.particles);
+  const slitCount = useStore(state => state.slitCount);
+  const slitWidth = useStore(state => state.slitWidth);
+  const slitSeparation = useStore(state => state.slitSeparation);
+  const wavelength = useStore(state => state.wavelength);
   const deactivateParticle = useStore(state => state.deactivateParticle);
   
   // Dimensiones de la textura
@@ -33,12 +46,6 @@ export function DetectionScreen({ position, isObserved }: DetectionScreenProps) 
   
   // Inicializar la textura
   const [initialized, setInitialized] = useState(false);
-  
-  // Definir colores para los diferentes tipos de partículas (mismos que en ParticleEmitter)
-  const particleColors = {
-    electron: { r: 100, g: 181, b: 246 }, // #64B5F6 en RGB
-    photon: { r: 255, g: 238, b: 88 }     // #FFEE58 en RGB
-  };
   
   // Crear la textura al montar el componente (solo una vez)
   useEffect(() => {
@@ -99,13 +106,76 @@ export function DetectionScreen({ position, isObserved }: DetectionScreenProps) 
     paramRef.current.isObserved = isObserved;
   }, [isObserved]);
   
+  /**
+   * Calcula el color e intensidad para visualizar un punto en la pantalla de detección
+   * 
+   * @param y - Posición vertical normalizada (-1 a 1)
+   * @param particleType - Tipo de partícula
+   * @param slitIndex - Índice de la rendija por la que pasó (-1 si no se observó)
+   * @returns Color RGB con intensidad apropiada
+   */
+  const calculatePatternColor = useCallback((y: number, type: ParticleType, slitIndex: number | undefined): { r: number, g: number, b: number, intensity: number } => {
+    // Obtener el color base de la partícula
+    const baseColor = hexToRgb(PARTICLE_PROPERTIES[type].color);
+    
+    // Distancia efectiva a la pantalla para cálculos
+    const screenDistance = 4.0;
+    
+    let intensity = 0;
+    
+    // Para una sola rendija: siempre patrón de difracción
+    if (slitCount === 1) {
+      intensity = calculateSingleSlitPattern(y, screenDistance, slitWidth, wavelength);
+    } 
+    // Para múltiples rendijas: interferencia o bandas localizadas
+    else {
+      if (!isObserved || (type === 'neutrino' && Math.random() > PARTICLE_PROPERTIES[type].observationCollapseFactor)) {
+        // Sin observación o neutrino no observado: patrón de interferencia
+        intensity = calculateMultiSlitPattern(y, screenDistance, slitSeparation, slitCount, wavelength);
+      } 
+      else if (slitIndex !== undefined && slitIndex >= 0) {
+        // Con observación y conocemos la rendija: banda localizada
+        const slitStart = -slitSeparation * 0.5 * (slitCount - 1);
+        const slitCenterY = slitStart + slitIndex * slitSeparation;
+        
+        // Distribución gaussiana alrededor del centro de la rendija
+        const distanceFromCenter = Math.abs(y - slitCenterY);
+        intensity = Math.exp(-(distanceFromCenter * distanceFromCenter) / (2 * 0.04));
+      }
+    }
+    
+    // Ajustar brillo según intensidad
+    const adjustedColor = {
+      r: Math.min(255, Math.floor(baseColor.r * intensity)),
+      g: Math.min(255, Math.floor(baseColor.g * intensity)),
+      b: Math.min(255, Math.floor(baseColor.b * intensity)),
+      intensity
+    };
+    
+    return adjustedColor;
+  }, [slitCount, slitSeparation, slitWidth, wavelength, isObserved]);
+  
+  // Función para convertir color hex a RGB
+  const hexToRgb = (hex: string) => {
+    // Eliminar # si existe
+    hex = hex.replace(/^#/, '');
+    
+    // Parsear componentes
+    const bigint = parseInt(hex, 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    
+    return { r, g, b };
+  };
+  
   // Función para registrar el impacto de una partícula en la pantalla
-  const registerImpact = useCallback((particleY: number, particleZ: number, particleType: ParticleType) => {
+  const registerImpact = useCallback((particleY: number, particleZ: number, particleType: ParticleType, slitIndex?: number) => {
     if (!textureRef.current) return;
     
     try {
       // Log para depuración - entrada a registerImpact
-      console.log(`DetectionScreen: Registrando impacto en y=${particleY.toFixed(2)}, z=${particleZ.toFixed(2)}, tipo=${particleType}`);
+      console.log(`DetectionScreen: Registrando impacto en y=${particleY.toFixed(2)}, z=${particleZ.toFixed(2)}, tipo=${particleType}, rendija=${slitIndex}`);
       
       const texture = textureRef.current;
       const data = texture.image.data as Uint8Array;
@@ -127,19 +197,19 @@ export function DetectionScreen({ position, isObserved }: DetectionScreenProps) 
       
       // Asegurarse de que las coordenadas estén dentro de los límites
       if (textureX >= 0 && textureX < textureWidth && textureY >= 0 && textureY < textureHeight) {
-        // Usar el color según el tipo de partícula
-        const color = particleColors[particleType];
+        // Calcular el color basado en el patrón físico
+        const { r, g, b, intensity } = calculatePatternColor(particleY, particleType, slitIndex);
         
-        // Aplicar impacto principal con máxima intensidad
-        // Nota: Ahora con formato RGBA, cada píxel ocupa 4 bytes
+        // Aplicar impacto principal con la intensidad calculada
+        // Nota: Con formato RGBA, cada píxel ocupa 4 bytes
         const pixelIndex = (textureY * textureWidth + textureX) * 4;
-        data[pixelIndex] = color.r;     // R
-        data[pixelIndex + 1] = color.g; // G
-        data[pixelIndex + 2] = color.b; // B
-        data[pixelIndex + 3] = 255;     // Alpha (totalmente opaco)
+        data[pixelIndex] = r;     // R
+        data[pixelIndex + 1] = g; // G
+        data[pixelIndex + 2] = b; // B
+        data[pixelIndex + 3] = Math.floor(255 * Math.min(1, intensity * 2)); // Alpha ajustado
         
-        // Afectar píxeles cercanos para efecto de dispersión con mayor intensidad
-        const radius = 4; // Aumentar radio para mayor visibilidad
+        // Afectar píxeles cercanos para efecto de dispersión
+        const radius = 4; // Radio para dispersión visual
         for (let dy = -radius; dy <= radius; dy++) {
           for (let dx = -radius; dx <= radius; dx++) {
             if (dx === 0 && dy === 0) continue; // Saltamos el pixel central
@@ -151,13 +221,15 @@ export function DetectionScreen({ position, isObserved }: DetectionScreenProps) 
               const idx = (ny * textureWidth + nx) * 4; // Formato RGBA (4 bytes por píxel)
               const distance = Math.sqrt(dx*dx + dy*dy);
               // Intensidad inversamente proporcional a la distancia
-              const intensity = Math.max(0, 1.0 - (distance / radius));
-              const alpha = Math.floor(255 * intensity); // Alpha basado en intensidad
+              const fadeIntensity = Math.max(0, 1.0 - (distance / radius));
+              // Ajustar la intensidad con la del patrón físico
+              const pixelIntensity = intensity * fadeIntensity;
+              const alpha = Math.floor(255 * pixelIntensity); // Alpha basado en intensidad
               
               // Mezclar colores con los existentes
-              data[idx] = Math.min(255, data[idx] + Math.floor(color.r * intensity));
-              data[idx + 1] = Math.min(255, data[idx + 1] + Math.floor(color.g * intensity));
-              data[idx + 2] = Math.min(255, data[idx + 2] + Math.floor(color.b * intensity));
+              data[idx] = Math.min(255, data[idx] + Math.floor(r * fadeIntensity));
+              data[idx + 1] = Math.min(255, data[idx + 1] + Math.floor(g * fadeIntensity));
+              data[idx + 2] = Math.min(255, data[idx + 2] + Math.floor(b * fadeIntensity));
               data[idx + 3] = Math.max(data[idx + 3], alpha); // Mayor valor de alpha
             }
           }
@@ -172,7 +244,7 @@ export function DetectionScreen({ position, isObserved }: DetectionScreenProps) 
     } catch (error) {
       console.error('Error al registrar impacto:', error);
     }
-  }, []);
+  }, [calculatePatternColor]);
   
   // Escuchar eventos de impacto de partículas
   useEffect(() => {
@@ -184,10 +256,10 @@ export function DetectionScreen({ position, isObserved }: DetectionScreenProps) 
         return;
       }
       
-      const { position, type } = event.detail;
+      const { position, type, slitIndex } = event.detail;
       console.log(`DetectionScreen: Procesando impacto tipo ${type} en posición (${position.x.toFixed(2)}, ${position.y.toFixed(2)}, ${position.z.toFixed(2)})`);
       
-      registerImpact(position.y, position.z, type);
+      registerImpact(position.y, position.z, type, slitIndex);
     };
     
     // Función para manejar el reinicio de la pantalla
@@ -264,7 +336,7 @@ export function DetectionScreen({ position, isObserved }: DetectionScreenProps) 
           console.log(`DetectionScreen: Procesando partícula ${particle.id} en posición x=${particle.position.x.toFixed(2)}`);
           
           // Registrar impacto en la pantalla
-          registerImpact(particle.position.y, particle.position.z, particle.type);
+          registerImpact(particle.position.y, particle.position.z, particle.type, particle.slitIndex);
           
           // Eliminar la partícula del sistema después de procesarla
           // para evitar procesarla múltiples veces
