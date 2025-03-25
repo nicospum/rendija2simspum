@@ -165,12 +165,12 @@ export function SlitBarrier({
         <group key={`slit-group-${index}`} position={[slitX, 0, 0]}>
           {/* Número de la rendija */}
           <Text 
-            position={[0, slitHeight/2 + 0.1, 0]}
+            position={[0, slitHeight/2 + 0.01, -barrierDepth/2 - 0.001]}
             color="#00B8D4" 
-            fontSize={0.1}
+            fontSize={0.12}
             anchorX="center"
-            anchorY="bottom"
-            rotation={[0, -Math.PI/2, 0]} // Girar para que sea visible desde el frente
+            anchorY="top"
+            rotation={[0, 0, 0]} // Sin rotación para que se muestre plano en la barrera
           >
             {index + 1}
           </Text>
