@@ -163,14 +163,26 @@ export function SlitBarrier({
       {/* Rendijas (solo se muestra el borde y el detector si está observado) */}
       {slitPositions.map((slitX, index) => (
         <group key={`slit-group-${index}`} position={[slitX, 0, 0]}>
-          {/* Número de la rendija */}
+          {/* Número de la rendija (lado frontal) */}
           <Text 
-            position={[0, slitHeight/2 + 0.01, -barrierDepth/2 - 0.001]}
+            position={[0, slitHeight/2 + 0.05, -barrierDepth/2 - 0.001]}
             color="#00B8D4" 
-            fontSize={0.12}
+            fontSize={0.08}
             anchorX="center"
-            anchorY="top"
-            rotation={[0, 0, 0]} // Sin rotación para que se muestre plano en la barrera
+            anchorY="bottom"
+            rotation={[0, 0, 0]} 
+          >
+            {index + 1}
+          </Text>
+
+          {/* Número de la rendija (lado trasero) */}
+          <Text 
+            position={[0, slitHeight/2 + 0.05, barrierDepth/2 + 0.001]}
+            color="#00B8D4" 
+            fontSize={0.08}
+            anchorX="center"
+            anchorY="bottom"
+            rotation={[0, Math.PI, 0]} // Girado 180 grados para que se vea correctamente desde atrás
           >
             {index + 1}
           </Text>
