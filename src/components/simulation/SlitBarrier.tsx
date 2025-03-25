@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import * as THREE from 'three';
+import { Text } from '@react-three/drei';
 import { useStore } from '../../store/store';
 
 interface SlitBarrierProps {
@@ -162,6 +163,18 @@ export function SlitBarrier({
       {/* Rendijas (solo se muestra el borde y el detector si está observado) */}
       {slitPositions.map((slitX, index) => (
         <group key={`slit-group-${index}`} position={[slitX, 0, 0]}>
+          {/* Número de la rendija */}
+          <Text 
+            position={[0, slitHeight/2 + 0.1, 0]}
+            color="#00B8D4" 
+            fontSize={0.1}
+            anchorX="center"
+            anchorY="bottom"
+            rotation={[0, -Math.PI/2, 0]} // Girar para que sea visible desde el frente
+          >
+            {index + 1}
+          </Text>
+          
           {/* Borde brillante alrededor de la rendija */}
           <lineSegments>
             <edgesGeometry args={[new THREE.BoxGeometry(slitWidth + 0.01, slitHeight + 0.01, barrierDepth + 0.02)]} />
