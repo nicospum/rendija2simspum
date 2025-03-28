@@ -1,0 +1,207 @@
+=====================================================
+DOCUMENTACIÓN COMPLETA - EXPERIMENTO DE DOBLE RENDIJA
+=====================================================
+Fecha: 26/03/2025
+Hora: 03:20
+
+1. DESCRIPCIÓN GENERAL
+======================
+La aplicación "Experimento de Doble Rendija" es una simulación interactiva en 3D del famoso experimento de física cuántica que demuestra la dualidad onda-partícula de la materia. Este experimento es fundamental para entender los principios básicos de la mecánica cuántica y ha sido uno de los más influyentes en el desarrollo de la física moderna.
+
+La simulación permite a los usuarios:
+- Visualizar interactivamente cómo las partículas subatómicas exhiben comportamiento tanto de onda como de partícula.
+- Experimentar con diferentes configuraciones (número de rendijas, ancho, separación).
+- Observar la diferencia entre el experimento cuando hay un "observador" (colapso de la función de onda) y cuando no lo hay.
+- Explorar diferentes tipos de partículas cuánticas (electrones, fotones, neutrinos) y sus propiedades.
+
+2. OBJETIVO EDUCATIVO
+=====================
+El objetivo principal de esta aplicación es proporcionar una herramienta educativa interactiva que:
+- Facilite la comprensión de conceptos complejos de física cuántica.
+- Permita la experimentación práctica sin necesidad de equipamiento físico costoso.
+- Visualice fenómenos cuánticos difíciles de observar en entornos convencionales.
+- Ayude a estudiantes y entusiastas a familiarizarse con los principios fundamentales de la mecánica cuántica.
+
+3. TECNOLOGÍAS UTILIZADAS (TECH STACK)
+======================================
+La aplicación está desarrollada utilizando las siguientes tecnologías:
+
+- Frontend:
+  * React 19 - Biblioteca de interfaz de usuario
+  * TypeScript - Lenguaje de programación tipado
+  * Vite - Herramienta de construcción y servidor de desarrollo
+  * Tailwind CSS - Framework de estilos utilitarios
+
+- Gráficos 3D y Física:
+  * Three.js - Motor de renderizado 3D para web
+  * React Three Fiber - Integración de Three.js con React
+  * React Three Drei - Conjunto de componentes útiles para Three.js en React
+  * GLSL - Lenguaje de shaders para efectos visuales avanzados
+
+- Gestión de Estado:
+  * Zustand - Biblioteca ligera de gestión de estado
+  * Leva - Componentes de interfaz para controles interactivos
+
+- Matemáticas y Simulación:
+  * gl-matrix - Biblioteca de matemáticas para cálculos vectoriales y matriciales
+  * Algoritmos personalizados para simulación de fenómenos cuánticos
+
+4. ESTRUCTURA DEL PROYECTO
+==========================
+La aplicación está organizada en las siguientes carpetas principales:
+
+- src/
+  * components/
+    - simulation/ - Componentes relacionados con la simulación 3D
+    - ui/ - Componentes de interfaz de usuario
+    - controls/ - Controles interactivos para manipular el experimento
+  * store/ - Gestión de estado global usando Zustand
+  * shaders/ - Código GLSL para efectos visuales
+  * assets/ - Recursos estáticos
+
+Los archivos más importantes incluyen:
+- App.tsx - Componente principal que orquesta toda la aplicación
+- store.ts - Estado global y lógica de negocio
+- DoubleSlitExperiment.tsx - Configuración general del experimento
+- DetectionScreen.tsx - Pantalla donde se visualizan los patrones de interferencia
+- SlitBarrier.tsx - Barrera con rendijas ajustables
+- ParticleEmitter.tsx - Emisor de partículas cuánticas
+- waveShader.ts - Shader para visualización de funciones de onda
+
+5. DOCUMENTACIÓN TÉCNICA
+========================
+El proyecto incluye varios niveles de documentación:
+
+- Documentación en código:
+  * Comentarios en TypeScript con explicaciones físicas y técnicas
+  * JSDoc para funciones y componentes principales
+  * Anotaciones de tipos completas gracias a TypeScript
+
+- Documentación externa:
+  * README.md - Documentación general del proyecto
+  * Esta documentación completa - Visión detallada de todos los aspectos
+
+- Documentación física:
+  * Explicaciones de los fenómenos cuánticos simulados
+  * Referencias a ecuaciones y principios físicos implementados
+
+6. FUNCIONALIDADES DEL EXPERIMENTO
+==================================
+La aplicación permite a los usuarios:
+
+6.1. Configuración de Rendijas:
+  - Ajustar el número de rendijas (1-3)
+  - Modificar el ancho de las rendijas
+  - Cambiar la separación entre rendijas
+
+6.2. Propiedades de Partículas:
+  - Seleccionar el tipo de partícula:
+    * Electrón - Partícula con masa, colapsa completamente ante observación
+    * Fotón - Partícula sin masa (luz), colapsa ante observación
+    * Neutrino - Partícula casi sin interacción, mínimamente afectada por observación
+  - Ajustar la velocidad de las partículas
+  - Modificar la longitud de onda asociada
+
+6.3. Modos de Experimento:
+  - Sin observador: Muestra el patrón de interferencia clásico
+  - Con observador: Simula el colapso de la función de onda al detectar por qué rendija pasa la partícula
+
+6.4. Controles de Simulación:
+  - Pausar/Reanudar la simulación
+  - Modo automático/manual de emisión de partículas
+  - Ajustar la cantidad de partículas emitidas
+  - Controlar la velocidad de la simulación
+
+6.5. Visualización:
+  - Vista 3D completa y navegable del experimento
+  - Representación visual de las funciones de onda
+  - Estadísticas en tiempo real de partículas y sus comportamientos
+  - Patrones de interferencia en la pantalla de detección
+
+7. FUNDAMENTOS FÍSICOS IMPLEMENTADOS
+===================================
+La simulación se basa en los siguientes principios de física cuántica:
+
+7.1. Dualidad Onda-Partícula:
+  - Las partículas cuánticas se comportan como ondas cuando no son observadas
+  - Presentan comportamiento de partículas discretas al ser observadas
+
+7.2. Superposición Cuántica:
+  - Las partículas pueden estar en múltiples estados simultáneamente
+  - Implementado mediante funciones de onda y probabilidades
+
+7.3. Patrones de Interferencia:
+  - Modelados matemáticamente usando:
+    * Funciones sinc² para difracción de una sola rendija
+    * Funciones cos² para interferencia de múltiples rendijas
+  - Implementados visualmente mediante shaders GLSL
+
+7.4. Colapso de la Función de Onda:
+  - Simulación del efecto del observador en el experimento
+  - Diferentes comportamientos según el tipo de partícula
+
+8. VARIANTES EXPERIMENTALES IMPLEMENTADAS
+========================================
+La aplicación permite explorar diversas variantes del experimento:
+
+8.1. Configuración de Rendijas:
+  - Experimento con una sola rendija (difracción simple)
+  - Experimento clásico de doble rendija (interferencia)
+  - Configuración de triple rendija (patrones complejos)
+
+8.2. Efectos Cuánticos Variables:
+  - Diferentes grados de colapso según tipo de partícula
+  - Ajuste de dispersión angular en la emisión
+  - Control de la longitud de onda para observar diferentes patrones
+
+8.3. Condiciones de Observación:
+  - Simular detectores en las rendijas (colapso parcial o total)
+  - Transición gradual entre comportamiento cuántico y clásico
+
+9. CASOS DE USO
+==============
+Esta aplicación es útil para:
+
+- Entornos educativos:
+  * Profesores de física que quieren demostrar conceptos cuánticos
+  * Estudiantes que buscan visualizar fenómenos abstractos
+  * Cursos de introducción a la mecánica cuántica
+
+- Divulgación científica:
+  * Museos de ciencia
+  * Exposiciones interactivas
+  * Material complementario para libros o cursos online
+
+- Investigación pedagógica:
+  * Estudio de métodos de enseñanza de física cuántica
+  * Desarrollo de intuición física en conceptos no intuitivos
+
+10. LIMITACIONES Y CONSIDERACIONES FUTURAS
+=========================================
+- La simulación utiliza aproximaciones y simplificaciones de las ecuaciones reales
+- No implementa todos los aspectos de la mecánica cuántica completa
+- Posibles mejoras futuras:
+  * Incorporar efectos de decoherencia cuántica
+  * Añadir más tipos de partículas y fenómenos
+  * Implementar experimentos relacionados (borrador cuántico, teleportación)
+  * Permitir descarga de datos para análisis posterior
+  * Añadir modo de realidad virtual para inmersión completa
+
+11. RECOMENDACIONES DE USO
+=========================
+- Se recomienda comenzar con la configuración de doble rendija estándar
+- Explorar primero sin observador, luego activar el observador para ver el contraste
+- Experimentar con diferentes partículas para ver sus comportamientos únicos
+- Utilizar las estadísticas para entender patrones numéricos
+- Complementar la simulación con lecturas teóricas para máximo aprovechamiento
+
+12. REQUERIMIENTOS TÉCNICOS
+==========================
+- Navegador web moderno con soporte para WebGL 2.0
+- Hardware con capacidad de procesamiento gráfico decente
+- Recomendado: dispositivo con pantalla táctil para interacción directa
+- Conexión a internet solo para carga inicial (funciona offline después)
+
+=====================================================
+Documento preparado como parte de la documentación oficial del proyecto "Experimento de Doble Rendija".
+===================================================== 

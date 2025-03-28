@@ -5,14 +5,17 @@ interface WaveFunctionProps {
   slitWidth: number;
   slitSeparation: number;
   slitCount: number;
+  isObserved: boolean;
+  particleType: string;
 }
 
 /**
  * Componente que representa la función de onda en el experimento de doble rendija
  * Utiliza shaders para visualizar la interferencia cuántica
+ * Responde al estado de observación mostrando u ocultando los patrones de interferencia
  */
 export const WaveFunction = forwardRef(function WaveFunction(
-  { slitWidth, slitSeparation, slitCount }: WaveFunctionProps,
+  { slitWidth, slitSeparation, slitCount, isObserved, particleType }: WaveFunctionProps,
   ref
 ) {
   const meshRef = useRef<THREE.Mesh>(null);
@@ -21,10 +24,21 @@ export const WaveFunction = forwardRef(function WaveFunction(
     slitWidth: { value: slitWidth },
     slitSeparation: { value: slitSeparation },
     slitCount: { value: slitCount },
-    resolution: { value: new THREE.Vector2(1024, 1024) }
+    resolution: { value: new THREE.Vector2(1024, 1024) },
+    isObserved: { value: isObserved ? 1.0 : 0.0 },
+    particleType: { value: getParticleTypeIndex(particleType) },
+    waveOpacity: { value: 1.0 }
   });
 
-  // Exponemos el método update a través de la referencia
+  function getParticleTypeIndex(type: string): number {
+    switch (type) {
+      case 'electron': return 0.0;
+      case 'photon': return 1.0;
+      case 'neutrino': return 2.0;
+      default: return 0.0;
+    }
+  }
+
   useImperativeHandle(ref, () => ({
     update: (time: number) => {
       if (uniforms.current) {
@@ -33,7 +47,6 @@ export const WaveFunction = forwardRef(function WaveFunction(
     }
   }));
 
-  // Inicializar los uniforms del shader
   useEffect(() => {
     if (meshRef.current && meshRef.current.material) {
       const material = meshRef.current.material as THREE.ShaderMaterial;
@@ -41,16 +54,26 @@ export const WaveFunction = forwardRef(function WaveFunction(
     }
   }, []);
 
-  // Actualizar los uniforms cuando cambien los parámetros
   useEffect(() => {
     if (uniforms.current) {
       uniforms.current.slitWidth.value = slitWidth;
       uniforms.current.slitSeparation.value = slitSeparation;
       uniforms.current.slitCount.value = slitCount;
+      uniforms.current.isObserved.value = isObserved ? 1.0 : 0.0;
+      uniforms.current.particleType.value = getParticleTypeIndex(particleType);
+      
+      if (isObserved) {
+        if (particleType === 'neutrino') {
+          uniforms.current.waveOpacity.value = 0.8;
+        } else {
+          uniforms.current.waveOpacity.value = 0.1;
+        }
+      } else {
+        uniforms.current.waveOpacity.value = 1.0;
+      }
     }
-  }, [slitWidth, slitSeparation, slitCount]);
+  }, [slitWidth, slitSeparation, slitCount, isObserved, particleType]);
 
-  // Vertex shader básico
   const vertexShader = `
     varying vec2 vUv;
     
@@ -60,47 +83,48 @@ export const WaveFunction = forwardRef(function WaveFunction(
     }
   `;
 
-  // Fragment shader temporal simplificado para la visualización de la función de onda
   const fragmentShader = `
     uniform float time;
     uniform float slitWidth;
     uniform float slitSeparation;
     uniform float slitCount;
     uniform vec2 resolution;
+    uniform float isObserved;
+    uniform float particleType;
+    uniform float waveOpacity;
     varying vec2 vUv;
     
-    // Función simple para calcular la fase de la onda desde una fuente
+    const float PI = 3.14159265359;
+    
     float wavePhase(vec2 position, vec2 source, float time, float frequency) {
       float distance = length(position - source);
       return sin(distance * 10.0 - time * frequency);
     }
     
     void main() {
-      // Coordenadas normalizadas
       vec2 position = vUv * 2.0 - 1.0;
       
-      // Centro de la barrera
       vec2 barrierCenter = vec2(0.0, 0.0);
       
-      // Calculamos la contribución de cada rendija
       float totalWave = 0.0;
       float numSlits = slitCount;
       
-      // Posición vertical inicial para las rendijas
       float startY = 0.0;
       if (mod(numSlits, 2.0) == 0.0) {
-        // Par
         startY = -slitSeparation * 0.5 + (numSlits * 0.5 - 0.5) * slitSeparation;
       } else {
-        // Impar
         startY = (numSlits - 1.0) * 0.5 * slitSeparation;
       }
       
-      // Sumamos la contribución de cada rendija
+      float observationFactor = 1.0 - isObserved;
+      
+      if (particleType == 2.0) {
+        observationFactor = max(0.8, observationFactor);
+      }
+      
       for (float i = 0.0; i < 10.0; i++) {
         if (i >= numSlits) break;
         
-        // Posición de la rendija
         float slitPos = 0.0;
         if (mod(numSlits, 2.0) == 0.0) {
           slitPos = (i - numSlits * 0.5 + 0.5) * slitSeparation;
@@ -110,32 +134,44 @@ export const WaveFunction = forwardRef(function WaveFunction(
         
         vec2 slitCenter = vec2(barrierCenter.x, slitPos);
         
-        // Simulamos múltiples fuentes a lo largo de la rendija
         for (float j = -2.0; j <= 2.0; j++) {
           vec2 source = slitCenter + vec2(0.0, j * slitWidth * 0.2);
-          totalWave += wavePhase(position, source, time, 3.0) * 0.2;
+          
+          totalWave += wavePhase(position, source, time, 3.0) * 0.2 * observationFactor;
         }
       }
       
-      // Normalizar entre -1 y 1
       totalWave = totalWave / float(slitCount);
       
-      // Colores basados en la fase
-      float r = 0.5 + 0.5 * sin(totalWave * 1.0);
-      float g = 0.5 + 0.5 * sin(totalWave * 1.2 + 0.5);
-      float b = 0.5 + 0.5 * sin(totalWave * 1.4 + 1.0);
+      vec3 particleColor;
+      if (particleType == 0.0) {
+        particleColor = vec3(0.2, 0.4, 1.0);
+      } else if (particleType == 1.0) {
+        particleColor = vec3(1.0, 0.9, 0.2);
+      } else {
+        particleColor = vec3(0.2, 0.8, 0.4);
+      }
       
-      // Intensidad basada en la posición (se desvanece en los bordes)
+      float r = 0.5 + 0.5 * sin(totalWave * 1.0) * particleColor.r;
+      float g = 0.5 + 0.5 * sin(totalWave * 1.2 + 0.5) * particleColor.g;
+      float b = 0.5 + 0.5 * sin(totalWave * 1.4 + 1.0) * particleColor.b;
+      
       float intensity = 1.0 - length(position) * 0.7;
       intensity = max(0.0, intensity);
       
-      // Color final
-      gl_FragColor = vec4(r * 0.5, g * 0.7, b, intensity * 0.7);
+      float opacity = waveOpacity * intensity * 0.7;
+      
+      gl_FragColor = vec4(r, g, b, opacity);
     }
   `;
 
   return (
-    <mesh ref={meshRef} rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.45, 0]}>
+    <mesh 
+      ref={meshRef} 
+      rotation={[-Math.PI / 2, 0, 0]} 
+      position={[0, -0.45, 0]}
+      visible={!(isObserved && (particleType === 'electron' || particleType === 'photon'))}
+    >
       <planeGeometry args={[4, 2, 64, 64]} />
       <shaderMaterial
         vertexShader={vertexShader}

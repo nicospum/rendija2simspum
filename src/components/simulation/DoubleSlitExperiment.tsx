@@ -6,7 +6,7 @@ import { ParticleEmitter } from './ParticleEmitter';
 import { SlitBarrier } from './SlitBarrier';
 import { DetectionScreen } from './DetectionScreen';
 import { Particles } from './Particles';
-// import { WaveFunction } from './WaveFunction';
+import { WaveFunction } from './WaveFunction';
 
 interface DoubleSlitExperimentProps {
   isObserved: boolean;
@@ -20,6 +20,7 @@ interface DoubleSlitExperimentProps {
  * - Coordina los componentes del experimento
  * - Implementa física cuántica con patrones de interferencia o difracción
  * - Con una sola rendija, no aplica observación (no tiene sentido físico)
+ * - Visualiza la dualidad onda-partícula según el estado de observación
  */
 export function DoubleSlitExperiment({ isObserved }: DoubleSlitExperimentProps) {
   const groupRef = useRef<THREE.Group>(null);
@@ -89,6 +90,15 @@ export function DoubleSlitExperiment({ isObserved }: DoubleSlitExperimentProps) 
       
       {/* Sistema de partículas */}
       <Particles />
+      
+      {/* Visualización de la función de onda */}
+      <WaveFunction 
+        slitWidth={slitWidth}
+        slitSeparation={slitSeparation}
+        slitCount={slitCount}
+        isObserved={effectiveObservation}
+        particleType={particleType}
+      />
       
       {/* Plano de referencia (suelo) */}
       <mesh 
