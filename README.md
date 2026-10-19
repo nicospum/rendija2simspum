@@ -48,6 +48,8 @@ El modelo de doble rendija usa amplitudes de Fraunhofer en unidades normalizadas
 
 ## Organización y nuevos experimentos
 
+El prisma también tiene cuatro preguntas guiadas: hacer atravesar el haz, variar brillo, alejar la pantalla y comparar materiales. Cada reto guarda una referencia y muestra qué cambió con una escala común. Las pistas visibles relacionan cada control con la observación. Una sección histórica explica el aporte de Newton, su importancia y las pruebas adicionales que este banco no incluye. Ver [el recorrido educativo](docs/PRISMA_EDUCACION.md).
+
 ```text
 index.html                    Entrada de la colección
 doble-rendija/index.html       Entrada del laboratorio cuántico

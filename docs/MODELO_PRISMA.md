@@ -4,7 +4,7 @@ La simulación usa óptica geométrica: calcula trayectorias a partir de la geom
 
 ## Geometría y unidades
 
-El modelo de `espectro-newton/src/physics/optics.ts` trabaja en una sección horizontal `(x, z)`. La escena extruye esa misma sección en el eje vertical `y` para construir el prisma 3D. Compartir los vértices evita que las caras visibles difieran de las caras utilizadas para refractar.
+El modelo de `src/prisma/physics/optics.ts` trabaja en una sección horizontal `(x, z)`. La escena extruye esa misma sección en el eje vertical `y` para construir el prisma 3D. Compartir los vértices evita que las caras visibles difieran de las caras utilizadas para refractar.
 
 - Longitud de onda: nanómetros en la API; micrómetros dentro de Cauchy.
 - Ángulos: grados en la configuración y las mediciones; radianes para trigonometría.

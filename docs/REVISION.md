@@ -37,6 +37,8 @@ El modelo de doble rendija continúa siendo una aproximación ideal de Fraunhofe
 
 ## Extensiones aconsejables
 
+La actualización educativa del prisma agrega cuatro retos con referencia, comparaciones a escala común, pistas visibles en cada control e historia con fuentes. Incluye diez pruebas adicionales de las conclusiones y sus salvaguardas: **58 pruebas en total**. No cambia el trazado físico ni las cámaras. Ver [PRISMA_EDUCACION.md](PRISMA_EDUCACION.md).
+
 1. Validar con docentes si las preguntas ayudan a distinguir datos, teoría e información del camino.
 2. Si se desea comparabilidad experimental, introducir una escala SI y un modelo de fuente/detector antes de presentar valores calibrados.
 3. Mantener sincronizado el prisma integrado y su repositorio de origen. Un workspace compartido sería útil si aumenta la frecuencia de cambios, pero no es necesario para estos dos laboratorios.
