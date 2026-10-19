@@ -1,42 +1,1020 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.q-shell {
+  max-width: 1600px;
+  margin: auto;
+  padding: 0 44px;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.q-skip {
+  position: absolute;
+  top: -100px;
+  background: white;
+  padding: 15px;
+  z-index: 99;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.q-skip:focus {
+  top: 10px;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.q-header {
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #dce1d6;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.q-brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 750;
+  letter-spacing: 1px;
+}
+.q-brand small {
+  display: block;
+  font:
+    8px Consolas,
+    monospace;
+  letter-spacing: 2px;
+  margin-top: 3px;
+}
+.q-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 47px;
+  height: 47px;
+  background: #e6eadf;
+  border-radius: 12px;
+  font-size: 34px;
+  font-weight: 400;
+}
+.q-header nav {
+  display: flex;
+  gap: 30px;
+  font-size: 12px;
+}
+.q-header nav a:hover,
+.q-footer a:hover {
+  text-decoration: underline;
+}
+.q-intro {
+  display: flex;
+  gap: 50px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 42px 0 34px;
+}
+.q-eyebrow {
+  font:
+    9px Consolas,
+    monospace;
+  letter-spacing: 1.6px;
+  color: #6e7d6a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.q-eyebrow > span {
+  height: 1px;
+  width: 20px;
+  background: #8a9a75;
+}
+.q-intro h1 {
+  font:
+    clamp(36px, 4.1vw, 62px) / 1.05 Georgia,
+    serif;
+  letter-spacing: -1.8px;
+  margin: 17px 0;
+}
+.q-intro h1 em {
+  font-style: normal;
+  color: #747bb3;
+}
+.q-intro > div > p:last-child {
+  font-size: 13px;
+  color: #7a8272;
+  max-width: 530px;
+  line-height: 1.8;
+}
+.q-intro-note {
+  min-width: 220px;
+  padding: 10px 0 10px 26px;
+  border-left: 1px solid #dce1d6;
+}
+.q-intro-note > span {
+  font:
+    8px Consolas,
+    monospace;
+  letter-spacing: 1.5px;
+  color: #92987f;
+}
+.q-intro-note p {
+  font:
+    15px/1.7 Georgia,
+    serif;
+  margin: 14px 0;
+  color: #6f7d6a;
+}
+.q-mini-fringes {
+  height: 4px;
+  width: 165px;
+  background: repeating-linear-gradient(
+    90deg,
+    #8685ba 0,
+    transparent 3px,
+    transparent 9px,
+    #8685ba 12px
+  );
+  mask-image: linear-gradient(90deg, transparent, #000, transparent);
+}
+.q-guide {
+  margin-bottom: 28px;
+}
+.q-guide-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.q-guide-heading > span:last-child {
+  font-size: 10px;
+  color: #939986;
+}
+.q-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.q-guide-grid button {
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 16px 12px;
+  border: 1px solid #dfe4d8;
+  border-radius: 8px;
+  background: transparent;
+  transition: background 0.15s;
+}
+.q-guide-grid button:hover {
+  background: #ecefe6;
+}
+.q-guide-grid button.q-guide-active {
+  border-color: #b5bacf;
+  background: #eeeff6;
+}
+.q-guide-grid button > span {
+  font:
+    10px Consolas,
+    monospace;
+  color: #8b91b1;
+  padding-top: 3px;
+}
+.q-guide-grid h2 {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+.q-guide-grid p {
+  font-size: 10px;
+  line-height: 1.6;
+  color: #848d7b;
+}
+.q-guide-grid b {
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: auto;
+  color: #9aa48c;
+}
+.q-lab-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 302px;
+  gap: 22px;
+  align-items: start;
+  scroll-margin-top: 20px;
+}
+.q-experiment-column {
+  min-width: 0;
+}
+.q-scene-card {
+  background: #101e24;
+  color: #c8d7c5;
+  border: 1px solid #35464a;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.q-scene-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 20px 6px;
+  gap: 8px;
+}
+.q-live {
+  font:
+    8px Consolas,
+    monospace;
+  letter-spacing: 1.2px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.q-live i {
+  width: 5px;
+  height: 5px;
+  background: #cbdc9d;
+  border-radius: 50%;
+}
+.q-view-tabs {
+  display: flex;
+  padding: 3px;
+  background: #192c31;
+  border: 1px solid #30424a;
+  border-radius: 6px;
+}
+.q-view-tabs button {
+  font-size: 9px;
+  background: transparent;
+  color: #98aaa2;
+  padding: 7px 10px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.q-view-tabs button[aria-pressed='true'] {
+  color: #d4e0c3;
+  background: #344b49;
+}
+.q-scene-loading {
+  height: 480px;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+}
+.q-scene-bottom {
+  padding: 5px 20px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.q-scene-bottom > span {
+  font-size: 9px;
+  color: #809388;
+}
+.q-scene-bottom > div {
+  display: flex;
+  gap: 6px;
+}
+.q-scene-bottom button {
+  background: #172a2f;
+  border: 1px solid #30444a;
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 9px;
+  color: #a6b9a5;
+}
+.q-scene-bottom button[aria-pressed='true'] {
+  background: #344b49;
+  color: #d4e0c3;
+}
+.q-scene-caption {
+  font-size: 9px;
+  line-height: 1.6;
+  color: #89a098;
+  border-top: 1px solid #25383d;
+  margin: 0 20px;
+  padding: 10px 0 12px;
+}
+.q-emission-bar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 14px 0;
+}
+.q-button {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 12px 16px;
+  background: #e9ece1;
+  border: 1px solid #dce1d2;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+}
+.q-primary {
+  background: #747bb3;
+  border-color: #747bb3;
+  color: white;
+  flex: 1;
+}
+.q-primary:hover {
+  background: #656ca3;
+}
+.q-button[aria-pressed='true'] {
+  background: #dce4cf;
+}
+.q-button span {
+  font-size: 17px;
+  font-weight: 400;
+}
+.q-icon-button {
+  display: grid;
+  place-items: center;
+  border: 1px solid #dce1d6;
+  border-radius: 6px;
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  background: #edf0e8;
+  font-size: 20px;
+}
+.q-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 21px 0;
+  border-top: 1px solid #e0e5d9;
+  border-bottom: 1px solid #e0e5d9;
+  margin: 4px 0 20px;
+}
+.q-metrics > div {
+  padding: 0 18px;
+  border-left: 1px solid #e0e5d9;
+}
+.q-metrics > div:first-child {
+  padding-left: 0;
+  border: 0;
+}
+.q-metrics span {
+  font:
+    8px Consolas,
+    monospace;
+  letter-spacing: 1px;
+  color: #90997e;
+  display: block;
+  margin-bottom: 9px;
+}
+.q-metrics strong {
+  font:
+    27px Georgia,
+    serif;
+  font-weight: 400;
+  display: block;
+}
+.q-metrics small {
+  display: block;
+  color: #8d967f;
+  font-size: 9px;
+  margin-top: 5px;
+}
+.q-controls {
+  background: #fcfdf8;
+  border: 1px solid #e1e5da;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.q-controls-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 22px 22px;
+}
+.q-controls-heading h2 {
+  font:
+    24px Georgia,
+    serif;
+  margin-top: 10px;
+  letter-spacing: -0.4px;
+}
+.q-controls-heading .q-eyebrow {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+}
+.q-control-section {
+  padding: 20px 22px 4px;
+  border-top: 1px solid #e5e8df;
+}
+.q-control-section h3 {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.q-control-section h3 > span {
+  font:
+    9px Consolas,
+    monospace;
+  color: #95a079;
+  padding: 3px;
+  background: #eff2e7;
+  border-radius: 3px;
+}
+.q-select-label {
+  display: block;
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+.q-control-section select {
+  width: 100%;
+  padding: 9px;
+  border: 1px solid #dfe3d5;
+  border-radius: 5px;
+  background: #f5f6ed;
+  color: #41513f;
+  font-size: 12px;
+}
+.q-control-hint {
+  font-size: 10px;
+  line-height: 1.6;
+  color: #909880;
+  margin: 8px 0 20px;
+}
+.q-range {
+  margin-bottom: 18px;
+}
+.q-range label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  gap: 5px;
+  margin-bottom: 9px;
+}
+.q-range output {
+  font:
+    10px Consolas,
+    monospace;
+  background: #f0f2e7;
+  color: #5a694c;
+  padding: 3px 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.q-range input {
+  width: 100%;
+  accent-color: #8f9d76;
+  cursor: pointer;
+  height: 16px;
+  margin: 0;
+}
+.q-range p {
+  font-size: 9px;
+  color: #8c967d;
+  line-height: 1.6;
+  margin-top: 5px;
+}
+.q-detector-presets {
+  display: flex;
+  border: 1px solid #dfe4d7;
+  border-radius: 5px;
+  margin-bottom: 17px;
+  padding: 3px;
+  gap: 3px;
+}
+.q-detector-presets button {
+  flex: 1;
+  font-size: 9px;
+  padding: 7px 4px;
+  background: transparent;
+  border-radius: 3px;
+}
+.q-detector-presets button[aria-pressed='true'] {
+  background: #e6e9f3;
+  color: #656b9e;
+}
+.q-controls-foot {
+  font-size: 10px;
+  color: #90997e;
+  line-height: 1.7;
+  border-top: 1px solid #e5e8df;
+  padding: 18px 22px;
+}
+.q-controls-foot button {
+  background: none;
+  text-decoration: underline;
+  font-size: 10px;
+  display: block;
+  margin-top: 12px;
+  padding: 0;
+}
+.q-chart {
+  background: #fcfdf8;
+  border: 1px solid #e1e5d9;
+  border-radius: 10px;
+  padding: 22px;
+}
+.q-chart-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.q-chart h2 {
+  font:
+    22px Georgia,
+    serif;
+  letter-spacing: -0.3px;
+  margin-top: 9px;
+}
+.q-chart-header > button {
+  border: 1px solid #dfe3d5;
+  border-radius: 5px;
+  background: transparent;
+  padding: 7px 9px;
+  font-size: 9px;
+  white-space: nowrap;
+}
+.q-chart-header > button[aria-pressed='true'] {
+  background: #e9eddf;
+}
+.q-chart-legend {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin: 16px 0 6px;
+  font-size: 9px;
+  color: #8b947d;
+}
+.q-chart-legend > span {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.q-chart-legend i {
+  width: 12px;
+  height: 3px;
+  background: #777eb9;
+}
+.q-chart-legend .q-key-theory {
+  background: #3b5148;
+}
+.q-chart-legend .q-key-reference {
+  background: #b88c55;
+}
+.q-distribution-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.q-distribution-svg text {
+  font:
+    10px Consolas,
+    monospace;
+  fill: #879478;
+}
+.q-comparison-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.q-comparison-actions button {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: #7d896e;
+  font-size: 10px;
+  text-decoration: underline;
+}
+.q-chart-note,
+.q-comparison-note {
+  font-size: 10px;
+  color: #90997e;
+  line-height: 1.7;
+  margin-top: 12px;
+}
+.q-comparison-note {
+  color: #a08156;
+}
+.q-run-note {
+  margin: 14px 2px 0;
+  font-size: 11px;
+  color: #7a856f;
+  line-height: 1.8;
+  padding-left: 12px;
+  border-left: 2px solid #bec2d7;
+}
+.q-discovery {
+  padding: 48px 0;
+  border-top: 1px solid #dfe4d8;
+  margin-top: 46px;
+  display: grid;
+  grid-template-columns: 0.85fr 1.5fr;
+  gap: 50px;
+}
+.q-discovery h2 {
+  font:
+    35px/1.2 Georgia,
+    serif;
+  letter-spacing: -1px;
+  max-width: 320px;
+  margin: 17px 0;
+}
+.q-discovery p {
+  font-size: 12px;
+  color: #838f76;
+  line-height: 1.9;
+}
+.q-discovery-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.q-discovery article {
+  background: #eef0e7;
+  border: 1px solid #e2e6da;
+  border-radius: 8px;
+  padding: 23px;
+}
+.q-discovery article > span {
+  font:
+    8px Consolas,
+    monospace;
+  letter-spacing: 1px;
+  color: #889676;
+}
+.q-discovery h3 {
+  font:
+    23px Georgia,
+    serif;
+  margin: 16px 0;
+}
+.q-discovery .q-equation {
+  font:
+    24px Georgia,
+    serif;
+  margin: 20px 0;
+  color: #626e9e;
+}
+.q-model {
+  padding: 20px 24px;
+  border: 1px solid #dfe4d8;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background: #f0f2e9;
+}
+.q-model summary {
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.q-model summary > span {
+  float: right;
+  font-size: 20px;
+  font-weight: 400;
+}
+.q-model > div {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #79866d;
+  max-width: 950px;
+  margin-top: 20px;
+}
+.q-model p + p {
+  margin-top: 12px;
+}
+.q-model a {
+  text-decoration: underline;
+}
+.q-footer {
+  padding: 24px 0 28px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #dce1d6;
+  margin-top: 32px;
+  font-size: 10px;
+  color: #7d8a71;
+  gap: 15px;
+}
+@media (min-width: 1450px) {
+  .q-lab-layout {
+    grid-template-columns: minmax(0, 1fr) 325px;
   }
-  to {
-    transform: rotate(360deg);
+  .q-control-section {
+    padding: 24px 25px 6px;
+  }
+  .q-range {
+    margin-bottom: 22px;
   }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 1100px) {
+  .q-shell {
+    padding: 0 24px;
+  }
+  .q-lab-layout {
+    grid-template-columns: minmax(0, 1fr) 278px;
+    gap: 16px;
+  }
+  .q-intro-note {
+    min-width: 200px;
+  }
+  .q-guide-grid {
+    gap: 8px;
+  }
+  .q-guide-grid button {
+    padding: 13px 10px;
+  }
+  .q-guide-grid b {
+    display: none;
+  }
+  .q-guide-grid h2 {
+    font-size: 11px;
+  }
+  .q-control-section {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .q-controls-heading {
+    padding: 22px 18px;
+  }
+  .q-metrics > div {
+    padding: 0 12px;
+  }
+  .q-metrics span {
+    font-size: 7px;
+    letter-spacing: 0.5px;
+  }
+  .q-metrics strong {
+    font-size: 24px;
+  }
+  .q-chart {
+    padding: 18px;
+  }
+  .q-chart h2 {
+    font-size: 20px;
+  }
+  .q-scene-toolbar {
+    padding: 14px 14px 6px;
+  }
+  .q-live {
+    font-size: 7px;
+    letter-spacing: 0.7px;
+  }
+  .q-view-tabs button {
+    font-size: 8px;
+    padding: 7px;
+  }
+  .q-discovery {
+    gap: 28px;
+  }
+  .q-discovery article {
+    padding: 18px;
+  }
+  .q-discovery h3 {
+    font-size: 21px;
   }
 }
-
-.card {
-  padding: 2em;
+@media (max-width: 800px) {
+  .q-shell {
+    padding: 0 18px;
+  }
+  .q-header {
+    height: 77px;
+  }
+  .q-header nav {
+    gap: 15px;
+    font-size: 10px;
+  }
+  .q-intro {
+    padding: 30px 0;
+    gap: 20px;
+  }
+  .q-intro h1 {
+    font-size: 44px;
+  }
+  .q-intro-note {
+    display: none;
+  }
+  .q-guide-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .q-guide-grid h2 {
+    font-size: 12px;
+  }
+  .q-lab-layout {
+    grid-template-columns: 1fr;
+  }
+  .q-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .q-controls-heading,
+  .q-controls-foot {
+    grid-column: 1/-1;
+  }
+  .q-control-section:last-of-type {
+    grid-column: 1/-1;
+  }
+  .q-control-section:nth-of-type(2) {
+    border-left: 1px solid #e5e8df;
+  }
+  .q-control-section:last-of-type .q-range {
+    max-width: 100%;
+  }
+  .q-discovery {
+    grid-template-columns: 1fr;
+  }
+  .q-discovery h2 {
+    max-width: 500px;
+  }
+  .q-guide-heading > span:last-child {
+    display: none;
+  }
 }
-
-.read-the-docs {
-  color: #888;
+@media (max-width: 500px) {
+  .q-shell {
+    padding: 0 12px;
+  }
+  .q-header nav a:last-child {
+    display: none;
+  }
+  .q-brand {
+    font-size: 23px;
+    gap: 8px;
+  }
+  .q-brand-mark {
+    width: 39px;
+    height: 39px;
+  }
+  .q-brand small {
+    font-size: 6px;
+  }
+  .q-header nav {
+    font-size: 9px;
+  }
+  .q-intro h1 {
+    font-size: 39px;
+    letter-spacing: -1.4px;
+  }
+  .q-intro > div > p:last-child {
+    font-size: 11px;
+  }
+  .q-eyebrow {
+    font-size: 8px;
+    letter-spacing: 1.2px;
+  }
+  .q-guide-grid {
+    gap: 7px;
+  }
+  .q-guide-grid button {
+    padding: 13px 9px;
+    gap: 7px;
+  }
+  .q-guide-grid h2 {
+    font-size: 11px;
+  }
+  .q-guide-grid p {
+    font-size: 9px;
+  }
+  .q-guide-heading {
+    margin-bottom: 10px;
+  }
+  .q-scene-toolbar {
+    padding: 12px 10px 5px;
+    align-items: center;
+  }
+  .q-live {
+    font-size: 6px;
+    letter-spacing: 0.4px;
+    gap: 4px;
+  }
+  .q-view-tabs button {
+    font-size: 7px;
+    padding: 6px;
+  }
+  .q-view-tabs {
+    padding: 2px;
+  }
+  .q-scene-bottom {
+    padding: 5px 10px 8px;
+  }
+  .q-scene-bottom > span {
+    display: none;
+  }
+  .q-scene-bottom > div {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .q-scene-bottom button {
+    font-size: 8px;
+  }
+  .q-scene-caption {
+    margin: 0 12px;
+    font-size: 8px;
+  }
+  .q-emission-bar {
+    gap: 5px;
+  }
+  .q-button {
+    padding: 10px 8px;
+    font-size: 9px;
+    gap: 5px;
+  }
+  .q-emission-bar > .q-icon-button {
+    width: 29px;
+    height: 32px;
+    font-size: 17px;
+  }
+  .q-metrics {
+    padding: 17px 0;
+  }
+  .q-metrics > div {
+    padding: 0 9px;
+  }
+  .q-metrics span {
+    font-size: 6px;
+    letter-spacing: 0.2px;
+    line-height: 1.5;
+  }
+  .q-metrics strong {
+    font-size: 22px;
+  }
+  .q-metrics small {
+    font-size: 8px;
+    line-height: 1.5;
+  }
+  .q-controls {
+    display: block;
+  }
+  .q-controls-heading {
+    padding: 23px 22px;
+  }
+  .q-control-section {
+    padding: 20px 22px 4px;
+  }
+  .q-control-section:nth-of-type(2) {
+    border-left: 0;
+  }
+  .q-chart {
+    padding: 17px 12px;
+  }
+  .q-chart-header {
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .q-chart-header .q-eyebrow {
+    font-size: 6px;
+    letter-spacing: 0.5px;
+  }
+  .q-chart h2 {
+    font-size: 20px;
+    line-height: 1.15;
+  }
+  .q-chart-header > button {
+    font-size: 8px;
+    padding: 6px;
+  }
+  .q-chart-legend {
+    font-size: 8px;
+    gap: 11px;
+  }
+  .q-chart-note,
+  .q-comparison-note {
+    font-size: 9px;
+  }
+  .q-run-note {
+    font-size: 10px;
+  }
+  .q-discovery {
+    padding: 30px 0;
+    margin-top: 30px;
+    gap: 24px;
+  }
+  .q-discovery h2 {
+    font-size: 31px;
+  }
+  .q-discovery p {
+    font-size: 11px;
+  }
+  .q-discovery-cards {
+    grid-template-columns: 1fr;
+  }
+  .q-discovery article {
+    padding: 22px;
+  }
+  .q-model {
+    padding: 18px;
+  }
+  .q-model summary {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+  .q-model > div {
+    font-size: 11px;
+  }
+  .q-footer {
+    flex-direction: column;
+    font-size: 9px;
+    line-height: 1.6;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }

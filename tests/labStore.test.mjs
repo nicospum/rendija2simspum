@@ -1,0 +1,152 @@
+import test, { beforeEach } from 'node:test'
+import assert from 'node:assert/strict'
+import { useLabStore, HISTOGRAM_BINS, MAX_RECENT_HITS } from '../src/store/store.ts'
+import { DEFAULT_CONFIG } from '../src/physics/interference.ts'
+
+const state = () => useLabStore.getState()
+const total = () => state().histogram.reduce((sum, value) => sum + value, 0)
+beforeEach(() => state().resetAll())
+
+test('single and burst emission count every detection exactly once', () => {
+  state().emit()
+  state().emit(9)
+  assert.equal(state().detected, 10)
+  assert.equal(total(), 10)
+  assert.equal(state().recentHits.length, 10)
+  assert.deepEqual(state().recentHits.map((hit) => hit.id), Array.from({ length: 10 }, (_, index) => index + 1))
+  for (const hit of state().recentHits) {
+    assert.ok(hit.z >= -3 && hit.z <= 3)
+    assert.ok(hit.y >= 0.4 && hit.y <= 1.2)
+  }
+  assert.equal(state().histogram.length, HISTOGRAM_BINS)
+})
+
+test('pause blocks all emission without changing data and resumes cleanly', () => {
+  state().emit(3)
+  state().togglePause()
+  const before = state()
+  state().emit(50)
+  assert.equal(state(), before)
+  state().togglePause()
+  state().emit(2)
+  assert.equal(state().detected, 5)
+  assert.equal(total(), 5)
+})
+
+test('bounded visual history never discards histogram counts', () => {
+  state().emit(5000)
+  assert.equal(state().recentHits.length, MAX_RECENT_HITS)
+  assert.equal(state().recentHits[0].id, 3001)
+  assert.equal(state().recentHits.at(-1).id, 5000)
+  state().emit(7)
+  assert.equal(state().detected, 5007)
+  assert.equal(total(), 5007)
+  assert.equal(state().recentHits.length, MAX_RECENT_HITS)
+  assert.equal(state().recentHits[0].id, 3008)
+  assert.equal(state().recentHits.at(-1).id, 5007)
+})
+
+test('physical control changes begin a clean run while no-op or invalid patches preserve it', () => {
+  state().emit(5)
+  const initialRun = state().runId
+  const distribution = state().distribution
+  state().setConfig({ slitCount: state().config.slitCount, wavelength: NaN })
+  assert.equal(state().runId, initialRun)
+  assert.equal(state().detected, 5)
+  assert.equal(state().distribution, distribution)
+  state().setConfig({ wavelength: 0.08 })
+  assert.equal(state().runId, initialRun + 1)
+  assert.equal(state().detected, 0)
+  assert.equal(total(), 0)
+  assert.equal(state().recentHits.length, 0)
+  assert.notEqual(state().distribution, distribution)
+  assert.equal(state().config.wavelength, 0.08)
+})
+
+test('presentation controls retain measured results and sanitize public input', () => {
+  state().emit(4)
+  const run = state().runId
+  state().setEmissionRate(999)
+  state().setBurstSize(-10)
+  state().setShowWaves(false)
+  state().setShowTheory(false)
+  state().setView('top')
+  state().toggleAuto()
+  state().resetCamera()
+  assert.equal(state().emissionRate, 120)
+  assert.equal(state().burstSize, 1)
+  assert.equal(state().showWaves, false)
+  assert.equal(state().showTheory, false)
+  assert.equal(state().view, 'top')
+  assert.equal(state().isAutoMode, true)
+  assert.equal(state().runId, run)
+  assert.equal(state().detected, 4)
+  assert.equal(total(), 4)
+  state().setEmissionRate(NaN)
+  state().setBurstSize(Infinity)
+  state().setView('invalid')
+  assert.equal(state().emissionRate, 120)
+  assert.equal(state().burstSize, 1)
+  assert.equal(state().view, 'top')
+})
+
+test('comparison captures its configuration and counts independently of later runs', () => {
+  state().emit(20)
+  state().saveComparison()
+  const saved = state().comparison
+  assert.notEqual(saved.histogram, state().histogram)
+  assert.notEqual(saved.config, state().config)
+  state().emit(5)
+  assert.equal(saved.histogram.reduce((sum, value) => sum + value, 0), 20)
+  state().setConfig({ detectorStrength: 1 })
+  state().emit(8)
+  assert.equal(state().detected, 8)
+  assert.equal(state().comparison, saved)
+  assert.equal(saved.detected, 20)
+  assert.equal(saved.config.detectorStrength, 0)
+  state().clearComparison()
+  assert.equal(state().comparison, null)
+})
+
+test('clear keeps the setup and reset restores every default without reusing the visual run key', () => {
+  state().setConfig({ slitCount: 5, particleType: 'neutron' })
+  state().emit(4)
+  state().saveComparison()
+  state().setView('top')
+  state().toggleAuto()
+  state().togglePause()
+  state().clearRun()
+  assert.equal(state().config.slitCount, 5)
+  assert.equal(state().detected, 0)
+  assert.equal(total(), 0)
+  assert.equal(state().isPaused, true)
+  assert.equal(state().isAutoMode, true)
+  assert.equal(state().comparison.detected, 4)
+  const run = state().runId
+  const camera = state().cameraResetKey
+  state().resetAll()
+  assert.deepEqual(state().config, DEFAULT_CONFIG)
+  assert.equal(state().runId, run + 1)
+  assert.equal(state().cameraResetKey, camera + 1)
+  assert.equal(state().isPaused, false)
+  assert.equal(state().isAutoMode, false)
+  assert.equal(state().showWaves, true)
+  assert.equal(state().showTheory, true)
+  assert.equal(state().view, 'perspective')
+  assert.equal(state().emissionRate, 12)
+  assert.equal(state().burstSize, 1)
+  assert.equal(state().comparison, null)
+})
+
+test('invalid emission counts never corrupt statistics', () => {
+  for (const value of [0, -1, NaN, Infinity, -Infinity]) state().emit(value)
+  assert.equal(state().detected, 0)
+  assert.equal(total(), 0)
+  state().emit(2.9)
+  assert.equal(state().detected, 2)
+  assert.equal(total(), 2)
+  state().emit(1e9)
+  assert.equal(state().detected, 10002)
+  assert.equal(total(), 10002)
+  assert.equal(state().recentHits.length, MAX_RECENT_HITS)
+})

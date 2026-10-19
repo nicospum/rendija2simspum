@@ -1,3 +1,5 @@
+DOCUMENTACIÓN HISTÓRICA (versión 2025). No describe el modelo actual. Consultar README.md, docs/MODELO_DOBLE_RENDIJA.md y docs/REVISION.md.
+
 =====================================================
 DOCUMENTACIÓN COMPLETA - EXPERIMENTO DE DOBLE RENDIJA
 =====================================================
