@@ -41,6 +41,8 @@ La actualización educativa del prisma agrega cuatro retos con referencia, compa
 
 La actualización educativa de doble rendija transforma el recorrido básico en cuatro retos con referencia inmutable, variable señalada y feedback calculado. Las barras de muestras y la curva teórica están diferenciadas; los ejes del gráfico mantienen legibilidad en celular. El contexto histórico y las preguntas frecuentes distinguen detector de camino, pantalla y lectura humana. Agrega diez pruebas de física y guardas educativas: **68 pruebas en total**, conservando modelo, store y cámaras. Ver [DOBLE_RENDIJA_EDUCACION.md](DOBLE_RENDIJA_EDUCACION.md).
 
+La revisión móvil posterior detectó controles ya existentes con objetivos de toque de solo 16–26 px y textos de cámara de 7–9 px. Se amplían a 44 px los controles principales, deslizadores y acciones de los retos hasta 800 px de ancho; se mejoran etiquetas de mediciones y selectores. Son cambios de CSS: no modifican fórmulas ni estados. La comprobación comprende los ocho retos, ajustes manuales, pausa, apagado y vistas, con anchos de 320 y 390 px en navegador, sin sustituir una prueba en teléfonos físicos.
+
 1. Validar con docentes si las preguntas ayudan a distinguir datos, teoría e información del camino.
 2. Si se desea comparabilidad experimental, introducir una escala SI y un modelo de fuente/detector antes de presentar valores calibrados.
 3. Mantener sincronizado el prisma integrado y su repositorio de origen. Un workspace compartido sería útil si aumenta la frecuencia de cambios, pero no es necesario para estos dos laboratorios.

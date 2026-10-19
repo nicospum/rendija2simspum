@@ -262,6 +262,71 @@
 .q-history-faq p {
   margin-top: 12px;
 }
+/* Keep controls usable by touch without changing the physical configuration. */
+@media (max-width: 800px) {
+  .q-view-tabs button,
+  .q-scene-bottom button,
+  .q-emission-bar button,
+  .q-detector-presets button,
+  .q-evidence button,
+  .q-evidence-actions a,
+  .q-control-link,
+  .q-chart-jump,
+  .q-chart-header > button,
+  .q-comparison-actions button,
+  .q-controls-foot button {
+    min-height: 44px;
+    font-size: 12px;
+  }
+  .q-evidence-actions a,
+  .q-control-link,
+  .q-chart-jump {
+    display: inline-flex;
+    align-items: center;
+  }
+  .q-range input {
+    height: 44px;
+  }
+  .q-control-section select {
+    min-height: 44px;
+    font-size: 16px;
+  }
+  .q-icon-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .q-scene-toolbar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .q-live {
+    width: 100%;
+    font-size: 9px;
+    letter-spacing: 0.7px;
+  }
+  .q-view-tabs {
+    margin-left: auto;
+  }
+  .q-scene-bottom > div,
+  .q-emission-bar {
+    flex-wrap: wrap;
+  }
+  .q-emission-bar > .q-primary {
+    flex-basis: 100%;
+  }
+  .q-metrics span {
+    font-size: 8px;
+    color: #68765f;
+  }
+  .q-metrics small {
+    font-size: 10px;
+    color: #68765f;
+  }
+  .q-scene-caption {
+    font-size: 10px;
+    color: #a8beb2;
+  }
+}
 @media (max-width: 1100px) {
   .q-discovery {
     grid-template-columns: 1fr;
