@@ -1,51 +1,34 @@
-const LESSONS = [
-  {
-    title: 'Primero, un punto',
-    text: 'Emití uno. ¿Podés deducir el patrón con un solo impacto?',
-    number: '01',
-  },
-  {
-    title: 'Dejá que se acumule',
-    text: 'Muchos eventos revelan dónde es más probable detectar.',
-    number: '02',
-  },
-  {
-    title: 'Registrá el camino',
-    text: 'Guardá la corrida y activá el detector. ¿Qué cambia?',
-    number: '03',
-  },
-  {
-    title: 'Probá una rendija',
-    text: 'La difracción permanece. Explorá el ancho de la abertura.',
-    number: '04',
-  },
-]
+import { LESSONS, type LessonId } from '../../education/doubleSlitLearning'
 
 export default function LearningGuide({
   active,
   onExplore,
 }: {
-  active: number
-  onExplore: (index: number) => void
+  active: LessonId | null
+  onExplore: (id: LessonId) => void
 }) {
   return (
     <section className="q-guide" aria-label="Recorrido para aprender">
       <div className="q-guide-heading">
-        <span className="q-eyebrow">UN RECORRIDO, CUATRO PREGUNTAS</span>
-        <span>Podés explorar en cualquier orden</span>
+        <span className="q-eyebrow">PREDECÍ · CAMBIÁ · COMPARÁ</span>
+        <span>Cuatro preguntas. Una variable a la vez.</span>
       </div>
+      <p className="q-guide-intro">
+        Cada reto prepara una referencia con impactos simulados al azar. Podés repetirlo: los puntos
+        cambian, la probabilidad del montaje permanece.
+      </p>
       <div className="q-guide-grid">
-        {LESSONS.map((lesson, index) => (
+        {LESSONS.map((lesson) => (
           <button
             key={lesson.number}
-            className={active === index ? 'q-guide-active' : ''}
-            aria-pressed={active === index}
-            onClick={() => onExplore(index)}
+            className={active === lesson.id ? 'q-guide-active' : ''}
+            aria-pressed={active === lesson.id}
+            onClick={() => onExplore(lesson.id)}
           >
             <span>{lesson.number}</span>
             <div>
               <h2>{lesson.title}</h2>
-              <p>{lesson.text}</p>
+              <p>{lesson.question}</p>
             </div>
             <b aria-hidden="true">↗</b>
           </button>

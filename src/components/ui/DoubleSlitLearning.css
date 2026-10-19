@@ -1,0 +1,337 @@
+.q-intro .q-intro-description {
+  max-width: 530px;
+  color: #63725e;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.q-history-jump {
+  display: inline-block;
+  margin-top: 16px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 12px;
+  color: #5b627f;
+}
+.q-guide-intro,
+.q-guide-grid p,
+.q-free-exploration {
+  color: #626e5c;
+  font-size: 12px;
+  line-height: 1.75;
+}
+.q-guide-intro {
+  max-width: 760px;
+  margin-bottom: 15px;
+}
+.q-guide-grid h2 {
+  font-size: 13px;
+  line-height: 1.5;
+}
+.q-guide-grid button {
+  padding: 18px 14px;
+}
+.q-free-exploration {
+  margin-bottom: 20px;
+}
+.q-evidence {
+  background: #fcfdf8;
+  border: 1px solid #dfe2e8;
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.q-evidence-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+}
+.q-evidence-heading button,
+.q-evidence-actions > button:not(.q-button) {
+  background: transparent;
+  padding: 5px 0;
+  font-size: 11px;
+  color: #606d58;
+}
+.q-evidence h2 {
+  font:
+    27px/1.25 Georgia,
+    serif;
+  letter-spacing: -0.5px;
+  margin: 18px 0 12px;
+  scroll-margin-top: 20px;
+}
+.q-prediction,
+.q-lesson-feedback,
+.q-lesson-scope {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #596951;
+}
+.q-lesson-feedback {
+  background: #eeeff7;
+  border: 1px solid #dfe0ee;
+  border-radius: 7px;
+  padding: 16px;
+  margin: 18px 0;
+}
+.q-lesson-feedback strong {
+  display: block;
+  color: #464d76;
+  margin-bottom: 6px;
+}
+.q-evidence--changed .q-lesson-feedback,
+.q-evidence--blocked .q-lesson-feedback {
+  background: #f6f0e5;
+  border-color: #e6d9c2;
+}
+.q-reading-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  border-top: 1px solid #e0e4d9;
+  padding-top: 18px;
+}
+.q-reading-comparison > div {
+  min-width: 0;
+}
+.q-reading-comparison strong {
+  display: block;
+  font:
+    32px/1.3 Georgia,
+    serif;
+  margin: 8px 0 0;
+}
+.q-reading-comparison small {
+  display: block;
+  font-size: 11px;
+  margin-bottom: 15px;
+  color: #626e5c;
+}
+.q-reading-comparison p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #5c6954;
+}
+.q-reading-comparison b {
+  font-weight: 600;
+}
+.q-evidence-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 20px 0 14px;
+}
+.q-evidence-actions a,
+.q-chart-jump {
+  font-size: 11px;
+  color: #555d80;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.q-lesson-primary {
+  background: #e7e8f3;
+  border-color: #cfd2e4;
+  color: #4e567f;
+}
+.q-lesson-primary:hover {
+  background: #daddef;
+}
+.q-lesson-scope {
+  font-size: 11px;
+}
+.q-chart-jump {
+  display: inline-block;
+  margin-top: 12px;
+}
+.q-control-active {
+  border: 1px solid #cbd0e5;
+  background: #eef0f8;
+  border-radius: 6px;
+  padding: 12px;
+}
+.q-control-focus-label {
+  display: block;
+  font:
+    8px/1.7 Consolas,
+    monospace;
+  color: #606891;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.q-control-link {
+  display: inline-block;
+  margin: 7px 0;
+  color: #5b638b;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 11px;
+}
+.q-emission-active {
+  border: 1px solid #cbd0e5;
+  border-radius: 8px;
+  padding: 8px;
+  margin-top: 0;
+}
+#emission-controls,
+.q-range input,
+#chart-title,
+#discovery-title {
+  scroll-margin-top: 24px;
+}
+.q-range p,
+.q-control-hint,
+.q-controls-foot {
+  font-size: 11px;
+  line-height: 1.75;
+  color: #626f58;
+}
+.q-chart-legend {
+  font-size: 11px;
+  color: #5c6853;
+}
+.q-chart-note,
+.q-comparison-note,
+.q-run-note {
+  font-size: 12px;
+  color: #626e58;
+  line-height: 1.8;
+}
+.q-comparison-note {
+  color: #806340;
+}
+.q-distribution-svg {
+  height: clamp(145px, 18vw, 220px);
+}
+.q-chart-axis {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  font-size: 11px;
+  color: #5d6a55;
+  margin: 0 2% 12px;
+}
+.q-chart-header > button {
+  font-size: 11px;
+}
+.q-history-body {
+  min-width: 0;
+}
+.q-history-body .q-discovery-cards {
+  grid-template-columns: 1fr 1fr;
+}
+.q-history-body article:first-child {
+  grid-column: 1 / -1;
+}
+.q-discovery p {
+  color: #5e6c55;
+  font-size: 12px;
+}
+.q-history-scope {
+  margin-top: 18px;
+  padding-left: 12px;
+  border-left: 2px solid #c3c8df;
+}
+.q-history-source {
+  display: inline-block;
+  margin: 12px 14px 0 0;
+  font-size: 11px;
+  color: #575f87;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  line-height: 1.7;
+}
+.q-history-body article p + p {
+  margin-top: 12px;
+}
+.q-history-faq {
+  margin-top: 20px;
+  border-top: 1px solid #dce1d5;
+}
+.q-history-faq details {
+  padding: 16px 0;
+  border-bottom: 1px solid #dce1d5;
+}
+.q-history-faq summary {
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.7;
+}
+.q-history-faq p {
+  margin-top: 12px;
+}
+@media (max-width: 1100px) {
+  .q-discovery {
+    grid-template-columns: 1fr;
+  }
+  .q-discovery h2 {
+    max-width: 600px;
+  }
+  .q-evidence-heading {
+    flex-wrap: wrap;
+  }
+  .q-evidence {
+    padding: 20px;
+  }
+}
+@media (max-width: 500px) {
+  .q-intro .q-intro-description {
+    font-size: 12px;
+  }
+  .q-guide-grid button {
+    padding: 14px 9px;
+  }
+  .q-guide-grid h2 {
+    font-size: 12px;
+  }
+  .q-guide-grid p {
+    font-size: 11px;
+  }
+  .q-evidence {
+    padding: 18px 14px;
+  }
+  .q-evidence h2 {
+    font-size: 25px;
+  }
+  .q-evidence-heading {
+    gap: 6px;
+  }
+  .q-evidence-heading .q-eyebrow {
+    font-size: 7px;
+    letter-spacing: 0.6px;
+  }
+  .q-lesson-feedback {
+    padding: 13px;
+  }
+  .q-reading-comparison {
+    gap: 12px;
+  }
+  .q-reading-comparison p {
+    font-size: 11px;
+  }
+  .q-evidence-actions {
+    gap: 12px 16px;
+  }
+  .q-evidence-actions .q-button {
+    font-size: 11px;
+    padding: 12px;
+  }
+  .q-chart-header {
+    flex-wrap: wrap;
+  }
+  .q-chart-header .q-eyebrow {
+    font-size: 8px;
+  }
+  .q-history-body .q-discovery-cards {
+    grid-template-columns: 1fr;
+  }
+  .q-emission-active {
+    padding: 6px;
+    flex-wrap: wrap;
+  }
+  .q-emission-active > .q-primary {
+    flex-basis: 100%;
+  }
+}

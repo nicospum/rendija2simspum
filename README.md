@@ -44,6 +44,8 @@ Las pruebas cubren las fórmulas con referencias analíticas, muestreo estadíst
 
 Cambiar una condición física limpia la corrida actual. La comparación guardada conserva sus parámetros y resultados. Pausar detiene el registro; la cámara y la interfaz siguen disponibles. La pantalla 3D conserva los últimos 2000 puntos, mientras el histograma y el contador incluyen todos los impactos de la corrida.
 
+Los cuatro retos preparan una referencia y proponen cambiar una sola variable: acumular impactos, separar las rendijas, registrar el camino y modificar el ancho de una abertura. Los atajos generan detecciones nuevas con el muestreador físico; el feedback distingue predicciones del modelo y frecuencias registradas, sin declarar una validación estadística por alcanzar un número de puntos. La historia conecta la interferencia clásica con los experimentos cuánticos y explica por qué mirar la pantalla no equivale a registrar el camino. Ver [recorrido educativo](docs/DOBLE_RENDIJA_EDUCACION.md).
+
 El modelo de doble rendija usa amplitudes de Fraunhofer en unidades normalizadas, con impactos muestreados según su probabilidad. No simula trayectorias ocultas ni resuelve una ecuación de Schrödinger temporal. El campo ilustrativo es cualitativo y se puede ocultar. Ver [modelo físico](docs/MODELO_DOBLE_RENDIJA.md).
 
 ## Organización y nuevos experimentos

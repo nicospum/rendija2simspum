@@ -1,10 +1,20 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
 import { useLabStore } from './store/store'
-import { DEFAULT_CONFIG, fringeSpacing } from './physics/interference'
+import { fringeSpacing } from './physics/interference'
 import LabControls from './components/ui/LabControls'
 import DistributionChart from './components/ui/DistributionChart'
 import LearningGuide from './components/ui/LearningGuide'
+import DoubleSlitEvidence, { type ActiveLesson } from './components/ui/DoubleSlitEvidence'
+import DoubleSlitDiscovery from './components/ui/DoubleSlitDiscovery'
+import {
+  LESSONS,
+  lessonConfig,
+  proposedConfig,
+  makeReading,
+  type LessonId,
+} from './education/doubleSlitLearning'
 import './App.css'
+import './components/ui/DoubleSlitLearning.css'
 
 const SceneViewport = lazy(() => import('./components/simulation/SceneViewport'))
 
@@ -37,39 +47,42 @@ export default function App() {
   useAutoEmission()
   const config = useLabStore((s) => s.config)
   const detected = useLabStore((s) => s.detected)
+  const histogram = useLabStore((s) => s.histogram)
   const isPaused = useLabStore((s) => s.isPaused)
   const isAutoMode = useLabStore((s) => s.isAutoMode)
   const burstSize = useLabStore((s) => s.burstSize)
   const showWaves = useLabStore((s) => s.showWaves)
   const view = useLabStore((s) => s.view)
-  const [lesson, setLesson] = useState(0)
+  const [lesson, setLesson] = useState<ActiveLesson | null>(null)
   const spacing = fringeSpacing(config)
   const detectorOn = config.detectorStrength > 0
+  const reading = makeReading(config, histogram, detected)
+  const activeControl = LESSONS.find((item) => item.id === lesson?.id)?.controlId
 
-  function explore(index: number) {
-    setLesson(index)
+  function explore(id: LessonId) {
     const state = useLabStore.getState()
-    if (
-      index === 2 &&
-      state.detected > 0 &&
-      state.config.slitCount > 1 &&
-      state.config.detectorStrength < 1
-    )
-      state.saveComparison()
-    if (state.isPaused) state.togglePause()
-    if (index === 2 && state.config.slitCount > 1) state.setConfig({ detectorStrength: 1 })
-    else {
-      state.clearComparison()
-      state.setConfig({
-        ...DEFAULT_CONFIG,
-        ...(index === 2 ? { detectorStrength: 1 } : {}),
-        ...(index === 3 ? { slitCount: 1, slitWidth: 0.05 } : {}),
-      })
+    state.resetAll()
+    state.setConfig(lessonConfig(id))
+    state.emit(id === 'accumulation' ? 1 : 1600)
+    if (id !== 'accumulation') state.saveComparison()
+    const prepared = useLabStore.getState()
+    setLesson({ id, baseline: makeReading(prepared.config, prepared.histogram, prepared.detected) })
+  }
+
+  function tryLesson() {
+    if (!lesson) return
+    const state = useLabStore.getState()
+    if (state.isPaused) return
+    if (lesson.id === 'accumulation') {
+      state.emit(state.detected < 1600 ? 1600 - state.detected : 1600)
+    } else {
+      const suggested = proposedConfig(lesson.id)
+      if (lesson.id === 'separation') state.setConfig({ slitSeparation: suggested.slitSeparation })
+      if (lesson.id === 'detector')
+        state.setConfig({ detectorStrength: suggested.detectorStrength })
+      if (lesson.id === 'single') state.setConfig({ slitWidth: suggested.slitWidth })
+      state.emit(1600)
     }
-    state.clearRun()
-    state.setEmissionRate(40)
-    if (useLabStore.getState().isAutoMode !== (index !== 0)) state.toggleAuto()
-    if (index === 0) state.emit(1)
   }
 
   return (
@@ -100,10 +113,13 @@ export default function App() {
               <br />
               Muchos, <em>un patrón.</em>
             </h1>
-            <p>
+            <p className="q-intro-description">
               Emití una partícula a la vez. Descubrí por qué dos rendijas cambiaron nuestra forma de
               entender la naturaleza.
             </p>
+            <a className="q-history-jump" href="#discovery-title">
+              Por qué este experimento cambió la física ↓
+            </a>
           </div>
           <aside className="q-intro-note">
             <span>LA DOBLE RENDIJA</span>
@@ -115,7 +131,7 @@ export default function App() {
             <div className="q-mini-fringes" aria-hidden="true" />
           </aside>
         </section>
-        <LearningGuide active={lesson} onExplore={explore} />
+        <LearningGuide active={lesson?.id ?? null} onExplore={explore} />
         <section
           className="q-lab-layout"
           id="laboratorio"
@@ -173,7 +189,15 @@ export default function App() {
                 muestra la trayectoria de cada partícula.
               </p>
             </div>
-            <div className="q-emission-bar">
+            {lesson?.id === 'accumulation' && (
+              <span className="q-control-focus-label">
+                CONTROL DE ESTE RETO · EMITÍ SIN CAMBIAR EL MONTAJE
+              </span>
+            )}
+            <div
+              className={`q-emission-bar ${lesson?.id === 'accumulation' ? 'q-emission-active' : ''}`}
+              id="emission-controls"
+            >
               <button
                 className="q-button q-primary"
                 disabled={isPaused}
@@ -197,6 +221,11 @@ export default function App() {
                 {isPaused ? '▶' : 'Ⅱ'}
               </button>
             </div>
+            {lesson?.id === 'accumulation' && (
+              <a className="q-control-link" href="#slit-evidence-title">
+                Ver la comparación ↓
+              </a>
+            )}
             <div className="q-metrics" aria-label="Lecturas del experimento">
               <div>
                 <span>DETECCIONES</span>
@@ -226,50 +255,44 @@ export default function App() {
                 </small>
               </div>
             </div>
-            <DistributionChart />
+            <DoubleSlitEvidence
+              active={lesson}
+              current={reading}
+              paused={isPaused}
+              onTry={tryLesson}
+              onGather={() => useLabStore.getState().emit(1600)}
+              onRestart={() => {
+                if (lesson) explore(lesson.id)
+              }}
+              onExit={() => setLesson(null)}
+            />
+            <DistributionChart
+              comparisonOverride={
+                lesson ? (lesson.id === 'accumulation' ? null : lesson.baseline) : undefined
+              }
+              guided={!!lesson}
+            />
             <p className="q-run-note" role="status">
               {detected === 0
                 ? 'La pantalla está lista. Emití una partícula para registrar el primer impacto.'
                 : detected < 100
                   ? 'Cada impacto es localizado. Seguí emitiendo: hacen falta muchos para distinguir la distribución.'
-                  : detectorOn
-                    ? 'El detector reduce la interferencia entre caminos. La difracción de cada rendija permanece.'
-                    : 'La acumulación revela máximos y mínimos: se suman amplitudes antes de calcular probabilidades.'}
+                  : config.slitCount === 1
+                    ? 'Con una rendija permanece la difracción. Registrar el camino no cambia este patrón ideal.'
+                    : detectorOn
+                      ? 'El detector reduce la interferencia entre caminos. La difracción de cada rendija permanece.'
+                      : 'La acumulación revela máximos y mínimos: se suman amplitudes antes de calcular probabilidades.'}
             </p>
           </div>
-          <LabControls />
+          <LabControls
+            activeControl={activeControl}
+            onReset={() => {
+              setLesson(null)
+              useLabStore.getState().resetAll()
+            }}
+          />
         </section>
-        <section className="q-discovery" aria-labelledby="discovery-title">
-          <div>
-            <p className="q-eyebrow">QUÉ ESTÁS DESCUBRIENDO</p>
-            <h2 id="discovery-title">Dos caminos. Una diferencia fundamental.</h2>
-            <p>
-              La interferencia también aparece con luz clásica. Lo sorprendente del experimento
-              cuántico es que el patrón se construye con detecciones individuales, incluso cuando
-              las partículas se emiten de a una.
-            </p>
-          </div>
-          <div className="q-discovery-cards">
-            <article>
-              <span>01 / CAMINOS INDISTINGUIBLES</span>
-              <h3>Se suman amplitudes</h3>
-              <p className="q-equation">P ∝ |A₁ + A₂|²</p>
-              <p>
-                Las contribuciones pueden reforzarse o cancelarse. Por eso quedan zonas de muchas
-                detecciones y otras de muy pocas.
-              </p>
-            </article>
-            <article>
-              <span>02 / CAMINO REGISTRADO</span>
-              <h3>Se suman probabilidades</h3>
-              <p className="q-equation">P ∝ |A₁|² + |A₂|²</p>
-              <p>
-                Un detector ideal que distingue los caminos elimina los términos cruzados. El cambio
-                depende de la interacción física que deja esa información.
-              </p>
-            </article>
-          </div>
-        </section>
+        <DoubleSlitDiscovery />
         <details className="q-model">
           <summary>
             Cómo funciona el modelo y qué representan las unidades <span>+</span>

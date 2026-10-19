@@ -1,4 +1,4 @@
-import { useLabStore } from '../../store/store'
+import { useLabStore, type Comparison } from '../../store/store'
 
 function line(values: number[], scale: number) {
   return values
@@ -9,11 +9,18 @@ function line(values: number[], scale: number) {
     .join(' ')
 }
 
-export default function DistributionChart() {
+export default function DistributionChart({
+  comparisonOverride,
+  guided = false,
+}: {
+  comparisonOverride?: Comparison | null
+  guided?: boolean
+}) {
   const histogram = useLabStore((s) => s.histogram)
   const detected = useLabStore((s) => s.detected)
   const distribution = useLabStore((s) => s.distribution)
-  const comparison = useLabStore((s) => s.comparison)
+  const savedComparison = useLabStore((s) => s.comparison)
+  const comparison = comparisonOverride === undefined ? savedComparison : comparisonOverride
   const showTheory = useLabStore((s) => s.showTheory)
   // Integrate the fine sampling distribution over the same bins as the data.
   const theory = new Array<number>(histogram.length).fill(0)
@@ -58,13 +65,14 @@ export default function DistributionChart() {
         {comparison && (
           <span>
             <i className="q-key-reference" />
-            Corrida guardada
+            {guided ? 'Referencia del reto' : 'Corrida guardada'}
           </span>
         )}
       </div>
       <svg
         className="q-distribution-svg"
-        viewBox="0 0 600 145"
+        viewBox="0 0 600 126"
+        preserveAspectRatio="none"
         role="img"
         aria-label={`Distribución de ${detected} detecciones en la pantalla, de menos tres a más tres unidades. ${showTheory ? 'Incluye la probabilidad teórica.' : ''} ${comparison ? 'Incluye una corrida anterior normalizada para comparar.' : ''}`}
       >
@@ -93,30 +101,29 @@ export default function DistributionChart() {
         {showTheory && (
           <path d={line(theory, scale)} fill="none" stroke="#3b5148" strokeWidth="2" />
         )}
-        <text x="12" y="139">
-          −3 u
-        </text>
-        <text x="300" y="139" textAnchor="middle">
-          Posición transversal z
-        </text>
-        <text x="588" y="139" textAnchor="end">
-          +3 u
-        </text>
       </svg>
-      <div className="q-comparison-actions">
-        <button disabled={detected === 0} onClick={() => useLabStore.getState().saveComparison()}>
-          Guardar esta corrida para comparar
-        </button>
-        {comparison && (
-          <button onClick={() => useLabStore.getState().clearComparison()}>
-            Quitar comparación ×
-          </button>
-        )}
+      <div className="q-chart-axis" aria-hidden="true">
+        <span>−3 u</span>
+        <span>Posición transversal z</span>
+        <span>+3 u</span>
       </div>
+      {!guided && (
+        <div className="q-comparison-actions">
+          <button disabled={detected === 0} onClick={() => useLabStore.getState().saveComparison()}>
+            Guardar esta corrida para comparar
+          </button>
+          {comparison && (
+            <button onClick={() => useLabStore.getState().clearComparison()}>
+              Quitar comparación ×
+            </button>
+          )}
+        </div>
+      )}
       {comparison && (
         <p className="q-comparison-note">
-          Guardada: {comparison.detected.toLocaleString('es-AR')} impactos ·{' '}
-          {comparison.config.slitCount} rendijas · detector{' '}
+          {guided ? 'Referencia' : 'Guardada'}: {comparison.detected.toLocaleString('es-AR')}{' '}
+          impactos · {comparison.config.slitCount}{' '}
+          {comparison.config.slitCount === 1 ? 'rendija' : 'rendijas'} · detector{' '}
           {Math.round(comparison.config.detectorStrength * 100)} % · λ{' '}
           {comparison.config.wavelength.toFixed(3)} u · a {comparison.config.slitWidth.toFixed(3)} u
           · d {comparison.config.slitSeparation.toFixed(2)} u · L{' '}
@@ -125,8 +132,11 @@ export default function DistributionChart() {
         </p>
       )}
       <p className="q-chart-note">
-        La línea indica una probabilidad. Las barras cuentan detecciones reales de esta simulación;
-        al principio fluctúan mucho.
+        {showTheory
+          ? 'La línea verde indica la probabilidad calculada. '
+          : 'La curva calculada está oculta. '}
+        Las barras cuentan detecciones muestreadas en esta simulación; al principio fluctúan mucho.
+        Las corridas usan el mismo eje de posición y la misma escala de frecuencias relativas.
       </p>
     </section>
   )
