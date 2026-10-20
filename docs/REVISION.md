@@ -37,6 +37,8 @@ El modelo de doble rendija continúa siendo una aproximación ideal de Fraunhofe
 
 ## Extensiones aconsejables
 
+El cierre del 20 de octubre mantiene las 68 pruebas de los dos laboratorios, lint y compilación correctos. La investigación del tercero agrega documentación de Hawking, cálculos SI reproducibles y diez comprobaciones separadas integradas en CI. No modifica los modelos físicos ni las páginas de los experimentos existentes. Ver [HAWKING_INVESTIGACION.md](HAWKING_INVESTIGACION.md).
+
 La actualización educativa del prisma agrega cuatro retos con referencia, comparaciones a escala común, pistas visibles en cada control e historia con fuentes. Incluye diez pruebas adicionales de las conclusiones y sus salvaguardas: **58 pruebas en total**. No cambia el trazado físico ni las cámaras. Ver [PRISMA_EDUCACION.md](PRISMA_EDUCACION.md).
 
 La actualización educativa de doble rendija transforma el recorrido básico en cuatro retos con referencia inmutable, variable señalada y feedback calculado. Las barras de muestras y la curva teórica están diferenciadas; los ejes del gráfico mantienen legibilidad en celular. El contexto histórico y las preguntas frecuentes distinguen detector de camino, pantalla y lectura humana. Agrega diez pruebas de física y guardas educativas: **68 pruebas en total**, conservando modelo, store y cámaras. Ver [DOBLE_RENDIJA_EDUCACION.md](DOBLE_RENDIJA_EDUCACION.md).

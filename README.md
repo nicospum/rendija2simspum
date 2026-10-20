@@ -50,6 +50,8 @@ El modelo de doble rendija usa amplitudes de Fraunhofer en unidades normalizadas
 
 ## Organización y nuevos experimentos
 
+El tercer laboratorio está en investigación: radiación de Hawking y agujeros negros. La [base científica y el diseño](docs/HAWKING_INVESTIGACION.md) distinguen predicción semiclásica, observaciones de sistemas análogos y aproximaciones numéricas. `npm run research:hawking` ejecuta diez comprobaciones reproducibles de fórmulas y escalas, también incluidas en CI. Todavía no hay una ruta `/hawking/` publicada.
+
 El prisma también tiene cuatro preguntas guiadas: hacer atravesar el haz, variar brillo, alejar la pantalla y comparar materiales. Cada reto guarda una referencia y muestra qué cambió con una escala común. Las pistas visibles relacionan cada control con la observación. Una sección histórica explica el aporte de Newton, su importancia y las pruebas adicionales que este banco no incluye. Ver [el recorrido educativo](docs/PRISMA_EDUCACION.md).
 
 ```text

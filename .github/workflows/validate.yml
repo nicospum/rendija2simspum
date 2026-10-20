@@ -13,5 +13,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      - run: npm run research:hawking
       - run: npm run lint
       - run: npm run build

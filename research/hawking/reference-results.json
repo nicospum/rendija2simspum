@@ -1,0 +1,64 @@
+{
+  "description": "Theoretical Schwarzschild values; power and lifetime use the ideal photon horizon-area model, not full Hawking emission.",
+  "constants": {
+    "c": 299792458,
+    "G": 6.6743e-11,
+    "h": 6.62607015e-34,
+    "hbar": 1.0545718176461565e-34,
+    "k": 1.380649e-23,
+    "sigma": 5.6703744191844314e-8,
+    "solarGM": 132712440000000000000,
+    "solarMass": 1.988409870698051e+30,
+    "year": 31557600,
+    "cmbTemperature": 2.7255
+  },
+  "checks": 10,
+  "logEnergyPeak": 3.920690394872886,
+  "cmbBalanceMassKg": 4.501561807352843e+22,
+  "cases": [
+    {
+      "label": "Una masa solar nominal",
+      "massKg": 1.988409870698051e+30,
+      "radiusM": 2953.2500761002498,
+      "areaM2": 109599938.80868995,
+      "temperatureK": 6.170260410964976e-8,
+      "entropyOverK": 1.0488914478465573e+77,
+      "idealPhotonPowerW": 9.008158565537229e-29,
+      "idealVacuumLifetimeS": 6.612870824225995e+74,
+      "idealVacuumLifetimeYears": 2.0954923138090335e+67
+    },
+    {
+      "label": "Diez masas solares nominales",
+      "massKg": 1.988409870698051e+31,
+      "radiusM": 29532.5007610025,
+      "areaM2": 10959993880.868998,
+      "temperatureK": 6.170260410964976e-9,
+      "entropyOverK": 1.0488914478465575e+79,
+      "idealPhotonPowerW": 9.008158565537226e-31,
+      "idealVacuumLifetimeS": 6.612870824225998e+77,
+      "idealVacuumLifetimeYears": 2.0954923138090343e+70
+    },
+    {
+      "label": "Hipotético 10^12 kg",
+      "massKg": 1000000000000,
+      "radiusM": 1.485232053823733e-15,
+      "areaM2": 2.772033605556039e-29,
+      "temperatureK": 122690067059.4017,
+      "entropyOverK": 2.6528868296963423e+40,
+      "idealPhotonPowerW": 356162214.47784936,
+      "idealVacuumLifetimeS": 84114778997021080000,
+      "idealVacuumLifetimeYears": 2665436503315.242
+    },
+    {
+      "label": "Balance con CMB 2.7255 K",
+      "massKg": 4.501561807352843e+22,
+      "radiusM": 0.00006685863888549139,
+      "areaM2": 5.617265171637853e-8,
+      "temperatureK": 2.7255,
+      "entropyOverK": 5.375825445579639e+61,
+      "idealPhotonPowerW": 1.7576055204707152e-13,
+      "idealVacuumLifetimeS": 7.672942799433752e+51,
+      "idealVacuumLifetimeYears": 2.4314088522047784e+44
+    }
+  ]
+}
