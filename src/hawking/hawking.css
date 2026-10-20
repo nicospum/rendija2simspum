@@ -651,6 +651,7 @@ input[type='range'] {
 }
 .hk-controls-link {
   display: block;
+  min-height: 44px;
   padding: 12px 0 0;
   color: #dbbc8d;
   font-size: 11px;
@@ -1224,7 +1225,7 @@ input[type='range'] {
     grid-column: 2;
     grid-row: 3;
     align-self: end;
-    margin-bottom: 31px;
+    margin-bottom: 58px;
   }
   .hk-controls-link {
     grid-column: 2;
