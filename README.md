@@ -5,8 +5,9 @@ Una colección de laboratorios interactivos para aprender ciencia haciendo pregu
 - `/`: portada y catálogo de experimentos.
 - `/doble-rendija/`: detecciones individuales, interferencia, difracción e información del camino.
 - `/prisma/`: refracción y dispersión de la luz blanca, con trazado óptico en tiempo real.
+- `/hawking/`: masa, temperatura, entorno, evaporación y entropía de un agujero negro de Schwarzschild.
 
-El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las tres páginas se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada no carga Three.js.
+El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las cuatro páginas se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada no carga Three.js.
 
 ## Ejecutar localmente
 
@@ -33,7 +34,7 @@ npm run build
 npm audit
 ```
 
-Las pruebas cubren las fórmulas con referencias analíticas, muestreo estadístico determinista, estado y límites de memoria, pausa y cámaras de ambas simulaciones. La inspección visual en navegador sigue siendo necesaria para comprobar WebGL, interacción y responsive.
+Las pruebas cubren las fórmulas con referencias analíticas y numéricas independientes, muestreo estadístico determinista, estado y límites de memoria, pausa, cámaras y recorridos educativos de los tres laboratorios. La inspección visual en navegador sigue siendo necesaria para comprobar WebGL, interacción y responsive.
 
 ## Cómo explorar la doble rendija
 
@@ -50,7 +51,7 @@ El modelo de doble rendija usa amplitudes de Fraunhofer en unidades normalizadas
 
 ## Organización y nuevos experimentos
 
-El tercer laboratorio está en investigación: radiación de Hawking y agujeros negros. La [base científica y el diseño](docs/HAWKING_INVESTIGACION.md) distinguen predicción semiclásica, observaciones de sistemas análogos y aproximaciones numéricas. `npm run research:hawking` ejecuta diez comprobaciones reproducibles de fórmulas y escalas, también incluidas en CI. Todavía no hay una ruta `/hawking/` publicada.
+El tercer laboratorio, [radiación de Hawking](https://www.spumexp.lat/hawking/), tiene cuatro retos: duplicar masa y comparar temperatura; activar el fondo cósmico y distinguir emisión de pérdida neta; adelantar la evaporación en vacío; relacionar área y entropía. La [base científica](docs/HAWKING_INVESTIGACION.md) distingue predicción semiclásica y evidencia de sistemas análogos. La potencia, el espectro y la vida usan un cuerpo negro ideal de fotones, con límites visibles. La trama y los puntos del visor WebGL son esquemáticos; los valores y gráficos se recalculan desde las ecuaciones. Ver [arquitectura, recorrido y validación](docs/HAWKING_LABORATORIO.md). `npm run research:hawking` conserva diez comprobaciones científicas independientes en CI; las pruebas de producción contrastan esos resultados.
 
 El prisma también tiene cuatro preguntas guiadas: hacer atravesar el haz, variar brillo, alejar la pantalla y comparar materiales. Cada reto guarda una referencia y muestra qué cambió con una escala común. Las pistas visibles relacionan cada control con la observación. Una sección histórica explica el aporte de Newton, su importancia y las pruebas adicionales que este banco no incluye. Ver [el recorrido educativo](docs/PRISMA_EDUCACION.md).
 
@@ -58,6 +59,7 @@ El prisma también tiene cuatro preguntas guiadas: hacer atravesar el haz, varia
 index.html                    Entrada de la colección
 doble-rendija/index.html       Entrada del laboratorio cuántico
 prisma/index.html              Entrada del laboratorio óptico
+hawking/index.html             Entrada del laboratorio de agujeros negros
 src/portal/                   Catálogo, portada y diagramas SVG
 src/App.tsx                   Laboratorio de doble rendija y emisión automática
 src/physics/interference.ts   Modelo físico puro y muestreo
@@ -65,8 +67,9 @@ src/store/store.ts            Corridas, detecciones y comparación
 src/components/simulation/    Escena WebGL, cámaras y tooltips
 src/components/ui/            Controles, recorrido y gráfico
 src/prisma/                   Aplicación del prisma integrada
-tests/                        Pruebas de ambos experimentos
-vite.config.ts                Tres entradas y separación de bundles
+src/hawking/                  Modelo SI, retos, reloj, visor WebGL y espectro
+tests/                        Pruebas de los tres laboratorios
+vite.config.ts                Cuatro entradas y separación de bundles
 vercel.json                   Compilación y publicación estáticas
 ```
 
@@ -74,7 +77,7 @@ Para agregar un laboratorio: crear su entrada HTML y módulo principal, incluirl
 
 ## Publicación
 
-Vercel debe seguir conectado a `nicospum/rendija2simspum`, rama `master`, directorio raíz del repositorio. `vercel.json` declara `npm ci`, `npm run build`, `dist` y las URL con barra final. No requiere funciones, variables de entorno ni credenciales en el cliente. Subir a GitHub no confirma por sí solo un despliegue: verificar las tres URL públicas después de cada publicación.
+Vercel debe seguir conectado a `nicospum/rendija2simspum`, rama `master`, directorio raíz del repositorio. `vercel.json` declara `npm ci`, `npm run build`, `dist` y las URL con barra final. No requiere funciones, variables de entorno ni credenciales en el cliente. Subir a GitHub no confirma por sí solo un despliegue: verificar las cuatro URL públicas después de cada publicación.
 
 El prisma se integró desde `nicospum/newtonprisma`, commit `67ec9033ce3ab00a0611c28d72172c138695b760`, conservando su modelo y sus pruebas. Es una copia autónoma dentro de este repositorio; futuras mejoras deben sincronizarse conscientemente, no se descargan desde Netlify durante la ejecución.
 

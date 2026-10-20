@@ -20,6 +20,7 @@ export default defineConfig({
         portal: 'index.html',
         rendija: 'doble-rendija/index.html',
         prisma: 'prisma/index.html',
+        hawking: 'hawking/index.html',
       },
       output: {
         manualChunks(id) {

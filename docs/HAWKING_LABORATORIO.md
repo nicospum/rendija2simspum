@@ -1,0 +1,49 @@
+# Laboratorio de radiación de Hawking
+
+Primera implementación: 20 de octubre de 2026. Entrada `/hawking/`, integrada al catálogo de SPUM. No agrega dependencias. La investigación, las derivaciones y las fuentes primarias están en [HAWKING_INVESTIGACION.md](HAWKING_INVESTIGACION.md).
+
+## Aprendizaje y comparación
+
+Cada reto prepara una referencia independiente, conserva las condiciones al probar el cambio y permite predecir antes de mostrar el resultado. El feedback distingue referencia, comparación propuesta y cambios de otras condiciones. Los cuatro indicadores de progreso significan relaciones exploradas en el modelo, no verificación experimental ni evaluación del alumno. El progreso dura la sesión de la página; no se guarda información del visitante.
+
+| Reto               | Referencia                    | Cambio                    | Relación que se observa                                 |
+| ------------------ | ----------------------------- | ------------------------- | ------------------------------------------------------- |
+| Masa y temperatura | 10¹² kg, vacío, t = 0         | M × 2                     | r × 2, T × 0,5                                          |
+| Entorno            | Una masa solar nominal, vacío | Fondo cósmico a 2,7255 K  | Misma emisión, absorción mayor y potencia neta negativa |
+| Evaporación        | 10¹² kg, vacío, t = 0         | t = 0,75τ₀ o reloj/slider | M × 0,630, T × 1,587, Pideal × 2,520                    |
+| Área y entropía    | 10¹² kg, vacío                | M × 2                     | A × 4, S/kB × 4                                         |
+
+Los controles manuales también actualizan las comparaciones. El paso logarítmico permite llegar aproximadamente al doble de masa (tolerancia educativa del 1 %, sin modificar los resultados). Restaurar recupera las condiciones iniciales del reto. Elegir otro reto pausa el reloj y prepara otra referencia; conserva el progreso ya explorado.
+
+## Código y ecuaciones
+
+- `src/hawking/physics.ts`: constantes SI y funciones puras para radio, área, temperatura, entropía, potencia ideal, absorción y espectro. Rechaza entradas no finitas y resultados fuera del rango numérico.
+- `src/hawking/learning.ts`: estado, acciones, referencias y evaluación causal. No depende de React ni del visor.
+- `src/hawking/App.tsx`: controles, predicciones, comparaciones, historia, referencias y reloj. No existe una API remota ni credenciales en el cliente.
+- `src/hawking/Horizon.tsx`: shader WebGL procedural mediante las dependencias Three/R3F existentes. Una sola superficie, sin texturas descargadas ni secuencias prefabricadas. Los marcadores se calculan por celdas polares, evitando recorrer todas las partículas en cada fragmento.
+- `src/hawking/Spectrum.tsx`: curva calculada SVG. Las dos distribuciones usan los mismos ejes de energía y potencia absoluta; no se normaliza cada una por separado. Densidad `dP/dln(E)`, no `dP/dE`, con el factor jacobiano correcto y un pico en E/(kBT) = 3,92069.
+- `hawking/index.html` y `vite.config.ts`: cuarta entrada estática. Cada laboratorio conserva estilos y estado independientes. El portal sigue sin importar Three.js.
+
+El agujero negro es de Schwarzschild, sin carga ni rotación, y las magnitudes corresponden a un observador lejano. La temperatura y la entropía siguen las expresiones semiclásicas; potencia y vida usan **solo fotones, cuerpo negro ideal con área del horizonte**. No se implementan factores de cuerpo gris, otras especies, acreción real, expansión cosmológica, rotación ni el final cuántico de la evaporación. La aproximación puede diferir considerablemente de una potencia/vida total real, especialmente en masas pequeñas. El intervalo inicial 10⁹–10⁴⁰ kg es didáctico, no un censo de objetos observados.
+
+En vacío se usa la solución analítica `M/M₀ = cbrt(1 − t/τ₀)`, evitando integrar errores acumulados y potencias intermedias enormes. La evolución se detiene a 0,95τ₀, con explicación visible. La masa restante puede quedar por debajo del mínimo de masa inicial del control: sigue siendo un resultado válido. Al cambiar masa inicial se reinicia el tiempo.
+
+El entorno usa el balance instantáneo ideal `Pneta = Aσ(T⁴ − Tentorno⁴)`. Activarlo reinicia el tiempo y desactiva tanto el reloj como su slider. Nunca se aplica allí la solución analítica aislada. Signo positivo: pierde masa; negativo: gana masa. No se integra una evolución con baño térmico.
+
+## Qué significa el visor
+
+El horizonte es un disco esquemático. Su radio varía linealmente respecto a la referencia punteada fija entre ×0,22 y ×2,2. Fuera de ese intervalo se comprime el dibujo y aparece una indicación explícita; los valores y curvas conservan sus magnitudes reales. En una comparación M → 2M el horizonte duplica su radio sin cambiar la escala de cámara. La circunferencia de referencia también se ve sobre el interior oscuro, identificada como comparación y no como otro horizonte.
+
+El borde y los marcadores dorados no representan color térmico visible, disco de acreción, una foto ni trayectorias físicas de fotones. El flujo tiene brillo, densidad y velocidad normalizados para hacerlo perceptible. La trama no integra geodésicas ni lente gravitatoria. Los puntos azules señalan energía entrante del entorno. Todo esto se explica en el visor y en la leyenda; las predicciones cuantitativas están en las medidas, relaciones y espectro.
+
+## Interacción y rendimiento
+
+Controles de al menos 44 px de alto, rangos etiquetados, predicciones con estado seleccionado, navegación por anclas y tarjetas apiladas en celular. Los tooltips abren por hover, foco o toque y cierran al salir, perder foco o pulsar Escape. El gráfico usa menos marcas y una disposición de ejes propia en pantallas pequeñas. No hay desplazamiento horizontal intencional.
+
+El reloj usa `requestAnimationFrame`, actualiza el modelo aproximadamente 12 veces por segundo y limita saltos largos a 0,25 s. Al ocultar la página no acumula tiempo; al volver toma un nuevo punto de partida. Pausa del reloj y pausa visual son controles distintos: la primera detiene la evolución física, la segunda los marcadores ilustrativos. El visor deja de renderizar continuamente al pausarlo, al ocultar la pestaña o con preferencia de movimiento reducido. Los cambios de controles siguen repintando la imagen. DPR limitado a 1,5 y contexto de bajo consumo. Un fallo de creación de WebGL tiene una vista alternativa; cálculos, gráficos y retos permanecen fuera del canvas.
+
+## Validación
+
+`tests/hawking.test.mjs` contrasta la implementación con el JSON de referencia calculado por el programa de investigación independiente; verifica escalas, primera ley, Stefan–Boltzmann, conservación de energía por integración independiente, normalización y máximo espectral, signos del baño térmico, entradas inválidas, referencias inmutables, controles manuales, comparaciones confundidas, pausa y límites del reloj. Las diez verificaciones originales siguen en `npm run research:hawking`.
+
+Inspección de navegador: escritorio y anchos de 390 y 320 px, cuatro retos, predicciones y progreso, controles de masa y entorno, extremos del rango, avance/pausa, límite del 95 %, gráfico y tooltips. Esto comprueba tamaños de viewport y funcionamiento en el navegador disponible; no equivale a una prueba en dispositivos físicos iOS/Android ni a medir autonomía o FPS allí. La vista alternativa y las preferencias de accesibilidad requieren comprobaciones adicionales en esos dispositivos.

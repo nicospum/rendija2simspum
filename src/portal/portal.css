@@ -241,6 +241,9 @@ svg {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 26px;
 }
+.portal-experiment-card.hawking .portal-art-link {
+  background: #0b151f;
+}
 .portal-experiment-card {
   min-width: 0;
   background: #fffef9;
@@ -506,6 +509,37 @@ svg {
 .portal-footer > a svg {
   width: 13px;
   height: 13px;
+}
+@media (min-width: 1200px) {
+  .portal-experiment-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+  .portal-card-copy {
+    padding: 25px 22px;
+  }
+  .portal-card-title {
+    min-height: 64px;
+    align-items: start;
+  }
+  .portal-card-title h3 {
+    font-size: 26px;
+  }
+  .portal-card-number {
+    padding-top: 7px;
+  }
+  .portal-art-caption {
+    min-height: 58px;
+    font-size: 12px;
+    padding-inline: 20px;
+  }
+  .portal-art-caption > span:last-child {
+    font-size: 6px;
+  }
+  .portal-card-bottom {
+    min-height: 78px;
+    align-content: start;
+  }
 }
 @media (min-width: 1500px) {
   .portal-hero {

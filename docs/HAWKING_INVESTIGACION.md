@@ -1,6 +1,6 @@
 # Radiación de Hawking y diseño del tercer laboratorio
 
-Fecha de corte: **20 de octubre de 2026**. Destino: tercer laboratorio de SPUM, después de doble rendija y prisma. Estado: investigación científica y especificación; la interfaz del tercer laboratorio todavía no está implementada.
+Fecha de corte: **20 de octubre de 2026**. Destino: tercer laboratorio de SPUM, después de doble rendija y prisma. Esta investigación fundamenta la primera versión implementada en `/hawking/`; el diseño que sigue conserva el razonamiento previo. Ver [implementación y límites](HAWKING_LABORATORIO.md).
 
 La propuesta es una **simulación de las consecuencias de un modelo semiclásico**, con masa, temperatura, espectro y evolución relacionadas por ecuaciones. El aprendizaje central será que un agujero negro menos masivo tiene mayor temperatura de Hawking. La simulación permitirá explorar esa predicción; la evidencia física se presentará en una sección separada, con su alcance identificado.
 

@@ -49,3 +49,9 @@ La revisión móvil posterior detectó controles ya existentes con objetivos de 
 2. Si se desea comparabilidad experimental, introducir una escala SI y un modelo de fuente/detector antes de presentar valores calibrados.
 3. Mantener sincronizado el prisma integrado y su repositorio de origen. Un workspace compartido sería útil si aumenta la frecuencia de cambios, pero no es necesario para estos dos laboratorios.
 4. Añadir un solver de campo cercano solo si existe un objetivo didáctico y pruebas de convergencia que justifiquen su coste.
+
+## Tercer laboratorio: primera versión de Hawking, 20/10/2026
+
+Se implementa `/hawking/` y se incorpora al catálogo junto a prisma y doble rendija. Modelo SI puro, cuatro retos con predicción y referencias, espectro calculado, reloj acelerado y visor WebGL procedural. La temperatura semiclásica se distingue de la aproximación de potencia/vida de fotones ideales; el dibujo identifica explícitamente sus elementos cualitativos. El baño térmico bloquea la solución de evolución aislada y el recorrido termina antes de la evaporación final desconocida.
+
+Se agregan 13 pruebas: **81 en total**, más las diez comprobaciones científicas independientes. Pruebas, lint y compilación pasan. Se revisaron escritorio, 390 y 320 px, los cuatro retos, extremos de masa, pausa, límite temporal y tooltips; no se probaron teléfonos físicos. No cambian los modelos ni las páginas de los dos laboratorios existentes y no se agregan dependencias. La portada pasa a tres tarjetas y cuatro entradas estáticas. Ver [arquitectura y límites](HAWKING_LABORATORIO.md).

@@ -1,4 +1,56 @@
-export default function ExperimentIllustration({ kind }: { kind: 'doble-rendija' | 'prisma' }) {
+export default function ExperimentIllustration({
+  kind,
+}: {
+  kind: 'doble-rendija' | 'prisma' | 'hawking'
+}) {
+  if (kind === 'hawking')
+    return (
+      <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
+        <defs>
+          <radialGradient id="hawking-glow">
+            <stop stopColor="#caa571" stopOpacity=".3" />
+            <stop offset="1" stopColor="#caa571" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        <ellipse cx="280" cy="150" rx="235" ry="80" fill="none" stroke="#799a9f" opacity=".15" />
+        {[65, 95, 130, 175, 225].map((radius) => (
+          <ellipse
+            key={radius}
+            cx="280"
+            cy="150"
+            rx={radius}
+            ry={radius * 0.37}
+            fill="none"
+            stroke="#799a9f"
+            opacity=".18"
+          />
+        ))}
+        <circle cx="280" cy="145" r="108" fill="url(#hawking-glow)" />
+        <circle cx="280" cy="145" r="56" fill="#070e14" stroke="#dfbb84" strokeWidth="1.5" />
+        {Array.from({ length: 23 }, (_, i) => {
+          const angle = i * 2.39996,
+            radius = 70 + (i % 5) * 22
+          return (
+            <circle
+              key={i}
+              cx={280 + Math.cos(angle) * radius}
+              cy={145 + Math.sin(angle) * radius * 0.75}
+              r={i % 3 === 0 ? 1.8 : 1}
+              fill="#dfbb84"
+              opacity=".7"
+            />
+          )
+        })}
+        <g fontFamily="Consolas, monospace" fontSize="9" fill="#9fb2b2" letterSpacing="1.5">
+          <text x="42" y="271">
+            T ∝ 1/M
+          </text>
+          <text x="365" y="271">
+            MODELO TEÓRICO
+          </text>
+        </g>
+      </svg>
+    )
   return (
     <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
       <defs>

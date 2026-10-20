@@ -1,5 +1,5 @@
 export interface Experiment {
-  id: 'doble-rendija' | 'prisma'
+  id: 'doble-rendija' | 'prisma' | 'hawking'
   number: string
   field: string
   title: string
@@ -35,5 +35,17 @@ export const experiments: readonly Experiment[] = [
       'Dirigí el haz, girá el prisma y compará materiales para descubrir cómo se desvía cada color.',
     tags: ['Refracción', 'Dispersión', 'Luz'],
     href: '/prisma/',
+  },
+  {
+    id: 'hawking',
+    number: '03',
+    field: 'AGUJEROS NEGROS',
+    title: 'Radiación de Hawking',
+    subtitle: 'Hasta la oscuridad tiene temperatura.',
+    question: '¿Por qué un agujero negro que pierde masa se vuelve más caliente?',
+    discovery:
+      'Explorá masa, temperatura, entorno y entropía con cuatro retos y un modelo de evaporación ideal.',
+    tags: ['Gravedad', 'Termodinámica', 'Física cuántica'],
+    href: '/hawking/',
   },
 ]
