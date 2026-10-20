@@ -172,6 +172,11 @@
   color: #d1f0e6;
   cursor: pointer;
 }
+@media (max-width: 800px) {
+  .quantum-scene-label > button {
+    min-height: 44px;
+  }
+}
 @media (max-width: 600px) {
   .quantum-viewport {
     height: 410px;
@@ -199,5 +204,11 @@
     inset: auto 9px 8px;
     font-size: 8px;
     gap: 2px;
+  }
+}
+@media (max-width: 500px) {
+  .quantum-scene-label small,
+  .quantum-scene-label button > span {
+    display: none;
   }
 }

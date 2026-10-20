@@ -566,6 +566,34 @@
 }
 /* Larger touch targets keep the compact mobile controls easy to operate. */
 @media (max-width: 800px) {
+  .app-header .guide-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .physics-tooltip button {
+    min-width: 44px;
+    min-height: 44px;
+    display: grid;
+    place-items: center;
+  }
+  .physics-tooltip .eyebrow,
+  .physics-tooltip strong {
+    padding-right: 26px;
+  }
+  .prism-history details {
+    padding: 0;
+  }
+  .prism-history summary {
+    min-height: 44px;
+    padding: 18px 22px;
+  }
+  .prism-history details > p {
+    margin-left: 22px;
+    margin-right: 22px;
+  }
+  .prism-history details > p:last-child {
+    margin-bottom: 18px;
+  }
   .view-tabs button,
   .scene-bottom button,
   .prism-evidence button,

@@ -108,11 +108,11 @@ select { width: 100%; border: 1px solid #dce2d1; border-radius: 5px; background:
 .app-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 31px; padding: 18px 0 23px; border-top: 1px solid #dce2d9; color: #899781; font-size: 9px; }
 .app-footer button { background: transparent; display: flex; gap: 9px; font-size: 9px; align-items: center; padding: 5px; }
 .footer-dot { padding: 0 6px; color: #b9c2ae; }
-.physics-tooltip { position: absolute; right: 21px; top: 10px; width: min(300px, calc(100% - 42px)); background: #f6f9edf5; color: #365239; border: 1px solid #c9d9b2; border-radius: 8px; padding: 17px 18px; box-shadow: 0 10px 25px #0003; z-index: 10; pointer-events: auto; }
+.physics-tooltip { position: absolute; right: 21px; top: 10px; width: min(300px, calc(100% - 42px)); background: #f6f9edf5; color: #365239; border: 1px solid #c9d9b2; border-radius: 8px; padding: 17px 18px; box-shadow: 0 10px 25px #0003; z-index: 10; pointer-events: none; }
 .physics-tooltip .eyebrow { font-size: 8px; color: #7b9267; }
 .physics-tooltip strong { display: block; margin: 9px 0 7px; font-size: 13px; font-weight: 550; }
 .physics-tooltip p { font-size: 11px; line-height: 1.6; color: #6a7d60; }
-.physics-tooltip button { position: absolute; right: 5px; top: 5px; background: none; padding: 3px; }
+.physics-tooltip button { pointer-events: auto; position: absolute; right: 5px; top: 5px; background: none; padding: 3px; }
 .scene-notice { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); border: 1px solid #566049; background: #1e2d25ed; border-radius: 5px; padding: 9px 13px; color: #cbd9ad; font-size: 10px; width: max-content; max-width: 80%; text-align: center; pointer-events: none; }
 .scene-label { background: #172629cc !important; border: 1px solid #3e5651 !important; border-radius: 5px !important; padding: 6px 9px !important; color: #c1d4bf !important; font-family: 'Segoe UI', sans-serif !important; min-width: 105px; backdrop-filter: blur(4px); cursor: pointer; }
 .scene-label__index { display: inline-block; font: 8px 'Consolas', monospace; color: #a4c787; letter-spacing: 1px; margin-right: 5px; }

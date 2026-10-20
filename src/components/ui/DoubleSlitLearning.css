@@ -264,6 +264,27 @@
 }
 /* Keep controls usable by touch without changing the physical configuration. */
 @media (max-width: 800px) {
+  .q-history-faq details {
+    padding: 0;
+  }
+  .q-history-faq summary {
+    min-height: 44px;
+    padding: 12px 0;
+  }
+  .q-history-faq details[open] {
+    padding-bottom: 16px;
+  }
+  .q-model {
+    padding: 0;
+  }
+  .q-model summary {
+    min-height: 44px;
+    padding: 18px;
+  }
+  .q-model > div {
+    margin-top: 0;
+    padding: 0 18px 18px;
+  }
   .q-view-tabs button,
   .q-scene-bottom button,
   .q-emission-bar button,

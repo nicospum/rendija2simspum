@@ -98,6 +98,13 @@ function App() {
   const config = state.pausedConfig ?? state.config
   const experiment = useMemo(() => traceExperiment(config), [config])
   const [hover, setHover] = useState<HoverTarget>(null)
+  // Click/focus pins the explanation; leaving an object only clears transient hover.
+  const [selectedTarget, setSelectedTarget] = useState<HoverTarget>(null)
+  const informationTarget = selectedTarget ?? hover
+  const closeInformation = () => {
+    setHover(null)
+    setSelectedTarget(null)
+  }
   const [help, setHelp] = useState<'guide' | 'theory' | null>(null)
   const illuminated = state.lightEnabled && state.lightIntensity > 0
   const { metrics } = experiment
@@ -126,7 +133,7 @@ function App() {
         initial.lightEnabled,
       ),
     })
-    setHover(null)
+    closeInformation()
   }
   const tryChange = () => {
     if (!lesson) return
@@ -156,6 +163,7 @@ function App() {
     },
   }
   const preset = (kind: 'classic' | 'quartz' | 'reflection') => {
+    closeInformation()
     setLesson(null)
     state.reset()
     if (kind === 'quartz') state.setMaterial('quartz')
@@ -259,6 +267,8 @@ function App() {
                       showLabels={state.showLabels}
                       cameraResetKey={state.cameraResetKey}
                       onHover={setHover}
+                      onSelect={setSelectedTarget}
+                      activeTarget={informationTarget}
                     />
                   </Suspense>
                 </SceneBoundary>
@@ -267,12 +277,19 @@ function App() {
                   <span>↗ Z</span>
                   <span>→ X</span>
                 </div>
-                {hover && (
-                  <div className="physics-tooltip" role="status">
+                {informationTarget && (
+                  <div
+                    className="physics-tooltip"
+                    id="prism-information"
+                    role="status"
+                    onKeyDown={(event) => {
+                      if (event.key === 'Escape') closeInformation()
+                    }}
+                  >
                     <span className="eyebrow">LO QUE ESTÁ SUCEDIENDO</span>
-                    <strong>{tooltip[hover].title}</strong>
-                    <p>{tooltip[hover].text}</p>
-                    <button aria-label="Cerrar información" onClick={() => setHover(null)}>
+                    <strong>{tooltip[informationTarget].title}</strong>
+                    <p>{tooltip[informationTarget].text}</p>
+                    <button aria-label="Cerrar información" onClick={closeInformation}>
                       <Icon name="close" size={13} />
                     </button>
                   </div>
@@ -362,6 +379,7 @@ function App() {
           <ControlPanel
             activeControl={LESSONS.find((item) => item.id === lesson?.id)?.controlId}
             onReset={() => {
+              closeInformation()
               setLesson(null)
               state.reset()
             }}

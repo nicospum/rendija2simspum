@@ -16,6 +16,8 @@ interface SceneViewportProps {
   showLabels: boolean
   cameraResetKey: number
   onHover: (target: 'lamp' | 'prism' | 'screen' | 'beam' | null) => void
+  onSelect: (target: 'lamp' | 'prism' | 'screen' | 'beam' | null) => void
+  activeTarget: 'lamp' | 'prism' | 'screen' | 'beam' | null
 }
 
 interface Layout {
@@ -132,7 +134,10 @@ export default function SceneViewport(props: SceneViewportProps) {
         camera={{ position: [-5, 6, 9], fov: 43, near: 0.1, far: 80 }}
         gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}
         fallback={<div className="scene-fallback">Tu navegador necesita WebGL para mostrar el banco óptico. Podés explorar los controles y los resultados numéricos.</div>}
-        onPointerMissed={() => props.onHover(null)}
+        onPointerMissed={() => {
+          props.onHover(null)
+          props.onSelect(null)
+        }}
       >
         <color attach="background" args={['#101c20']} />
         <CameraRig view={props.view} cameraResetKey={props.cameraResetKey} points={framingPoints} />
@@ -146,8 +151,16 @@ export default function SceneViewport(props: SceneViewportProps) {
               key={label.target} ref={references[index]} className="scene-label"
               style={{ position: 'absolute', left: 0, top: 0, visibility: 'hidden', pointerEvents: 'auto' }}
               onMouseEnter={() => props.onHover(label.target)} onMouseLeave={() => props.onHover(null)}
-              onFocus={() => props.onHover(label.target)} onBlur={() => props.onHover(null)}
-              onClick={() => props.onHover(label.target)}
+              aria-expanded={props.activeTarget === label.target}
+              aria-controls={props.activeTarget === label.target ? 'prism-information' : undefined}
+              onFocus={() => props.onSelect(label.target)} onBlur={() => props.onHover(null)}
+              onClick={() => props.onSelect(label.target)}
+              onKeyDown={(event) => {
+                if (event.key === 'Escape') {
+                  props.onHover(null)
+                  props.onSelect(null)
+                }
+              }}
             >
               <span className="scene-label__index">{label.index}</span>
               <span className="scene-label__title">{label.title}</span>
