@@ -23,6 +23,9 @@
 }
 .portal-special-link span { font: 10px/1.7 Consolas, monospace; letter-spacing: 1px; color: #e5be8a; }
 .portal-special-link svg { margin-left: auto; }
+.portal-einstein-link { background: #10313c; }
+.portal-einstein-link span { color: #a3e6d9; }
+.portal-experiment-card.reloj-de-luz .portal-art-link { background: #102735; color: #c3dedc; }
 .portal-experiment-card.acrecion .portal-art-link { background: #0d1a28; color: #c4d2dc; }
 * {
   box-sizing: border-box;
@@ -608,6 +611,7 @@ svg {
   .portal-header nav a:last-child {
     display: none;
   }
+  .portal-header nav a[href='/agujeros-negros/'] { display: none; }
   .portal-brand {
     font-size: 22px;
   }

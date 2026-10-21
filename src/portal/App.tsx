@@ -43,6 +43,7 @@ export default function Portal() {
           </a>
           <a href="#aprender">Aprender haciendo</a>
           <a href="/agujeros-negros/">Especial agujeros negros</a>
+          <a href="/einstein/">Especial Einstein</a>
         </nav>
         <span className="portal-header-note">Ciencia. A un clic de distancia.</span>
       </header>
@@ -91,6 +92,10 @@ export default function Portal() {
             </span>
           </div>
           <div className="portal-experiment-grid">
+            <a className="portal-special-link portal-einstein-link" href="/einstein/">
+              <span>ESPECIAL EINSTEIN</span>
+              Espacio, tiempo y gravedad. Empezá con el reloj de luz. <Arrow />
+            </a>
             <a className="portal-special-link" href="/agujeros-negros/">
               <span>ESPECIAL AGUJEROS NEGROS</span>
               Luz, horizontes, relojes y entropía. Un recorrido para ver lo invisible. <Arrow />

@@ -1,5 +1,5 @@
 export interface Experiment {
-  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte'
+  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz'
   number: string
   field: string
   title: string
@@ -94,5 +94,16 @@ export const experiments: readonly Experiment[] = [
     discovery: 'Compará caída libre y relojes sostenidos, enviá señales y descubrí qué puede recibir alguien que espera afuera con cuatro retos.',
     tags: ['Caída libre', 'Relojes', 'Causalidad'],
     href: '/horizonte/',
+  },
+  {
+    id: 'reloj-de-luz',
+    number: '08',
+    field: 'RELATIVIDAD ESPECIAL',
+    title: 'El reloj de luz',
+    subtitle: 'Dos miradas. Una misma luz.',
+    question: '¿Un segundo dura lo mismo para todos?',
+    discovery: 'Seguí un pulso desde la nave y la estación: cambiá la velocidad y descubrí la dilatación temporal con cuatro retos.',
+    tags: ['Einstein', 'Luz', 'Tiempo propio'],
+    href: '/reloj-de-luz/',
   },
 ]

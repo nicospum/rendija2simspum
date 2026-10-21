@@ -1,5 +1,6 @@
 import { experiments } from '../../portal/catalog'
 import { BlackHoleNavigation } from '../../series/BlackHoleSeries'
+import EinsteinNavigation from '../../einstein/EinsteinNavigation'
 import './LabJourney.css'
 
 export function LabNavigation({
@@ -91,6 +92,7 @@ export function MoreLabs({ current, light = false }: { current: string; light?: 
       aria-label="Seguí explorando los laboratorios"
     >
       <BlackHoleNavigation current={current} />
+      {current === 'reloj-de-luz' && <EinsteinNavigation />}
       <h2>Una pregunta lleva a otra.</h2>
       <p>Elegí tu próxima exploración.</p>
       <div>

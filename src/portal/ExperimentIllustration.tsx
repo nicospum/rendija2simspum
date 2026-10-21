@@ -1,8 +1,15 @@
 export default function ExperimentIllustration({
   kind,
 }: {
-  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte'
+  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz'
 }) {
+  if (kind === 'reloj-de-luz') return <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
+    <g stroke="#7799a9" opacity=".2">{[75,125,175,225].map(y=><path key={y} d={`M25 ${y}H535`} />)}{[50,100,150,200,250,300,350,400,450,500].map(x=><path key={x} d={`M${x} 45V245`} />)}</g>
+    <path d="M62 214h80M62 78h80" stroke="#a0eade" strokeWidth="4" /><path d="M102 214V78V214" stroke="#a0eade" strokeWidth="2" /><circle cx="102" cy="127" r="6" fill="#ecf9dc" />
+    <path d="M249 214h64M351 78h64M453 214h64" stroke="#f3bd8d" strokeWidth="4" /><path d="M281 214 383 78 485 214" stroke="#f3bd8d" strokeWidth="2" strokeDasharray="5 5" fill="none" /><path d="M281 214 350 122" stroke="#f3bd8d" strokeWidth="3" fill="none" /><circle cx="350" cy="122" r="6" fill="#fff2c9" />
+    <path d="M270 51H350m-8-6 8 6-8 6" stroke="#afcdd4" fill="none" />
+    <g fill="#b1ced4" fontFamily="Consolas,monospace" fontSize="10" letterSpacing="1.2"><text x="45" y="270">UN PULSO / DOS SISTEMAS</text><text x="405" y="270">CUATRO RETOS</text></g>
+  </svg>
   if (kind === 'horizonte') return <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
     <defs><radialGradient id="hz-portal-glow"><stop offset=".6" stopColor="#091625" /><stop offset=".67" stopColor="#8de0d550" /><stop offset="1" stopColor="#0e243200" /></radialGradient></defs>
     <circle cx="190" cy="147" r="113" fill="url(#hz-portal-glow)" /><circle cx="190" cy="147" r="74" fill="#030a12" stroke="#8de0d5" />

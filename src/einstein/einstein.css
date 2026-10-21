@@ -1,0 +1,231 @@
+.es-navigation {
+  margin: 24px 0;
+  border: 1px solid #446574;
+  background: #112a37;
+  border-radius: 8px;
+  overflow: hidden;
+  color: #e2eeee;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+.es-navigation a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  text-decoration: none;
+}
+.es-navigation > a {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  padding: 14px 18px;
+}
+.es-navigation > a span {
+  font:
+    10px/1.6 Consolas,
+    monospace;
+  letter-spacing: 1.6px;
+  color: #9ae7dc;
+}
+.es-navigation b {
+  margin-left: auto;
+  font-weight: 400;
+  font-size: 11px;
+  color: #9ae7dc;
+}
+.es-navigation > div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  border-top: 1px solid #385566;
+  padding: 4px 18px;
+}
+.es-navigation > div > span {
+  font-size: 11px;
+  color: #b1c9d4;
+}
+.es-navigation a[aria-current] {
+  color: #9ae7dc;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.es-navigation > div > a:last-child {
+  margin-left: auto;
+  color: #c7d6df;
+  font-size: 11px;
+}
+.es-hero {
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 50px;
+  align-items: center;
+  padding: 65px 0;
+}
+.es-hero h1 {
+  font:
+    clamp(42px, 5vw, 72px) / 1.12 Georgia,
+    serif;
+  margin: 24px 0;
+}
+.es-hero h1 em {
+  color: #9ae7dc;
+}
+.es-hero p:not(.rl-eyebrow) {
+  color: #b7cbd6;
+  font-size: 15px;
+  max-width: 550px;
+}
+.es-hero svg {
+  width: min(100%, 340px);
+  justify-self: center;
+}
+.es-current {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #496674;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #102633;
+}
+.es-current > div:last-child {
+  padding: 32px;
+}
+.es-current h2,
+.es-roadmap h2,
+.es-bridge h2 {
+  font:
+    36px/1.2 Georgia,
+    serif;
+  margin: 16px 0;
+}
+.es-current p:not(.rl-eyebrow) {
+  color: #b7cbd6;
+  font-size: 13px;
+}
+.es-art {
+  display: flex;
+  align-items: center;
+  background: radial-gradient(ellipse at 50% 50%, #204958, #0d1c2c 75%);
+}
+.es-art svg {
+  width: 100%;
+}
+.es-roadmap {
+  margin: 60px 0;
+}
+.es-roadmap > div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 30px;
+}
+.es-roadmap article {
+  background: #101f2d;
+  border: 1px solid #344e60;
+  border-radius: 7px;
+  padding: 24px;
+}
+.es-roadmap article > span {
+  font:
+    9px/1.8 Consolas,
+    monospace;
+  color: #92b8c3;
+  letter-spacing: 1px;
+}
+.es-roadmap h3 {
+  font:
+    26px/1.25 Georgia,
+    serif;
+}
+.es-roadmap p {
+  color: #c3d3de;
+  font-size: 13px;
+}
+.es-roadmap small {
+  display: block;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #9eb4c3;
+}
+.es-roadmap b {
+  display: block;
+  font:
+    10px/1.7 Consolas,
+    monospace;
+  margin-top: 22px;
+  color: #92b8c3;
+}
+.es-bridge {
+  padding: 32px;
+  background: #112a37;
+  border-left: 2px solid #9ae7dc;
+}
+.es-bridge p:not(.rl-eyebrow) {
+  color: #bbced8;
+  font-size: 14px;
+}
+.es-bridge > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+}
+.es-bridge a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #9ae7dc;
+  font-size: 13px;
+}
+@media (max-width: 850px) {
+  .es-hero {
+    gap: 20px;
+    padding: 35px 0;
+  }
+  .es-hero svg {
+    width: 200px;
+  }
+  .es-roadmap > div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .es-current {
+    grid-template-columns: 1fr;
+  }
+  .es-current > div:last-child {
+    padding: 24px;
+  }
+  .es-navigation > div > a:last-child {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+@media (max-width: 550px) {
+  .es-hero {
+    grid-template-columns: 1fr;
+    position: relative;
+  }
+  .es-hero > div {
+    position: relative;
+    z-index: 1;
+  }
+  .es-hero svg {
+    position: absolute;
+    top: 45px;
+    right: -35px;
+    opacity: 0.14;
+    width: 230px;
+  }
+  .es-hero h1 {
+    font-size: 44px;
+  }
+  .es-hero p:not(.rl-eyebrow) {
+    font-size: 14px;
+  }
+  .es-roadmap > div {
+    grid-template-columns: 1fr;
+  }
+  .es-bridge {
+    padding: 24px;
+  }
+}

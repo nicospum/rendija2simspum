@@ -1,0 +1,149 @@
+:root {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #e4ebee;
+  background: #091522;
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+html {
+  scroll-behavior: auto;
+  scroll-padding-top: 24px;
+}
+a {
+  color: inherit;
+}
+button,
+input {
+  font: inherit;
+}
+button,
+input,
+a {
+  touch-action: manipulation;
+}
+button {
+  cursor: pointer;
+  color: inherit;
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #8be2db;
+  outline-offset: 4px;
+}
+p {
+  line-height: 1.8;
+}
+.rl-shell,
+.es-shell {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 48px;
+}
+.rl-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  min-height: 96px;
+  border-bottom: 1px solid #31495a;
+}
+.rl-header a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 12px;
+}
+.rl-header .rl-brand {
+  gap: 10px;
+  font:
+    29px Georgia,
+    serif;
+}
+.rl-brand small {
+  font:
+    9px Consolas,
+    monospace;
+  letter-spacing: 2px;
+}
+.rl-eyebrow {
+  font:
+    10px/1.7 Consolas,
+    monospace;
+  letter-spacing: 1.7px;
+  color: #8be2db;
+}
+.rl-primary {
+  min-height: 46px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border-radius: 5px;
+  background: #9ae7dc;
+  border: 1px solid #9ae7dc;
+  color: #102e37;
+  font:
+    13px/1.5 'Segoe UI',
+    Arial,
+    sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+.rl-primary:hover {
+  background: #c2f6e9;
+}
+.rl-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 32px 0;
+  font-size: 11px;
+  color: #b5cbd4;
+}
+.rl-footer a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+@media (max-width: 850px) {
+  .rl-shell,
+  .es-shell {
+    padding: 0 20px;
+  }
+  .rl-header {
+    min-height: 80px;
+  }
+}
+@media (max-width: 370px) {
+  .rl-shell,
+  .es-shell {
+    padding: 0 16px;
+  }
+  .rl-header .rl-brand {
+    font-size: 25px;
+  }
+  .rl-brand small {
+    display: none;
+  }
+  .rl-footer {
+    flex-direction: column;
+  }
+}

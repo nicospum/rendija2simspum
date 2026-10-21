@@ -26,6 +26,8 @@ export default defineConfig({
         acrecion: 'acrecion/index.html',
         horizonte: 'horizonte/index.html',
         agujerosNegros: 'agujeros-negros/index.html',
+        relojDeLuz: 'reloj-de-luz/index.html',
+        einstein: 'einstein/index.html',
       },
       output: {
         manualChunks(id) {

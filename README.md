@@ -11,8 +11,10 @@ Una colección de laboratorios interactivos para aprender ciencia haciendo pregu
 - `/acrecion/`: cómo vemos lo invisible; disco de acreción, luz curvada, Doppler y órbita de una estrella testigo, con cuatro retos.
 - `/horizonte/`: caída libre, relojes sostenidos, cruce del horizonte y señales de luz con cuatro retos.
 - `/agujeros-negros/`: especial que conecta lente, acreción, horizonte, Hawking y entropía con un índice y navegación entre capítulos.
+- `/reloj-de-luz/`: dos vistas del mismo pulso, dilatación temporal y cuatro retos de relatividad especial.
+- `/einstein/`: entrada al especial Einstein, con el reloj de luz disponible y el recorrido futuro de relatividad especial y general.
 
-El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las nueve páginas (siete laboratorios, portada y especial) se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada, el especial, entropía y horizonte no cargan Three.js.
+El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las once páginas (ocho laboratorios, portada y dos especiales) se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada, los especiales, entropía, horizonte y el reloj de luz no cargan Three.js.
 
 ## Ejecutar localmente
 
@@ -41,7 +43,7 @@ npm run build
 npm audit
 ```
 
-Las pruebas cubren las fórmulas con referencias analíticas y numéricas independientes, muestreo estadístico determinista, estado y límites de memoria, pausa, cámaras y recorridos educativos de los cinco laboratorios. La inspección visual en navegador sigue siendo necesaria para comprobar WebGL, interacción y responsive.
+Las pruebas cubren las fórmulas con referencias analíticas y numéricas independientes, muestreo estadístico determinista, estado y límites de memoria, pausa, cámaras y recorridos educativos de los laboratorios. La inspección visual en navegador sigue siendo necesaria para comprobar WebGL, interacción y responsive.
 
 ## Cómo explorar la doble rendija
 
@@ -57,6 +59,8 @@ Los cuatro retos preparan una referencia y proponen cambiar una sola variable: a
 El modelo de doble rendija usa amplitudes de Fraunhofer en unidades normalizadas, con impactos muestreados según su probabilidad. No simula trayectorias ocultas ni resuelve una ecuación de Schrödinger temporal. El campo ilustrativo es cualitativo y se puede ocultar. Ver [modelo físico](docs/MODELO_DOBLE_RENDIJA.md).
 
 ## Organización y nuevos experimentos
+
+El octavo laboratorio, [El reloj de luz](https://www.spumexp.lat/reloj-de-luz/), inaugura el [especial Einstein](https://www.spumexp.lat/einstein/). Relaciona el mismo evento de un pulso entre dos espejos mediante transformaciones de Lorentz. Sus cuatro retos comparan reposo, aumento del recorrido, reciprocidad y ritmo a la mitad; las vistas de nave y estación comparten los cálculos y se alternan en celular conservando el instante. Ver [ecuaciones, fuentes, controles y validación](docs/RELOJ_DE_LUZ.md).
 
 El séptimo laboratorio, [Al borde del horizonte](https://www.spumexp.lat/horizonte/), calcula caída radial y rayos de luz en coordenadas regulares de Painlevé–Gullstrand. Distingue reloj propio, tiempo de coordenadas, predicción de llegada y mensajes efectivamente recibidos. Sus cuatro retos comparan relojes sostenidos, cruzan el horizonte, exploran retraso/corrimiento al rojo y diferencian señales exteriores e interiores. El [especial](https://www.spumexp.lat/agujeros-negros/) conecta ahora cinco laboratorios: lente, acreción, horizonte, Hawking y entropía. Ver [ecuaciones, fuentes, diseño y validación](docs/HORIZONTE_LABORATORIO.md).
 
@@ -77,6 +81,8 @@ prisma/index.html              Entrada del laboratorio óptico
 hawking/index.html             Entrada del laboratorio de agujeros negros
 lente-gravitacional/index.html Entrada del laboratorio de lente gravitacional
 entropia/index.html            Entrada del laboratorio de entropía
+reloj-de-luz/index.html        Entrada del reloj de luz
+einstein/index.html            Entrada del especial Einstein
 src/portal/                   Catálogo, portada y diagramas SVG
 src/App.tsx                   Laboratorio de doble rendija y emisión automática
 src/physics/interference.ts   Modelo físico puro y muestreo
@@ -87,7 +93,9 @@ src/prisma/                   Aplicación del prisma integrada
 src/hawking/                  Modelo SI, retos, reloj, visor WebGL y espectro
 src/lente/                    Geodésicas, worker, imagen WebGL y diagrama de rayos
 src/entropia/                 Área, fórmula, SVG geométrico, balance y retos
-tests/                        Pruebas de los cinco laboratorios
+src/reloj/                    Lorentz, reloj de luz, dos vistas SVG y retos
+src/einstein/                 Portada y navegación del especial Einstein
+tests/                        Pruebas de los ocho laboratorios
 vite.config.ts                Seis entradas y separación de bundles
 vercel.json                   Compilación y publicación estáticas
 ```
