@@ -2,7 +2,7 @@ import { useState } from 'react'
 import ExperimentIllustration from '../portal/ExperimentIllustration'
 import { blackHoleLabs } from './catalog'
 import './atlas.css'
-export const ATLAS = [
+const ATLAS = [
   {
     id: 'lente-gravitacional',
     label: 'La luz',
