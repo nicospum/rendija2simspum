@@ -72,7 +72,7 @@ export default function InfoPopover({ name, children }: { name: string; children
     const escape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setOpen(false)
-        button.current?.focus()
+        button.current?.focus({ preventScroll: true })
       }
     }
     document.addEventListener('pointerdown', outside)
@@ -123,7 +123,7 @@ export default function InfoPopover({ name, children }: { name: string; children
               type="button"
               onClick={() => {
                 close()
-                button.current?.focus()
+                button.current?.focus({ preventScroll: true })
               }}
               aria-label={`Cerrar información: ${name}`}
             >

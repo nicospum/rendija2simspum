@@ -205,6 +205,8 @@
     flex-wrap: wrap;
   }
   html:root {
+    /* Long mobile chapters need immediate, predictable jumps under the sticky index. */
+    scroll-behavior: auto;
     scroll-padding-top: 78px;
   }
   .spum-lab-nav {
