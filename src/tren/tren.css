@@ -1,0 +1,243 @@
+.tr-shell .rl-intro h1 {
+  font-size: clamp(52px, 6vw, 84px);
+}
+.tr-dates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding: 0 22px 24px;
+}
+.tr-dates > div {
+  padding: 12px 14px;
+  border: 1px solid #3b5c6c;
+  border-radius: 6px;
+  background: #102837;
+  min-width: 0;
+}
+.tr-dates > div > span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  color: #bad6dc;
+  font:
+    9px/1.8 Consolas,
+    monospace;
+  gap: 6px;
+}
+.tr-dates p {
+  font-size: 12px;
+  color: #d0dfe3;
+  margin: 6px 0 12px;
+  line-height: 2;
+}
+.tr-dates p > span {
+  display: block;
+}
+.tr-dates p i {
+  display: block;
+  font-style: normal;
+  line-height: 0.8;
+  color: #7c9caa;
+}
+.tr-dates strong {
+  font-size: 12px;
+  color: #9de2db;
+  line-height: 1.8;
+  display: block;
+  font-weight: 500;
+}
+.tr-dates b {
+  font-weight: 500;
+  white-space: nowrap;
+}
+.tr-received {
+  color: #a2ebd9;
+}
+.tr-live-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  padding: 22px 26px;
+  border-top: 1px solid #3d5869;
+  background: #18323f;
+  font-size: 12px;
+  color: #bed5dd;
+  line-height: 1.8;
+}
+.tr-live-summary b {
+  color: #eaf3ee;
+}
+.tr-measuring-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.tr-measuring-tools button:not(.rl-primary) {
+  padding: 10px 16px;
+  border: 1px solid #537887;
+  border-radius: 5px;
+  background: #142c39;
+  min-height: 44px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.tr-measuring-tools button[aria-pressed='true'] {
+  border-color: #9ae7dc;
+  color: #acf0e2;
+  background: #24434b;
+}
+.tr-help,
+.tr-empty {
+  font-size: 13px;
+  color: #b8d0da;
+  line-height: 1.8;
+  margin-top: 20px;
+}
+.tr-empty {
+  padding: 24px;
+  border: 1px dashed #496978;
+  border-radius: 6px;
+}
+.tr-measure-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 24px;
+}
+.tr-measure-grid article {
+  border: 1px solid #476876;
+  border-radius: 6px;
+  padding: 22px;
+  background: #142c39;
+}
+.tr-measure-grid article > span {
+  font:
+    10px/1.6 Consolas,
+    monospace;
+  color: #a1cbd0;
+  letter-spacing: 1px;
+}
+.tr-measure-grid h3 {
+  font:
+    36px/1.2 Georgia,
+    serif;
+  color: #a5e7da;
+  margin: 14px 0;
+}
+.tr-measure-grid p {
+  font-size: 13px;
+  color: #b9d1dc;
+}
+.tr-measure-grid strong {
+  font-size: 14px;
+  font-weight: 500;
+}
+.tr-valid,
+.tr-invalid {
+  display: block;
+  margin-top: 18px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.8;
+  padding: 10px 14px;
+  border-radius: 4px;
+}
+.tr-valid {
+  color: #b5efdf;
+  background: #1c493e;
+}
+.tr-invalid {
+  color: #f3cb9f;
+  background: #4b3530;
+}
+.tr-inline-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #a4eadd;
+  font-size: 12px;
+  line-height: 1.8;
+  margin-top: 12px;
+}
+@media (max-width: 1050px) {
+  .tr-dates {
+    grid-template-columns: 1fr;
+  }
+  .tr-dates p i {
+    display: inline;
+    margin: 0 6px;
+  }
+  .tr-dates > div > span {
+    font-size: 10px;
+  }
+  .tr-dates p > span {
+    display: inline-block;
+    margin-right: 12px;
+  }
+}
+@media (max-width: 850px) {
+  .tr-shell .rl-intro h1 {
+    font-size: 64px;
+  }
+  .tr-dates {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 16px 20px;
+    gap: 10px;
+  }
+  .tr-dates > div {
+    padding: 8px 10px;
+  }
+  .tr-dates > div > span {
+    font-size: 8px;
+  }
+  .tr-dates p i {
+    display: block;
+  }
+  .tr-dates p > span {
+    display: block;
+  }
+  .tr-measure-grid {
+    grid-template-columns: 1fr;
+  }
+  .tr-shell .rl-science h2 {
+    font-size: 43px;
+  }
+}
+@media (max-width: 370px) {
+  .tr-shell .rl-intro h1 {
+    font-size: 54px;
+  }
+  .tr-dates {
+    grid-template-columns: 1fr;
+  }
+  .tr-dates > div > span {
+    font-size: 10px;
+  }
+  .tr-dates p i {
+    display: inline;
+  }
+  .tr-dates p > span {
+    display: inline-block;
+  }
+  .tr-measuring-tools button {
+    width: 100%;
+  }
+}
+.tr-clockline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 0 22px 12px;
+  padding: 12px 0;
+  border-top: 1px solid #385669;
+  color: #adcad4;
+  font-size: 11px;
+}
+.tr-clockline strong {
+  font:
+    23px Georgia,
+    serif;
+  color: #b7eade;
+}

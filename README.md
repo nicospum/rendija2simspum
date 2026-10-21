@@ -12,9 +12,10 @@ Una colección de laboratorios interactivos para aprender ciencia haciendo pregu
 - `/horizonte/`: caída libre, relojes sostenidos, cruce del horizonte y señales de luz con cuatro retos.
 - `/agujeros-negros/`: especial que conecta lente, acreción, horizonte, Hawking y entropía con un índice y navegación entre capítulos.
 - `/reloj-de-luz/`: dos vistas del mismo pulso, dilatación temporal y cuatro retos de relatividad especial.
+- `/tren-de-einstein/`: simultaneidad, señales de luz y mediciones de longitud desde el tren y el andén, con cuatro retos.
 - `/einstein/`: entrada al especial Einstein, con el reloj de luz disponible y el recorrido futuro de relatividad especial y general.
 
-El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las once páginas (ocho laboratorios, portada y dos especiales) se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada, los especiales, entropía, horizonte y el reloj de luz no cargan Three.js.
+El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las doce páginas (nueve laboratorios, portada y dos especiales) se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada, los especiales, entropía, horizonte, el reloj de luz y el tren no cargan Three.js.
 
 ## Ejecutar localmente
 
@@ -60,6 +61,8 @@ El modelo de doble rendija usa amplitudes de Fraunhofer en unidades normalizadas
 
 ## Organización y nuevos experimentos
 
+El noveno laboratorio, [El tren de Einstein](https://www.spumexp.lat/tren-de-einstein/), continúa el especial con dos sistemas de coordenadas. Separa fechas de emisión de llegadas al receptor y permite registrar extremos con dos protocolos de simultaneidad. Los cuatro retos comparan fechas, retrasos de viaje, inversión del movimiento y contracción de longitudes. El índice conecta los dos capítulos disponibles; ver [modelo, fuentes, controles y pruebas](docs/TREN_DE_EINSTEIN.md).
+
 El octavo laboratorio, [El reloj de luz](https://www.spumexp.lat/reloj-de-luz/), inaugura el [especial Einstein](https://www.spumexp.lat/einstein/). Relaciona el mismo evento de un pulso entre dos espejos mediante transformaciones de Lorentz. Sus cuatro retos comparan reposo, aumento del recorrido, reciprocidad y ritmo a la mitad; las vistas de nave y estación comparten los cálculos y se alternan en celular conservando el instante. Ver [ecuaciones, fuentes, controles y validación](docs/RELOJ_DE_LUZ.md).
 
 El séptimo laboratorio, [Al borde del horizonte](https://www.spumexp.lat/horizonte/), calcula caída radial y rayos de luz en coordenadas regulares de Painlevé–Gullstrand. Distingue reloj propio, tiempo de coordenadas, predicción de llegada y mensajes efectivamente recibidos. Sus cuatro retos comparan relojes sostenidos, cruzan el horizonte, exploran retraso/corrimiento al rojo y diferencian señales exteriores e interiores. El [especial](https://www.spumexp.lat/agujeros-negros/) conecta ahora cinco laboratorios: lente, acreción, horizonte, Hawking y entropía. Ver [ecuaciones, fuentes, diseño y validación](docs/HORIZONTE_LABORATORIO.md).
@@ -83,6 +86,7 @@ lente-gravitacional/index.html Entrada del laboratorio de lente gravitacional
 entropia/index.html            Entrada del laboratorio de entropía
 reloj-de-luz/index.html        Entrada del reloj de luz
 einstein/index.html            Entrada del especial Einstein
+tren-de-einstein/index.html    Entrada del tren de Einstein
 src/portal/                   Catálogo, portada y diagramas SVG
 src/App.tsx                   Laboratorio de doble rendija y emisión automática
 src/physics/interference.ts   Modelo físico puro y muestreo
@@ -94,8 +98,9 @@ src/hawking/                  Modelo SI, retos, reloj, visor WebGL y espectro
 src/lente/                    Geodésicas, worker, imagen WebGL y diagrama de rayos
 src/entropia/                 Área, fórmula, SVG geométrico, balance y retos
 src/reloj/                    Lorentz, reloj de luz, dos vistas SVG y retos
+src/tren/                     Eventos, señales, longitudes, dos vistas SVG y retos
 src/einstein/                 Portada y navegación del especial Einstein
-tests/                        Pruebas de los ocho laboratorios
+tests/                        Pruebas de los nueve laboratorios
 vite.config.ts                Seis entradas y separación de bundles
 vercel.json                   Compilación y publicación estáticas
 ```

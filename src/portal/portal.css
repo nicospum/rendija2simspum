@@ -26,6 +26,7 @@
 .portal-einstein-link { background: #10313c; }
 .portal-einstein-link span { color: #a3e6d9; }
 .portal-experiment-card.reloj-de-luz .portal-art-link { background: #102735; color: #c3dedc; }
+.portal-experiment-card.tren-de-einstein .portal-art-link { background: #122b3b; color: #c3dedc; }
 .portal-experiment-card.acrecion .portal-art-link { background: #0d1a28; color: #c4d2dc; }
 * {
   box-sizing: border-box;

@@ -28,6 +28,7 @@ export default defineConfig({
         agujerosNegros: 'agujeros-negros/index.html',
         relojDeLuz: 'reloj-de-luz/index.html',
         einstein: 'einstein/index.html',
+        trenDeEinstein: 'tren-de-einstein/index.html',
       },
       output: {
         manualChunks(id) {

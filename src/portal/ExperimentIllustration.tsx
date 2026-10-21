@@ -1,8 +1,15 @@
 export default function ExperimentIllustration({
   kind,
 }: {
-  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz'
+  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein'
 }) {
+  if(kind==='tren-de-einstein')return <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
+    <path d="M30 201H530M30 214H530" stroke="#638a9c"/>{[50,90,130,170,210,250,290,330,370,410,450,490].map(x=><path key={x} d={`M${x} 200l14 17`} stroke="#486b7e"/>)}
+    <rect x="100" y="105" width="360" height="82" rx="17" fill="#214355" stroke="#9cdad9"/>{[135,210,285,360,425].map(x=><g key={x}><rect x={x} y="121" width="25" height="24" rx="4" fill="#82cec9" opacity=".4"/><circle cx={x+10} cy="193" r="8" fill="#122635" stroke="#8ab3c2"/></g>)}
+    <path d="M100 154H275m10 0H460" stroke="#e7c18d" strokeWidth="2" strokeDasharray="4 5"/><circle cx="210" cy="154" r="6" fill="#f4d3a0"/><circle cx="360" cy="154" r="6" fill="#eeb6ce"/>
+    <path d="M100 91V79H460V91M240 61h70m-8-6 8 6-8 6" stroke="#a4dfd9" fill="none"/>
+    <g fill="#afcbd6" fontFamily="Consolas,monospace" fontSize="10" letterSpacing="1.2"><text x="32" y="270">FECHAS / SEÑALES / LONGITUDES</text><text x="407" y="270">CUATRO RETOS</text></g>
+  </svg>
   if (kind === 'reloj-de-luz') return <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
     <g stroke="#7799a9" opacity=".2">{[75,125,175,225].map(y=><path key={y} d={`M25 ${y}H535`} />)}{[50,100,150,200,250,300,350,400,450,500].map(x=><path key={x} d={`M${x} 45V245`} />)}</g>
     <path d="M62 214h80M62 78h80" stroke="#a0eade" strokeWidth="4" /><path d="M102 214V78V214" stroke="#a0eade" strokeWidth="2" /><circle cx="102" cy="127" r="6" fill="#ecf9dc" />

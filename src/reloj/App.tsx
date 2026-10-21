@@ -549,11 +549,10 @@ export default function LightClockApp() {
           <p className="rl-eyebrow">EL RECORRIDO EINSTEIN EMPIEZA ACÁ</p>
           <h2>Ahora, ¿qué significa “al mismo tiempo”?</h2>
           <p>
-            El tren de Einstein será el próximo capítulo. Mientras tanto, podés
-            revisar el recorrido o explorar qué cambia cuando aparece la
-            gravedad.
+            Seguí con el tren de Einstein: compará fechas de destellos, seguí sus señales y descubrí por qué medir una longitud exige elegir sucesos simultáneos.
           </p>
           <div>
+            <a href="/tren-de-einstein/">Seguir con el tren de Einstein →</a>
             <a href="/einstein/">Ver el especial Einstein →</a>
             <a href="/horizonte/">Comparar relojes cerca de un horizonte ↗</a>
           </div>

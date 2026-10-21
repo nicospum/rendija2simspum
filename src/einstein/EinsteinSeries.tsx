@@ -1,11 +1,6 @@
 import ExperimentIllustration from '../portal/ExperimentIllustration'
+import { einsteinLabs } from './catalog'
 const upcoming = [
-  [
-    '02',
-    'El tren de Einstein',
-    '¿Qué significa “al mismo tiempo”?',
-    'Simultaneidad, señales y longitudes.',
-  ],
   [
     '03',
     'Nos vemos a la vuelta',
@@ -113,26 +108,33 @@ export default function EinsteinSeries() {
             <circle cx="219" cy="116" r="5" fill="#fff0ca" />
           </svg>
         </section>
-        <section className="es-current" aria-labelledby="es-start">
-          <div className="es-art">
-            <ExperimentIllustration kind="reloj-de-luz" />
-          </div>
-          <div>
-            <p className="rl-eyebrow">01 / DISPONIBLE · RELATIVIDAD ESPECIAL</p>
-            <h2 id="es-start">El reloj de luz</h2>
-            <p>
-              Dos espejos. Un pulso. Dos maneras de medir el mismo tic. Descubrí
-              por qué un reloj en movimiento acumula menos tiempo respecto del
-              sistema que lo mide.
-            </p>
-            <p>
-              Dos vistas conectadas · cuatro retos · controles en tiempo real.
-            </p>
-            <a className="rl-primary" href="/reloj-de-luz/">
-              Entrar al laboratorio →
-            </a>
-          </div>
-        </section>
+        <p className="rl-eyebrow">
+          {einsteinLabs.length} LABORATORIOS DISPONIBLES / RELATIVIDAD ESPECIAL
+        </p>
+        {einsteinLabs.map((lab, i) => (
+          <section
+            key={lab.id}
+            className="es-current"
+            aria-labelledby={`es-${lab.id}`}
+          >
+            <div className="es-art">
+              <ExperimentIllustration kind={lab.id} />
+            </div>
+            <div>
+              <p className="rl-eyebrow">
+                0{i + 1} / DISPONIBLE · RELATIVIDAD ESPECIAL
+              </p>
+              <h2 id={`es-${lab.id}`}>{lab.title}</h2>
+              <p>{lab.discovery}</p>
+              <p>
+                Dos vistas conectadas · cuatro retos · controles en tiempo real.
+              </p>
+              <a className="rl-primary" href={lab.href}>
+                Explorar {lab.title.toLowerCase()} →
+              </a>
+            </div>
+          </section>
+        ))}
         <section className="es-roadmap">
           <p className="rl-eyebrow">
             EL RECORRIDO QUE SIGUE / TODAVÍA NO DISPONIBLE

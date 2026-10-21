@@ -82,12 +82,20 @@
   justify-self: center;
 }
 .es-current {
+  margin-bottom: 24px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   border: 1px solid #496674;
   border-radius: 9px;
   overflow: hidden;
   background: #102633;
+}
+.es-navigation .es-navigation-steps {
+  justify-content: space-between;
+}
+.es-navigation .es-navigation-steps a {
+  font-size: 11px;
+  color: #bfd6dc;
 }
 .es-current > div:last-child {
   padding: 32px;

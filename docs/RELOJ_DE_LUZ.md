@@ -4,8 +4,8 @@
 
 `/einstein/` abre el especial. Su primer capítulo disponible es
 `/reloj-de-luz/`; también figura como laboratorio 08 en el catálogo general.
-Los siguientes cinco capítulos se presentan como propuestas, sin enlaces a
-laboratorios inexistentes. Lente y horizonte conectan con el especial de
+El tren de Einstein ya está disponible como segundo capítulo; los cuatro
+siguientes se presentan como propuestas, sin enlaces a laboratorios inexistentes. Lente y horizonte conectan con el especial de
 agujeros negros ya disponible.
 
 Las dos entradas se compilan con `npm run build` y se ejecutan con `npm run dev`,

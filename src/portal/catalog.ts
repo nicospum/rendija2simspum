@@ -1,5 +1,5 @@
 export interface Experiment {
-  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz'
+  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein'
   number: string
   field: string
   title: string
@@ -105,5 +105,11 @@ export const experiments: readonly Experiment[] = [
     discovery: 'Seguí un pulso desde la nave y la estación: cambiá la velocidad y descubrí la dilatación temporal con cuatro retos.',
     tags: ['Einstein', 'Luz', 'Tiempo propio'],
     href: '/reloj-de-luz/',
+  },
+  {
+    id:'tren-de-einstein',number:'09',field:'RELATIVIDAD ESPECIAL',title:'El tren de Einstein',
+    subtitle:'Ocurrió. Viajó. Llegó.',question:'¿Qué significa “al mismo tiempo”?',
+    discovery:'Compará fechas y llegadas de luz desde el tren y el andén. Medí longitudes con cuatro retos de simultaneidad y relatividad especial.',
+    tags:['Einstein','Simultaneidad','Longitudes'],href:'/tren-de-einstein/',
   },
 ]
