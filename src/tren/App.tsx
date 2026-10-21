@@ -691,12 +691,11 @@ export default function TrainApp() {
           <p className="rl-eyebrow">SIGUIENTE PREGUNTA DEL ESPECIAL</p>
           <h2>¿Y si los relojes vuelven a encontrarse?</h2>
           <p>
-            “Nos vemos a la vuelta” será el próximo capítulo: compararemos el
-            tiempo propio acumulado en distintos recorridos. Mientras tanto,
-            podés volver al reloj de luz y conectar las dos ideas.
+            Planeá el viaje de los gemelos y compará el tiempo propio acumulado
+            en dos recorridos entre la salida y el reencuentro.
           </p>
-          <a className="tr-inline-link" href="/reloj-de-luz/">
-            Revisar el reloj de luz ←
+          <a className="tr-inline-link" href="/nos-vemos-a-la-vuelta/">
+            Explorar Nos vemos a la vuelta →
           </a>
         </section>
         <EinsteinNavigation current="tren-de-einstein" />

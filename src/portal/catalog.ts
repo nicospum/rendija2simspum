@@ -1,5 +1,5 @@
 export interface Experiment {
-  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein'
+  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta'
   number: string
   field: string
   title: string
@@ -111,5 +111,11 @@ export const experiments: readonly Experiment[] = [
     subtitle:'Ocurrió. Viajó. Llegó.',question:'¿Qué significa “al mismo tiempo”?',
     discovery:'Compará fechas y llegadas de luz desde el tren y el andén. Medí longitudes con cuatro retos de simultaneidad y relatividad especial.',
     tags:['Einstein','Simultaneidad','Longitudes'],href:'/tren-de-einstein/',
+  },
+  {
+    id:'nos-vemos-a-la-vuelta', number:'10', field:'RELATIVIDAD ESPECIAL', title:'Nos vemos a la vuelta',
+    subtitle:'Un reencuentro. Dos historias.', question:'¿Podemos volver con edades diferentes?',
+    discovery:'Planeá el viaje de los gemelos, compará sus relojes y explorá el tiempo propio, los giros y la simultaneidad con dos vistas y cuatro retos.',
+    tags:['Einstein','Gemelos','Tiempo propio'], href:'/nos-vemos-a-la-vuelta/',
   },
 ]

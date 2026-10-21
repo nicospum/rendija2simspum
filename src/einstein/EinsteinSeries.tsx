@@ -2,12 +2,6 @@ import ExperimentIllustration from '../portal/ExperimentIllustration'
 import { einsteinLabs } from './catalog'
 const upcoming = [
   [
-    '03',
-    'Nos vemos a la vuelta',
-    '¿Podemos reencontrarnos con edades diferentes?',
-    'Recorridos y tiempo propio.',
-  ],
-  [
     '04',
     'El ascensor de Einstein',
     '¿Gravedad o aceleración?',

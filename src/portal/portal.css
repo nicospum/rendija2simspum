@@ -749,3 +749,5 @@ svg {
     transition-duration: 0.01ms !important;
   }
 }
+
+.portal-experiment-card.nos-vemos-a-la-vuelta .portal-art-link { background: #102d3b; color: #c3dedc; }

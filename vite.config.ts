@@ -29,6 +29,7 @@ export default defineConfig({
         relojDeLuz: 'reloj-de-luz/index.html',
         einstein: 'einstein/index.html',
         trenDeEinstein: 'tren-de-einstein/index.html',
+        gemelos: 'nos-vemos-a-la-vuelta/index.html',
       },
       output: {
         manualChunks(id) {

@@ -1,0 +1,244 @@
+.gv-shell .rl-intro h1 {
+  font-size: clamp(56px, 6.4vw, 91px);
+}
+.gv-shell .rl-frame svg {
+  background: radial-gradient(ellipse at 60% 45%, #15364a55, transparent 75%);
+}
+.gv-clocks {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-top: 1px solid #3d5869;
+  background: #142c3b;
+}
+.gv-clock {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  min-width: 0;
+}
+.gv-clock svg {
+  width: 88px;
+  flex-shrink: 0;
+}
+.gv-clock span,
+.gv-difference > span,
+.gv-remote span {
+  font-size: 12px;
+  color: #bed2db;
+  display: block;
+  line-height: 1.7;
+}
+.gv-clock strong,
+.gv-difference strong,
+.gv-remote strong {
+  font:
+    32px Georgia,
+    serif;
+  display: block;
+  margin: 5px 0;
+  color: #9ee9df;
+}
+.gv-clock small,
+.gv-difference small {
+  font:
+    13px 'Segoe UI',
+    sans-serif;
+}
+.gv-clock p,
+.gv-difference p {
+  font-size: 10px;
+  color: #adc7d1;
+  margin: 5px 0;
+  line-height: 1.6;
+}
+.gv-difference {
+  padding: 20px;
+  border-left: 1px solid #3d5869;
+  min-width: 0;
+}
+.gv-shell .rl-control-card button,
+.gv-buttons button {
+  background: #152f3d;
+  border: 1px solid #506f7d;
+  border-radius: 5px;
+  min-height: 44px;
+  padding: 10px 15px;
+  font-size: 12px;
+  color: #d6e8e9;
+}
+.gv-shell .rl-control-card .rl-primary {
+  background: #9ee9df;
+  color: #102e39;
+  border-color: #9ee9df;
+}
+.gv-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.gv-buttons button[aria-pressed='true'] {
+  background: #284e59;
+  border-color: #9ee9df;
+}
+.gv-wide {
+  grid-column: 1/-1;
+}
+.gv-shell .rl-control-card input[type='range'] {
+  min-height: 44px;
+  width: 100%;
+  accent-color: #9ee9df;
+  cursor: pointer;
+}
+.gv-shell .rl-control-card p {
+  font-size: 12px;
+  color: #afcad4;
+}
+.gv-effect {
+  border-left: 2px solid #9ee9df;
+  padding: 15px 20px;
+  margin-top: 24px;
+  background: #17313e;
+}
+.gv-effect > span {
+  font:
+    9px Consolas,
+    monospace;
+  letter-spacing: 1.5px;
+  color: #9ee9df;
+}
+.gv-effect p {
+  font-size: 13px;
+  margin-bottom: 0;
+}
+.gv-jump,
+.gv-shell .rl-section-heading > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 12px;
+  color: #a6e8df;
+}
+.gv-remote {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 24px 0;
+}
+.gv-remote > div {
+  background: #142d3b;
+  border: 1px solid #3d5d6d;
+  padding: 20px;
+  border-radius: 5px;
+}
+.gv-remote > div + div strong {
+  color: #eab4de;
+}
+.gv-remote p,
+.gv-message {
+  font-size: 12px;
+  color: #b4cdd6;
+}
+.gv-message {
+  padding: 18px;
+  border: 1px dashed #a58e5f;
+  background: #302b2533;
+}
+.gv-shell #gv-turn > p {
+  font-size: 13px;
+  color: #b9d0d9;
+}
+.gv-shell .rl-science details p {
+  font-size: 13px;
+}
+.gv-shell .rl-formula span {
+  overflow-wrap: anywhere;
+}
+.gv-equation {
+  background: #193744;
+  padding: 14px;
+  border-left: 2px solid #9ee9df;
+}
+.gv-shell #gv-question:focus {
+  outline: none;
+}
+@media (max-width: 1100px) {
+  .gv-clock {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .gv-clock svg {
+    width: 70px;
+  }
+  .gv-difference strong {
+    font-size: 29px;
+  }
+}
+@media (max-width: 850px) {
+  .gv-clocks {
+    grid-template-columns: 1fr 1fr;
+  }
+  .gv-clock {
+    padding: 16px;
+    gap: 5px;
+  }
+  .gv-clock + .gv-clock {
+    border-left: 1px solid #3d5869;
+  }
+  .gv-clock strong {
+    font-size: 27px;
+  }
+  .gv-clock svg {
+    width: 66px;
+  }
+  .gv-difference {
+    grid-column: 1/-1;
+    border-left: 0;
+    border-top: 1px solid #3d5869;
+    padding: 16px;
+  }
+  .gv-difference strong {
+    display: inline-block;
+  }
+  .gv-shell .rl-intro h1 {
+    font-size: clamp(56px, 12vw, 85px);
+  }
+  .gv-remote {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .gv-shell .rl-observatory h2 {
+    font-size: 29px;
+  }
+  .gv-shell .rl-frame-heading h3 {
+    font-size: 24px;
+  }
+  .gv-shell #gv-controls,
+  .gv-shell #gv-turn,
+  .gv-shell #gv-views,
+  .gv-shell #gv-challenges,
+  .gv-shell #gv-science {
+    scroll-margin-top: 78px;
+  }
+}
+@media (max-width: 370px) {
+  .gv-shell .rl-intro h1 {
+    font-size: 54px;
+    letter-spacing: -2px;
+  }
+  .gv-clock {
+    padding: 12px;
+  }
+  .gv-clock strong {
+    font-size: 24px;
+  }
+  .gv-shell .rl-frame-heading {
+    gap: 8px;
+  }
+  .gv-shell .rl-control-label output {
+    font-size: 20px;
+  }
+  .gv-shell .rl-control-label {
+    gap: 8px;
+  }
+}
