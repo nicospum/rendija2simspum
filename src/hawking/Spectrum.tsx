@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { K, LOG_PEAK, scientific, spectrumFraction } from './physics'
 import type { blackHole } from './physics'
+import { factor } from './impact'
 
 type Reading = ReturnType<typeof blackHole>
 export default function Spectrum({ current, reference }: { current: Reading; reference: Reading }) {
@@ -102,6 +103,11 @@ export default function Spectrum({ current, reference }: { current: Reading; ref
           Pico actual: <strong>{scientific(peak, 'J')}</strong>
         </span>
       </div>
+      <p className="hk-footnote">
+        El pico está en una energía {factor(peak / refPeak)} respecto de la referencia. Una
+        temperatura mayor desplaza la curva hacia la derecha: los fotones característicos tienen más
+        energía. La altura representa potencia, no cantidad de fotones.
+      </p>
       <p className="hk-footnote">
         El tono dorado identifica la curva; no es luz visible. El espectro real incluye factores de
         cuerpo gris y otras especies de partículas.

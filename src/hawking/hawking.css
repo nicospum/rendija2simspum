@@ -1680,6 +1680,287 @@ input[type='range'] {
     gap: 24px;
   }
 }
+.hk-mass-steps {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+.hk-mass-steps button {
+  flex: 1;
+  min-height: 44px;
+  padding: 8px;
+  color: #edc589;
+  border-color: #7c684b;
+  background: #d9ae7010;
+  font-size: 12px;
+}
+.hk-control-group .hk-control-response {
+  border-left: 2px solid #c9a776;
+  padding-left: 10px;
+  color: #b4c5ce;
+}
+.hk-effect-jump {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #e4be87;
+  font-size: 11px;
+}
+.hk-live-impact {
+  border-top: 1px solid #344650;
+  padding: 24px;
+  background: linear-gradient(140deg, #182a32, #12202a);
+  border-radius: 0 0 12px 12px;
+}
+.hk-live-impact h2 {
+  font:
+    400 26px/1.3 Georgia,
+    serif;
+  color: #eee8db;
+  margin: 10px 0;
+}
+.hk-impact-explanation {
+  font-size: 12px;
+  color: #b5c7ce;
+}
+.hk-impact-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 22px;
+}
+.hk-impact-metrics > div {
+  min-width: 0;
+}
+.hk-impact-metrics span {
+  font-size: 11px;
+  color: #aec2cb;
+}
+.hk-impact-metrics strong {
+  display: block;
+  font:
+    25px/1.6 Georgia,
+    serif;
+  color: #edc589;
+  overflow-wrap: anywhere;
+}
+.hk-comparison-bars {
+  display: grid;
+  gap: 5px;
+  margin-top: 6px;
+}
+.hk-comparison-bars i {
+  height: 5px;
+  border-radius: 2px;
+  background: #83aeb6;
+}
+.hk-comparison-bars i:last-child {
+  background: #e4be81;
+}
+.hk-comparison-key {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  color: #9eb5bf;
+  margin-top: 16px;
+}
+.hk-comparison-key i {
+  width: 12px;
+  height: 4px;
+  background: #83aeb6;
+}
+.hk-comparison-key i:nth-child(2) {
+  background: #e4be81;
+  margin-left: 8px;
+}
+.hk-energy-balance {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 22px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #344650;
+}
+.hk-energy-balance span,
+.hk-energy-balance strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.hk-energy-balance strong {
+  color: #edc589;
+  font-variant-numeric: tabular-nums;
+}
+.hk-energy-balance > div:nth-child(2) strong {
+  color: #8ebbe7;
+}
+.hk-energy-balance > div > div {
+  background: #080f1555;
+  margin-top: 7px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.hk-energy-balance i {
+  display: block;
+  height: 7px;
+  background: #e4be81;
+}
+.hk-energy-balance > div:nth-child(2) i {
+  background: #8ebbe7;
+}
+.hk-energy-balance p {
+  grid-column: 1 / -1;
+  font-size: 11px;
+  color: #b2c5ce;
+}
+.hk-entropy-explorer {
+  margin-top: 28px;
+  padding: 30px;
+  border: 1px solid #665c46;
+  border-radius: 12px;
+  background: linear-gradient(120deg, #232925, #15212b);
+}
+.hk-entropy-explorer > p:not(.hk-eyebrow) {
+  color: #b4c2c8;
+  font-size: 12px;
+  margin-top: 20px;
+}
+.hk-entropy-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  margin-top: 28px;
+  align-items: start;
+}
+.hk-entropy-layout > div {
+  min-width: 0;
+}
+.hk-entropy-equation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font:
+    26px/1.3 Georgia,
+    serif;
+  color: #edc589;
+  padding: 12px 0 24px;
+}
+.hk-entropy-equation > span {
+  display: grid;
+  text-align: center;
+}
+.hk-entropy-equation b {
+  font-weight: 400;
+  padding: 5px;
+}
+.hk-entropy-equation b:first-child {
+  border-bottom: 1px solid #c4aa7f;
+}
+.hk-constant-buttons {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 7px;
+}
+.hk-constant-buttons button {
+  min-height: 44px;
+  font:
+    19px Georgia,
+    serif;
+}
+.hk-constant-buttons button[aria-pressed='true'] {
+  color: #f0c98d;
+  background: #d9ae7020;
+  border-color: #d9ae70;
+}
+.hk-constant-explanation {
+  margin-top: 15px;
+  min-height: 120px;
+  padding: 16px;
+  border-left: 2px solid #cfad78;
+  background: #09131a55;
+}
+.hk-constant-explanation strong {
+  font-size: 13px;
+  font-weight: 500;
+  color: #e6cda4;
+}
+.hk-constant-explanation p {
+  margin-top: 7px;
+  color: #b1c4cc;
+  font-size: 12px;
+}
+.hk-entropy-layout svg {
+  display: block;
+  width: 100%;
+}
+.hk-entropy-layout svg text {
+  font:
+    13px Consolas,
+    monospace;
+  fill: #c3d3d8;
+}
+.hk-entropy-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  align-items: center;
+  margin-top: 16px;
+}
+.hk-entropy-explorer .hk-entropy-law {
+  border-top: 1px solid #4c5148;
+  padding-top: 20px;
+}
+.hk-entropy-explorer > a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  font-size: 11px;
+  color: #e4be81;
+}
+@media (max-width: 1100px) {
+  .hk-impact-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 850px) {
+  .hk-entropy-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+}
+@media (max-width: 600px) {
+  .hk-live-impact,
+  .hk-entropy-explorer {
+    padding: 22px 17px;
+  }
+  .hk-entropy-explorer > .hk-panel-heading {
+    display: block;
+  }
+  .hk-entropy-explorer .hk-model-tag {
+    display: inline-block;
+    margin-top: 12px;
+  }
+  .hk-entropy-equation {
+    font-size: 22px;
+    gap: 8px;
+  }
+  .hk-entropy-layout svg text {
+    font-size: 18px;
+  }
+  .hk-entropy-explorer .hk-eyebrow {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+  .hk-scene-key span:last-child {
+    max-width: 120px;
+    text-align: right;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

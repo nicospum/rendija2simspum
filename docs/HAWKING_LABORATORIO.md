@@ -34,7 +34,17 @@ El entorno usa el balance instantáneo ideal `Pneta = Aσ(T⁴ − Tentorno⁴)`
 
 El horizonte es un disco esquemático. Su radio varía linealmente respecto a la referencia punteada fija entre ×0,22 y ×2,2. Fuera de ese intervalo se comprime el dibujo y aparece una indicación explícita; los valores y curvas conservan sus magnitudes reales. En una comparación M → 2M el horizonte duplica su radio sin cambiar la escala de cámara. La circunferencia de referencia también se ve sobre el interior oscuro, identificada como comparación y no como otro horizonte.
 
-El borde y los marcadores dorados no representan color térmico visible, disco de acreción, una foto ni trayectorias físicas de fotones. El flujo tiene brillo, densidad y velocidad normalizados para hacerlo perceptible. La trama no integra geodésicas ni lente gravitatoria. Los puntos azules señalan energía entrante del entorno. Todo esto se explica en el visor y en la leyenda; las predicciones cuantitativas están en las medidas, relaciones y espectro.
+El borde y los marcadores dorados no representan color térmico visible, disco de acreción, una foto ni trayectorias físicas de fotones. Desde la revisión didáctica del 21/10/2026, el brillo y la velocidad de los marcadores responden a la potencia relativa: `clamp(0,45 + 0,15 log₂(P/P_ref), 0,04, 1)`. La señal está amplificada y acotada para mostrar cambios; no codifica una velocidad física ni una tasa literal de fotones. La emisión usa la potencia emitida y el azul la absorbida, respecto de la emisión de referencia. La trama no integra geodésicas ni lente gravitatoria. Las medidas y gráficos mantienen los valores físicos sin esa compresión.
+
+## Revisión didáctica del 21/10/2026
+
+- `impact.ts` deriva relaciones, causas y señales visuales desde las mismas lecturas físicas. Identifica cambios combinados para evitar atribuciones a una sola variable. Explorar otra masa sin combinar controles ya no presenta una advertencia de comparación incorrecta.
+- `LiveImpact.tsx`, junto al visor: cuatro factores relativos con barras de referencia/actual en escala común por magnitud, explicación causal y balance emisión/absorción con escala común de potencia. No renormaliza cada barra por separado. Los factores conservan rangos extremos mediante notación científica.
+- Masa ÷2/×2 para explorar cambios medidos dentro del enorme rango logarítmico; feedback de temperatura/potencia junto al control, balance junto al entorno y masa restante/temperatura/potencia junto al reloj. Cambiar masa reinicia el tiempo, como antes.
+- `EntropyExplorer.tsx`: fórmula Bekenstein–Hawking con seis símbolos explorables y explicación del coeficiente 1/4. Diferencia ℏ y la incertidumbre de Heisenberg del nombre de la relación de entropía. Dos cuadrados representan áreas de horizontes desplegados: el lado cambia con la raíz del factor de entropía. El dibujo se limita como el horizonte y avisa cuando se comprime. La cuadrícula no afirma celdas microscópicas observadas. El botón prepara explícitamente el reto de 10¹² kg en vacío; no duplica silenciosamente cualquier configuración existente.
+- El espectro explica el cambio de energía del máximo y distingue altura de potencia de número de fotones. Conserva ejes compartidos.
+
+Seis pruebas adicionales en `tests/hawking-impact.test.mjs` verifican respuestas opuestas térmicas/geométricas, escalado cuadrático de áreas, causalidad del baño y del reloj, comparaciones combinadas y señales finitas/acotadas en el rango completo. La suite completa pasa 87 pruebas y las diez comprobaciones científicas independientes. La propuesta de futuros módulos está en [SERIE_AGUJEROS_NEGROS.md](SERIE_AGUJEROS_NEGROS.md).
 
 ## Interacción y rendimiento
 

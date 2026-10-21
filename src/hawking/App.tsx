@@ -1,6 +1,9 @@
 import { useEffect, useId, useReducer, useState } from 'react'
 import Horizon from './Horizon'
 import Spectrum from './Spectrum'
+import LiveImpact from './LiveImpact'
+import EntropyExplorer from './EntropyExplorer'
+import { factor, impact } from './impact'
 import { BALANCE_MASS, CMB, MAX_AGE, SOLAR_MASS, YEAR, scientific } from './physics'
 import { initialState, LESSONS, lessonStatus, reading, reducer } from './learning'
 import type { Action } from './learning'
@@ -94,6 +97,7 @@ export default function HawkingApp() {
   const lesson = LESSONS.find((item) => item.id === state.lesson)!
   const status = lessonStatus(state)
   const ratio = current.massKg / reference.massKg
+  const effect = impact(state, state.reference)
   const [sceneInfo, setSceneInfo] = useState(false)
   const ratios =
     state.lesson === 'time'
@@ -210,6 +214,8 @@ export default function HawkingApp() {
                 ratio={ratio}
                 bath={state.environment === 'cmb'}
                 moving={motion && !reduced && visible}
+                emission={effect.emissionSignal}
+                absorption={effect.absorptionSignal}
               />
               <div className="hk-scene-top">
                 <span>
@@ -240,7 +246,9 @@ export default function HawkingApp() {
                   El disco oscuro marca el horizonte. El borde dorado y los puntos son símbolos de
                   la emisión; no son una foto, una temperatura visible ni trayectorias de
                   partículas. Ninguna señal sale del interior. La trama es ilustrativa, no un
-                  cálculo de lente gravitatoria.
+                  cálculo de lente gravitatoria. El brillo y la velocidad de los marcadores se
+                  amplifican a partir de la potencia relativa a la referencia; no representan
+                  fotones individuales ni velocidades físicas.
                 </div>
               )}
               <div className="hk-scene-key">
@@ -254,7 +262,7 @@ export default function HawkingApp() {
                     Entorno entrante
                   </span>
                 )}
-                <span>Flujo ilustrativo · brillo normalizado</span>
+                <span>Potencia relativa · señal visual amplificada</span>
               </div>
             </div>
             <div className="hk-measurements">
@@ -305,6 +313,7 @@ export default function HawkingApp() {
                 </small>
               </div>
             </div>
+            <LiveImpact setup={state} baseline={state.reference} running={state.running} />
           </section>
 
           <aside className="hk-controls" id="hk-controls" aria-labelledby="hk-controls-title">
@@ -337,7 +346,25 @@ export default function HawkingApp() {
                 <span>10⁹ kg</span>
                 <span>10⁴⁰ kg · escala logarítmica</span>
               </div>
-              <p>Menos masa → más temperatura. Cada paso grande recorre órdenes de magnitud.</p>
+              <p>
+                Menos masa → más temperatura. El deslizador recorre órdenes de magnitud; los botones
+                permiten comparar cambios pequeños.
+              </p>
+              <div className="hk-mass-steps">
+                <button onClick={() => dispatch({ type: 'mass', mass: state.mass / 2 })}>
+                  Masa ÷2
+                </button>
+                <button onClick={() => dispatch({ type: 'mass', mass: state.mass * 2 })}>
+                  Masa ×2
+                </button>
+              </div>
+              <p className="hk-control-response">
+                Respecto de la referencia: temperatura <strong>{factor(effect.temperature)}</strong>{' '}
+                · potencia <strong>{factor(effect.power)}</strong>.
+              </p>
+              <a className="hk-effect-jump" href="#hk-impact-title">
+                Ver el efecto y comparar ↑
+              </a>
               <div className="hk-presets">
                 <button onClick={() => dispatch({ type: 'mass', mass: 1e12 })}>
                   10¹² kg hipotético
@@ -370,6 +397,14 @@ export default function HawkingApp() {
                 {state.environment === 'vacuum'
                   ? 'Sin energía entrante: toda la potencia emitida resta masa.'
                   : 'Comparamos emisión y absorción instantáneas. El reloj queda desactivado: la fórmula de vacío no sirve para un baño térmico.'}
+              </p>
+              <p className="hk-control-response">
+                <strong>
+                  {current.netW < 0
+                    ? 'Gana energía: domina la absorción azul.'
+                    : 'Pierde energía: domina la emisión dorada.'}
+                </strong>{' '}
+                La temperatura de Hawking no cambia al activar el fondo.
               </p>
             </fieldset>
             <div className={`hk-control-group ${state.lesson === 'time' ? 'hk-highlight' : ''}`}>
@@ -425,6 +460,13 @@ export default function HawkingApp() {
                 <p className="hk-stop-note">
                   Límite del recorrido: 95 % de τ₀. El modelo no describe el final de la
                   evaporación.
+                </p>
+              )}
+              {state.environment === 'vacuum' && (
+                <p className="hk-control-response">
+                  Desde t = 0: masa <strong>{factor(current.massKg / initial.massKg)}</strong> ·
+                  temperatura <strong>{factor(current.temperatureK / initial.temperatureK)}</strong>{' '}
+                  · potencia <strong>{factor(current.powerW / initial.powerW)}</strong>.
                 </p>
               )}
             </div>
@@ -492,7 +534,9 @@ export default function HawkingApp() {
                 {status === 'observed'
                   ? 'CAMBIO EXPLORADO'
                   : status === 'changed'
-                    ? 'REVISÁ LA COMPARACIÓN'
+                    ? effect.isolated
+                      ? 'EXPLORACIÓN DE UNA VARIABLE'
+                      : 'REVISÁ LA COMPARACIÓN'
                     : 'REFERENCIA PREPARADA'}
               </span>
               <h3>
@@ -503,14 +547,18 @@ export default function HawkingApp() {
                       ? 'Tu predicción coincide con el modelo.'
                       : 'El resultado invita a cambiar de idea.'
                   : status === 'changed'
-                    ? 'Aislá la variable del reto.'
+                    ? effect.isolated
+                      ? 'Seguí explorando esa relación.'
+                      : 'Aislá la variable del reto.'
                     : '¿Qué esperás que cambie?'}
               </h3>
               <p>
                 {status === 'observed'
                   ? lesson.meaning
                   : status === 'changed'
-                    ? 'Cambiaste otra condición o todavía no llegaste a la comparación propuesta. Restaurá la referencia o usá el botón del reto para comparar una sola variable.'
+                    ? effect.isolated
+                      ? effect.explanation
+                      : 'Cambiaste varias condiciones. Restaurá la referencia o usá el botón del reto para comparar una sola variable.'
                     : 'La referencia ya está guardada. Elegí una predicción y probá el cambio; después compará las medidas calculadas.'}
               </p>
               {state.lesson === 'bath' ? (
@@ -534,7 +582,7 @@ export default function HawkingApp() {
                   {ratios.map((item) => (
                     <div key={item.name}>
                       <span>{item.name}</span>
-                      <strong>×{Number(item.value.toPrecision(3)).toLocaleString('es-AR')}</strong>
+                      <strong>{factor(item.value)}</strong>
                       <small>
                         {scientific(item.ref, item.unit)} → {scientific(item.now, item.unit)}
                       </small>
@@ -550,6 +598,16 @@ export default function HawkingApp() {
             modelo no equivale a comprobarla experimentalmente.
           </p>
         </section>
+
+        <EntropyExplorer
+          setup={state}
+          baseline={state.reference}
+          onDouble={() => {
+            dispatch({ type: 'lesson', id: 'entropy' })
+            dispatch({ type: 'try' })
+          }}
+          onRestore={() => dispatch({ type: 'restore' })}
+        />
 
         <div className="hk-analysis-grid">
           <Spectrum current={current} reference={reference} />

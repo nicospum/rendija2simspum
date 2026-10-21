@@ -9,6 +9,8 @@ uniform vec2 uSize;
 uniform float uTime;
 uniform float uRadius;
 uniform float uBath;
+uniform float uEmission;
+uniform float uAbsorption;
 float hash(vec2 p) { return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
 void main() {
   vec2 p=(vUv-.5)*vec2(uSize.x/uSize.y,1.)*2.;
@@ -34,25 +36,26 @@ void main() {
   float rimDelta=(r-uRadius)/.006;
   float rim=exp(-rimDelta*rimDelta);
   float glow=exp(-abs(r-uRadius)*22.);
-  col+=vec3(.94,.62,.28)*(rim*.85+glow*.16)*outside;
+  col+=vec3(.94,.62,.28)*(rim*(.35+uEmission)+glow*(.05+uEmission*.28))*outside;
+  col+=vec3(.18,.48,.9)*glow*uAbsorption*.25*outside;
   col+=vec3(.10,.24,.27)*exp(-abs(r-uRadius)*7.)*.12*outside;
-  // Flow markers have normalized density/speed. No individual photon paths implied.
+  // Bounded, amplified power controls brightness/speed; these are not photon paths.
   // Polar cells evaluate one marker per fragment, avoiding a loop over all particles.
   float lane=(a+3.14159265)/6.2831853*40.;
   float seed=hash(vec2(floor(lane),7.));
   float angular=(fract(lane)-.5)*6.2831853/40.*max(r,.1);
-  float t=fract(uTime*.075+seed);
+  float t=fract(uTime*(.025+uEmission*.16)+seed);
   float distance=uRadius+.045+t*1.15;
   float radial=r-distance;
   float trailRadial=r-distance*.989;
-  float dotlight=exp(-(radial*radial+angular*angular)*19000.);
-  float trail=exp(-(trailRadial*trailRadial+angular*angular)*8500.);
-  col+=vec3(1.,.65,.32)*(dotlight*.65+trail*.16)*sin(t*3.14159)*outside;
+  float dotlight=exp(-(radial*radial+angular*angular)*4000.);
+  float trail=exp(-(trailRadial*trailRadial+angular*angular)*1800.);
+  col+=vec3(1.,.65,.32)*(dotlight+trail*.3)*(uEmission*1.8)*sin(t*3.14159)*outside;
   if(uBath>.5) {
-    float ti=fract(uTime*.055+seed*.73);
+    float ti=fract(uTime*(.025+uAbsorption*.16)+seed*.73);
     float incoming=uRadius+.04+(1.-ti)*1.25;
     float incomingDelta=r-incoming;
-    col+=vec3(.3,.65,1.)*exp(-(incomingDelta*incomingDelta+angular*angular)*14000.)*.8*sin(ti*3.14159)*outside;
+    col+=vec3(.3,.65,1.)*exp(-(incomingDelta*incomingDelta+angular*angular)*3000.)*uAbsorption*2.*sin(ti*3.14159)*outside;
   }
   col=mix(vec3(.006,.009,.014),col,outside);
   col+=vec3(.30,.54,.58)*reference*.65;
@@ -60,7 +63,14 @@ void main() {
   gl_FragColor=vec4(col,1.);
 }`
 
-function Field({ radius, bath, moving }: { radius: number; bath: boolean; moving: boolean }) {
+interface FieldProps {
+  radius: number
+  bath: boolean
+  moving: boolean
+  emission: number
+  absorption: number
+}
+function Field({ radius, bath, moving, emission, absorption }: FieldProps) {
   const material = useRef<ShaderMaterial>(null)
   const time = useRef(0)
   const invalidate = useThree((state) => state.invalidate)
@@ -70,12 +80,14 @@ function Field({ radius, bath, moving }: { radius: number; bath: boolean; moving
       uTime: { value: 0 },
       uRadius: { value: 0.32 },
       uBath: { value: 0 },
+      uEmission: { value: 0.45 },
+      uAbsorption: { value: 0 },
     }),
     [],
   ) // Values below update without reallocating shader resources.
   useEffect(() => {
     invalidate()
-  }, [radius, bath, moving, invalidate])
+  }, [radius, bath, moving, emission, absorption, invalidate])
   useFrame(({ size }, delta) => {
     if (!material.current) return
     if (moving) time.current += Math.min(delta, 0.1)
@@ -83,6 +95,8 @@ function Field({ radius, bath, moving }: { radius: number; bath: boolean; moving
     material.current.uniforms.uTime.value = time.current
     material.current.uniforms.uRadius.value = radius
     material.current.uniforms.uBath.value = bath ? 1 : 0
+    material.current.uniforms.uEmission.value = emission
+    material.current.uniforms.uAbsorption.value = absorption
   })
   return (
     <mesh frustumCulled={false}>
@@ -120,10 +134,14 @@ export default function Horizon({
   ratio,
   bath,
   moving,
+  emission,
+  absorption,
 }: {
   ratio: number
   bath: boolean
   moving: boolean
+  emission: number
+  absorption: number
 }) {
   const limited = ratio < 0.22 || ratio > 2.2
   return (
@@ -136,7 +154,13 @@ export default function Horizon({
           fallback={<Fallback />}
           aria-label="Representación esquemática del horizonte y flujos de energía"
         >
-          <Field radius={0.32 * Math.min(2.2, Math.max(0.22, ratio))} bath={bath} moving={moving} />
+          <Field
+            radius={0.32 * Math.min(2.2, Math.max(0.22, ratio))}
+            bath={bath}
+            moving={moving}
+            emission={emission}
+            absorption={absorption}
+          />
         </Canvas>
       </VisualBoundary>
       <div className="hk-scale-note">
