@@ -235,6 +235,8 @@ export default function DiskView({
       {map ? (
         <Boundary>
           <Canvas
+            role="img"
+            aria-label="Disco de acreción: imagen calculada con geodésicas de Schwarzschild"
             frameloop="demand"
             dpr={[1, 1.5]}
             gl={{
