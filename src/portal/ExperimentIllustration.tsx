@@ -1,8 +1,19 @@
 export default function ExperimentIllustration({
   kind,
 }: {
-  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia'
+  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion'
 }) {
+  if (kind === 'acrecion') return (
+    <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
+      <defs><radialGradient id="ac-portal-glow"><stop stopColor="#f6dcaa" /><stop offset=".5" stopColor="#ed9c60" /><stop offset="1" stopColor="#dc965b00" /></radialGradient></defs>
+      <ellipse cx="280" cy="152" rx="200" ry="67" fill="url(#ac-portal-glow)" opacity=".8" />
+      <ellipse cx="280" cy="152" rx="171" ry="40" fill="none" stroke="#f0c893" strokeWidth="4" />
+      <circle cx="280" cy="141" r="49" fill="#081221" />
+      <path d="M226 144a54 54 0 0 1 108 0" fill="none" stroke="#f0c893" strokeWidth="5" />
+      <path d="M110 153q170 57 340 0" fill="none" stroke="#fbe2b7" strokeWidth="4" />
+      <g fill="#a9c3cc" fontFamily="Consolas,monospace" fontSize="10" letterSpacing="1.5"><text x="32" y="270">GAS / LUZ / MASA INVISIBLE</text><text x="407" y="270">CUATRO RETOS</text></g>
+    </svg>
+  )
   if (kind === 'entropia')
     return (
       <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">

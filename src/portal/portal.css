@@ -7,6 +7,23 @@
   -webkit-font-smoothing: antialiased;
   color-scheme: light;
 }
+.portal-special-link {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding: 20px 24px;
+  background: #142632;
+  color: #e7e5d9;
+  border: 1px solid #435e65;
+  border-radius: 8px;
+  font-size: 14px;
+  min-height: 64px;
+}
+.portal-special-link span { font: 10px/1.7 Consolas, monospace; letter-spacing: 1px; color: #e5be8a; }
+.portal-special-link svg { margin-left: auto; }
+.portal-experiment-card.acrecion .portal-art-link { background: #0d1a28; color: #c4d2dc; }
 * {
   box-sizing: border-box;
 }

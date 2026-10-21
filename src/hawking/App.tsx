@@ -1,4 +1,5 @@
 import Tip from '../components/ui/InfoPopover'
+import { BlackHoleNavigation } from '../series/BlackHoleSeries'
 import { LabMission, LabNavigation, MoreLabs } from '../components/ui/LabJourney'
 import { useEffect, useReducer, useState } from 'react'
 import SceneExplorer from './SceneExplorer'
@@ -161,6 +162,7 @@ export default function HawkingApp() {
         </nav>
       </header>
       <main>
+        <BlackHoleNavigation current="hawking" />
         <section className="hk-intro">
           <div>
             <p className="hk-eyebrow">

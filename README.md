@@ -8,8 +8,10 @@ Una colección de laboratorios interactivos para aprender ciencia haciendo pregu
 - `/hawking/`: masa, temperatura, entorno, evaporación y entropía de un agujero negro de Schwarzschild.
 - `/lente-gravitacional/`: imagen del observador y trayectorias calculadas con geodésicas de Schwarzschild.
 - `/entropia/`: fórmula de Bekenstein–Hawking, área, evaporación y contabilidad de entropía con cuatro retos.
+- `/acrecion/`: cómo vemos lo invisible; disco de acreción, luz curvada, Doppler y órbita de una estrella testigo, con cuatro retos.
+- `/agujeros-negros/`: especial que conecta lente, acreción, Hawking y entropía con un índice y navegación entre capítulos.
 
-El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las seis páginas se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada y el laboratorio de entropía no cargan Three.js.
+El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las ocho páginas (seis laboratorios, portada y especial) se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada, el especial y el laboratorio de entropía no cargan Three.js.
 
 ## Ejecutar localmente
 
@@ -54,6 +56,8 @@ Los cuatro retos preparan una referencia y proponen cambiar una sola variable: a
 El modelo de doble rendija usa amplitudes de Fraunhofer en unidades normalizadas, con impactos muestreados según su probabilidad. No simula trayectorias ocultas ni resuelve una ecuación de Schrödinger temporal. El campo ilustrativo es cualitativo y se puede ocultar. Ver [modelo físico](docs/MODELO_DOBLE_RENDIJA.md).
 
 ## Organización y nuevos experimentos
+
+El sexto laboratorio, [Cómo vemos lo invisible](https://www.spumexp.lat/acrecion/), reutiliza el integrador de Schwarzschild para calcular la imagen de un disco de acreción. Combina emisividad de disco delgado aproximada, transferencia relativista de intensidad y una órbita de referencia para inferir masa. Sus cuatro retos exigen comparar estados y explicar las pistas. El [especial de agujeros negros](https://www.spumexp.lat/agujeros-negros/) organiza los cuatro laboratorios relacionados, con índice y anterior/siguiente en cada uno. Ver [ecuaciones, supuestos, fuentes y pruebas](docs/ACRECION_LABORATORIO.md).
 
 El quinto laboratorio, [entropía de Bekenstein–Hawking](https://www.spumexp.lat/entropia/), conecta un mapa geométrico del horizonte a escala fija con área, entropía, temperatura y un balance térmico de radiación ideal. La fórmula tiene símbolos explicados y una lupa algebraica separada. Sus cuatro retos comparan masa/área, el factor ¼, pérdida de masa y segunda ley generalizada. El SVG se calcula al interactuar, sin bucles de animación ni dependencias nuevas. Ver [modelo, alcance científico y pruebas](docs/ENTROPIA_LABORATORIO.md).
 

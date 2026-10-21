@@ -1,5 +1,5 @@
 export interface Experiment {
-  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia'
+  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion'
   number: string
   field: string
   title: string
@@ -71,5 +71,17 @@ export const experiments: readonly Experiment[] = [
       'Agrandá el horizonte, descifrá la fórmula y contá la radiación con cuatro retos sobre área, entropía y segunda ley.',
     tags: ['Entropía', 'Área', 'Información'],
     href: '/entropia/',
+  },
+  {
+    id: 'acrecion',
+    number: '06',
+    field: 'AGUJEROS NEGROS',
+    title: 'Cómo vemos lo invisible',
+    subtitle: 'El agujero es oscuro. Sus pistas, no.',
+    question: '¿Cómo detectamos un agujero negro si su interior no deja escapar luz?',
+    discovery:
+      'Encendé el disco de acreción, curvá su luz y pesá una masa invisible con una estrella testigo y cuatro retos.',
+    tags: ['Acreción', 'Doppler', 'Órbitas'],
+    href: '/acrecion/',
   },
 ]

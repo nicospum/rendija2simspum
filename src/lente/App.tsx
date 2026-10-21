@@ -1,4 +1,5 @@
 import Info from '../components/ui/InfoPopover'
+import { BlackHoleNavigation } from '../series/BlackHoleSeries'
 import { LabMission, LabNavigation, MoreLabs } from '../components/ui/LabJourney'
 import { useMemo, useReducer, useState } from 'react'
 import ObserverView from './ObserverView'
@@ -75,6 +76,7 @@ export default function LensApp() {
         </nav>
       </header>
       <main>
+        <BlackHoleNavigation current="lente-gravitacional" />
         <section className="ln-intro">
           <div>
             <p className="ln-eyebrow">LABORATORIO 04 / RELATIVIDAD GENERAL</p>
@@ -557,16 +559,13 @@ export default function LensApp() {
           </div>
           <div className="ln-next">
             <p className="ln-eyebrow">PRÓXIMO EN LA SERIE</p>
-            <h3>Entropía de agujeros negros</h3>
-            <p className="ln-formula">
-              S = k<sub>B</sub> c³ A / (4Gℏ)
-            </p>
+            <h3>Cómo vemos lo invisible</h3>
             <p>
-              El laboratorio de entropía explora la fórmula de Bekenstein–Hawking: área, masa,
-              constantes y segunda ley. La lente estudia caminos de luz; la entropía abre otra
-              pregunta sobre los estados microscópicos.
+              Ahora iluminamos el entorno con gas caliente. Compará el disco de acreción desde
+              distintos ángulos y usá una estrella testigo para inferir la masa que no vemos.
+              La luz y las órbitas aportan pistas diferentes.
             </p>
-            <a href="/entropia/">Explorar el laboratorio de entropía ↗</a>
+            <a href="/acrecion/">Explorar detección y acreción ↗</a>
           </div>
         </section>
         <section className="ln-limits" id="ln-limits">

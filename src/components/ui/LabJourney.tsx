@@ -1,4 +1,5 @@
 import { experiments } from '../../portal/catalog'
+import { BlackHoleNavigation } from '../../series/BlackHoleSeries'
 import './LabJourney.css'
 
 export function LabNavigation({
@@ -89,6 +90,7 @@ export function MoreLabs({ current, light = false }: { current: string; light?: 
       className={`spum-more-labs ${light ? 'spum-light' : ''}`}
       aria-label="Seguí explorando los laboratorios"
     >
+      <BlackHoleNavigation current={current} />
       <h2>Una pregunta lleva a otra.</h2>
       <p>Elegí tu próxima exploración.</p>
       <div>
@@ -103,7 +105,7 @@ export function MoreLabs({ current, light = false }: { current: string; light?: 
           ))}
       </div>
       <a className="spum-all-labs" href="/">
-        Ver los cinco laboratorios
+        Ver los {experiments.length} laboratorios
       </a>
     </nav>
   )

@@ -1,4 +1,5 @@
 import Info from '../components/ui/InfoPopover'
+import { BlackHoleNavigation } from '../series/BlackHoleSeries'
 import { LabMission, LabNavigation, MoreLabs } from '../components/ui/LabJourney'
 import { useReducer, useState } from 'react'
 import type { ReactNode } from 'react'
@@ -58,6 +59,7 @@ export default function EntropyApp() {
         </nav>
       </header>
       <main>
+        <BlackHoleNavigation current="entropia" />
         <section className="en-intro">
           <div>
             <p className="en-eyebrow">LABORATORIO 05 / BEKENSTEIN–HAWKING</p>

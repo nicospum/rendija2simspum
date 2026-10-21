@@ -23,6 +23,8 @@ export default defineConfig({
         hawking: 'hawking/index.html',
         lente: 'lente-gravitacional/index.html',
         entropia: 'entropia/index.html',
+        acrecion: 'acrecion/index.html',
+        agujerosNegros: 'agujeros-negros/index.html',
       },
       output: {
         manualChunks(id) {
