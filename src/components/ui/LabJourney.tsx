@@ -1,5 +1,5 @@
 import { experiments } from '../../portal/catalog'
-import { BlackHoleNavigation } from '../../series/BlackHoleSeries'
+import { BlackHoleNavigation } from '../../series/BlackHoleNavigation'
 import './LabJourney.css'
 
 export function LabNavigation({

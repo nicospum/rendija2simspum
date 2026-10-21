@@ -39,6 +39,10 @@
   color: #253e49;
   margin: 5px 0;
 }
+.portal-black-hole-link { display:grid; grid-template-columns:64px minmax(0,1fr) 20px; gap:16px; background:linear-gradient(120deg,#182b3d,#26213d); border-color:#666182; color:#b9c9db; }
+.portal-black-hole-link img { width:64px; height:64px; object-fit:cover; border-radius:50%; }
+.portal-black-hole-link span { color:#94d1da; }
+.portal-black-hole-link strong { display:block; font:27px/1.2 Georgia,serif; color:#e9c590; margin:5px 0; }
 .portal-experiment-card.reloj-de-luz .portal-art-link { background: #102735; color: #c3dedc; }
 .portal-experiment-card.tren-de-einstein .portal-art-link { background: #122b3b; color: #c3dedc; }
 .portal-experiment-card.acrecion .portal-art-link { background: #0d1a28; color: #c4d2dc; }

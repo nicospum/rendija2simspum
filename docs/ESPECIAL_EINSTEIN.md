@@ -4,7 +4,7 @@
 
 El especial reúne siete laboratorios, 28 retos y tres familias: movimiento y tiempo, gravedad, y luz y cuantos. La portada permite elegir por pregunta, filtrar por tema y ver el progreso. La simulación conserva su instrumento oscuro; introducción, índice y cuaderno usan papel cálido, coral, verde y tinta azul.
 
-Cada capítulo termina con tres objetos ilustrados y dos fichas con fuentes: una idea o experimento mental y una medición u observación. Se distingue lo que muestra el modelo de lo que se midió históricamente. El tren sobre el espejo de sal es una escena imaginaria inspirada en Uyuni, no un viaje histórico de Einstein.
+Cada capítulo termina con tres objetos ilustrados y dos fichas con fuentes: una idea o experimento mental y una medición u observación. Se distingue lo que muestra el modelo de lo que se midió históricamente. La portada incorpora la fotografía de una locomotora compartida por el usuario, con las ecuaciones de campo pintadas. Se explica la diferencia entre esa relatividad general y el tren mental de la simultaneidad. La ilustración anterior del tren sobre un espejo de sal se conserva como recurso artístico, sin presentarla como una fotografía histórica.
 
 La fórmula E₀ = mc² tiene una exploración breve en la portada; no es un octavo laboratorio. Usa c = 299.792.458 m/s y una barra logarítmica entre 0,1 mg y 1 g. Presenta energía en reposo equivalente, sin sugerir que toda sea aprovechable. Almacenar 1 kWh aumenta la masa de un sistema en reposo en unos 40,06 ng.
 
@@ -20,10 +20,11 @@ Durante esta implementación se detectó y corrigió un corte de palabras en el 
 ## Implementación y mantenimiento
 
 - `src/einstein/catalog.ts`: catálogo único de los siete capítulos.
-- `progress.ts`: lectura, validación y unión de índices completados; `usePassport.ts`: suscripción y persistencia.
+- `progress.ts`: API del pasaporte Einstein sobre `src/shared/passport.ts`; `usePassport.ts`: suscripción y persistencia. La clave y los datos v1 existentes se conservan al compartir el motor con la bitácora de agujeros negros.
 - `EinsteinNavigation.tsx`: índice compacto, anterior/siguiente y cuaderno al pie.
 - `chapterNotes.ts`, `ChapterNotebook.tsx` y `Artifact.tsx`: contenido histórico y diagramas SVG accesibles por sus textos adyacentes.
 - `EinsteinSeries.tsx`, `Passport.tsx` y `EnergyNotebook.tsx`: portada, recorrido, pasaporte y energía en reposo.
+- `FieldEquationNotebook.tsx`: tres partes de la ecuación de campo, relación con E₀ = mc², pregunta sobre vacío y curvatura y explicación de Λ. Ver [la revisión del atlas y la locomotora](ATLAS_DE_LO_INVISIBLE.md).
 - `world.css` se importa exclusivamente desde las ocho entradas Einstein (portada y siete laboratorios). `special.css` solo desde la portada. No cambia la apariencia de prisma, doble rendija ni agujeros negros.
 - Los inicializadores de los siete reducers son diferidos: el almacenamiento se lee al montar, no en cada fotograma. La escritura depende del arreglo de logros, no del avance de la reproducción.
 - No se agregaron dependencias. La portada y los siete laboratorios siguen sin cargar Three.js.

@@ -1,5 +1,8 @@
 import Info from '../components/ui/InfoPopover'
-import { BlackHoleNavigation } from '../series/BlackHoleSeries'
+import { BlackHoleNavigation } from '../series/BlackHoleNavigation'
+import BlackHoleNotebook from '../series/BlackHoleNotebook'
+import { readCompleted } from '../series/progress'
+import { useBlackHoleProgress } from '../series/usePassport'
 import { LabMission, LabNavigation, MoreLabs } from '../components/ui/LabJourney'
 import { useMemo, useReducer, useState } from 'react'
 import ObserverView from './ObserverView'
@@ -21,7 +24,10 @@ import { useTransfer } from './useTransfer'
 const number = (value: number, digits = 2) =>
   value.toLocaleString('es-AR', { maximumFractionDigits: digits })
 export default function LensApp() {
-  const [state, dispatch] = useReducer(reducer, undefined, () => initialState())
+  const [state, dispatch] = useReducer(reducer, undefined, () =>
+    initialState('bend', readCompleted('lente-gravitacional').map(i => LESSONS[i].id)),
+  )
+  useBlackHoleProgress('lente-gravitacional', state.completed, LESSONS)
   const [grid, setGrid] = useState(false)
   const { result, pending, error } = useTransfer(state)
   // Both views retain the same committed calculation while a new worker is running.
@@ -61,7 +67,7 @@ export default function LensApp() {
         ? 'Termina en el horizonte'
         : 'Límite numérico'
   return (
-    <div className="ln-shell">
+    <div className="bh-lab ln-shell">
       <a className="ln-skip" href="#ln-controls">
         Ir a los controles
       </a>
@@ -437,7 +443,7 @@ export default function LensApp() {
               <p className="ln-eyebrow">PREDECIR · CAMBIAR · COMPARAR</p>
               <h2 id="ln-challenges-title">Cuatro formas de descubrir la lente.</h2>
             </div>
-            <span className="ln-progress">{state.completed.length} / 4 explorados</span>
+            <span className="ln-progress">{state.completed.length} / 4 descubrimientos</span>
           </div>
           <div className="ln-lesson-nav" aria-label="Elegir reto">
             {LESSONS.map((item, i) => (
@@ -473,7 +479,7 @@ export default function LensApp() {
                 </button>
                 <button onClick={() => dispatch({ type: 'restore' })}>Restaurar</button>
               </div>
-              <p className="ln-caption">{lesson.hint}</p>
+              <p className="ln-caption">{lesson.hint} La huella se guarda al comparar y revisar tu predicción.</p>
             </div>
             <div className="ln-lesson-result" aria-live={pending ? 'off' : 'polite'}>
               <p className="ln-eyebrow">
@@ -617,6 +623,7 @@ export default function LensApp() {
             </div>
           </details>
         </section>
+        <BlackHoleNotebook current="lente-gravitacional" />
         <MoreLabs current="lente-gravitacional" />
       </main>
       <footer className="ln-footer">

@@ -1,5 +1,8 @@
 import Info from '../components/ui/InfoPopover'
-import { BlackHoleNavigation } from '../series/BlackHoleSeries'
+import { BlackHoleNavigation } from '../series/BlackHoleNavigation'
+import BlackHoleNotebook from '../series/BlackHoleNotebook'
+import { readCompleted } from '../series/progress'
+import { useBlackHoleProgress } from '../series/usePassport'
 import { LabMission, LabNavigation, MoreLabs } from '../components/ui/LabJourney'
 import { useReducer, useState } from 'react'
 import type { ReactNode } from 'react'
@@ -31,8 +34,11 @@ function Ratio({ name, value, children }: { name: string; value: number; childre
 }
 
 export default function EntropyApp() {
-  const [state, dispatch] = useReducer(reducer, undefined, () => initialState())
+  const [state, dispatch] = useReducer(reducer, undefined, () =>
+    initialState('area', readCompleted('entropia').map(i => LESSONS[i].id)),
+  )
   const [unit, setUnit] = useState<'k' | 'si' | 'bits'>('k')
+  useBlackHoleProgress('entropia', state.completed, LESSONS)
   const model = entropyModel(state.mass, state.emitted)
   const lesson = LESSONS.find((l) => l.id === state.lesson)!
   const lessonIndex = LESSONS.findIndex((l) => l.id === state.lesson)
@@ -44,7 +50,7 @@ export default function EntropyApp() {
     unit === 'k' ? model.current.entropyOverK : unit === 'si' ? model.entropyJK : model.entropyBits
   const tryLesson = () => dispatch({ type: 'try' })
   return (
-    <div className="en-shell">
+    <div className="bh-lab en-shell">
       <a className="en-skip" href="#en-controls">
         Ir a los controles
       </a>
@@ -449,7 +455,7 @@ export default function EntropyApp() {
               <h2>Cuatro preguntas para descubrir la ley.</h2>
             </div>
             <span className="en-progress" aria-label="Retos explorados">
-              {state.completed.length} / 4 explorados
+              {state.completed.length} / 4 descubrimientos
             </span>
           </div>
           <div className="en-lesson-tabs" aria-label="Elegir reto">
@@ -482,7 +488,7 @@ export default function EntropyApp() {
               </div>
             </div>
             <div className="en-challenge-action">
-              <p>{lesson.hint}</p>
+              <p>{lesson.hint} La huella se guarda al comparar y revisar tu predicción.</p>
               <button
                 className="en-primary"
                 disabled={state.prediction === null}
@@ -608,6 +614,7 @@ export default function EntropyApp() {
             </a>
           </div>
         </section>
+        <BlackHoleNotebook current="entropia" />
         <MoreLabs current="entropia" />
       </main>
       <footer className="en-footer">

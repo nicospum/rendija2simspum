@@ -1,5 +1,8 @@
 import Tip from '../components/ui/InfoPopover'
-import { BlackHoleNavigation } from '../series/BlackHoleSeries'
+import { BlackHoleNavigation } from '../series/BlackHoleNavigation'
+import BlackHoleNotebook from '../series/BlackHoleNotebook'
+import { readCompleted } from '../series/progress'
+import { useBlackHoleProgress } from '../series/usePassport'
 import { LabMission, LabNavigation, MoreLabs } from '../components/ui/LabJourney'
 import { useEffect, useReducer, useState } from 'react'
 import SceneExplorer from './SceneExplorer'
@@ -62,8 +65,11 @@ function useClock(running: boolean, dispatch: Dispatch<Action>) {
 }
 
 export default function HawkingApp() {
-  const [state, dispatch] = useReducer(reducer, undefined, () => initialState())
+  const [state, dispatch] = useReducer(reducer, undefined, () =>
+    initialState('mass', readCompleted('hawking').map(i => LESSONS[i].id)),
+  )
   const [motion, setMotion] = useState(true)
+  useBlackHoleProgress('hawking', state.completed, LESSONS)
   const { reduced, visible } = useMotion()
   useClock(state.running, dispatch)
   const current = reading(state),
@@ -145,7 +151,7 @@ export default function HawkingApp() {
           },
         ]
   return (
-    <div className="hk-shell">
+    <div className="bh-lab hk-shell">
       <a className="hk-skip" href="#hk-controls">
         Ir a los controles
       </a>
@@ -515,7 +521,7 @@ export default function HawkingApp() {
               <p className="hk-eyebrow">CAMBIAR · COMPARAR · ENTENDER</p>
               <h2 id="hk-challenges-title">Cuatro preguntas a la oscuridad.</h2>
             </div>
-            <span className="hk-progress">{state.completed.length} / 4 explorados</span>
+            <span className="hk-progress">{state.completed.length} / 4 descubrimientos</span>
           </div>
           <div className="hk-lesson-nav" aria-label="Elegir reto">
             {LESSONS.map((item, i) => (
@@ -562,7 +568,7 @@ export default function HawkingApp() {
                   Restaurar
                 </button>
               </div>
-              <p className="hk-footnote">{lesson.hint}</p>
+              <p className="hk-footnote">{lesson.hint} La huella se guarda al comparar y revisar tu predicción.</p>
             </div>
             <div
               className="hk-lesson-result"
@@ -849,6 +855,7 @@ export default function HawkingApp() {
             Leer la investigación, las derivaciones y las fuentes <Arrow />
           </a>
         </section>
+        <BlackHoleNotebook current="hawking" />
         <MoreLabs current="hawking" />
       </main>
       <footer className="hk-footer">

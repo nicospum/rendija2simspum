@@ -7,6 +7,7 @@ import type { ChapterId } from './progress'
 import Passport from './Passport'
 import EnergyNotebook from './EnergyNotebook'
 import Artifact from './Artifact'
+import FieldEquationNotebook from './FieldEquationNotebook'
 import './special.css'
 const families = [
   ['todo', 'Todo el viaje'],
@@ -77,42 +78,42 @@ export default function EinsteinSeries() {
           </figure>
         </section>
         <Passport />
-        <section className="en-train">
+        <section className="en-train en-train-photo">
           <figure>
             <img
-              src="/einstein/tren-espejo-de-sal-v1.webp"
-              width="1774"
-              height="887"
-              alt="Un tren de colores cálidos y su reflejo sobre un espejo de sal, con Einstein asomado a una ventana"
+              src="/einstein/tren-ecuaciones-referencia-v1.png"
+              width="448"
+              height="336"
+              alt="Locomotora oxidada con la ecuación de campo de Einstein pintada en blanco"
               loading="lazy"
               decoding="async"
             />
             <figcaption>
-              Un viaje imaginario inspirado en el Salar de Uyuni.
-              Ilustración, no un viaje histórico de Einstein.
+              La foto que inspiró esta parada. Ecuaciones de campo sobre una
+              locomotora; fotografía compartida para SPUM.
             </figcaption>
           </figure>
           <div>
-            <p className="en-kicker">
-              PRÓXIMA ESTACIÓN: UN «AHORA» DIFERENTE
-            </p>
+            <p className="en-kicker">UNA PINTADA / UNA IDEA ENORME</p>
             <h2>
-              Un tren.
+              Una locomotora.
               <br />
-              Dos miradas.
+              Una ecuación.
               <br />
-              <em>¿El mismo presente?</em>
+              <em>Todo un universo.</em>
             </h2>
             <p>
-              Dos destellos ocurren a la vez para alguien en el andén.
-              ¿También para quien viaja? Subite a uno de los experimentos
-              mentales más famosos del recorrido.
+              La fórmula de la foto relaciona la geometría del
+              espacio-tiempo con la energía y el momento. Es una de las
+              grandes ideas de la relatividad general. Vamos a leerla
+              juntos, por partes.
             </p>
-            <a className="en-primary" href="/tren-de-einstein/">
-              Subir al tren de Einstein →
+            <a className="en-primary" href="#en-field">
+              Descifrar la ecuación ↓
             </a>
           </div>
         </section>
+        <FieldEquationNotebook />
         <section
           id="en-route"
           className="en-route"

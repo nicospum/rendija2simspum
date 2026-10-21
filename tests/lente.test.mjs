@@ -159,7 +159,8 @@ test('all four lessons isolate their intended condition and keep references immu
     const state = initialState(lesson.id),
       reference = structuredClone(state.reference)
     assert.equal(lessonStatus(state), 'ready')
-    const next = reducer(state, { type: 'try' })
+    const predicted = reducer(state, { type: 'predict', value: lesson.answer })
+    const next = reducer(predicted, { type: 'try' })
     assert.equal(lessonStatus(next), 'observed')
     assert.deepEqual(next.reference, reference)
     assert.notEqual(next.reference, next)

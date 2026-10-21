@@ -111,8 +111,8 @@ test('invalid physical inputs fail explicitly instead of producing NaN or infini
 })
 test('four guided changes isolate their intended variable and preserve immutable references', () => {
   const allowed = { mass: ['mass'], bath: ['environment'], time: ['age'], entropy: ['mass'] }
-  for (const { id } of LESSONS) {
-    const before = initialState(id),
+  for (const { id, answer } of LESSONS) {
+    const before = reducer(initialState(id), { type: 'predict', choice: answer }),
       snapshot = structuredClone(before.reference)
     const after = reducer(before, { type: 'try' })
     assert.deepEqual(
@@ -130,7 +130,7 @@ test('four guided changes isolate their intended variable and preserve immutable
 })
 test('lesson feedback rejects confounded comparisons and all four lessons can be explored', () => {
   let state = initialState()
-  for (const { id } of LESSONS) {
+  for (const { id, answer } of LESSONS) {
     state = reducer(state, { type: 'lesson', id })
     const changed =
       id === 'bath'
@@ -138,6 +138,7 @@ test('lesson feedback rejects confounded comparisons and all four lessons can be
         : reducer(state, { type: 'environment', environment: 'cmb' })
     assert.equal(lessonStatus(changed), 'changed')
     assert.ok(!changed.completed.includes(id))
+    state = reducer(state, { type: 'predict', choice: answer })
     state = reducer(state, { type: 'try' })
     assert.equal(lessonStatus(state), 'observed')
   }

@@ -1,0 +1,270 @@
+.en-field {
+  margin: 45px 0;
+  padding: 35px;
+  border: 1px solid #cbbd9e;
+  border-radius: 20px;
+  background: #fff9ec;
+  color: #283f49;
+  scroll-margin-top: 24px;
+}
+.en-field h2 {
+  font:
+    clamp(32px, 4vw, 49px) / 1.12 Georgia,
+    serif;
+  margin: 16px 0;
+}
+.en-field h2 em {
+  color: #ac513a;
+}
+.en-field > p:not(.en-kicker) {
+  font:
+    14px/1.8 'Segoe UI',
+    sans-serif;
+  max-width: 760px;
+  color: #556261;
+}
+.en-field-formula {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 28px 0;
+  padding: 20px;
+  border-radius: 16px;
+  background: #e9eddc;
+}
+.en-field-formula > span {
+  font:
+    30px Georgia,
+    serif;
+  color: #6a776c;
+}
+.en-field-formula button {
+  min-height: 122px;
+  flex: 1;
+  padding: 16px 12px;
+  border: 1px solid #b7bfa6;
+  background: #f7f8eb;
+  color: #31564d;
+  border-radius: 12px;
+  cursor: pointer;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  transition: none;
+}
+.en-field-formula button[aria-pressed='true'] {
+  background: #264e4b;
+  color: #fff4d9;
+  border-color: #264e4b;
+  box-shadow: 0 4px 0 #bec6ae;
+}
+.en-special .en-field-formula button {
+  transition: none;
+}
+.en-field-formula button > span {
+  font:
+    clamp(22px, 3vw, 36px) / 1.3 Georgia,
+    serif;
+  white-space: nowrap;
+}
+.en-field-formula small {
+  font:
+    9px/1.5 Consolas,
+    monospace;
+  letter-spacing: 0.8px;
+}
+.en-field-fraction {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+.en-field-fraction > span:first-child {
+  border-bottom: 1px solid currentColor;
+  padding: 0 8px 3px;
+}
+.en-field-fraction sup {
+  font-size: 0.6em;
+}
+.en-field-explanation {
+  border-left: 3px solid #b56543;
+  padding: 4px 0 4px 20px;
+  min-height: 170px;
+}
+.en-field-explanation h3 {
+  font:
+    26px Georgia,
+    serif;
+  margin: 8px 0;
+}
+.en-field-explanation p,
+.en-field-bridge p {
+  font:
+    14px/1.8 'Segoe UI',
+    sans-serif;
+  color: #52645f;
+}
+.en-field-explanation p:last-child {
+  color: #93482f;
+}
+.en-field-bridge {
+  margin: 24px 0;
+  padding: 22px;
+  background: #efe5cf;
+  border-radius: 12px;
+}
+.en-field-bridge strong {
+  font:
+    23px Georgia,
+    serif;
+}
+.en-field-question {
+  border: 1px dashed #b6b99c;
+  border-radius: 12px;
+  padding: 18px;
+  min-width: 0;
+  margin: 25px 0;
+}
+.en-field-question legend {
+  font:
+    20px/1.5 Georgia,
+    serif;
+  padding: 0 8px;
+  max-width: 100%;
+}
+.en-field-question > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.en-field-question button {
+  min-height: 46px;
+  padding: 12px 16px;
+  border: 1px solid #a4b3a7;
+  color: #284c47;
+  background: #eff2e5;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: left;
+}
+.en-field-question button[aria-pressed='true'] {
+  border-color: #aa583f;
+  background: #f3dfc7;
+}
+.en-field-question p {
+  color: #315c50;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.en-field details {
+  border-top: 1px solid #d9ceb8;
+  padding-top: 12px;
+}
+.en-field summary {
+  min-height: 44px;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+}
+.en-field details p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #566663;
+}
+.en-field-links,
+.en-field-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 25px;
+  margin-top: 18px;
+}
+.en-field a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  color: #995239;
+  font-size: 12px;
+}
+.en-field .en-field-source {
+  font-size: 12px !important;
+  color: #687368 !important;
+}
+.en-train.en-train-photo {
+  background: #eee1c4;
+  align-items: center;
+}
+.en-train-photo figure {
+  padding: 25px;
+  transform: rotate(-1.5deg);
+}
+.en-train-photo figure img {
+  border: 10px solid #fff9ec;
+  box-shadow: 0 9px 22px #463a2430;
+  width: 100%;
+  max-width: 448px;
+  margin: auto;
+  border-radius: 2px;
+}
+.en-train-photo figcaption {
+  padding: 18px 5px 0;
+  color: #6c614b;
+}
+@media (max-width: 850px) {
+  .en-field {
+    padding: 24px;
+  }
+  .en-field-formula {
+    padding: 12px;
+    gap: 7px;
+  }
+  .en-field-formula button {
+    padding: 13px 8px;
+  }
+  .en-field-explanation {
+    min-height: 205px;
+  }
+}
+@media (max-width: 550px) {
+  .en-field {
+    padding: 20px;
+  }
+  .en-field-formula {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px;
+  }
+  .en-field-formula button {
+    flex: none;
+    width: calc(50% - 22px);
+    min-height: 112px;
+  }
+  .en-field-formula button:first-child {
+    width: 100%;
+  }
+  .en-field-formula > span:first-of-type {
+    width: 100%;
+    text-align: center;
+    line-height: 1;
+  }
+  .en-field-formula button > span {
+    font-size: 27px;
+  }
+  .en-field-formula small {
+    font-size: 8px;
+  }
+  .en-field-explanation {
+    min-height: 270px;
+    padding-left: 15px;
+  }
+  .en-field h2 {
+    font-size: 32px;
+  }
+  .en-train-photo figure {
+    padding: 22px 20px 0;
+  }
+}

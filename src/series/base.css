@@ -1,0 +1,30 @@
+:root {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #e7edf1;
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+html {
+  scroll-behavior: auto;
+  scroll-padding-top: 24px;
+}
+a {
+  color: inherit;
+}
+button,
+input {
+  font: inherit;
+}
+button,
+input,
+a {
+  touch-action: manipulation;
+}

@@ -5,7 +5,10 @@ import {
   LabNavigation,
   MoreLabs,
 } from '../components/ui/LabJourney'
-import { BlackHoleNavigation } from '../series/BlackHoleSeries'
+import { BlackHoleNavigation } from '../series/BlackHoleNavigation'
+import BlackHoleNotebook from '../series/BlackHoleNotebook'
+import { readCompleted } from '../series/progress'
+import { useBlackHoleProgress } from '../series/usePassport'
 import { scientific } from '../hawking/physics'
 import Scene, { LightFutures, SignalColor } from './Scene'
 import { model, pulseTrain, MAX_TIME, lapse, RECEIVER } from './physics'
@@ -37,12 +40,15 @@ function Clock({
   )
 }
 export default function HorizonApp() {
-  const [state, dispatch] = useReducer(reducer, undefined, () => initialState())
+  const [state, dispatch] = useReducer(reducer, undefined, () =>
+    initialState(0, readCompleted('horizonte')),
+  )
   const [view, setView] = useState<'map' | 'light'>('map')
   const [visible, setVisible] = useState(!document.hidden)
   const [reduceMotion, setReduceMotion] = useState(
     () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
   )
+  useBlackHoleProgress('horizonte', state.learning.completed)
   useEffect(() => {
     const onVisibility = () => setVisible(!document.hidden)
     const media = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -99,7 +105,7 @@ export default function HorizonApp() {
       ? 'No llega al exterior'
       : `${n(p.arrival * lapse(RECEIVER) * m.unit, 1)} s`
   return (
-    <div className="ac-shell hz-shell">
+    <div className="bh-lab ac-shell hz-shell">
       <a className="ac-skip" href="#hz-controls">
         Ir a los controles
       </a>
@@ -922,6 +928,7 @@ export default function HorizonApp() {
             </details>
           </div>
         </section>
+        <BlackHoleNotebook current="horizonte" />
         <MoreLabs current="horizonte" />
       </main>
       <footer className="ac-footer">

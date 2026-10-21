@@ -148,7 +148,7 @@ export function reducer(state: State, action: Action): State {
   }
   // Completion requires a prediction and the specified comparison, not an arbitrary click.
   if (
-    next.prediction !== null &&
+    next.prediction === LESSONS.find(lesson => lesson.id === next.lesson)!.answer &&
     lessonStatus(next) === 'observed' &&
     !next.completed.includes(next.lesson)
   )

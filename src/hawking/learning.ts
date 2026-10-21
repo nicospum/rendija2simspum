@@ -161,7 +161,9 @@ export function reducer(state: LabState, action: Action): LabState {
         ? { ...state, running: !state.running }
         : state
     case 'predict':
-      return { ...state, prediction: action.choice }
+      if (!Number.isInteger(action.choice) || action.choice < 0 || action.choice > 1) return state
+      next = { ...state, prediction: action.choice }
+      break
     case 'restore':
       return { ...state, ...state.reference, running: false, prediction: null }
     case 'try':
@@ -173,7 +175,9 @@ export function reducer(state: LabState, action: Action): LabState {
             : { ...state, ...state.reference, mass: 2 * state.reference.mass, running: false }
       break
   }
-  if (lessonStatus(next) === 'observed' && !next.completed.includes(next.lesson))
+  if (lessonStatus(next) === 'observed' &&
+    next.prediction === LESSONS.find(lesson => lesson.id === next.lesson)!.answer &&
+    !next.completed.includes(next.lesson))
     return { ...next, completed: [...next.completed, next.lesson] }
   return next
 }

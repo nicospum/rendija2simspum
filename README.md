@@ -10,7 +10,7 @@ Una colección de laboratorios interactivos para aprender ciencia haciendo pregu
 - `/entropia/`: fórmula de Bekenstein–Hawking, área, evaporación y contabilidad de entropía con cuatro retos.
 - `/acrecion/`: cómo vemos lo invisible; disco de acreción, luz curvada, Doppler y órbita de una estrella testigo, con cuatro retos.
 - `/horizonte/`: caída libre, relojes sostenidos, cruce del horizonte y señales de luz con cuatro retos.
-- `/agujeros-negros/`: especial que conecta lente, acreción, horizonte, Hawking y entropía con un índice y navegación entre capítulos.
+- `/agujeros-negros/`: Atlas de lo invisible; cinco laboratorios conectados, bitácora de 20 retos, explorador de escalas e historia de las ideas y observaciones.
 - `/reloj-de-luz/`: dos vistas del mismo pulso, dilatación temporal y cuatro retos de relatividad especial.
 - `/tren-de-einstein/`: simultaneidad, señales de luz y mediciones de longitud desde el tren y el andén, con cuatro retos.
 - `/nos-vemos-a-la-vuelta/`: gemelos, tiempo propio, giro y cuatro retos con viaje y espacio-tiempo.
@@ -18,7 +18,7 @@ Una colección de laboratorios interactivos para aprender ciencia haciendo pregu
 - `/el-tiempo-tiene-altura/`: relojes a distintas alturas, tiempo propio, dilatación gravitatoria y balance del GPS con cuatro retos.
 - `/orbita-que-no-se-cierra/`: Mercurio, precesión relativista, comparación de Newton y Einstein y cuatro retos.
 - `/efecto-fotoelectrico/`: frecuencia, brillo, materiales, emisión de electrones y cuatro retos sobre el Nobel de Einstein.
-- `/einstein/`: cuaderno ilustrado con tres laboratorios de relatividad especial, tres de relatividad general y el efecto fotoeléctrico; 28 retos, pasaporte local, mapa por preguntas y exploración de E₀ = mc².
+- `/einstein/`: cuaderno ilustrado con tres laboratorios de relatividad especial, tres de relatividad general y el efecto fotoeléctrico; 28 retos, pasaporte local, ecuación de campo interactiva y exploración de E₀ = mc².
 
 El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las diecisiete páginas (catorce laboratorios, portada y dos especiales) se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada, los especiales, entropía, horizonte y los siete laboratorios de Einstein no cargan Three.js.
 
@@ -136,6 +136,7 @@ El prisma se integró desde `nicospum/newtonprisma`, commit `67ec9033ce3ab00a061
 ## Referencias y revisión
 
 - [Especial Einstein: diseño, pasaporte, fuentes, ilustraciones y revisión móvil](docs/ESPECIAL_EINSTEIN.md).
+- [Atlas de lo invisible y ecuación de la locomotora: cambios, física, fuentes y validación](docs/ATLAS_DE_LO_INVISIBLE.md).
 - [Feynman, comportamiento cuántico](https://www.feynmanlectures.caltech.edu/III_01.html).
 - [Feynman, amplitudes de probabilidad](https://www.feynmanlectures.caltech.edu/III_03.html).
 - [Tonomura y colaboradores, acumulación de electrones individuales](https://doi.org/10.1119/1.16104).

@@ -5,7 +5,10 @@ import {
   LabNavigation,
   MoreLabs,
 } from '../components/ui/LabJourney'
-import { BlackHoleNavigation } from '../series/BlackHoleSeries'
+import { BlackHoleNavigation } from '../series/BlackHoleNavigation'
+import BlackHoleNotebook from '../series/BlackHoleNotebook'
+import { readCompleted } from '../series/progress'
+import { useBlackHoleProgress } from '../series/usePassport'
 import DiskView from './DiskView'
 import StarView from './StarView'
 import { DEFAULT, model } from './physics'
@@ -24,16 +27,17 @@ const initialLearning: Learning = {
 }
 
 export default function AccretionApp() {
-  const [state, setState] = useState({
+  const [state, setState] = useState(() => ({
     setup: { ...DEFAULT },
-    learning: initialLearning,
-  })
+    learning: { ...initialLearning, completed: readCompleted('acrecion') },
+  }))
   const [feedback, setFeedback] = useState('')
   const [reference, setReference] = useState(false)
   const [playing, setPlaying] = useState(
     () => !window.matchMedia('(prefers-reduced-motion: reduce)').matches,
   )
   const [visible, setVisible] = useState(!document.hidden)
+  useBlackHoleProgress('acrecion', state.learning.completed)
   useEffect(() => {
     const onVisibility = () => setVisible(!document.hidden)
     document.addEventListener('visibilitychange', onVisibility)
@@ -96,7 +100,7 @@ export default function AccretionApp() {
       }))
   }
   return (
-    <div className="ac-shell">
+    <div className="bh-lab ac-shell">
       <a className="ac-skip" href="#ac-controls">
         Ir a los controles
       </a>
@@ -640,6 +644,7 @@ export default function AccretionApp() {
             </details>
           </div>
         </section>
+        <BlackHoleNotebook current="acrecion" />
         <MoreLabs current="acrecion" />
       </main>
       <footer className="ac-footer">

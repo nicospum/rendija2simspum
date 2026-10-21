@@ -1,0 +1,67 @@
+:root {
+  background: #080e20;
+  background-image:
+    radial-gradient(ellipse at 90% 5%, #30375930, transparent 45%),
+    radial-gradient(ellipse at 0% 55%, #163c4930, transparent 45%);
+  color-scheme: dark;
+}
+.bh-lab :is(.ac-intro, .ln-intro, .hk-intro, .en-intro) {
+  border-bottom: 1px solid #3c4565;
+  margin-bottom: 24px;
+  position: relative;
+}
+.bh-lab :is(.ac-intro, .ln-intro, .hk-intro, .en-intro)::after {
+  content: '✦';
+  position: absolute;
+  color: #83c7d2;
+  right: 3px;
+  bottom: 12px;
+  font-size: 25px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+.bh-lab :is(.ac-intro, .ln-intro, .hk-intro, .en-intro) h1 em {
+  color: #d2b6e4;
+}
+.bh-lab :is(.ac-header, .ln-header, .hk-header, .en-header) {
+  border-color: #414866;
+}
+.bh-lab
+  :is(.ac-header, .ln-header, .hk-header, .en-header)
+  > a:first-child {
+  white-space: nowrap;
+}
+.bh-lab .spum-mission {
+  --spum-paper: #172d3a;
+  --spum-line: #4c6478;
+  --spum-ink: #e1ebed;
+  --spum-muted: #b6ccd2;
+  --spum-accent: #9ed9d7;
+  border-radius: 13px;
+  border-left: 3px solid #8ecdd5;
+}
+.bh-lab
+  :is(
+    .ac-controls,
+    .ln-controls,
+    .hk-controls,
+    .en-controls,
+    .ac-challenges,
+    .ln-challenges,
+    .hk-challenges,
+    .en-challenges
+  ) {
+  border-radius: 15px;
+}
+.bh-lab :focus-visible,
+.bh-expedition :focus-visible {
+  outline: 3px solid #9bd5dd;
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bh-lab *,
+  .bh-expedition * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}

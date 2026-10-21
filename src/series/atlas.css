@@ -1,22 +1,3 @@
-.bh-series-shell {
-  background-image:
-    radial-gradient(ellipse at 90% 10%, #36646a20, transparent 40%),
-    radial-gradient(ellipse at 0% 65%, #614b7020, transparent 45%);
-}
-.bh-series-hero {
-  border-bottom: 1px solid #405462;
-  margin-bottom: 30px;
-}
-.bh-series-labs article {
-  border-radius: 16px;
-  box-shadow: inset 0 3px #ae9974;
-}
-.bh-series-labs article:nth-child(2n) {
-  box-shadow: inset 0 3px #689fa0;
-}
-.bh-series-labs article:last-child {
-  box-shadow: inset 0 3px #ab8cbc;
-}
 .bh-atlas {
   margin: 50px 0;
   padding: 35px;

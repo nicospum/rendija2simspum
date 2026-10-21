@@ -101,9 +101,10 @@ export default function Portal() {
               </div>
               <Arrow />
             </a>
-            <a className="portal-special-link" href="/agujeros-negros/">
-              <span>ESPECIAL AGUJEROS NEGROS</span>
-              Luz, horizontes, relojes y entropía. Un recorrido para ver lo invisible. <Arrow />
+            <a className="portal-special-link portal-black-hole-link" href="/agujeros-negros/">
+              <img src="/agujeros-negros/atlas-emblema-v1.webp" width="160" height="107" alt="" loading="lazy" decoding="async" />
+              <div><span>ATLAS DE LO INVISIBLE</span><strong>Agujeros negros. Seguí las huellas.</strong>Cinco laboratorios, 20 retos y tu bitácora de exploración.</div>
+              <Arrow />
             </a>
             {experiments.map((experiment) => (
               <article className={`portal-experiment-card ${experiment.id}`} key={experiment.id}>
