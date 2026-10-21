@@ -1,13 +1,5 @@
 import ExperimentIllustration from '../portal/ExperimentIllustration'
 import { einsteinLabs } from './catalog'
-const upcoming = [
-  [
-    '06',
-    'La órbita que no se cierra',
-    '¿Qué nos contó Mercurio?',
-    'Órbitas y curvatura.',
-  ],
-]
 export default function EinsteinSeries() {
   return (
     <div className="es-shell">
@@ -122,23 +114,32 @@ export default function EinsteinSeries() {
           <p className="rl-eyebrow">
             EL RECORRIDO QUE SIGUE / TODAVÍA NO DISPONIBLE
           </p>
-          <h2>Del movimiento a la gravedad.</h2>
+          <h2>El Einstein del Nobel: la luz y los electrones.</h2>
+          <p>
+            El Nobel de Física de 1921 destacó especialmente su ley del efecto
+            fotoeléctrico. Mercurio puso a prueba la relatividad general; el
+            Nobel nos abre otra puerta, la física cuántica.
+          </p>
           <div>
-            {upcoming.map(([number, title, question, concept]) => (
-              <article key={number}>
-                <span>
-                  {number} /{' '}
-                  {Number(number) < 4
-                    ? 'RELATIVIDAD ESPECIAL'
-                    : 'RELATIVIDAD GENERAL'}
-                </span>
-                <h3>{title}</h3>
-                <p>{question}</p>
-                <small>{concept}</small>
-                <b>Próximo capítulo</b>
-              </article>
-            ))}
+            <article>
+              <span>PRÓXIMA EXPERIENCIA / FÍSICA CUÁNTICA</span>
+              <h3>El efecto fotoeléctrico</h3>
+              <p>
+                ¿Más brillo o más frecuencia: qué consigue arrancar electrones?
+              </p>
+              <small>
+                Energía de la luz, frecuencia umbral y electrones emitidos.
+              </small>
+              <b>Propuesto · todavía no disponible</b>
+            </article>
           </div>
+          <a
+            href="https://www.nobelprize.org/prizes/physics/1921/summary/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Por qué le dieron el Nobel: fuente oficial ↗
+          </a>
         </section>
         <section className="es-bridge">
           <p className="rl-eyebrow">YA PODÉS EXPLORAR / RELATIVIDAD GENERAL</p>

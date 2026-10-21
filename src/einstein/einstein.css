@@ -165,6 +165,7 @@
   line-height: 1.7;
   color: #9eb4c3;
 }
+.es-roadmap > a { min-height:44px;display:inline-flex;align-items:center;color:#9ae7dc; }
 .es-roadmap b {
   display: block;
   font:

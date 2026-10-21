@@ -1,8 +1,14 @@
 export default function ExperimentIllustration({
   kind,
 }: {
-  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein' | 'el-tiempo-tiene-altura'
+  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein' | 'el-tiempo-tiene-altura' | 'orbita-que-no-se-cierra'
 }) {
+  if(kind==='orbita-que-no-se-cierra')return <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
+    {[0,14,28,42].map((angle,i)=><ellipse key={angle} cx="280" cy="148" rx="154" ry="94" transform={`rotate(${angle} 232 148)`} fill="none" stroke="#edb77d" opacity={.3+i*.2} strokeWidth="1.8"/>)}
+    <circle cx="232" cy="148" r="32" fill="#edb77d" opacity=".12"/><circle cx="232" cy="148" r="15" fill="#ffe2a3"/>
+    <path d="M232 148H436M232 148 394 38" fill="none" stroke="#9db7c0" strokeDasharray="4 7"/><circle cx="436" cy="148" r="5" fill="#8ce4dc"/><circle cx="394" cy="38" r="6" fill="#edb77d"/>
+    <text x="33" y="266" fontSize="10" fill="#d8c5a6" letterSpacing="2">UN GIRO DIMINUTO / UNA GRAN PISTA</text>
+  </svg>
   if(kind==='el-tiempo-tiene-altura')return <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
     <circle cx="190" cy="146" r="59" fill="#25556b" stroke="#6fb2bb"/><ellipse cx="190" cy="146" rx="137" ry="98" fill="none" stroke="#78a4b7" strokeDasharray="4 6"/><path d="m163 102 26 12 15 28-10 13 5 37-22-15-11-29-18-13Z" fill="#82af9b"/>
     <g transform="translate(300 84) rotate(35)"><rect x="-9" y="-12" width="18" height="24" fill="#ddc084"/><path d="M-40-13H-12V13H-40ZM12-13H40V13H12Z" fill="#316d94" stroke="#99c6d5"/></g>

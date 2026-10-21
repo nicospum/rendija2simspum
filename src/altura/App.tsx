@@ -790,12 +790,11 @@ export default function HeightApp() {
           <p className="rl-eyebrow">LA PRÓXIMA PREGUNTA</p>
           <h2>¿Qué le pasó a la órbita de Mercurio?</h2>
           <p>
-            El próximo capítulo será “La órbita que no se cierra”. Mientras
-            tanto, conectá estos relojes con la caída libre y el principio de
-            equivalencia.
+            Seguí con “La órbita que no se cierra”: compará Newton y Einstein y
+            descubrí la precesión del perihelio de Mercurio.
           </p>
-          <a className="al-jump" href="/ascensor-de-einstein/">
-            Volver al ascensor de Einstein ←
+          <a className="al-jump" href="/orbita-que-no-se-cierra/">
+            Explorar la órbita de Mercurio →
           </a>
         </section>
         <EinsteinNavigation current="el-tiempo-tiene-altura" />

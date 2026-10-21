@@ -1,5 +1,5 @@
 export interface Experiment {
-  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein' | 'el-tiempo-tiene-altura'
+  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein' | 'el-tiempo-tiene-altura' | 'orbita-que-no-se-cierra'
   number: string
   field: string
   title: string
@@ -129,5 +129,11 @@ export const experiments: readonly Experiment[] = [
     subtitle:'La misma Tierra. Distintos tiempos.', question:'¿Un segundo pasa igual en el suelo y en órbita?',
     discovery:'Elevá un reloj, compará el tiempo propio y explorá el balance entre gravedad y movimiento en el GPS con cuatro retos educativos.',
     tags:['Einstein','Relojes','GPS'], href:'/el-tiempo-tiene-altura/',
+  },
+  {
+    id:'orbita-que-no-se-cierra', number:'13', field:'RELATIVIDAD GENERAL', title:'La órbita que no se cierra',
+    subtitle:'Una vuelta. Una pequeña diferencia.', question:'¿Qué nos contó la órbita de Mercurio?',
+    discovery:'Compará las órbitas de Newton y Einstein, cambiá forma, distancia y masa, y descubrí la precesión de Mercurio con cuatro retos.',
+    tags:['Einstein','Mercurio','Precesión'], href:'/orbita-que-no-se-cierra/',
   },
 ]
