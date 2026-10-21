@@ -558,6 +558,7 @@ export default function LightClockApp() {
             <a href="/horizonte/">Comparar relojes cerca de un horizonte ↗</a>
           </div>
         </section>
+        <EinsteinNavigation />
         <MoreLabs current="reloj-de-luz" />
       </main>
       <footer className="rl-footer">
