@@ -31,6 +31,7 @@ export default defineConfig({
         trenDeEinstein: 'tren-de-einstein/index.html',
         gemelos: 'nos-vemos-a-la-vuelta/index.html',
         ascensor: 'ascensor-de-einstein/index.html',
+        altura: 'el-tiempo-tiene-altura/index.html',
       },
       output: {
         manualChunks(id) {

@@ -677,12 +677,11 @@ export default function ElevatorApp() {
           <p className="rl-eyebrow">LA PRÓXIMA PREGUNTA</p>
           <h2>¿El tiempo también tiene altura?</h2>
           <p>
-            El próximo capítulo comparará relojes situados a distintas alturas.
-            Mientras tanto, conectá la equivalencia con los laboratorios de
-            caída y luz cerca de agujeros negros.
+            Compará relojes situados a distintas alturas y explorá cómo la
+            gravedad y el movimiento se combinan en un satélite GPS.
           </p>
-          <a className="as-jump" href="/horizonte/">
-            Explorar Al borde del horizonte ↗
+          <a className="as-jump" href="/el-tiempo-tiene-altura/">
+            Explorar El tiempo tiene altura →
           </a>
         </section>
         <EinsteinNavigation current="ascensor-de-einstein" />

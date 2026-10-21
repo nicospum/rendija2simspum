@@ -1,0 +1,206 @@
+.al-shell .rl-intro h1 {
+  font-size: clamp(56px, 6.6vw, 94px);
+}
+.al-shell .rl-frame svg {
+  background: radial-gradient(ellipse at 50% 45%, #17364a44, transparent 75%);
+}
+.al-readings {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid #3d5869;
+  background: #142f3c;
+}
+.al-readings > div {
+  min-width: 0;
+  padding: 18px 24px;
+}
+.al-readings > div + div {
+  border-left: 1px solid #3d5869;
+}
+.al-readings span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  gap: 8px;
+  font-size: 12px;
+  color: #bed4dc;
+}
+.al-readings strong {
+  font:
+    32px Georgia,
+    serif;
+  color: #9ce8db;
+  display: block;
+  margin: 8px 0;
+  overflow-wrap: anywhere;
+}
+.al-readings small {
+  font:
+    12px 'Segoe UI',
+    sans-serif;
+}
+.al-readings p {
+  font-size: 11px;
+  color: #aecbd5;
+  margin: 8px 0;
+}
+.al-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.al-buttons button,
+.al-shell .rl-control-card button {
+  min-height: 44px;
+  padding: 10px 14px;
+  background: #142f3e;
+  border: 1px solid #4d7180;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #d6e9eb;
+}
+.al-buttons button[aria-pressed='true'] {
+  background: #244d57;
+  border-color: #a0e6dc;
+}
+.al-shell .rl-control-card .rl-primary {
+  background: #9ce8db;
+  color: #102d39;
+  border-color: #9ce8db;
+}
+.al-wide {
+  grid-column: 1/-1;
+}
+.al-shell input[type='range'] {
+  min-height: 44px;
+  width: 100%;
+  accent-color: #a0e6dc;
+  cursor: pointer;
+}
+.al-shell .rl-control-card p {
+  font-size: 12px;
+  color: #b1cdd6;
+}
+.al-shell .rl-control-label {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.al-shell .rl-control-label output {
+  font-size: 25px;
+  white-space: nowrap;
+}
+.al-effect {
+  border-left: 2px solid #a0e6dc;
+  padding: 16px 20px;
+  background: #17323f;
+  margin-top: 24px;
+}
+.al-effect > span {
+  font:
+    9px/1.8 Consolas,
+    monospace;
+  letter-spacing: 1.3px;
+  color: #a0e6dc;
+}
+.al-effect p {
+  font-size: 13px;
+  margin-bottom: 0;
+}
+.al-jump,
+.al-shell .rl-section-heading > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 12px;
+  color: #a0e6dc;
+}
+.al-gps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 20px 0;
+}
+.al-gps-grid > div {
+  border: 1px solid #436575;
+  border-radius: 6px;
+  padding: 20px;
+  background: #142e3c;
+  min-width: 0;
+}
+.al-gps-grid span {
+  font-size: 12px;
+  color: #bed4dc;
+  line-height: 1.7;
+}
+.al-gps-grid strong {
+  display: block;
+  font:
+    30px Georgia,
+    serif;
+  color: #a0e6dc;
+  margin: 14px 0;
+  overflow-wrap: anywhere;
+}
+.al-gps-grid p,
+.al-shell #al-gps > p,
+.al-shell .rl-science details p {
+  font-size: 13px;
+  color: #b7cfd9;
+}
+.al-shell .rl-formula span {
+  overflow-wrap: anywhere;
+}
+.al-shell #al-question:focus {
+  outline: none;
+}
+@media (max-width: 850px) {
+  .al-shell .rl-intro h1 {
+    font-size: clamp(54px, 12vw, 88px);
+  }
+  .al-readings {
+    grid-template-columns: 1fr 1fr;
+  }
+  .al-readings > div {
+    padding: 12px 16px;
+  }
+  .al-readings > div:last-child {
+    grid-column: 1/-1;
+    border-left: 0;
+    border-top: 1px solid #3d5869;
+  }
+  .al-readings strong {
+    font-size: 28px;
+  }
+  .al-gps-grid {
+    grid-template-columns: 1fr;
+  }
+  .al-shell .rl-observatory h2 {
+    font-size: 28px;
+  }
+  .al-shell .rl-frame-heading h3 {
+    font-size: 24px;
+  }
+  .al-shell .rl-control-label output {
+    font-size: 23px;
+  }
+}
+@media (max-width: 370px) {
+  .al-shell .rl-intro h1 {
+    font-size: 52px;
+    letter-spacing: -2px;
+  }
+  .al-readings > div {
+    padding: 10px 12px;
+  }
+  .al-readings span {
+    font-size: 11px;
+  }
+  .al-readings strong {
+    font-size: 25px;
+  }
+  .al-shell .rl-control-label output {
+    font-size: 22px;
+  }
+}

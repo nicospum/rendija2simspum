@@ -2,12 +2,6 @@ import ExperimentIllustration from '../portal/ExperimentIllustration'
 import { einsteinLabs } from './catalog'
 const upcoming = [
   [
-    '05',
-    'El tiempo tiene altura',
-    '¿Por qué el GPS necesita a Einstein?',
-    'Relojes, movimiento y gravedad.',
-  ],
-  [
     '06',
     'La órbita que no se cierra',
     '¿Qué nos contó Mercurio?',

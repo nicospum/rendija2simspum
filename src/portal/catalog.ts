@@ -1,5 +1,5 @@
 export interface Experiment {
-  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein'
+  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein' | 'el-tiempo-tiene-altura'
   number: string
   field: string
   title: string
@@ -123,5 +123,11 @@ export const experiments: readonly Experiment[] = [
     subtitle:'Una cabina pequeña. Una idea enorme.', question:'¿Gravedad o aceleración?',
     discovery:'Soltá pelotas, compará la balanza y seguí un pulso de luz en cuatro escenarios para descubrir el principio de equivalencia con cuatro retos.',
     tags:['Einstein','Caída libre','Equivalencia'], href:'/ascensor-de-einstein/',
+  },
+  {
+    id:'el-tiempo-tiene-altura', number:'12', field:'RELATIVIDAD GENERAL', title:'El tiempo tiene altura',
+    subtitle:'La misma Tierra. Distintos tiempos.', question:'¿Un segundo pasa igual en el suelo y en órbita?',
+    discovery:'Elevá un reloj, compará el tiempo propio y explorá el balance entre gravedad y movimiento en el GPS con cuatro retos educativos.',
+    tags:['Einstein','Relojes','GPS'], href:'/el-tiempo-tiene-altura/',
   },
 ]

@@ -1,8 +1,14 @@
 export default function ExperimentIllustration({
   kind,
 }: {
-  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein'
+  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein' | 'el-tiempo-tiene-altura'
 }) {
+  if(kind==='el-tiempo-tiene-altura')return <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
+    <circle cx="190" cy="146" r="59" fill="#25556b" stroke="#6fb2bb"/><ellipse cx="190" cy="146" rx="137" ry="98" fill="none" stroke="#78a4b7" strokeDasharray="4 6"/><path d="m163 102 26 12 15 28-10 13 5 37-22-15-11-29-18-13Z" fill="#82af9b"/>
+    <g transform="translate(300 84) rotate(35)"><rect x="-9" y="-12" width="18" height="24" fill="#ddc084"/><path d="M-40-13H-12V13H-40ZM12-13H40V13H12Z" fill="#316d94" stroke="#99c6d5"/></g>
+    <path d="M370 220V65M370 175 520 78M370 175 520 200M370 175 520 104" fill="none" stroke="#7ca2b0"/><path d="M370 175 520 78" stroke="#eabf90" strokeWidth="2"/><path d="M370 175 520 200" stroke="#c1a3dd" strokeWidth="2"/><path d="M370 175 520 104" stroke="#99e5db" strokeWidth="3"/>
+    <g fill="#b6cfd8" fontFamily="Consolas,monospace" fontSize="10" letterSpacing="1.2"><text x="32" y="270">ALTURA / TIEMPO PROPIO / GPS</text><text x="407" y="270">CUATRO RETOS</text></g>
+  </svg>
   if(kind==='ascensor-de-einstein')return <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
     <path d="M160 20V54M410 20V54" stroke="#8bafb8"/><rect x="70" y="54" width="180" height="171" rx="12" fill="#143443" stroke="#98d7d0"/><rect x="320" y="54" width="180" height="171" rx="12" fill="#143443" stroke="#98d7d0"/>
     <path d="M70 225H250M320 225H500" stroke="#bce7df" strokeWidth="5"/><path d="M120 95V170M190 95V170M370 95V170M440 95V170" stroke="#7ba8b7" strokeDasharray="3 5"/>
