@@ -1,5 +1,5 @@
 import { useEffect, useId, useReducer, useState } from 'react'
-import Horizon from './Horizon'
+import SceneExplorer from './SceneExplorer'
 import Spectrum from './Spectrum'
 import LiveImpact from './LiveImpact'
 import EntropyExplorer from './EntropyExplorer'
@@ -7,6 +7,8 @@ import { factor, impact } from './impact'
 import { BALANCE_MASS, CMB, MAX_AGE, SOLAR_MASS, YEAR, scientific } from './physics'
 import { initialState, LESSONS, lessonStatus, reading, reducer } from './learning'
 import type { Action } from './learning'
+import type { LessonId } from './learning'
+import { massInWindow, massWindow } from './exploration'
 import type { Dispatch, ReactNode } from 'react'
 
 function Arrow() {
@@ -98,7 +100,20 @@ export default function HawkingApp() {
   const status = lessonStatus(state)
   const ratio = current.massKg / reference.massKg
   const effect = impact(state, state.reference)
-  const [sceneInfo, setSceneInfo] = useState(false)
+  const [massAnchor, setMassAnchor] = useState(1e12)
+  const massRange = massWindow(massAnchor)
+  function prepareLesson(id: LessonId) {
+    setMassAnchor(id === 'bath' ? SOLAR_MASS : 1e12)
+    dispatch({ type: 'lesson', id })
+  }
+  function restoreReference() {
+    setMassAnchor(state.reference.mass)
+    dispatch({ type: 'restore' })
+  }
+  function tryLesson() {
+    setMassAnchor(state.reference.mass)
+    dispatch({ type: 'try' })
+  }
   const ratios =
     state.lesson === 'time'
       ? [
@@ -209,69 +224,25 @@ export default function HawkingApp() {
 
         <div className="hk-workspace">
           <section className="hk-observatory" id="hk-view" aria-label="Visor del agujero negro">
-            <div className="hk-scene">
-              <Horizon
-                ratio={ratio}
-                bath={state.environment === 'cmb'}
-                moving={motion && !reduced && visible}
-                emission={effect.emissionSignal}
-                absorption={effect.absorptionSignal}
-              />
-              <div className="hk-scene-top">
-                <span>
-                  <i /> HORIZONTE DE SUCESOS
-                </span>
-                <button
-                  onClick={() => setMotion(!motion)}
-                  aria-pressed={!motion}
-                  disabled={reduced}
-                >
-                  {reduced ? 'Movimiento reducido' : motion ? 'Pausar visual' : 'Animar visual'}
-                </button>
-              </div>
-              <div className="hk-scene-label">
-                <span>SCHWARZSCHILD</span>
-                <strong>{scientific(current.massKg, 'kg')}</strong>
-                <small>{scientific(current.massKg / SOLAR_MASS)} masas solares nominales</small>
-              </div>
-              <button
-                className="hk-horizon-info"
-                aria-expanded={sceneInfo}
-                onClick={() => setSceneInfo(!sceneInfo)}
-              >
-                ¿Qué estoy viendo? <span aria-hidden="true">{sceneInfo ? '−' : '+'}</span>
-              </button>
-              {sceneInfo && (
-                <div className="hk-scene-explainer">
-                  El disco oscuro marca el horizonte. El borde dorado y los puntos son símbolos de
-                  la emisión; no son una foto, una temperatura visible ni trayectorias de
-                  partículas. Ninguna señal sale del interior. La trama es ilustrativa, no un
-                  cálculo de lente gravitatoria. El brillo y la velocidad de los marcadores se
-                  amplifican a partir de la potencia relativa a la referencia; no representan
-                  fotones individuales ni velocidades físicas.
-                </div>
-              )}
-              <div className="hk-scene-key">
-                <span>
-                  <i />
-                  Emisión
-                </span>
-                {state.environment === 'cmb' && (
-                  <span>
-                    <i />
-                    Entorno entrante
-                  </span>
-                )}
-                <span>Potencia relativa · señal visual amplificada</span>
-              </div>
-            </div>
+            <SceneExplorer
+              current={current}
+              reference={reference}
+              moving={motion && !reduced && visible}
+              emission={effect.emissionSignal}
+              absorption={effect.absorptionSignal}
+              motion={motion}
+              reduced={reduced}
+              onToggle={() => setMotion(!motion)}
+            />
             <div className="hk-measurements">
               <div>
                 <span>
                   Temperatura{' '}
                   <Tip name="Temperatura">
                     T = ℏc³/(8πGMkB). Al duplicar la masa, se reduce a la mitad. Se refiere a un
-                    observador lejano.
+                    observador lejano. No es la temperatura del gas de un disco de acreción. Los
+                    colores dorado y azul del esquema identifican flujos; no son colores térmicos
+                    observados. Ahora T = {scientific(current.temperatureK, 'K')}.
                   </Tip>
                 </span>
                 <strong>{scientific(current.temperatureK, 'K')}</strong>
@@ -282,7 +253,8 @@ export default function HawkingApp() {
                   Radio del horizonte{' '}
                   <Tip name="Radio">
                     rₛ = 2GM/c². La esfera del horizonte crece con la masa. No es una superficie
-                    material.
+                    material. El círculo punteado permite comparar con el radio inicial del reto.
+                    Acercar el visor amplía ambos; cambiar la masa sí cambia el radio físico.
                   </Tip>
                 </span>
                 <strong>{scientific(current.radiusM, 'm')}</strong>
@@ -293,7 +265,9 @@ export default function HawkingApp() {
                   Potencia emitida ideal{' '}
                   <Tip name="Potencia ideal">
                     P = ℏc⁶/(15360πG²M²). Aproximación de cuerpo negro con área del horizonte, solo
-                    fotones; omite cuerpo gris y otras partículas.
+                    fotones; omite cuerpo gris y otras partículas. Un watt es un joule de energía
+                    por segundo. Si dividís M por dos, Pideal crece por cuatro; esa energía sale de
+                    la masa, E = Mc².
                   </Tip>
                 </span>
                 <strong>{scientific(current.powerW, 'W')}</strong>
@@ -304,7 +278,9 @@ export default function HawkingApp() {
                   Potencia neta ideal{' '}
                   <Tip name="Balance de energía">
                     Emitida − absorbida. Positiva: pierde masa. Negativa: gana masa. El baño usa la
-                    misma emisividad y absorptividad ideales.
+                    misma emisividad y absorptividad ideales. Mirá las dos barras debajo del visor:
+                    la mayor decide el signo del balance. El flujo dorado no desaparece cuando
+                    predomina la absorción azul.
                   </Tip>
                 </span>
                 <strong>{scientific(current.netW, 'W')}</strong>
@@ -329,32 +305,54 @@ export default function HawkingApp() {
             <div
               className={`hk-control-group ${state.lesson === 'mass' || state.lesson === 'entropy' ? 'hk-highlight' : ''}`}
             >
-              <label htmlFor="hk-mass">
-                Masa inicial <output>{scientific(state.mass, 'kg')}</output>
-              </label>
+              <div className="hk-control-title">
+                <label htmlFor="hk-mass">
+                  Masa inicial <output>{scientific(state.mass, 'kg')}</output>
+                </label>
+                <Tip name="Control de masa">
+                  La masa no es un zoom. Cambia rₛ, T, potencia, vida ideal y entropía. Ahora
+                  explorás entre media y dos veces la escala elegida. Moverla reinicia el tiempo;
+                  acercar el visor conserva todas las magnitudes.
+                </Tip>
+              </div>
               <input
                 id="hk-mass"
                 type="range"
-                min="9"
-                max="40"
+                min="0.5"
+                max="2"
                 step="0.01"
-                value={Math.log10(state.mass)}
-                aria-valuetext={scientific(state.mass, 'kilogramos')}
-                onChange={(e) => dispatch({ type: 'mass', mass: 10 ** Number(e.target.value) })}
+                value={state.mass / massAnchor}
+                aria-valuetext={`${factor(state.mass / massAnchor)} de la escala elegida: ${scientific(state.mass, 'kilogramos')}`}
+                onChange={(e) =>
+                  dispatch({
+                    type: 'mass',
+                    mass: massInWindow(massAnchor, massAnchor * Number(e.target.value)),
+                  })
+                }
               />
               <div className="hk-range-ends">
-                <span>10⁹ kg</span>
-                <span>10⁴⁰ kg · escala logarítmica</span>
+                <span>½ de la escala</span>
+                <span>2 veces la escala</span>
               </div>
               <p>
-                Menos masa → más temperatura. El deslizador recorre órdenes de magnitud; los botones
-                permiten comparar cambios pequeños.
+                Rango lineal y acotado: {scientific(massRange.min, 'kg')} a{' '}
+                {scientific(massRange.max, 'kg')}. Cambiá de escala con los ejemplos de abajo.
               </p>
               <div className="hk-mass-steps">
-                <button onClick={() => dispatch({ type: 'mass', mass: state.mass / 2 })}>
+                <button
+                  disabled={state.mass <= massRange.min}
+                  onClick={() =>
+                    dispatch({ type: 'mass', mass: massInWindow(massAnchor, state.mass / 2) })
+                  }
+                >
                   Masa ÷2
                 </button>
-                <button onClick={() => dispatch({ type: 'mass', mass: state.mass * 2 })}>
+                <button
+                  disabled={state.mass >= massRange.max}
+                  onClick={() =>
+                    dispatch({ type: 'mass', mass: massInWindow(massAnchor, state.mass * 2) })
+                  }
+                >
                   Masa ×2
                 </button>
               </div>
@@ -366,10 +364,22 @@ export default function HawkingApp() {
                 Ver el efecto y comparar ↑
               </a>
               <div className="hk-presets">
-                <button onClick={() => dispatch({ type: 'mass', mass: 1e12 })}>
+                <button
+                  aria-pressed={massAnchor === 1e12}
+                  onClick={() => {
+                    setMassAnchor(1e12)
+                    dispatch({ type: 'mass', mass: 1e12 })
+                  }}
+                >
                   10¹² kg hipotético
                 </button>
-                <button onClick={() => dispatch({ type: 'mass', mass: SOLAR_MASS })}>
+                <button
+                  aria-pressed={massAnchor === SOLAR_MASS}
+                  onClick={() => {
+                    setMassAnchor(SOLAR_MASS)
+                    dispatch({ type: 'mass', mass: SOLAR_MASS })
+                  }}
+                >
                   1 masa solar
                 </button>
               </div>
@@ -406,12 +416,30 @@ export default function HawkingApp() {
                 </strong>{' '}
                 La temperatura de Hawking no cambia al activar el fondo.
               </p>
+              <div className="hk-inline-help">
+                <span>¿Qué significa el fondo cósmico?</span>
+                <Tip name="Fondo cósmico">
+                  Es radiación que llena el universo, remanente de su etapa temprana. Acá usamos un
+                  baño uniforme a 2,7255 K. Si está más caliente que el agujero negro, la absorción
+                  domina aunque este siga emitiendo. El azul simboliza esa energía entrante; las
+                  estrellas decorativas del visor no son el fondo cósmico.
+                </Tip>
+              </div>
             </fieldset>
             <div className={`hk-control-group ${state.lesson === 'time' ? 'hk-highlight' : ''}`}>
-              <label htmlFor="hk-age">
-                Tiempo transcurrido{' '}
-                <output>{(state.age * 100).toFixed(1).replace('.', ',')} % de τ₀</output>
-              </label>
+              <div className="hk-control-title">
+                <label htmlFor="hk-age">
+                  Tiempo transcurrido{' '}
+                  <output>{(state.age * 100).toFixed(1).replace('.', ',')} % de τ₀</output>
+                </label>
+                <Tip name="Tiempo y evaporación">
+                  τ₀ es la vida ideal calculada desde la masa inicial, en vacío. Avanzar al 75 % no
+                  deja el 25 % de masa: M/M₀ = ∛(1 − t/τ₀), por eso queda cerca del 63 %. Cuanta
+                  menos masa queda, más caliente y potente se vuelve. La velocidad del reloj solo
+                  comprime tiempo; no cambia esa ley. Con fondo cósmico no aplicamos esta solución
+                  aislada.
+                </Tip>
+              </div>
               <input
                 id="hk-age"
                 type="range"
@@ -470,7 +498,7 @@ export default function HawkingApp() {
                 </p>
               )}
             </div>
-            <button className="hk-reset" onClick={() => dispatch({ type: 'restore' })}>
+            <button className="hk-reset" onClick={restoreReference}>
               ↺ Restaurar referencia del reto
             </button>
             <a className="hk-controls-link" href="#hk-challenges">
@@ -492,7 +520,7 @@ export default function HawkingApp() {
               <button
                 key={item.id}
                 aria-pressed={state.lesson === item.id}
-                onClick={() => dispatch({ type: 'lesson', id: item.id })}
+                onClick={() => prepareLesson(item.id)}
               >
                 <span>{state.completed.includes(item.id) ? '✓' : `0${i + 1}`}</span>
                 {item.short}
@@ -504,6 +532,15 @@ export default function HawkingApp() {
               <p className="hk-eyebrow">PRIMERO, TU PREDICCIÓN</p>
               <h3>{lesson.title}</h3>
               <p>{lesson.question}</p>
+              <div className="hk-inline-help">
+                <span>¿Qué mirar en este reto?</span>
+                <Tip name={`Guía: ${lesson.short}`}>
+                  {lesson.hint}{' '}
+                  {status === 'observed'
+                    ? lesson.meaning
+                    : 'Elegí una predicción, aplicá el cambio y compará con la referencia. Los factores × indican cuántas veces vale cada magnitud respecto del inicio; no son medidas observadas en un agujero negro real.'}
+                </Tip>
+              </div>
               <div className="hk-predictions">
                 {lesson.choices.map((choice, index) => (
                   <button
@@ -516,10 +553,10 @@ export default function HawkingApp() {
                 ))}
               </div>
               <div className="hk-lesson-actions">
-                <button className="hk-button hk-primary" onClick={() => dispatch({ type: 'try' })}>
+                <button className="hk-button hk-primary" onClick={tryLesson}>
                   {lesson.action} <Arrow />
                 </button>
-                <button className="hk-reset" onClick={() => dispatch({ type: 'restore' })}>
+                <button className="hk-reset" onClick={restoreReference}>
                   Restaurar
                 </button>
               </div>
@@ -603,10 +640,10 @@ export default function HawkingApp() {
           setup={state}
           baseline={state.reference}
           onDouble={() => {
-            dispatch({ type: 'lesson', id: 'entropy' })
+            prepareLesson('entropy')
             dispatch({ type: 'try' })
           }}
-          onRestore={() => dispatch({ type: 'restore' })}
+          onRestore={restoreReference}
         />
 
         <div className="hk-analysis-grid">
@@ -636,7 +673,7 @@ export default function HawkingApp() {
             </p>
             <button
               onClick={() => {
-                dispatch({ type: 'lesson', id: 'bath' })
+                prepareLesson('bath')
                 document
                   .getElementById('hk-view')
                   ?.scrollIntoView({ behavior: reduced ? 'instant' : 'smooth', block: 'start' })

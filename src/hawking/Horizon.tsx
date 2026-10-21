@@ -1,6 +1,8 @@
-import { Component, useEffect, useMemo, useRef, type ReactNode } from 'react'
+import { Component, useEffect, useMemo, useRef, type ReactNode, type RefObject } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { ShaderMaterial, Vector2 } from 'three'
+import { MARKER_SEEDS, visualRadius } from './exploration'
+import type { View } from './exploration'
 
 const fragment = `
 precision highp float;
@@ -11,14 +13,18 @@ uniform float uRadius;
 uniform float uBath;
 uniform float uEmission;
 uniform float uAbsorption;
+uniform float uZoom;
+uniform vec2 uFocus;
+uniform float uSeeds[40];
 float hash(vec2 p) { return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
 void main() {
-  vec2 p=(vUv-.5)*vec2(uSize.x/uSize.y,1.)*2.;
+  vec2 screen=(vUv-.5)*vec2(uSize.x/uSize.y,1.)*2.;
+  vec2 p=screen/uZoom+uFocus;
   float r=length(p);
   float a=atan(p.y,p.x);
   vec3 col=vec3(.024,.039,.058);
   col+=vec3(.014,.028,.035)*exp(-r*r*.75);
-  vec2 starUv=vUv*uSize/5.;
+  vec2 starUv=(p+10.)*uSize.y/10.;
   vec2 cell=floor(starUv);
   vec2 point=fract(starUv)-.5;
   float star=pow(hash(cell),100.)*exp(-dot(point,point)*70.)*.6;
@@ -42,7 +48,7 @@ void main() {
   // Bounded, amplified power controls brightness/speed; these are not photon paths.
   // Polar cells evaluate one marker per fragment, avoiding a loop over all particles.
   float lane=(a+3.14159265)/6.2831853*40.;
-  float seed=hash(vec2(floor(lane),7.));
+  float seed=uSeeds[int(clamp(floor(lane),0.,39.))];
   float angular=(fract(lane)-.5)*6.2831853/40.*max(r,.1);
   float t=fract(uTime*(.025+uEmission*.16)+seed);
   float distance=uRadius+.045+t*1.15;
@@ -69,8 +75,10 @@ interface FieldProps {
   moving: boolean
   emission: number
   absorption: number
+  view: View
+  clock: RefObject<number>
 }
-function Field({ radius, bath, moving, emission, absorption }: FieldProps) {
+function Field({ radius, bath, moving, emission, absorption, view, clock }: FieldProps) {
   const material = useRef<ShaderMaterial>(null)
   const time = useRef(0)
   const invalidate = useThree((state) => state.invalidate)
@@ -82,21 +90,27 @@ function Field({ radius, bath, moving, emission, absorption }: FieldProps) {
       uBath: { value: 0 },
       uEmission: { value: 0.45 },
       uAbsorption: { value: 0 },
+      uZoom: { value: 1 },
+      uFocus: { value: new Vector2(0, 0) },
+      uSeeds: { value: MARKER_SEEDS },
     }),
     [],
   ) // Values below update without reallocating shader resources.
   useEffect(() => {
     invalidate()
-  }, [radius, bath, moving, emission, absorption, invalidate])
+  }, [radius, bath, moving, emission, absorption, view, invalidate])
   useFrame(({ size }, delta) => {
     if (!material.current) return
     if (moving) time.current += Math.min(delta, 0.1)
+    clock.current = time.current
     material.current.uniforms.uSize.value.set(size.width, size.height)
     material.current.uniforms.uTime.value = time.current
     material.current.uniforms.uRadius.value = radius
     material.current.uniforms.uBath.value = bath ? 1 : 0
     material.current.uniforms.uEmission.value = emission
     material.current.uniforms.uAbsorption.value = absorption
+    material.current.uniforms.uZoom.value = view.zoom
+    material.current.uniforms.uFocus.value.set(view.x, view.y)
   })
   return (
     <mesh frustumCulled={false}>
@@ -136,12 +150,16 @@ export default function Horizon({
   moving,
   emission,
   absorption,
+  view,
+  clock,
 }: {
   ratio: number
   bath: boolean
   moving: boolean
   emission: number
   absorption: number
+  view: View
+  clock: RefObject<number>
 }) {
   const limited = ratio < 0.22 || ratio > 2.2
   return (
@@ -155,11 +173,13 @@ export default function Horizon({
           aria-label="Representación esquemática del horizonte y flujos de energía"
         >
           <Field
-            radius={0.32 * Math.min(2.2, Math.max(0.22, ratio))}
+            radius={visualRadius(ratio)}
             bath={bath}
             moving={moving}
             emission={emission}
             absorption={absorption}
+            view={view}
+            clock={clock}
           />
         </Canvas>
       </VisualBoundary>
