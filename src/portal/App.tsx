@@ -93,7 +93,7 @@ export default function Portal() {
           <div className="portal-experiment-grid">
             <a className="portal-special-link" href="/agujeros-negros/">
               <span>ESPECIAL AGUJEROS NEGROS</span>
-              Cuatro laboratorios. Un recorrido para ver lo invisible. <Arrow />
+              Luz, horizontes, relojes y entropía. Un recorrido para ver lo invisible. <Arrow />
             </a>
             {experiments.map((experiment) => (
               <article className={`portal-experiment-card ${experiment.id}`} key={experiment.id}>

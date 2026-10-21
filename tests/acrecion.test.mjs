@@ -227,7 +227,7 @@ test('a single state, wrong view, or contrast with movement off cannot complete 
 test('black-hole special includes each implemented chapter once with valid canonical paths', () => {
   assert.deepEqual(
     blackHoleLabs.map((lab) => lab.id),
-    ['lente-gravitacional', 'acrecion', 'hawking', 'entropia'],
+    ['lente-gravitacional', 'acrecion', 'horizonte', 'hawking', 'entropia'],
   )
-  assert.equal(new Set(blackHoleLabs.map((lab) => lab.href)).size, 4)
+  assert.equal(new Set(blackHoleLabs.map((lab) => lab.href)).size, 5)
 })

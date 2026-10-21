@@ -1,5 +1,7 @@
 # Propuesta de serie: agujeros negros
 
+Actualización de horizonte: [Al borde del horizonte](HORIZONTE_LABORATORIO.md) ya está implementado. El recorrido publicado es lente → acreción → horizonte → Hawking → entropía. Incluye caída libre radial, relojes sostenidos y recepción de señales; no incluye aún fuerzas de marea ni cámara inmersiva. Las propuestas restantes conservan ese carácter.
+
 Actualización: ya está implementado [Cómo vemos lo invisible](ACRECION_LABORATORIO.md), que combina disco de acreción y una estrella testigo. El especial `/agujeros-negros/` conecta lente, acreción, Hawking y entropía con índice y anterior/siguiente. Los módulos futuros de este documento siguen siendo propuestas.
 
 21 de octubre de 2026. Son simulaciones de predicciones físicas y exploraciones de evidencia; no todos son experimentos históricos reproducibles. Radiación de Hawking, lente gravitacional y entropía de Bekenstein–Hawking están implementados como laboratorios independientes. Ver [modelo y retos de entropía](ENTROPIA_LABORATORIO.md).

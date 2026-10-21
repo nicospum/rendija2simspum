@@ -1,8 +1,16 @@
 export default function ExperimentIllustration({
   kind,
 }: {
-  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion'
+  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte'
 }) {
+  if (kind === 'horizonte') return <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
+    <defs><radialGradient id="hz-portal-glow"><stop offset=".6" stopColor="#091625" /><stop offset=".67" stopColor="#8de0d550" /><stop offset="1" stopColor="#0e243200" /></radialGradient></defs>
+    <circle cx="190" cy="147" r="113" fill="url(#hz-portal-glow)" /><circle cx="190" cy="147" r="74" fill="#030a12" stroke="#8de0d5" />
+    <path d="M280 147H450" stroke="#668a9a" strokeDasharray="4 7" />
+    {[315,352,401].map((x,i)=><circle key={x} cx={x} cy="147" r="4" fill={['#f5896f','#efb889','#e8d39d'][i]} />)}
+    <path d="M272 147L288 139H300V155H288Z" fill="#234756" stroke="#cbede2" /><path d="M441 126Q460 147 441 168M450 134Q461 147 450 160M460 147H481M481 124V170" stroke="#b4e9e0" fill="none" strokeWidth="1.6" />
+    <g fill="#b4cbd4" fontFamily="Consolas,monospace" fontSize="10" letterSpacing="1.2"><text x="32" y="270">CAÍDA / RELOJES / LUZ</text><text x="403" y="270">CUATRO RETOS</text></g>
+  </svg>
   if (kind === 'acrecion') return (
     <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
       <defs><radialGradient id="ac-portal-glow"><stop stopColor="#f6dcaa" /><stop offset=".5" stopColor="#ed9c60" /><stop offset="1" stopColor="#dc965b00" /></radialGradient></defs>

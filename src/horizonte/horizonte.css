@@ -1,0 +1,538 @@
+.hz-shell em {
+  color: #a8dbd1;
+}
+.hz-clock-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  background: #142e3b;
+  border-bottom: 1px solid #45626a;
+}
+.hz-clock-strip > div {
+  padding: 17px;
+  border-right: 1px solid #45626a;
+}
+.hz-clock-strip > div:last-child {
+  border: 0;
+}
+.hz-clock-strip span {
+  display: block;
+  color: #b8d2d4;
+  font-size: 10px;
+  line-height: 1.6;
+}
+.hz-clock-strip strong {
+  display: block;
+  color: #c7efdf;
+  font:
+    clamp(19px, 1.7vw, 26px) / 1.5 Georgia,
+    serif;
+  margin-top: 6px;
+}
+.hz-train-details {
+  margin-top: 24px;
+  border-top: 1px solid #435a67;
+}
+.hz-train-details summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 14px 0;
+  font-size: 13px;
+  color: #d6e8e5;
+}
+.hz-train-details p,
+.hz-train-table {
+  font-size: 11px;
+  color: #b4c8d7;
+  line-height: 1.7;
+}
+.hz-train-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+.hz-train-table caption {
+  text-align: left;
+  padding: 12px 0;
+  color: #b4c8d7;
+}
+.hz-train-table th,
+.hz-train-table td {
+  text-align: left;
+  padding: 12px 8px;
+  border-bottom: 1px solid #344957;
+  overflow-wrap: anywhere;
+}
+.hz-train-table th {
+  color: #cbe4dd;
+  font-weight: 500;
+}
+@media (max-width: 850px) {
+  .hz-clock-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hz-clock-strip > div {
+    padding: 14px;
+  }
+  .hz-clock-strip > div:last-child {
+    grid-column: 1/-1;
+    border-top: 1px solid #45626a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .hz-clock-strip > div:last-child strong {
+    margin: 0;
+  }
+}
+.hz-workbench {
+  align-items: start;
+}
+.hz-workbench .ac-controls {
+  border-bottom-left-radius: 8px;
+}
+.hz-shell .ac-eyebrow {
+  color: #a9cfc8;
+}
+.hz-live-state {
+  align-self: center;
+  font:
+    9px/1.7 Consolas,
+    monospace;
+  color: #a7bebf;
+  letter-spacing: 0.6px;
+}
+.hz-space-stage {
+  position: relative;
+  background: #060e1a;
+  overflow: hidden;
+}
+.hz-space-stage svg {
+  display: block;
+  width: 100%;
+  min-height: 390px;
+}
+.hz-map-tag {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 16px;
+  font:
+    9px/1.7 Consolas,
+    monospace;
+  letter-spacing: 0.8px;
+  color: #b1c5d1;
+  pointer-events: none;
+}
+.hz-map-tag b {
+  color: #a9d9cd;
+  font-weight: 400;
+}
+.hz-horizon-label {
+  position: absolute;
+  bottom: 26px;
+  left: 20px;
+  font:
+    19px/1.5 Georgia,
+    serif;
+  color: #a9ded4;
+  pointer-events: none;
+}
+.hz-horizon-label span {
+  display: block;
+  color: #9ab6c6;
+  font:
+    10px/1.6 Consolas,
+    monospace;
+}
+.hz-position-label {
+  position: absolute;
+  bottom: 28px;
+  right: 20px;
+  font:
+    13px/1.5 Consolas,
+    monospace;
+  color: #e7dcbd;
+  pointer-events: none;
+}
+.hz-map-message {
+  padding: 24px;
+  background: #132734;
+  border-top: 1px solid #344f5c;
+  margin-top: auto;
+}
+.hz-map-message > b {
+  display: block;
+  font:
+    25px/1.4 Georgia,
+    serif;
+  color: #ceece2;
+}
+.hz-map-message p {
+  color: #a8c0cb;
+  font-size: 13px;
+  margin: 14px 0 0;
+}
+.hz-futures {
+  min-height: 470px;
+  background: #091723;
+  padding: 30px 12px 16px;
+}
+.hz-futures svg {
+  display: block;
+  width: 100%;
+}
+.hz-futures > p {
+  margin: 16px 20px 8px;
+  font-size: 13px;
+  color: #bed3db;
+}
+.hz-futures .hz-speed {
+  font-size: 11px;
+  color: #9db5c9;
+}
+.hz-ended {
+  display: grid;
+  align-content: center;
+  padding: 28px;
+}
+.hz-ended h3 {
+  font:
+    30px Georgia,
+    serif;
+  color: #a9ded4;
+}
+.hz-ended p {
+  margin: 0;
+}
+.hz-rays-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 24px;
+  font-size: 11px;
+  color: #ffd095;
+}
+.hz-rays-legend span + span {
+  color: #9ebae2;
+}
+.hz-controls h2,
+.hz-workbench .ac-controls h2 {
+  font:
+    27px Georgia,
+    serif;
+  color: #e3ede7;
+  margin: 0 0 22px;
+}
+.hz-mode {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.hz-mode button {
+  flex: 1;
+  font-size: 12px;
+}
+.hz-checkpoints {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 8px 0 26px;
+}
+.hz-checkpoints button {
+  font-size: 10px;
+  line-height: 1.5;
+  padding: 10px 8px;
+}
+.hz-checkpoints button:last-child {
+  grid-column: 1/-1;
+}
+.hz-play-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.hz-play-controls button {
+  font-size: 11px;
+}
+.hz-send {
+  width: 100%;
+  margin-top: 8px;
+}
+.hz-workbench .ac-test {
+  margin-right: 18px;
+}
+.hz-workbench .hz-notice {
+  border-left: 2px solid #a9dbce;
+  background: #203c44;
+  padding: 12px;
+  margin: 16px 0 8px;
+  color: #d6eee6;
+}
+.hz-clocks {
+  margin-top: 24px;
+}
+.hz-clocks strong {
+  color: #b4e2d5;
+}
+.hz-receiver-section {
+  margin: 0 0 70px;
+}
+.hz-radio-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 24px;
+}
+.hz-radio {
+  position: relative;
+  border: 1px solid #486269;
+  padding: 30px;
+  border-radius: 9px;
+  background: radial-gradient(ellipse at 80% 10%, #18404a, #0c1d2c 65%);
+  overflow: hidden;
+}
+.hz-radio .ac-eyebrow {
+  position: relative;
+}
+.hz-radio h3,
+.hz-transmissions h3 {
+  font:
+    27px/1.35 Georgia,
+    serif;
+  position: relative;
+}
+.hz-radio-time {
+  display: block;
+  font:
+    33px/1.4 Georgia,
+    serif;
+  color: #d7e9cf;
+  margin-bottom: 16px;
+}
+.hz-radio p {
+  font-size: 13px;
+  color: #bed1dc;
+  position: relative;
+}
+.hz-radio button {
+  margin-top: 10px;
+}
+.hz-antenna-icon {
+  position: absolute;
+  top: -50px;
+  right: 8px;
+  font:
+    240px/1 Georgia,
+    serif;
+  color: #83dacf;
+  opacity: 0.13;
+}
+.hz-radio-data {
+  display: grid;
+  gap: 12px;
+  border-top: 1px solid #405764;
+  padding-top: 22px;
+  font-size: 12px;
+  color: #b3c9d0;
+}
+.hz-radio-data b {
+  color: #f0c78e;
+  font-weight: 400;
+}
+.hz-received-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 24px 0;
+}
+.hz-received-dots i {
+  width: 8px;
+  height: 8px;
+  display: block;
+  border-radius: 50%;
+}
+.hz-transmissions {
+  min-width: 0;
+  padding: 15px 0;
+}
+.hz-transmissions > p {
+  color: #b4c8d7;
+  font-size: 13px;
+}
+.hz-send-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+.hz-send-cards article {
+  padding: 20px;
+  background: #122331;
+  border: 1px solid #435a67;
+  border-radius: 7px;
+  min-width: 0;
+}
+.hz-send-cards article.hz-trapped {
+  border-color: #8e7eac;
+  background: #211f35;
+}
+.hz-send-cards article > span {
+  font:
+    9px/1.7 Consolas,
+    monospace;
+  letter-spacing: 0.7px;
+  color: #b7d1cc;
+}
+.hz-send-cards h4 {
+  font:
+    21px/1.4 Georgia,
+    serif;
+  color: #ecd5ac;
+  margin: 12px 0 20px;
+}
+.hz-send-cards dl {
+  font-size: 11px;
+  margin: 0;
+}
+.hz-send-cards dl > div {
+  display: grid;
+  gap: 4px;
+  margin-top: 12px;
+}
+.hz-send-cards dt {
+  color: #9eb6c5;
+}
+.hz-send-cards dd {
+  color: #dce8e9;
+  margin: 0;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.hz-empty {
+  grid-column: 1/-1;
+  border: 1px dashed #486269;
+  padding: 24px;
+  border-radius: 8px;
+  color: #bdd0d7;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.hz-transmissions .hz-caption {
+  color: #9bb1c0;
+  font-size: 11px;
+}
+.hz-receive-saved {
+  width: 100%;
+  font-size: 11px;
+  margin-top: 18px;
+}
+@media (min-width: 1100px) {
+  .hz-workbench {
+    grid-template-columns: minmax(0, 1fr) 350px;
+  }
+  .hz-space-stage svg {
+    min-height: 450px;
+  }
+}
+@media (max-width: 850px) {
+  .hz-workbench {
+    grid-template-columns: 1fr;
+  }
+  .hz-space-stage {
+    height: 370px;
+  }
+  .hz-space-stage svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+  }
+  .hz-map-tag {
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    font-size: 8px;
+  }
+  .hz-horizon-label {
+    font-size: 18px;
+    left: 16px;
+    bottom: 20px;
+  }
+  .hz-position-label {
+    right: 16px;
+    bottom: 24px;
+    font-size: 11px;
+  }
+  .hz-map-message {
+    padding: 20px;
+  }
+  .hz-map-message > b {
+    font-size: 23px;
+  }
+  .hz-futures {
+    min-height: 370px;
+    padding-top: 20px;
+  }
+  .hz-futures > p {
+    margin: 18px 8px 8px;
+    font-size: 12px;
+  }
+  .hz-futures .hz-speed {
+    font-size: 10px;
+  }
+  .hz-rays-legend {
+    font-size: 10px;
+    gap: 8px;
+  }
+  .hz-radio-grid {
+    grid-template-columns: 1fr;
+  }
+  .hz-radio {
+    padding: 24px;
+  }
+  .hz-radio-time {
+    font-size: 30px;
+  }
+  .hz-send-cards article {
+    padding: 16px;
+  }
+  .hz-send-cards h4 {
+    font-size: 20px;
+  }
+  .hz-checkpoints button {
+    font-size: 11px;
+  }
+  .hz-receiver-section {
+    margin-bottom: 45px;
+  }
+  .hz-transmissions {
+    padding: 10px 0;
+  }
+  .hz-live-state {
+    font-size: 8px;
+  }
+}
+@media (max-width: 370px) {
+  .hz-space-stage {
+    height: 340px;
+  }
+  .hz-position-label {
+    max-width: 105px;
+    font-size: 10px;
+    text-align: right;
+  }
+  .hz-horizon-label {
+    font-size: 16px;
+  }
+  .hz-map-tag {
+    font-size: 7px;
+  }
+  .hz-send-cards {
+    grid-template-columns: 1fr;
+  }
+}

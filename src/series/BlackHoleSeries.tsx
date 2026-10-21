@@ -69,7 +69,7 @@ export default function BlackHoleSeries() {
       </header>
       <main>
         <section className="bh-series-hero">
-          <p>UN ESPECIAL / CUATRO LABORATORIOS CONECTADOS</p>
+          <p>UN ESPECIAL / {blackHoleLabs.length} LABORATORIOS CONECTADOS</p>
           <h1>
             Agujeros negros.
             <br />
@@ -79,7 +79,7 @@ export default function BlackHoleSeries() {
             <span />
           </div>
           <p>
-            ¿Cómo vemos algo oscuro? ¿Por qué tiene temperatura? ¿Qué tiene que
+            ¿Cómo vemos algo oscuro? ¿Qué ocurre al cruzar su horizonte? ¿Por qué tiene temperatura? ¿Qué tiene que
             ver su superficie con la entropía? Seguí el recorrido o entrá por la
             pregunta que más te intrigue.
           </p>
@@ -102,7 +102,8 @@ export default function BlackHoleSeries() {
           <h2>Una historia, distintas pistas.</h2>
           <p>
             Primero seguís los caminos de la luz. Después descubrís el gas y las
-            órbitas que delatan la masa invisible. Hawking conecta temperatura y
+            órbitas que delatan la masa invisible. Una sonda explora el horizonte,
+            sus relojes y los mensajes que pueden salir. Hawking conecta temperatura y
             pérdida de masa; Bekenstein–Hawking conecta área y entropía. El
             índice de cada laboratorio te lleva al siguiente.
           </p>

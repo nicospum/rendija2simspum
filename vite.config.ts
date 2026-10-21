@@ -24,6 +24,7 @@ export default defineConfig({
         lente: 'lente-gravitacional/index.html',
         entropia: 'entropia/index.html',
         acrecion: 'acrecion/index.html',
+        horizonte: 'horizonte/index.html',
         agujerosNegros: 'agujeros-negros/index.html',
       },
       output: {

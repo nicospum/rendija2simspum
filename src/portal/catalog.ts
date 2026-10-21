@@ -1,5 +1,5 @@
 export interface Experiment {
-  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion'
+  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte'
   number: string
   field: string
   title: string
@@ -83,5 +83,16 @@ export const experiments: readonly Experiment[] = [
       'Encendé el disco de acreción, curvá su luz y pesá una masa invisible con una estrella testigo y cuatro retos.',
     tags: ['Acreción', 'Doppler', 'Órbitas'],
     href: '/acrecion/',
+  },
+  {
+    id: 'horizonte',
+    number: '07',
+    field: 'AGUJEROS NEGROS',
+    title: 'Al borde del horizonte',
+    subtitle: 'El reloj sigue. El mensaje tarda.',
+    question: '¿Qué pasa con el tiempo y la luz cuando una sonda cruza el horizonte?',
+    discovery: 'Compará caída libre y relojes sostenidos, enviá señales y descubrí qué puede recibir alguien que espera afuera con cuatro retos.',
+    tags: ['Caída libre', 'Relojes', 'Causalidad'],
+    href: '/horizonte/',
   },
 ]

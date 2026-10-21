@@ -2,6 +2,7 @@ import { experiments } from '../portal/catalog.ts'
 export const BLACK_HOLE_IDS = [
   'lente-gravitacional',
   'acrecion',
+  'horizonte',
   'hawking',
   'entropia',
 ] as const
