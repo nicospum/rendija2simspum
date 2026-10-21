@@ -270,10 +270,15 @@ test('invalid inputs fail explicitly without poisoning UI state', () => {
   assert.strictEqual(reducer(s, { type: 'time', value: NaN }), s)
   assert.throws(() => snapshot(DEFAULT, 'earth'), RangeError)
 })
-test('Einstein series has three canonical available chapters and all entries exist', () => {
+test('Einstein series has four canonical available chapters and all entries exist', () => {
   assert.deepEqual(
     einsteinLabs.map((l) => l.id),
-    ['reloj-de-luz', 'tren-de-einstein', 'nos-vemos-a-la-vuelta'],
+    [
+      'reloj-de-luz',
+      'tren-de-einstein',
+      'nos-vemos-a-la-vuelta',
+      'ascensor-de-einstein',
+    ],
   )
   for (const lab of einsteinLabs)
     assert.ok(existsSync(new URL(`..${lab.href}index.html`, import.meta.url)))

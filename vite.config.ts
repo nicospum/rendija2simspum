@@ -30,6 +30,7 @@ export default defineConfig({
         einstein: 'einstein/index.html',
         trenDeEinstein: 'tren-de-einstein/index.html',
         gemelos: 'nos-vemos-a-la-vuelta/index.html',
+        ascensor: 'ascensor-de-einstein/index.html',
       },
       output: {
         manualChunks(id) {

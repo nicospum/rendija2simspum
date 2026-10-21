@@ -1,8 +1,15 @@
 export default function ExperimentIllustration({
   kind,
 }: {
-  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta'
+  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein'
 }) {
+  if(kind==='ascensor-de-einstein')return <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
+    <path d="M160 20V54M410 20V54" stroke="#8bafb8"/><rect x="70" y="54" width="180" height="171" rx="12" fill="#143443" stroke="#98d7d0"/><rect x="320" y="54" width="180" height="171" rx="12" fill="#143443" stroke="#98d7d0"/>
+    <path d="M70 225H250M320 225H500" stroke="#bce7df" strokeWidth="5"/><path d="M120 95V170M190 95V170M370 95V170M440 95V170" stroke="#7ba8b7" strokeDasharray="3 5"/>
+    {[120,370].map(x=><circle key={x} cx={x} cy="170" r="9" fill="#eebb89"/>)}{[190,440].map(x=><circle key={x} cx={x} cy="170" r="9" fill="#99e4d8"/>)}
+    <path d="M80 112Q160 112 240 142M330 112Q410 112 490 142" stroke="#f8de9b" fill="none" strokeWidth="2"/><path d="m389 230 21 26 21-26" fill="#efbc85"/><path d="M275 148h28m-7-5 7 5-7 5" stroke="#a1c8ce"/>
+    <g fill="#b4ced7" fontFamily="Consolas,monospace" fontSize="10" letterSpacing="1.2"><text x="32" y="280">CAÍDA / ACELERACIÓN / EQUIVALENCIA</text><text x="407" y="280">CUATRO RETOS</text></g>
+  </svg>
   if(kind==='nos-vemos-a-la-vuelta')return <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
     <path d="M100 223V43M100 223 320 133 100 43" stroke="#99e4db" strokeWidth="3" fill="none"/><path d="M100 223V43" stroke="#f2bd8c" strokeWidth="4"/><path d="m320 133-220 35" stroke="#eab4de" strokeDasharray="5 5"/><circle cx="100" cy="223" r="6" fill="#f2bd8c"/><circle cx="100" cy="43" r="6" fill="#9ee9df"/><path d="m297 123 34 10-34 10 5-10Z" fill="#bdeee1"/>
     {([['10',430,99,'#f2bd8c'],['6',430,195,'#99e4db']] as const).map(([value,x,y,color])=><g key={value}><circle cx={x} cy={y} r="37" fill="#123140" stroke={color}/><text x={x} y={Number(y)+8} textAnchor="middle" fill={color} fontFamily="Georgia" fontSize="26">{value}</text></g>)}

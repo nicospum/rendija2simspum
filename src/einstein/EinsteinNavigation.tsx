@@ -12,18 +12,22 @@ export default function EinsteinNavigation({
         <span>ESPECIAL EINSTEIN</span> Espacio, tiempo y gravedad{' '}
         <b>Ver el recorrido ↗</b>
       </a>
-      <div>
-        <span>RELATIVIDAD ESPECIAL</span>
-        {einsteinLabs.map((lab, i) => (
-          <a
-            key={lab.id}
-            href={lab.href}
-            aria-current={lab.id === current ? 'page' : undefined}
-          >
-            0{i + 1} · {lab.title}
-          </a>
-        ))}
-      </div>
+      {[...new Set(einsteinLabs.map((lab) => lab.field))].map((field) => (
+        <div className="es-navigation-group" key={field}>
+          <span>{field}</span>
+          {einsteinLabs
+            .filter((lab) => lab.field === field)
+            .map((lab) => (
+              <a
+                key={lab.id}
+                href={lab.href}
+                aria-current={lab.id === current ? 'page' : undefined}
+              >
+                0{einsteinLabs.indexOf(lab) + 1} · {lab.title}
+              </a>
+            ))}
+        </div>
+      ))}
       <div className="es-navigation-steps">
         <a href={index > 0 ? einsteinLabs[index - 1].href : '/einstein/'}>
           {index > 0

@@ -55,6 +55,14 @@
   color: #c7d6df;
   font-size: 11px;
 }
+.es-navigation .es-navigation-group > a:last-child {
+  margin-left: 0;
+  width: auto;
+  font-size: 12px;
+}
+.es-navigation .es-navigation-group > span {
+  min-width: 165px;
+}
 .es-hero {
   overflow: hidden;
   display: grid;
@@ -187,6 +195,10 @@
   font-size: 13px;
 }
 @media (max-width: 850px) {
+  .es-navigation .es-navigation-group > span {
+    width: 100%;
+    margin-top: 6px;
+  }
   .es-hero {
     gap: 20px;
     padding: 35px 0;

@@ -675,12 +675,11 @@ export default function TwinsApp() {
           <p className="rl-eyebrow">DEL MOVIMIENTO A LA GRAVEDAD</p>
           <h2>¿Gravedad o aceleración?</h2>
           <p>
-            El próximo capítulo será el ascensor de Einstein. Mientras tanto,
-            volvé al tren para conectar el cambio de simultaneidad con las
-            fechas que asignan distintos observadores.
+            Entrá al ascensor de Einstein: compará caída libre, aceleración y
+            las mediciones de un laboratorio local.
           </p>
-          <a className="gv-jump" href="/tren-de-einstein/">
-            Volver al tren de Einstein ←
+          <a className="gv-jump" href="/ascensor-de-einstein/">
+            Explorar el ascensor de Einstein →
           </a>
         </section>
         <EinsteinNavigation current="nos-vemos-a-la-vuelta" />

@@ -1,5 +1,5 @@
 export interface Experiment {
-  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta'
+  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein'
   number: string
   field: string
   title: string
@@ -117,5 +117,11 @@ export const experiments: readonly Experiment[] = [
     subtitle:'Un reencuentro. Dos historias.', question:'¿Podemos volver con edades diferentes?',
     discovery:'Planeá el viaje de los gemelos, compará sus relojes y explorá el tiempo propio, los giros y la simultaneidad con dos vistas y cuatro retos.',
     tags:['Einstein','Gemelos','Tiempo propio'], href:'/nos-vemos-a-la-vuelta/',
+  },
+  {
+    id:'ascensor-de-einstein', number:'11', field:'RELATIVIDAD GENERAL', title:'El ascensor de Einstein',
+    subtitle:'Una cabina pequeña. Una idea enorme.', question:'¿Gravedad o aceleración?',
+    discovery:'Soltá pelotas, compará la balanza y seguí un pulso de luz en cuatro escenarios para descubrir el principio de equivalencia con cuatro retos.',
+    tags:['Einstein','Caída libre','Equivalencia'], href:'/ascensor-de-einstein/',
   },
 ]

@@ -2,12 +2,6 @@ import ExperimentIllustration from '../portal/ExperimentIllustration'
 import { einsteinLabs } from './catalog'
 const upcoming = [
   [
-    '04',
-    'El ascensor de Einstein',
-    '¿Gravedad o aceleración?',
-    'Caída libre y principio de equivalencia.',
-  ],
-  [
     '05',
     'El tiempo tiene altura',
     '¿Por qué el GPS necesita a Einstein?',
@@ -104,6 +98,7 @@ export default function EinsteinSeries() {
         </section>
         <p className="rl-eyebrow">
           {einsteinLabs.length} LABORATORIOS DISPONIBLES / RELATIVIDAD ESPECIAL
+          Y GENERAL
         </p>
         {einsteinLabs.map((lab, i) => (
           <section
@@ -116,7 +111,7 @@ export default function EinsteinSeries() {
             </div>
             <div>
               <p className="rl-eyebrow">
-                0{i + 1} / DISPONIBLE · RELATIVIDAD ESPECIAL
+                0{i + 1} / DISPONIBLE · {lab.field}
               </p>
               <h2 id={`es-${lab.id}`}>{lab.title}</h2>
               <p>{lab.discovery}</p>

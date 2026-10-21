@@ -14,9 +14,10 @@ Una colección de laboratorios interactivos para aprender ciencia haciendo pregu
 - `/reloj-de-luz/`: dos vistas del mismo pulso, dilatación temporal y cuatro retos de relatividad especial.
 - `/tren-de-einstein/`: simultaneidad, señales de luz y mediciones de longitud desde el tren y el andén, con cuatro retos.
 - `/nos-vemos-a-la-vuelta/`: gemelos, tiempo propio, giro y cuatro retos con viaje y espacio-tiempo.
-- `/einstein/`: especial Einstein con tres laboratorios de relatividad especial y el recorrido futuro de relatividad general.
+- `/ascensor-de-einstein/`: caída libre, aceleración, balanza, luz y cuatro retos del principio de equivalencia.
+- `/einstein/`: especial Einstein con tres laboratorios de relatividad especial y uno de relatividad general.
 
-El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las trece páginas (diez laboratorios, portada y dos especiales) se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada, los especiales, entropía, horizonte, el reloj de luz, el tren y los gemelos no cargan Three.js.
+El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las catorce páginas (once laboratorios, portada y dos especiales) se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada, los especiales, entropía, horizonte, el reloj de luz, el tren, los gemelos y el ascensor no cargan Three.js.
 
 ## Ejecutar localmente
 
@@ -62,9 +63,11 @@ El modelo de doble rendija usa amplitudes de Fraunhofer en unidades normalizadas
 
 ## Organización y nuevos experimentos
 
+El undécimo laboratorio, [El ascensor de Einstein](https://www.spumexp.lat/ascensor-de-einstein/), abre la parte de relatividad general. Compara cabinas sostenidas y libres, naves aceleradas y a la deriva, fuerza de apoyo, masas y un rayo en coordenadas de Rindler con escala vertical explícita. Ver [ecuaciones, fuentes, límites y validación](docs/ASCENSOR_LABORATORIO.md).
+
 El décimo laboratorio, [Nos vemos a la vuelta](https://www.spumexp.lat/nos-vemos-a-la-vuelta/), compara tiempo propio en los recorridos de dos gemelos. Permite cambiar rapideces, duración y espera; conecta viaje y espacio-tiempo, distingue señales recibidas de simultaneidad comóvil y propone cuatro retos. Ver [modelo, fuentes y validación](docs/GEMELOS_LABORATORIO.md).
 
-El noveno laboratorio, [El tren de Einstein](https://www.spumexp.lat/tren-de-einstein/), continúa el especial con dos sistemas de coordenadas. Separa fechas de emisión de llegadas al receptor y permite registrar extremos con dos protocolos de simultaneidad. Los cuatro retos comparan fechas, retrasos de viaje, inversión del movimiento y contracción de longitudes. El índice conecta los tres capítulos disponibles; ver [modelo, fuentes, controles y pruebas](docs/TREN_DE_EINSTEIN.md).
+El noveno laboratorio, [El tren de Einstein](https://www.spumexp.lat/tren-de-einstein/), continúa el especial con dos sistemas de coordenadas. Separa fechas de emisión de llegadas al receptor y permite registrar extremos con dos protocolos de simultaneidad. Los cuatro retos comparan fechas, retrasos de viaje, inversión del movimiento y contracción de longitudes. El índice conecta los cuatro capítulos disponibles; ver [modelo, fuentes, controles y pruebas](docs/TREN_DE_EINSTEIN.md).
 
 El octavo laboratorio, [El reloj de luz](https://www.spumexp.lat/reloj-de-luz/), inaugura el [especial Einstein](https://www.spumexp.lat/einstein/). Relaciona el mismo evento de un pulso entre dos espejos mediante transformaciones de Lorentz. Sus cuatro retos comparan reposo, aumento del recorrido, reciprocidad y ritmo a la mitad; las vistas de nave y estación comparten los cálculos y se alternan en celular conservando el instante. Ver [ecuaciones, fuentes, controles y validación](docs/RELOJ_DE_LUZ.md).
 
@@ -104,7 +107,8 @@ src/reloj/                    Lorentz, reloj de luz, dos vistas SVG y retos
 src/tren/                     Eventos, señales, longitudes, dos vistas SVG y retos
 src/einstein/                 Portada y navegación del especial Einstein
 src/gemelos/                  Itinerario, tiempo propio, simultaneidad, señales y retos
-tests/                        Pruebas de los diez laboratorios
+src/ascensor/                 Equivalencia local, apoyo, pelotas, luz de Rindler y retos
+tests/                        Pruebas de los once laboratorios
 vite.config.ts                Seis entradas y separación de bundles
 vercel.json                   Compilación y publicación estáticas
 ```

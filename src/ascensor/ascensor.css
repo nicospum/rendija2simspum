@@ -1,0 +1,233 @@
+.as-shell .rl-intro h1 {
+  font-size: clamp(56px, 6.2vw, 92px);
+}
+.as-shell .rl-frame svg {
+  background: radial-gradient(ellipse at 50% 45%, #193c5055, transparent 75%);
+}
+.as-readings {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid #3d5869;
+  background: #142e3b;
+}
+.as-readings > div {
+  padding: 18px 24px;
+  min-width: 0;
+}
+.as-readings > div + div {
+  border-left: 1px solid #3d5869;
+}
+.as-readings span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  font-size: 12px;
+  color: #bdd3db;
+  gap: 8px;
+}
+.as-readings strong {
+  font:
+    32px Georgia,
+    serif;
+  color: #a1e9dc;
+  display: block;
+  margin: 6px 0;
+}
+.as-readings small {
+  font:
+    12px 'Segoe UI',
+    sans-serif;
+}
+.as-readings p {
+  font-size: 11px;
+  color: #abc7d2;
+  margin: 8px 0;
+}
+.as-shell .rl-control-card button,
+.as-buttons button {
+  background: #15303e;
+  border: 1px solid #4e7280;
+  border-radius: 5px;
+  min-height: 44px;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #d6e9eb;
+}
+.as-shell .rl-control-card .rl-primary {
+  background: #a1e9dc;
+  color: #102c38;
+  border-color: #a1e9dc;
+}
+.as-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.as-buttons button[aria-pressed='true'] {
+  background: #254d58;
+  border-color: #a1e9dc;
+}
+.as-wide {
+  grid-column: 1/-1;
+}
+.as-shell input[type='range'] {
+  min-height: 44px;
+  width: 100%;
+  accent-color: #a1e9dc;
+  cursor: pointer;
+}
+.as-shell .rl-control-card p {
+  font-size: 12px;
+  color: #aecbd4;
+}
+.as-shell .rl-control-label {
+  gap: 10px;
+}
+.as-shell .rl-control-label output {
+  font-size: 25px;
+  white-space: nowrap;
+}
+.as-scenarios {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 22px 0;
+}
+.as-scenarios button {
+  min-height: 100px;
+  padding: 18px;
+  text-align: left;
+  border: 1px solid #426777;
+  border-radius: 6px;
+  background: #102836;
+  color: #dce9ed;
+}
+.as-scenarios button[aria-pressed='true'] {
+  background: #234b56;
+  border-color: #9ae5da;
+}
+.as-scenarios b {
+  display: block;
+  font-size: 14px;
+}
+.as-scenarios span {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #b5ced7;
+}
+.as-context {
+  display: flex;
+  gap: 14px 24px;
+  flex-wrap: wrap;
+  background: #142f3e;
+  padding: 15px 18px;
+  margin: 16px 0 24px;
+}
+.as-context span {
+  font:
+    10px/1.8 Consolas,
+    monospace;
+  color: #b1cbd5;
+}
+.as-context b {
+  color: #f0c593;
+}
+.as-effect {
+  border-left: 2px solid #a1e9dc;
+  padding: 15px 20px;
+  margin-top: 24px;
+  background: #17323f;
+}
+.as-effect > span {
+  font:
+    9px Consolas,
+    monospace;
+  letter-spacing: 1.5px;
+  color: #a1e9dc;
+}
+.as-effect p {
+  font-size: 13px;
+  margin-bottom: 0;
+}
+.as-jump,
+.as-shell .rl-section-heading > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 12px;
+  color: #a6e8df;
+}
+.as-shell .rl-science details p {
+  font-size: 13px;
+}
+.as-shell .rl-formula span {
+  overflow-wrap: anywhere;
+}
+.as-shell #as-question:focus {
+  outline: none;
+}
+@media (max-width: 850px) {
+  .as-shell .rl-intro h1 {
+    font-size: clamp(53px, 11vw, 83px);
+  }
+  .as-readings {
+    grid-template-columns: 1fr 1fr;
+  }
+  .as-readings > div {
+    padding: 12px 16px;
+  }
+  .as-readings > div:last-child {
+    grid-column: 1/-1;
+    border-left: 0;
+    border-top: 1px solid #3d5869;
+  }
+  .as-readings strong {
+    font-size: 28px;
+  }
+  .as-scenarios button {
+    padding: 13px;
+  }
+  .as-scenarios span {
+    font-size: 11px;
+  }
+  .as-shell .rl-control-label {
+    flex-wrap: wrap;
+  }
+  .as-shell .rl-control-label output {
+    font-size: 23px;
+  }
+  .as-shell .rl-observatory h2 {
+    font-size: 28px;
+  }
+  .as-shell .rl-frame-heading {
+    align-items: center;
+  }
+  .as-shell .rl-frame-heading h3 {
+    font-size: 24px;
+  }
+}
+@media (max-width: 370px) {
+  .as-shell .rl-intro h1 {
+    font-size: 51px;
+    letter-spacing: -2px;
+  }
+  .as-scenarios {
+    grid-template-columns: 1fr;
+  }
+  .as-readings > div {
+    padding: 10px 12px;
+  }
+  .as-readings span {
+    font-size: 11px;
+  }
+  .as-readings strong {
+    font-size: 25px;
+  }
+  .as-shell .rl-control-label output {
+    font-size: 22px;
+  }
+}
