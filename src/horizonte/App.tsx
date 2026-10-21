@@ -1,3 +1,4 @@
+import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useReducer, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
 import {
@@ -13,7 +14,7 @@ import { scientific } from '../hawking/physics'
 import Scene, { LightFutures, SignalColor } from './Scene'
 import { model, pulseTrain, MAX_TIME, lapse, RECEIVER } from './physics'
 import type { Pulse } from './physics'
-import { initialState, reducer, LESSONS, observed } from './learning'
+import { initialState, reducer, LESSONS, observed, observationSteps } from './learning'
 
 const n = (value: number, digits = 2) =>
   value.toLocaleString('es-AR', { maximumFractionDigits: digits })
@@ -296,6 +297,16 @@ export default function HorizonApp() {
           >
             <p className="ac-eyebrow">UNA VARIABLE. DOS RELOJES.</p>
             <h2>Tu misión</h2>
+            <ChallengeGuide
+              index={learning.index}
+              title={l.title}
+              prediction={learning.prediction === null ? undefined : l.choices[learning.prediction]}
+              steps={observationSteps(learning)}
+              saved={complete}
+              challengeHref="#hz-challenges"
+              viewHref="#hz-view"
+              help="rₛ es el radio del horizonte: 1 rₛ marca la frontera y 1,2 rₛ queda afuera. Para el primer reto usá «Sostener a 4 rs» y «Sostener a 1,2 rs». Los atajos del grupo «Recorrer la caída» activan la caída libre. «Enviar pulso» registra el envío, «Recibir este pulso» permite compararlo en la antena."
+            />
             <div
               className="hz-mode"
               role="group"
@@ -341,6 +352,14 @@ export default function HorizonApp() {
                   Comparás ensayos a igual T, recalculados para cada radio. El
                   motor no puede sostenerlo justo en el horizonte.
                 </p>
+                <div className="hz-checkpoints" role="group" aria-label="Comparar relojes sostenidos">
+                  <button onClick={() => dispatch({ type: 'tune', patch: { radius: 4 } })}>
+                    Sostener a 4 rs
+                  </button>
+                  <button onClick={() => dispatch({ type: 'tune', patch: { radius: 1.2 } })}>
+                    Sostener a 1,2 rs
+                  </button>
+                </div>
               </>
             ) : (
               <>
@@ -367,10 +386,11 @@ export default function HorizonApp() {
                 </p>
               </>
             )}
+            <p>Recorrer la caída · estos atajos activan «Caída libre».</p>
             <div
               className="hz-checkpoints"
               role="group"
-              aria-label="Puntos de la caída"
+              aria-label="Puntos de la caída: activan caída libre"
             >
               <button onClick={() => go(3)}>Más lejos · 3 rs</button>
               <button onClick={() => go(1.2)}>Afuera · 1,2 rs</button>
@@ -766,11 +786,11 @@ export default function HorizonApp() {
               <a className="ac-test" href="#hz-controls">
                 Ir a los controles ↑
               </a>
-              <p className="ac-progress">
-                {observed(learning)
-                  ? '✓ Comparación realizada'
-                  : '○ Falta comparar los estados del reto'}
-              </p>
+              <ul className="ac-progress">
+                {observationSteps(learning).map(step => (
+                  <li key={step.label}>{step.done ? '✓ Hecho: ' : '○ Pendiente: '}{step.label}</li>
+                ))}
+              </ul>
               <button
                 className="ac-primary"
                 onClick={() => dispatch({ type: 'check' })}

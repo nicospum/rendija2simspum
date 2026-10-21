@@ -62,7 +62,11 @@ export interface Learning {
   observations: string[]
   completed: number[]
 }
-export function observe(index: number, s: Setup, previous: readonly string[]) {
+export function observe(
+  index: number,
+  s: Setup,
+  previous: readonly string[],
+) {
   validate(s)
   const marks = new Set(previous)
   if (index === 0 && s.gas === 0 && s.view === 'disk') marks.add('off')
@@ -76,14 +80,30 @@ export function observe(index: number, s: Setup, previous: readonly string[]) {
   if (index === 3 && s.mass >= 7.9 && s.view === 'star') marks.add('mass')
   return [...marks]
 }
+const REQUIRED = [
+  [
+    ['off', 'Disco sin gas: alimentación en 0 %'],
+    ['gas', 'Disco con gas: alimentación en 60 % o más'],
+  ],
+  [
+    ['bent', 'Disco a 70° o más con «Curvar la luz»'],
+    ['straight', 'Mismo disco inclinado sin «Curvar la luz»'],
+  ],
+  [
+    ['inclined', 'Movimiento relativista activo con el disco a 70°'],
+    ['face', 'Movimiento relativista activo con el disco de frente: 0°'],
+  ],
+  [['mass', 'Vista de la estrella con 8 millones de masas solares']],
+] as const
+export function observationSteps(index: number, marks: readonly string[]) {
+  return (REQUIRED[index] ?? []).map(([id, label]) => ({
+    label,
+    done: marks.includes(id),
+  }))
+}
 export function observed(index: number, marks: readonly string[]) {
-  const required = [
-    ['off', 'gas'],
-    ['bent', 'straight'],
-    ['inclined', 'face'],
-    ['mass'],
-  ][index]
-  return !!required && required.every((mark) => marks.includes(mark))
+  const steps = observationSteps(index, marks)
+  return steps.length > 0 && steps.every((step) => step.done)
 }
 export function checkAnswer(
   l: Learning,

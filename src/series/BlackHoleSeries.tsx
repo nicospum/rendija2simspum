@@ -1,3 +1,4 @@
+import { FirstVisit } from '../components/ui/ChallengeGuide'
 import type { ReactNode } from 'react'
 import { blackHoleLabs } from './catalog'
 import { useBlackHolePassport } from './usePassport'
@@ -78,6 +79,7 @@ export default function BlackHoleSeries({
             </figcaption>
           </figure>
         </section>
+        <FirstVisit name="agujeros negros" />
         <BlackHolePassport />
         <section
           className="bh-route"

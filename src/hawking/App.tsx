@@ -1,3 +1,4 @@
+import ChallengeGuide from '../components/ui/ChallengeGuide'
 import Tip from '../components/ui/InfoPopover'
 import { BlackHoleNavigation } from '../series/BlackHoleNavigation'
 import BlackHoleNotebook from '../series/BlackHoleNotebook'
@@ -225,6 +226,8 @@ export default function HawkingApp() {
               : undefined
           }
           onNext={
+            state.completed.includes(state.lesson) &&
+            state.prediction === lesson.answer &&
             status === 'observed'
               ? () => prepareLesson(LESSONS[(lessonIndex + 1) % LESSONS.length].id)
               : undefined
@@ -310,6 +313,17 @@ export default function HawkingApp() {
                 ⊹
               </span>
             </div>
+            <ChallengeGuide
+              index={lessonIndex}
+              title={lesson.title}
+              prediction={state.prediction === null ? undefined : lesson.choices[state.prediction]}
+              steps={[{ label: lesson.hint, done: status === 'observed' }]}
+              saved={state.completed.includes(state.lesson)}
+              automatic
+              challengeHref="#hk-challenges"
+              viewHref="#hk-view"
+              help="La masa inicial prepara otro ensayo y vuelve el tiempo a cero. Los ejemplos «10¹² kg hipotético» y «1 masa solar» cambian la escala. ×2 significa el doble de la referencia; ½ significa la mitad. El reloj avanza solo en el vacío ideal."
+            />
             <div
               className={`hk-control-group ${state.lesson === 'mass' || state.lesson === 'entropy' ? 'hk-highlight' : ''}`}
             >

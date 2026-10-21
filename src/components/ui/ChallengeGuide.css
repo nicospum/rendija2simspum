@@ -1,0 +1,118 @@
+.spum-trial-guide.spum-trial-guide {
+  margin: 0 0 22px;
+  padding: 16px;
+  border: 1px solid #557583;
+  border-left: 3px solid #a1d8d3;
+  border-radius: 9px;
+  background: #16303b;
+  color: #e6f0ed;
+  font:
+    13px/1.65 'Segoe UI',
+    Arial,
+    sans-serif;
+  overflow-wrap: anywhere;
+}
+.en-lab .spum-trial-guide {
+  border-left-color: #edc18e;
+}
+.spum-trial-guide .spum-trial-label {
+  display: block;
+  font:
+    10px/1.6 Consolas,
+    monospace;
+  letter-spacing: 1px;
+  color: #c8e6e0;
+}
+.spum-trial-guide > strong {
+  display: block;
+  margin: 5px 0;
+  font-size: 16px;
+}
+.spum-trial-guide.spum-trial-guide p {
+  margin: 8px 0;
+  color: #d1e1e2;
+  font: inherit;
+}
+.spum-trial-guide .spum-trial-idea {
+  font-style: italic;
+}
+.spum-trial-guide .spum-trial-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.spum-trial-guide .spum-trial-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 9px 12px;
+  border: 1px solid #6b8f99;
+  border-radius: 6px;
+  color: #c3f0e6;
+  text-decoration: none;
+  font: inherit;
+  box-sizing: border-box;
+}
+.spum-trial-guide.spum-trial-guide details {
+  border: 0;
+  padding: 0;
+  margin: 10px 0 0;
+  background: transparent;
+}
+.spum-trial-guide summary,
+.spum-first-visit summary {
+  min-height: 44px;
+  display: list-item;
+  align-content: center;
+  cursor: pointer;
+  padding: 8px 0;
+  box-sizing: border-box;
+}
+.spum-trial-guide.spum-trial-guide summary {
+  color: #c8e6e0;
+  font: inherit;
+}
+.spum-trial-guide ul {
+  padding-left: 18px;
+}
+.spum-trial-guide li {
+  margin: 8px 0;
+}
+.spum-first-visit {
+  margin: 12px 0 26px;
+  padding: 10px 20px;
+  border: 1px solid #687c8e;
+  border-radius: 12px;
+  color: #d2e3e7;
+  font:
+    14px/1.75 'Segoe UI',
+    Arial,
+    sans-serif;
+}
+.en-special .spum-first-visit {
+  border-color: #c8b795;
+  color: #314c51;
+  background: #f3e9d5;
+}
+.spum-first-visit ol {
+  padding-left: 24px;
+}
+.spum-first-visit li {
+  margin: 12px 0;
+}
+.spum-trial-guide :focus-visible,
+.spum-first-visit :focus-visible {
+  outline: 3px solid #a1d8d3;
+  outline-offset: 3px;
+}
+.en-special .spum-first-visit :focus-visible {
+  outline-color: #a34f37;
+}
+@media (max-width: 450px) {
+  .spum-trial-guide.spum-trial-guide {
+    padding: 13px;
+  }
+  .spum-trial-guide .spum-trial-actions a {
+    flex: 1 1 120px;
+  }
+}

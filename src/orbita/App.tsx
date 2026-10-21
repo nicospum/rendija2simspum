@@ -1,3 +1,4 @@
+import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useMemo, useReducer, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
 import {
@@ -334,6 +335,16 @@ export default function OrbitApp() {
             </div>
             <a href="#or-views">Comparar las órbitas ↑</a>
           </div>
+          <ChallengeGuide
+            index={s.index}
+            title={lesson.title}
+            prediction={s.prediction === null ? undefined : lesson.choices[s.prediction]}
+            steps={lesson.steps.map((label, i) => ({ label, done: checks[i] }))}
+            saved={done}
+            challengeHref="#or-challenges"
+            viewHref="#or-views"
+            help="El perihelio es el punto más cercano al Sol. Una UA es la distancia media Tierra–Sol. La lupa amplía solo el giro dibujado: no aumenta el avance físico. Cambiar masa, forma o tamaño prepara otro ensayo."
+          />
           <div className="or-buttons">
             <button
               onClick={() => tune({ a: MERCURY.a, e: MERCURY.e, mass: 1 })}

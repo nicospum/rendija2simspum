@@ -1,3 +1,4 @@
+import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useReducer, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
 import {
@@ -281,6 +282,16 @@ export default function HeightApp() {
             </div>
             <a href="#al-views">Ver relojes y diferencias ↑</a>
           </div>
+          <ChallengeGuide
+            index={s.index}
+            title={l.title}
+            prediction={s.prediction === null ? undefined : l.choices[s.prediction]}
+            steps={l.steps.map((label, i) => ({ label, done: checks[i] }))}
+            saved={done}
+            challengeHref="#al-challenges"
+            viewHref="#al-views"
+            help="Un ns es una milmillonésima de segundo; un µs, una millonésima. Primero elegí altura o GPS y después «Ver resultado». Cambiar altura, rapidez o duración reinicia el ensayo; ampliar diferencias conserva las medidas."
+          />
           <div
             className="al-buttons"
             role="group"

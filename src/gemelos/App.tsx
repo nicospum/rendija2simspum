@@ -1,3 +1,4 @@
+import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useReducer, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
 import {
@@ -299,6 +300,16 @@ export default function TwinsApp() {
             </div>
             <a href="#gv-views">Ver viaje y relojes ↑</a>
           </div>
+          <ChallengeGuide
+            index={s.index}
+            title={lesson.title}
+            prediction={s.prediction === null ? undefined : lesson.choices[s.prediction]}
+            steps={lesson.steps.map((label, i) => ({ label, done: checks[i] }))}
+            saved={done}
+            challengeHref="#gv-challenges"
+            viewHref="#gv-views"
+            help="c es la velocidad de la luz. «Tiempo propio» es lo que acumula cada reloj en su viaje. Cambiar el plan vuelve a la salida; «Ir al reencuentro» permite comparar sin esperar la animación."
+          />
           <div className="rl-control-grid">
             {(['outbound', 'inbound'] as const).map((key) => (
               <div className="rl-control-card" key={key}>

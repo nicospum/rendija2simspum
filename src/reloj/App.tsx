@@ -1,3 +1,4 @@
+import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useReducer, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
 import {
@@ -256,6 +257,16 @@ export default function LightClockApp() {
             </div>
             <a href="#rl-views">Ver las dos lecturas ↑</a>
           </div>
+          <ChallengeGuide
+            index={s.index}
+            title={lesson.title}
+            prediction={s.prediction === null ? undefined : lesson.choices[s.prediction]}
+            steps={lesson.steps.map((label, i) => ({ label, done: checked[i] }))}
+            saved={done}
+            challengeHref="#rl-challenges"
+            viewHref="#rl-views"
+            help="c es la velocidad de la luz en el vacío: 0,6 c significa el 60 % de esa velocidad. Un µs es una millonésima de segundo. Cambiar velocidad o reloj seguido reinicia el pulso; después completá otro tic."
+          />
           <div className="rl-control-grid">
             <div className="rl-control-card">
               <div className="rl-control-label">

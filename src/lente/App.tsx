@@ -1,3 +1,4 @@
+import ChallengeGuide from '../components/ui/ChallengeGuide'
 import Info from '../components/ui/InfoPopover'
 import { BlackHoleNavigation } from '../series/BlackHoleNavigation'
 import BlackHoleNotebook from '../series/BlackHoleNotebook'
@@ -132,7 +133,10 @@ export default function LensApp() {
               : undefined
           }
           onNext={
-            status === 'observed' && !pending
+            state.completed.includes(state.lesson) &&
+            state.prediction === lesson.answer &&
+            status === 'observed' &&
+            !pending
               ? () =>
                   dispatch({ type: 'lesson', id: LESSONS[(lessonIndex + 1) % LESSONS.length].id })
               : undefined
@@ -306,6 +310,17 @@ export default function LensApp() {
               físicas quedan fijas al cambiar la masa.
             </p>
           </div>
+          <ChallengeGuide
+            index={lessonIndex}
+            title={lesson.title}
+            prediction={state.prediction === null ? undefined : lesson.choices[state.prediction]}
+            steps={[{ label: lesson.hint, done: status === 'observed' && !pending }]}
+            saved={state.completed.includes(state.lesson)}
+            automatic
+            challengeHref="#ln-challenges"
+            viewHref="#ln-views"
+            help="M☉ es una masa solar; UA es la distancia media Tierra–Sol. La fuente es la estrella dorada. Tocá la imagen para elegir un rayo y seguí ese mismo rayo en el diagrama. «Sin lente» sirve de referencia: no cambia la fuente."
+          />
           <div className="ln-control-grid">
             <div className="ln-control">
               <div>

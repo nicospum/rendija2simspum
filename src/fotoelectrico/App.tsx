@@ -1,3 +1,4 @@
+import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useReducer, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
 import {
@@ -351,6 +352,16 @@ export default function PhotoelectricApp() {
             </div>
             <a href="#pe-views">Ver lo que cambia ↑</a>
           </div>
+          <ChallengeGuide
+            index={s.index}
+            title={lesson.title}
+            prediction={s.prediction === null ? undefined : lesson.choices[s.prediction]}
+            steps={lesson.steps.map((label, i) => ({ label, done: checks[i] }))}
+            saved={done}
+            challengeHref="#pe-challenges"
+            viewHref="#pe-views"
+            help="La frecuencia cambia la energía de cada fotón; el brillo cambia cuánta energía llega por segundo. Tras ajustar cada estado, tocá «Medir desde los controles»: mover una barra no guarda una medición."
+          />
           <div className="pe-control-grid">
             <div className="rl-control-card">
               <div className="rl-control-label">

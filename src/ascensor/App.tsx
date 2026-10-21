@@ -1,3 +1,4 @@
+import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useReducer, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
 import {
@@ -291,6 +292,16 @@ export default function ElevatorApp() {
             </div>
             <a href="#as-views">Ver la cabina y las mediciones ↑</a>
           </div>
+          <ChallengeGuide
+            index={s.index}
+            title={l.title}
+            prediction={s.prediction === null ? undefined : l.choices[s.prediction]}
+            steps={l.steps.map((label, i) => ({ label, done: checks[i] }))}
+            saved={done}
+            challengeHref="#as-challenges"
+            viewHref="#as-views"
+            help="La balanza mide la fuerza de apoyo en newtons (N), no la presencia de gravedad. Elegí una cabina y tocá «Ver resultado»; después cambiá la situación para comparar. Cambiar condiciones reinicia el ensayo."
+          />
           <div
             className="as-scenarios"
             role="group"

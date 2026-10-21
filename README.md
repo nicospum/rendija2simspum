@@ -42,6 +42,8 @@ npm run preview
 
 La [revisión conjunta de los cinco laboratorios](docs/REVISION_CINCO_LABS.md) documenta las comprobaciones móviles, ayudas contenidas en pantalla, navegación, preguntas junto al visor y acceso deliberado a las cámaras táctiles.
 
+La [revisión de uso de Einstein y agujeros negros](docs/REVISION_USO_ESPECIALES.md) explica las guías del siguiente paso, listas de observaciones pendientes y pruebas de los doce capítulos y sus 48 retos.
+
 ```bash
 npm test
 npm run lint

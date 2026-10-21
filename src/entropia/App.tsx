@@ -1,3 +1,4 @@
+import ChallengeGuide from '../components/ui/ChallengeGuide'
 import Info from '../components/ui/InfoPopover'
 import { BlackHoleNavigation } from '../series/BlackHoleNavigation'
 import BlackHoleNotebook from '../series/BlackHoleNotebook'
@@ -116,7 +117,9 @@ export default function EntropyApp() {
               : undefined
           }
           onNext={
-            status === 'observed' && state.prediction !== null
+            state.completed.includes(state.lesson) &&
+            state.prediction === lesson.answer &&
+            status === 'observed'
               ? () =>
                   dispatch({ type: 'lesson', id: LESSONS[(lessonIndex + 1) % LESSONS.length].id })
               : undefined
@@ -195,6 +198,17 @@ export default function EntropyApp() {
           <aside id="en-controls" className="en-panel en-controls">
             <p className="en-eyebrow">CAMBIÁ ALGO. MIRÁ QUÉ PASA.</p>
             <h2>Probá con tus manos.</h2>
+            <ChallengeGuide
+              index={lessonIndex}
+              title={lesson.title}
+              prediction={state.prediction === null ? undefined : lesson.choices[state.prediction]}
+              steps={[{ label: lesson.hint, done: status === 'observed' }]}
+              saved={state.completed.includes(state.lesson)}
+              automatic
+              challengeHref="#en-challenges"
+              viewHref="#en-map"
+              help="M☉ es una masa solar. La masa inicial cambia el tamaño de partida; la fracción emitida quita masa de ese mismo agujero negro. Para comparar una sola causa, usá «Volver a la referencia del reto». La trama del horizonte es un recurso didáctico."
+            />
             <div className={`en-control ${state.lesson === 'area' ? 'en-highlight' : ''}`}>
               <div className="en-control-title">
                 <label htmlFor="en-mass">Masa inicial</label>

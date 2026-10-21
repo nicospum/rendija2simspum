@@ -1,3 +1,4 @@
+import { FirstVisit } from '../components/ui/ChallengeGuide'
 import { useState } from 'react'
 import ExperimentIllustration from '../portal/ExperimentIllustration'
 import { einsteinLabs } from './catalog'
@@ -77,6 +78,7 @@ export default function EinsteinSeries() {
             </figcaption>
           </figure>
         </section>
+        <FirstVisit name="Einstein" />
         <Passport />
         <section className="en-train en-train-photo">
           <figure>

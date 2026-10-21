@@ -1,3 +1,4 @@
+import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
 import {
@@ -13,7 +14,7 @@ import DiskView from './DiskView'
 import StarView from './StarView'
 import { DEFAULT, model } from './physics'
 import type { Setup } from './physics'
-import { LESSONS, checkAnswer, observe, observed } from './learning'
+import { LESSONS, checkAnswer, observe, observed, observationSteps } from './learning'
 import type { Learning } from './learning'
 import { scientific } from '../hawking/physics'
 
@@ -276,6 +277,17 @@ export default function AccretionApp() {
             aria-label="Controles del laboratorio"
           >
             <p className="ac-eyebrow">CAMBIÁ UNA COSA. BUSCÁ LA PISTA.</p>
+            <ChallengeGuide
+              index={learning.index}
+              title={lesson.title}
+              prediction={learning.prediction === null ? undefined : lesson.choices[learning.prediction]}
+              steps={observationSteps(learning.index, learning.observations)}
+              saved={complete}
+              challengeHref="#ac-challenges"
+              viewHref="#ac-view"
+              help="M☉ significa masa del Sol. En el disco, la inclinación cambia desde dónde mirás; la alimentación cambia cuánto gas brilla. En la vista de la estrella, su período ayuda a medir la masa invisible. «Comparar con el inicio» bloquea los controles; «Volver a mi prueba» los habilita otra vez."
+            notice={reference ? 'Estás mirando la referencia: tocá «Volver a mi prueba» para modificar el ensayo.' : undefined}
+            />
             <fieldset disabled={reference}>
               <legend>Tu observatorio</legend>
               <label htmlFor="ac-gas">
@@ -507,11 +519,11 @@ export default function AccretionApp() {
               >
                 Ir a los controles ↑
               </a>
-              <p className="ac-progress">
-                {ready
-                  ? '✓ Comparación realizada'
-                  : '○ Falta comparar los estados del reto'}
-              </p>
+              <ul className="ac-progress">
+                {observationSteps(learning.index, learning.observations).map(step => (
+                  <li key={step.label}>{step.done ? '✓ Hecho: ' : '○ Pendiente: '}{step.label}</li>
+                ))}
+              </ul>
               <button className="ac-primary" onClick={check}>
                 Comprobar mi explicación
               </button>

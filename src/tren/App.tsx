@@ -1,3 +1,4 @@
+import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useReducer, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
 import {
@@ -287,6 +288,16 @@ export default function TrainApp() {
             </div>
             <a href="#tr-views">Ver el tren y las señales ↑</a>
           </div>
+          <ChallengeGuide
+            index={s.index}
+            title={l.title}
+            prediction={s.prediction === null ? undefined : l.choices[s.prediction]}
+            steps={l.steps.map((label, i) => ({ label, done: checks[i] }))}
+            saved={done}
+            challengeHref="#tr-challenges"
+            viewHref="#tr-views"
+            help="c es la velocidad de la luz. «Fecha de emisión» dice cuándo ocurrió el destello; «llegada» dice cuándo alcanzó al pasajero. Cambiar el ensayo reinicia las señales; cambiar de vista conserva los mismos sucesos."
+          />
           <div className="rl-control-grid">
             <div className="rl-control-card">
               <div className="rl-control-label">

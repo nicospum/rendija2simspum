@@ -95,22 +95,45 @@ export function observe(
   if (s.mode === 'fall' && sent) {
     if (index === 2 && sent.radius > 2.8 && sent.radius < 3.2)
       marks.add('early')
-    if (index === 2 && sent.radius > 1 && sent.radius <= 1.06) marks.add('late')
+    if (index === 2 && sent.radius > 1 && sent.radius <= 1.06)
+      marks.add('late')
     if (index === 3 && sent.radius > 1.1 && sent.radius < 1.3)
       marks.add('outside')
     if (index === 3 && sent.radius < 0.9) marks.add('trapped')
   }
   return [...marks]
 }
-export function observed(l: Learning) {
-  return (
+const REQUIRED = [
+  [
+    ['high', 'Sonda sostenida a 4 rₛ'],
+    ['low', 'Sonda sostenida a 1,2 rₛ'],
+  ],
+  [
+    ['horizon', 'Caída libre: visitar «En el horizonte»'],
+    ['inside', 'Caída libre: visitar «Un poco adentro»'],
+  ],
+  [
+    ['early', 'Enviar un pulso a 3 rₛ'],
+    ['late', 'Enviar otro pulso a 1,05 rₛ'],
+  ],
+  [
+    ['outside', 'Enviar un pulso desde «Afuera»: 1,2 rₛ'],
+    ['trapped', 'Enviar un pulso desde «Un poco adentro»: 0,8 rₛ'],
     [
-      ['high', 'low'],
-      ['horizon', 'inside'],
-      ['early', 'late'],
-      ['outside', 'trapped', 'heard'],
-    ][l.index]?.every((m) => l.marks.includes(m)) ?? false
-  )
+      'heard',
+      'Tocar «Recibir este pulso» en la tarjeta del envío exterior',
+    ],
+  ],
+] as const
+export function observationSteps(l: Learning) {
+  return (REQUIRED[l.index] ?? []).map(([id, label]) => ({
+    label,
+    done: l.marks.includes(id),
+  }))
+}
+export function observed(l: Learning) {
+  const steps = observationSteps(l)
+  return steps.length > 0 && steps.every((step) => step.done)
 }
 export function checkAnswer(l: Learning) {
   if (l.prediction === null) return 'predict'
@@ -190,7 +213,8 @@ export function reducer(s: State, a: Action): State {
       const modeChange =
         a.patch.mode !== undefined && a.patch.mode !== s.setup.mode
       const restart =
-        modeChange || (a.patch.radius !== undefined && s.setup.mode === 'hover')
+        modeChange ||
+        (a.patch.radius !== undefined && s.setup.mode === 'hover')
       const next = {
         ...s.setup,
         ...a.patch,
@@ -235,7 +259,10 @@ export function reducer(s: State, a: Action): State {
         MAX_TIME,
         s.setup.time + Math.min(0.1, a.delta) * 0.8,
       )
-      return { ...setSetup(s, { ...s.setup, time }), playing: time < MAX_TIME }
+      return {
+        ...setSetup(s, { ...s.setup, time }),
+        playing: time < MAX_TIME,
+      }
     }
     case 'send': {
       const p = makePulse(s.setup, `manual-${s.nextId}`, true)
