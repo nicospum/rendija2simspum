@@ -1,8 +1,68 @@
 export default function ExperimentIllustration({
   kind,
 }: {
-  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional'
+  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia'
 }) {
+  if (kind === 'entropia')
+    return (
+      <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
+        <defs>
+          <radialGradient id="entropy-portal-body" cx="30%" cy="25%">
+            <stop stopColor="#485648" />
+            <stop offset="1" stopColor="#060f16" />
+          </radialGradient>
+          <clipPath id="entropy-portal-clip">
+            <circle cx="207" cy="142" r="86" />
+          </clipPath>
+        </defs>
+        <circle cx="207" cy="142" r="86" fill="url(#entropy-portal-body)" stroke="#dec187" />
+        <g
+          clipPath="url(#entropy-portal-clip)"
+          fill="none"
+          stroke="#cbb17b"
+          strokeWidth=".8"
+          opacity=".65"
+        >
+          {[28, 55, 77].map((r) => (
+            <ellipse key={r} cx="207" cy="142" rx={r} ry="86" />
+          ))}
+          {[-62, -32, 0, 32, 62].map((y) => (
+            <ellipse key={y} cx="207" cy={142 + y} rx="90" ry="17" />
+          ))}
+        </g>
+        <path d="M315 142h35m-7-6 7 6-7 6" fill="none" stroke="#8caab8" />
+        {Array.from({ length: 16 }, (_, i) => (
+          <rect
+            key={i}
+            x={375 + (i % 4) * 15}
+            y={108 + Math.floor(i / 4) * 15}
+            width="13"
+            height="13"
+            fill="#e1c18820"
+            stroke="#e1c188"
+            strokeWidth=".7"
+          />
+        ))}
+        <text
+          x="404"
+          y="201"
+          textAnchor="middle"
+          fill="#e1c188"
+          fontSize="20"
+          fontFamily="Georgia,serif"
+        >
+          S ∝ A
+        </text>
+        <g fill="#a9c3cc" fontFamily="Consolas,monospace" fontSize="9" letterSpacing="1.5">
+          <text x="35" y="271">
+            ÁREA / ENTROPÍA
+          </text>
+          <text x="346" y="271">
+            CUATRO RETOS
+          </text>
+        </g>
+      </svg>
+    )
   if (kind === 'lente-gravitacional')
     return (
       <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">

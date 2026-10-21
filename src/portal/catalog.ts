@@ -1,5 +1,5 @@
 export interface Experiment {
-  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional'
+  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia'
   number: string
   field: string
   title: string
@@ -59,5 +59,17 @@ export const experiments: readonly Experiment[] = [
       'Compará la imagen con los caminos de la luz: alineá una fuente, explorá la sombra y cambiá la masa con cuatro retos.',
     tags: ['Luz', 'Geodésicas', 'Agujeros negros'],
     href: '/lente-gravitacional/',
+  },
+  {
+    id: 'entropia',
+    number: '05',
+    field: 'AGUJEROS NEGROS',
+    title: 'Entropía de Bekenstein–Hawking',
+    subtitle: 'La información también tiene una superficie.',
+    question: '¿Por qué la entropía de un agujero negro sigue al área de su horizonte?',
+    discovery:
+      'Agrandá el horizonte, descifrá la fórmula y contá la radiación con cuatro retos sobre área, entropía y segunda ley.',
+    tags: ['Entropía', 'Área', 'Información'],
+    href: '/entropia/',
   },
 ]

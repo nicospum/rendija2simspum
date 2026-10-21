@@ -83,7 +83,7 @@ export default function Portal() {
           <div className="portal-section-heading">
             <div>
               <span className="portal-eyebrow">ELEGÍ TU EXPERIMENTO</span>
-              <h2 id="labs-title">Cuatro formas de mirar más allá.</h2>
+              <h2 id="labs-title">Cinco formas de mirar más allá.</h2>
             </div>
             <span className="portal-count">
               {String(experiments.length).padStart(2, '0')} LABORATORIOS PARA EXPLORAR

@@ -173,6 +173,7 @@ export default function EntropyExplorer({
         también la entropía exterior. Esta comparación muestra S del agujero negro; no calcula la
         entropía total de la radiación ni resuelve la paradoja de la información.
       </p>
+      <a href="/entropia/">Abrir laboratorio de entropía: fórmula, radiación y cuatro retos ↗</a>
       <a href="https://doi.org/10.12942/lrr-2001-6" target="_blank" rel="noreferrer">
         Wald: termodinámica de agujeros negros ↗
       </a>

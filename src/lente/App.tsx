@@ -568,12 +568,12 @@ export default function LensApp() {
               S = k<sub>B</sub> c³ A / (4Gℏ)
             </p>
             <p>
-              El próximo laboratorio independiente va a explorar la fórmula de Bekenstein–Hawking:
+              El laboratorio de entropía explora la fórmula de Bekenstein–Hawking:
               área, masa, constantes y segunda ley. La lente estudia caminos de luz; la entropía
               abre otra pregunta sobre los estados microscópicos.
             </p>
-            <a href="/hawking/#hk-entropy-title">
-              Explorar la introducción de entropía en Hawking ↗
+            <a href="/entropia/">
+              Explorar el laboratorio de entropía ↗
             </a>
           </div>
         </section>

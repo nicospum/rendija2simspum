@@ -7,8 +7,9 @@ Una colección de laboratorios interactivos para aprender ciencia haciendo pregu
 - `/prisma/`: refracción y dispersión de la luz blanca, con trazado óptico en tiempo real.
 - `/hawking/`: masa, temperatura, entorno, evaporación y entropía de un agujero negro de Schwarzschild.
 - `/lente-gravitacional/`: imagen del observador y trayectorias calculadas con geodésicas de Schwarzschild.
+- `/entropia/`: fórmula de Bekenstein–Hawking, área, evaporación y contabilidad de entropía con cuatro retos.
 
-El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las cinco páginas se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada no carga Three.js.
+El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las seis páginas se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada y el laboratorio de entropía no cargan Three.js.
 
 ## Ejecutar localmente
 
@@ -35,7 +36,7 @@ npm run build
 npm audit
 ```
 
-Las pruebas cubren las fórmulas con referencias analíticas y numéricas independientes, muestreo estadístico determinista, estado y límites de memoria, pausa, cámaras y recorridos educativos de los cuatro laboratorios. La inspección visual en navegador sigue siendo necesaria para comprobar WebGL, interacción y responsive.
+Las pruebas cubren las fórmulas con referencias analíticas y numéricas independientes, muestreo estadístico determinista, estado y límites de memoria, pausa, cámaras y recorridos educativos de los cinco laboratorios. La inspección visual en navegador sigue siendo necesaria para comprobar WebGL, interacción y responsive.
 
 ## Cómo explorar la doble rendija
 
@@ -52,7 +53,9 @@ El modelo de doble rendija usa amplitudes de Fraunhofer en unidades normalizadas
 
 ## Organización y nuevos experimentos
 
-El cuarto laboratorio, [lente gravitacional](https://www.spumexp.lat/lente-gravitacional/), integra geodésicas nulas mediante RK4. La imagen WebGL reutiliza una tabla radial calculada en un worker; el diagrama integra la dirección seleccionada con la misma ecuación. Sus cuatro retos comparan con/sin lente, alinean una fuente, distinguen captura y escape y cambian masa manteniendo distancias físicas fijas. No agrega dependencias. Ver [derivación, arquitectura, límites y pruebas](docs/LENTE_GRAVITACIONAL.md). La siguiente prioridad elegida es un laboratorio independiente de entropía de Bekenstein–Hawking, que ya tiene una introducción dentro de Hawking.
+El quinto laboratorio, [entropía de Bekenstein–Hawking](https://www.spumexp.lat/entropia/), conecta un mapa geométrico del horizonte a escala fija con área, entropía, temperatura y un balance térmico de radiación ideal. La fórmula tiene símbolos explicados y una lupa algebraica separada. Sus cuatro retos comparan masa/área, el factor ¼, pérdida de masa y segunda ley generalizada. El SVG se calcula al interactuar, sin bucles de animación ni dependencias nuevas. Ver [modelo, alcance científico y pruebas](docs/ENTROPIA_LABORATORIO.md).
+
+El cuarto laboratorio, [lente gravitacional](https://www.spumexp.lat/lente-gravitacional/), integra geodésicas nulas mediante RK4. La imagen WebGL reutiliza una tabla radial calculada en un worker; el diagrama integra la dirección seleccionada con la misma ecuación. Sus cuatro retos comparan con/sin lente, alinean una fuente, distinguen captura y escape y cambian masa manteniendo distancias físicas fijas. No agrega dependencias. Ver [derivación, arquitectura, límites y pruebas](docs/LENTE_GRAVITACIONAL.md).
 
 El tercer laboratorio, [radiación de Hawking](https://www.spumexp.lat/hawking/), tiene cuatro retos: duplicar masa y comparar temperatura; activar el fondo cósmico y distinguir emisión de pérdida neta; adelantar la evaporación en vacío; relacionar área y entropía. La [base científica](docs/HAWKING_INVESTIGACION.md) distingue predicción semiclásica y evidencia de sistemas análogos. La potencia, el espectro y la vida usan un cuerpo negro ideal de fotones, con límites visibles. La trama y los puntos del visor WebGL son esquemáticos; los valores y gráficos se recalculan desde las ecuaciones. El brillo y movimiento responden a la potencia relativa amplificada, con comparaciones junto al visor, controles de masa ÷2/×2 y un explorador de la fórmula de Bekenstein–Hawking. Ver [arquitectura, recorrido y validación](docs/HAWKING_LABORATORIO.md) y [propuesta de serie de agujeros negros](docs/SERIE_AGUJEROS_NEGROS.md). `npm run research:hawking` conserva diez comprobaciones científicas independientes en CI; las pruebas de producción contrastan esos resultados.
 
@@ -64,6 +67,7 @@ doble-rendija/index.html       Entrada del laboratorio cuántico
 prisma/index.html              Entrada del laboratorio óptico
 hawking/index.html             Entrada del laboratorio de agujeros negros
 lente-gravitacional/index.html Entrada del laboratorio de lente gravitacional
+entropia/index.html            Entrada del laboratorio de entropía
 src/portal/                   Catálogo, portada y diagramas SVG
 src/App.tsx                   Laboratorio de doble rendija y emisión automática
 src/physics/interference.ts   Modelo físico puro y muestreo
@@ -72,8 +76,10 @@ src/components/simulation/    Escena WebGL, cámaras y tooltips
 src/components/ui/            Controles, recorrido y gráfico
 src/prisma/                   Aplicación del prisma integrada
 src/hawking/                  Modelo SI, retos, reloj, visor WebGL y espectro
-tests/                        Pruebas de los tres laboratorios
-vite.config.ts                Cuatro entradas y separación de bundles
+src/lente/                    Geodésicas, worker, imagen WebGL y diagrama de rayos
+src/entropia/                 Área, fórmula, SVG geométrico, balance y retos
+tests/                        Pruebas de los cinco laboratorios
+vite.config.ts                Seis entradas y separación de bundles
 vercel.json                   Compilación y publicación estáticas
 ```
 
@@ -81,7 +87,7 @@ Para agregar un laboratorio: crear su entrada HTML y módulo principal, incluirl
 
 ## Publicación
 
-Vercel debe seguir conectado a `nicospum/rendija2simspum`, rama `master`, directorio raíz del repositorio. `vercel.json` declara `npm ci`, `npm run build`, `dist` y las URL con barra final. No requiere funciones, variables de entorno ni credenciales en el cliente. Subir a GitHub no confirma por sí solo un despliegue: verificar las cuatro URL públicas después de cada publicación.
+Vercel debe seguir conectado a `nicospum/rendija2simspum`, rama `master`, directorio raíz del repositorio. `vercel.json` declara `npm ci`, `npm run build`, `dist` y las URL con barra final. No requiere funciones, variables de entorno ni credenciales en el cliente. Subir a GitHub no confirma por sí solo un despliegue: verificar las seis URL públicas después de cada publicación.
 
 El prisma se integró desde `nicospum/newtonprisma`, commit `67ec9033ce3ab00a0611c28d72172c138695b760`, conservando su modelo y sus pruebas. Es una copia autónoma dentro de este repositorio; futuras mejoras deben sincronizarse conscientemente, no se descargan desde Netlify durante la ejecución.
 

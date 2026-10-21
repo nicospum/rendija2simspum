@@ -22,6 +22,7 @@ export default defineConfig({
         prisma: 'prisma/index.html',
         hawking: 'hawking/index.html',
         lente: 'lente-gravitacional/index.html',
+        entropia: 'entropia/index.html',
       },
       output: {
         manualChunks(id) {
