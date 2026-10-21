@@ -1,6 +1,6 @@
 # Propuesta de serie: agujeros negros
 
-21 de octubre de 2026. Son simulaciones de predicciones físicas y exploraciones de evidencia; no todos son experimentos históricos reproducibles. Solo radiación de Hawking está implementado actualmente. Los demás son propuestas.
+21 de octubre de 2026. Son simulaciones de predicciones físicas y exploraciones de evidencia; no todos son experimentos históricos reproducibles. Radiación de Hawking y lente gravitacional están implementados. La prioridad siguiente elegida por el usuario es un laboratorio independiente de entropía y la fórmula de Bekenstein–Hawking. No es otro nombre para la lente.
 
 ## Primer recorrido de cuatro laboratorios
 
@@ -9,7 +9,9 @@
 3. **Radiación de Hawking: ¿por qué uno más pequeño es más caliente?** Laboratorio existente, mejorado. Cuatro retos: masa, entorno, evaporación ideal y área/entropía. No confundir emisión con acreción ni una señal visual amplificada con fotones visibles. La potencia y la evolución implementadas son un modelo ideal de fotones, no una predicción completa con todas las especies y factores de cuerpo gris.
 4. **Entropía: ¿por qué cuenta el área?** Expandir el explorador incorporado en Hawking en un laboratorio propio: comparar radio, área y volumen; duplicar M y descubrir S ×4; interpretar S/kB = A/(4ℓP²); explorar las constantes; contrastar entropía del agujero negro y segunda ley generalizada. Una representación de microestados debe declararse modelo didáctico, no microscopía de un horizonte. No sumar curvas inventadas para afirmar que resolvemos la paradoja de la información.
 
-Este orden construye intuición geométrica antes de abordar termodinámica e información. Próxima implementación recomendada: lente gravitacional; la entropía puede continuar desarrollándose en paralelo como contenido del laboratorio actual.
+El recorrido anterior describe relaciones entre temas. Para las **próximas implementaciones**, el orden actualizado es: (1) entropía Bekenstein–Hawking; (2) horizonte, relojes y corrimiento al rojo; (3) órbitas de fotones y materia; (4) mareas y espaguetificación; (5) disco de acreción; (6) rotación Kerr y extracción de energía; (7) fusiones y ondas gravitacionales; (8) información, curva de Page y una introducción controlada a holografía/Maldacena. Estos últimos temas necesitan modelos propios y mayor cuidado conceptual.
+
+Para entropía se proponen cuatro retos: comparar área y volumen al duplicar M (A ×4 frente a volumen euclídeo asociado ×8, sin afirmar un volumen interior físico único); reconocer el papel de las constantes y del factor 1/4; relacionar absorción/evaporación con S del agujero negro; y distinguir esa entropía de la entropía total en la segunda ley generalizada. Las celdas o microestados dibujados serán una analogía explícita, no estructura microscópica observada.
 
 ## Catálogo ampliado
 

@@ -1,8 +1,55 @@
 export default function ExperimentIllustration({
   kind,
 }: {
-  kind: 'doble-rendija' | 'prisma' | 'hawking'
+  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional'
 }) {
+  if (kind === 'lente-gravitacional')
+    return (
+      <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
+        <defs>
+          <radialGradient id="lens-portal-glow">
+            <stop stopColor="#edbf7d" stopOpacity=".4" />
+            <stop offset="1" stopColor="#edbf7d" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        <circle cx="280" cy="150" r="105" fill="url(#lens-portal-glow)" />
+        <circle
+          cx="280"
+          cy="150"
+          r="78"
+          fill="none"
+          stroke="#f0c584"
+          strokeWidth="2.5"
+          opacity=".9"
+        />
+        <circle cx="280" cy="150" r="34" fill="#03080f" />
+        {Array.from({ length: 32 }, (_, i) => (
+          <circle
+            key={i}
+            cx={30 + ((i * 83) % 500)}
+            cy={40 + ((i * 47) % 205)}
+            r={i % 3 === 0 ? 1.6 : 0.8}
+            fill="#afcbd7"
+            opacity=".6"
+          />
+        ))}
+        <path
+          d="M475 150C340 148 350 20 276 40S154 136 62 104M475 150C340 152 350 280 276 260S154 164 62 196"
+          fill="none"
+          stroke="#77aebe"
+          strokeWidth="1.4"
+          opacity=".65"
+        />
+        <g fill="#a9c3cc" fontFamily="Consolas,monospace" fontSize="9" letterSpacing="1.5">
+          <text x="35" y="271">
+            CURVAR LA LUZ
+          </text>
+          <text x="359" y="271">
+            DOS VISTAS / UNA FÍSICA
+          </text>
+        </g>
+      </svg>
+    )
   if (kind === 'hawking')
     return (
       <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">

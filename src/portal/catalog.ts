@@ -1,5 +1,5 @@
 export interface Experiment {
-  id: 'doble-rendija' | 'prisma' | 'hawking'
+  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional'
   number: string
   field: string
   title: string
@@ -47,5 +47,17 @@ export const experiments: readonly Experiment[] = [
       'Explorá masa, temperatura, entorno y entropía con cuatro retos y un modelo de evaporación ideal.',
     tags: ['Gravedad', 'Termodinámica', 'Física cuántica'],
     href: '/hawking/',
+  },
+  {
+    id: 'lente-gravitacional',
+    number: '04',
+    field: 'RELATIVIDAD GENERAL',
+    title: 'Lente gravitacional',
+    subtitle: 'Una fuente. Más de un camino.',
+    question: '¿Podés ver lo que hay detrás de un agujero negro?',
+    discovery:
+      'Compará la imagen con los caminos de la luz: alineá una fuente, explorá la sombra y cambiá la masa con cuatro retos.',
+    tags: ['Luz', 'Geodésicas', 'Agujeros negros'],
+    href: '/lente-gravitacional/',
   },
 ]

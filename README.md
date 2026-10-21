@@ -6,8 +6,9 @@ Una colección de laboratorios interactivos para aprender ciencia haciendo pregu
 - `/doble-rendija/`: detecciones individuales, interferencia, difracción e información del camino.
 - `/prisma/`: refracción y dispersión de la luz blanca, con trazado óptico en tiempo real.
 - `/hawking/`: masa, temperatura, entorno, evaporación y entropía de un agujero negro de Schwarzschild.
+- `/lente-gravitacional/`: imagen del observador y trayectorias calculadas con geodésicas de Schwarzschild.
 
-El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las cuatro páginas se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada no carga Three.js.
+El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las cinco páginas se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada no carga Three.js.
 
 ## Ejecutar localmente
 
@@ -34,7 +35,7 @@ npm run build
 npm audit
 ```
 
-Las pruebas cubren las fórmulas con referencias analíticas y numéricas independientes, muestreo estadístico determinista, estado y límites de memoria, pausa, cámaras y recorridos educativos de los tres laboratorios. La inspección visual en navegador sigue siendo necesaria para comprobar WebGL, interacción y responsive.
+Las pruebas cubren las fórmulas con referencias analíticas y numéricas independientes, muestreo estadístico determinista, estado y límites de memoria, pausa, cámaras y recorridos educativos de los cuatro laboratorios. La inspección visual en navegador sigue siendo necesaria para comprobar WebGL, interacción y responsive.
 
 ## Cómo explorar la doble rendija
 
@@ -51,6 +52,8 @@ El modelo de doble rendija usa amplitudes de Fraunhofer en unidades normalizadas
 
 ## Organización y nuevos experimentos
 
+El cuarto laboratorio, [lente gravitacional](https://www.spumexp.lat/lente-gravitacional/), integra geodésicas nulas mediante RK4. La imagen WebGL reutiliza una tabla radial calculada en un worker; el diagrama integra la dirección seleccionada con la misma ecuación. Sus cuatro retos comparan con/sin lente, alinean una fuente, distinguen captura y escape y cambian masa manteniendo distancias físicas fijas. No agrega dependencias. Ver [derivación, arquitectura, límites y pruebas](docs/LENTE_GRAVITACIONAL.md). La siguiente prioridad elegida es un laboratorio independiente de entropía de Bekenstein–Hawking, que ya tiene una introducción dentro de Hawking.
+
 El tercer laboratorio, [radiación de Hawking](https://www.spumexp.lat/hawking/), tiene cuatro retos: duplicar masa y comparar temperatura; activar el fondo cósmico y distinguir emisión de pérdida neta; adelantar la evaporación en vacío; relacionar área y entropía. La [base científica](docs/HAWKING_INVESTIGACION.md) distingue predicción semiclásica y evidencia de sistemas análogos. La potencia, el espectro y la vida usan un cuerpo negro ideal de fotones, con límites visibles. La trama y los puntos del visor WebGL son esquemáticos; los valores y gráficos se recalculan desde las ecuaciones. El brillo y movimiento responden a la potencia relativa amplificada, con comparaciones junto al visor, controles de masa ÷2/×2 y un explorador de la fórmula de Bekenstein–Hawking. Ver [arquitectura, recorrido y validación](docs/HAWKING_LABORATORIO.md) y [propuesta de serie de agujeros negros](docs/SERIE_AGUJEROS_NEGROS.md). `npm run research:hawking` conserva diez comprobaciones científicas independientes en CI; las pruebas de producción contrastan esos resultados.
 
 El prisma también tiene cuatro preguntas guiadas: hacer atravesar el haz, variar brillo, alejar la pantalla y comparar materiales. Cada reto guarda una referencia y muestra qué cambió con una escala común. Las pistas visibles relacionan cada control con la observación. Una sección histórica explica el aporte de Newton, su importancia y las pruebas adicionales que este banco no incluye. Ver [el recorrido educativo](docs/PRISMA_EDUCACION.md).
@@ -60,6 +63,7 @@ index.html                    Entrada de la colección
 doble-rendija/index.html       Entrada del laboratorio cuántico
 prisma/index.html              Entrada del laboratorio óptico
 hawking/index.html             Entrada del laboratorio de agujeros negros
+lente-gravitacional/index.html Entrada del laboratorio de lente gravitacional
 src/portal/                   Catálogo, portada y diagramas SVG
 src/App.tsx                   Laboratorio de doble rendija y emisión automática
 src/physics/interference.ts   Modelo físico puro y muestreo

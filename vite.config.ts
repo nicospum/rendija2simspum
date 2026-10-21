@@ -21,6 +21,7 @@ export default defineConfig({
         rendija: 'doble-rendija/index.html',
         prisma: 'prisma/index.html',
         hawking: 'hawking/index.html',
+        lente: 'lente-gravitacional/index.html',
       },
       output: {
         manualChunks(id) {
