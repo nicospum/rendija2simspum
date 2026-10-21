@@ -213,13 +213,6 @@
   .gv-shell .rl-frame-heading h3 {
     font-size: 24px;
   }
-  .gv-shell #gv-controls,
-  .gv-shell #gv-turn,
-  .gv-shell #gv-views,
-  .gv-shell #gv-challenges,
-  .gv-shell #gv-science {
-    scroll-margin-top: 78px;
-  }
 }
 @media (max-width: 370px) {
   .gv-shell .rl-intro h1 {
