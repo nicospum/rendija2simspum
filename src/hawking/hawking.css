@@ -384,42 +384,6 @@ p {
 .hk-absorbing small {
   color: #8ebbe7;
 }
-.hk-tip {
-  position: static;
-  flex-shrink: 0;
-}
-.hk-tip > button {
-  display: grid;
-  place-items: center;
-  list-style: none;
-  border: 1px solid #49616e;
-  color: #b7c8ce;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  font-size: 11px;
-}
-.hk-tip > span {
-  position: absolute;
-  bottom: calc(100% + 10px);
-  left: 8px;
-  right: 8px;
-  z-index: 4;
-  background: #253540;
-  color: #e1e9ed;
-  padding: 15px;
-  line-height: 1.7;
-  font-size: 12px;
-  border: 1px solid #5c727e;
-  border-radius: 8px;
-  box-shadow: 0 12px 32px #0005;
-}
-.hk-tip > span {
-  display: none;
-}
-.hk-tip[data-open='true'] > span {
-  display: block;
-}
 .hk-controls {
   border: 1px solid #2b3b45;
   background: #111d26;
@@ -1352,19 +1316,6 @@ input[type='range'] {
   .hk-measurements small {
     font-size: 9px;
   }
-  .hk-tip > button {
-    width: 44px;
-    min-height: 44px;
-    border: 0;
-    border-radius: 6px;
-    background: #263b48;
-  }
-  .hk-tip > span {
-    left: 4px;
-    right: 4px;
-    padding: 12px;
-    font-size: 11px;
-  }
   .hk-controls {
     display: block;
     padding: 22px;
@@ -1772,6 +1723,11 @@ input[type='range'] {
     19px Georgia,
     serif;
 }
+@media (max-width: 600px) {
+  .hk-constant-buttons {
+    grid-template-columns: repeat(3, minmax(44px, 1fr));
+  }
+}
 .hk-constant-buttons button[aria-pressed='true'] {
   color: #f0c98d;
   background: #d9ae7020;
@@ -1996,22 +1952,11 @@ input[type='range'] {
   text-align: left;
   margin-top: 4px;
 }
-.hk-control-title .hk-tip > button,
-.hk-inline-help .hk-tip > button {
-  width: 44px;
-  height: 44px;
-}
 .hk-inline-help {
   margin-top: 12px;
   justify-content: space-between;
   font-size: 11px;
   color: #b3c8d2;
-}
-.hk-control-title .hk-tip > span,
-.hk-inline-help .hk-tip > span {
-  left: 0;
-  right: 0;
-  z-index: 9;
 }
 .hk-presets button[aria-pressed='true'] {
   border-color: #9d8965;

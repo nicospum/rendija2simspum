@@ -18,6 +18,7 @@ interface SceneViewportProps {
   onHover: (target: 'lamp' | 'prism' | 'screen' | 'beam' | null) => void
   onSelect: (target: 'lamp' | 'prism' | 'screen' | 'beam' | null) => void
   activeTarget: 'lamp' | 'prism' | 'screen' | 'beam' | null
+  touchCamera?: boolean
 }
 
 interface Layout {
@@ -144,6 +145,7 @@ export default function SceneViewport(props: SceneViewportProps) {
         <ExperimentScene {...props} minimumZ={layout.minimumZ} maximumZ={layout.maximumZ} />
         <ProjectionLabels references={references} positions={labelPositions} view={props.view} />
       </Canvas>
+      <div className="spum-camera-scroll" data-camera-enabled={props.touchCamera ?? false} aria-hidden="true" onPointerDown={()=>{props.onHover(null);props.onSelect(null)}}/>
       {props.showLabels && (
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
           {LABELS.map((label, index) => (

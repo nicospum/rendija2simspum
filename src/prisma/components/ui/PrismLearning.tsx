@@ -14,7 +14,7 @@ export function PrismLearningGuide({
   onSelect: (id: LessonId) => void
 }) {
   return (
-    <section className="prism-learning-guide" aria-labelledby="prism-learning-title">
+    <section className="prism-learning-guide" id="prism-retos" aria-labelledby="prism-learning-title">
       <div className="prism-learning-heading">
         <div>
           <span className="eyebrow">UNA PREGUNTA ANTES DE MOVER UN CONTROL</span>

@@ -1,5 +1,6 @@
-import { useId, useMemo, useReducer, useState } from 'react'
-import type { ReactNode } from 'react'
+import Info from '../components/ui/InfoPopover'
+import { LabMission, LabNavigation, MoreLabs } from '../components/ui/LabJourney'
+import { useMemo, useReducer, useState } from 'react'
 import ObserverView from './ObserverView'
 import Diagram from './Diagram'
 import { initialState, LESSONS, lessonStatus, reducer } from './learning'
@@ -18,35 +19,6 @@ import { useTransfer } from './useTransfer'
 
 const number = (value: number, digits = 2) =>
   value.toLocaleString('es-AR', { maximumFractionDigits: digits })
-function Info({ name, children }: { name: string; children: ReactNode }) {
-  const [open, setOpen] = useState(false)
-  const id = useId()
-  return (
-    <span
-      className="ln-help"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <button
-        aria-label={`Información: ${name}`}
-        aria-expanded={open}
-        aria-describedby={id}
-        onClick={() => setOpen(true)}
-        onFocus={() => setOpen(true)}
-        onBlur={() => setOpen(false)}
-        onKeyDown={(event) => {
-          if (event.key === 'Escape') setOpen(false)
-        }}
-      >
-        ?
-      </button>
-      <span id={id} role="tooltip" hidden={!open}>
-        {children}
-      </span>
-    </span>
-  )
-}
-
 export default function LensApp() {
   const [state, dispatch] = useReducer(reducer, undefined, () => initialState())
   const [grid, setGrid] = useState(false)
@@ -74,6 +46,7 @@ export default function LensApp() {
     [setup.mass, setup.gravity, state.rayAngle],
   )
   const lesson = LESSONS.find((item) => item.id === state.lesson)!
+  const lessonIndex = LESSONS.findIndex((item) => item.id === state.lesson)
   const status = lessonStatus(state)
   const aligned = Math.abs(setup.source + setup.yaw) < 0.2
   const endpoint = backgroundDirection(ray.phi, state.azimuth, radians(state.yaw))
@@ -130,12 +103,33 @@ export default function LensApp() {
           </p>
         </div>
 
-        <nav className="ln-mobile-nav" aria-label="Moverse entre vistas y controles">
-          <a href="#ln-views">Imagen</a>
-          <a href="#ln-paths">Recorrido</a>
-          <a href="#ln-controls">Controles</a>
-          <a href="#ln-challenges">Retos</a>
-        </nav>
+        <LabNavigation
+          links={[
+            ['Imagen', '#spum-mission'],
+            ['Recorrido', '#ln-paths'],
+            ['Controles', '#ln-controls'],
+            ['Retos', '#ln-challenges'],
+          ]}
+        />
+        <LabMission
+          title={lesson.question}
+          instruction={lesson.hint}
+          index={lessonIndex}
+          href="#ln-challenges"
+          result={
+            status === 'observed' && !pending
+              ? state.lesson === 'capture'
+                ? `Rayo elegido: ${outcome}.`
+                : `Radio ×${number(g.rs / ref.rs)} · Sombra ${setup.gravity ? number(degrees(g.shadowAngle)) : '0'}° · Fuente ${number(Math.abs(setup.source + setup.yaw), 1)}°`
+              : undefined
+          }
+          onNext={
+            status === 'observed' && !pending
+              ? () =>
+                  dispatch({ type: 'lesson', id: LESSONS[(lessonIndex + 1) % LESSONS.length].id })
+              : undefined
+          }
+        />
         <section className="ln-views" id="ln-views" aria-label="Dos vistas de la misma luz">
           <article className="ln-observer-panel">
             <div className="ln-view-heading">
@@ -568,13 +562,11 @@ export default function LensApp() {
               S = k<sub>B</sub> c³ A / (4Gℏ)
             </p>
             <p>
-              El laboratorio de entropía explora la fórmula de Bekenstein–Hawking:
-              área, masa, constantes y segunda ley. La lente estudia caminos de luz; la entropía
-              abre otra pregunta sobre los estados microscópicos.
+              El laboratorio de entropía explora la fórmula de Bekenstein–Hawking: área, masa,
+              constantes y segunda ley. La lente estudia caminos de luz; la entropía abre otra
+              pregunta sobre los estados microscópicos.
             </p>
-            <a href="/entropia/">
-              Explorar el laboratorio de entropía ↗
-            </a>
+            <a href="/entropia/">Explorar el laboratorio de entropía ↗</a>
           </div>
         </section>
         <section className="ln-limits" id="ln-limits">
@@ -626,6 +618,7 @@ export default function LensApp() {
             </div>
           </details>
         </section>
+        <MoreLabs current="lente-gravitacional" />
       </main>
       <footer className="ln-footer">
         <a href="/">∿ SPUM / EXPERIMENTOS</a>

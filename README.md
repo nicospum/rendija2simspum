@@ -29,6 +29,8 @@ npm run preview
 
 ## Verificar cambios
 
+La [revisión conjunta de los cinco laboratorios](docs/REVISION_CINCO_LABS.md) documenta las comprobaciones móviles, ayudas contenidas en pantalla, navegación, preguntas junto al visor y acceso deliberado a las cámaras táctiles.
+
 ```bash
 npm test
 npm run lint

@@ -7,8 +7,9 @@ import SceneBoundary from './components/ui/SceneBoundary'
 import HelpDialog from './components/ui/HelpDialog'
 import Icon from './components/ui/Icon'
 import NewtonDiscovery from './components/ui/NewtonDiscovery'
+import { LabMission, LabNavigation, MoreLabs } from '../components/ui/LabJourney'
 import { PrismLearningGuide, PrismEvidence, type ActiveLesson } from './components/ui/PrismLearning'
-import { LESSONS, makeReading, type LessonId } from './education/prismLearning'
+import { LESSONS, makeReading, describeLesson, type LessonId } from './education/prismLearning'
 
 const SceneViewport = lazy(() => import('./components/simulation/SceneViewport'))
 type HoverTarget = 'lamp' | 'prism' | 'screen' | 'beam' | null
@@ -118,6 +119,12 @@ function App() {
     [config, experiment, state.lightIntensity, state.lightEnabled],
   )
   const [lesson, setLesson] = useState<ActiveLesson | null>(null)
+  const [touchCamera, setTouchCamera] = useState(false)
+  const activeLesson = LESSONS.find((item) => item.id === lesson?.id)
+  const lessonIndex = LESSONS.findIndex((item) => item.id === lesson?.id)
+  const feedback = lesson
+    ? describeLesson(lesson.id, lesson.baseline, reading, !!state.pausedConfig)
+    : null
   const startLesson = (id: LessonId) => {
     const actions = useStore.getState()
     actions.reset()
@@ -210,7 +217,9 @@ function App() {
               El color está en la luz<span>.</span>
             </h1>
             <p>Dirigí un haz de luz blanca. Explorá un prisma. Descubrí lo que ya estaba ahí.</p>
-            <a className="prism-history-link" href="#prism-history-title">Qué descubrió Newton y por qué importó ↓</a>
+            <a className="prism-history-link" href="#prism-history-title">
+              Qué descubrió Newton y por qué importó ↓
+            </a>
           </div>
           <div className="newton-note">
             <span className="mono">WOOLSTHORPE, 1666</span>
@@ -222,7 +231,39 @@ function App() {
             <span className="small-spectrum" />
           </div>
         </div>
-        <PrismLearningGuide active={lesson?.id ?? null} onSelect={startLesson} />
+        <LabNavigation
+          light
+          links={[
+            ['Visor', '#spum-mission'],
+            ['Controles', '#prism-controls'],
+            ['Retos', '#prism-retos'],
+            ['Por qué', '#prism-history-title'],
+          ]}
+        />
+        <PrismLearningGuide
+          active={lesson?.id ?? null}
+          onSelect={(id) => {
+            startLesson(id)
+            document.getElementById('spum-mission')?.scrollIntoView({ block: 'start' })
+          }}
+        />
+        <LabMission
+          light
+          title={activeLesson?.question}
+          instruction={
+            activeLesson?.instruction ??
+            'Elegí una pregunta y seguí el haz desde la lámpara hasta la pantalla. Cada control tiene una pista sobre qué mirar.'
+          }
+          index={lesson ? lessonIndex : undefined}
+          href={lesson ? '#prism-evidence-title' : '#prism-retos'}
+          result={feedback?.status === 'observed' ? feedback.heading : undefined}
+          onStart={!lesson ? () => startLesson(LESSONS[0].id) : undefined}
+          onNext={
+            feedback?.status === 'observed'
+              ? () => startLesson(LESSONS[(lessonIndex + 1) % LESSONS.length].id)
+              : undefined
+          }
+        />
         <div className="laboratory-layout">
           <section className="experiment-column" aria-label="Simulación y mediciones">
             <div className="scene-card">
@@ -269,6 +310,7 @@ function App() {
                       onHover={setHover}
                       onSelect={setSelectedTarget}
                       activeTarget={informationTarget}
+                      touchCamera={touchCamera}
                     />
                   </Suspense>
                 </SceneBoundary>
@@ -306,10 +348,16 @@ function App() {
               </div>
               <div className="scene-bottom">
                 <span>
-                  <span className="mouse-symbol">↔</span>Arrastrá para orbitar · scroll para
-                  acercar
+                  <span className="mouse-symbol">↔</span>Arrastrá para orbitar · scroll para acercar
                 </span>
                 <div>
+                  <button
+                    className="spum-mobile-camera-switch"
+                    aria-pressed={touchCamera}
+                    onClick={() => setTouchCamera(!touchCamera)}
+                  >
+                    {touchCamera ? 'Dejar de girar' : 'Girar cámara'}
+                  </button>
                   <button aria-pressed={state.showLabels} onClick={state.toggleLabels}>
                     Etiquetas
                   </button>
@@ -325,6 +373,11 @@ function App() {
                   </button>
                 </div>
               </div>
+              <p className="spum-touch-hint">
+                {touchCamera
+                  ? 'Cámara activa: arrastrá para girar y pellizcá para acercar. Tocá “Dejar de girar” para volver a deslizar la página.'
+                  : 'Deslizá sobre el visor para seguir leyendo. Activá “Girar cámara” para explorar el montaje desde otro ángulo.'}
+              </p>
               <div className="measurements">
                 <div>
                   <span>ÍNDICE DE REFRACCIÓN</span>
@@ -418,6 +471,7 @@ function App() {
             </button>
           </div>
         </section>
+        <MoreLabs current="prisma" light />
       </main>
       <footer className="app-footer">
         <a href="/">

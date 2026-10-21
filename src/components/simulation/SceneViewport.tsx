@@ -134,7 +134,7 @@ function ProjectedLabels({ references }: { references: RefObject<HTMLDivElement 
   return null
 }
 
-export default function SceneViewport() {
+export default function SceneViewport({ touchCamera = false }: { touchCamera?: boolean }) {
   const first = useRef<HTMLDivElement>(null),
     second = useRef<HTMLDivElement>(null),
     third = useRef<HTMLDivElement>(null)
@@ -174,6 +174,12 @@ export default function SceneViewport() {
           <ProjectedLabels references={references} />
         </Canvas>
       </CanvasErrorBoundary>
+      <div
+        className="spum-camera-scroll"
+        data-camera-enabled={touchCamera}
+        aria-hidden="true"
+        onPointerDown={() => setActiveLabel(null)}
+      />
       <div className="quantum-scene-badges" aria-live="polite">
         <span>
           <i />

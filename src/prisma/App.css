@@ -142,4 +142,6 @@ select { width: 100%; border: 1px solid #dce2d1; border-radius: 5px; background:
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
 
 @media (max-width: 800px) { .app-header .related-experiment { display: none; } }
+@media (max-width: 850px) { .scene-bottom button { min-width: 44px; min-height: 44px; } }
+@media (max-width: 850px) { .app-header .text-button { min-height: 44px; min-width: 44px; } }
 @media (max-width: 500px) { .app-header { height: auto; min-height: 82px; gap: 9px; flex-wrap: wrap; padding: 13px 0; } .app-header nav { gap: 12px; margin-left: auto; } .app-header .experiment-home { font-size: 10px; } .app-header .guide-button { font-size: 0; padding: 9px; gap: 0; } .app-header .guide-button svg { width: 17px; height: 17px; } }

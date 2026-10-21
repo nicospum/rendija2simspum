@@ -6,11 +6,13 @@ import DistributionChart from './components/ui/DistributionChart'
 import LearningGuide from './components/ui/LearningGuide'
 import DoubleSlitEvidence, { type ActiveLesson } from './components/ui/DoubleSlitEvidence'
 import DoubleSlitDiscovery from './components/ui/DoubleSlitDiscovery'
+import { LabMission, LabNavigation, MoreLabs } from './components/ui/LabJourney'
 import {
   LESSONS,
   lessonConfig,
   proposedConfig,
   makeReading,
+  describeLesson,
   type LessonId,
 } from './education/doubleSlitLearning'
 import './App.css'
@@ -54,10 +56,14 @@ export default function App() {
   const showWaves = useLabStore((s) => s.showWaves)
   const view = useLabStore((s) => s.view)
   const [lesson, setLesson] = useState<ActiveLesson | null>(null)
+  const [touchCamera, setTouchCamera] = useState(false)
   const spacing = fringeSpacing(config)
   const detectorOn = config.detectorStrength > 0
   const reading = makeReading(config, histogram, detected)
   const activeControl = LESSONS.find((item) => item.id === lesson?.id)?.controlId
+  const activeLesson = LESSONS.find((item) => item.id === lesson?.id)
+  const lessonIndex = LESSONS.findIndex((item) => item.id === lesson?.id)
+  const feedback = lesson ? describeLesson(lesson.id, lesson.baseline, reading, isPaused) : null
 
   function explore(id: LessonId) {
     const state = useLabStore.getState()
@@ -131,7 +137,39 @@ export default function App() {
             <div className="q-mini-fringes" aria-hidden="true" />
           </aside>
         </section>
-        <LearningGuide active={lesson?.id ?? null} onExplore={explore} />
+        <LabNavigation
+          light
+          links={[
+            ['Visor', '#spum-mission'],
+            ['Controles', '#controls-title'],
+            ['Retos', '#q-retos'],
+            ['Por qué', '#discovery-title'],
+          ]}
+        />
+        <LearningGuide
+          active={lesson?.id ?? null}
+          onExplore={(id) => {
+            explore(id)
+            document.getElementById('spum-mission')?.scrollIntoView({ block: 'start' })
+          }}
+        />
+        <LabMission
+          light
+          title={activeLesson?.question}
+          instruction={
+            activeLesson?.instruction ??
+            'Elegí una pregunta, imaginá el resultado y probá cambiar una sola cosa. Los impactos se generan al azar según el montaje.'
+          }
+          index={lesson ? lessonIndex : undefined}
+          href={lesson ? '#slit-evidence-title' : '#q-retos'}
+          result={feedback?.status === 'sampled' ? feedback.heading : undefined}
+          onStart={!lesson ? () => explore(LESSONS[0].id) : undefined}
+          onNext={
+            feedback?.status === 'sampled'
+              ? () => explore(LESSONS[(lessonIndex + 1) % LESSONS.length].id)
+              : undefined
+          }
+        />
         <section
           className="q-lab-layout"
           id="laboratorio"
@@ -165,11 +203,18 @@ export default function App() {
                   </div>
                 }
               >
-                <SceneViewport />
+                <SceneViewport touchCamera={touchCamera} />
               </Suspense>
               <div className="q-scene-bottom">
                 <span>Arrastrá para orbitar · scroll para acercar</span>
                 <div>
+                  <button
+                    className="spum-mobile-camera-switch"
+                    aria-pressed={touchCamera}
+                    onClick={() => setTouchCamera(!touchCamera)}
+                  >
+                    {touchCamera ? 'Dejar de girar' : 'Girar cámara'}
+                  </button>
                   <button
                     aria-pressed={showWaves}
                     onClick={() => useLabStore.getState().setShowWaves(!showWaves)}
@@ -184,6 +229,11 @@ export default function App() {
                   </button>
                 </div>
               </div>
+              <p className="spum-touch-hint">
+                {touchCamera
+                  ? 'Cámara activa: arrastrá para girar y pellizcá para acercar. Tocá “Dejar de girar” para volver a deslizar la página.'
+                  : 'Deslizá sobre el visor para seguir leyendo. Activá “Girar cámara” si querés explorar el banco desde otro ángulo.'}
+              </p>
               <p className="q-scene-caption">
                 Los puntos son detecciones. El campo representa fases de forma esquemática; no
                 muestra la trayectoria de cada partícula.
@@ -340,6 +390,7 @@ export default function App() {
             </p>
           </div>
         </details>
+        <MoreLabs current="doble-rendija" light />
       </main>
       <footer className="q-footer">
         <a href="/">SPUM / Una colección para aprender experimentando</a>

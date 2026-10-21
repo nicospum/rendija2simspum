@@ -74,7 +74,7 @@ export default function ControlPanel({
   const state = useStore()
   const { config, setParameter } = state
   return (
-    <aside className="control-panel" aria-label="Controles del experimento">
+    <aside className="control-panel" id="prism-controls" aria-label="Controles del experimento">
       <div className="panel-heading">
         <div>
           <span className="eyebrow">TU EXPERIMENTO</span>
@@ -97,7 +97,8 @@ export default function ControlPanel({
             className={`switch ${state.lightEnabled ? 'on' : ''}`}
             role="switch"
             aria-checked={state.lightEnabled}
-            aria-label="Encender fuente de luz"
+            aria-label="Fuente de luz"
+            title={state.lightEnabled ? 'Apagar fuente de luz' : 'Encender fuente de luz'}
             onClick={state.toggleLight}
           >
             <span />

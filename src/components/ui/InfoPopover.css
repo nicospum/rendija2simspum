@@ -1,0 +1,74 @@
+.spum-info {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+.spum-info > button {
+  min-width: 44px;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  display: inline-grid;
+  place-content: center;
+  border: 1px solid #69808b;
+  border-radius: 50%;
+  font:
+    14px Georgia,
+    serif;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+.spum-info-panel {
+  position: fixed;
+  z-index: 10000;
+  width: min(320px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  border: 1px solid #839ba3;
+  border-radius: 10px;
+  padding: 20px;
+  color: #e2ebed;
+  background: #203640;
+  box-shadow: 0 15px 50px #0008;
+  font:
+    13px/1.8 'Segoe UI',
+    Arial,
+    sans-serif;
+}
+.spum-info-panel > strong {
+  display: block;
+  margin-bottom: 9px;
+  color: #f0cf98;
+  font:
+    18px/1.4 Georgia,
+    serif;
+}
+.spum-info-panel > button {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px;
+  border: 1px solid #8ca3a7;
+  border-radius: 5px;
+  margin-top: 15px;
+  font:
+    12px 'Segoe UI',
+    Arial,
+    sans-serif;
+  color: #e2ebed;
+  background: #142832;
+  cursor: pointer;
+}
+.spum-info > button:focus-visible,
+.spum-info-panel > button:focus-visible {
+  outline: 2px solid #edc78f;
+  outline-offset: 3px;
+}
+@media (max-width: 850px) {
+  .spum-info-panel {
+    width: auto;
+    max-height: min(65dvh, 440px);
+    font-size: 13px;
+  }
+}

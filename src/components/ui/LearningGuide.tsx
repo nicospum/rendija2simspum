@@ -8,7 +8,7 @@ export default function LearningGuide({
   onExplore: (id: LessonId) => void
 }) {
   return (
-    <section className="q-guide" aria-label="Recorrido para aprender">
+    <section className="q-guide" id="q-retos" aria-label="Recorrido para aprender">
       <div className="q-guide-heading">
         <span className="q-eyebrow">PREDECÍ · CAMBIÁ · COMPARÁ</span>
         <span>Cuatro preguntas. Una variable a la vez.</span>

@@ -1,4 +1,6 @@
-import { useEffect, useId, useReducer, useState } from 'react'
+import Tip from '../components/ui/InfoPopover'
+import { LabMission, LabNavigation, MoreLabs } from '../components/ui/LabJourney'
+import { useEffect, useReducer, useState } from 'react'
 import SceneExplorer from './SceneExplorer'
 import Spectrum from './Spectrum'
 import LiveImpact from './LiveImpact'
@@ -9,40 +11,10 @@ import { initialState, LESSONS, lessonStatus, reading, reducer } from './learnin
 import type { Action } from './learning'
 import type { LessonId } from './learning'
 import { massInWindow, massWindow } from './exploration'
-import type { Dispatch, ReactNode } from 'react'
+import type { Dispatch } from 'react'
 
 function Arrow() {
   return <span aria-hidden="true">↗</span>
-}
-function Tip({ name, children }: { name: string; children: ReactNode }) {
-  const [open, setOpen] = useState(false)
-  const id = useId()
-  return (
-    <span
-      className="hk-tip"
-      data-open={open}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <button
-        aria-label={`Información: ${name}`}
-        aria-expanded={open}
-        aria-controls={id}
-        aria-describedby={id}
-        onClick={() => setOpen(true)}
-        onFocus={() => setOpen(true)}
-        onBlur={() => setOpen(false)}
-        onKeyDown={(event) => {
-          if (event.key === 'Escape') setOpen(false)
-        }}
-      >
-        ?
-      </button>
-      <span id={id} role="tooltip">
-        {children}
-      </span>
-    </span>
-  )
 }
 function useMotion() {
   const [reduced, setReduced] = useState(
@@ -97,6 +69,7 @@ export default function HawkingApp() {
     reference = reading(state.reference),
     initial = reading({ ...state, age: 0 })
   const lesson = LESSONS.find((item) => item.id === state.lesson)!
+  const lessonIndex = LESSONS.findIndex((item) => item.id === state.lesson)
   const status = lessonStatus(state)
   const ratio = current.massKg / reference.massKg
   const effect = impact(state, state.reference)
@@ -222,6 +195,33 @@ export default function HawkingApp() {
           </p>
         </div>
 
+        <LabNavigation
+          links={[
+            ['Visor', '#spum-mission'],
+            ['Controles', '#hk-controls'],
+            ['Retos', '#hk-challenges'],
+            ['Por qué', '#hk-discovery'],
+          ]}
+        />
+        <LabMission
+          live={!state.running}
+          title={lesson.question}
+          instruction={lesson.hint}
+          index={lessonIndex}
+          href="#hk-challenges"
+          result={
+            status === 'observed'
+              ? state.lesson === 'bath'
+                ? 'La emisión continúa; el entorno aporta más energía de la que sale.'
+                : `Masa ${factor(ratio)} · Temperatura ${factor(current.temperatureK / reference.temperatureK)} · Área ${factor(current.areaM2 / reference.areaM2)}`
+              : undefined
+          }
+          onNext={
+            status === 'observed'
+              ? () => prepareLesson(LESSONS[(lessonIndex + 1) % LESSONS.length].id)
+              : undefined
+          }
+        />
         <div className="hk-workspace">
           <section className="hk-observatory" id="hk-view" aria-label="Visor del agujero negro">
             <SceneExplorer
@@ -847,6 +847,7 @@ export default function HawkingApp() {
             Leer la investigación, las derivaciones y las fuentes <Arrow />
           </a>
         </section>
+        <MoreLabs current="hawking" />
       </main>
       <footer className="hk-footer">
         <a href="/">∿ SPUM / EXPERIMENTOS</a>

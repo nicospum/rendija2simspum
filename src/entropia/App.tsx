@@ -1,3 +1,5 @@
+import Info from '../components/ui/InfoPopover'
+import { LabMission, LabNavigation, MoreLabs } from '../components/ui/LabJourney'
 import { useReducer, useState } from 'react'
 import type { ReactNode } from 'react'
 import HorizonMap from './HorizonMap'
@@ -8,41 +10,6 @@ import { initialState, LESSONS, lessonStatus, reducer } from './learning'
 
 const n = (value: number, digits = 2) =>
   value.toLocaleString('es-AR', { maximumFractionDigits: digits })
-function Info({ name, children }: { name: string; children: ReactNode }) {
-  const [open, setOpen] = useState(false)
-  return (
-    <details
-      className="en-help"
-      open={open}
-      onToggle={(event) => setOpen(event.currentTarget.open)}
-      onPointerEnter={(event) => {
-        if (event.pointerType === 'mouse') setOpen(true)
-      }}
-      onPointerLeave={(event) => {
-        if (event.pointerType === 'mouse') setOpen(false)
-      }}
-      onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false)
-      }}
-      onKeyDown={(event) => {
-        if (event.key === 'Escape') setOpen(false)
-      }}
-    >
-      <summary aria-label={`Información: ${name}`}>?</summary>
-      <div className="en-tip" role="note">
-        <strong>{name}</strong>
-        <p>{children}</p>
-        <button
-          className="en-tip-close"
-          onClick={() => setOpen(false)}
-          aria-label={`Cerrar información: ${name}`}
-        >
-          Cerrar ×
-        </button>
-      </div>
-    </details>
-  )
-}
 function Ratio({ name, value, children }: { name: string; value: number; children: ReactNode }) {
   return (
     <div className="en-ratio">
@@ -67,6 +34,7 @@ export default function EntropyApp() {
   const [unit, setUnit] = useState<'k' | 'si' | 'bits'>('k')
   const model = entropyModel(state.mass, state.emitted)
   const lesson = LESSONS.find((l) => l.id === state.lesson)!
+  const lessonIndex = LESSONS.findIndex((l) => l.id === state.lesson)
   const status = lessonStatus(state)
   const fractionLeft = (1 - state.emitted) ** 2
   const radiationFraction = model.radiationOverK / model.initial.entropyOverK
@@ -117,12 +85,35 @@ export default function EntropyApp() {
             <a href="#en-limits">Qué calculamos ↓</a>
           </p>
         </div>
-        <nav className="en-mobile-nav" aria-label="Accesos rápidos">
-          <a href="#en-map">Horizonte</a>
-          <a href="#en-controls">Controles</a>
-          <a href="#en-formula">Fórmula</a>
-          <a href="#en-challenges">Retos</a>
-        </nav>
+        <LabNavigation
+          links={[
+            ['Horizonte', '#spum-mission'],
+            ['Controles', '#en-controls'],
+            ['Fórmula', '#en-formula'],
+            ['Retos', '#en-challenges'],
+          ]}
+        />
+        <LabMission
+          title={lesson.question}
+          instruction={lesson.hint}
+          index={lessonIndex}
+          href="#en-challenges"
+          result={
+            status === 'observed' && state.prediction !== null
+              ? state.lesson === 'quarter'
+                ? `${state.patch} áreas de ejemplo ÷ 4 = ${state.patch / 4} unidades de S/kB.`
+                : state.lesson === 'total'
+                  ? `La suma térmica aumenta ${n((totalFraction - 1) * 100)} % al incluir la radiación.`
+                  : `Radio ×${n(model.radiusRatio)} · Área ×${n(model.areaRatio)} · Entropía ×${n(model.entropyRatio)} respecto de 10 M☉.`
+              : undefined
+          }
+          onNext={
+            status === 'observed' && state.prediction !== null
+              ? () =>
+                  dispatch({ type: 'lesson', id: LESSONS[(lessonIndex + 1) % LESSONS.length].id })
+              : undefined
+          }
+        />
         <div className="en-lab-grid">
           <section id="en-map" className="en-panel en-horizon">
             <div className="en-section-top">
@@ -615,6 +606,7 @@ export default function EntropyApp() {
             </a>
           </div>
         </section>
+        <MoreLabs current="entropia" />
       </main>
       <footer className="en-footer">
         <a className="en-brand" href="/">
