@@ -23,8 +23,22 @@
 }
 .portal-special-link span { font: 10px/1.7 Consolas, monospace; letter-spacing: 1px; color: #e5be8a; }
 .portal-special-link svg { margin-left: auto; }
-.portal-einstein-link { background: #10313c; }
-.portal-einstein-link span { color: #a3e6d9; }
+.portal-einstein-link {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) 20px;
+  gap: 16px;
+  background: #f1e4c9;
+  color: #4c635c;
+  border-color: #cfb88c;
+}
+.portal-einstein-link img { width: 64px; height: 64px; object-fit: contain; }
+.portal-einstein-link span { color: #9f4c37; }
+.portal-einstein-link strong {
+  display: block;
+  font: 27px/1.2 Georgia, serif;
+  color: #253e49;
+  margin: 5px 0;
+}
 .portal-experiment-card.reloj-de-luz .portal-art-link { background: #102735; color: #c3dedc; }
 .portal-experiment-card.tren-de-einstein .portal-art-link { background: #122b3b; color: #c3dedc; }
 .portal-experiment-card.acrecion .portal-art-link { background: #0d1a28; color: #c4d2dc; }

@@ -6,13 +6,17 @@ import {
   MoreLabs,
 } from '../components/ui/LabJourney'
 import EinsteinNavigation from '../einstein/EinsteinNavigation'
+import { readCompleted } from '../einstein/progress'
+import { useChapterProgress } from '../einstein/usePassport'
 import { MATERIALS, snapshot, spectrum } from './physics'
 import type { Setup } from './physics'
 import { initialState, LESSONS, observations, reducer } from './learning'
 import { n } from './format'
 import Scene from './Scene'
 export default function PhotoelectricApp() {
-  const [s, dispatch] = useReducer(reducer, undefined, () => initialState()),
+  const [s, dispatch] = useReducer(reducer, undefined, () =>
+    initialState(0, readCompleted('efecto-fotoelectrico')),
+  ),
     [energy, setEnergy] = useState(false),
     [visible, setVisible] = useState(!document.hidden)
   const m = snapshot(s.setup),
@@ -31,6 +35,7 @@ export default function PhotoelectricApp() {
       document.getElementById('pe-question')?.focus({ preventScroll: true })
     })
   }
+  useChapterProgress('efecto-fotoelectrico', s.completed)
   useEffect(() => {
     const update = () => setVisible(!document.hidden)
     document.addEventListener('visibilitychange', update)
@@ -54,7 +59,7 @@ export default function PhotoelectricApp() {
   const first = s.records[0] ? snapshot(s.records[0].setup) : null,
     last = s.records[1] ? snapshot(s.records[1].setup) : null
   return (
-    <div className="rl-shell pe-shell">
+    <div className="en-lab rl-shell pe-shell">
       <a className="rl-skip" href="#pe-controls">
         Ir a los controles
       </a>
@@ -780,7 +785,7 @@ export default function PhotoelectricApp() {
             Explorar la doble rendija →
           </a>
         </section>
-        <EinsteinNavigation current="efecto-fotoelectrico" />
+        <EinsteinNavigation current="efecto-fotoelectrico" footer />
         <MoreLabs current="efecto-fotoelectrico" />
       </main>
       <footer className="rl-footer">

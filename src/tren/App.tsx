@@ -6,6 +6,8 @@ import {
   MoreLabs,
 } from '../components/ui/LabJourney'
 import EinsteinNavigation from '../einstein/EinsteinNavigation'
+import { readCompleted } from '../einstein/progress'
+import { useChapterProgress } from '../einstein/usePassport'
 import {
   C,
   gamma,
@@ -24,9 +26,12 @@ const n = (v: number, digits = 3) =>
   })
 const label = (frame: Frame) => (frame === 'anden' ? 'andén' : 'tren')
 export default function TrainApp() {
-  const [s, dispatch] = useReducer(reducer, undefined, () => initialState())
+  const [s, dispatch] = useReducer(reducer, undefined, () =>
+    initialState(0, readCompleted('tren-de-einstein')),
+  )
   const [view, setView] = useState<Frame>('tren')
   const [visible, setVisible] = useState(!document.hidden)
+  useChapterProgress('tren-de-einstein', s.completed)
   useEffect(() => {
     const onVisibility = () => setVisible(!document.hidden)
     document.addEventListener('visibilitychange', onVisibility)
@@ -68,7 +73,7 @@ export default function TrainApp() {
   const platform = snapshot(setup, 'anden'),
     train = snapshot(setup, 'tren')
   return (
-    <div className="rl-shell tr-shell">
+    <div className="en-lab rl-shell tr-shell">
       <a href="#tr-controls" className="rl-skip">
         Ir a los controles
       </a>
@@ -698,7 +703,7 @@ export default function TrainApp() {
             Explorar Nos vemos a la vuelta →
           </a>
         </section>
-        <EinsteinNavigation current="tren-de-einstein" />
+        <EinsteinNavigation current="tren-de-einstein" footer />
         <MoreLabs current="tren-de-einstein" />
       </main>
       <footer className="rl-footer">

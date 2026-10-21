@@ -1,0 +1,142 @@
+:root {
+  color: #213947;
+  background: #f8f0e1;
+  color-scheme: light;
+  background-image: radial-gradient(#92714c0c 0.7px, transparent 0.7px);
+  background-size: 17px 17px;
+}
+.en-lab .rl-header,
+.en-special .rl-header {
+  border-color: #d6c9af;
+  color: #243c48;
+}
+.en-lab .rl-header .rl-brand,
+.en-special .rl-header .rl-brand {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.en-lab .rl-header > a:last-child {
+  color: #9b4934;
+}
+.en-lab .rl-intro {
+  gap: 55px;
+  padding: 35px 0 45px;
+}
+.en-lab .rl-intro h1 {
+  color: #1b3545;
+}
+.en-lab .rl-intro h1 em {
+  color: #b45137;
+}
+.en-lab .rl-intro h2 {
+  color: #274d54;
+}
+.en-lab .rl-intro p:not(.rl-eyebrow) {
+  color: #526267;
+}
+.en-lab .rl-intro .rl-eyebrow {
+  color: #587061;
+}
+.en-lab .rl-intro a {
+  color: #a54b33;
+}
+.en-lab .rl-observatory,
+.en-lab .rl-controls,
+.en-lab .rl-challenges,
+.en-lab .pe-records {
+  color: #e5efed;
+  color-scheme: dark;
+  box-shadow: 0 6px 0 #d9ceb945;
+  border-radius: 17px;
+}
+.en-lab .rl-observatory {
+  border-top: 4px solid #ba7251;
+}
+.en-lab .rl-controls,
+.en-lab .rl-challenges {
+  border-top: 3px solid #ce9c64;
+}
+.en-lab .spum-mission {
+  --spum-ink: #294336;
+  --spum-muted: #526459;
+  --spum-line: #bac5a9;
+  --spum-paper: #e8edda;
+  --spum-accent: #8d4b2f;
+  border-radius: 13px;
+  border-left-width: 4px;
+}
+.en-lab .rl-science {
+  color: #e5efed;
+  background: #18313f;
+  padding: 30px;
+  border-radius: 17px;
+  color-scheme: dark;
+}
+.en-lab .rl-science h2 {
+  font-size: clamp(30px, 4.2vw, 50px);
+}
+.en-lab .rl-continue {
+  background: #e5ebda;
+  border-left: 4px solid #b66a42;
+  border-radius: 0 16px 16px 0;
+  color: #2f4a42;
+}
+.en-lab .rl-continue .rl-eyebrow {
+  color: #68734c;
+}
+.en-lab .rl-continue p:not(.rl-eyebrow) {
+  color: #52625b;
+}
+.en-lab .rl-continue a {
+  color: #244e4c;
+}
+.en-lab .spum-more-labs {
+  --spum-ink: #29414a;
+  --spum-muted: #5a6a6a;
+  --spum-line: #d0c4aa;
+  --spum-paper: #fff9ed;
+  --spum-accent: #a9563e;
+}
+.en-lab .rl-footer,
+.en-special .rl-footer {
+  color: #6f6c5b;
+}
+.en-lab .rl-footer a,
+.en-special .rl-footer a {
+  color: #9b4934;
+}
+.en-lab button,
+.en-special button {
+  transition:
+    background-color 0.15s,
+    border-color 0.15s;
+}
+.en-lab button:hover {
+  filter: brightness(1.08);
+}
+.en-lab :focus-visible,
+.en-special :focus-visible {
+  outline: 3px solid #b66a42;
+  outline-offset: 4px;
+}
+@media (max-width: 850px) {
+  .en-lab .rl-intro {
+    gap: 24px;
+    padding: 26px 0;
+  }
+  .en-lab .rl-science {
+    padding: 20px;
+  }
+}
+@media (max-width: 550px) {
+  .en-special .rl-header .rl-brand small {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .en-lab *,
+  .en-special * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

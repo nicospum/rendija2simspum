@@ -6,6 +6,8 @@ import {
   MoreLabs,
 } from '../components/ui/LabJourney'
 import EinsteinNavigation from '../einstein/EinsteinNavigation'
+import { readCompleted } from '../einstein/progress'
+import { useChapterProgress } from '../einstein/usePassport'
 import {
   GPS,
   DAY,
@@ -18,9 +20,12 @@ import { initialState, LESSONS, observations, reducer } from './learning'
 import { n, signed } from './format'
 import Scene from './Scene'
 export default function HeightApp() {
-  const [s, dispatch] = useReducer(reducer, undefined, () => initialState()),
+  const [s, dispatch] = useReducer(reducer, undefined, () =>
+    initialState(0, readCompleted('el-tiempo-tiene-altura')),
+  ),
     [chart, setChart] = useState(false),
     [visible, setVisible] = useState(!document.hidden)
+  useChapterProgress('el-tiempo-tiene-altura', s.completed)
   useEffect(() => {
     const onVisibility = () => setVisible(!document.hidden)
     document.addEventListener('visibilitychange', onVisibility)
@@ -62,7 +67,7 @@ export default function HeightApp() {
     })
   }
   return (
-    <div className="rl-shell al-shell">
+    <div className="en-lab rl-shell al-shell">
       <a href="#al-controls" className="rl-skip">
         Ir a los controles
       </a>
@@ -797,7 +802,7 @@ export default function HeightApp() {
             Explorar la órbita de Mercurio →
           </a>
         </section>
-        <EinsteinNavigation current="el-tiempo-tiene-altura" />
+        <EinsteinNavigation current="el-tiempo-tiene-altura" footer />
         <MoreLabs current="el-tiempo-tiene-altura" />
       </main>
       <footer className="rl-footer">

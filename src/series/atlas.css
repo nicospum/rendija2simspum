@@ -1,0 +1,128 @@
+.bh-series-shell {
+  background-image:
+    radial-gradient(ellipse at 90% 10%, #36646a20, transparent 40%),
+    radial-gradient(ellipse at 0% 65%, #614b7020, transparent 45%);
+}
+.bh-series-hero {
+  border-bottom: 1px solid #405462;
+  margin-bottom: 30px;
+}
+.bh-series-labs article {
+  border-radius: 16px;
+  box-shadow: inset 0 3px #ae9974;
+}
+.bh-series-labs article:nth-child(2n) {
+  box-shadow: inset 0 3px #689fa0;
+}
+.bh-series-labs article:last-child {
+  box-shadow: inset 0 3px #ab8cbc;
+}
+.bh-atlas {
+  margin: 50px 0;
+  padding: 35px;
+  border: 1px solid #506177;
+  border-radius: 20px;
+  background: linear-gradient(130deg, #152d3e, #162033 70%);
+  color: #e5ecea;
+}
+.bh-atlas-kicker {
+  font:
+    10px/1.7 Consolas,
+    monospace;
+  letter-spacing: 1.6px;
+  color: #dfc394;
+}
+.bh-atlas h2 {
+  font:
+    clamp(30px, 4vw, 49px) / 1.15 Georgia,
+    serif;
+  margin: 15px 0;
+}
+.bh-atlas > p:not(.bh-atlas-kicker) {
+  font:
+    14px/1.8 'Segoe UI',
+    sans-serif;
+  color: #b6cbd4;
+}
+.bh-atlas-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0;
+}
+.bh-atlas-tabs button {
+  min-height: 46px;
+  padding: 10px 16px;
+  border: 1px solid #5b7181;
+  border-radius: 24px;
+  background: #182e40;
+  color: #c8dee0;
+  font-size: 12px;
+  cursor: pointer;
+}
+.bh-atlas-tabs button[aria-pressed='true'] {
+  background: #e5c397;
+  border-color: #e5c397;
+  color: #182537;
+}
+.bh-atlas-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 28px;
+}
+.bh-atlas-art {
+  background: radial-gradient(ellipse at 50% 50%, #3f5c76, #102131 75%);
+  border-radius: 15px;
+}
+.bh-atlas-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.bh-atlas-panel > div > span {
+  font:
+    9px/1.6 Consolas,
+    monospace;
+  letter-spacing: 1.3px;
+  color: #b4b4de;
+}
+.bh-atlas h3 {
+  font:
+    30px/1.2 Georgia,
+    serif;
+  margin: 13px 0;
+}
+.bh-atlas-panel p {
+  color: #b8cdd6;
+  font:
+    13px/1.8 'Segoe UI',
+    sans-serif;
+}
+.bh-atlas .bh-atlas-history {
+  border-left: 2px solid #b49c7c;
+  padding-left: 15px;
+  font-size: 12px;
+  color: #d5d5c6;
+}
+.bh-atlas a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #e7c697;
+  font-size: 12px;
+  margin-right: 20px;
+}
+@media (max-width: 850px) {
+  .bh-atlas {
+    padding: 22px;
+    margin: 35px 0;
+  }
+  .bh-atlas-panel {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .bh-atlas-tabs button {
+    flex: 1 1 auto;
+  }
+}

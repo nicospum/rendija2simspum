@@ -4,6 +4,7 @@ import App from './App'
 import '../einstein/base.css'
 import '../reloj/reloj.css'
 import './ascensor.css'
+import '../einstein/world.css'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />

@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import EinsteinSeries from './EinsteinSeries'
 import './base.css'
 import './einstein.css'
+import './world.css'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <EinsteinSeries />

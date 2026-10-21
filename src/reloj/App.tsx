@@ -6,6 +6,8 @@ import {
   MoreLabs,
 } from '../components/ui/LabJourney'
 import EinsteinNavigation from '../einstein/EinsteinNavigation'
+import { readCompleted } from '../einstein/progress'
+import { useChapterProgress } from '../einstein/usePassport'
 import { C, gamma, HALF_RATE_BETA, OWN_PERIOD, snapshot } from './physics'
 import type { Frame } from './physics'
 import { initialState, LESSONS, observations, reducer } from './learning'
@@ -15,10 +17,13 @@ const n = (v: number, digits = 3) =>
   v.toLocaleString('es-AR', { maximumFractionDigits: digits })
 const name = (frame: Frame) => (frame === 'nave' ? 'nave' : 'estación')
 export default function LightClockApp() {
-  const [s, dispatch] = useReducer(reducer, undefined, () => initialState())
+  const [s, dispatch] = useReducer(reducer, undefined, () =>
+    initialState(0, readCompleted('reloj-de-luz')),
+  )
   const [activeView, setActiveView] = useState<Frame>('estacion')
   const [guide, setGuide] = useState(true)
   const [visible, setVisible] = useState(!document.hidden)
+  useChapterProgress('reloj-de-luz', s.completed)
   useEffect(() => {
     const visibility = () => setVisible(!document.hidden)
     document.addEventListener('visibilitychange', visibility)
@@ -58,7 +63,7 @@ export default function LightClockApp() {
   const fraction = (value: number) => dispatch({ type: 'fraction', value })
   const checked = observations(s)
   return (
-    <div className="rl-shell">
+    <div className="en-lab rl-shell">
       <a href="#rl-controls" className="rl-skip">
         Ir a los controles
       </a>
@@ -557,7 +562,7 @@ export default function LightClockApp() {
             <a href="/horizonte/">Comparar relojes cerca de un horizonte ↗</a>
           </div>
         </section>
-        <EinsteinNavigation />
+        <EinsteinNavigation footer />
         <MoreLabs current="reloj-de-luz" />
       </main>
       <footer className="rl-footer">

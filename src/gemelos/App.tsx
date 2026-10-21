@@ -6,6 +6,8 @@ import {
   MoreLabs,
 } from '../components/ui/LabJourney'
 import EinsteinNavigation from '../einstein/EinsteinNavigation'
+import { readCompleted } from '../einstein/progress'
+import { useChapterProgress } from '../einstein/usePassport'
 import { LESSONS, initialState, observations, reducer } from './learning'
 import { snapshot } from './physics'
 import type { Setup } from './physics'
@@ -65,10 +67,13 @@ function Clock({
   )
 }
 export default function TwinsApp() {
-  const [s, dispatch] = useReducer(reducer, undefined, () => initialState()),
+  const [s, dispatch] = useReducer(reducer, undefined, () =>
+    initialState(0, readCompleted('nos-vemos-a-la-vuelta')),
+  ),
     [view, setView] = useState<'trip' | 'diagram'>('trip'),
     [signals, setSignals] = useState(true),
     [visible, setVisible] = useState(!document.hidden)
+  useChapterProgress('nos-vemos-a-la-vuelta', s.completed)
   useEffect(() => {
     const onVisibility = () => setVisible(!document.hidden)
     document.addEventListener('visibilitychange', onVisibility)
@@ -107,7 +112,7 @@ export default function TwinsApp() {
     })
   }
   return (
-    <div className="rl-shell gv-shell">
+    <div className="en-lab rl-shell gv-shell">
       <a href="#gv-controls" className="rl-skip">
         Ir a los controles
       </a>
@@ -682,7 +687,7 @@ export default function TwinsApp() {
             Explorar el ascensor de Einstein →
           </a>
         </section>
-        <EinsteinNavigation current="nos-vemos-a-la-vuelta" />
+        <EinsteinNavigation current="nos-vemos-a-la-vuelta" footer />
         <MoreLabs current="nos-vemos-a-la-vuelta" />
       </main>
       <footer className="rl-footer">

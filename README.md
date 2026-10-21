@@ -18,7 +18,7 @@ Una colección de laboratorios interactivos para aprender ciencia haciendo pregu
 - `/el-tiempo-tiene-altura/`: relojes a distintas alturas, tiempo propio, dilatación gravitatoria y balance del GPS con cuatro retos.
 - `/orbita-que-no-se-cierra/`: Mercurio, precesión relativista, comparación de Newton y Einstein y cuatro retos.
 - `/efecto-fotoelectrico/`: frecuencia, brillo, materiales, emisión de electrones y cuatro retos sobre el Nobel de Einstein.
-- `/einstein/`: especial Einstein con tres laboratorios de relatividad especial, tres de relatividad general y el efecto fotoeléctrico como capítulo de física cuántica.
+- `/einstein/`: cuaderno ilustrado con tres laboratorios de relatividad especial, tres de relatividad general y el efecto fotoeléctrico; 28 retos, pasaporte local, mapa por preguntas y exploración de E₀ = mc².
 
 El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las diecisiete páginas (catorce laboratorios, portada y dos especiales) se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada, los especiales, entropía, horizonte y los siete laboratorios de Einstein no cargan Three.js.
 
@@ -114,7 +114,7 @@ src/lente/                    Geodésicas, worker, imagen WebGL y diagrama de ra
 src/entropia/                 Área, fórmula, SVG geométrico, balance y retos
 src/reloj/                    Lorentz, reloj de luz, dos vistas SVG y retos
 src/tren/                     Eventos, señales, longitudes, dos vistas SVG y retos
-src/einstein/                 Portada y navegación del especial Einstein
+src/einstein/                 Cuaderno, navegación, historia, pasaporte local y energía en reposo
 src/gemelos/                  Itinerario, tiempo propio, simultaneidad, señales y retos
 src/ascensor/                 Equivalencia local, apoyo, pelotas, luz de Rindler y retos
 src/altura/                   Relojes de Schwarzschild, órbita, ajustes y retos
@@ -135,6 +135,7 @@ El prisma se integró desde `nicospum/newtonprisma`, commit `67ec9033ce3ab00a061
 
 ## Referencias y revisión
 
+- [Especial Einstein: diseño, pasaporte, fuentes, ilustraciones y revisión móvil](docs/ESPECIAL_EINSTEIN.md).
 - [Feynman, comportamiento cuántico](https://www.feynmanlectures.caltech.edu/III_01.html).
 - [Feynman, amplitudes de probabilidad](https://www.feynmanlectures.caltech.edu/III_03.html).
 - [Tonomura y colaboradores, acumulación de electrones individuales](https://doi.org/10.1119/1.16104).

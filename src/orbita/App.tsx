@@ -6,6 +6,8 @@ import {
   MoreLabs,
 } from '../components/ui/LabJourney'
 import EinsteinNavigation from '../einstein/EinsteinNavigation'
+import { readCompleted } from '../einstein/progress'
+import { useChapterProgress } from '../einstein/usePassport'
 import { ARCSEC, AU, CENTURY, CYCLES, integrate, MERCURY } from './physics'
 import type { Setup } from './physics'
 import { initialState, LESSONS, observations, reducer } from './learning'
@@ -16,7 +18,9 @@ const n = (v: number, d = 2) =>
     minimumFractionDigits: d,
   })
 export default function OrbitApp() {
-  const [s, dispatch] = useReducer(reducer, undefined, () => initialState()),
+  const [s, dispatch] = useReducer(reducer, undefined, () =>
+    initialState(0, readCompleted('orbita-que-no-se-cierra')),
+  ),
     [einstein, setEinstein] = useState(true),
     [visible, setVisible] = useState(!document.hidden)
   const { a, e, mass } = s.setup
@@ -40,6 +44,7 @@ export default function OrbitApp() {
       document.getElementById('or-question')?.focus({ preventScroll: true })
     })
   }
+  useChapterProgress('orbita-que-no-se-cierra', s.completed)
   useEffect(() => {
     const update = () => setVisible(!document.hidden)
     document.addEventListener('visibilitychange', update)
@@ -61,7 +66,7 @@ export default function OrbitApp() {
     return () => cancelAnimationFrame(frame)
   }, [s.playing, visible])
   return (
-    <div className="rl-shell or-shell">
+    <div className="en-lab rl-shell or-shell">
       <a className="rl-skip" href="#or-controls">
         Ir a los controles
       </a>
@@ -737,7 +742,7 @@ export default function OrbitApp() {
             Explorar la lente gravitacional →
           </a>
         </section>
-        <EinsteinNavigation current="orbita-que-no-se-cierra" />
+        <EinsteinNavigation current="orbita-que-no-se-cierra" footer />
         <MoreLabs current="orbita-que-no-se-cierra" />
       </main>
       <footer className="rl-footer">

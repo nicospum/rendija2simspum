@@ -6,15 +6,20 @@ import {
   MoreLabs,
 } from '../components/ui/LabJourney'
 import EinsteinNavigation from '../einstein/EinsteinNavigation'
+import { readCompleted } from '../einstein/progress'
+import { useChapterProgress } from '../einstein/usePassport'
 import { initialState, LESSONS, observations, reducer } from './learning'
 import { SCENARIOS, snapshot } from './physics'
 import type { Setup, Scenario } from './physics'
 import { n } from './format'
 import Scene from './Scene'
 export default function ElevatorApp() {
-  const [s, dispatch] = useReducer(reducer, undefined, () => initialState()),
+  const [s, dispatch] = useReducer(reducer, undefined, () =>
+    initialState(0, readCompleted('ascensor-de-einstein')),
+  ),
     [view, setView] = useState(false),
     [visible, setVisible] = useState(!document.hidden)
+  useChapterProgress('ascensor-de-einstein', s.completed)
   useEffect(() => {
     const onVisibility = () => setVisible(!document.hidden)
     document.addEventListener('visibilitychange', onVisibility)
@@ -54,7 +59,7 @@ export default function ElevatorApp() {
     })
   }
   return (
-    <div className="rl-shell as-shell">
+    <div className="en-lab rl-shell as-shell">
       <a href="#as-controls" className="rl-skip">
         Ir a los controles
       </a>
@@ -684,7 +689,7 @@ export default function ElevatorApp() {
             Explorar El tiempo tiene altura →
           </a>
         </section>
-        <EinsteinNavigation current="ascensor-de-einstein" />
+        <EinsteinNavigation current="ascensor-de-einstein" footer />
         <MoreLabs current="ascensor-de-einstein" />
       </main>
       <footer className="rl-footer">

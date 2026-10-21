@@ -1,4 +1,5 @@
 import { blackHoleLabs } from './catalog'
+import type { ReactNode } from 'react'
 import '../components/ui/LabJourney.css'
 import './series.css'
 
@@ -58,7 +59,11 @@ export function BlackHoleNavigation({ current }: { current: string }) {
   )
 }
 
-export default function BlackHoleSeries() {
+export default function BlackHoleSeries({
+  children,
+}: {
+  children?: ReactNode
+}) {
   return (
     <div className="bh-series-shell">
       <header>
@@ -79,9 +84,10 @@ export default function BlackHoleSeries() {
             <span />
           </div>
           <p>
-            ¿Cómo vemos algo oscuro? ¿Qué ocurre al cruzar su horizonte? ¿Por qué tiene temperatura? ¿Qué tiene que
-            ver su superficie con la entropía? Seguí el recorrido o entrá por la
-            pregunta que más te intrigue.
+            ¿Cómo vemos algo oscuro? ¿Qué ocurre al cruzar su horizonte? ¿Por
+            qué tiene temperatura? ¿Qué tiene que ver su superficie con la
+            entropía? Seguí el recorrido o entrá por la pregunta que más te
+            intrigue.
           </p>
           <a href="/lente-gravitacional/">Empezar por la luz →</a>
         </section>
@@ -98,14 +104,16 @@ export default function BlackHoleSeries() {
             </article>
           ))}
         </section>
+        {children}
         <section className="bh-series-note">
           <h2>Una historia, distintas pistas.</h2>
           <p>
             Primero seguís los caminos de la luz. Después descubrís el gas y las
-            órbitas que delatan la masa invisible. Una sonda explora el horizonte,
-            sus relojes y los mensajes que pueden salir. Hawking conecta temperatura y
-            pérdida de masa; Bekenstein–Hawking conecta área y entropía. El
-            índice de cada laboratorio te lleva al siguiente.
+            órbitas que delatan la masa invisible. Una sonda explora el
+            horizonte, sus relojes y los mensajes que pueden salir. Hawking
+            conecta temperatura y pérdida de masa; Bekenstein–Hawking conecta
+            área y entropía. El índice de cada laboratorio te lleva al
+            siguiente.
           </p>
           <p>
             Los modelos explican su alcance en cada experiencia. El disco

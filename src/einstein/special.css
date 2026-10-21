@@ -1,0 +1,613 @@
+.en-special {
+  overflow: hidden;
+}
+.en-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 30px;
+  padding: 60px 0 45px;
+}
+.en-hero h1 {
+  font:
+    clamp(58px, 7vw, 100px) / 0.98 Georgia,
+    serif;
+  letter-spacing: -3px;
+  margin: 20px 0 28px;
+  color: #1c3546;
+}
+.en-hero h1 em {
+  color: #b6563d;
+}
+.en-hero > div > p:not(.en-kicker) {
+  color: #536565;
+  font-size: 15px;
+  max-width: 475px;
+}
+.en-hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+  margin: 26px 0;
+}
+.en-hero-actions > a:last-child {
+  color: #91513d;
+  font-size: 13px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.en-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  gap: 10px;
+  background: #b9553b;
+  color: #fff9ed;
+  border: 1px solid #a64630;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 13px;
+  text-decoration: none;
+}
+.en-primary:hover {
+  background: #99422f;
+}
+.en-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+.en-hero-tags span {
+  border: 1px solid #cbbda4;
+  padding: 7px 13px;
+  border-radius: 20px;
+  font:
+    10px Consolas,
+    monospace;
+  color: #617163;
+}
+.en-portrait {
+  position: relative;
+  margin: 0;
+  align-self: end;
+}
+.en-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+.en-portrait-orbit {
+  position: absolute;
+  width: 90%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #eadbb8;
+  left: 5%;
+  top: 0;
+  border: 1px dashed #ae956e;
+  transform: rotate(-12deg);
+}
+.en-portrait-orbit::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid #bfab7e;
+  border-radius: 50%;
+}
+.en-formula-sticker {
+  position: absolute;
+  right: 0;
+  top: 6%;
+  z-index: 2;
+  transform: rotate(9deg);
+  font:
+    clamp(24px, 3.2vw, 41px) Georgia,
+    serif;
+  color: #375d55;
+  background: #e8edd7;
+  border: 1px solid #aab99a;
+  padding: 10px 22px;
+  border-radius: 6px;
+  box-shadow: 2px 4px 0 #c6bea557;
+}
+.en-portrait figcaption {
+  text-align: center;
+  font:
+    12px/1.7 Georgia,
+    serif;
+  color: #776b55;
+  margin-top: 10px;
+}
+.en-train {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: center;
+  gap: 35px;
+  margin: 60px 0;
+  background: #f0dec4;
+  border: 1px solid #d1ba97;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.en-train figure {
+  margin: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #e8d8bd;
+}
+.en-train img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.en-train figcaption {
+  color: #6b624f;
+  font:
+    10px/1.6 'Segoe UI',
+    sans-serif;
+  padding: 12px 18px;
+}
+.en-train > div {
+  padding: 28px 28px 28px 0;
+}
+.en-train h2 {
+  font:
+    clamp(33px, 3.7vw, 48px) / 1.1 Georgia,
+    serif;
+  margin: 15px 0;
+  color: #263f46;
+}
+.en-train h2 em {
+  color: #a85138;
+}
+.en-train > div > p:not(.en-kicker) {
+  font-size: 13px;
+  color: #5f6255;
+}
+.en-route {
+  scroll-margin-top: 20px;
+}
+.en-route > h2,
+.en-energy h2,
+.en-nobel h2,
+.en-bridge h2 {
+  font:
+    clamp(34px, 4vw, 52px) / 1.12 Georgia,
+    serif;
+  margin: 14px 0;
+  color: #263e48;
+}
+.en-route > p:not(.en-kicker) {
+  color: #5a6967;
+  max-width: 700px;
+  font-size: 14px;
+}
+.en-family-buttons {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin: 24px 0 12px;
+}
+.en-family-buttons button {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 11px 17px;
+  border: 1px solid #bfb69f;
+  background: #fffaf0;
+  color: #415955;
+  border-radius: 24px;
+  font-size: 12px;
+}
+.en-family-buttons button span {
+  font:
+    11px Consolas,
+    monospace;
+  color: #976049;
+}
+.en-family-buttons button[aria-pressed='true'] {
+  background: #254f51;
+  border-color: #254f51;
+  color: #fff8e8;
+}
+.en-family-buttons button[aria-pressed='true'] span {
+  color: #ead29c;
+}
+.en-filter-count {
+  font-size: 11px !important;
+  color: #6e786c !important;
+  margin-bottom: 22px;
+}
+.en-chapter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.en-chapter {
+  border: 1px solid #d3c4a9;
+  border-radius: 18px;
+  background: #fff9ec;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.en-chapter-art {
+  display: block;
+  position: relative;
+  background: radial-gradient(ellipse at 50% 90%, #4b706c, #173943 80%);
+}
+.en-chapter-art > span {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  border: 1px solid #c7dacb6b;
+  color: #efd5a7;
+  border-radius: 50%;
+  width: 41px;
+  height: 41px;
+  display: grid;
+  place-items: center;
+  font:
+    22px Georgia,
+    serif;
+}
+.en-chapter-art svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.en-chapter[data-family='RELATIVIDAD GENERAL'] .en-chapter-art {
+  background: radial-gradient(ellipse at 50% 90%, #4c6984, #1c3049 80%);
+}
+.en-chapter[data-family='FÍSICA CUÁNTICA'] .en-chapter-art {
+  background: radial-gradient(ellipse at 50% 90%, #6f5482, #322742 80%);
+}
+.en-chapter-copy {
+  padding: 25px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.en-chapter h3 {
+  font:
+    31px/1.15 Georgia,
+    serif;
+  margin: 10px 0;
+  color: #263e48;
+}
+.en-chapter-copy > p:not(.en-kicker) {
+  color: #63706a;
+  font-size: 13px;
+}
+.en-chapter-copy .en-chapter-question {
+  color: #a6573b !important;
+  font:
+    18px/1.5 Georgia,
+    serif !important;
+  margin: 6px 0;
+}
+.en-object-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 8px 0 17px;
+}
+.en-object-tags span {
+  padding: 5px 9px;
+  font-size: 10px;
+  background: #eee9d8;
+  border-radius: 10px;
+  color: #657467;
+}
+.en-chapter-link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #a44730;
+  font-size: 13px;
+}
+.en-energy {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
+  align-items: center;
+  padding: 45px;
+  margin: 65px 0;
+  background: #e4ead8;
+  border: 1px solid #b9c5a6;
+  border-radius: 20px;
+}
+.en-energy > div > p:not(.en-kicker) {
+  color: #53675e;
+  font-size: 13px;
+}
+.en-energy a {
+  color: #8e4b31;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+}
+.en-famous-formula {
+  font:
+    clamp(40px, 6vw, 75px) / 1.7 Georgia,
+    serif;
+  color: #2f635a;
+  white-space: nowrap;
+}
+.en-famous-formula sub,
+.en-famous-formula sup {
+  font-size: 0.5em;
+}
+.en-energy-card {
+  padding: 28px;
+  border: 1px solid #bec7aa;
+  border-radius: 15px;
+  background: #fffbed;
+}
+.en-energy-card label {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+  color: #405a4a;
+}
+.en-energy-card output {
+  color: #a24f35;
+}
+.en-energy-card input {
+  min-height: 44px;
+  width: 100%;
+  accent-color: #a95638;
+}
+.en-energy-presets {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.en-energy-presets button {
+  min-height: 44px;
+  padding: 9px 16px;
+  border: 1px solid #c4baa0;
+  border-radius: 24px;
+  background: #f1ead7;
+  color: #41574a;
+  font-size: 12px;
+}
+.en-energy-card > span {
+  display: block;
+  color: #617264;
+  font-size: 12px;
+}
+.en-energy-card > strong {
+  display: block;
+  color: #9a4e33;
+  font:
+    36px/1.5 Georgia,
+    serif;
+  margin: 8px 0;
+  overflow-wrap: anywhere;
+}
+.en-energy-card > strong small {
+  font:
+    14px 'Segoe UI',
+    sans-serif;
+}
+.en-energy-meter {
+  border: 1px solid #bcbfa0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #e1e7cf;
+}
+.en-energy-meter span {
+  display: block;
+  height: 14px;
+  background: #b96b44;
+}
+.en-energy-card .en-energy-note {
+  font-size: 11px;
+  line-height: 1.8;
+  color: #6c7563;
+}
+.en-nobel {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 45px;
+  margin: 60px 0;
+  align-items: center;
+  padding: 35px;
+  border: 1px solid #cbb9ce;
+  background: #f0e6ed;
+  border-radius: 18px;
+}
+.en-nobel > .en-artifact {
+  width: 180px;
+  color: #7b5482;
+}
+.en-nobel p:not(.en-kicker) {
+  color: #67586c;
+  font-size: 13px;
+  max-width: 730px;
+}
+.en-nobel a {
+  color: #6b4577;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  margin-right: 25px;
+}
+.en-bridge {
+  padding: 40px;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 25px;
+  align-items: center;
+  background: #122b3b;
+  color: #d6e7e8;
+}
+.en-bridge .en-kicker {
+  color: #ddb780;
+}
+.en-bridge h2 {
+  color: #f4e6ca;
+}
+.en-bridge p:not(.en-kicker) {
+  color: #b9ccd4;
+  font-size: 13px;
+}
+.en-bridge a {
+  color: #edc694;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 13px;
+}
+.en-bridge-art .en-artifact {
+  width: 100%;
+  color: #edbe86;
+}
+@media (max-width: 1000px) {
+  .en-hero h1 {
+    font-size: clamp(53px, 7.2vw, 76px);
+  }
+  .en-train {
+    gap: 22px;
+  }
+  .en-energy {
+    padding: 30px;
+    gap: 28px;
+  }
+}
+@media (max-width: 850px) {
+  .en-hero {
+    gap: 20px;
+    padding: 35px 0;
+  }
+  .en-hero h1 {
+    letter-spacing: -2px;
+  }
+  .en-hero-actions {
+    gap: 6px 15px;
+  }
+  .en-train {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin: 40px 0;
+  }
+  .en-train > div {
+    padding: 25px;
+  }
+  .en-train h2 {
+    font-size: 37px;
+  }
+  .en-chapter-grid {
+    gap: 16px;
+  }
+  .en-chapter-copy {
+    padding: 20px;
+  }
+  .en-chapter h3 {
+    font-size: 27px;
+  }
+  .en-energy {
+    grid-template-columns: 1fr;
+    padding: 25px;
+    margin: 40px 0;
+    gap: 22px;
+  }
+  .en-energy-card {
+    padding: 22px;
+  }
+  .en-nobel {
+    grid-template-columns: 100px 1fr;
+    gap: 20px;
+    padding: 25px;
+  }
+  .en-nobel > .en-artifact {
+    width: 100px;
+  }
+  .en-bridge {
+    padding: 25px;
+  }
+}
+@media (max-width: 550px) {
+  .en-hero {
+    grid-template-columns: 1fr;
+    padding-top: 27px;
+    gap: 20px;
+  }
+  .en-hero h1 {
+    font-size: clamp(53px, 12.5vw, 66px);
+  }
+  .en-hero > div > p:not(.en-kicker) {
+    font-size: 14px;
+  }
+  .en-portrait {
+    width: 100%;
+    max-width: 365px;
+    justify-self: center;
+  }
+  .en-formula-sticker {
+    right: 2%;
+    top: 3%;
+    font-size: 28px;
+  }
+  .en-portrait figcaption {
+    font-size: 11px;
+  }
+  .en-chapter-grid {
+    grid-template-columns: 1fr;
+  }
+  .en-family-buttons {
+    gap: 8px;
+  }
+  .en-family-buttons button {
+    flex: 1 1 auto;
+    justify-content: space-between;
+    font-size: 11px;
+    padding: 10px 13px;
+  }
+  .en-route > h2 {
+    font-size: 37px;
+  }
+  .en-energy {
+    padding: 20px;
+  }
+  .en-energy h2 {
+    font-size: 32px;
+  }
+  .en-energy-card {
+    padding: 18px;
+  }
+  .en-energy-card > strong {
+    font-size: 30px;
+  }
+  .en-nobel {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+  .en-nobel > .en-artifact {
+    width: 90px;
+  }
+  .en-bridge {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .en-bridge-art {
+    width: 190px;
+    justify-self: center;
+  }
+}

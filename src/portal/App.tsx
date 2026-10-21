@@ -93,8 +93,13 @@ export default function Portal() {
           </div>
           <div className="portal-experiment-grid">
             <a className="portal-special-link portal-einstein-link" href="/einstein/">
-              <span>ESPECIAL EINSTEIN</span>
-              Espacio, tiempo y gravedad. Empezá con el reloj de luz. <Arrow />
+              <img src="/einstein/einstein-avatar-v1.webp" width="160" height="160" alt="" loading="lazy" decoding="async" />
+              <div>
+                <span>EL CUADERNO DE EINSTEIN</span>
+                <strong>La aventura de imaginar.</strong>
+                Siete laboratorios, 28 retos y un pasaporte de ideas.
+              </div>
+              <Arrow />
             </a>
             <a className="portal-special-link" href="/agujeros-negros/">
               <span>ESPECIAL AGUJEROS NEGROS</span>
