@@ -1,5 +1,5 @@
 export interface Experiment {
-  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein' | 'el-tiempo-tiene-altura' | 'orbita-que-no-se-cierra'
+  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein' | 'el-tiempo-tiene-altura' | 'orbita-que-no-se-cierra' | 'efecto-fotoelectrico'
   number: string
   field: string
   title: string
@@ -135,5 +135,11 @@ export const experiments: readonly Experiment[] = [
     subtitle:'Una vuelta. Una pequeña diferencia.', question:'¿Qué nos contó la órbita de Mercurio?',
     discovery:'Compará las órbitas de Newton y Einstein, cambiá forma, distancia y masa, y descubrí la precesión de Mercurio con cuatro retos.',
     tags:['Einstein','Mercurio','Precesión'], href:'/orbita-que-no-se-cierra/',
+  },
+  {
+    id:'efecto-fotoelectrico', number:'14', field:'FÍSICA CUÁNTICA', title:'El efecto fotoeléctrico',
+    subtitle:'Más luz y más energía no son lo mismo.', question:'¿Más luz alcanza para arrancar un electrón?',
+    discovery:'Cambiá frecuencia, brillo y material; compará emisión y energía con cuatro retos sobre la ley que le valió el Nobel a Einstein.',
+    tags:['Einstein','Fotones','Nobel'], href:'/efecto-fotoelectrico/',
   },
 ]

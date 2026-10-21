@@ -33,6 +33,7 @@ export default defineConfig({
         ascensor: 'ascensor-de-einstein/index.html',
         altura: 'el-tiempo-tiene-altura/index.html',
         orbita: 'orbita-que-no-se-cierra/index.html',
+        fotoelectrico: 'efecto-fotoelectrico/index.html',
       },
       output: {
         manualChunks(id) {

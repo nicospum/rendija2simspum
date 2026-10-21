@@ -17,9 +17,10 @@ Una colección de laboratorios interactivos para aprender ciencia haciendo pregu
 - `/ascensor-de-einstein/`: caída libre, aceleración, balanza, luz y cuatro retos del principio de equivalencia.
 - `/el-tiempo-tiene-altura/`: relojes a distintas alturas, tiempo propio, dilatación gravitatoria y balance del GPS con cuatro retos.
 - `/orbita-que-no-se-cierra/`: Mercurio, precesión relativista, comparación de Newton y Einstein y cuatro retos.
-- `/einstein/`: especial Einstein con tres laboratorios de relatividad especial y tres de relatividad general; el efecto fotoeléctrico se distingue como experiencia cuántica propuesta.
+- `/efecto-fotoelectrico/`: frecuencia, brillo, materiales, emisión de electrones y cuatro retos sobre el Nobel de Einstein.
+- `/einstein/`: especial Einstein con tres laboratorios de relatividad especial, tres de relatividad general y el efecto fotoeléctrico como capítulo de física cuántica.
 
-El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las dieciséis páginas (trece laboratorios, portada y dos especiales) se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada, los especiales, entropía, horizonte y los seis laboratorios de Einstein no cargan Three.js.
+El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las diecisiete páginas (catorce laboratorios, portada y dos especiales) se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada, los especiales, entropía, horizonte y los siete laboratorios de Einstein no cargan Three.js.
 
 ## Ejecutar localmente
 
@@ -65,6 +66,8 @@ El modelo de doble rendija usa amplitudes de Fraunhofer en unidades normalizadas
 
 ## Organización y nuevos experimentos
 
+El decimocuarto laboratorio, [El efecto fotoeléctrico](https://www.spumexp.lat/efecto-fotoelectrico/), conecta una celda fotoeléctrica con el balance hf = φ + Kmáx. Permite cambiar frecuencia, potencia y material, guardar dos mediciones y completar cuatro retos. Separa energía individual y cantidad de fotones; el rendimiento y la colección son ideales y están identificados. Ver [modelo, fuentes, controles y pruebas](docs/EFECTO_FOTOELECTRICO.md).
+
 El decimotercer laboratorio, [La órbita que no se cierra](https://www.spumexp.lat/orbita-que-no-se-cierra/), integra órbitas de Schwarzschild con anomalía de Darwin y las compara con una elipse newtoniana. La ampliación del giro está separada de los valores físicos. Cuatro retos conectan perihelio, excentricidad, tamaño y el aporte relativista de unos 43″ por siglo en Mercurio. Ver [modelo, fuentes y validación](docs/ORBITA_MERCURIO.md).
 
 El duodécimo laboratorio, [El tiempo tiene altura](https://www.spumexp.lat/el-tiempo-tiene-altura/), compara relojes estáticos y orbitales con cálculos de Schwarzschild. Sus cuatro retos separan altura, acumulación, movimiento y ajuste de la señal GPS. Las diferencias pequeñas se preservan numéricamente y se distinguen de los tiempos totales. Ver [modelo, fuentes y validación](docs/ALTURA_LABORATORIO.md).
@@ -73,7 +76,7 @@ El undécimo laboratorio, [El ascensor de Einstein](https://www.spumexp.lat/asce
 
 El décimo laboratorio, [Nos vemos a la vuelta](https://www.spumexp.lat/nos-vemos-a-la-vuelta/), compara tiempo propio en los recorridos de dos gemelos. Permite cambiar rapideces, duración y espera; conecta viaje y espacio-tiempo, distingue señales recibidas de simultaneidad comóvil y propone cuatro retos. Ver [modelo, fuentes y validación](docs/GEMELOS_LABORATORIO.md).
 
-El noveno laboratorio, [El tren de Einstein](https://www.spumexp.lat/tren-de-einstein/), continúa el especial con dos sistemas de coordenadas. Separa fechas de emisión de llegadas al receptor y permite registrar extremos con dos protocolos de simultaneidad. Los cuatro retos comparan fechas, retrasos de viaje, inversión del movimiento y contracción de longitudes. El índice conecta los seis capítulos disponibles; ver [modelo, fuentes, controles y pruebas](docs/TREN_DE_EINSTEIN.md).
+El noveno laboratorio, [El tren de Einstein](https://www.spumexp.lat/tren-de-einstein/), continúa el especial con dos sistemas de coordenadas. Separa fechas de emisión de llegadas al receptor y permite registrar extremos con dos protocolos de simultaneidad. Los cuatro retos comparan fechas, retrasos de viaje, inversión del movimiento y contracción de longitudes. El índice conecta los siete capítulos disponibles; ver [modelo, fuentes, controles y pruebas](docs/TREN_DE_EINSTEIN.md).
 
 El octavo laboratorio, [El reloj de luz](https://www.spumexp.lat/reloj-de-luz/), inaugura el [especial Einstein](https://www.spumexp.lat/einstein/). Relaciona el mismo evento de un pulso entre dos espejos mediante transformaciones de Lorentz. Sus cuatro retos comparan reposo, aumento del recorrido, reciprocidad y ritmo a la mitad; las vistas de nave y estación comparten los cálculos y se alternan en celular conservando el instante. Ver [ecuaciones, fuentes, controles y validación](docs/RELOJ_DE_LUZ.md).
 
@@ -116,8 +119,9 @@ src/gemelos/                  Itinerario, tiempo propio, simultaneidad, señales
 src/ascensor/                 Equivalencia local, apoyo, pelotas, luz de Rindler y retos
 src/altura/                   Relojes de Schwarzschild, órbita, ajustes y retos
 src/orbita/                   Geodésicas temporales, precesión de Mercurio y retos
-tests/                        Pruebas de los trece laboratorios
-vite.config.ts                Dieciséis entradas y separación de bundles
+src/fotoelectrico/            Fotoemisión ideal, flujo, energía, mediciones y retos
+tests/                        Pruebas de los catorce laboratorios
+vite.config.ts                Diecisiete entradas y separación de bundles
 vercel.json                   Compilación y publicación estáticas
 ```
 
@@ -125,7 +129,7 @@ Para agregar un laboratorio: crear su entrada HTML y módulo principal, incluirl
 
 ## Publicación
 
-Vercel debe seguir conectado a `nicospum/rendija2simspum`, rama `master`, directorio raíz del repositorio. `vercel.json` declara `npm ci`, `npm run build`, `dist` y las URL con barra final. No requiere funciones, variables de entorno ni credenciales en el cliente. Subir a GitHub no confirma por sí solo un despliegue: verificar las seis URL públicas después de cada publicación.
+Vercel debe seguir conectado a `nicospum/rendija2simspum`, rama `master`, directorio raíz del repositorio. `vercel.json` declara `npm ci`, `npm run build`, `dist` y las URL con barra final. No requiere funciones, variables de entorno ni credenciales en el cliente. Subir a GitHub no confirma por sí solo un despliegue: verificar todas las rutas públicas después de cada publicación.
 
 El prisma se integró desde `nicospum/newtonprisma`, commit `67ec9033ce3ab00a0611c28d72172c138695b760`, conservando su modelo y sus pruebas. Es una copia autónoma dentro de este repositorio; futuras mejoras deben sincronizarse conscientemente, no se descargan desde Netlify durante la ejecución.
 

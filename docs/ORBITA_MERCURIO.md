@@ -54,10 +54,10 @@ La interfaz ofrece dos vistas simultáneas en escritorio y un selector en celula
 - [JPL: Astrodynamic Parameters](https://ssd.jpl.nasa.gov/astro_par.html): GM solar, unidad astronómica y constantes.
 - [Hopper et al., Physical Review D 92, 044048 (2015)](https://link.aps.org/accepted/10.1103/PhysRevD.92.044048): sección II, ecuaciones 2.4–2.7 de las geodésicas parametrizadas con χ. Su p es adimensional, p de este código dividido por GM/c².
 - [NASA/MESSENGER: pruebas de la gravedad](https://pgda.gsfc.nasa.gov/products/66) y [artículo de Genova et al.](https://ntrs.nasa.gov/api/citations/20180000952/downloads/20180000952.pdf): precesión de Mercurio y aporte relativista de ~42,98″ por siglo.
-- [Nobel Prize: Física 1921](https://www.nobelprize.org/prizes/physics/1921/summary/): Einstein fue premiado especialmente por la ley del efecto fotoeléctrico. El índice lo distingue de Mercurio y lo presenta como experiencia cuántica propuesta, todavía no implementada.
+- [Nobel Prize: Física 1921](https://www.nobelprize.org/prizes/physics/1921/summary/): Einstein fue premiado especialmente por la ley del efecto fotoeléctrico. El índice lo distingue de Mercurio y conecta con el [laboratorio fotoeléctrico](EFECTO_FOTOELECTRICO.md), ya implementado.
 
 ## Validación reproducible
 
-`npm test` incluye `tests/orbita.test.mjs`: valor de Mercurio, predicción independiente de campo débil en todo el dominio, convergencia al refinar Simpson, cierre de Newton, radios extremos, continuidad entre vueltas, independencia de la lupa, dependencia de masa/tamaño/excentricidad, entradas inválidas, cuatro retos, errores y reinicios, pausas y reproducción acotada. `tests/tren.test.mjs` comprueba las seis rutas del especial. También se ejecutan lint, compilación y comprobaciones científicas de Hawking.
+`npm test` incluye `tests/orbita.test.mjs`: valor de Mercurio, predicción independiente de campo débil en todo el dominio, convergencia al refinar Simpson, cierre de Newton, radios extremos, continuidad entre vueltas, independencia de la lupa, dependencia de masa/tamaño/excentricidad, entradas inválidas, cuatro retos, errores y reinicios, pausas y reproducción acotada. `tests/tren.test.mjs` comprueba las siete rutas del especial. También se ejecutan lint, compilación y comprobaciones científicas de Hawking.
 
 La inspección con navegador verifica ambas vistas, controles, explicaciones, cuatro retos y navegación en escritorio y ventanas móviles. Una ventana móvil emulada no reemplaza pruebas en teléfonos físicos.

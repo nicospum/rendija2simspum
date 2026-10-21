@@ -9,7 +9,7 @@ export default function EinsteinNavigation({
   return (
     <nav className="es-navigation" aria-label="Índice del especial Einstein">
       <a href="/einstein/">
-        <span>ESPECIAL EINSTEIN</span> Espacio, tiempo y gravedad{' '}
+        <span>ESPECIAL EINSTEIN</span> Espacio, tiempo y cuantos de luz{' '}
         <b>Ver el recorrido ↗</b>
       </a>
       {[...new Set(einsteinLabs.map((lab) => lab.field))].map((field) => (

@@ -18,13 +18,13 @@ export default function EinsteinSeries() {
               <br />
               <em>
                 Espacio, tiempo
-                <br />y gravedad.
+                <br />y cuantos de luz.
               </em>
             </h1>
             <p>
               La luz conecta espacio y tiempo. La gravedad cambia la geometría.
-              Explorá sus ideas con preguntas, comparaciones y experimentos
-              mentales.
+              La energía de la luz se intercambia en cuantos. Explorá sus ideas
+              con preguntas, comparaciones y experimentos mentales.
             </p>
             <a className="rl-primary" href="/reloj-de-luz/">
               Empezar con el reloj de luz →
@@ -83,8 +83,8 @@ export default function EinsteinSeries() {
           </svg>
         </section>
         <p className="rl-eyebrow">
-          {einsteinLabs.length} LABORATORIOS DISPONIBLES / RELATIVIDAD ESPECIAL
-          Y GENERAL
+          {einsteinLabs.length} LABORATORIOS DISPONIBLES / RELATIVIDAD Y FÍSICA
+          CUÁNTICA
         </p>
         {einsteinLabs.map((lab, i) => (
           <section
@@ -111,28 +111,20 @@ export default function EinsteinSeries() {
           </section>
         ))}
         <section className="es-roadmap">
-          <p className="rl-eyebrow">
-            EL RECORRIDO QUE SIGUE / TODAVÍA NO DISPONIBLE
-          </p>
+          <p className="rl-eyebrow">YA DISPONIBLE / EL EFECTO FOTOELÉCTRICO</p>
           <h2>El Einstein del Nobel: la luz y los electrones.</h2>
           <p>
             El Nobel de Física de 1921 destacó especialmente su ley del efecto
             fotoeléctrico. Mercurio puso a prueba la relatividad general; el
             Nobel nos abre otra puerta, la física cuántica.
           </p>
-          <div>
-            <article>
-              <span>PRÓXIMA EXPERIENCIA / FÍSICA CUÁNTICA</span>
-              <h3>El efecto fotoeléctrico</h3>
-              <p>
-                ¿Más brillo o más frecuencia: qué consigue arrancar electrones?
-              </p>
-              <small>
-                Energía de la luz, frecuencia umbral y electrones emitidos.
-              </small>
-              <b>Propuesto · todavía no disponible</b>
-            </article>
-          </div>
+          <p>
+            ¿Más brillo o más frecuencia: qué consigue arrancar electrones? El
+            laboratorio del Nobel ya permite comparar materiales, guardar
+            mediciones y completar cuatro retos.
+          </p>
+          <a href="/efecto-fotoelectrico/">Entrar al laboratorio del Nobel →</a>
+          <br />
           <a
             href="https://www.nobelprize.org/prizes/physics/1921/summary/"
             target="_blank"

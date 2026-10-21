@@ -1,8 +1,14 @@
 export default function ExperimentIllustration({
   kind,
 }: {
-  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein' | 'el-tiempo-tiene-altura' | 'orbita-que-no-se-cierra'
+  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein' | 'el-tiempo-tiene-altura' | 'orbita-que-no-se-cierra' | 'efecto-fotoelectrico'
 }) {
+  if(kind==='efecto-fotoelectrico')return <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
+    <rect x="80" y="94" width="400" height="150" rx="32" fill="#183448" stroke="#668da3"/><path d="M380 45 394 64 180 171 180 141Z" fill="#b7a6f7" opacity=".25"/><path d="M387 52 181 156" stroke="#b7a6f7" strokeWidth="2" strokeDasharray="3 9"/>
+    <rect x="162" y="126" width="18" height="100" fill="#b8cbd5"/><rect x="432" y="126" width="12" height="100" fill="#547b8d"/>
+    {[0,1,2,3,4,5,6,7,8].map(i=><g key={i}><path d={`M${205+i*23} ${157+(i%3)*16}h-12`} stroke="#8be8da" opacity=".4"/><circle cx={205+i*23} cy={157+(i%3)*16} r="3.5" fill="#8be8da"/></g>)}
+    <text x="330" y="274" fill="#d3c4f8" fontSize="16">hf = φ + Kmáx</text>
+  </svg>
   if(kind==='orbita-que-no-se-cierra')return <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
     {[0,14,28,42].map((angle,i)=><ellipse key={angle} cx="280" cy="148" rx="154" ry="94" transform={`rotate(${angle} 232 148)`} fill="none" stroke="#edb77d" opacity={.3+i*.2} strokeWidth="1.8"/>)}
     <circle cx="232" cy="148" r="32" fill="#edb77d" opacity=".12"/><circle cx="232" cy="148" r="15" fill="#ffe2a3"/>

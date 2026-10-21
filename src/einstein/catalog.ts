@@ -6,6 +6,7 @@ export const EINSTEIN_IDS = [
   'ascensor-de-einstein',
   'el-tiempo-tiene-altura',
   'orbita-que-no-se-cierra',
+  'efecto-fotoelectrico',
 ] as const
 export const einsteinLabs = EINSTEIN_IDS.map(
   (id) => experiments.find((lab) => lab.id === id)!,

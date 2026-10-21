@@ -668,9 +668,12 @@ export default function OrbitApp() {
               teórica y especialmente la ley del efecto fotoeléctrico. Ese
               fenómeno conecta la frecuencia de la luz con la energía de
               electrones emitidos por un material. Es otra pregunta, del mundo
-              cuántico: quedó propuesta como el próximo laboratorio del
-              especial.
+              cuántico que ya podés explorar en el laboratorio del especial.
             </p>
+            <a href="/efecto-fotoelectrico/">
+              Explorar el efecto fotoeléctrico →
+            </a>
+            <br />
             <a
               href="https://www.nobelprize.org/prizes/physics/1921/summary/"
               target="_blank"
