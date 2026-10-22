@@ -1,3 +1,5 @@
+import { useSurfaceScrub } from '../shared/useSurfaceScrub'
+import { pickedDirection } from './interaction'
 import { Component, useEffect, useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
@@ -153,9 +155,19 @@ export default function ObserverView({
     observer.observe(element)
     return () => observer.disconnect()
   }, [])
+  const drag = useSurfaceScrub(area, (p) => {
+    if (pending) return
+    const v = pickedDirection(p.x, p.y, aspect)
+    if (v) onPick(v.angle, v.azimuth)
+  })
   const alpha = radians(setup.rayAngle)
-  const x = 50 + (50 * Math.tan(alpha) * Math.cos(setup.azimuth)) / (Math.tan(HALF_FOV) * aspect)
-  const y = 50 - (50 * Math.tan(alpha) * Math.sin(setup.azimuth)) / Math.tan(HALF_FOV)
+  const x =
+    50 +
+    (50 * Math.tan(alpha) * Math.cos(setup.azimuth)) /
+      (Math.tan(HALF_FOV) * aspect)
+  const y =
+    50 -
+    (50 * Math.tan(alpha) * Math.sin(setup.azimuth)) / Math.tan(HALF_FOV)
   const visible = x > 0 && x < 100 && y > 0 && y < 100
   return (
     <div ref={area} className="ln-observer-image">
@@ -164,7 +176,11 @@ export default function ObserverView({
           <Canvas
             frameloop="demand"
             dpr={[1, 1.5]}
-            gl={{ antialias: false, alpha: false, powerPreference: 'low-power' }}
+            gl={{
+              antialias: false,
+              alpha: false,
+              powerPreference: 'low-power',
+            }}
             fallback={<Fallback />}
             aria-label="Imagen del observador calculada con geodésicas de Schwarzschild"
           >
@@ -184,7 +200,11 @@ export default function ObserverView({
           const bounds = event.currentTarget.getBoundingClientRect()
           const px = (2 * (event.clientX - bounds.left)) / bounds.width - 1
           const py = 1 - (2 * (event.clientY - bounds.top)) / bounds.height
-          const direction = directionForPixel(px, py, bounds.width / bounds.height)
+          const direction = directionForPixel(
+            px,
+            py,
+            bounds.width / bounds.height,
+          )
           onPick(degrees(direction.angle), direction.azimuth)
         }}
       />
@@ -195,10 +215,35 @@ export default function ObserverView({
         <span>CAMPO VERTICAL 60°</span>
       </div>
       {visible && (
-        <span
-          className="ln-selected-pixel"
+        <button
+          {...drag}
+          type="button"
+          className="ln-selected-pixel ln-ray-handle"
+          disabled={pending}
           style={{ left: `${x}%`, top: `${y}%` }}
-          aria-hidden="true"
+          aria-label="Mover el rayo: arrastrá o usá las flechas; Enter vuelve a 14 grados"
+          onClick={(e) => {
+            if (e.detail === 0) onPick(14, 0)
+          }}
+          onKeyDown={(e) => {
+            const delta = (
+              {
+                ArrowLeft: [-0.025, 0],
+                ArrowRight: [0.025, 0],
+                ArrowUp: [0, -0.025],
+                ArrowDown: [0, 0.025],
+              } as Record<string, number[]>
+            )[e.key]
+            if (delta) {
+              e.preventDefault()
+              const v = pickedDirection(
+                x / 100 + delta[0],
+                y / 100 + delta[1],
+                aspect,
+              )
+              if (v) onPick(v.angle, v.azimuth)
+            }
+          }}
         />
       )}
       <p className="ln-image-bottom">
@@ -208,7 +253,8 @@ export default function ObserverView({
       </p>
       {pending && (
         <div className="ln-calculating" role="status">
-          Integrando trayectorias… {transfer ? 'Se conserva la imagen anterior.' : ''}
+          Integrando trayectorias…{' '}
+          {transfer ? 'Se conserva la imagen anterior.' : ''}
         </div>
       )}
     </div>

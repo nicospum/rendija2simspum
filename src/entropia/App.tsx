@@ -1,3 +1,5 @@
+import SceneConsole from '../components/ui/SceneConsole'
+import '../series/interaction.css'
 import ChallengeGuide from '../components/ui/ChallengeGuide'
 import Info from '../components/ui/InfoPopover'
 import { BlackHoleNavigation } from '../series/BlackHoleNavigation'
@@ -83,7 +85,7 @@ export default function EntropyApp() {
               Agrandá el horizonte, compará su superficie y seguí la entropía cuando pierde masa.
               Una ecuación une gravedad, física cuántica y termodinámica.
             </p>
-            <a href="#en-challenges">Empezá con una predicción ↓</a>
+            <a href="#en-map">Jugar sobre la escena ↓</a>
           </div>
         </section>
         <div className="en-model-note">
@@ -134,7 +136,161 @@ export default function EntropyApp() {
               </div>
               <span className="en-live">CÁLCULO EN VIVO</span>
             </div>
-            <HorizonMap model={model} />
+            <p className="bh-scene-prompt">Arrastrá el borde dorado: masa · esquina verde: emisión</p>
+            <HorizonMap
+              model={model}
+              mass={state.mass}
+              emitted={state.emitted}
+              onMass={(value) => dispatch({ type: 'mass', value })}
+              onEmitted={(value) => dispatch({ type: 'emitted', value })}
+              controls={
+                <SceneConsole
+                  challengeHref="#en-challenges"
+                  hint="El borde dorado cambia la masa inicial. La esquina verde del cuadro cambia la fracción emitida por ese agujero negro. Ambos usan la misma geometría a escala fija; la trama no son celdas observadas. Emitir selecciona estados separados por tiempos enormes, no una evaporación rápida. La lupa algebraica es un ejemplo aparte; incluir radiación cambia la cuenta, no el proceso físico."
+                >
+                  <div className="spum-console-row">
+                    <label htmlFor="en-live-main">
+                      {state.lesson === 'area'
+                        ? 'Masa inicial'
+                        : state.lesson === 'quarter'
+                          ? 'Área de ejemplo'
+                          : 'Fracción de masa emitida'}
+                    </label>
+                    <output>
+                      {state.lesson === 'area'
+                        ? `${n(state.mass, 1)} M☉`
+                        : state.lesson === 'quarter'
+                          ? `${state.patch} ℓP²`
+                          : `${n(state.emitted * 100)}%`}
+                    </output>
+                  </div>
+                  <input
+                    id="en-live-main"
+                    type="range"
+                    min={
+                      state.lesson === 'area'
+                        ? MIN_MASS
+                        : state.lesson === 'quarter'
+                          ? 4
+                          : 0
+                    }
+                    max={
+                      state.lesson === 'area'
+                        ? MAX_MASS
+                        : state.lesson === 'quarter'
+                          ? 64
+                          : 0.5
+                    }
+                    step={
+                      state.lesson === 'area'
+                        ? 0.1
+                        : state.lesson === 'quarter'
+                          ? 4
+                          : 0.025
+                    }
+                    value={
+                      state.lesson === 'area'
+                        ? state.mass
+                        : state.lesson === 'quarter'
+                          ? state.patch
+                          : state.emitted
+                    }
+                    onChange={(e) =>
+                      dispatch({
+                        type:
+                          state.lesson === 'area'
+                            ? 'mass'
+                            : state.lesson === 'quarter'
+                              ? 'patch'
+                              : 'emitted',
+                        value: +e.target.value,
+                      })
+                    }
+                  />
+                  <p className="spum-console-impact">
+                    {state.lesson === 'quarter' ? (
+                      `${state.patch} ÷ 4 = ${state.patch / 4} unidades de S/kB; no son bits.`
+                    ) : (
+                      <>
+                        Radio ×{n(model.radiusRatio)} · Área ×{n(model.areaRatio)} ·
+                        Entropía ×{n(model.entropyRatio)} frente a 10 M☉.
+                      </>
+                    )}
+                  </p>
+                  <div className="spum-console-buttons">
+                    {state.lesson === 'quarter' ? (
+                      <>
+                        <button onClick={() => dispatch({ type: 'patch', value: 8 })}>
+                          8 áreas de ejemplo
+                        </button>
+                        <button
+                          onClick={() => dispatch({ type: 'patch', value: 16 })}
+                        >
+                          16 áreas de ejemplo
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button onClick={() => dispatch({ type: 'mass', value: 10 })}>
+                          Masa 10 M☉
+                        </button>
+                        <button onClick={() => dispatch({ type: 'mass', value: 20 })}>
+                          Masa 20 M☉
+                        </button>
+                        <button
+                          onClick={() => dispatch({ type: 'emitted', value: 0 })}
+                        >
+                          Sin emisión
+                        </button>
+                        <button
+                          onClick={() => dispatch({ type: 'emitted', value: 0.25 })}
+                        >
+                          Emitir 25%
+                        </button>
+                      </>
+                    )}
+                  </div>
+                  <div className="spum-console-buttons">
+                    <button
+                      aria-pressed={state.includeRadiation}
+                      onClick={() =>
+                        dispatch({
+                          type: 'radiation',
+                          value: !state.includeRadiation,
+                        })
+                      }
+                    >
+                      {state.includeRadiation
+                        ? 'Radiación incluida'
+                        : 'Incluir la radiación'}
+                    </button>
+                    <button onClick={() => dispatch({ type: 'restore' })}>
+                      Volver a la referencia del reto
+                    </button>
+                  </div>
+                  <div
+                    className="bh-entropy-balance"
+                    role="img"
+                    aria-label={`Horizonte ${n(fractionLeft * 100)}% de S inicial; ${state.includeRadiation ? `radiación ${n(radiationFraction * 100)}%; suma ${n(totalFraction * 100)}%` : 'radiación sin contar'}`}
+                  >
+                    <span style={{ width: `${fractionLeft * 75}%` }} />
+                    {state.includeRadiation && (
+                      <span style={{ width: `${radiationFraction * 75}%` }} />
+                    )}
+                    <i />
+                  </div>
+                  <p>
+                    Horizonte: {n(fractionLeft * 100)}% de S₀.
+                    {state.includeRadiation
+                      ? ` Radiación: ${n(radiationFraction * 100)}%. Total: ${n(totalFraction * 100)}%.`
+                      : ' Falta contar la radiación exterior.'}{' '}
+                    {state.lesson === 'quarter'
+                      ? 'La lupa de área no modifica este agujero negro.'
+                      : ''}
+                  </p>
+                </SceneConsole>
+              }
+            />
             <div className="en-metrics">
               <div>
                 <div className="en-stat-label">
@@ -510,7 +666,7 @@ export default function EntropyApp() {
               >
                 {lesson.action} ↗
               </button>
-              <a className="en-inline-link" href={lesson.target}>
+              <a className="en-inline-link" href="#en-map">
                 Ver el cambio en el laboratorio ↑
               </a>
               <button className="en-restore" onClick={() => dispatch({ type: 'restore' })}>

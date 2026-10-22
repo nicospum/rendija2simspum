@@ -1,3 +1,5 @@
+import SceneConsole from '../components/ui/SceneConsole'
+import '../series/interaction.css'
 import ChallengeGuide from '../components/ui/ChallengeGuide'
 import Info from '../components/ui/InfoPopover'
 import { BlackHoleNavigation } from '../series/BlackHoleNavigation'
@@ -30,6 +32,12 @@ export default function LensApp() {
   )
   useBlackHoleProgress('lente-gravitacional', state.completed, LESSONS)
   const [grid, setGrid] = useState(false)
+  const [view,setView]=useState<'image'|'paths'>(()=>location.hash==='#ln-paths'?'paths':'image')
+  const navigateView=(href:string)=>{
+    if(href!=='#ln-paths'&&href!=='#ln-views')return
+    setView(href==='#ln-paths'?'paths':'image')
+    requestAnimationFrame(()=>document.getElementById('ln-views')?.scrollIntoView({block:'start'}))
+  }
   const { result, pending, error } = useTransfer(state)
   // Both views retain the same committed calculation while a new worker is running.
   const setup = {
@@ -100,7 +108,7 @@ export default function LensApp() {
               La gravedad cambia de dónde parece venir la luz. Tocá una dirección, seguí su
               recorrido y descubrí cómo se forma la imagen.
             </p>
-            <a href="#ln-challenges">Empezá con una predicción ↓</a>
+            <a href="#ln-views" onClick={()=>navigateView("#ln-views")}>Jugar sobre la escena ↓</a>
           </div>
         </section>
         <div className="ln-model-banner">
@@ -113,6 +121,7 @@ export default function LensApp() {
         </div>
 
         <LabNavigation
+          onNavigate={navigateView}
           links={[
             ['Imagen', '#ln-views'],
             ['Recorrido', '#ln-paths'],
@@ -143,7 +152,8 @@ export default function LensApp() {
           }
         />
         <section className="ln-views" id="ln-views" aria-label="Dos vistas de la misma luz">
-          <article className="ln-observer-panel">
+          <div className="bh-view-tabs" role="group" aria-label="Elegir vista de la lente"><button aria-pressed={view==='image'} onClick={()=>setView('image')}>Imagen del observador</button><button aria-pressed={view==='paths'} onClick={()=>setView('paths')}>Recorrido de la luz</button></div>
+          <article className="ln-observer-panel" data-active={view==='image'}>
             <div className="ln-view-heading">
               <div>
                 <p className="ln-eyebrow">01 / LO QUE VEMOS</p>
@@ -151,6 +161,7 @@ export default function LensApp() {
               </div>
               <span className="ln-live-tag">CÁLCULO EN TIEMPO REAL</span>
             </div>
+            <p className="bh-scene-prompt">Tocá la imagen o arrastrá el marcador del rayo</p>
             <ObserverView
               transfer={result}
               setup={setup}
@@ -158,7 +169,7 @@ export default function LensApp() {
               pending={pending}
               onPick={(angle, azimuth) => dispatch({ type: 'pick', angle, azimuth })}
             />
-            <div className="ln-image-tools">
+            <details className="bh-scene-details"><summary>Lecturas y explicación de la imagen</summary><div className="ln-image-tools">
               <div className="ln-segmented" aria-label="Comparar la gravedad">
                 <button
                   aria-pressed={!state.gravity}
@@ -250,8 +261,9 @@ export default function LensApp() {
                 </button>
               )}
             </div>
+            </details>
           </article>
-          <article className="ln-path-panel" id="ln-paths">
+          <article className="ln-path-panel" id="ln-paths" data-active={view==='paths'}>
             <div className="ln-view-heading">
               <div>
                 <p className="ln-eyebrow">02 / CÓMO LLEGA LA LUZ</p>
@@ -264,7 +276,9 @@ export default function LensApp() {
                 inverso; la luz recibida viaja al revés.
               </Info>
             </div>
-            <Diagram setup={setup} ray={ray} neighbors={neighbors} />
+            <p className="bh-scene-prompt">Arrastrá la fuente dorada para buscar la alineación</p>
+            <Diagram setup={setup} ray={ray} neighbors={neighbors} onSource={value=>dispatch({type:'source',value})} />
+            <details className="bh-scene-details"><summary>Detalles del rayo elegido</summary>
             <div className={`ln-ray-outcome ln-${ray.outcome}`}>
               <span>RAYO ELEGIDO · α = {number(state.rayAngle, 1)}°</span>
               <strong>{outcome}</strong>
@@ -292,7 +306,167 @@ export default function LensApp() {
                 </p>
               )}
             </div>
+            </details>
           </article>
+          <SceneConsole
+            challengeHref="#ln-challenges"
+            hint="El marcador de la imagen elige una dirección: arrastralo o usá las flechas. La fuente dorada se mueve sobre la esfera de fondo en el diagrama; si queda de canto respecto del corte, usá «Corte horizontal». Alinear con la cámara conserva su posición. Comparar sin lente mantiene la misma fuente. La imagen y el diagrama conservan el último modelo calculado mientras se actualiza la masa."
+          >
+            <div className="spum-console-row">
+              <label htmlFor="ln-live-main">
+                {state.lesson === 'mass'
+                  ? 'Masa invisible'
+                  : state.lesson === 'capture'
+                    ? 'Dirección del rayo'
+                    : 'Posición de la fuente'}
+              </label>
+              <output>
+                {state.lesson === 'mass'
+                  ? `${number(state.mass * 4)} millones M☉`
+                  : state.lesson === 'capture'
+                    ? `${number(state.rayAngle, 1)}°`
+                    : `${number(state.source, 1)}°`}
+              </output>
+            </div>
+            <input
+              id="ln-live-main"
+              type="range"
+              min={
+                state.lesson === 'mass' ? 0.5 : state.lesson === 'capture' ? 0 : -18
+              }
+              max={
+                state.lesson === 'mass' ? 2 : state.lesson === 'capture' ? 70 : 18
+              }
+              step={state.lesson === 'mass' ? 0.01 : 0.1}
+              value={
+                state.lesson === 'mass'
+                  ? state.mass
+                  : state.lesson === 'capture'
+                    ? state.rayAngle
+                    : state.source
+              }
+              onChange={(e) =>
+                dispatch({
+                  type:
+                    state.lesson === 'mass'
+                      ? 'mass'
+                      : state.lesson === 'capture'
+                        ? 'rayAngle'
+                        : 'source',
+                  value: +e.target.value,
+                })
+              }
+            />
+            <p className="spum-console-impact">
+              {pending ? (
+                'Actualizando el modelo; se muestra el último cálculo.'
+              ) : (
+                <>
+                  Fuente a {number(Math.abs(setup.source + setup.yaw), 1)}° del eje
+                  · {outcome}. Sombra:{' '}
+                  {setup.gravity ? number(degrees(g.shadowAngle), 1) : '0'}°.
+                </>
+              )}
+            </p>
+            <div className="spum-console-buttons">
+              <button
+                aria-pressed={state.gravity}
+                onClick={() => dispatch({ type: 'gravity', value: !state.gravity })}
+              >
+                {state.gravity ? 'Quitar lente' : 'Activar lente'}
+              </button>
+              <button
+                onClick={() => dispatch({ type: 'source', value: -state.yaw })}
+              >
+                Alinear fuente
+              </button>
+              <button
+                onClick={() => dispatch({ type: 'pick', angle: 3, azimuth: 0 })}
+              >
+                Rayo al centro · 3°
+              </button>
+              <button
+                onClick={() => dispatch({ type: 'pick', angle: 14, azimuth: 0 })}
+              >
+                Rayo exterior · 14°
+              </button>
+            </div>
+            {result && setup.gravity && aligned && (
+              <div className="spum-console-buttons">
+                <button
+                  disabled={pending}
+                  onClick={() =>
+                    dispatch({
+                      type: 'pick',
+                      angle: degrees(result.ring),
+                      azimuth: 0,
+                    })
+                  }
+                >
+                  Seguir un rayo del anillo
+                </button>
+              </div>
+            )}
+            <details className="spum-console-help">
+              <summary>Cámara, masa y dirección</summary>
+              <label htmlFor="ln-live-camera">
+                Posición de la cámara: {number(state.yaw, 1)}°
+              </label>
+              <input
+                id="ln-live-camera"
+                type="range"
+                min="-18"
+                max="18"
+                step="0.2"
+                value={state.yaw}
+                onChange={(e) => dispatch({ type: 'yaw', value: +e.target.value })}
+              />
+              <label htmlFor="ln-live-ray">
+                Ángulo del rayo: {number(state.rayAngle, 1)}°
+              </label>
+              <input
+                id="ln-live-ray"
+                type="range"
+                min="0"
+                max="70"
+                step="0.1"
+                value={state.rayAngle}
+                onChange={(e) =>
+                  dispatch({ type: 'rayAngle', value: +e.target.value })
+                }
+              />
+              <label htmlFor="ln-live-mass">
+                Masa: {number(state.mass * 4)} millones M☉
+              </label>
+              <input
+                id="ln-live-mass"
+                type="range"
+                min="0.5"
+                max="2"
+                step="0.01"
+                value={state.mass}
+                onChange={(e) => dispatch({ type: 'mass', value: +e.target.value })}
+              />
+              <div className="spum-console-buttons">
+                <button onClick={() => dispatch({ type: 'mass', value: 1 })}>
+                  Masa de referencia
+                </button>
+                <button onClick={() => dispatch({ type: 'mass', value: 2 })}>
+                  Duplicar masa
+                </button>
+                <button onClick={() => dispatch({ type: 'azimuth', value: 0 })}>
+                  Corte horizontal
+                </button>
+                <button aria-pressed={grid} onClick={() => setGrid(!grid)}>
+                  Cuadrícula
+                </button>
+              </div>
+              <p>
+                rₛ = {number(g.rs / AU, 4)} UA. Cámara y fondo conservan sus
+                distancias físicas.
+              </p>
+            </details>
+          </SceneConsole>
         </section>
         {error && (
           <p className="ln-error" role="alert">

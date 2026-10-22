@@ -1,3 +1,5 @@
+import SceneConsole from '../components/ui/SceneConsole'
+import '../series/interaction.css'
 import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
@@ -128,7 +130,7 @@ export default function AccretionApp() {
               Encendé el gas, mirá cómo viaja su luz y usá una estrella para
               pesar algo que no podés ver.
             </p>
-            <a href="#ac-challenges">Cuatro preguntas para descubrirlo ↓</a>
+            <a href="#ac-view">Jugar sobre la escena ↓</a>
           </div>
         </section>
         <LabNavigation
@@ -153,7 +155,7 @@ export default function AccretionApp() {
           }
           onNext={complete ? () => start((learning.index + 1) % 4) : undefined}
         />
-        <section className="ac-workbench" aria-label="Mesa de observación">
+        <section id="ac-view" className="ac-workbench" aria-label="Mesa de observación">
           <div className="ac-visual">
             <div className="ac-toolbar">
               <div role="group" aria-label="Elegir la pista que observamos">
@@ -172,20 +174,17 @@ export default function AccretionApp() {
                   02 · La estrella
                 </button>
               </div>
-              <button
-                onClick={() => setPlaying((p) => !p)}
-                aria-pressed={!playing}
-              >
-                {playing ? 'Pausar' : 'Reanudar'} movimiento
-              </button>
+
             </div>
-            <div className="ac-stage" id="ac-view">
+            <p className="bh-scene-prompt">{shown.view==='disk'?'Arrastrá los mandos del gas y la inclinación':'Arrastrá la estrella por su órbita; la masa fija su período'}</p>
+            <div className="ac-stage">
               {shown.view === 'disk' ? (
-                <DiskView setup={shown} playing={playing && visible} />
+                <DiskView setup={shown} playing={playing && visible} onTune={reference?undefined:update} />
               ) : (
                 <StarView
                   key={`${shown.mass}-${learning.index}-${reference}`}
                   mass={shown.mass}
+                  onExplore={reference?undefined:()=>setPlaying(false)}
                   playing={playing && visible}
                 />
               )}
@@ -215,6 +214,110 @@ export default function AccretionApp() {
                 </strong>
               )}
             </div>
+            <SceneConsole
+              challengeHref="#ac-challenges"
+              hint="Los dos mandos sobre el disco cambian alimentación e inclinación: no hacen girar el espacio-tiempo. Arrastrar la estrella recorre su órbita de radio fijo y pausa el movimiento; cambiar la masa reinicia sus fases. La luz brillante viene del gas exterior, no del horizonte ni de Hawking. Los colores indican cambios de frecuencia de forma ilustrativa. En referencia, volvé a tu prueba para editar."
+            >
+              <fieldset
+                className="bh-console-fieldset"
+                aria-label="Variables junto a la imagen"
+                disabled={reference}
+              >
+                <div className="spum-console-row">
+                  <label htmlFor="ac-live-main">
+                    {shown.view === 'star'
+                      ? 'Masa invisible'
+                      : learning.index === 0
+                        ? 'Alimentación de gas'
+                        : 'Inclinación del disco'}
+                  </label>
+                  <output>
+                    {shown.view === 'star'
+                      ? `${number(shown.mass, 1)} millones M☉`
+                      : learning.index === 0
+                        ? `${shown.gas}%`
+                        : `${shown.inclination}°`}
+                  </output>
+                </div>
+                <input
+                  id="ac-live-main"
+                  type="range"
+                  min={shown.view === 'star' ? 1 : 0}
+                  max={shown.view === 'star' ? 8 : learning.index === 0 ? 100 : 82}
+                  step={shown.view === 'star' ? 0.1 : 1}
+                  value={
+                    shown.view === 'star'
+                      ? shown.mass
+                      : learning.index === 0
+                        ? shown.gas
+                        : shown.inclination
+                  }
+                  onChange={(e) =>
+                    update(
+                      shown.view === 'star'
+                        ? { mass: +e.target.value }
+                        : learning.index === 0
+                          ? { gas: +e.target.value }
+                          : { inclination: +e.target.value },
+                    )
+                  }
+                />
+                <p className="spum-console-impact">
+                  {shown.view === 'star'
+                    ? `A 100 UA: período ${number(m.period * 365.25, 1)} días. Masa ×2 → período ÷√2.`
+                    : shown.gas === 0
+                      ? 'Sin gas: desaparece el disco; la masa sigue ahí.'
+                      : `Gas ${scientific(m.temperature, 'K')} · Contraste local ${number(m.contrast, 1)}×. ${shown.lens ? 'Luz curvada.' : 'Comparación de luz recta.'}`}
+                </p>
+                <div className="spum-console-buttons">
+                  {shown.view === 'disk' ? (
+                    <>
+                      <button onClick={() => update({ gas: 0 })}>Sin gas</button>
+                      <button onClick={() => update({ gas: 60 })}>Gas al 60%</button>
+                      <button onClick={() => update({ inclination: 0 })}>
+                        De frente · 0°
+                      </button>
+                      <button onClick={() => update({ inclination: 70 })}>
+                        Inclinar a 70°
+                      </button>
+                      <button
+                        aria-pressed={shown.lens}
+                        onClick={() => update({ lens: !shown.lens })}
+                      >
+                        Curvar la luz
+                      </button>
+                      <button
+                        aria-pressed={shown.doppler}
+                        onClick={() => update({ doppler: !shown.doppler })}
+                      >
+                        Movimiento relativista
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button onClick={() => update({ mass: 4 })}>
+                        4 millones M☉
+                      </button>
+                      <button onClick={() => update({ mass: 8 })}>
+                        8 millones M☉
+                      </button>
+                    </>
+                  )}
+                </div>
+              </fieldset>
+              <div className="spum-console-buttons">
+                <button onClick={() => setPlaying((p) => !p)}>
+                  {playing ? 'Pausar movimiento' : 'Reanudar movimiento'}
+                </button>
+                <button
+                  aria-pressed={reference}
+                  onClick={() => setReference((r) => !r)}
+                >
+                  {reference ? 'Volver a mi prueba' : 'Ver referencia del reto'}
+                </button>
+              </div>
+            </SceneConsole>
+            <details className="bh-scene-details"><summary>Qué muestran el brillo, los colores y la escala</summary>
             {shown.view === 'disk' && shown.gas > 0 && (
               <div className="ac-direction">
                 {shown.inclination > 5 ? <><span>Izquierda · gas que se acerca</span><span>Derecha · gas que se aleja</span></> :
@@ -270,6 +373,7 @@ export default function AccretionApp() {
                 ? 'rs = radio del horizonte. Cámara a 28 rs · disco de 3 a 14 rs · movimiento ralentizado · colores y fondo estelar ilustrativos. Al cambiar la masa, la vista conserva su tamaño en rs.'
                 : 'Radio fijo: 100 UA · referencia de 4 millones de soles · 1 s de animación = 0,2 años. Cambiar la masa reinicia la comparación.'}
             </p>
+            </details>
           </div>
           <aside
             className="ac-controls"
@@ -285,7 +389,7 @@ export default function AccretionApp() {
               saved={complete}
               challengeHref="#ac-challenges"
               viewHref="#ac-view"
-              help="M☉ significa masa del Sol. En el disco, la inclinación cambia desde dónde mirás; la alimentación cambia cuánto gas brilla. En la vista de la estrella, su período ayuda a medir la masa invisible. «Comparar con el inicio» bloquea los controles; «Volver a mi prueba» los habilita otra vez."
+              help="M☉ significa masa del Sol. En el disco, la inclinación cambia desde dónde mirás; la alimentación cambia cuánto gas brilla. En la vista de la estrella, su período ayuda a medir la masa invisible. «Ver referencia del reto» bloquea los controles; «Volver a mi prueba» los habilita otra vez."
             notice={reference ? 'Estás mirando la referencia: tocá «Volver a mi prueba» para modificar el ensayo.' : undefined}
             />
             <fieldset disabled={reference}>
@@ -382,7 +486,7 @@ export default function AccretionApp() {
               aria-pressed={reference}
               onClick={() => setReference((r) => !r)}
             >
-              {reference ? 'Volver a mi prueba' : 'Comparar con el inicio'}
+              {reference ? 'Volver a mi prueba' : 'Ver referencia del reto'}
             </button>
             <button className="ac-reset" onClick={() => start(learning.index)}>
               Reiniciar este reto ↻
@@ -514,10 +618,10 @@ export default function AccretionApp() {
               <p>{lesson.hint}</p>
               <a
                 className="ac-test"
-                href="#ac-controls"
+                href="#ac-view"
                 onClick={() => setReference(false)}
               >
-                Ir a los controles ↑
+                Probar sobre la escena ↑
               </a>
               <ul className="ac-progress">
                 {observationSteps(learning.index, learning.observations).map(step => (

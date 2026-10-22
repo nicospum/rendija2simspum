@@ -1,3 +1,6 @@
+import { useSurfaceScrub } from '../shared/useSurfaceScrub'
+import { scrubKey } from '../shared/sceneInteraction'
+import { dialValue } from './interaction'
 import { Component, useEffect, useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
@@ -168,12 +171,16 @@ function Field({
 function Fallback() {
   return (
     <p className="ac-fallback">
-      El visor necesita WebGL 2. Los controles, la órbita y los cálculos siguen
-      disponibles. Probá recargar o usar otro navegador para ver el disco.
+      El visor necesita WebGL 2. Los controles, la órbita y los cálculos
+      siguen disponibles. Probá recargar o usar otro navegador para ver el
+      disco.
     </p>
   )
 }
-class Boundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+class Boundary extends Component<
+  { children: ReactNode },
+  { failed: boolean }
+> {
   state = { failed: false }
   static getDerivedStateFromError() {
     return { failed: true }
@@ -185,10 +192,21 @@ class Boundary extends Component<{ children: ReactNode }, { failed: boolean }> {
 export default function DiskView({
   setup,
   playing,
+  onTune,
 }: {
   setup: Setup
   playing: boolean
+  onTune?: (patch: Partial<Setup>) => void
 }) {
+  const area = useRef<HTMLDivElement>(null)
+  const tilt = useSurfaceScrub(area, (p) => {
+    const v = dialValue(p.y, 82)
+    if (v !== null) onTune?.({ inclination: v })
+  })
+  const gas = useSurfaceScrub(area, (p) => {
+    const v = dialValue(p.y, 100)
+    if (v !== null) onTune?.({ gas: v })
+  })
   const [map, setMap] = useState<Map | null>(null)
   const [error, setError] = useState(false)
   useEffect(() => {
@@ -230,6 +248,7 @@ export default function DiskView({
   return (
     <div
       className="ac-disk"
+      ref={area}
       aria-label="Imagen del disco de acreción calculada con trayectorias de luz de Schwarzschild"
     >
       {map ? (
@@ -246,7 +265,11 @@ export default function DiskView({
             }}
             fallback={<Fallback />}
           >
-            <Field map={map} setup={setup} playing={playing && setup.gas > 0} />
+            <Field
+              map={map}
+              setup={setup}
+              playing={playing && setup.gas > 0}
+            />
           </Canvas>
         </Boundary>
       ) : (
@@ -255,6 +278,57 @@ export default function DiskView({
             ? 'No se pudieron calcular las trayectorias. Recargá para volver a intentar.'
             : 'Calculando caminos de luz…'}
         </p>
+      )}
+      {onTune && (
+        <>
+          <div className="bh-dial-caption" style={{ left: '12%' }}>
+            Gas
+          </div>
+          <button
+            {...gas}
+            className="bh-image-dial"
+            style={{ left: '12%', top: `${75 - setup.gas / 2}%` }}
+            role="slider"
+            aria-label="Alimentar el disco desde la escena"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={setup.gas}
+            onKeyDown={(e) => {
+              const v = scrubKey(e.key, setup.gas, 0, 100, 5)
+              if (v !== undefined) {
+                e.preventDefault()
+                onTune({ gas: v })
+              }
+            }}
+          >
+            {setup.gas}%
+          </button>
+          <div className="bh-dial-caption" style={{ left: '88%' }}>
+            Inclinar
+          </div>
+          <button
+            {...tilt}
+            className="bh-image-dial"
+            style={{
+              left: '88%',
+              top: `${75 - (setup.inclination / 82) * 50}%`,
+            }}
+            role="slider"
+            aria-label="Inclinar el disco desde la escena"
+            aria-valuemin={0}
+            aria-valuemax={82}
+            aria-valuenow={setup.inclination}
+            onKeyDown={(e) => {
+              const v = scrubKey(e.key, setup.inclination, 0, 82, 5)
+              if (v !== undefined) {
+                e.preventDefault()
+                onTune({ inclination: v })
+              }
+            }}
+          >
+            {setup.inclination}°
+          </button>
+        </>
       )}
     </div>
   )

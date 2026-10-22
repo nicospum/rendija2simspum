@@ -5,9 +5,11 @@ import './LabJourney.css'
 export function LabNavigation({
   links,
   light = false,
+  onNavigate,
 }: {
   links: readonly (readonly [string, string])[]
   light?: boolean
+  onNavigate?: (href: string) => void
 }) {
   return (
     <nav
@@ -15,7 +17,7 @@ export function LabNavigation({
       aria-label="Accesos rápidos del laboratorio"
     >
       {links.map(([label, href]) => (
-        <a key={href} href={href}>
+        <a key={href} href={href} onClick={() => onNavigate?.(href)}>
           {label}
         </a>
       ))}
@@ -47,7 +49,9 @@ export function LabMission({
   const activate = (action: () => void) => {
     action()
     requestAnimationFrame(() =>
-      document.getElementById('spum-mission')?.focus({ preventScroll: true }),
+      document
+        .getElementById('spum-mission')
+        ?.focus({ preventScroll: true }),
     )
   }
   return (
@@ -66,14 +70,24 @@ export function LabMission({
         <h2>{title ?? '¿Qué te gustaría descubrir?'}</h2>
         <p>{instruction}</p>
         {result && (
-          <p className="spum-mission-result" role="status" aria-live={live ? 'polite' : 'off'}>
+          <p
+            className="spum-mission-result"
+            role="status"
+            aria-live={live ? 'polite' : 'off'}
+          >
             ↳ {result}
           </p>
         )}
       </div>
       <div className="spum-mission-actions">
-        {onStart && <button onClick={() => activate(onStart)}>Empezar el primer reto ↗</button>}
-        <a href={href}>{result ? 'Entender y comparar ↓' : 'Predicción y comparación ↓'}</a>
+        {onStart && (
+          <button onClick={() => activate(onStart)}>
+            Empezar el primer reto ↗
+          </button>
+        )}
+        <a href={href}>
+          {result ? 'Entender y comparar ↓' : 'Predicción y comparación ↓'}
+        </a>
         {onNext && (
           <button onClick={() => activate(onNext)}>
             {index === 3 ? 'Volver al primer reto ↻' : 'Siguiente reto →'}
@@ -84,7 +98,13 @@ export function LabMission({
   )
 }
 
-export function MoreLabs({ current, light = false }: { current: string; light?: boolean }) {
+export function MoreLabs({
+  current,
+  light = false,
+}: {
+  current: string
+  light?: boolean
+}) {
   return (
     <nav
       className={`spum-more-labs ${light ? 'spum-light' : ''}`}

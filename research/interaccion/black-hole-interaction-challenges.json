@@ -1,0 +1,50 @@
+[
+  {
+    "lab": "lente1",
+    "feedback": "RELACIÓN EXPLORADA\n\nTu predicción coincide con el modelo.\n\nLa luz llega por otras direcciones. Una imagen desplazada o duplicada no implica varias estrellas: distintos caminos conectan la misma fuente con la cámara. Esa relación permite estudiar masa que no vemos directamente.\n\nRadio del horizonte\n×1\nSombra angular\n0°\nFuente respecto del eje\n8°\nRayo elegido\nAlcanza el fondo\nVer la imagen y seguir los caminos ↑"
+  },
+  {
+    "lab": "lente2",
+    "feedback": "RELACIÓN EXPLORADA\n\nTu predicción coincide con el modelo.\n\nLa simetría permite que la luz de la misma fuente llegue por todos los lados. El anillo emerge de las trayectorias calculadas: no está dibujado sobre la imagen. Con desalineación se rompe en arcos e imágenes.\n\nRadio del horizonte\n×1\nSombra angular\n6,08°\nFuente respecto del eje\n0°\nRayo elegido\nAlcanza el fondo\nVer la imagen y seguir los caminos ↑"
+  },
+  {
+    "lab": "lente3",
+    "feedback": "RELACIÓN EXPLORADA\n\nTu predicción coincide con el modelo.\n\nEl rastreo inverso termina en el horizonte: esa dirección no recibe luz de la esfera de fondo. Por fuera del umbral hay rayos que regresan al fondo tras curvarse. La esfera de fotones es una órbita circular inestable; no una superficie material.\n\nRadio del horizonte\n×1\nSombra angular\n6,08°\nFuente respecto del eje\n0°\nRayo elegido\nTermina en el horizonte\nVer la imagen y seguir los caminos ↑"
+  },
+  {
+    "lab": "lente4",
+    "feedback": "RELACIÓN EXPLORADA\n\nTu predicción coincide con el modelo.\n\nEl radio del horizonte crece linealmente con M y la sombra ocupa más ángulo. Si escaláramos también todas las distancias con M, la imagen adimensional sí sería la misma. Acá conservamos metros para que puedas separar ambos casos.\n\nRadio del horizonte\n×2\nSombra angular\n11,96°\nFuente respecto del eje\n0°\nRayo elegido\nAlcanza el fondo\nVer la imagen y seguir los caminos ↑"
+  },
+  {
+    "lab": "entropia1",
+    "feedback": "Tu predicción coincide con el modelo.\n\nEl radio crece con M; el área, con M². Por eso duplicar la masa multiplica por cuatro tanto el área como la entropía. El volumen euclídeo de una esfera de ese radio crece por ocho: esa no es la ley de entropía del agujero negro."
+  },
+  {
+    "lab": "entropia2",
+    "feedback": "Tu predicción coincide con el modelo.\n\nS/kB = A/(4ℓP²). El factor ¼ divide la cantidad de áreas de Planck por cuatro. Para expresar esa entropía en bits hay que dividir además por ln 2. La lupa es aritmética: no muestra celdas físicas ni un agujero negro microscópico."
+  },
+  {
+    "lab": "entropia3",
+    "feedback": "Tu predicción coincide con el modelo.\n\nLa entropía del agujero negro disminuye a 0,75² = 0,5625 de la inicial, mientras su temperatura aumenta. Eso no decide qué pasa con la entropía total: la radiación también cuenta. Estamos comparando estados enormemente separados en tiempo, no observando una evaporación rápida real."
+  },
+  {
+    "lab": "entropia4",
+    "feedback": "Tu predicción coincide con el modelo.\n\nEn este modelo de fotones ideales, la radiación lleva 4/3 de la entropía que pierde el agujero negro. Al sumar ambas, la entropía térmica total aumenta. Ilustra la segunda ley generalizada; no calcula la entropía de entrelazamiento ni resuelve la paradoja de la información."
+  },
+  {
+    "lab": "acrecion1",
+    "feedback": "¡Descubrimiento completo! El gas libera energía al perder energía orbital y calentarse. El horizonte no es una superficie luminosa. Sin ese gas, desaparece el disco; eso no demuestra que no haya un agujero negro. Esta luz no es radiación de Hawking."
+  },
+  {
+    "lab": "acrecion2",
+    "feedback": "¡Descubrimiento completo! El disco sigue siendo plano. Rayos de su parte posterior se curvan y alcanzan al observador por encima y por debajo de la sombra. Comparar con luz recta separa perspectiva y lente gravitacional."
+  },
+  {
+    "lab": "acrecion3",
+    "feedback": "¡Descubrimiento completo! El movimiento cambia la frecuencia y concentra la radiación en la dirección de avance. En la intensidad integrada sobre frecuencias aparece un factor g⁴. De frente desaparece la asimetría entre los lados, aunque persisten otros efectos relativistas."
+  },
+  {
+    "lab": "acrecion4",
+    "feedback": "¡Descubrimiento completo! En el régimen de esta órbita, T² = 4π²a³/(GM). Duplicar M divide T por √2. Medir tamaño y período permite inferir masa aunque no haya disco brillante. La estrella es un ejemplo ideal, no datos de una estrella observada."
+  }
+]

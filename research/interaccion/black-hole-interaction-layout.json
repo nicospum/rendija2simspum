@@ -1,0 +1,402 @@
+[
+  {
+    "effect": {
+      "bottom": 728.796875,
+      "top": 689.796875
+    },
+    "height": 740,
+    "overflow": false,
+    "route": "/lente-gravitacional/",
+    "scene": {
+      "bottom": 496.296875,
+      "top": 276.296875
+    },
+    "slider": {
+      "bottom": 680.796875,
+      "top": 636.796875
+    },
+    "together": true,
+    "width": 320,
+    "variant": "main"
+  },
+  {
+    "effect": {
+      "bottom": 729.609375,
+      "top": 690.609375
+    },
+    "height": 740,
+    "overflow": false,
+    "route": "/lente-gravitacional/",
+    "scene": {
+      "bottom": 421.109375,
+      "top": 201.109375
+    },
+    "slider": {
+      "bottom": 681.609375,
+      "top": 637.609375
+    },
+    "together": true,
+    "width": 320,
+    "variant": "paths"
+  },
+  {
+    "effect": {
+      "bottom": 634.671875,
+      "top": 595.671875
+    },
+    "height": 740,
+    "overflow": false,
+    "route": "/acrecion/",
+    "scene": {
+      "bottom": 456.171875,
+      "top": 176.171875
+    },
+    "slider": {
+      "bottom": 586.671875,
+      "top": 542.671875
+    },
+    "together": true,
+    "width": 320,
+    "variant": "main"
+  },
+  {
+    "effect": {
+      "bottom": 652.671875,
+      "top": 613.671875
+    },
+    "height": 740,
+    "overflow": false,
+    "route": "/acrecion/",
+    "scene": {
+      "bottom": 474.171875,
+      "top": 194.171875
+    },
+    "slider": {
+      "bottom": 604.671875,
+      "top": 560.671875
+    },
+    "together": true,
+    "width": 320,
+    "variant": "star"
+  },
+  {
+    "effect": {
+      "bottom": 566.34375,
+      "top": 527.34375
+    },
+    "height": 740,
+    "overflow": false,
+    "route": "/entropia/",
+    "scene": {
+      "bottom": 387.84375,
+      "top": 221.3125
+    },
+    "slider": {
+      "bottom": 518.34375,
+      "top": 474.34375
+    },
+    "together": true,
+    "width": 320,
+    "variant": "main"
+  },
+  {
+    "effect": {
+      "bottom": 692.328125,
+      "top": 672.828125
+    },
+    "height": 844,
+    "overflow": false,
+    "route": "/lente-gravitacional/",
+    "scene": {
+      "bottom": 479.328125,
+      "top": 219.328125
+    },
+    "slider": {
+      "bottom": 663.828125,
+      "top": 619.828125
+    },
+    "together": true,
+    "width": 390,
+    "variant": "main"
+  },
+  {
+    "effect": {
+      "bottom": 731.734375,
+      "top": 712.234375
+    },
+    "height": 844,
+    "overflow": false,
+    "route": "/lente-gravitacional/",
+    "scene": {
+      "bottom": 442.734375,
+      "top": 182.734375
+    },
+    "slider": {
+      "bottom": 703.234375,
+      "top": 659.234375
+    },
+    "together": true,
+    "width": 390,
+    "variant": "paths"
+  },
+  {
+    "effect": {
+      "bottom": 614.703125,
+      "top": 595.203125
+    },
+    "height": 844,
+    "overflow": false,
+    "route": "/acrecion/",
+    "scene": {
+      "bottom": 455.703125,
+      "top": 175.703125
+    },
+    "slider": {
+      "bottom": 586.203125,
+      "top": 542.203125
+    },
+    "together": true,
+    "width": 390,
+    "variant": "main"
+  },
+  {
+    "effect": {
+      "bottom": 634.203125,
+      "top": 595.203125
+    },
+    "height": 844,
+    "overflow": false,
+    "route": "/acrecion/",
+    "scene": {
+      "bottom": 455.703125,
+      "top": 175.703125
+    },
+    "slider": {
+      "bottom": 586.203125,
+      "top": 542.203125
+    },
+    "together": true,
+    "width": 390,
+    "variant": "star"
+  },
+  {
+    "effect": {
+      "bottom": 541.046875,
+      "top": 521.546875
+    },
+    "height": 844,
+    "overflow": false,
+    "route": "/entropia/",
+    "scene": {
+      "bottom": 382.046875,
+      "top": 173.015625
+    },
+    "slider": {
+      "bottom": 512.546875,
+      "top": 468.546875
+    },
+    "together": true,
+    "width": 390,
+    "variant": "main"
+  },
+  {
+    "effect": {
+      "bottom": 692.703125,
+      "top": 673.203125
+    },
+    "height": 1024,
+    "overflow": false,
+    "route": "/lente-gravitacional/",
+    "scene": {
+      "bottom": 479.703125,
+      "top": 219.703125
+    },
+    "slider": {
+      "bottom": 664.203125,
+      "top": 620.203125
+    },
+    "together": true,
+    "width": 768,
+    "variant": "main"
+  },
+  {
+    "effect": {
+      "bottom": 721.109375,
+      "top": 701.609375
+    },
+    "height": 1024,
+    "overflow": false,
+    "route": "/lente-gravitacional/",
+    "scene": {
+      "bottom": 443.109375,
+      "top": 183.109375
+    },
+    "slider": {
+      "bottom": 692.609375,
+      "top": 648.609375
+    },
+    "together": true,
+    "width": 768,
+    "variant": "paths"
+  },
+  {
+    "effect": {
+      "bottom": 615.015625,
+      "top": 595.515625
+    },
+    "height": 1024,
+    "overflow": false,
+    "route": "/acrecion/",
+    "scene": {
+      "bottom": 456.015625,
+      "top": 176.015625
+    },
+    "slider": {
+      "bottom": 586.515625,
+      "top": 542.515625
+    },
+    "together": true,
+    "width": 768,
+    "variant": "main"
+  },
+  {
+    "effect": {
+      "bottom": 615.015625,
+      "top": 595.515625
+    },
+    "height": 1024,
+    "overflow": false,
+    "route": "/acrecion/",
+    "scene": {
+      "bottom": 456.015625,
+      "top": 176.015625
+    },
+    "slider": {
+      "bottom": 586.515625,
+      "top": 542.515625
+    },
+    "together": true,
+    "width": 768,
+    "variant": "star"
+  },
+  {
+    "effect": {
+      "bottom": 582.265625,
+      "top": 562.765625
+    },
+    "height": 1024,
+    "overflow": false,
+    "route": "/entropia/",
+    "scene": {
+      "bottom": 423.265625,
+      "top": 173.265625
+    },
+    "slider": {
+      "bottom": 553.765625,
+      "top": 509.765625
+    },
+    "together": true,
+    "width": 768,
+    "variant": "main"
+  },
+  {
+    "effect": {
+      "bottom": 771.421875,
+      "top": 751.921875
+    },
+    "height": 900,
+    "overflow": false,
+    "route": "/lente-gravitacional/",
+    "scene": {
+      "bottom": 470.609375,
+      "top": 170.609375
+    },
+    "slider": {
+      "bottom": 742.921875,
+      "top": 698.921875
+    },
+    "together": true,
+    "width": 1280,
+    "variant": "main"
+  },
+  {
+    "effect": {
+      "bottom": 771.421875,
+      "top": 751.921875
+    },
+    "height": 900,
+    "overflow": false,
+    "route": "/lente-gravitacional/",
+    "scene": {
+      "bottom": 483.421875,
+      "top": 183.421875
+    },
+    "slider": {
+      "bottom": 742.921875,
+      "top": 698.921875
+    },
+    "together": true,
+    "width": 1280,
+    "variant": "paths"
+  },
+  {
+    "effect": {
+      "bottom": 667.171875,
+      "top": 647.671875
+    },
+    "height": 900,
+    "overflow": false,
+    "route": "/acrecion/",
+    "scene": {
+      "bottom": 504.171875,
+      "top": 184.171875
+    },
+    "slider": {
+      "bottom": 638.671875,
+      "top": 594.671875
+    },
+    "together": true,
+    "width": 1280,
+    "variant": "main"
+  },
+  {
+    "effect": {
+      "bottom": 667.171875,
+      "top": 647.671875
+    },
+    "height": 900,
+    "overflow": false,
+    "route": "/acrecion/",
+    "scene": {
+      "bottom": 504.171875,
+      "top": 184.171875
+    },
+    "slider": {
+      "bottom": 638.671875,
+      "top": 594.671875
+    },
+    "together": true,
+    "width": 1280,
+    "variant": "star"
+  },
+  {
+    "effect": {
+      "bottom": 659.109375,
+      "top": 639.609375
+    },
+    "height": 900,
+    "overflow": false,
+    "route": "/entropia/",
+    "scene": {
+      "bottom": 496.109375,
+      "top": 176.109375
+    },
+    "slider": {
+      "bottom": 630.609375,
+      "top": 586.609375
+    },
+    "together": true,
+    "width": 1280,
+    "variant": "main"
+  }
+]

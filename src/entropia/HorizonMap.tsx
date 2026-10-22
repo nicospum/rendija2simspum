@@ -1,3 +1,7 @@
+import type { ReactNode } from 'react'
+import { useSvgScrub } from '../shared/useSvgScrub'
+import { scrubKey } from '../shared/sceneInteraction'
+import { massAtEdge, emittedAtCorner } from './interaction'
 import { useId, useState } from 'react'
 import { entropyModel } from './physics'
 
@@ -36,12 +40,36 @@ function graticule(radius: number, yaw: number) {
   return paths
 }
 
-export default function HorizonMap({ model }: { model: ReturnType<typeof entropyModel> }) {
+export default function HorizonMap({
+  model,
+  mass,
+  emitted,
+  onMass,
+  onEmitted,
+  controls,
+}: {
+  model: ReturnType<typeof entropyModel>
+  mass: number
+  emitted: number
+  onMass: (v: number) => void
+  onEmitted: (v: number) => void
+  controls: ReactNode
+}) {
+  const resize = useSvgScrub((p) => {
+    const v = massAtEdge(p.x, emitted)
+    if (v !== null) onMass(v)
+  })
+  const emit = useSvgScrub((p) => {
+    const v = emittedAtCorner(p.x, mass)
+    if (v !== null) onEmitted(v)
+  })
   const [yaw, setYaw] = useState(0)
-  const [inspect, setInspect] = useState<'horizon' | 'grid' | 'reference'>('horizon')
+  const [inspect, setInspect] = useState<'horizon' | 'grid' | 'reference'>(
+    'horizon',
+  )
   const id = useId().replace(/:/g, '')
   const radius = 70 * model.radiusRatio
-  const areaSide = 60 * model.radiusRatio
+  const areaSide = 100 * model.radiusRatio
   const descriptions = {
     horizon:
       'El horizonte es una frontera causal, no una corteza sólida. Su radio areal rₛ define A = 4πrₛ². El mapa representa esa geometría; no muestra cómo lo vería una cámara astronómica.',
@@ -53,7 +81,7 @@ export default function HorizonMap({ model }: { model: ReturnType<typeof entropy
     <div className="en-map">
       <svg
         viewBox="0 0 700 425"
-        role="img"
+        role="group"
         aria-label={`Mapa geométrico del horizonte. Radio ${model.radiusRatio.toFixed(2)} veces y área ${model.areaRatio.toFixed(2)} veces la referencia fija.`}
       >
         <defs>
@@ -71,7 +99,12 @@ export default function HorizonMap({ model }: { model: ReturnType<typeof entropy
             <stop offset=".86" stopColor="#e7c17f" stopOpacity=".13" />
             <stop offset="1" stopColor="#e7c17f" stopOpacity="0" />
           </radialGradient>
-          <pattern id={`${id}-tiles`} width="15" height="15" patternUnits="userSpaceOnUse">
+          <pattern
+            id={`${id}-tiles`}
+            width="15"
+            height="15"
+            patternUnits="userSpaceOnUse"
+          >
             <rect
               width="15"
               height="15"
@@ -102,7 +135,12 @@ export default function HorizonMap({ model }: { model: ReturnType<typeof entropy
           </text>
         </g>
         <path d="M440 60V365" stroke="#b1cccf" strokeOpacity=".12" />
-        <circle cx="245" cy="214" r={radius * 1.28} fill={`url(#${id}-glow)`} />
+        <circle
+          cx="245"
+          cy="214"
+          r={radius * 1.28}
+          fill={`url(#${id}-glow)`}
+        />
         <circle
           cx="245"
           cy="214"
@@ -144,10 +182,10 @@ export default function HorizonMap({ model }: { model: ReturnType<typeof entropy
           km
         </text>
         <rect
-          x="520"
-          y="154"
-          width="60"
-          height="60"
+          x="500"
+          y="134"
+          width="100"
+          height="100"
           fill="none"
           stroke="#8caab8"
           strokeDasharray="4 4"
@@ -162,7 +200,7 @@ export default function HorizonMap({ model }: { model: ReturnType<typeof entropy
         />
         <text
           x="550"
-          y="288"
+          y="324"
           textAnchor="middle"
           fill="#efd29a"
           fontSize="30"
@@ -173,54 +211,123 @@ export default function HorizonMap({ model }: { model: ReturnType<typeof entropy
           })}{' '}
           ×
         </text>
-        <text x="550" y="311" textAnchor="middle" fill="#a6bdc2" fontSize="12">
+        <text
+          x="550"
+          y="347"
+          textAnchor="middle"
+          fill="#a6bdc2"
+          fontSize="12"
+        >
           el área de referencia
         </text>
         <path d="M44 380h100m-100 -4v8m100 -8v8" stroke="#8caab8" />
         <text x="44" y="403" fill="#a6bdc2" fontSize="11">
-          {(((model.reference.radiusM / 1000) * 100) / 70).toLocaleString('es-AR', {
-            maximumFractionDigits: 1,
-          })}{' '}
+          {(((model.reference.radiusM / 1000) * 100) / 70).toLocaleString(
+            'es-AR',
+            {
+              maximumFractionDigits: 1,
+            },
+          )}{' '}
           km · escala fija del mapa
         </text>
         <text x="473" y="380" fill="#a6bdc2" fontSize="11">
           Punteado: referencia de 10 M☉
         </text>
+        <circle
+          {...resize}
+          cx={245 + radius}
+          cy="214"
+          r="8"
+          fill="#efd29a"
+          stroke="transparent"
+          strokeWidth="44"
+          vectorEffect="non-scaling-stroke"
+          className="spum-object-handle"
+          role="slider"
+          tabIndex={0}
+          aria-label="Cambiar masa inicial desde el horizonte"
+          aria-valuemin={5}
+          aria-valuemax={20}
+          aria-valuenow={mass}
+          aria-valuetext={`${mass} masas solares iniciales`}
+          onKeyDown={(e) => {
+            const v = scrubKey(e.key, mass, 5, 20, 0.1)
+            if (v !== undefined) {
+              e.preventDefault()
+              onMass(v)
+            }
+          }}
+        />
+        <circle
+          {...emit}
+          cx={550 + areaSide / 2}
+          cy={184 + areaSide / 2}
+          r="7"
+          fill="#9ce3db"
+          stroke="transparent"
+          strokeWidth="44"
+          vectorEffect="non-scaling-stroke"
+          className="spum-object-handle"
+          role="slider"
+          tabIndex={0}
+          aria-label="Emitir masa desde el cuadro de área"
+          aria-valuemin={0}
+          aria-valuemax={0.5}
+          aria-valuenow={emitted}
+          aria-valuetext={`${emitted * 100} por ciento de la masa inicial emitida`}
+          onKeyDown={(e) => {
+            const v = scrubKey(e.key, emitted, 0, 0.5, 0.025)
+            if (v !== undefined) {
+              e.preventDefault()
+              onEmitted(v)
+            }
+          }}
+        />
       </svg>
-      <div className="en-map-legend">
-        <span>● Horizonte geométrico</span>
-        <span>▦ Área relativa · otra escala</span>
-        <span>⋯ Referencia: 10 M☉</span>
-      </div>
-      <div className="en-map-tools">
-        <div className="en-buttons" aria-label="Explorar el mapa">
-          {(
-            [
-              ['horizon', 'Horizonte'],
-              ['grid', 'Trama'],
-              ['reference', 'Referencia'],
-            ] as const
-          ).map(([key, title]) => (
-            <button key={key} aria-pressed={inspect === key} onClick={() => setInspect(key)}>
-              {title}
-            </button>
-          ))}
+      {controls}
+      <details className="bh-scene-details">
+        <summary>Explorar la geometría y sus límites</summary>
+        <div className="en-map-legend">
+          <span>● Horizonte geométrico</span>
+          <span>▦ Área relativa · otra escala</span>
+          <span>⋯ Referencia: 10 M☉</span>
         </div>
-        <label className="en-rotation">
-          Girar el mapa{' '}
-          <input
-            aria-label="Girar el mapa"
-            type="range"
-            min="-45"
-            max="45"
-            value={(yaw * 180) / Math.PI}
-            onChange={(e) => setYaw((Number(e.target.value) * Math.PI) / 180)}
-          />
-        </label>
-      </div>
-      <p className="en-map-explainer" aria-live="polite">
-        {descriptions[inspect]}
-      </p>
+        <div className="en-map-tools">
+          <div className="en-buttons" aria-label="Explorar el mapa">
+            {(
+              [
+                ['horizon', 'Horizonte'],
+                ['grid', 'Trama'],
+                ['reference', 'Referencia'],
+              ] as const
+            ).map(([key, title]) => (
+              <button
+                key={key}
+                aria-pressed={inspect === key}
+                onClick={() => setInspect(key)}
+              >
+                {title}
+              </button>
+            ))}
+          </div>
+          <label className="en-rotation">
+            Girar el mapa{' '}
+            <input
+              aria-label="Girar el mapa"
+              type="range"
+              min="-45"
+              max="45"
+              value={(yaw * 180) / Math.PI}
+              onChange={(e) =>
+                setYaw((Number(e.target.value) * Math.PI) / 180)
+              }
+            />
+          </label>
+        </div>
+        <p className="en-map-explainer" aria-live="polite">
+          {descriptions[inspect]}
+        </p>
+      </details>
     </div>
   )
 }
