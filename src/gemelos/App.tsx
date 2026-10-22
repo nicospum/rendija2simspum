@@ -272,10 +272,6 @@ export default function TwinsApp() {
                 tune({ outbound: +e.target.value, inbound: +e.target.value })
               }
             />
-            <p>
-              Plan de {n(s.setup.duration)} años en casa → {n(m.ownTotal)} años en
-              la nave al volver. Cambiarlo reinicia el viaje.
-            </p>
             <div className="spum-console-row">
               <label htmlFor="gv-live-time">Recorrer el viaje</label>
               <output>

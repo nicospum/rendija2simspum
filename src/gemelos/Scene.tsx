@@ -76,6 +76,9 @@ export default function Scene({
           </pattern>
         </defs>
         <rect x="60" y="45" width="475" height="320" fill="url(#gv-grid)" />
+        <text x="105" y="20" fill="#d2f0e5" fontSize="22">
+          Casa {n(m.t)} años · Nave {n(m.own)} años
+        </text>
         <g stroke="#628899" fill="none">
           <path d="M70 345H535m-8-5 8 5-8 5M105 365V45m-5 8 5-8 5 8" />
         </g>
@@ -294,8 +297,8 @@ export default function Scene({
         <text x="32" y="54">
           SISTEMA INERCIAL DE CASA
         </text>
-        <text x="32" y="80">
-          {m.phase} · v = {n(m.velocity)} c
+        <text x="32" y="88" fill="#d2f0e5" fontSize="24">
+          Casa {n(m.t)} años · Nave {n(m.own)} años
         </text>
         <text x="32" y="310">
           Distancia actual: {n(m.x)} años luz
