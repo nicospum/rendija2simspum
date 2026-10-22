@@ -280,6 +280,11 @@
 @media (max-height: 550px) and (min-width: 560px) {
   [data-scene-workspace]:has(
     .spum-scene-console[data-scene-active='true']
+  ),
+  /* Outrank the older .ac-workbench ... .ac-visual display rule even when
+     production bundles load the series stylesheet after this component. */
+  [data-scene-workspace].ac-visual:has(
+    .spum-scene-console[data-scene-active='true']
   ) {
     display: grid;
     grid-template-columns: minmax(220px, 44%) minmax(0, 1fr);
@@ -304,6 +309,7 @@
   .spum-scene-console.spum-scene-console[data-scene-active='true']
     > .spum-console-heading {
     top: 78px;
+    box-shadow: 0 -24px 0 #13303d, 0 6px 0 #13303d;
   }
   .spum-console-variables,
   .spum-scene-challenge,

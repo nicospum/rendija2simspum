@@ -55,10 +55,12 @@ No se encontraron errores bloqueantes pendientes. Los cálculos y las pruebas de
 
 - **314 pruebas aprobadas**, lint sin errores, TypeScript y compilación de producción correctos. Las diecisiete entradas HTML se generan.
 - **48 retos completados mediante la interfaz**, con sus observaciones reales; también se rechazó una explicación incorrecta en cada uno. Se incluyeron visitas con huellas ya guardadas para comprobar que no habilitan avanzar en un ensayo incompleto.
-- **166 combinaciones de página, modo y tamaño**: pregunta y controles de los doce capítulos, vistas alternativas y el ejemplo de entropía. Tamaños: 320 × 740, 390 × 844, 768 × 1024, 1280 × 900, 667 × 375 y 568 × 320. Se comprobó visor visible, destino principal accesible y ausencia de desbordamiento horizontal. No se exige mostrar todos los controles a la vez: la escena permanece mientras se recorren.
+- **166 combinaciones de página, modo y tamaño sobre la compilación de producción**: pregunta y controles de los doce capítulos, vistas alternativas y el ejemplo de entropía. Tamaños: 320 × 740, 390 × 844, 768 × 1024, 1280 × 900, 667 × 375 y 568 × 320. Se comprobó visor visible, destino principal accesible y ausencia de desbordamiento horizontal. Una comprobación con `elementFromPoint` confirmó que el centro del control o predicción y el centro del visor no estén tapados. No se exige mostrar todos los controles a la vez: la escena permanece mientras se recorren.
 - Interacción directa en los doce capítulos mediante teclado o activación accesible. Además, arrastres reales del pasajero, frecuencia fotoeléctrica, sonda y ejemplo de entropía, sin desplazar accidentalmente la página.
 - Lectura y cierre de la ventana de Hawking en vertical y dos tamaños horizontales. Entrada por enlaces, cierre, reapertura y regreso al visor amplio conservando condiciones.
 - Evidencia compacta en `research/interaccion/specials-usability-*.json`. Las medidas corresponden al navegador de pruebas local; la comprobación de publicación se documenta aparte.
+
+La primera publicación de esta actualización dejó al descubierto una colisión introducida por el nuevo diseño: en acreción y horizonte, una regla anterior de la serie podía anular las dos columnas dependiendo del orden de carga del CSS compilado. Las comprobaciones iniciales de posición no bastaban para detectar un control tapado. Se corrigió la prioridad de la regla y se repitieron las 166 combinaciones sobre `vite preview`, incluyendo la comprobación de superposición. Ese problema se detectó y corrigió en esta revisión; no era un fallo previo de la física.
 
 ### Límites
 
