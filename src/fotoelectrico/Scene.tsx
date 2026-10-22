@@ -371,7 +371,14 @@ export default function Scene({
       {onFrequency && (
         <>
           <defs>
-            <linearGradient id={`${id}-spectrum`}>
+            <linearGradient
+              id={`${id}-spectrum`}
+              gradientUnits="userSpaceOnUse"
+              x1="45"
+              y1="90"
+              x2="300"
+              y2="90"
+            >
               {[
                 350, 400, 450, 500, 550, 600, 650, 700, 789, 1000, 1600,
               ].map((f) => (
