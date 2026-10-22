@@ -1,14 +1,24 @@
+import SceneAction from '../components/ui/SceneAction'
+import { useSvgScrub } from '../shared/useSvgScrub'
+import { scrubKey } from '../shared/sceneInteraction'
 import { HEIGHT, light, snapshot } from './physics'
 import type { Setup } from './physics'
 import { n } from './format'
 export default function Scene({
   setup,
   outside,
+  onRelease,
+  onProgress,
 }: {
   setup: Setup
   outside: boolean
+  onRelease?: () => void
+  onProgress?: (value: number) => void
 }) {
   const m = snapshot(setup)
+  const scrub = useSvgScrub((point) =>
+    onProgress?.(Math.max(0, Math.min(1, (point.x - 80) / 420))),
+  )
   if (setup.instrument === 'luz') {
     const unit = setup.zoom ? 1e-15 : 1,
       scale = 110 / Math.max(1, m.light.fullDrop / unit),
@@ -23,7 +33,7 @@ export default function Scene({
     return (
       <svg
         viewBox="0 0 580 410"
-        role="img"
+        role={onRelease ? 'group' : 'img'}
         aria-label={`${outside ? 'Referencia libre local' : 'Cabina'}: desvío interior ${n(m.light.drop * 1e15)} femtómetros, pulso en ${n(setup.progress * 100, 0)} por ciento del ancho. Escala vertical ${setup.zoom ? 'ampliada en femtómetros' : 'en metros, sin ampliar'}.`}
       >
         <defs>
@@ -33,7 +43,12 @@ export default function Scene({
             height="35"
             patternUnits="userSpaceOnUse"
           >
-            <path d="M35 0H0V35" fill="none" stroke="#658394" opacity=".15" />
+            <path
+              d="M35 0H0V35"
+              fill="none"
+              stroke="#658394"
+              opacity=".15"
+            />
           </pattern>
         </defs>
         <rect
@@ -135,10 +150,54 @@ export default function Scene({
               : 'ESCALA EN METROS · EL DESVÍO ES IMPERCEPTIBLE'}
           </text>
         </g>
+        {onProgress && (
+          <g>
+            <polyline
+              {...scrub}
+              points={path(1)}
+              fill="none"
+              stroke="transparent"
+              strokeWidth="44"
+              vectorEffect="non-scaling-stroke"
+              className="spum-object-handle"
+              aria-hidden="true"
+            />
+            <circle
+              {...scrub}
+              cx={x(setup.progress)}
+              cy={y(outside ? 0 : m.light.insideY)}
+              r="6"
+              fill="transparent"
+              stroke="transparent"
+              strokeWidth="44"
+              vectorEffect="non-scaling-stroke"
+              className="spum-object-handle"
+              role="slider"
+              tabIndex={0}
+              aria-label={
+                outside
+                  ? 'Recorrer la luz desde la referencia libre'
+                  : 'Recorrer la luz en la cabina'
+              }
+              aria-valuemin={0}
+              aria-valuemax={1}
+              aria-valuenow={setup.progress}
+              aria-valuetext={`${n(setup.progress * 100, 0)} por ciento del ancho`}
+              onKeyDown={(e) => {
+                const v = scrubKey(e.key, setup.progress, 0, 1, 0.01)
+                if (v !== undefined) {
+                  e.preventDefault()
+                  onProgress(v)
+                }
+              }}
+            />
+          </g>
+        )}
       </svg>
     )
   }
-  const endDisplacement = 0.5 * m.cabinAcceleration * m.duration * m.duration,
+  const endDisplacement =
+      0.5 * m.cabinAcceleration * m.duration * m.duration,
     min = Math.min(0, endDisplacement) - 0.25,
     max = Math.max(3.3, endDisplacement + 3.3),
     scale = outside ? 250 / (max - min) : 75
@@ -151,7 +210,7 @@ export default function Scene({
   return (
     <svg
       viewBox="120 40 400 335"
-      role="img"
+      role={onRelease ? 'group' : 'img'}
       aria-label={`${outside ? 'Exterior' : 'Interior'}: altura relativa de ambas pelotas ${n(m.ballY)} metros, balanza ${n(m.normal)} newtons. Cabina desplazada ${n(m.cabinY)} metros en la referencia exterior.`}
     >
       <defs>
@@ -256,6 +315,16 @@ export default function Scene({
       >
         Balanza
       </text>
+      {onRelease &&
+        [230, 300].map((xx, i) => (
+          <SceneAction
+            key={xx}
+            x={xx}
+            y={y(ball) - 10}
+            label={`Soltar ambas pelotas desde ${outside ? 'afuera' : 'adentro'} · objeto de ${i ? n(setup.mass) : 1} kg`}
+            onActivate={onRelease}
+          />
+        ))}
       {m.proper > 0 && (
         <g>
           <path

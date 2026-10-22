@@ -1,0 +1,194 @@
+[
+  {
+    "height": 740,
+    "overflow": false,
+    "route": "/tren-de-einstein/",
+    "scene": {
+      "bottom": 462.875,
+      "top": 313.828125
+    },
+    "slider": {
+      "bottom": 715.375,
+      "id": "tr-live-speed",
+      "top": 671.375
+    },
+    "together": true,
+    "width": 320
+  },
+  {
+    "height": 740,
+    "overflow": false,
+    "route": "/nos-vemos-a-la-vuelta/",
+    "scene": {
+      "bottom": 549.375,
+      "top": 362.484375
+    },
+    "slider": {
+      "bottom": 707.375,
+      "id": "gv-live-speed",
+      "top": 663.375
+    },
+    "together": true,
+    "width": 320
+  },
+  {
+    "height": 740,
+    "overflow": false,
+    "route": "/ascensor-de-einstein/",
+    "scene": {
+      "bottom": 552.828125,
+      "top": 337.828125
+    },
+    "slider": {
+      "bottom": 683.328125,
+      "id": "as-live-time",
+      "top": 639.328125
+    },
+    "together": true,
+    "width": 320
+  },
+  {
+    "height": 844,
+    "overflow": false,
+    "route": "/tren-de-einstein/",
+    "scene": {
+      "bottom": 497.109375,
+      "top": 313.96875
+    },
+    "slider": {
+      "bottom": 723.609375,
+      "id": "tr-live-speed",
+      "top": 679.609375
+    },
+    "together": true,
+    "width": 390
+  },
+  {
+    "height": 844,
+    "overflow": false,
+    "route": "/nos-vemos-a-la-vuelta/",
+    "scene": {
+      "bottom": 546.875,
+      "top": 331.875
+    },
+    "slider": {
+      "bottom": 696.875,
+      "id": "gv-live-speed",
+      "top": 652.875
+    },
+    "together": true,
+    "width": 390
+  },
+  {
+    "height": 844,
+    "overflow": false,
+    "route": "/ascensor-de-einstein/",
+    "scene": {
+      "bottom": 547.328125,
+      "top": 332.328125
+    },
+    "slider": {
+      "bottom": 677.828125,
+      "id": "as-live-time",
+      "top": 633.828125
+    },
+    "together": true,
+    "width": 390
+  },
+  {
+    "height": 1024,
+    "overflow": false,
+    "route": "/tren-de-einstein/",
+    "scene": {
+      "bottom": 524.484375,
+      "top": 284.484375
+    },
+    "slider": {
+      "bottom": 750.984375,
+      "id": "tr-live-speed",
+      "top": 706.984375
+    },
+    "together": true,
+    "width": 768
+  },
+  {
+    "height": 1024,
+    "overflow": false,
+    "route": "/nos-vemos-a-la-vuelta/",
+    "scene": {
+      "bottom": 516.703125,
+      "top": 301.703125
+    },
+    "slider": {
+      "bottom": 647.203125,
+      "id": "gv-live-speed",
+      "top": 603.203125
+    },
+    "together": true,
+    "width": 768
+  },
+  {
+    "height": 1024,
+    "overflow": false,
+    "route": "/ascensor-de-einstein/",
+    "scene": {
+      "bottom": 517.421875,
+      "top": 302.421875
+    },
+    "slider": {
+      "bottom": 647.921875,
+      "id": "as-live-time",
+      "top": 603.921875
+    },
+    "together": true,
+    "width": 768
+  },
+  {
+    "height": 900,
+    "overflow": false,
+    "route": "/tren-de-einstein/",
+    "scene": {
+      "bottom": 576.046875,
+      "top": 255.671875
+    },
+    "slider": {
+      "bottom": 807.09375,
+      "id": "tr-live-speed",
+      "top": 763.09375
+    },
+    "together": true,
+    "width": 1280
+  },
+  {
+    "height": 900,
+    "overflow": false,
+    "route": "/nos-vemos-a-la-vuelta/",
+    "scene": {
+      "bottom": 595.671875,
+      "top": 255.671875
+    },
+    "slider": {
+      "bottom": 730.171875,
+      "id": "gv-live-speed",
+      "top": 686.171875
+    },
+    "together": true,
+    "width": 1280
+  },
+  {
+    "height": 900,
+    "overflow": false,
+    "route": "/ascensor-de-einstein/",
+    "scene": {
+      "bottom": 595.671875,
+      "top": 255.671875
+    },
+    "slider": {
+      "bottom": 730.171875,
+      "id": "as-live-time",
+      "top": 686.171875
+    },
+    "together": true,
+    "width": 1280
+  }
+]

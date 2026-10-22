@@ -1,3 +1,6 @@
+import { useSvgScrub } from '../shared/useSvgScrub'
+import { scrubKey } from '../shared/sceneInteraction'
+import { diagramProgress, tripProgress } from './interaction'
 import { eventAt, snapshot } from './physics'
 import type { Setup } from './physics'
 import { n } from './format'
@@ -5,10 +8,12 @@ export default function Scene({
   setup,
   kind,
   signals,
+  onProgress,
 }: {
   setup: Setup
   kind: 'trip' | 'diagram'
   signals: boolean
+  onProgress?: (progress: number) => void
 }) {
   const m = snapshot(setup),
     // Each segment is exactly straight: include the joints, without sampling across them.
@@ -20,11 +25,39 @@ export default function Scene({
     scale = 270 / setup.duration,
     x = (value: number) => earth + value * scale,
     y = (t: number) => 345 - t * scale
+  const scrub = useSvgScrub((point) => {
+    const value =
+      kind === 'diagram'
+        ? diagramProgress(setup, point.y)
+        : tripProgress(setup, point.x, point.y)
+    if (value !== null) onProgress?.(value)
+  })
+  const handle = {
+    ...scrub,
+    className: 'spum-object-handle',
+    role: 'slider',
+    tabIndex: 0,
+    'aria-label':
+      kind === 'diagram'
+        ? 'Recorrer la línea de universo'
+        : 'Recorrer la ruta de la nave',
+    'aria-valuemin': 0,
+    'aria-valuemax': 1,
+    'aria-valuenow': setup.progress,
+    'aria-valuetext': `${n(m.t)} años en casa; ${n(m.own)} años en la nave`,
+    onKeyDown: (e: import('react').KeyboardEvent<SVGPathElement>) => {
+      const value = scrubKey(e.key, setup.progress, 0, 1, 0.01)
+      if (value !== undefined) {
+        e.preventDefault()
+        onProgress?.(value)
+      }
+    },
+  }
   if (kind === 'diagram')
     return (
       <svg
         viewBox="0 0 580 400"
-        role="img"
+        role={onProgress ? 'group' : 'img'}
         aria-label={`Espacio-tiempo en el sistema de casa. Casa acumula ${n(m.t)} años y nave ${n(m.own)}. Ahora remoto asignado: ${n(m.assignedEarth)} años.`}
       >
         <defs>
@@ -34,7 +67,12 @@ export default function Scene({
             height="24"
             patternUnits="userSpaceOnUse"
           >
-            <path d="M24 0H0V24" fill="none" stroke="#5d91a0" opacity=".1" />
+            <path
+              d="M24 0H0V24"
+              fill="none"
+              stroke="#5d91a0"
+              opacity=".1"
+            />
           </pattern>
         </defs>
         <rect x="60" y="45" width="475" height="320" fill="url(#gv-grid)" />
@@ -74,7 +112,11 @@ export default function Scene({
           fill="none"
           opacity=".3"
         />
-        <path d={`M${earth} 345V${y(m.t)}`} stroke="#f2bd8c" strokeWidth="4" />
+        <path
+          d={`M${earth} 345V${y(m.t)}`}
+          stroke="#f2bd8c"
+          strokeWidth="4"
+        />
         <polyline
           points={past.map((p) => `${x(p.x)},${y(p.t)}`).join(' ')}
           stroke="#a1f1df"
@@ -137,6 +179,16 @@ export default function Scene({
             </text>
           )}
         </g>
+        {onProgress && (
+          <path
+            {...handle}
+            d={`M${earth} 345L${x(m.distance)} ${y(m.out)}V${y(m.leave)}L${earth} ${y(setup.duration)}`}
+            fill="none"
+            stroke="transparent"
+            strokeWidth="44"
+            vectorEffect="non-scaling-stroke"
+          />
+        )}
       </svg>
     )
   const mapX = (distance: number) =>
@@ -149,7 +201,7 @@ export default function Scene({
   return (
     <svg
       viewBox="0 0 580 400"
-      role="img"
+      role={onProgress ? 'group' : 'img'}
       aria-label={`Viaje en el sistema de casa: ${m.phase}. Nave a ${n(m.x)} años luz de casa. Distancia máxima ${n(m.distance)} años luz.`}
     >
       <defs>
@@ -175,9 +227,19 @@ export default function Scene({
       <path
         d={`M75 175H${end}M${end} 210H75`}
         stroke="url(#gv-route)"
-        strokeWidth="2"
+        strokeWidth="4"
         fill="none"
-        opacity=".45"
+        opacity=".65"
+      />
+      <path
+        d={
+          m.velocity < 0 || m.phase === 'Reencuentro'
+            ? `M75 175H${end}M${end} 210H${sx}`
+            : `M75 175H${sx}`
+        }
+        stroke="#a6f4e6"
+        strokeWidth="4"
+        fill="none"
       />
       <path
         d={`M${end - 8} 170l8 5-8 5M83 205l-8 5 8 5`}
@@ -242,6 +304,16 @@ export default function Scene({
           Unidades físicas; viaje muy ralentizado
         </text>
       </g>
+      {onProgress && (
+        <path
+          {...handle}
+          d={`M75 145H${end}V210H75`}
+          fill="none"
+          stroke="transparent"
+          strokeWidth="44"
+          vectorEffect="non-scaling-stroke"
+        />
+      )}
       <rect x="32" y="362" width="516" height="3" rx="2" fill="#304c5b" />
       <rect
         x="32"

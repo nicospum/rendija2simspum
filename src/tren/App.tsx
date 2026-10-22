@@ -1,3 +1,4 @@
+import SceneConsole from '../components/ui/SceneConsole'
 import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useReducer, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
@@ -61,6 +62,10 @@ export default function TrainApp() {
   const tune = (patch: Partial<Omit<Setup, 'time'>>) =>
     dispatch({ type: 'tune', patch })
   const time = (value: number) => dispatch({ type: 'time', value })
+  const flash = () => {
+    time(MIN_TIME)
+    dispatch({ type: 'play' })
+  }
   const start = (index: number) => dispatch({ type: 'lesson', index })
   const next = () => {
     start((s.index + 1) % 4)
@@ -108,7 +113,7 @@ export default function TrainApp() {
               señales y medí el vagón. Descubrí por qué recibir, fechar y medir
               son tareas diferentes.
             </p>
-            <a href="#tr-challenges">Empezar con una predicción ↓</a>
+            <a href="#tr-views">Jugar sobre la escena ↓</a>
           </div>
         </section>
         <LabNavigation
@@ -188,65 +193,179 @@ export default function TrainApp() {
                         : 'VAGÓN EN REPOSO'}
                     </b>
                   </div>
-                  <Scene setup={setup} frame={frame} sample={s.sample} />
+                  <p className="spum-scene-prompt">Arrastrá P · tocá A o B para lanzar luz</p>
+                  <Scene
+                    setup={setup}
+                    frame={frame}
+                    sample={s.sample}
+                    onPassenger={(offset) => tune({ offset })}
+                    onFlash={flash}
+                  />
                   <div className="tr-clockline">
                     <span>Tiempo de este sistema</span>
                     <strong>{n(m.time * 1e6)} µs</strong>
                   </div>
-                  <div className="tr-dates">
-                    <div>
-                      <span>
-                        FECHA DE EMISIÓN{' '}
-                        <Info name={`Fechas de emisión en el ${label(frame)}`}>
-                          Fechas asignadas al destello con relojes sincronizados
-                          en este sistema. No son las horas a las que llega su
-                          luz al receptor. A es el extremo izquierdo y B el
-                          derecho en el tren. Las fechas son calculadas; ✓
-                          indica que ya se emitió en el corte mostrado.
-                        </Info>
-                      </span>
-                      <p>
-                        A <b>{n(m.pulses[0].emission.t * 1e6)} µs</b>{' '}
-                        {m.pulses[0].emitted ? '✓' : ''} <i>·</i> B{' '}
-                        <b>{n(m.pulses[1].emission.t * 1e6)} µs</b>{' '}
-                        {m.pulses[1].emitted ? '✓' : ''}
-                      </p>
-                      <strong>{order(m.emissionGap)}</strong>
+                  <details className="tr-records">
+                    <summary>Fechas de emisión y llegada</summary>
+                    <div className="tr-dates">
+                      <div>
+                        <span>
+                          FECHA DE EMISIÓN{' '}
+                          <Info name={`Fechas de emisión en el ${label(frame)}`}>
+                            Fechas asignadas al destello con relojes sincronizados en este
+                            sistema. No son las horas a las que llega su luz al receptor. A
+                            es el extremo izquierdo y B el derecho en el tren. Las fechas
+                            son calculadas; ✓ indica que ya se emitió en el corte mostrado.
+                          </Info>
+                        </span>
+                        <p>
+                          A <b>{n(m.pulses[0].emission.t * 1e6)} µs</b>{' '}
+                          {m.pulses[0].emitted ? '✓' : ''} <i>·</i> B{' '}
+                          <b>{n(m.pulses[1].emission.t * 1e6)} µs</b>{' '}
+                          {m.pulses[1].emitted ? '✓' : ''}
+                        </p>
+                        <strong>{order(m.emissionGap)}</strong>
+                      </div>
+                      <div>
+                        <span>
+                          LLEGADA {frame === 'anden' ? 'AL RECEPTOR E' : 'AL PASAJERO P'}{' '}
+                          <Info name={`Llegadas en el ${label(frame)}`}>
+                            Cada hora corresponde al paso de una señal por este receptor en
+                            reposo en el {label(frame)}. Se calcula el trayecto de luz desde
+                            cada emisión. Los detectores ideales registran el paso sin
+                            absorber el pulso, para que ambos puedan comparar sus registros.
+                          </Info>
+                        </span>
+                        <p>
+                          {m.pulses.map((p) => (
+                            <span key={p.label} className={p.received ? 'tr-received' : ''}>
+                              {p.label} <b>{n(p.arrival.t * 1e6)} µs</b>{' '}
+                              {p.received
+                                ? '✓ recibida'
+                                : p.emitted
+                                  ? '· en viaje'
+                                  : '· por emitir'}{' '}
+                            </span>
+                          ))}
+                        </p>
+                        <strong>{order(m.arrivalGap)}</strong>
+                      </div>
                     </div>
-                    <div>
-                      <span>
-                        LLEGADA{' '}
-                        {frame === 'anden' ? 'AL RECEPTOR E' : 'AL PASAJERO P'}{' '}
-                        <Info name={`Llegadas en el ${label(frame)}`}>
-                          Cada hora corresponde al paso de una señal por este
-                          receptor en reposo en el {label(frame)}. Se calcula el
-                          trayecto de luz desde cada emisión. Los detectores
-                          ideales registran el paso sin absorber el pulso, para
-                          que ambos puedan comparar sus registros.
-                        </Info>
-                      </span>
-                      <p>
-                        {m.pulses.map((p) => (
-                          <span
-                            key={p.label}
-                            className={p.received ? 'tr-received' : ''}
-                          >
-                            {p.label} <b>{n(p.arrival.t * 1e6)} µs</b>{' '}
-                            {p.received
-                              ? '✓ recibida'
-                              : p.emitted
-                                ? '· en viaje'
-                                : '· por emitir'}{' '}
-                          </span>
-                        ))}
-                      </p>
-                      <strong>{order(m.arrivalGap)}</strong>
-                    </div>
-                  </div>
+                  </details>
                 </article>
               )
             })}
           </div>
+          <SceneConsole
+            challengeHref="#tr-challenges"
+            hint="Arrastrá el círculo P para mover al pasajero; el ensayo vuelve al inicio. Tocá A o B para lanzar los dos destellos. Mover a P cambia las llegadas, no las fechas de emisión. Las dos vistas muestran coordenadas, no fotografías. Podés usar también los botones o las flechas del teclado."
+          >
+            <div className="spum-console-row">
+              <label htmlFor="tr-live-speed">Velocidad del tren</label>
+              <output>
+                {n(setup.beta, 2)} c · L andén {n(platform.length, 1)} m
+              </output>
+            </div>
+            <input
+              id="tr-live-speed"
+              type="range"
+              min="-0.9"
+              max="0.9"
+              step="0.01"
+              value={setup.beta}
+              onChange={(e) => tune({ beta: +e.target.value })}
+            />
+            <p className="spum-console-impact">
+              En el tren: emisión{' '}
+              {order(train.emissionGap).replace('Primero', 'primero')}; llegada a P{' '}
+              {order(train.arrivalGap).replace('Primero', 'primero')}.
+            </p>
+            <div className="spum-console-buttons">
+              <button onClick={flash}>Lanzar destellos</button>
+              <button onClick={() => dispatch({ type: 'play' })}>
+                {s.playing ? 'Pausar' : 'Continuar'}
+              </button>
+              <button onClick={() => time(MAX_TIME)}>Todas las llegadas</button>
+            </div>
+            <div className="spum-console-row">
+              <label htmlFor="tr-live-time">Recorrer las señales</label>
+              <output>{n(setup.time, 2)} L₀/c</output>
+            </div>
+            <input
+              id="tr-live-time"
+              type="range"
+              min={MIN_TIME}
+              max={MAX_TIME}
+              step="0.01"
+              value={setup.time}
+              onChange={(e) => time(+e.target.value)}
+            />
+            <div
+              className="spum-console-buttons"
+              role="group"
+              aria-label="Posición y rapidez de prueba"
+            >
+              <button
+                aria-pressed={setup.offset === 0}
+                onClick={() => tune({ offset: 0 })}
+              >
+                P al centro
+              </button>
+              <button
+                aria-pressed={setup.offset === 0.25}
+                onClick={() => tune({ offset: 0.25 })}
+              >
+                P hacia B · ¼
+              </button>
+              {[-0.6, 0, 0.6, 0.8].map((beta) => (
+                <button key={beta} onClick={() => tune({ beta })}>
+                  {n(beta, 1)} c
+                </button>
+              ))}
+            </div>
+            <details className="spum-console-help">
+              <summary>Emisiones y regla de medir</summary>
+              <div className="spum-console-buttons">
+                {(['anden', 'tren'] as const).map((sync) => (
+                  <button
+                    key={sync}
+                    aria-pressed={setup.sync === sync}
+                    onClick={() => tune({ sync })}
+                  >
+                    Destellos a la vez en el {label(sync)}
+                  </button>
+                ))}
+              </div>
+              <div className="spum-console-buttons">
+                <button
+                  onClick={() => {
+                    dispatch({ type: 'tune', patch: { protocol: 'simultaneo' } })
+                    dispatch({ type: 'measure' })
+                  }}
+                >
+                  Medir simultáneos en cada sistema
+                </button>
+                <button
+                  onClick={() => {
+                    dispatch({ type: 'tune', patch: { protocol: 'tren' } })
+                    dispatch({ type: 'measure' })
+                  }}
+                >
+                  Medir al mismo tiempo del tren
+                </button>
+              </div>
+              {s.sample && (
+                <p className="spum-console-impact">
+                  Marcas en el andén:{' '}
+                  {n(measurement(s.sample, 'anden').distance, 1)} m · Δt ={' '}
+                  {n(measurement(s.sample, 'anden').deltaT * 1e6)} µs.{' '}
+                  {measurement(s.sample, 'anden').valid
+                    ? 'Longitud válida.'
+                    : 'Dos instantes: no es una longitud instantánea.'}
+                </p>
+              )}
+            </details>
+          </SceneConsole>
           <div
             className="tr-live-summary"
             aria-live={s.playing ? 'off' : 'polite'}
@@ -600,7 +719,7 @@ export default function TrainApp() {
                 <a href={s.index === 3 ? '#tr-measure' : '#tr-controls'}>
                   {s.index === 3
                     ? 'Ir al instrumento de medida ↑'
-                    : 'Ir a los controles ↑'}
+                    : 'Probar sobre la escena ↑'}
                 </a>
                 <button onClick={() => start(s.index)}>
                   Reiniciar este reto ↻

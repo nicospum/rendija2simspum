@@ -126,3 +126,15 @@ La comprobación es reproducible con `python research/interaccion/check-symbolic
 `npm test`: **287 pruebas aprobadas**. `npm run lint` sin errores y `npm run build` correcto, con diecisiete entradas. La corrección no agrega dependencias ni carga Three.js en reloj u horizonte.
 
 La emulación de ancho en Chromium y los gestos con puntero no sustituyen una prueba táctil en Safari/iPhone y Android reales. Tampoco prueban que alguien haya aprendido: quedan pendientes entrevistas con principiantes y medidas de rendimiento en teléfonos físicos. Los restantes nueve laboratorios posteriores al prisma y la doble rendija conservan su interacción anterior, salvo los accesos al visor corregidos.
+
+## Segunda etapa: tren, gemelos y ascensor (22 de octubre de 2026)
+
+Se extiende el patrón de los pilotos a tres capítulos del especial Einstein:
+
+- **Tren:** el pasajero P se arrastra dentro del vagón en ambas vistas. A y B lanzan el ensayo de los dos destellos. La rapidez, el recorrido temporal, las comparaciones de posición y la regla de medir quedan junto a la escena. Las fechas completas se abren en cada vista; un resumen diferencia emisión y llegada. El gesto conserva su escala inicial aunque mover al pasajero reinicie el ensayo.
+- **Gemelos:** la ruta tiene un carril gráfico de ida y otro de vuelta. Arrastrar selecciona un instante del itinerario calculado; no mueve libremente una nave fuera de su trayectoria física. En el diagrama se recorre la línea de universo. La rapidez compartida, los tiempos acumulados, el giro, el reencuentro y las comparaciones de los retos están junto al visor. Cambiar el plan vuelve a la salida. El reloj local sigue continuo a ambos lados del giro.
+- **Ascensor:** tocar cualquiera de las pelotas libera las dos. Los escenarios, la masa, la balanza, el resultado y el ensayo con luz están junto al visor. El rayo se puede recorrer con un gesto; la ampliación cambia la escala gráfica, no el desvío físico. Se distingue la masa de la fuerza de apoyo y se muestra el campo incluso cuando la balanza marca cero.
+
+Se conservan los paneles completos, las ecuaciones, los cuatro retos de cada capítulo, las rutas del índice y los logros guardados. Los gestos tienen alternativas mediante botones, controles nativos y teclado. Solo las áreas de arrastre capturan el gesto: el resto del dibujo permite desplazar la página.
+
+Verificación: los doce retos se resolvieron mediante la interfaz y los nuevos controles, con comprobación explícita de la explicación; 295 pruebas automáticas, lint y compilación correctos. Se revisaron tamaños de 320, 390, 768 y 1280 píxeles, sin desbordamiento horizontal y con escena y control principal visibles juntos. Evidencia: `research/interaccion/einstein-direct-layout.json` y `einstein-direct-challenges.json`. No se hizo una prueba con participantes ni con un teléfono físico; los gestos se ejercitaron con puntero y teclado en un navegador con tamaños de celular.

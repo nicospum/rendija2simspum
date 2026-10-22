@@ -1,3 +1,4 @@
+import SceneConsole from '../components/ui/SceneConsole'
 import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useReducer, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
@@ -148,7 +149,7 @@ export default function TwinsApp() {
               seguí sus relojes y descubrí qué cuenta cada uno entre el abrazo
               de salida y el reencuentro.
             </p>
-            <a href="#gv-challenges">Empezar con una predicción ↓</a>
+            <a href="#gv-views">Jugar sobre la escena ↓</a>
           </div>
         </section>
         <LabNavigation
@@ -235,7 +236,13 @@ export default function TwinsApp() {
                       : 'La altura es tiempo en casa y la horizontal es distancia. Cada curva es una historia en el espacio-tiempo, no una órbita espacial. La parte brillante es el pasado recorrido y la tenue el viaje planeado. Con c = 1, las unidades de ambos ejes tienen igual escala. La línea rosa conecta sucesos simultáneos en el sistema comóvil actual de la nave.'}
                   </Info>
                 </div>
-                <Scene setup={s.setup} kind={kind} signals={signals} />
+                <p className="spum-scene-prompt">{kind === 'trip' ? 'Recorré la ruta: ida arriba · vuelta abajo' : 'Arrastrá la línea verde para recorrer el tiempo'}</p>
+                <Scene
+                  setup={s.setup}
+                  kind={kind}
+                  signals={signals}
+                  onProgress={time}
+                />
                 <p className="rl-frame-caption">
                   {kind === 'trip'
                     ? `Etapa: ${m.phase}. Alejamiento máximo: ${n(m.distance)} años luz. Casa define el tiempo del control.`
@@ -244,6 +251,93 @@ export default function TwinsApp() {
               </article>
             ))}
           </div>
+          <SceneConsole
+            challengeHref="#gv-challenges"
+            hint="Recorré la ruta con el dedo: carril superior para la ida, inferior para la vuelta. En el diagrama, arrastrá la línea de la nave hacia arriba para avanzar en el tiempo. Cambiar el plan vuelve a la salida; recorrerlo solo cambia el instante que estás mirando. El reloj propio suma todo el viaje; no es una imagen retrasada."
+          >
+            <div className="spum-console-row">
+              <label htmlFor="gv-live-speed">Rapidez de ida y vuelta</label>
+              <output>
+                {n(s.setup.outbound)} / {n(s.setup.inbound)} c → {n(m.ownTotal)} años al volver
+              </output>
+            </div>
+            <input
+              id="gv-live-speed"
+              type="range"
+              min="0.1"
+              max="0.95"
+              step="0.01"
+              value={s.setup.outbound}
+              onChange={(e) =>
+                tune({ outbound: +e.target.value, inbound: +e.target.value })
+              }
+            />
+            <p>
+              Plan de {n(s.setup.duration)} años en casa → {n(m.ownTotal)} años en
+              la nave al volver. Cambiarlo reinicia el viaje.
+            </p>
+            <div className="spum-console-row">
+              <label htmlFor="gv-live-time">Recorrer el viaje</label>
+              <output>
+                {n(s.setup.progress * 100, 0)} % · {m.phase}
+              </output>
+            </div>
+            <input
+              id="gv-live-time"
+              type="range"
+              min="0"
+              max="1"
+              step="0.001"
+              value={s.setup.progress}
+              onChange={(e) => time(+e.target.value)}
+            />
+            <p className="spum-console-impact">
+              Casa: <b>{n(m.t)} años</b> · Nave: <b>{n(m.own)} años</b> ·
+              Diferencia: {n(m.gap)} años.
+            </p>
+            <div className="spum-console-buttons">
+              <button onClick={() => dispatch({ type: 'play' })}>
+                {s.playing ? 'Pausar viaje' : 'Reproducir viaje'}
+              </button>
+              <button onClick={() => time(0)}>Salida</button>
+              <button onClick={() => time(m.out / s.setup.duration)}>Giro</button>
+              <button onClick={() => time(1)}>Reencuentro</button>
+            </div>
+            <div className="spum-console-buttons">
+              <button onClick={() => tune({ outbound: 0.6, inbound: 0.6 })}>
+                Ambos a 0,6 c
+              </button>
+              <button onClick={() => tune({ outbound: 0.8, inbound: 0.8 })}>
+                Ambos a 0,8 c
+              </button>
+              {s.index === 2 && (
+                <>
+                  <button onClick={() => time(m.out / s.setup.duration, 'before')}>
+                    Antes del giro
+                  </button>
+                  <button onClick={() => time(m.out / s.setup.duration, 'after')}>
+                    Después del giro
+                  </button>
+                </>
+              )}
+              {s.index === 3 && (
+                <>
+                  <button onClick={() => tune({ wait: 0 })}>
+                    Sin espera en destino
+                  </button>
+                  <button onClick={() => tune({ duration: 10, wait: 0.2 })}>
+                    Esperar 2 de 10 años
+                  </button>
+                </>
+              )}
+            </div>
+            {s.index === 2 && (
+              <p className="spum-console-impact">
+                «Ahora» de casa asignado por la nave: {n(m.assignedEarth)} años. Es
+                simultaneidad remota; ningún reloj salta.
+              </p>
+            )}
+          </SceneConsole>
           <div className="gv-clocks" aria-live={s.playing ? 'off' : 'polite'}>
             <Clock
               value={m.t}
@@ -572,7 +666,7 @@ export default function TwinsApp() {
               </ul>
               <div className="rl-challenge-actions">
                 <a href={s.index === 2 ? '#gv-turn' : '#gv-controls'}>
-                  Ir a los controles ↑
+                  Probar sobre la escena ↑
                 </a>
                 <button onClick={() => start(s.index)}>
                   Reiniciar este reto ↻

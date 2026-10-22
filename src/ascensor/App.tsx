@@ -1,3 +1,4 @@
+import SceneConsole from '../components/ui/SceneConsole'
 import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useReducer, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
@@ -50,6 +51,10 @@ export default function ElevatorApp() {
       dispatch({ type: 'tune', patch }),
     time = (value: number) => dispatch({ type: 'time', value }),
     start = (index: number) => dispatch({ type: 'lesson', index })
+  const release = () => {
+    time(0)
+    dispatch({ type: 'play' })
+  }
   const next = () => {
     start((s.index + 1) % 4)
     requestAnimationFrame(() => {
@@ -94,7 +99,7 @@ export default function ElevatorApp() {
               Compará lo que pasa dentro de la cabina con el contexto exterior y
               descubrí qué podés deducir con un experimento local.
             </p>
-            <a href="#as-challenges">Empezar con una predicción ↓</a>
+            <a href="#as-views">Jugar sobre la escena ↓</a>
           </div>
         </section>
         <LabNavigation
@@ -195,7 +200,13 @@ export default function ElevatorApp() {
                       : 'Las pelotas se liberan a la vez, a la misma altura y sin velocidad inicial relativa. La balanza es otro instrumento: sostiene un objeto de la masa elegida y mide la fuerza de apoyo. La masa se conserva incluso cuando esa fuerza vale cero.'}
                   </Info>
                 </div>
-                <Scene setup={s.setup} outside={outside} />
+                <p className="spum-scene-prompt">{isLight ? 'Arrastrá el pulso por su trayectoria' : 'Tocá una pelota para soltar ambas'}</p>
+                <Scene
+                  setup={s.setup}
+                  outside={outside}
+                  onRelease={release}
+                  onProgress={time}
+                />
                 <p className="rl-frame-caption">
                   {isLight
                     ? outside
@@ -208,6 +219,139 @@ export default function ElevatorApp() {
               </article>
             ))}
           </div>
+          <SceneConsole
+            challengeHref="#as-challenges"
+            hint="Tocá cualquiera de las pelotas para soltar ambas a la vez. Podés pausar y recorrer el ensayo sin esperar. En modo luz, arrastrá el pulso por su trayectoria. Cambiar cabina, masa o intensidad prepara un ensayo nuevo. La balanza sostiene otro objeto: mide apoyo, mientras las pelotas caen libres."
+          >
+            <div className="spum-console-row">
+              <label htmlFor="as-live-time">
+                {isLight ? 'Recorrer el pulso' : 'Recorrer la caída'}
+              </label>
+              <output>
+                {n(s.setup.progress * 100, 0)} % ·{' '}
+                {isLight ? `${n(m.light.emitterTime * 1e9)} ns` : `${n(m.t)} s`}
+              </output>
+            </div>
+            <input
+              id="as-live-time"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value={s.setup.progress}
+              onChange={(e) => time(+e.target.value)}
+            />
+            <p className="spum-console-impact">
+              {isLight
+                ? `Desvío interior: ${n(m.light.drop * 1e15)} fm · ${s.setup.zoom ? 'eje vertical en femtómetros' : 'escala vertical en metros'}.`
+                : `Altura: ${n(m.ballY)} m · Balanza: ${n(m.normal)} N · Campo: ${n(m.g)} m/s².`}
+            </p>
+            <div className="spum-console-buttons">
+              <button onClick={release}>
+                {isLight ? 'Emitir luz' : 'Soltar pelotas'}
+              </button>
+              <button onClick={() => dispatch({ type: 'play' })}>
+                {s.playing ? 'Pausar ensayo' : 'Continuar ensayo'}
+              </button>
+              <button onClick={() => time(1)}>Ver resultado</button>
+            </div>
+            <div
+              className="spum-console-buttons"
+              role="group"
+              aria-label="Cambiar cabina junto a la escena"
+            >
+              {(Object.keys(SCENARIOS) as Scenario[]).map((scenario) => (
+                <button
+                  key={scenario}
+                  aria-pressed={s.setup.scenario === scenario}
+                  onClick={() => tune({ scenario })}
+                >
+                  {SCENARIOS[scenario].short}
+                </button>
+              ))}
+            </div>
+            <div className="spum-console-buttons">
+              <button
+                aria-pressed={!isLight}
+                onClick={() => tune({ instrument: 'pelotas' })}
+              >
+                Pelotas y balanza
+              </button>
+              <button
+                aria-pressed={isLight}
+                onClick={() => tune({ instrument: 'luz' })}
+              >
+                Pulso de luz
+              </button>
+              {isLight ? (
+                <button
+                  aria-pressed={s.setup.zoom}
+                  onClick={() => tune({ zoom: !s.setup.zoom })}
+                >
+                  {s.setup.zoom ? 'Quitar ampliación' : 'Ampliar desvío'}
+                </button>
+              ) : (
+                <>
+                  <button onClick={() => tune({ mass: 1 })}>Objeto de 1 kg</button>
+                  <button onClick={() => tune({ mass: 4 })}>Objeto de 4 kg</button>
+                </>
+              )}
+            </div>
+            <details className="spum-console-help">
+              <summary>
+                Ajustar intensidad{isLight ? ' y ancho' : ' y masa'}
+              </summary>
+              <div className="spum-console-row">
+                <label htmlFor="as-live-strength">Intensidad</label>
+                <output>{n(s.setup.strength)} m/s²</output>
+              </div>
+              <input
+                id="as-live-strength"
+                type="range"
+                min="1"
+                max="20"
+                step="0.01"
+                value={s.setup.strength}
+                onChange={(e) => tune({ strength: +e.target.value })}
+              />
+              <div className="spum-console-buttons">
+                <button onClick={() => tune({ strength: 9.81 })}>
+                  Usar 9,81 m/s²
+                </button>
+              </div>
+              {isLight ? (
+                <>
+                  <label htmlFor="as-live-width">
+                    Ancho de cabina: {n(s.setup.width)} m
+                  </label>
+                  <input
+                    id="as-live-width"
+                    type="range"
+                    min="1"
+                    max="6"
+                    step="0.1"
+                    value={s.setup.width}
+                    onChange={(e) => tune({ width: +e.target.value })}
+                  />
+                </>
+              ) : (
+                <>
+                  <label htmlFor="as-live-mass">
+                    Masa del objeto: {n(s.setup.mass)} kg
+                  </label>
+                  <input
+                    id="as-live-mass"
+                    type="range"
+                    min="0.2"
+                    max="5"
+                    step="0.1"
+                    value={s.setup.mass}
+                    onChange={(e) => tune({ mass: +e.target.value })}
+                  />
+                </>
+              )}
+            </details>
+          </SceneConsole>
           <div className="as-readings" aria-live={s.playing ? 'off' : 'polite'}>
             <div>
               <span>
@@ -567,7 +711,7 @@ export default function ElevatorApp() {
                 ))}
               </ul>
               <div className="rl-challenge-actions">
-                <a href="#as-controls">Ir a los controles ↑</a>
+                <a href="#as-views">Probar sobre la escena ↑</a>
                 <button onClick={() => start(s.index)}>
                   Reiniciar este reto ↻
                 </button>

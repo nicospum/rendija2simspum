@@ -1,4 +1,8 @@
-import { useId } from 'react'
+import { useId, useRef } from 'react'
+import { passengerOffset } from './interaction'
+import { scrubKey } from '../shared/sceneInteraction'
+import { useSvgScrub } from '../shared/useSvgScrub'
+import SceneAction from '../components/ui/SceneAction'
 import { measurement, snapshot } from './physics'
 import type { Frame, Setup } from './physics'
 const n = (v: number, digits = 3) =>
@@ -15,18 +19,24 @@ function limits(s: Setup, frame: Frame, sample: Setup | null) {
       ...m.pulses.map((p) => p.emission.x),
       ...m.pulses.filter((p) => p.active).map((p) => p.x),
     ]
-  if (sample) points.push(...measurement(sample, frame).events.map((e) => e.x))
+  if (sample)
+    points.push(...measurement(sample, frame).events.map((e) => e.x))
   return { min: Math.min(...points), max: Math.max(...points) }
 }
 export default function Scene({
   setup,
   frame,
   sample,
+  onPassenger,
+  onFlash,
 }: {
   setup: Setup
   frame: Frame
   sample: Setup | null
+  onPassenger?: (value: number) => void
+  onFlash?: () => void
 }) {
+  const dragGeometry = useRef<{ left: number; width: number } | null>(null)
   const id = useId().replace(/:/g, ''),
     m = snapshot(setup, frame),
     own = limits(setup, frame, sample)
@@ -39,12 +49,17 @@ export default function Scene({
   const left = x(m.trainCenter - m.length / 2),
     right = x(m.trainCenter + m.length / 2),
     width = right - left
+  const scrub = useSvgScrub((point) => {
+    const geometry = dragGeometry.current ?? { left, width }
+    const value = passengerOffset(point.x, geometry.left, geometry.width)
+    if (value !== null) onPassenger?.(value)
+  })
   const recorded = sample ? measurement(sample, frame) : null
   const color = frame === 'anden' ? '#f3bb86' : '#89e3dd'
   return (
     <svg
       viewBox="0 0 600 330"
-      role="img"
+      role={onPassenger ? 'group' : 'img'}
       aria-label={`Tren desde el ${frame === 'anden' ? 'andén' : 'vagón'}. Longitud instantánea ${n(m.length, 1)} metros. Tiempo de este sistema ${n(m.time * 1e6)} microsegundos. ${m.pulses.filter((p) => p.received).length} señales recibidas aquí.`}
     >
       <defs>
@@ -246,6 +261,71 @@ export default function Scene({
         x → · {n(100 / scale, 0)} m por 100 unidades gráficas · misma escala
         entre paneles
       </text>
+      {onPassenger && (
+        <>
+          <circle
+            cx={x(m.passengerCenter)}
+            cy="155"
+            r="19"
+            fill="none"
+            stroke="#a7eee3"
+            strokeDasharray="3 4"
+          />
+          <circle
+            {...scrub}
+            onPointerDown={(event) => {
+              if (!event.isPrimary || event.button !== 0) return
+              // Changing the passenger starts a new trial; retain the gesture's original wagon scale.
+              dragGeometry.current = { left, width }
+              scrub.onPointerDown(event)
+            }}
+            onPointerUp={(event) => {
+              scrub.onPointerUp(event)
+              dragGeometry.current = null
+            }}
+            onPointerCancel={() => {
+              scrub.onPointerCancel()
+              dragGeometry.current = null
+            }}
+            onLostPointerCapture={() => {
+              scrub.onLostPointerCapture()
+              dragGeometry.current = null
+            }}
+            cx={x(m.passengerCenter)}
+            cy="155"
+            r="6"
+            fill="transparent"
+            stroke="transparent"
+            strokeWidth="44"
+            vectorEffect="non-scaling-stroke"
+            className="spum-object-handle"
+            role="slider"
+            tabIndex={0}
+            aria-label={`Mover pasajero desde el ${frame === 'anden' ? 'andén' : 'tren'}`}
+            aria-valuemin={-0.3}
+            aria-valuemax={0.3}
+            aria-valuenow={setup.offset}
+            aria-valuetext={`${n(setup.offset, 2)} longitudes propias desde el centro`}
+            onKeyDown={(e) => {
+              const v = scrubKey(e.key, setup.offset, -0.3, 0.3, 0.01)
+              if (v !== undefined) {
+                e.preventDefault()
+                onPassenger(v)
+              }
+            }}
+          />
+        </>
+      )}
+      {onFlash &&
+        m.pulses.map((p) => (
+          <SceneAction
+            key={p.label}
+            x={x(p.emission.x)}
+            y={100}
+            label={`Lanzar los dos destellos desde ${p.label}`}
+            onActivate={onFlash}
+          />
+        ))}
       {setup.beta !== 0 && (
         <path
           d={

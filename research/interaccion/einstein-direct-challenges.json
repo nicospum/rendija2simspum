@@ -1,0 +1,50 @@
+[
+  {
+    "lab": "tren1",
+    "feedback": "¡Descubrimiento completo! El andén asigna tA = tB = 0. El tren asigna a B una fecha anterior a la de A. Es una diferencia entre redes de relojes sincronizados, incluso después de descontar los tiempos de viaje de las señales."
+  },
+  {
+    "lab": "tren2",
+    "feedback": "¡Descubrimiento completo! Acercar el receptor a B acorta ese viaje de luz: llega antes. Los destellos conservan la misma fecha de emisión. Este retraso de propagación se puede corregir y es distinto de la relatividad de la simultaneidad."
+  },
+  {
+    "lab": "tren3",
+    "feedback": "¡Descubrimiento completo! Al invertir v se invierte Δt′ = −γvΔx/c². Estos destellos están separados espacialmente y ninguno causa al otro. El orden de sucesos conectados por una señal causal no se invierte así."
+  },
+  {
+    "lab": "tren4",
+    "feedback": "¡Descubrimiento completo! γ = 5/3: la longitud medida en el andén es L₀/γ = 180 m. Tomar extremos simultáneos en el tren da marcas separadas 500 m y 1,334 µs en el andén: esa separación no mide una longitud instantánea. No se está aplastando físicamente el vagón."
+  },
+  {
+    "lab": "gemelos1",
+    "feedback": "¡Descubrimiento completo! En casa transcurren 10 años; en la nave, 6. Los relojes se comparan juntos en el mismo evento: el resultado no depende del retraso de una imagen ni de quién hace la cuenta."
+  },
+  {
+    "lab": "gemelos2",
+    "feedback": "¡Descubrimiento completo! Para la misma duración en casa, una mayor rapidez reduce el tiempo propio de los tramos en movimiento. En esta comparación también cambia la distancia: no mantuvimos fijo el destino."
+  },
+  {
+    "lab": "gemelos3",
+    "feedback": "¡Descubrimiento completo! La nave cambia de sistema inercial al volver: su criterio de simultaneidad con sucesos lejanos cambia. El reloj local sigue continuo y ningún mensaje viaja instantáneamente. Los dos tramos no son un único sistema inercial."
+  },
+  {
+    "lab": "gemelos4",
+    "feedback": "¡Descubrimiento completo! La nave suma 8 × 0,6 + 2 = 6,8 años. La espera reemplaza parte del movimiento y acorta la distancia alcanzada. La diferencia surge de todo el recorrido; no se concentra en un giro mágico."
+  },
+  {
+    "lab": "ascensor1",
+    "feedback": "¡Descubrimiento completo! En ambos casos la pelota cae respecto de la cabina y la balanza ejerce la misma fuerza. El exterior permite reconocer contextos distintos; las mediciones locales no distinguen estos dos casos ideales."
+  },
+  {
+    "lab": "ascensor2",
+    "feedback": "¡Descubrimiento completo! La ingravidez mide la ausencia de fuerza de apoyo, no la ausencia de un campo gravitatorio. En caída libre, cabina y objetos tienen la misma aceleración; en este modelo local su interior se comporta como una nave a la deriva."
+  },
+  {
+    "lab": "ascensor3",
+    "feedback": "¡Descubrimiento completo! La fuerza de apoyo es proporcional a la masa: pasa de 9,81 a 39,24 N. La aceleración relativa es la misma y las pelotas llegan juntas. No hay aire ni diferencias de velocidad inicial."
+  },
+  {
+    "lab": "ascensor4",
+    "feedback": "¡Descubrimiento completo! La cabina acelerada cambia de posición mientras la luz cruza. Un laboratorio libre local describe un rayo recto. El desvío en la cabina acelerada mide aproximadamente 0,49 femtómetros en 3 m: la escala vertical ampliada lo hace visible. La curvatura global de un campo real requiere relatividad general."
+  }
+]

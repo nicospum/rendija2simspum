@@ -242,3 +242,44 @@
     max-height: 240px;
   }
 }
+.spum-scene-action {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.spum-scene-action:focus-visible {
+  outline: 2px dashed #fff0b2;
+  outline-offset: 3px;
+}
+.tr-records > summary {
+  min-height: 44px;
+  align-content: center;
+  padding: 0 16px;
+  color: #c3dfdd;
+  cursor: pointer;
+  font-size: 13px;
+}
+.tr-records {
+  border-top: 1px solid #355363;
+}
+.rl-observatory:has(.spum-scene-console) .tr-clockline {
+  padding: 6px 16px;
+  font-size: 12px;
+}
+@media (max-width: 850px) {
+  .tr-shell .rl-observatory:has(.spum-scene-console) .rl-frame-heading > b {
+    display: none;
+  }
+  .gv-shell .rl-observatory:has(.spum-scene-console) .rl-frame svg,
+  .as-shell .rl-observatory:has(.spum-scene-console) .rl-frame svg {
+    max-height: 215px;
+  }
+}
+.rl-observatory .spum-scene-prompt {
+  margin: 0;
+  padding: 5px 16px;
+  font:
+    12px/1.5 'Segoe UI',
+    sans-serif;
+  color: #f1c48f;
+  background: #173240;
+}
