@@ -1,0 +1,244 @@
+.spum-scene-console.spum-scene-console {
+  --console-accent: #a5e4db;
+  color: #e7f1ee;
+  background: #13303d;
+  padding: 14px 18px;
+  border-block: 1px solid #52727f;
+  font:
+    13px/1.5 'Segoe UI',
+    Arial,
+    sans-serif;
+}
+.en-lab .spum-scene-console {
+  --console-accent: #f1c48f;
+}
+.spum-console-heading,
+.spum-console-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+.spum-console-heading {
+  justify-content: space-between;
+}
+.spum-console-heading strong {
+  font:
+    22px/1.2 Georgia,
+    serif;
+}
+.spum-scene-console .spum-console-heading a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--console-accent);
+  font: inherit;
+}
+.spum-console-row {
+  margin: 6px 0;
+}
+.spum-console-row label {
+  flex: 1;
+  min-width: 145px;
+  color: #e7f1ee;
+}
+.spum-console-row output {
+  color: var(--console-accent);
+  font-variant-numeric: tabular-nums;
+}
+.spum-scene-console input[type='range'] {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin: 0;
+  accent-color: var(--console-accent);
+}
+.spum-scene-console .spum-console-buttons {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.spum-scene-console .spum-console-buttons button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px 12px;
+  color: #e7f1ee;
+  background: #1d4251;
+  border: 1px solid #6b929e;
+  border-radius: 6px;
+  font: inherit;
+  cursor: pointer;
+}
+.spum-console-buttons button[aria-pressed='true'] {
+  border-color: var(--console-accent);
+  color: var(--console-accent);
+}
+.spum-scene-console button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.spum-scene-console.spum-scene-console p {
+  margin: 9px 0 0;
+  color: #cee0e1;
+  font: inherit;
+}
+.spum-scene-console .spum-console-impact {
+  color: var(--console-accent);
+  font-variant-numeric: tabular-nums;
+}
+.spum-scene-console.spum-scene-console .spum-console-hint {
+  font-size: 12px;
+  color: #b5ccd2;
+}
+.spum-scene-console :focus-visible {
+  outline: 3px solid var(--console-accent);
+  outline-offset: 3px;
+}
+.spum-scene-console.spum-scene-console .spum-console-help {
+  padding: 0;
+  margin: 4px 0 0;
+  border: 0;
+  background: transparent;
+}
+.spum-console-help > summary {
+  min-height: 44px;
+  align-content: center;
+  cursor: pointer;
+  color: #b8d9d7;
+  font:
+    12px/1.5 'Segoe UI',
+    Arial,
+    sans-serif;
+}
+.spum-console-help > p {
+  padding-bottom: 8px;
+}
+.spum-object-handle {
+  touch-action: none;
+  cursor: grab;
+}
+.spum-object-handle:active {
+  cursor: grabbing;
+}
+.spum-object-handle:focus-visible {
+  outline: 2px dashed #fff0b2;
+  outline-offset: 4px;
+  stroke: transparent;
+}
+.hk-map-drawer {
+  padding: 8px 18px;
+  border-bottom: 1px solid #45616f;
+}
+.hk-map-drawer > summary {
+  min-height: 44px;
+  align-content: center;
+  color: #b9dbdc;
+  cursor: pointer;
+  font-size: 13px;
+}
+:root:has(.spum-scene-console) {
+  scroll-behavior: auto;
+  scroll-padding-top: 78px;
+}
+.rl-observatory:has(.spum-scene-console),
+.hk-observatory:has(.spum-scene-console),
+#hz-view {
+  scroll-margin-top: 0;
+}
+.rl-observatory:has(.spum-scene-console) .rl-frame-caption {
+  display: none;
+}
+.rl-observatory:has(.spum-scene-console) .rl-frame-facts {
+  padding: 8px 16px;
+}
+.rl-observatory:has(.spum-scene-console) .rl-frame-facts strong {
+  font-size: 18px;
+}
+.rl-observatory:has(.spum-scene-console) .rl-observatory-heading {
+  padding: 16px 20px;
+}
+.rl-observatory:has(.spum-scene-console) .rl-observatory-heading h2 {
+  margin: 0;
+  font-size: 30px;
+}
+.rl-observatory:has(.spum-scene-console)
+  .rl-observatory-heading
+  .rl-eyebrow {
+  display: none;
+}
+.rl-observatory:has(.spum-scene-console) .rl-frame-heading {
+  padding: 12px 20px;
+}
+.rl-observatory:has(.spum-scene-console) .rl-frame-heading h3 {
+  margin: 0;
+  font-size: 24px;
+}
+.rl-observatory:has(.spum-scene-console) .rl-frame svg {
+  max-height: 340px;
+}
+@media (max-width: 850px) {
+  .rl-observatory:has(.spum-scene-console),
+  .hk-observatory:has(.spum-scene-console),
+  #hz-view {
+    scroll-margin-top: 0;
+  }
+  .hz-shell .hz-space-stage:has(.spum-object-handle) {
+    height: 260px;
+    min-height: 0;
+  }
+  .hz-shell .hz-space-stage:has(.spum-object-handle) svg {
+    height: 100%;
+    min-height: 0;
+  }
+  .hk-scene.hk-explorer {
+    height: 320px;
+    min-height: 0;
+  }
+  .spum-scene-console.spum-scene-console {
+    padding: 10px 13px;
+  }
+  .spum-console-heading strong {
+    font-size: 20px;
+  }
+  .spum-scene-console .spum-console-buttons button {
+    flex: 1 1 auto;
+  }
+  .spum-console-row label {
+    min-width: 100px;
+  }
+  .rl-observatory:has(.spum-scene-console) .rl-observatory-heading {
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+  .rl-observatory:has(.spum-scene-console) .rl-observatory-heading h2 {
+    margin: 0;
+    font-size: 25px;
+  }
+  .rl-observatory:has(.spum-scene-console)
+    .rl-observatory-heading
+    .rl-eyebrow {
+    display: none;
+  }
+  .rl-observatory:has(.spum-scene-console) .rl-frame-heading {
+    padding: 10px 16px;
+  }
+  .rl-observatory:has(.spum-scene-console) .rl-frame-heading h3 {
+    margin: 0;
+    font-size: 21px;
+  }
+  .rl-observatory:has(.spum-scene-console) .rl-frame-heading > div > span {
+    display: none;
+  }
+  .rl-observatory:has(.spum-scene-console) .rl-frame-facts,
+  .rl-observatory:has(.spum-scene-console) .rl-frame-caption {
+    display: none;
+  }
+  .rl-observatory:has(.spum-scene-console) .rl-frame svg {
+    max-height: 240px;
+  }
+}

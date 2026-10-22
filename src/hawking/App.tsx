@@ -1,3 +1,4 @@
+import SceneConsole from '../components/ui/SceneConsole'
 import ChallengeGuide from '../components/ui/ChallengeGuide'
 import Tip from '../components/ui/InfoPopover'
 import { BlackHoleNavigation } from '../series/BlackHoleNavigation'
@@ -191,7 +192,7 @@ export default function HawkingApp() {
               Cambiá su masa. Adelantá el tiempo. Descubrí la conexión entre gravedad, calor y
               física cuántica.
             </p>
-            <a href="#hk-challenges">
+            <a href="#hk-view">Jugar con el horizonte ↓</a> · <a href="#hk-challenges">
               Empezar con una pregunta <Arrow />
             </a>
           </div>
@@ -206,7 +207,7 @@ export default function HawkingApp() {
 
         <LabNavigation
           links={[
-            ['Visor', '#spum-mission'],
+            ['Visor', '#hk-view'],
             ['Controles', '#hk-controls'],
             ['Retos', '#hk-challenges'],
             ['Por qué', '#hk-discovery'],
@@ -244,6 +245,100 @@ export default function HawkingApp() {
               motion={motion}
               reduced={reduced}
               onToggle={() => setMotion(!motion)}
+              controls={
+                <SceneConsole
+                  challengeHref="#hk-challenges"
+                  hint="Cambiar masa o entorno prepara otro ensayo desde t = 0. Acercar el mapa solo cambia la vista. Dorado y azul representan energía, no colores reales de fotones."
+                >
+                  <div className="spum-console-row">
+                    <label htmlFor="hk-live-mass">
+                      Masa inicial · <output>{scientific(state.mass, 'kg')}</output>
+                    </label>
+                    <div className="spum-console-buttons">
+                      <button
+                        disabled={state.mass <= massRange.min}
+                        onClick={() =>
+                          dispatch({
+                            type: 'mass',
+                            mass: massInWindow(massAnchor, state.mass / 2),
+                          })
+                        }
+                      >
+                        Probar masa ÷2
+                      </button>
+                      <button
+                        disabled={state.mass >= massRange.max}
+                        onClick={() =>
+                          dispatch({
+                            type: 'mass',
+                            mass: massInWindow(massAnchor, state.mass * 2),
+                          })
+                        }
+                      >
+                        Probar masa ×2
+                      </button>
+                    </div>
+                  </div>
+                  <input
+                    id="hk-live-mass"
+                    type="range"
+                    min={massRange.min}
+                    max={massRange.max}
+                    step={(massRange.max - massRange.min) / 300}
+                    value={state.mass}
+                    aria-valuetext={scientific(state.mass, 'kilogramos')}
+                    onChange={(e) =>
+                      dispatch({
+                        type: 'mass',
+                        mass: massInWindow(massAnchor, Number(e.target.value)),
+                      })
+                    }
+                  />
+                  <p className="spum-console-impact">
+                    Temperatura {factor(current.temperatureK / reference.temperatureK)} ·
+                    Potencia emitida {factor(current.powerW / reference.powerW)}.{' '}
+                    {current.netW < 0
+                      ? 'Entra más energía de la que sale.'
+                      : 'Sale más energía de la que entra.'}
+                  </p>
+                  <div className="spum-console-buttons">
+                    <button
+                      aria-pressed={state.environment === 'vacuum'}
+                      onClick={() =>
+                        dispatch({ type: 'environment', environment: 'vacuum' })
+                      }
+                    >
+                      Vacío sin entrada
+                    </button>
+                    <button
+                      aria-pressed={state.environment === 'cmb'}
+                      onClick={() =>
+                        dispatch({ type: 'environment', environment: 'cmb' })
+                      }
+                    >
+                      Fondo cósmico entrante
+                    </button>
+                    <button
+                      onClick={() => {
+                        prepareLesson('bath')
+                        dispatch({ type: 'environment', environment: 'cmb' })
+                      }}
+                    >
+                      Probar un Sol en el fondo
+                    </button>
+                    <button
+                      disabled={state.environment !== 'vacuum'}
+                      onClick={() =>
+                        dispatch({ type: 'age', age: state.age > 0 ? 0 : 0.75 })
+                      }
+                    >
+                      {state.age > 0
+                        ? 'Volver al tiempo inicial'
+                        : 'Ver 75 % de la vida ideal'}
+                    </button>
+                  </div>
+                </SceneConsole>
+              }
             />
             <div className="hk-measurements">
               <div>

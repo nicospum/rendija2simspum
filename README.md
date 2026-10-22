@@ -44,6 +44,8 @@ La [revisión conjunta de los cinco laboratorios](docs/REVISION_CINCO_LABS.md) d
 
 La [revisión de uso de Einstein y agujeros negros](docs/REVISION_USO_ESPECIALES.md) explica las guías del siguiente paso, listas de observaciones pendientes y pruebas de los doce capítulos y sus 48 retos.
 
+La [investigación de skills e interacción](docs/INVESTIGACION_INTERACCION_Y_SKILLS.md) compara herramientas de simulación y juegos educativos, prioriza los catorce laboratorios y documenta los pilotos de manipulación directa y controles junto al visor de reloj, horizonte y Hawking.
+
 ```bash
 npm test
 npm run lint

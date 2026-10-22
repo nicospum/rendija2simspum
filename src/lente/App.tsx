@@ -114,7 +114,7 @@ export default function LensApp() {
 
         <LabNavigation
           links={[
-            ['Imagen', '#spum-mission'],
+            ['Imagen', '#ln-views'],
             ['Recorrido', '#ln-paths'],
             ['Controles', '#ln-controls'],
             ['Retos', '#ln-challenges'],

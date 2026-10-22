@@ -133,7 +133,7 @@ export default function AccretionApp() {
         </section>
         <LabNavigation
           links={[
-            ['Visor', '#spum-mission'],
+            ['Visor', '#ac-view'],
             ['Controles', '#ac-controls'],
             ['Retos', '#ac-challenges'],
             ['La física', '#ac-physics'],

@@ -1,3 +1,4 @@
+import SceneConsole from '../components/ui/SceneConsole'
 import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useReducer, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
@@ -96,11 +97,15 @@ export default function HorizonApp() {
     )
     .sort((a, b) => a.arrival! - b.arrival!)[0]
   const complete = learning.completed.includes(learning.index)
+  const outsidePulse = [...state.manual].reverse().find(p => p.radius > 1.1 && p.radius < 1.3 && p.arrival !== null)
   const start = (index: number) => {
     dispatch({ type: 'lesson', index })
     setView('map')
   }
   const go = (x: number) => dispatch({ type: 'radius', radius: x })
+  const placeProbe = (radius: number) => s.mode === 'hover'
+    ? dispatch({ type: 'tune', patch: { radius } })
+    : go(radius)
   const arrivalLabel = (p: Pulse) =>
     p.arrival === null
       ? 'No llega al exterior'
@@ -134,14 +139,14 @@ export default function HorizonApp() {
               Explorá qué sucede en la caída y qué puede saber alguien que
               espera afuera.
             </p>
-            <a href="#hz-challenges">
+            <a href="#hz-view">Jugar con la sonda ↓</a> · <a href="#hz-challenges">
               Cuatro preguntas para cambiar tu idea del tiempo ↓
             </a>
           </div>
         </section>
         <LabNavigation
           links={[
-            ['Mapa', '#spum-mission'],
+            ['Mapa', '#hz-view'],
             ['Controles', '#hz-controls'],
             ['Mensajes', '#hz-receiver'],
             ['Retos', '#hz-challenges'],
@@ -219,11 +224,90 @@ export default function HorizonApp() {
             </div>
             <div>
               {view === 'map' ? (
-                <Scene setup={s} pulses={pulses} />
+                <Scene setup={s} pulses={pulses} onRadius={placeProbe} />
               ) : (
                 <LightFutures setup={s} />
               )}
             </div>
+            <SceneConsole
+              challengeHref="#hz-challenges"
+              hint="Arrastrá la sonda de lado. Sostenida compara alturas; Caída libre recorre la misma caída, no la empuja ni la frena. El resto del mapa permite desplazar la página."
+            >
+              <div className="spum-console-buttons">
+                <button
+                  aria-pressed={s.mode === 'hover'}
+                  onClick={() => dispatch({ type: 'tune', patch: { mode: 'hover' } })}
+                >
+                  Sostener la sonda
+                </button>
+                <button
+                  aria-pressed={s.mode === 'fall'}
+                  onClick={() => dispatch({ type: 'tune', patch: { mode: 'fall' } })}
+                >
+                  Explorar caída libre
+                </button>
+              </div>
+              <div className="spum-console-row">
+                <label htmlFor="hz-live-radius">
+                  Radio en el mapa ·{' '}
+                  <output>
+                    {m.radius === null ? 'Fin del tramo' : `${n(m.radius)} rₛ`}
+                  </output>
+                </label>
+              </div>
+              <input
+                id="hz-live-radius"
+                type="range"
+                min={s.mode === 'hover' ? 1.2 : 0.6}
+                max="4"
+                step="0.01"
+                value={m.radius ?? 0.6}
+                onChange={(e) => placeProbe(Number(e.target.value))}
+              />
+              <div className="spum-console-buttons">
+                <button onClick={() => placeProbe(learning.index === 2 ? 3 : 4)}>
+                  Lejos · {learning.index === 2 ? '3' : '4'} rₛ
+                </button>
+                <button onClick={() => placeProbe(learning.index === 2 ? 1.05 : 1.2)}>
+                  Cerca · {learning.index === 2 ? '1,05' : '1,2'} rₛ
+                </button>
+                <button onClick={() => go(learning.index === 3 ? 0.8 : 1)}>
+                  {learning.index === 3
+                    ? 'Un poco adentro · 0,8 rₛ'
+                    : 'Cruzar al horizonte'}
+                </button>
+                <button
+                  disabled={m.radius === null}
+                  onClick={() => {
+                    dispatch({ type: 'send' })
+                    if (!reduceMotion) dispatch({ type: 'play' })
+                  }}
+                >
+                  Lanzar luz{reduceMotion ? ' (pausada)' : ' y seguirla'}
+                </button>
+                <button onClick={() => dispatch({ type: 'play' })}>
+                  {state.playing ? 'Pausar el mapa' : 'Reproducir el mapa'}
+                </button>
+                {learning.index === 3 && (
+                  <button
+                    disabled={!outsidePulse || outsidePulse.arrival! > MAX_TIME}
+                    onClick={() =>
+                      outsidePulse &&
+                      dispatch({ type: 'receivePulse', id: outsidePulse.id })
+                    }
+                  >
+                    Recibir el pulso exterior
+                  </button>
+                )}
+              </div>
+              <p className="spum-console-impact">
+                {m.radius !== null && m.radius < 1
+                  ? 'Dentro: la luz no alcanza la antena exterior.'
+                  : s.mode === 'hover'
+                    ? `Ritmo de la sonda: ${n(m.heldRate * 100, 1)} % del de la antena.`
+                    : 'Al cruzar, el reloj propio sigue funcionando.'}
+              </p>
+            </SceneConsole>
             <div className="ac-image-notes">
               <span>
                 Horizonte{' '}

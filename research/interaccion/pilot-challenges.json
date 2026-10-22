@@ -1,0 +1,66 @@
+[
+  {
+    "lab": "reloj",
+    "lesson": 0,
+    "feedback": "¡Descubrimiento completo! Con v = 0, los sistemas coinciden: el recorrido mide 300 m y el tic dura 1,001 µs en ambos. Esta es la referencia para descubrir qué cambia al moverse."
+  },
+  {
+    "lab": "reloj",
+    "lesson": 1,
+    "feedback": "¡Descubrimiento completo! El camino medido desde la estación aumenta de 375 a 500 m. A la misma velocidad c, el tic tarda 1,251 y 1,668 µs. En la nave sigue durando 1,001 µs: la separación transversal entre espejos no cambia."
+  },
+  {
+    "lab": "reloj",
+    "lesson": 2,
+    "feedback": "¡Descubrimiento completo! La comparación es recíproca: cada sistema asigna un tic más largo al reloj móvil. Cambiamos el reloj seguido y, por tanto, el par de sucesos comparados. La simultaneidad también depende del sistema; esto no compara edades al reencontrarse."
+  },
+  {
+    "lab": "reloj",
+    "lesson": 3,
+    "feedback": "¡Descubrimiento completo! Con v = √3/2 · c ≈ 0,866 c, γ = 2. El mismo tic dura 1,001 µs en su reloj y 2,001 µs en el otro sistema. No hace falta alcanzar c: cuanto más te acercás, mayor es la diferencia."
+  },
+  {
+    "lab": "horizonte",
+    "lesson": 0,
+    "feedback": "¡Descubrimiento completo! Los relojes estáticos a distintas alturas acumulan tiempos propios diferentes. Acercarse reduce el ritmo relativo. Mantenerse quieto exige aceleración; no se puede sostener un reloj estático justo en el horizonte."
+  },
+  {
+    "lab": "horizonte",
+    "lesson": 1,
+    "feedback": "¡Descubrimiento completo! El horizonte limita qué señales pueden llegar al exterior. En este modelo el reloj de la sonda sigue durante el cruce: no hay una pared ni una parada local del tiempo. Las coordenadas de Schwarzschild se vuelven singulares ahí; el mapa usa coordenadas regulares."
+  },
+  {
+    "lab": "horizonte",
+    "lesson": 2,
+    "feedback": "¡Descubrimiento completo! La recepción combina corrimiento gravitacional y movimiento de la sonda. Al acercarse al horizonte, la frecuencia recibida tiende a cero y la llegada se retrasa sin límite. Una frecuencia muy baja puede salir de la banda visible: rojo es una clave gráfica, no una foto literal."
+  },
+  {
+    "lab": "horizonte",
+    "lesson": 3,
+    "feedback": "¡Descubrimiento completo! Fuera, un rayo saliente puede llegar a la antena. En el horizonte queda sobre su generador; dentro, incluso la dirección local saliente lleva a radios menores. La luz siempre se mide localmente a c: dr/dT es una velocidad de coordenadas, no una medición local."
+  },
+  {
+    "lab": "hawking",
+    "lesson": 0,
+    "feedback": "Tu predicción coincide con el modelo.",
+    "impact": "Temperatura ×0,5 · Potencia emitida ×0,25. Sale más energía de la que entra."
+  },
+  {
+    "lab": "hawking",
+    "lesson": 1,
+    "feedback": "Tu predicción coincide con el modelo.",
+    "impact": "Temperatura ×1 · Potencia emitida ×1. Entra más energía de la que sale."
+  },
+  {
+    "lab": "hawking",
+    "lesson": 2,
+    "feedback": "Tu predicción coincide con el modelo.",
+    "impact": "Temperatura ×1,59 · Potencia emitida ×2,52. Sale más energía de la que entra."
+  },
+  {
+    "lab": "hawking",
+    "lesson": 3,
+    "feedback": "Tu predicción coincide con el modelo.",
+    "impact": "Temperatura ×0,5 · Potencia emitida ×0,25. Sale más energía de la que entra."
+  }
+]

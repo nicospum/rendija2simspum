@@ -1,0 +1,134 @@
+[
+  {
+    "barBottom": 664,
+    "barTop": 620,
+    "coVisible": true,
+    "height": 740,
+    "overflow": false,
+    "route": "/reloj-de-luz/",
+    "sceneBottom": 481,
+    "sceneTop": 304,
+    "width": 320
+  },
+  {
+    "barBottom": 701,
+    "barTop": 657,
+    "coVisible": true,
+    "height": 740,
+    "overflow": false,
+    "route": "/horizonte/",
+    "sceneBottom": 475,
+    "sceneTop": 215,
+    "width": 320
+  },
+  {
+    "barBottom": 582,
+    "barTop": 538,
+    "coVisible": true,
+    "height": 740,
+    "overflow": false,
+    "route": "/hawking/",
+    "sceneBottom": 399,
+    "sceneTop": 79,
+    "width": 320
+  },
+  {
+    "barBottom": 629,
+    "barTop": 585,
+    "coVisible": true,
+    "height": 844,
+    "overflow": false,
+    "route": "/reloj-de-luz/",
+    "sceneBottom": 474,
+    "sceneTop": 257,
+    "width": 390
+  },
+  {
+    "barBottom": 650,
+    "barTop": 606,
+    "coVisible": true,
+    "height": 844,
+    "overflow": false,
+    "route": "/horizonte/",
+    "sceneBottom": 475,
+    "sceneTop": 215,
+    "width": 390
+  },
+  {
+    "barBottom": 581,
+    "barTop": 537,
+    "coVisible": true,
+    "height": 844,
+    "overflow": false,
+    "route": "/hawking/",
+    "sceneBottom": 399,
+    "sceneTop": 79,
+    "width": 390
+  },
+  {
+    "barBottom": 651,
+    "barTop": 607,
+    "coVisible": true,
+    "height": 1024,
+    "overflow": false,
+    "route": "/reloj-de-luz/",
+    "sceneBottom": 496,
+    "sceneTop": 256,
+    "width": 768
+  },
+  {
+    "barBottom": 650,
+    "barTop": 606,
+    "coVisible": true,
+    "height": 1024,
+    "overflow": false,
+    "route": "/horizonte/",
+    "sceneBottom": 475,
+    "sceneTop": 215,
+    "width": 768
+  },
+  {
+    "barBottom": 554,
+    "barTop": 510,
+    "coVisible": true,
+    "height": 1024,
+    "overflow": false,
+    "route": "/hawking/",
+    "sceneBottom": 399,
+    "sceneTop": 79,
+    "width": 768
+  },
+  {
+    "barBottom": 788,
+    "barTop": 744,
+    "coVisible": true,
+    "height": 900,
+    "overflow": false,
+    "route": "/reloj-de-luz/",
+    "sceneBottom": 567,
+    "sceneTop": 227,
+    "width": 1280
+  },
+  {
+    "barBottom": 840,
+    "barTop": 796,
+    "coVisible": true,
+    "height": 900,
+    "overflow": false,
+    "route": "/horizonte/",
+    "sceneBottom": 662,
+    "sceneTop": 168,
+    "width": 1280
+  },
+  {
+    "barBottom": 693,
+    "barTop": 649,
+    "coVisible": true,
+    "height": 900,
+    "overflow": false,
+    "route": "/hawking/",
+    "sceneBottom": 534,
+    "sceneTop": 79,
+    "width": 1280
+  }
+]

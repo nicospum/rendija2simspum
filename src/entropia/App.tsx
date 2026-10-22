@@ -96,7 +96,7 @@ export default function EntropyApp() {
         </div>
         <LabNavigation
           links={[
-            ['Horizonte', '#spum-mission'],
+            ['Horizonte', '#en-map'],
             ['Controles', '#en-controls'],
             ['Fórmula', '#en-formula'],
             ['Retos', '#en-challenges'],

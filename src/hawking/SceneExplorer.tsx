@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import type { PointerEvent } from 'react'
+import type { PointerEvent, ReactNode } from 'react'
 import Horizon from './Horizon'
 import { boundedView, mapTarget, OVERVIEW, visualRadius, worldPoint } from './exploration'
 import type { MapTarget, View } from './exploration'
@@ -17,6 +17,7 @@ export default function SceneExplorer({
   motion,
   reduced,
   onToggle,
+  controls,
 }: {
   current: Reading
   reference: Reading
@@ -26,6 +27,7 @@ export default function SceneExplorer({
   motion: boolean
   reduced: boolean
   onToggle: () => void
+  controls?: ReactNode
 }) {
   const [view, setView] = useState<View>({ ...OVERVIEW })
   const [hovered, setHovered] = useState<MapTarget | null>(null)
@@ -234,6 +236,9 @@ export default function SceneExplorer({
           Acercamiento ×{view.zoom.toFixed(1).replace('.', ',')} · señalá o tocá para aprender
         </p>
       </div>
+      {controls}
+      <details className="hk-map-drawer">
+        <summary>Acercar el mapa y descubrir sus elementos</summary>
       <div className="hk-map-tools">
         <div className="hk-map-navigation" aria-label="Navegación del visor">
           <button
@@ -297,6 +302,7 @@ export default function SceneExplorer({
           Escape dentro del visor.
         </span>
       </div>
+      </details>
     </>
   )
 }

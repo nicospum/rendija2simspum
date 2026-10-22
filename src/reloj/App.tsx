@@ -1,3 +1,4 @@
+import SceneConsole from '../components/ui/SceneConsole'
 import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useReducer, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
@@ -96,7 +97,7 @@ export default function LightClockApp() {
               camino y descubrí cómo dos sistemas miden tiempos diferentes para
               el mismo tic.
             </p>
-            <a href="#rl-challenges">Empezar con una predicción ↓</a>
+            <a href="#rl-views">Jugar con el reloj ↓</a> · <a href="#rl-challenges">Elegir un reto</a>
           </div>
         </section>
         <LabNavigation
@@ -176,10 +177,89 @@ export default function LightClockApp() {
                         : 'RELOJ EN MOVIMIENTO'}
                   </b>
                 </div>
-                <Scene setup={s.setup} frame={frame} guide={guide} />
+                <Scene setup={s.setup} frame={frame} guide={guide} onFraction={fraction} />
               </article>
             ))}
           </div>
+          <SceneConsole
+            challengeHref="#rl-challenges"
+            hint="Tocá el camino o arrastrá la luz. Ida y vuelta se superponen en reposo: usá Espejo o Regreso para elegir el tramo. Cambiar velocidad vuelve a la emisión."
+          >
+            <div className="spum-console-row">
+              <label htmlFor="rl-live-beta">
+                Rapidez · <output>{n(s.setup.beta, 3)} c</output>
+              </label>
+              <div className="spum-console-buttons">
+                {[0, 0.6, 0.8].map((value) => (
+                  <button
+                    key={value}
+                    onClick={() => beta(value)}
+                    aria-label={`Probar velocidad ${n(value, 1)} c`}
+                  >
+                    {n(value, 1)} c
+                  </button>
+                ))}
+              </div>
+            </div>
+            <input
+              id="rl-live-beta"
+              type="range"
+              min="0"
+              max="0.95"
+              step="0.001"
+              value={s.setup.beta}
+              aria-valuetext={`${n(s.setup.beta * 100, 1)} por ciento de la velocidad de la luz`}
+              onChange={(e) => beta(Number(e.target.value))}
+            />
+            <div className="spum-console-buttons">
+              <button
+                aria-label={
+                  s.playing
+                    ? 'Pausar el tic del visor'
+                    : 'Reproducir el tic del visor'
+                }
+                onClick={() => dispatch({ type: 'play' })}
+              >
+                {s.playing ? 'Pausar' : 'Reproducir'}
+              </button>
+              <button
+                aria-label="Llevar pulso al espejo"
+                onClick={() => fraction(0.5)}
+              >
+                Espejo
+              </button>
+              <button
+                aria-label="Completar tic desde el visor"
+                onClick={() => fraction(1)}
+              >
+                Regreso
+              </button>
+            </div>
+            {s.index === 2 && (
+              <div className="spum-console-buttons">
+                {(['nave', 'estacion'] as const).map((frame) => (
+                  <button
+                    key={frame}
+                    aria-pressed={s.setup.follow === frame}
+                    onClick={() => dispatch({ type: 'follow', frame })}
+                  >
+                    Seguir reloj de la {name(frame)}
+                  </button>
+                ))}
+              </div>
+            )}
+            {s.index === 3 && (
+              <div className="spum-console-buttons">
+                <button onClick={() => beta(HALF_RATE_BETA)}>
+                  Probar medio ritmo · 0,866 c
+                </button>
+              </div>
+            )}
+            <p className="spum-console-impact">
+              Ritmo móvil: {n(100 / g, 1)} % · Tic propio: {n(OWN_PERIOD * 1e6)} µs
+              · En la {name(other)}: {n(g * OWN_PERIOD * 1e6)} µs.
+            </p>
+          </SceneConsole>
           <div
             className="rl-comparison"
             aria-live={s.playing ? 'off' : 'polite'}

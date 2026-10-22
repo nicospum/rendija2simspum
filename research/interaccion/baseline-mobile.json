@@ -1,0 +1,85 @@
+[
+  {
+    "firstPanelControlDistanceFromSceneBottom": 1100,
+    "height": 844,
+    "route": "/reloj-de-luz/",
+    "sceneHeight": 217.71875,
+    "width": 390
+  },
+  {
+    "firstPanelControlDistanceFromSceneBottom": 1012,
+    "height": 844,
+    "route": "/tren-de-einstein/",
+    "sceneHeight": 183.140625,
+    "width": 390
+  },
+  {
+    "firstPanelControlDistanceFromSceneBottom": 1048,
+    "height": 844,
+    "route": "/nos-vemos-a-la-vuelta/",
+    "sceneHeight": 229.640625,
+    "width": 390
+  },
+  {
+    "firstPanelControlDistanceFromSceneBottom": 1520,
+    "height": 844,
+    "route": "/ascensor-de-einstein/",
+    "sceneHeight": 278.875,
+    "width": 390
+  },
+  {
+    "firstPanelControlDistanceFromSceneBottom": 1133,
+    "height": 844,
+    "route": "/el-tiempo-tiene-altura/",
+    "sceneHeight": 227.546875,
+    "width": 390
+  },
+  {
+    "firstPanelControlDistanceFromSceneBottom": 1852,
+    "height": 844,
+    "route": "/orbita-que-no-se-cierra/",
+    "sceneHeight": 288.59375,
+    "width": 390
+  },
+  {
+    "firstPanelControlDistanceFromSceneBottom": 1434,
+    "height": 844,
+    "route": "/efecto-fotoelectrico/",
+    "sceneHeight": 260.84375,
+    "width": 390
+  },
+  {
+    "firstPanelControlDistanceFromSceneBottom": null,
+    "height": 844,
+    "route": "/lente-gravitacional/",
+    "width": 390
+  },
+  {
+    "firstPanelControlDistanceFromSceneBottom": 663,
+    "height": 844,
+    "route": "/acrecion/",
+    "sceneHeight": 420,
+    "width": 390
+  },
+  {
+    "firstPanelControlDistanceFromSceneBottom": 896,
+    "height": 844,
+    "route": "/horizonte/",
+    "sceneHeight": 370,
+    "width": 390
+  },
+  {
+    "firstPanelControlDistanceFromSceneBottom": 1736,
+    "height": 844,
+    "route": "/hawking/",
+    "sceneHeight": 450,
+    "width": 390
+  },
+  {
+    "firstPanelControlDistanceFromSceneBottom": 1079,
+    "height": 844,
+    "route": "/entropia/",
+    "sceneHeight": 209.03125,
+    "width": 390
+  }
+]

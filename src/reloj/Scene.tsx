@@ -1,6 +1,8 @@
 import { useId } from 'react'
 import { gamma, MIRROR_DISTANCE, snapshot } from './physics'
 import type { Frame, Setup } from './physics'
+import { pathFraction, scrubKey } from '../shared/sceneInteraction'
+import { useSvgScrub } from '../shared/useSvgScrub'
 
 const n = (v: number, digits = 3) =>
   v.toLocaleString('es-AR', { maximumFractionDigits: digits })
@@ -8,10 +10,12 @@ export default function Scene({
   setup,
   frame,
   guide,
+  onFraction,
 }: {
   setup: Setup
   frame: Frame
   guide: boolean
+  onFraction?: (value: number) => void
 }) {
   const id = useId().replace(/:/g, '')
   const m = snapshot(setup, frame)
@@ -29,11 +33,19 @@ export default function Scene({
       : `${px(start.x)},${py(0)} ${px(reflection.x)},${py(reflection.y)} ${px(m.point.x)},${py(m.point.y)}`
   const color = frame === 'nave' ? '#89e3dd' : '#f3bb86'
   const clock = px(m.point.x)
+  const scrub = useSvgScrub((point) => {
+    const value = pathFraction(
+      point,
+      m.events.map((e) => ({ x: px(e.x), y: py(e.y) })),
+      setup.fraction >= 0.5,
+    )
+    if (value !== null) onFraction?.(value)
+  })
   return (
     <>
       <svg
         viewBox="0 0 520 340"
-        role="img"
+        role={onFraction ? 'group' : 'img'}
         aria-label={`Reloj de la ${setup.follow === 'nave' ? 'nave' : 'estación'} desde la ${frame === 'nave' ? 'nave' : 'estación'}. Trayecto ${m.moving && setup.beta > 0 ? 'diagonal' : 'vertical'}, tiempo asignado ${n(m.point.t * 1e6)} microsegundos. La luz viaja a c.`}
       >
         <defs>
@@ -164,6 +176,47 @@ export default function Scene({
             fill="none"
             strokeWidth="2"
           />
+        )}
+        {onFraction && (
+          <>
+            <circle
+              cx={clock}
+              cy={py(m.point.y)}
+              r="18"
+              fill="none"
+              stroke={color}
+              strokeDasharray="3 4"
+            />
+            <polyline
+              points={path}
+              fill="none"
+              stroke="transparent"
+              strokeWidth="44"
+              vectorEffect="non-scaling-stroke"
+              className="spum-object-handle"
+              role="slider"
+              tabIndex={0}
+              aria-label={`Mover pulso desde la ${frame === 'nave' ? 'nave' : 'estación'}`}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={Math.round(setup.fraction * 100)}
+              aria-valuetext={`${n(setup.fraction * 100, 0)} % del tic; ${setup.fraction < 0.5 ? 'ida' : 'vuelta'}`}
+              {...scrub}
+              onKeyDown={(event) => {
+                const value = scrubKey(
+                  event.key,
+                  setup.fraction,
+                  0,
+                  1,
+                  0.05,
+                )
+                if (value !== undefined) {
+                  event.preventDefault()
+                  onFraction(value)
+                }
+              }}
+            />
+          </>
         )}
       </svg>
       <div className="rl-frame-facts">

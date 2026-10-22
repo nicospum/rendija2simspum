@@ -1,7 +1,15 @@
-import { photonRadius, model, makePulse, RECEIVER, lightSpeed } from './physics'
+import {
+  photonRadius,
+  model,
+  makePulse,
+  RECEIVER,
+  lightSpeed,
+} from './physics'
 import type { Pulse, Setup } from './physics'
+import { mapRadius, radiusAtMapX } from './interaction'
+import { scrubKey } from '../shared/sceneInteraction'
+import { useSvgScrub } from '../shared/useSvgScrub'
 
-const mapRadius = (x: number) => (x <= 1 ? 86 * x : 86 + 98 * Math.log(x))
 export function SignalColor(g: number | null) {
   return g === null
     ? '#d58bff'
@@ -10,14 +18,20 @@ export function SignalColor(g: number | null) {
 export default function Scene({
   setup,
   pulses,
+  onRadius,
 }: {
   setup: Setup
   pulses: Pulse[]
+  onRadius?: (value: number) => void
 }) {
   const m = model(setup),
     cy = 214,
     cx = 205
   const probeX = m.radius === null ? null : cx + mapRadius(m.radius)
+  const scrub = useSvgScrub((point) => {
+    const value = radiusAtMapX(point.x, setup.mode === 'hover')
+    if (value !== null) onRadius?.(value)
+  })
   const live = pulses
     .filter(
       (p) =>
@@ -29,7 +43,7 @@ export default function Scene({
     <div className="hz-space-stage">
       <svg
         viewBox="80 35 590 360"
-        role="img"
+        role={onRadius ? 'group' : 'img'}
         aria-label={`Mapa causal de la sonda. ${m.radius === null ? 'Terminó el tramo de caída mostrado; la antena sigue escuchando.' : `Radio ${m.radius.toFixed(2)} veces el horizonte. ${m.radius < 1 ? 'Dentro' : m.radius === 1 ? 'En el horizonte' : 'Fuera'}.`}`}
       >
         <defs>
@@ -144,6 +158,15 @@ export default function Scene({
         })}
         {probeX !== null && (
           <g transform={`translate(${probeX},${cy})`}>
+            {onRadius && (
+              <circle
+                r="23"
+                fill="none"
+                stroke="#a7e9e0"
+                strokeDasharray="3 5"
+                opacity=".7"
+              />
+            )}
             <path
               d="M-14 0L2-8L16-6L16 6L2 8Z"
               stroke="#d1f2ed"
@@ -151,6 +174,37 @@ export default function Scene({
               fill="#193e4c"
             />
             <circle cx="5" r="3" fill="#87e0da" />
+            {onRadius && (
+              <circle
+                r="22"
+                fill="transparent"
+                stroke="transparent"
+                strokeWidth="24"
+                vectorEffect="non-scaling-stroke"
+                className="spum-object-handle"
+                role="slider"
+                tabIndex={0}
+                aria-label="Mover sonda en el mapa"
+                aria-valuemin={setup.mode === 'hover' ? 1.2 : 0.6}
+                aria-valuemax={4}
+                aria-valuenow={m.radius ?? 4}
+                aria-valuetext={`${(m.radius ?? 4).toFixed(2)} radios del horizonte`}
+                {...scrub}
+                onKeyDown={(event) => {
+                  const value = scrubKey(
+                    event.key,
+                    m.radius ?? 4,
+                    setup.mode === 'hover' ? 1.2 : 0.6,
+                    4,
+                    0.05,
+                  )
+                  if (value !== undefined) {
+                    event.preventDefault()
+                    onRadius(value)
+                  }
+                }}
+              />
+            )}
             {setup.mode === 'hover' && (
               <path
                 d="M18-4L29-7M18 0H33M18 4L29 7"
@@ -232,24 +286,26 @@ export function LightFutures({ setup }: { setup: Setup }) {
           fill="#355064"
           opacity=".25"
         />
-        {(maxR === 2 ? [0, 0.5, 1, 1.5, 2] : [0, 1, 2, 3, 4, 5, 6]).map((r) => (
-          <g key={r}>
-            <path
-              d={`M${X(r)} 40V275`}
-              stroke={r === 1 ? '#91e1d5' : '#253c4d'}
-              strokeDasharray={r === 1 ? '6 5' : '2 8'}
-            />
-            <text
-              x={X(r)}
-              y="300"
-              textAnchor="middle"
-              fill="#b8cbd4"
-              fontSize="18"
-            >
-              {r}
-            </text>
-          </g>
-        ))}
+        {(maxR === 2 ? [0, 0.5, 1, 1.5, 2] : [0, 1, 2, 3, 4, 5, 6]).map(
+          (r) => (
+            <g key={r}>
+              <path
+                d={`M${X(r)} 40V275`}
+                stroke={r === 1 ? '#91e1d5' : '#253c4d'}
+                strokeDasharray={r === 1 ? '6 5' : '2 8'}
+              />
+              <text
+                x={X(r)}
+                y="300"
+                textAnchor="middle"
+                fill="#b8cbd4"
+                fontSize="18"
+              >
+                {r}
+              </text>
+            </g>
+          ),
+        )}
         <path
           d="M50 275V37M43 49L50 37L57 49M50 275H495M483 268L495 275L483 282"
           stroke="#8faebe"
@@ -276,7 +332,12 @@ export function LightFutures({ setup }: { setup: Setup }) {
             {t}
           </text>
         ))}
-        <path d={curve(true)} fill="none" stroke="#ffd095" strokeWidth="3" />
+        <path
+          d={curve(true)}
+          fill="none"
+          stroke="#ffd095"
+          strokeWidth="3"
+        />
         <path
           d={curve(false)}
           fill="none"
