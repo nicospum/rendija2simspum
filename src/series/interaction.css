@@ -270,3 +270,7 @@
     height: 220px;
   }
 }
+
+.ln-views:has(.spum-scene-console) > .bh-scene-details {
+  grid-column: 1/-1;
+}

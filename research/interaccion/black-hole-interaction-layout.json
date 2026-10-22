@@ -17,27 +17,29 @@
     },
     "together": true,
     "width": 320,
-    "variant": "main"
+    "variant": "main",
+    "action": "tab switch settled"
   },
   {
     "effect": {
-      "bottom": 729.609375,
-      "top": 690.609375
+      "bottom": 731.203125,
+      "top": 692.203125
     },
     "height": 740,
     "overflow": false,
     "route": "/lente-gravitacional/",
     "scene": {
-      "bottom": 421.109375,
-      "top": 201.109375
+      "bottom": 467.703125,
+      "top": 247.703125
     },
     "slider": {
-      "bottom": 681.609375,
-      "top": 637.609375
+      "bottom": 683.203125,
+      "top": 639.203125
     },
     "together": true,
     "width": 320,
-    "variant": "paths"
+    "variant": "paths",
+    "action": "tab switch settled"
   },
   {
     "effect": {
@@ -117,27 +119,29 @@
     },
     "together": true,
     "width": 390,
-    "variant": "main"
+    "variant": "main",
+    "action": "tab switch settled"
   },
   {
     "effect": {
-      "bottom": 731.734375,
-      "top": 712.234375
+      "bottom": 723.328125,
+      "top": 703.828125
     },
     "height": 844,
     "overflow": false,
     "route": "/lente-gravitacional/",
     "scene": {
-      "bottom": 442.734375,
-      "top": 182.734375
+      "bottom": 479.328125,
+      "top": 219.328125
     },
     "slider": {
-      "bottom": 703.234375,
-      "top": 659.234375
+      "bottom": 694.828125,
+      "top": 650.828125
     },
     "together": true,
     "width": 390,
-    "variant": "paths"
+    "variant": "paths",
+    "action": "tab switch settled"
   },
   {
     "effect": {
@@ -157,7 +161,8 @@
     },
     "together": true,
     "width": 390,
-    "variant": "main"
+    "variant": "main",
+    "action": "tab switch settled"
   },
   {
     "effect": {
@@ -177,7 +182,8 @@
     },
     "together": true,
     "width": 390,
-    "variant": "star"
+    "variant": "star",
+    "action": "tab switch settled"
   },
   {
     "effect": {
@@ -217,27 +223,29 @@
     },
     "together": true,
     "width": 768,
-    "variant": "main"
+    "variant": "main",
+    "action": "tab switch settled"
   },
   {
     "effect": {
-      "bottom": 721.109375,
-      "top": 701.609375
+      "bottom": 712.703125,
+      "top": 693.203125
     },
     "height": 1024,
     "overflow": false,
     "route": "/lente-gravitacional/",
     "scene": {
-      "bottom": 443.109375,
-      "top": 183.109375
+      "bottom": 479.703125,
+      "top": 219.703125
     },
     "slider": {
-      "bottom": 692.609375,
-      "top": 648.609375
+      "bottom": 684.203125,
+      "top": 640.203125
     },
     "together": true,
     "width": 768,
-    "variant": "paths"
+    "variant": "paths",
+    "action": "tab switch settled"
   },
   {
     "effect": {
@@ -301,8 +309,8 @@
   },
   {
     "effect": {
-      "bottom": 771.421875,
-      "top": 751.921875
+      "bottom": 713.609375,
+      "top": 694.109375
     },
     "height": 900,
     "overflow": false,
@@ -312,32 +320,34 @@
       "top": 170.609375
     },
     "slider": {
-      "bottom": 742.921875,
-      "top": 698.921875
+      "bottom": 685.109375,
+      "top": 641.109375
     },
     "together": true,
     "width": 1280,
-    "variant": "main"
+    "variant": "main",
+    "action": "entry settled"
   },
   {
     "effect": {
-      "bottom": 771.421875,
-      "top": 751.921875
+      "bottom": 713.609375,
+      "top": 694.109375
     },
     "height": 900,
     "overflow": false,
     "route": "/lente-gravitacional/",
     "scene": {
-      "bottom": 483.421875,
-      "top": 183.421875
+      "bottom": 470.609375,
+      "top": 170.609375
     },
     "slider": {
-      "bottom": 742.921875,
-      "top": 698.921875
+      "bottom": 685.109375,
+      "top": 641.109375
     },
     "together": true,
     "width": 1280,
-    "variant": "paths"
+    "variant": "paths",
+    "action": "simultaneous desktop views"
   },
   {
     "effect": {

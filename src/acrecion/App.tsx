@@ -69,6 +69,12 @@ export default function AccretionApp() {
       }
     })
   }
+  const chooseView = (view: Setup['view']) => {
+    update({ view })
+    requestAnimationFrame(() =>
+      document.getElementById('ac-view')?.scrollIntoView({ block: 'start' }),
+    )
+  }
   const start = (index: number) => {
     setState((s) => ({
       setup: { ...LESSONS[index].setup },
@@ -162,21 +168,27 @@ export default function AccretionApp() {
                 <button
                   aria-pressed={shown.view === 'disk'}
                   disabled={reference}
-                  onClick={() => update({ view: 'disk' })}
+                  onClick={() => chooseView('disk')}
                 >
                   01 · El disco
                 </button>
                 <button
                   aria-pressed={shown.view === 'star'}
                   disabled={reference}
-                  onClick={() => update({ view: 'star' })}
+                  onClick={() => chooseView('star')}
                 >
                   02 · La estrella
                 </button>
               </div>
 
             </div>
-            <p className="bh-scene-prompt">{shown.view==='disk'?'Arrastrá los mandos del gas y la inclinación':'Arrastrá la estrella por su órbita; la masa fija su período'}</p>
+            <p className="bh-scene-prompt">
+              {reference
+                ? 'Referencia del reto: volvé a tu prueba para editar'
+                : shown.view === 'disk'
+                  ? 'Arrastrá los mandos del gas y la inclinación'
+                  : 'Arrastrá la estrella por su órbita; la masa fija su período'}
+            </p>
             <div className="ac-stage">
               {shown.view === 'disk' ? (
                 <DiskView setup={shown} playing={playing && visible} onTune={reference?undefined:update} />

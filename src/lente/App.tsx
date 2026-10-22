@@ -32,11 +32,15 @@ export default function LensApp() {
   )
   useBlackHoleProgress('lente-gravitacional', state.completed, LESSONS)
   const [grid, setGrid] = useState(false)
-  const [view,setView]=useState<'image'|'paths'>(()=>location.hash==='#ln-paths'?'paths':'image')
-  const navigateView=(href:string)=>{
-    if(href!=='#ln-paths'&&href!=='#ln-views')return
-    setView(href==='#ln-paths'?'paths':'image')
-    requestAnimationFrame(()=>document.getElementById('ln-views')?.scrollIntoView({block:'start'}))
+  const [view, setView] = useState<'image' | 'paths'>(() =>
+    location.hash === '#ln-paths' ? 'paths' : 'image',
+  )
+  const navigateView = (href: string) => {
+    if (href !== '#ln-paths' && href !== '#ln-views') return
+    setView(href === '#ln-paths' ? 'paths' : 'image')
+    requestAnimationFrame(() =>
+      document.getElementById('ln-views')?.scrollIntoView({ block: 'start' }),
+    )
   }
   const { result, pending, error } = useTransfer(state)
   // Both views retain the same committed calculation while a new worker is running.
@@ -152,8 +156,25 @@ export default function LensApp() {
           }
         />
         <section className="ln-views" id="ln-views" aria-label="Dos vistas de la misma luz">
-          <div className="bh-view-tabs" role="group" aria-label="Elegir vista de la lente"><button aria-pressed={view==='image'} onClick={()=>setView('image')}>Imagen del observador</button><button aria-pressed={view==='paths'} onClick={()=>setView('paths')}>Recorrido de la luz</button></div>
-          <article className="ln-observer-panel" data-active={view==='image'}>
+          <div
+            className="bh-view-tabs"
+            role="group"
+            aria-label="Elegir vista de la lente"
+          >
+            <button
+              aria-pressed={view === 'image'}
+              onClick={() => navigateView('#ln-views')}
+            >
+              Imagen del observador
+            </button>
+            <button
+              aria-pressed={view === 'paths'}
+              onClick={() => navigateView('#ln-paths')}
+            >
+              Recorrido de la luz
+            </button>
+          </div>
+          <article className="ln-observer-panel" data-active={view === 'image'}>
             <div className="ln-view-heading">
               <div>
                 <p className="ln-eyebrow">01 / LO QUE VEMOS</p>
@@ -263,50 +284,17 @@ export default function LensApp() {
             </div>
             </details>
           </article>
-          <article className="ln-path-panel" id="ln-paths" data-active={view==='paths'}>
+          <article className="ln-path-panel" id="ln-paths" data-active={view === 'paths'}>
             <div className="ln-view-heading">
               <div>
                 <p className="ln-eyebrow">02 / CÓMO LLEGA LA LUZ</p>
                 <h2>Seguí el rayo</h2>
               </div>
-              <Info name="Las dos vistas">
-                La imagen usa una tabla de geodésicas integrada para cada ángulo radial y
-                reutilizada por simetría esférica. El diagrama integra directamente la dirección
-                elegida con la misma ecuación. La flecha conceptual cámara → origen es un rastreo
-                inverso; la luz recibida viaja al revés.
-              </Info>
+
             </div>
             <p className="bh-scene-prompt">Arrastrá la fuente dorada para buscar la alineación</p>
             <Diagram setup={setup} ray={ray} neighbors={neighbors} onSource={value=>dispatch({type:'source',value})} />
-            <details className="bh-scene-details"><summary>Detalles del rayo elegido</summary>
-            <div className={`ln-ray-outcome ln-${ray.outcome}`}>
-              <span>RAYO ELEGIDO · α = {number(state.rayAngle, 1)}°</span>
-              <strong>{outcome}</strong>
-              <p>
-                {!setup.gravity
-                  ? 'Línea recta hasta el fondo de referencia.'
-                  : ray.outcome === 'captured'
-                    ? 'Esta dirección no recibe luz del fondo. Ningún rayo sale del interior.'
-                    : ray.outcome === 'sky'
-                      ? `Pasa a un mínimo de ${number(ray.minRadius, 3)} rₛ antes de volver al fondo.`
-                      : 'Muy cerca del umbral, la luz puede dar muchas vueltas. No confundimos un cálculo limitado con una captura confirmada.'}
-              </p>
-              {setup.gravity && (
-                <small>
-                  b / bcrítico = {number(ray.b / CRITICAL_B, 3)} ·{' '}
-                  {ray.b < CRITICAL_B
-                    ? 'dentro del umbral de captura'
-                    : 'fuera del umbral de captura'}
-                </small>
-              )}
-              {ray.outcome === 'sky' && (
-                <p>
-                  Separación de la fuente dorada en el fondo: {number(sourceSeparation, 2)}°. Un
-                  valor cercano a cero conecta este píxel con esa fuente.
-                </p>
-              )}
-            </div>
-            </details>
+
           </article>
           <SceneConsole
             challengeHref="#ln-challenges"
@@ -467,6 +455,44 @@ export default function LensApp() {
               </p>
             </details>
           </SceneConsole>
+          <details className="bh-scene-details">
+            <summary>Detalles del rayo elegido</summary>
+            <Info name="Las dos vistas">
+              La imagen usa una tabla de geodésicas integrada para cada ángulo
+              radial y reutilizada por simetría esférica. El diagrama integra
+              directamente la dirección elegida con la misma ecuación. La flecha
+              conceptual cámara → origen es un rastreo inverso; la luz recibida
+              viaja al revés.
+            </Info>
+            <div className={`ln-ray-outcome ln-${ray.outcome}`}>
+              <span>RAYO ELEGIDO · α = {number(state.rayAngle, 1)}°</span>
+              <strong>{outcome}</strong>
+              <p>
+                {!setup.gravity
+                  ? 'Línea recta hasta el fondo de referencia.'
+                  : ray.outcome === 'captured'
+                    ? 'Esta dirección no recibe luz del fondo. Ningún rayo sale del interior.'
+                    : ray.outcome === 'sky'
+                      ? `Pasa a un mínimo de ${number(ray.minRadius, 3)} rₛ antes de volver al fondo.`
+                      : 'Muy cerca del umbral, la luz puede dar muchas vueltas. No confundimos un cálculo limitado con una captura confirmada.'}
+              </p>
+              {setup.gravity && (
+                <small>
+                  b / bcrítico = {number(ray.b / CRITICAL_B, 3)} ·{' '}
+                  {ray.b < CRITICAL_B
+                    ? 'dentro del umbral de captura'
+                    : 'fuera del umbral de captura'}
+                </small>
+              )}
+              {ray.outcome === 'sky' && (
+                <p>
+                  Separación de la fuente dorada en el fondo:{' '}
+                  {number(sourceSeparation, 2)}°. Un valor cercano a cero conecta
+                  este píxel con esa fuente.
+                </p>
+              )}
+            </div>
+          </details>
         </section>
         {error && (
           <p className="ln-error" role="alert">
