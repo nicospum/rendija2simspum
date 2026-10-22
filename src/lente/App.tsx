@@ -376,7 +376,7 @@ export default function LensApp() {
                 {state.gravity ? 'Quitar lente' : 'Activar lente'}
               </button>
               <button
-                onClick={() => dispatch({ type: 'source', value: -state.yaw })}
+                onClick={() => dispatch({ type: 'source', value: -state.yaw || 0 })}
               >
                 Alinear fuente
               </button>
@@ -523,7 +523,7 @@ export default function LensApp() {
                   ? 'Fuente alineada: con lente aparece el anillo.'
                   : 'Llevala a cero respecto de la cámara para recuperar la simetría.'}
               </p>
-              <button onClick={() => dispatch({ type: 'source', value: -state.yaw })}>
+              <button onClick={() => dispatch({ type: 'source', value: -state.yaw || 0 })}>
                 Alinear con la cámara
               </button>
             </div>
