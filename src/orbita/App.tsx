@@ -103,7 +103,7 @@ export default function OrbitApp() {
               cuidado: su orientación puede avanzar. Explorá la pista que ayudó
               a poner a prueba la gravedad de Einstein.
             </p>
-            <a href="#or-views">Jugar sobre la escena ↓</a>
+            <a data-scene-play href="#or-views">Jugar sobre la escena ↓</a>
           </div>
         </section>
         <LabNavigation
@@ -128,6 +128,7 @@ export default function OrbitApp() {
         />
         <section
           id="or-views"
+          data-scene-workspace
           className="rl-observatory"
           aria-label="Comparación de órbitas newtoniana y relativista"
         >
@@ -146,6 +147,7 @@ export default function OrbitApp() {
               {n(s.setup.progress * CYCLES)} vueltas radiales
             </span>
           </div>
+          <div className="spum-live-stage">
           <div
             className="rl-mobile-views"
             role="group"
@@ -205,8 +207,25 @@ export default function OrbitApp() {
               </article>
             ))}
           </div>
+          </div>
           <SceneConsole
             challengeHref="#or-challenges"
+            viewHref="#or-views"
+            challenge={{
+              index: s.index,
+              lessons: LESSONS,
+              question: lesson.question,
+              choices: lesson.choices,
+              prediction: s.prediction,
+              steps: lesson.steps.map((label, i) => ({ label, done: checks[i] })),
+              verified: s.feedback.startsWith('¡Descubrimiento completo!'),
+              feedback: s.feedback,
+              meaning: lesson.meaning,
+              onPredict: (choice) => dispatch({ type: 'predict', choice }),
+              onLesson: start,
+              onCheck: () => dispatch({ type: 'check' }),
+              onRestore: () => start(s.index),
+            }}
             hint="Arrastrá el planeta para recorrer su trayectoria. El gesto sigue la dirección angular de forma continua, incluso cuando las vueltas se cruzan. No estás moviéndolo fuera de la órbita ni aplicándole una fuerza. El recorrido se cuenta por fase radial, no por tiempo uniforme. Cambiar forma, tamaño o masa prepara otra órbita. La lupa amplía solo el exceso angular; las cifras conservan su valor físico."
           >
             <div className="spum-console-row">

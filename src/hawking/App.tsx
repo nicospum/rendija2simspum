@@ -192,7 +192,7 @@ export default function HawkingApp() {
               Cambiá su masa. Adelantá el tiempo. Descubrí la conexión entre gravedad, calor y
               física cuántica.
             </p>
-            <a href="#hk-view">Jugar con el horizonte ↓</a> · <a href="#hk-challenges">
+            <a data-scene-play href="#hk-view">Jugar con el horizonte ↓</a> · <a href="#hk-challenges">
               Empezar con una pregunta <Arrow />
             </a>
           </div>
@@ -235,7 +235,7 @@ export default function HawkingApp() {
           }
         />
         <div className="hk-workspace">
-          <section className="hk-observatory" id="hk-view" aria-label="Visor del agujero negro">
+          <section data-scene-workspace className="hk-observatory" id="hk-view" aria-label="Visor del agujero negro">
             <SceneExplorer
               current={current}
               reference={reference}
@@ -248,6 +248,28 @@ export default function HawkingApp() {
               controls={
                 <SceneConsole
                   challengeHref="#hk-challenges"
+                  viewHref="#hk-view"
+                  challenge={{
+                    index: lessonIndex,
+                    lessons: LESSONS,
+                    question: lesson.question,
+                    choices: lesson.choices,
+                    prediction: state.prediction,
+                    steps: [{ label: lesson.hint, done: status === 'observed' }],
+                    verified: status === 'observed' && state.prediction === lesson.answer,
+                    feedback:
+                      status === 'observed' && state.prediction !== null
+                        ? (state.prediction === lesson.answer
+                            ? 'Tu predicción coincide con el modelo. '
+                            : 'El resultado invita a revisar tu idea. ') + lesson.meaning
+                        : '',
+                    meaning: lesson.meaning,
+                    onPredict: (value) => dispatch({ type: 'predict', choice: value }),
+                    onLesson: (index) => prepareLesson(LESSONS[index].id),
+                    onTry: () => tryLesson(),
+                    tryLabel: lesson.action,
+                    onRestore: () => restoreReference(),
+                  }}
                   hint="Cambiar masa o entorno prepara otro ensayo desde t = 0. Acercar el mapa solo cambia la vista. Dorado y azul representan energía, no colores reales de fotones."
                 >
                   <div className="spum-console-row">

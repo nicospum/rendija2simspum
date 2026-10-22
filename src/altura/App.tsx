@@ -104,7 +104,7 @@ export default function HeightApp() {
               satélite: la gravedad y el movimiento aportan efectos distintos.
               Descubrí por qué el GPS necesita tenerlos en cuenta.
             </p>
-            <a href="#al-views">Jugar sobre la escena ↓</a>
+            <a data-scene-play href="#al-views">Jugar sobre la escena ↓</a>
           </div>
         </section>
         <LabNavigation
@@ -129,6 +129,7 @@ export default function HeightApp() {
         />
         <section
           id="al-views"
+          data-scene-workspace
           className="rl-observatory"
           aria-label="Ubicación y comparación de relojes"
         >
@@ -151,6 +152,7 @@ export default function HeightApp() {
               {m.elapsed === DAY ? 'día' : 'días'}
             </span>
           </div>
+          <div className="spum-live-stage">
           <div
             className="rl-mobile-views"
             role="group"
@@ -222,8 +224,25 @@ export default function HeightApp() {
               </article>
             ))}
           </div>
+          </div>
           <SceneConsole
             challengeHref="#al-challenges"
+            viewHref="#al-views"
+            challenge={{
+              index: s.index,
+              lessons: LESSONS,
+              question: l.question,
+              choices: l.choices,
+              prediction: s.prediction,
+              steps: l.steps.map((label, i) => ({ label, done: checks[i] })),
+              verified: s.feedback.startsWith('¡Descubrimiento completo!'),
+              feedback: s.feedback,
+              meaning: l.meaning,
+              onPredict: (choice) => dispatch({ type: 'predict', choice }),
+              onLesson: start,
+              onCheck: () => dispatch({ type: 'check' }),
+              onRestore: () => start(s.index),
+            }}
             hint="Subir el reloj cambia su ritmo; el ensayo vuelve a cero. La escala de altura de la torre es logarítmica. Arrastrar el satélite recorre instantes de la misma órbita, y arrastrar el punto del gráfico recorre el mismo ensayo. Los aros muestran avance; el desfase real es diminuto y se mide en ns o µs. Hay botones y teclado como alternativa al arrastre."
           >
             <div className="spum-console-row">

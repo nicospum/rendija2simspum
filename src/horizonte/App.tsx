@@ -139,7 +139,7 @@ export default function HorizonApp() {
               Explorá qué sucede en la caída y qué puede saber alguien que
               espera afuera.
             </p>
-            <a href="#hz-view">Jugar con la sonda ↓</a> · <a href="#hz-challenges">
+            <a data-scene-play href="#hz-view">Jugar con la sonda ↓</a> · <a href="#hz-challenges">
               Cuatro preguntas para cambiar tu idea del tiempo ↓
             </a>
           </div>
@@ -167,10 +167,12 @@ export default function HorizonApp() {
           onNext={complete ? () => start((learning.index + 1) % 4) : undefined}
         />
         <section
+          id="hz-workbench"
           className="ac-workbench hz-workbench"
           aria-label="Mapa y controles del horizonte"
         >
-          <div className="ac-visual">
+          <div data-scene-workspace className="ac-visual">
+            <div className="spum-live-stage">
             <div className="ac-toolbar">
               <div role="group" aria-label="Elegir vista del modelo">
                 <button
@@ -229,8 +231,25 @@ export default function HorizonApp() {
                 <LightFutures setup={s} />
               )}
             </div>
+            </div>
             <SceneConsole
               challengeHref="#hz-challenges"
+              viewHref="#hz-workbench"
+              challenge={{
+                index: learning.index,
+                lessons: LESSONS,
+                question: l.question,
+                choices: l.choices,
+                prediction: learning.prediction,
+                steps: observationSteps(learning),
+                verified: state.feedback.startsWith('¡Descubrimiento completo!'),
+                feedback: state.feedback,
+                meaning: l.meaning,
+                onPredict: (choice) => dispatch({ type: 'predict', choice }),
+                onLesson: start,
+                onCheck: () => dispatch({ type: 'check' }),
+                onRestore: () => start(learning.index),
+              }}
               hint="Arrastrá la sonda de lado. Sostenida compara alturas; Caída libre recorre la misma caída, no la empuja ni la frena. El resto del mapa permite desplazar la página."
             >
               <div className="spum-console-buttons">
@@ -264,6 +283,21 @@ export default function HorizonApp() {
                 value={m.radius ?? 0.6}
                 onChange={(e) => placeProbe(Number(e.target.value))}
               />
+              <p className="spum-console-impact">
+                {m.radius === null
+                  ? 'La caída mostrada terminó; la antena sigue escuchando las señales emitidas antes.'
+                  : view === 'light'
+                    ? m.radius < 1 - 1e-8
+                      ? 'Dentro: ambos caminos futuros llevan hacia radios menores.'
+                      : m.radius > 1 + 1e-8
+                        ? 'Fuera: la dirección saliente puede aumentar su radio.'
+                        : 'En el horizonte: la dirección saliente queda en rₛ.'
+                    : m.radius !== null && m.radius < 1
+                      ? 'Dentro: la luz no alcanza la antena exterior.'
+                      : s.mode === 'hover'
+                        ? `Ritmo de la sonda: ${n(m.heldRate * 100, 1)} % del de la antena.`
+                        : 'Al cruzar, el reloj propio sigue funcionando.'}
+              </p>
               <div className="spum-console-buttons">
                 <button onClick={() => placeProbe(learning.index === 2 ? 3 : 4)}>
                   Lejos · {learning.index === 2 ? '3' : '4'} rₛ
@@ -300,13 +334,33 @@ export default function HorizonApp() {
                   </button>
                 )}
               </div>
-              <p className="spum-console-impact">
-                {m.radius !== null && m.radius < 1
-                  ? 'Dentro: la luz no alcanza la antena exterior.'
-                  : s.mode === 'hover'
-                    ? `Ritmo de la sonda: ${n(m.heldRate * 100, 1)} % del de la antena.`
-                    : 'Al cruzar, el reloj propio sigue funcionando.'}
-              </p>
+
+              {state.manual.length > 0 && (
+                <div
+                  className="spum-console-records"
+                  role="group"
+                  aria-label="Últimos pulsos que enviaste"
+                >
+                  {state.manual.slice(-2).map((p) => (
+                    <p key={p.id}>
+                      Desde {n(p.radius)} rₛ:{' '}
+                      {p.arrival === null ? (
+                        'no alcanza la antena exterior.'
+                      ) : (
+                        <>
+                          {s.time >= p.arrival ? 'recibido' : 'en camino'} ·
+                          frecuencia {n(p.frequency!, 3)} × la emitida · demora{' '}
+                          {n(
+                            (p.arrival - p.emitted) * lapse(RECEIVER) * m.unit,
+                            1,
+                          )}{' '}
+                          s en el reloj de la antena.
+                        </>
+                      )}
+                    </p>
+                  ))}
+                </div>
+              )}
             </SceneConsole>
             <div className="ac-image-notes">
               <span>

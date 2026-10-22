@@ -1,0 +1,469 @@
+{
+  "date": "2026-10-22",
+  "environment": "Chromium, emulated viewport; mouse and keyboard, not physical touch hardware",
+  "keyboard": [
+    {
+      "lab": "tren",
+      "method": "scene keyboard",
+      "before": "0",
+      "after": "0.3",
+      "ok": true,
+      "effect": "En el tren: emisión primero B, después A; llegada a P primero B, después A.\nΔt (B − A): emisión -0,6 µs · llegada -1,201 µs."
+    },
+    {
+      "lab": "gemelos",
+      "method": "scene keyboard",
+      "before": "0",
+      "after": "1",
+      "ok": true,
+      "effect": "Casa: 10 años · Nave: 6 años · Diferencia: 4 años."
+    },
+    {
+      "lab": "ascensor",
+      "method": "scene activation",
+      "ok": true
+    },
+    {
+      "lab": "altura",
+      "method": "scene keyboard",
+      "before": "0",
+      "after": "4000",
+      "ok": true,
+      "effect": "Ritmo: +37,654 ns/día · Desfase ahora: 0 ns."
+    },
+    {
+      "lab": "orbita",
+      "method": "scene keyboard",
+      "before": "0",
+      "after": "1",
+      "ok": true,
+      "effect": "0,1035 ″/vuelta · 42,98 ″/siglo. Lupa angular ×100.000."
+    },
+    {
+      "lab": "fotoelectrico",
+      "method": "scene keyboard",
+      "before": "450",
+      "after": "1600",
+      "ok": true,
+      "effect": "Sodio: φ = 2,46 eV · Kmáx = 4,16 eV · I = 15,11 nA"
+    },
+    {
+      "lab": "horizonte",
+      "method": "scene keyboard",
+      "before": "4",
+      "after": "1.2",
+      "ok": true,
+      "effect": "Ritmo de la sonda: 41,9 % del de la antena."
+    },
+    {
+      "lab": "acrecion",
+      "method": "scene keyboard",
+      "before": "55",
+      "after": "0",
+      "ok": true,
+      "effect": "Sin gas: desaparece el disco; la masa sigue ahí."
+    },
+    {
+      "lab": "lente",
+      "method": "scene keyboard",
+      "ok": true,
+      "effect": "Fuente a 8° del eje · Alcanza el fondo. Sombra: 6,1°."
+    },
+    {
+      "lab": "entropia",
+      "method": "scene keyboard",
+      "before": "10",
+      "after": "20",
+      "ok": true,
+      "effect": "Radio ×2 · Área ×4 · Entropía ×4 frente a 10 M☉."
+    },
+    {
+      "lab": "reloj",
+      "method": "scene keyboard",
+      "before": "0",
+      "after": "100",
+      "ok": true
+    },
+    {
+      "lab": "hawking",
+      "method": "map keyboard and click",
+      "ok": true,
+      "information": "La región interior\n×\n\nEl disco oscuro representa el interior del horizonte en un corte esquemático. La radiación de Hawking no es luz clásica que sale de ese interior: se calcula con campos cuánticos en un espacio-tiempo con horizonte.\n\nQue emita energía hacia afuera no significa que algo pueda escapar desde adentro."
+    }
+  ],
+  "pointer": [
+    {
+      "lab": "tren",
+      "before": "0",
+      "after": "0.16",
+      "ok": true,
+      "layout": {
+        "answer": {
+          "bottom": 589.21875,
+          "top": 545.21875
+        },
+        "control": {
+          "bottom": 860.21875,
+          "top": 816.21875
+        },
+        "effect": {
+          "bottom": 927.71875,
+          "top": 869.21875
+        },
+        "header": {
+          "bottom": 464.71875,
+          "top": 412.71875
+        },
+        "height": 844,
+        "overflow": false,
+        "route": "/tren-de-einstein/",
+        "sceneVisible": true,
+        "stages": [
+          {
+            "bottom": 401.71875,
+            "height": 320,
+            "top": 81.71875
+          }
+        ],
+        "width": 390
+      },
+      "scrollShift": 0
+    },
+    {
+      "lab": "fotoelectrico",
+      "before": "450",
+      "after": "843",
+      "ok": true,
+      "layout": {
+        "answer": {
+          "bottom": 538.65625,
+          "top": 494.65625
+        },
+        "control": {
+          "bottom": 809.65625,
+          "top": 765.65625
+        },
+        "effect": {
+          "bottom": 838.15625,
+          "top": 818.65625
+        },
+        "header": {
+          "bottom": 414.15625,
+          "top": 362.15625
+        },
+        "height": 844,
+        "overflow": false,
+        "route": "/efecto-fotoelectrico/",
+        "sceneVisible": true,
+        "stages": [
+          {
+            "bottom": 351.15625,
+            "height": 269,
+            "top": 82.15625
+          }
+        ],
+        "width": 390
+      },
+      "scrollShift": 0
+    },
+    {
+      "lab": "horizonte",
+      "before": "4",
+      "after": "2.1422619245054904",
+      "ok": true,
+      "layout": {
+        "answer": {
+          "bottom": 650.796875,
+          "top": 606.796875
+        },
+        "control": {
+          "bottom": 971.796875,
+          "top": 927.796875
+        },
+        "effect": {
+          "bottom": 1000.296875,
+          "top": 980.796875
+        },
+        "header": {
+          "bottom": 526.296875,
+          "top": 474.296875
+        },
+        "height": 844,
+        "overflow": false,
+        "route": "/horizonte/",
+        "sceneVisible": true,
+        "stages": [
+          {
+            "bottom": 463.296875,
+            "height": 384,
+            "top": 79.296875
+          }
+        ],
+        "width": 390
+      },
+      "scrollShift": 0
+    },
+    {
+      "lab": "entropia",
+      "before": "8",
+      "after": "16",
+      "ok": true,
+      "effect": "16 ÷ 4 = 4 unidades de S/kB; no son bits.",
+      "layout": {
+        "answer": {
+          "bottom": 474.578125,
+          "top": 430.578125
+        },
+        "control": {
+          "bottom": 694.578125,
+          "top": 650.578125
+        },
+        "effect": {
+          "bottom": 723.078125,
+          "top": 703.578125
+        },
+        "header": {
+          "bottom": 350.078125,
+          "top": 298.078125
+        },
+        "height": 844,
+        "overflow": false,
+        "route": "/entropia/",
+        "sceneVisible": true,
+        "stages": [
+          {
+            "bottom": 287.078125,
+            "height": 157.875,
+            "top": 129.203125
+          }
+        ],
+        "width": 390
+      }
+    }
+  ],
+  "info": [
+    {
+      "height": 844,
+      "popup": {
+        "bottom": 486.953125,
+        "height": 208,
+        "left": 25,
+        "right": 350,
+        "top": 278.953125
+      },
+      "readable": true,
+      "sceneUncovered": true,
+      "stage": {
+        "bottom": 273.953125,
+        "right": 358,
+        "top": 78.953125
+      },
+      "width": 390,
+      "withinViewport": true
+    },
+    {
+      "height": 375,
+      "popup": {
+        "bottom": 286.671875,
+        "height": 208,
+        "left": 297.75,
+        "right": 635.421875,
+        "top": 78.671875
+      },
+      "readable": true,
+      "sceneUncovered": true,
+      "stage": {
+        "bottom": 278.671875,
+        "right": 289.75,
+        "top": 78.671875
+      },
+      "width": 667,
+      "withinViewport": true
+    },
+    {
+      "height": 320,
+      "popup": {
+        "bottom": 268.96875,
+        "height": 220,
+        "left": 253.359375,
+        "right": 535.59375,
+        "top": 48.96875
+      },
+      "readable": true,
+      "sceneUncovered": true,
+      "stage": {
+        "bottom": 248.96875,
+        "right": 245.359375,
+        "top": 48.96875
+      },
+      "width": 568,
+      "withinViewport": true
+    }
+  ],
+  "navigation": [
+    {
+      "route": "efecto-fotoelectrico",
+      "hash": "pe-controls",
+      "open": true,
+      "layout": {
+        "answer": {
+          "bottom": 203.65625,
+          "height": 44,
+          "top": 159.65625
+        },
+        "control": {
+          "bottom": 474.65625,
+          "height": 44,
+          "top": 430.65625
+        },
+        "effect": {
+          "bottom": 522.65625,
+          "height": 39,
+          "top": 483.65625
+        },
+        "header": {
+          "bottom": 399,
+          "height": 52,
+          "top": 347
+        },
+        "height": 844,
+        "overflow": false,
+        "route": "/efecto-fotoelectrico/",
+        "sceneVisible": true,
+        "stages": [
+          {
+            "bottom": 347,
+            "height": 269,
+            "top": 78
+          }
+        ],
+        "width": 390
+      }
+    },
+    {
+      "route": "lente-gravitacional",
+      "hash": "ln-challenges",
+      "open": true,
+      "layout": {
+        "answer": {
+          "bottom": 539.234375,
+          "height": 44,
+          "top": 495.234375
+        },
+        "control": {
+          "bottom": 759.234375,
+          "height": 44,
+          "top": 715.234375
+        },
+        "effect": {
+          "bottom": 787.734375,
+          "height": 19.5,
+          "top": 768.234375
+        },
+        "header": {
+          "bottom": 414.734375,
+          "height": 52,
+          "top": 362.734375
+        },
+        "height": 844,
+        "overflow": false,
+        "route": "/lente-gravitacional/",
+        "sceneVisible": true,
+        "stages": [
+          {
+            "bottom": 350,
+            "height": 214,
+            "top": 136
+          }
+        ],
+        "width": 390
+      }
+    },
+    {
+      "route": "horizonte",
+      "hash": "hz-controls",
+      "open": true,
+      "layout": {
+        "answer": {
+          "bottom": 318.796875,
+          "height": 44,
+          "top": 274.796875
+        },
+        "control": {
+          "bottom": 639.796875,
+          "height": 44,
+          "top": 595.796875
+        },
+        "effect": {
+          "bottom": 668.296875,
+          "height": 19.5,
+          "top": 648.796875
+        },
+        "header": {
+          "bottom": 514,
+          "height": 52,
+          "top": 462
+        },
+        "height": 844,
+        "overflow": false,
+        "route": "/horizonte/",
+        "sceneVisible": true,
+        "stages": [
+          {
+            "bottom": 462,
+            "height": 384,
+            "top": 78
+          }
+        ],
+        "width": 390
+      }
+    },
+    {
+      "route": "efecto-fotoelectrico",
+      "action": "close and reopen from Retos",
+      "retainedFrequency": true,
+      "prediction": "1",
+      "open": true
+    },
+    {
+      "route": "tren-de-einstein",
+      "action": "close question keeps live play; optional wide view",
+      "play": {
+        "rangeRetained": true,
+        "questionClosed": true,
+        "layout": {
+          "answer": null,
+          "control": {
+            "bottom": 540.21875,
+            "height": 44,
+            "top": 496.21875
+          },
+          "effect": {
+            "bottom": 607.71875,
+            "height": 58.5,
+            "top": 549.21875
+          },
+          "header": {
+            "bottom": 464.71875,
+            "height": 52,
+            "top": 412.71875
+          },
+          "height": 844,
+          "overflow": false,
+          "route": "/tren-de-einstein/",
+          "sceneVisible": true,
+          "stages": [
+            {
+              "bottom": 401.71875,
+              "height": 320,
+              "top": 81.71875
+            }
+          ],
+          "width": 390
+        }
+      },
+      "wideState": "false",
+      "rangeRetained": true
+    }
+  ]
+}

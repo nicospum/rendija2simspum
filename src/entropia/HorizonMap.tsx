@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { useSvgScrub } from '../shared/useSvgScrub'
 import { scrubKey } from '../shared/sceneInteraction'
-import { massAtEdge, emittedAtCorner } from './interaction'
+import { massAtEdge, emittedAtCorner, exampleAreaAtX } from './interaction'
 import { useId, useState } from 'react'
 import { entropyModel } from './physics'
 
@@ -47,6 +47,8 @@ export default function HorizonMap({
   onMass,
   onEmitted,
   controls,
+  exampleArea,
+  onExampleArea,
 }: {
   model: ReturnType<typeof entropyModel>
   mass: number
@@ -54,6 +56,8 @@ export default function HorizonMap({
   onMass: (v: number) => void
   onEmitted: (v: number) => void
   controls: ReactNode
+  exampleArea?: number
+  onExampleArea?: (value: number) => void
 }) {
   const resize = useSvgScrub((p) => {
     const v = massAtEdge(p.x, emitted)
@@ -62,6 +66,10 @@ export default function HorizonMap({
   const emit = useSvgScrub((p) => {
     const v = emittedAtCorner(p.x, mass)
     if (v !== null) onEmitted(v)
+  })
+  const example = useSvgScrub((p) => {
+    const value = exampleAreaAtX(p.x)
+    if (value !== null) onExampleArea?.(value)
   })
   const [yaw, setYaw] = useState(0)
   const [inspect, setInspect] = useState<'horizon' | 'grid' | 'reference'>(
@@ -78,211 +86,320 @@ export default function HorizonMap({
       'La línea punteada conserva siempre la referencia de 10 masas solares. Ni el encuadre ni la escala se ajustan al mover la masa: duplicar el radio ocupa cuatro veces más área.',
   }
   return (
-    <div className="en-map">
+    <div data-scene-workspace className="en-map">
       <svg
-        viewBox="0 0 700 425"
+        className="spum-live-stage"
+        viewBox={exampleArea === undefined ? '0 0 700 425' : '0 0 700 320'}
         role="group"
-        aria-label={`Mapa geométrico del horizonte. Radio ${model.radiusRatio.toFixed(2)} veces y área ${model.areaRatio.toFixed(2)} veces la referencia fija.`}
+        aria-label={
+          exampleArea === undefined
+            ? `Mapa geométrico del horizonte. Radio ${model.radiusRatio.toFixed(2)} veces y área ${model.areaRatio.toFixed(2)} veces la referencia fija.`
+            : `Lupa algebraica aparte: ${exampleArea} áreas de Planck divididas por cuatro. El agujero negro del laboratorio no cambia.`
+        }
       >
-        <defs>
-          <radialGradient id={`${id}-space`}>
-            <stop stopColor="#16303a" />
-            <stop offset="1" stopColor="#09141d" />
-          </radialGradient>
-          <radialGradient id={`${id}-body`} cx="32%" cy="22%">
-            <stop stopColor="#405047" />
-            <stop offset=".45" stopColor="#182924" />
-            <stop offset="1" stopColor="#040b10" />
-          </radialGradient>
-          <radialGradient id={`${id}-glow`}>
-            <stop offset=".7" stopColor="#e7c17f" stopOpacity="0" />
-            <stop offset=".86" stopColor="#e7c17f" stopOpacity=".13" />
-            <stop offset="1" stopColor="#e7c17f" stopOpacity="0" />
-          </radialGradient>
-          <pattern
-            id={`${id}-tiles`}
-            width="15"
-            height="15"
-            patternUnits="userSpaceOnUse"
-          >
+        {exampleArea !== undefined ? (
+          <g>
+            <rect width="700" height="320" fill="#091b27" />
+            <text
+              x="350"
+              y="34"
+              textAnchor="middle"
+              fill="#e8d29a"
+              fontSize="24"
+            >
+              LUPA ALGEBRAICA · EJEMPLO APARTE
+            </text>
+            <text
+              x="350"
+              y="59"
+              textAnchor="middle"
+              fill="#b5ced0"
+              fontSize="17"
+            >
+              Cada grupo tiene cuatro áreas de Planck
+            </text>
+            {Array.from({ length: exampleArea / 4 }, (_, group) => (
+              <g
+                key={group}
+                transform={`translate(${64 + (group % 8) * 72} ${80 + Math.floor(group / 8) * 72})`}
+              >
+                <rect
+                  x="-5"
+                  y="-5"
+                  width="59"
+                  height="59"
+                  rx="5"
+                  fill="none"
+                  stroke="#527b81"
+                />
+                {Array.from({ length: 4 }, (_, cell) => (
+                  <rect
+                    key={cell}
+                    x={(cell % 2) * 26}
+                    y={Math.floor(cell / 2) * 26}
+                    width="22"
+                    height="22"
+                    fill={group % 2 ? '#a5e4db' : '#efd29a'}
+                  />
+                ))}
+              </g>
+            ))}
+            <text
+              x="350"
+              y="243"
+              textAnchor="middle"
+              fill="#a5e4db"
+              fontSize="20"
+            >
+              ← Arrastrá para cambiar el área de ejemplo →
+            </text>
+            <text
+              x="350"
+              y="279"
+              textAnchor="middle"
+              fill="#efd29a"
+              fontSize="30"
+            >
+              {exampleArea} ÷ 4 = {exampleArea / 4} unidades de S/kB
+            </text>
+            <text
+              x="350"
+              y="307"
+              textAnchor="middle"
+              fill="#b5ced0"
+              fontSize="17"
+            >
+              No son bits ni celdas observadas · la masa del laboratorio no
+              cambia
+            </text>
             <rect
-              width="15"
-              height="15"
-              fill="#dabb7920"
-              stroke="#e3c58b"
-              strokeOpacity=".45"
-              strokeWidth=".8"
+              {...example}
+              x="44"
+              y="70"
+              width="612"
+              height="150"
+              fill="transparent"
+              className="spum-object-handle"
+              role="slider"
+              tabIndex={0}
+              aria-label="Cambiar área de ejemplo en la escena"
+              aria-valuemin={4}
+              aria-valuemax={64}
+              aria-valuenow={exampleArea}
+              onKeyDown={(event) => {
+                const value = scrubKey(event.key, exampleArea, 4, 64, 4)
+                if (value !== undefined) {
+                  event.preventDefault()
+                  onExampleArea?.(value)
+                }
+              }}
             />
-          </pattern>
-        </defs>
-        <rect width="700" height="425" fill={`url(#${id}-space)`} />
-        {Array.from({ length: 65 }, (_, i) => (
-          <circle
-            key={i}
-            cx={20 + ((i * 83) % 660)}
-            cy={32 + ((i * 53) % 355)}
-            r={i % 4 === 0 ? 1 : 0.6}
-            fill="#c2d7dd"
-            opacity=".25"
-          />
-        ))}
-        <g className="en-svg-mono" fill="#a6bdc2">
-          <text x="26" y="32">
-            GEOMETRÍA DEL HORIZONTE
-          </text>
-          <text x="488" y="65">
-            ÁREAS RELATIVAS
-          </text>
-        </g>
-        <path d="M440 60V365" stroke="#b1cccf" strokeOpacity=".12" />
-        <circle
-          cx="245"
-          cy="214"
-          r={radius * 1.28}
-          fill={`url(#${id}-glow)`}
-        />
-        <circle
-          cx="245"
-          cy="214"
-          r={radius}
-          fill={`url(#${id}-body)`}
-          stroke="#efd29a"
-          strokeWidth="1.5"
-        />
-        <g fill="none" stroke="#d9bc7f" strokeWidth=".75" opacity=".7">
-          {graticule(radius, yaw).map((d, i) => (
-            <path key={i} d={d} />
-          ))}
-        </g>
-        <circle
-          cx="245"
-          cy="214"
-          r="70"
-          fill="none"
-          stroke="#8caab8"
-          strokeWidth="1"
-          strokeDasharray="4 5"
-        />
-        <path
-          d={`M245 ${214 + radius + 18}h${radius}m-${radius} -4v8m${radius} -8v8`}
-          fill="none"
-          stroke="#efd29a"
-        />
-        <text
-          x={245 + radius / 2}
-          y={214 + radius + 42}
-          textAnchor="middle"
-          fill="#efd29a"
-          fontSize="13"
-        >
-          rₛ ={' '}
-          {(model.current.radiusM / 1000).toLocaleString('es-AR', {
-            maximumFractionDigits: 1,
-          })}{' '}
-          km
-        </text>
-        <rect
-          x="500"
-          y="134"
-          width="100"
-          height="100"
-          fill="none"
-          stroke="#8caab8"
-          strokeDasharray="4 4"
-        />
-        <rect
-          x={550 - areaSide / 2}
-          y={184 - areaSide / 2}
-          width={areaSide}
-          height={areaSide}
-          fill={`url(#${id}-tiles)`}
-          stroke="#efd29a"
-        />
-        <text
-          x="550"
-          y="324"
-          textAnchor="middle"
-          fill="#efd29a"
-          fontSize="30"
-          fontFamily="Georgia,serif"
-        >
-          {model.areaRatio.toLocaleString('es-AR', {
-            maximumFractionDigits: 2,
-          })}{' '}
-          ×
-        </text>
-        <text
-          x="550"
-          y="347"
-          textAnchor="middle"
-          fill="#a6bdc2"
-          fontSize="12"
-        >
-          el área de referencia
-        </text>
-        <path d="M44 380h100m-100 -4v8m100 -8v8" stroke="#8caab8" />
-        <text x="44" y="403" fill="#a6bdc2" fontSize="11">
-          {(((model.reference.radiusM / 1000) * 100) / 70).toLocaleString(
-            'es-AR',
-            {
-              maximumFractionDigits: 1,
-            },
-          )}{' '}
-          km · escala fija del mapa
-        </text>
-        <text x="473" y="380" fill="#a6bdc2" fontSize="11">
-          Punteado: referencia de 10 M☉
-        </text>
-        <circle
-          {...resize}
-          cx={245 + radius}
-          cy="214"
-          r="8"
-          fill="#efd29a"
-          stroke="transparent"
-          strokeWidth="44"
-          vectorEffect="non-scaling-stroke"
-          className="spum-object-handle"
-          role="slider"
-          tabIndex={0}
-          aria-label="Cambiar masa inicial desde el horizonte"
-          aria-valuemin={5}
-          aria-valuemax={20}
-          aria-valuenow={mass}
-          aria-valuetext={`${mass} masas solares iniciales`}
-          onKeyDown={(e) => {
-            const v = scrubKey(e.key, mass, 5, 20, 0.1)
-            if (v !== undefined) {
-              e.preventDefault()
-              onMass(v)
-            }
-          }}
-        />
-        <circle
-          {...emit}
-          cx={550 + areaSide / 2}
-          cy={184 + areaSide / 2}
-          r="7"
-          fill="#9ce3db"
-          stroke="transparent"
-          strokeWidth="44"
-          vectorEffect="non-scaling-stroke"
-          className="spum-object-handle"
-          role="slider"
-          tabIndex={0}
-          aria-label="Emitir masa desde el cuadro de área"
-          aria-valuemin={0}
-          aria-valuemax={0.5}
-          aria-valuenow={emitted}
-          aria-valuetext={`${emitted * 100} por ciento de la masa inicial emitida`}
-          onKeyDown={(e) => {
-            const v = scrubKey(e.key, emitted, 0, 0.5, 0.025)
-            if (v !== undefined) {
-              e.preventDefault()
-              onEmitted(v)
-            }
-          }}
-        />
+          </g>
+        ) : (
+          <>
+            <defs>
+              <radialGradient id={`${id}-space`}>
+                <stop stopColor="#16303a" />
+                <stop offset="1" stopColor="#09141d" />
+              </radialGradient>
+              <radialGradient id={`${id}-body`} cx="32%" cy="22%">
+                <stop stopColor="#405047" />
+                <stop offset=".45" stopColor="#182924" />
+                <stop offset="1" stopColor="#040b10" />
+              </radialGradient>
+              <radialGradient id={`${id}-glow`}>
+                <stop offset=".7" stopColor="#e7c17f" stopOpacity="0" />
+                <stop offset=".86" stopColor="#e7c17f" stopOpacity=".13" />
+                <stop offset="1" stopColor="#e7c17f" stopOpacity="0" />
+              </radialGradient>
+              <pattern
+                id={`${id}-tiles`}
+                width="15"
+                height="15"
+                patternUnits="userSpaceOnUse"
+              >
+                <rect
+                  width="15"
+                  height="15"
+                  fill="#dabb7920"
+                  stroke="#e3c58b"
+                  strokeOpacity=".45"
+                  strokeWidth=".8"
+                />
+              </pattern>
+            </defs>
+            <rect width="700" height="425" fill={`url(#${id}-space)`} />
+            {Array.from({ length: 65 }, (_, i) => (
+              <circle
+                key={i}
+                cx={20 + ((i * 83) % 660)}
+                cy={32 + ((i * 53) % 355)}
+                r={i % 4 === 0 ? 1 : 0.6}
+                fill="#c2d7dd"
+                opacity=".25"
+              />
+            ))}
+            <g className="en-svg-mono" fill="#a6bdc2">
+              <text x="26" y="32">
+                GEOMETRÍA DEL HORIZONTE
+              </text>
+              <text x="488" y="65">
+                ÁREAS RELATIVAS
+              </text>
+            </g>
+            <path d="M440 60V365" stroke="#b1cccf" strokeOpacity=".12" />
+            <circle
+              cx="245"
+              cy="214"
+              r={radius * 1.28}
+              fill={`url(#${id}-glow)`}
+            />
+            <circle
+              cx="245"
+              cy="214"
+              r={radius}
+              fill={`url(#${id}-body)`}
+              stroke="#efd29a"
+              strokeWidth="1.5"
+            />
+            <g fill="none" stroke="#d9bc7f" strokeWidth=".75" opacity=".7">
+              {graticule(radius, yaw).map((d, i) => (
+                <path key={i} d={d} />
+              ))}
+            </g>
+            <circle
+              cx="245"
+              cy="214"
+              r="70"
+              fill="none"
+              stroke="#8caab8"
+              strokeWidth="1"
+              strokeDasharray="4 5"
+            />
+            <path
+              d={`M245 ${214 + radius + 18}h${radius}m-${radius} -4v8m${radius} -8v8`}
+              fill="none"
+              stroke="#efd29a"
+            />
+            <text
+              x={245 + radius / 2}
+              y={214 + radius + 42}
+              textAnchor="middle"
+              fill="#efd29a"
+              fontSize="13"
+            >
+              rₛ ={' '}
+              {(model.current.radiusM / 1000).toLocaleString('es-AR', {
+                maximumFractionDigits: 1,
+              })}{' '}
+              km
+            </text>
+
+            <rect
+              x="500"
+              y="134"
+              width="100"
+              height="100"
+              fill="none"
+              stroke="#8caab8"
+              strokeDasharray="4 4"
+            />
+            <rect
+              x={550 - areaSide / 2}
+              y={184 - areaSide / 2}
+              width={areaSide}
+              height={areaSide}
+              fill={`url(#${id}-tiles)`}
+              stroke="#efd29a"
+            />
+            <text
+              x="550"
+              y="324"
+              textAnchor="middle"
+              fill="#efd29a"
+              fontSize="30"
+              fontFamily="Georgia,serif"
+            >
+              {model.areaRatio.toLocaleString('es-AR', {
+                maximumFractionDigits: 2,
+              })}{' '}
+              ×
+            </text>
+            <text
+              x="550"
+              y="347"
+              textAnchor="middle"
+              fill="#a6bdc2"
+              fontSize="12"
+            >
+              el área de referencia
+            </text>
+
+            <path d="M44 380h100m-100 -4v8m100 -8v8" stroke="#8caab8" />
+            <text x="44" y="403" fill="#a6bdc2" fontSize="11">
+              {(
+                ((model.reference.radiusM / 1000) * 100) /
+                70
+              ).toLocaleString('es-AR', {
+                maximumFractionDigits: 1,
+              })}{' '}
+              km · escala fija del mapa
+            </text>
+            <text x="473" y="380" fill="#a6bdc2" fontSize="11">
+              Punteado: referencia de 10 M☉
+            </text>
+            <circle
+              {...resize}
+              cx={245 + radius}
+              cy="214"
+              r="8"
+              fill="#efd29a"
+              stroke="transparent"
+              strokeWidth="44"
+              vectorEffect="non-scaling-stroke"
+              className="spum-object-handle"
+              role="slider"
+              tabIndex={0}
+              aria-label="Cambiar masa inicial desde el horizonte"
+              aria-valuemin={5}
+              aria-valuemax={20}
+              aria-valuenow={mass}
+              aria-valuetext={`${mass} masas solares iniciales`}
+              onKeyDown={(e) => {
+                const v = scrubKey(e.key, mass, 5, 20, 0.1)
+                if (v !== undefined) {
+                  e.preventDefault()
+                  onMass(v)
+                }
+              }}
+            />
+            <circle
+              {...emit}
+              cx={550 + areaSide / 2}
+              cy={184 + areaSide / 2}
+              r="7"
+              fill="#9ce3db"
+              stroke="transparent"
+              strokeWidth="44"
+              vectorEffect="non-scaling-stroke"
+              className="spum-object-handle"
+              role="slider"
+              tabIndex={0}
+              aria-label="Emitir masa desde el cuadro de área"
+              aria-valuemin={0}
+              aria-valuemax={0.5}
+              aria-valuenow={emitted}
+              aria-valuetext={`${emitted * 100} por ciento de la masa inicial emitida`}
+              onKeyDown={(e) => {
+                const v = scrubKey(e.key, emitted, 0, 0.5, 0.025)
+                if (v !== undefined) {
+                  e.preventDefault()
+                  onEmitted(v)
+                }
+              }}
+            />
+          </>
+        )}
       </svg>
       {controls}
       <details className="bh-scene-details">

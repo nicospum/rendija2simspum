@@ -149,7 +149,7 @@ export default function TwinsApp() {
               seguí sus relojes y descubrí qué cuenta cada uno entre el abrazo
               de salida y el reencuentro.
             </p>
-            <a href="#gv-views">Jugar sobre la escena ↓</a>
+            <a data-scene-play href="#gv-views">Jugar sobre la escena ↓</a>
           </div>
         </section>
         <LabNavigation
@@ -174,6 +174,7 @@ export default function TwinsApp() {
         />
         <section
           id="gv-views"
+          data-scene-workspace
           className="rl-observatory"
           aria-label="Viaje y espacio-tiempo"
         >
@@ -190,6 +191,7 @@ export default function TwinsApp() {
                   : 'PAUSADO · EXPLORÁ'}
             </span>
           </div>
+          <div className="spum-live-stage">
           <div
             className="rl-mobile-views"
             role="group"
@@ -251,8 +253,25 @@ export default function TwinsApp() {
               </article>
             ))}
           </div>
+          </div>
           <SceneConsole
             challengeHref="#gv-challenges"
+            viewHref="#gv-views"
+            challenge={{
+              index: s.index,
+              lessons: LESSONS,
+              question: lesson.question,
+              choices: lesson.choices,
+              prediction: s.prediction,
+              steps: lesson.steps.map((label, i) => ({ label, done: checks[i] })),
+              verified: s.feedback.startsWith('¡Descubrimiento completo!'),
+              feedback: s.feedback,
+              meaning: lesson.meaning,
+              onPredict: (choice) => dispatch({ type: 'predict', choice }),
+              onLesson: start,
+              onCheck: () => dispatch({ type: 'check' }),
+              onRestore: () => start(s.index),
+            }}
             hint="Recorré la ruta con el dedo: carril superior para la ida, inferior para la vuelta. En el diagrama, arrastrá la línea de la nave hacia arriba para avanzar en el tiempo. Cambiar el plan vuelve a la salida; recorrerlo solo cambia el instante que estás mirando. El reloj propio suma todo el viaje; no es una imagen retrasada."
           >
             <div className="spum-console-row">

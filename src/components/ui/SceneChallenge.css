@@ -1,0 +1,565 @@
+/* SceneConsole keeps the existing trial and model. Only the live stage and
+   its compact navigation stick; notes and controls remain normal page content. */
+.spum-scene-console select {
+  min-height: 44px;
+  padding: 8px;
+  color: #e7f1ee;
+  color-scheme: dark;
+  background: #173b48;
+  border: 1px solid #91b4b5;
+  border-radius: 5px;
+  font: inherit;
+}
+.spum-console-heading select {
+  min-width: 0;
+  width: 0;
+  flex: 1;
+}
+.spum-challenge-toggle {
+  flex: none;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px;
+  border: 1px solid #91b4b5;
+  border-radius: 5px;
+  color: #e7f1ee;
+  background: #1d4251;
+  font: inherit;
+  cursor: pointer;
+}
+.spum-challenge-answer {
+  display: block;
+  margin: 10px 0;
+}
+.spum-challenge-answer > span {
+  display: block;
+  margin-bottom: 3px;
+}
+.spum-challenge-answer select {
+  width: 100%;
+}
+.spum-scene-console .spum-challenge-question {
+  color: #f2dfb5;
+}
+.spum-scene-console .spum-challenge-step {
+  border-left: 2px solid #a5e4db;
+  padding-left: 8px;
+}
+.spum-scene-challenge {
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #52727f;
+}
+.spum-scene-challenge ul {
+  padding-left: 18px;
+}
+.spum-challenge-actions {
+  margin-top: 8px;
+}
+.spum-scene-console[data-scene-active='true'] > .spum-console-heading {
+  position: sticky;
+  top: calc(
+    var(--spum-stage-offset, 78px) + var(--spum-stage-height, 250px)
+  );
+  z-index: 9;
+  background: #13303d;
+  padding-block: 4px;
+  box-shadow: 0 6px 0 #13303d;
+  flex-wrap: nowrap;
+  gap: 6px;
+}
+.spum-console-variables,
+.spum-scene-challenge,
+.spum-scene-console[data-scene-active='true'] :is(input, select, button) {
+  scroll-margin-top: calc(
+    var(--spum-stage-height, 250px) + var(--spum-stage-offset, 78px) - 20px
+  );
+}
+/* The workspace attribute is the shared contract across all twelve chapters. */
+[data-scene-workspace]:has(.spum-scene-console[data-scene-active='true']),
+.ac-workbench:has(.spum-scene-console[data-scene-active='true']) {
+  overflow: visible;
+}
+[data-scene-workspace]:has(.spum-scene-console[data-scene-active='true'])
+  > .spum-live-stage {
+  position: sticky;
+  top: var(--spum-stage-offset, 78px);
+  z-index: 8;
+  align-self: start;
+  background: #0d1f2e;
+  border-bottom: 1px solid #6e929c;
+  box-shadow: 0 -24px 0 #0d1f2e;
+}
+[data-scene-workspace].rl-observatory:has(
+    .spum-scene-console[data-scene-active='true']
+  )
+  > .rl-observatory-heading,
+.en-horizon:has(.spum-scene-console[data-scene-active='true'])
+  > .en-section-top,
+[data-scene-workspace].rl-observatory:has(
+    .spum-scene-console[data-scene-active='true']
+  )
+  :is(.rl-frame-facts, .rl-frame-caption, .tr-records) {
+  display: none;
+}
+[data-scene-workspace].rl-observatory:has(
+    .spum-scene-console[data-scene-active='true']
+  )
+  .rl-frame-heading {
+  display: flex;
+  padding: 7px 14px;
+}
+[data-scene-workspace].rl-observatory:has(
+    .spum-scene-console[data-scene-active='true']
+  )
+  .rl-frame-heading
+  h3 {
+  font-size: 21px;
+}
+[data-scene-workspace].rl-observatory:has(
+    .spum-scene-console[data-scene-active='true']
+  )
+  .rl-frame
+  svg {
+  max-height: 230px;
+}
+[data-scene-workspace].hk-observatory:has(
+    .spum-scene-console[data-scene-active='true']
+  )
+  .hk-scene {
+  height: 250px;
+  min-height: 0;
+}
+[data-scene-workspace].en-map:has(
+    .spum-scene-console[data-scene-active='true']
+  )
+  > svg {
+  max-height: 250px;
+}
+[data-scene-workspace].ac-visual:has(
+    .spum-scene-console[data-scene-active='true']
+  )
+  .ac-stage {
+  height: 250px;
+}
+.hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+  .hz-space-stage,
+.hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+  .hz-space-stage
+  svg {
+  height: 230px;
+  min-height: 0;
+}
+.hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+  .hz-futures {
+  min-height: 0;
+  padding: 8px 12px;
+}
+.hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+  .hz-futures
+  svg {
+  height: 220px;
+}
+.hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+  .hz-futures
+  > p {
+  margin: 5px 8px;
+  font-size: 12px;
+}
+.hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+  .hz-futures
+  .hz-speed {
+  display: none;
+}
+[data-scene-workspace].ln-views:has(
+    .spum-scene-console[data-scene-active='true']
+  )
+  > article
+  details {
+  display: none;
+}
+[data-scene-workspace].ln-views:has(
+    .spum-scene-console[data-scene-active='true']
+  )
+  .ln-observer-image,
+[data-scene-workspace].ln-views:has(
+    .spum-scene-console[data-scene-active='true']
+  )
+  .ln-overview {
+  height: 230px;
+}
+@media (max-width: 850px) {
+  [data-scene-workspace].rl-observatory:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .rl-frame-heading {
+    display: none;
+  }
+  [data-scene-workspace].rl-observatory:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .rl-frame
+    svg {
+    max-height: 175px;
+  }
+  [data-scene-workspace].rl-observatory:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .spum-scene-prompt {
+    padding-block: 3px;
+  }
+  [data-scene-workspace].hk-observatory:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .hk-scene {
+    height: 195px;
+  }
+  [data-scene-workspace].en-map:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    > svg {
+    max-height: 190px;
+  }
+  [data-scene-workspace].ac-visual:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .ac-stage {
+    height: 190px;
+  }
+  .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+    .hz-space-stage,
+  .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+    .hz-space-stage
+    svg,
+  .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+    .hz-futures
+    svg {
+    height: 175px;
+  }
+  .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+    .hz-clock-strip {
+    padding: 6px;
+  }
+  .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+    .hz-clock-strip
+    strong {
+    font-size: 17px;
+  }
+  [data-scene-workspace].ln-views:has(
+      .spum-scene-console[data-scene-active='true']
+    ) {
+    --spum-stage-offset: 136px;
+  }
+  [data-scene-workspace].ln-views:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    > .bh-view-tabs {
+    position: sticky;
+    top: 78px;
+    z-index: 9;
+    background: #0d1f2e;
+  }
+  [data-scene-workspace].ln-views:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .ln-view-heading {
+    display: none;
+  }
+  [data-scene-workspace].ln-views:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .ln-observer-image,
+  [data-scene-workspace].ln-views:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .ln-overview {
+    height: 180px;
+  }
+}
+/* Short, wide screens put the live scene beside the current question. */
+@media (max-height: 550px) and (min-width: 560px) {
+  [data-scene-workspace]:has(
+    .spum-scene-console[data-scene-active='true']
+  ) {
+    display: grid;
+    grid-template-columns: minmax(220px, 44%) minmax(0, 1fr);
+    align-items: start;
+  }
+  [data-scene-workspace]:has(.spum-scene-console[data-scene-active='true'])
+    > .spum-live-stage {
+    grid-column: 1;
+    grid-row: 1;
+    top: 78px;
+  }
+  [data-scene-workspace]:has(.spum-scene-console[data-scene-active='true'])
+    > .spum-scene-console {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+  }
+  [data-scene-workspace]:has(.spum-scene-console[data-scene-active='true'])
+    > :not(.spum-live-stage):not(.spum-scene-console) {
+    grid-column: 1/-1;
+  }
+  .spum-scene-console.spum-scene-console[data-scene-active='true']
+    > .spum-console-heading {
+    top: 78px;
+  }
+  .spum-console-variables,
+  .spum-scene-challenge,
+  .spum-scene-console[data-scene-active='true'] :is(input, select, button) {
+    scroll-margin-top: 60px;
+  }
+  [data-scene-workspace].rl-observatory:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .rl-mobile-views {
+    display: flex;
+    padding: 6px;
+  }
+  [data-scene-workspace].rl-observatory:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .rl-views {
+    display: block;
+  }
+  [data-scene-workspace].rl-observatory:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    :is(.rl-frame[data-active='false'], .rl-frame-heading, .tr-clockline) {
+    display: none;
+  }
+  [data-scene-workspace].rl-observatory:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .rl-frame
+    svg {
+    max-height: 155px;
+  }
+  [data-scene-workspace].ac-visual:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .ac-toolbar {
+    padding: 6px;
+  }
+  [data-scene-workspace].ac-visual:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .ac-stage {
+    height: 155px;
+  }
+  [data-scene-workspace].hk-observatory:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .hk-scene {
+    height: 200px;
+  }
+  [data-scene-workspace].en-map:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    > svg {
+    max-height: 200px;
+  }
+  .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+    .hz-space-stage,
+  .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+    .hz-space-stage
+    svg,
+  .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+    .hz-futures
+    svg {
+    height: 120px;
+  }
+  .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+    .hz-live-state {
+    display: none;
+  }
+  .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+    .hz-clock-strip {
+    padding: 4px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+  }
+  .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+    .hz-clock-strip
+    > div {
+    min-width: 0;
+    padding: 4px;
+  }
+  .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+    .hz-clock-strip
+    > div:last-child {
+    grid-column: auto;
+  }
+  .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+    .hz-clock-strip
+    strong {
+    font-size: 14px;
+  }
+  .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+    .hz-clock-strip
+    span {
+    font-size: 9px;
+  }
+  [data-scene-workspace].ln-views:has(
+      .spum-scene-console[data-scene-active='true']
+    ) {
+    grid-template-rows: 58px auto;
+    --spum-stage-offset: 144px;
+  }
+  [data-scene-workspace].ln-views:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    > .bh-view-tabs {
+    display: flex;
+    grid-column: 1;
+    grid-row: 1;
+    top: 78px;
+  }
+  [data-scene-workspace].ln-views:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    > article {
+    grid-column: 1;
+    grid-row: 2;
+    top: 144px;
+  }
+  [data-scene-workspace].ln-views:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    > article[data-active='false'],
+  [data-scene-workspace].ln-views:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .ln-view-heading {
+    display: none;
+  }
+  [data-scene-workspace].ln-views:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    > .spum-scene-console {
+    grid-row: 1 / span 2;
+  }
+  [data-scene-workspace].ln-views:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .ln-observer-image,
+  [data-scene-workspace].ln-views:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .ln-overview {
+    height: 150px;
+  }
+}
+/* Map explanations remain readable when the live canvas is compact. They
+   float beside/below it and can be closed without resetting the current trial. */
+[data-scene-workspace].hk-observatory:has(
+    .spum-scene-console[data-scene-active='true']
+  )
+  .hk-scene {
+  overflow: visible;
+}
+[data-scene-workspace].hk-observatory:has(
+    .spum-scene-console[data-scene-active='true']
+  )
+  .hk-scene:has(.hk-map-bubble) {
+  z-index: 12;
+}
+[data-scene-workspace].hk-observatory:has(
+    .spum-scene-console[data-scene-active='true']
+  )
+  .hk-map-bubble {
+  top: calc(100% + 6px);
+  bottom: auto;
+  left: 8px;
+  right: 8px;
+  width: auto;
+  height: auto;
+  max-height: 270px;
+  max-height: min(
+    270px,
+    calc(100svh - var(--spum-stage-height, 195px) - 102px)
+  );
+  box-sizing: border-box;
+  overscroll-behavior: contain;
+}
+[data-scene-workspace].hk-observatory:has(
+    .spum-scene-console[data-scene-active='true']
+  )
+  .hk-map-bubble
+  > div {
+  position: sticky;
+  top: -9px;
+  z-index: 1;
+  background: #102634;
+}
+@media (max-height: 550px) and (min-width: 560px) {
+  [data-scene-workspace].hk-observatory:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .hk-map-bubble {
+    top: 0;
+    left: calc(100% + 8px);
+    right: auto;
+    width: calc((100vw - 64px) * 0.56);
+    max-height: calc(100svh - 100px);
+  }
+}
+@media (max-height: 550px) and (min-width: 560px) {
+  .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+    .hz-futures
+    > p {
+    display: none;
+  }
+  .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+    .hz-rays-legend {
+    display: grid;
+    gap: 0;
+    justify-items: center;
+    font-size: 10px;
+    line-height: 11px;
+  }
+}
+@media (max-height: 350px) and (min-width: 560px) {
+  :root:has(.spum-scene-console[data-scene-active='true']) {
+    scroll-padding-top: 48px;
+  }
+  :root:has(.spum-scene-console[data-scene-active='true']) .spum-lab-nav {
+    padding-block: 0;
+  }
+  [data-scene-workspace]:has(
+    .spum-scene-console[data-scene-active='true']
+  ) {
+    --spum-stage-offset: 48px;
+  }
+  [data-scene-workspace]:has(.spum-scene-console[data-scene-active='true'])
+    > .spum-live-stage {
+    top: 48px;
+  }
+  .spum-scene-console.spum-scene-console[data-scene-active='true']
+    > .spum-console-heading {
+    top: 48px;
+  }
+  [data-scene-workspace].ln-views:has(
+      .spum-scene-console[data-scene-active='true']
+    ) {
+    --spum-stage-offset: 114px;
+  }
+  [data-scene-workspace].ln-views:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    > .bh-view-tabs {
+    top: 48px;
+  }
+  [data-scene-workspace].ln-views:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    > article {
+    top: 114px;
+  }
+  .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
+    .hz-futures
+    svg {
+    height: 100px;
+  }
+}

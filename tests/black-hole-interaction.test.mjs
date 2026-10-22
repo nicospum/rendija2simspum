@@ -14,7 +14,11 @@ import { traceRay, radians, HALF_FOV } from '../src/lente/physics.ts'
 import { dialValue, starYears } from '../src/acrecion/interaction.ts'
 import { DEFAULT, orbitalPeriodYears } from '../src/acrecion/physics.ts'
 import { observe, observed, checkAnswer } from '../src/acrecion/learning.ts'
-import { massAtEdge, emittedAtCorner } from '../src/entropia/interaction.ts'
+import {
+  massAtEdge,
+  emittedAtCorner,
+  exampleAreaAtX,
+} from '../src/entropia/interaction.ts'
 import { entropyModel } from '../src/entropia/physics.ts'
 import {
   initialState as entropyState,
@@ -166,4 +170,26 @@ test('The entropy gesture changes one variable and preserves the prediction and 
   assert.equal(s.patch, 8)
   assert.equal(entropyStatus(s), 'observed')
   assert.deepEqual(s.completed, ['area', 'evaporate'])
+})
+
+test('The separate algebraic scene changes Planck example area without changing the black-hole geometry', () => {
+  assert.equal(exampleAreaAtX(64), 4)
+  assert.equal(exampleAreaAtX(64 + (572 * 28) / 60), 32)
+  assert.equal(exampleAreaAtX(636), 64)
+  assert.equal(exampleAreaAtX(-100), 4)
+  assert.equal(exampleAreaAtX(1000), 64)
+  assert.equal(exampleAreaAtX(NaN), null)
+  const start = entropyState('quarter')
+  const moved = entropyReducer(start, {
+    type: 'patch',
+    value: exampleAreaAtX(64 + (572 * 12) / 60),
+  })
+  assert.equal(moved.patch, 16)
+  assert.equal(moved.mass, start.mass)
+  assert.equal(moved.emitted, start.emitted)
+  assert.equal(
+    entropyModel(moved.mass, moved.emitted).current.areaM2,
+    entropyModel(start.mass, start.emitted).current.areaM2,
+  )
+  assert.equal(entropyStatus(moved), 'observed')
 })

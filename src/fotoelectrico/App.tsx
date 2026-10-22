@@ -104,7 +104,7 @@ export default function PhotoelectricApp() {
               superficie. Descubrí por qué la cantidad de luz y la energía de
               cada fotón cuentan historias diferentes.
             </p>
-            <a href="#pe-views">Jugar sobre la escena ↓</a>
+            <a data-scene-play href="#pe-views">Jugar sobre la escena ↓</a>
           </div>
         </section>
         <LabNavigation
@@ -129,6 +129,7 @@ export default function PhotoelectricApp() {
         />
         <section
           id="pe-views"
+          data-scene-workspace
           className="rl-observatory"
           aria-label="Emisión de electrones y reparto de energía"
         >
@@ -149,6 +150,7 @@ export default function PhotoelectricApp() {
               {m.material.name} · {n(s.setup.frequency, 0)} THz
             </span>
           </div>
+          <div className="spum-live-stage">
           <div
             className="rl-mobile-views"
             role="group"
@@ -217,8 +219,25 @@ export default function PhotoelectricApp() {
               </article>
             ))}
           </div>
+          </div>
           <SceneConsole
             challengeHref="#pe-challenges"
+            viewHref="#pe-views"
+            challenge={{
+              index: s.index,
+              lessons: LESSONS,
+              question: lesson.question,
+              choices: lesson.choices,
+              prediction: s.prediction,
+              steps: lesson.steps.map((label, i) => ({ label, done: checks[i] })),
+              verified: s.feedback.startsWith('¡Descubrimiento completo!'),
+              feedback: s.feedback,
+              meaning: lesson.meaning,
+              onPredict: (choice) => dispatch({ type: 'predict', choice }),
+              onLesson: start,
+              onCheck: () => dispatch({ type: 'check' }),
+              onRestore: () => start(s.index),
+            }}
             hint="Arrastrá el selector de color en la celda o el punto del gráfico para cambiar f. Tocá el metal para cambiar de material y la lámpara para apagarla o encenderla al 50%. El brillo fija potencia: cambia cuántos fotones llegan, no su energía individual. Registrá dos condiciones para compararlas; la pausa solo detiene el dibujo. IR y UV usan colores simbólicos."
           >
             <div className="spum-console-row">

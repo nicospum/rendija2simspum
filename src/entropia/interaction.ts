@@ -31,3 +31,12 @@ export function emittedAtCorner(x: number, mass: number) {
     if (Math.abs(f - mark) < 0.012) return mark
   return Math.round(f * 1000) / 1000
 }
+
+/** A separate algebraic example, in multiples of four Planck areas. */
+export function exampleAreaAtX(x: number) {
+  if (!Number.isFinite(x)) return null
+  return Math.max(
+    4,
+    Math.min(64, Math.round((4 + ((x - 64) * 60) / 572) / 4) * 4),
+  )
+}

@@ -112,7 +112,7 @@ export default function LensApp() {
               La gravedad cambia de dónde parece venir la luz. Tocá una dirección, seguí su
               recorrido y descubrí cómo se forma la imagen.
             </p>
-            <a href="#ln-views" onClick={()=>navigateView("#ln-views")}>Jugar sobre la escena ↓</a>
+            <a data-scene-play href="#ln-views" onClick={()=>navigateView("#ln-views")}>Jugar sobre la escena ↓</a>
           </div>
         </section>
         <div className="ln-model-banner">
@@ -155,7 +155,7 @@ export default function LensApp() {
               : undefined
           }
         />
-        <section className="ln-views" id="ln-views" aria-label="Dos vistas de la misma luz">
+        <section data-scene-workspace className="ln-views" id="ln-views" aria-label="Dos vistas de la misma luz">
           <div
             className="bh-view-tabs"
             role="group"
@@ -174,7 +174,7 @@ export default function LensApp() {
               Recorrido de la luz
             </button>
           </div>
-          <article className="ln-observer-panel" data-active={view === 'image'}>
+          <article className="ln-observer-panel spum-live-stage" data-active={view === 'image'}>
             <div className="ln-view-heading">
               <div>
                 <p className="ln-eyebrow">01 / LO QUE VEMOS</p>
@@ -284,7 +284,7 @@ export default function LensApp() {
             </div>
             </details>
           </article>
-          <article className="ln-path-panel" id="ln-paths" data-active={view === 'paths'}>
+          <article className="ln-path-panel spum-live-stage" id="ln-paths" data-active={view === 'paths'}>
             <div className="ln-view-heading">
               <div>
                 <p className="ln-eyebrow">02 / CÓMO LLEGA LA LUZ</p>
@@ -298,6 +298,34 @@ export default function LensApp() {
           </article>
           <SceneConsole
             challengeHref="#ln-challenges"
+            viewHref="#ln-views"
+            challenge={{
+              index: lessonIndex,
+              lessons: LESSONS,
+              question: lesson.question,
+              choices: lesson.choices,
+              prediction: state.prediction,
+              steps: [
+                { label: lesson.hint, done: status === 'observed' && !pending },
+              ],
+              verified:
+                status === 'observed' &&
+                !pending &&
+                state.prediction === lesson.answer,
+              feedback:
+                status === 'observed' && !pending && state.prediction !== null
+                  ? (state.prediction === lesson.answer
+                      ? 'Tu predicción coincide con el modelo. '
+                      : 'El resultado invita a revisar tu idea. ') + lesson.meaning
+                  : '',
+              meaning: lesson.meaning,
+              onPredict: (value) => dispatch({ type: 'predict', value: value }),
+              onLesson: (index) =>
+                dispatch({ type: 'lesson', id: LESSONS[index].id }),
+              onTry: () => dispatch({ type: 'try' }),
+              tryLabel: lesson.action,
+              onRestore: () => dispatch({ type: 'restore' }),
+            }}
             hint="El marcador de la imagen elige una dirección: arrastralo o usá las flechas. La fuente dorada se mueve sobre la esfera de fondo en el diagrama; si queda de canto respecto del corte, usá «Corte horizontal». Alinear con la cámara conserva su posición. Comparar sin lente mantiene la misma fuente. La imagen y el diagrama conservan el último modelo calculado mientras se actualiza la masa."
           >
             <div className="spum-console-row">

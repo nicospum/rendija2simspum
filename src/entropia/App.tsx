@@ -85,7 +85,7 @@ export default function EntropyApp() {
               Agrandá el horizonte, compará su superficie y seguí la entropía cuando pierde masa.
               Una ecuación une gravedad, física cuántica y termodinámica.
             </p>
-            <a href="#en-map">Jugar sobre la escena ↓</a>
+            <a data-scene-play href="#en-map">Jugar sobre la escena ↓</a>
           </div>
         </section>
         <div className="en-model-note">
@@ -136,8 +136,10 @@ export default function EntropyApp() {
               </div>
               <span className="en-live">CÁLCULO EN VIVO</span>
             </div>
-            <p className="bh-scene-prompt">Arrastrá el borde dorado: masa · esquina verde: emisión</p>
+            <p className="bh-scene-prompt">{state.lesson === 'quarter' ? 'Arrastrá los grupos de la lupa: es un ejemplo aparte del horizonte' : 'Arrastrá el borde dorado: masa · esquina verde: emisión'}</p>
             <HorizonMap
+              exampleArea={state.lesson === 'quarter' ? state.patch : undefined}
+              onExampleArea={value => dispatch({ type: 'patch', value })}
               model={model}
               mass={state.mass}
               emitted={state.emitted}
@@ -146,6 +148,29 @@ export default function EntropyApp() {
               controls={
                 <SceneConsole
                   challengeHref="#en-challenges"
+                  viewHref="#en-map"
+                  challenge={{
+                    index: lessonIndex,
+                    lessons: LESSONS,
+                    question: lesson.question,
+                    choices: lesson.choices,
+                    prediction: state.prediction,
+                    steps: [{ label: lesson.hint, done: status === 'observed' }],
+                    verified: status === 'observed' && state.prediction === lesson.answer,
+                    feedback:
+                      status === 'observed' && state.prediction !== null
+                        ? (state.prediction === lesson.answer
+                            ? 'Tu predicción coincide con el modelo. '
+                            : 'El resultado invita a revisar tu idea. ') + lesson.meaning
+                        : '',
+                    meaning: lesson.meaning,
+                    onPredict: (value) => dispatch({ type: 'predict', value: value }),
+                    onLesson: (index) =>
+                      dispatch({ type: 'lesson', id: LESSONS[index].id }),
+                    onTry: () => tryLesson(),
+                    tryLabel: lesson.action,
+                    onRestore: () => dispatch({ type: 'restore' }),
+                  }}
                   hint="El borde dorado cambia la masa inicial. La esquina verde del cuadro cambia la fracción emitida por ese agujero negro. Ambos usan la misma geometría a escala fija; la trama no son celdas observadas. Emitir selecciona estados separados por tiempos enormes, no una evaporación rápida. La lupa algebraica es un ejemplo aparte; incluir radiación cambia la cuenta, no el proceso físico."
                 >
                   <div className="spum-console-row">

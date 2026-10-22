@@ -30,3 +30,36 @@ Todos eran problemas de orientación presentes antes de esta revisión. Se conse
 La revisión usa anchos emulados en Chromium. No se probó un iPhone/Safari o Android físico, ni se entrevistó a una persona sin conocimientos previos. El siguiente paso útil es pedirle a alguien que complete un reto sin explicaciones externas y observar dónde duda. Esta revisión no demuestra por sí sola comprensión científica.
 
 No se encontraron errores bloqueantes pendientes. Los cálculos y las pruebas de física existentes se mantienen; las correcciones de esta etapa afectan orientación, etiquetas y acceso a acciones existentes.
+
+## Actualización: jugar, comparar y explicar sin perder la escena
+
+22 de octubre de 2026. Esta revisión amplía la anterior a la interacción directa de los doce capítulos: siete de Einstein y cinco de agujeros negros.
+
+### Problemas encontrados
+
+1. **El reto seguía lejos del experimento.** Aunque había controles cerca del visor, elegir una predicción, comprobarla o avanzar obligaba a saltar a otra sección. Ahora «Mi reto» permite hacer todo el ciclo junto al dibujo vivo: elegir una idea, ver la observación pendiente, probar, comprobar y pasar al siguiente. Usa el mismo estado y los mismos criterios del reto original; no hay una segunda simulación ni logros concedidos por abrir el panel.
+2. **Al buscar un control, la escena se iba de pantalla.** El visor se mantiene visible durante el ensayo. En celular vertical queda arriba y en pantallas horizontales cortas se coloca al lado de las acciones. El encabezado del reto permite volver a la pregunta. Cerrar el reto conserva los mandos y la escena juntos; «Ver visor amplio» permite recuperar el detalle sin reiniciar las condiciones.
+3. **Cambios difíciles de interpretar.** El reloj de luz ahora muestra el tiempo transcurrido del pulso en ambos sistemas, además del tic completo. El tren muestra las diferencias de tiempo entre emisiones y llegadas: mover al pasajero modifica la llegada, sin fingir un cambio en las emisiones. Horizonte presenta los dos últimos envíos, sus demoras y sus frecuencias junto al mapa, y aclara cuándo terminó la caída dibujada pero la antena sigue escuchando.
+4. **La división por cuatro de la entropía parecía un detalle diminuto.** El reto de la fórmula ofrece un ejemplo grande que se arrastra sobre la escena: área de ejemplo → grupos de cuatro → S/kB. El ejemplo algebraico se distingue explícitamente del área física, no modifica la masa del agujero negro y no presenta las celdas como bits observados.
+5. **Las explicaciones de Hawking se recortaban al compactar el visor.** Las ventanas informativas se abren debajo del mapa en vertical y a su lado en horizontal, con cierre accesible y cuerpo desplazable. Se mantiene visible el horizonte que explican.
+
+### Funcionamiento y mantenimiento
+
+- `SceneConsole` comparte la presentación de pregunta, predicción, pasos y acciones. Cada capítulo le pasa su ensayo actual y sus callbacks; los reductores de aprendizaje, fórmulas, almacenamiento y logros existentes siguen siendo la fuente de verdad.
+- `data-scene-workspace` y `.spum-live-stage` identifican el visor real de cada capítulo. `ResizeObserver` mide su altura visible para que el encabezado y los destinos de desplazamiento no lo tapen; se desconecta al salir de ese modo.
+- Los enlaces «Retos», «Controles» y la entrada principal para jugar abren el ensayo junto al visor. Los fragmentos originales siguen siendo destinos válidos; los enlaces con modificadores conservan su comportamiento normal. Se verificó también la entrada directa con fragmentos.
+- Las notas extensas y controles avanzados permanecen disponibles. Cambiar de vista conserva la pregunta, la predicción y las observaciones actuales.
+- No se agregaron dependencias. La única función numérica nueva transforma la posición del gesto en el área del ejemplo algebraico de entropía; tiene prueba de extremos, redondeo y separación respecto de la masa física.
+
+### Verificación de esta actualización
+
+- **314 pruebas aprobadas**, lint sin errores, TypeScript y compilación de producción correctos. Las diecisiete entradas HTML se generan.
+- **48 retos completados mediante la interfaz**, con sus observaciones reales; también se rechazó una explicación incorrecta en cada uno. Se incluyeron visitas con huellas ya guardadas para comprobar que no habilitan avanzar en un ensayo incompleto.
+- **166 combinaciones de página, modo y tamaño**: pregunta y controles de los doce capítulos, vistas alternativas y el ejemplo de entropía. Tamaños: 320 × 740, 390 × 844, 768 × 1024, 1280 × 900, 667 × 375 y 568 × 320. Se comprobó visor visible, destino principal accesible y ausencia de desbordamiento horizontal. No se exige mostrar todos los controles a la vez: la escena permanece mientras se recorren.
+- Interacción directa en los doce capítulos mediante teclado o activación accesible. Además, arrastres reales del pasajero, frecuencia fotoeléctrica, sonda y ejemplo de entropía, sin desplazar accidentalmente la página.
+- Lectura y cierre de la ventana de Hawking en vertical y dos tamaños horizontales. Entrada por enlaces, cierre, reapertura y regreso al visor amplio conservando condiciones.
+- Evidencia compacta en `research/interaccion/specials-usability-*.json`. Las medidas corresponden al navegador de pruebas local; la comprobación de publicación se documenta aparte.
+
+### Límites
+
+Se usó Chromium con tamaños de pantalla emulados y acciones de puntero/teclado. No equivale a probar gestos en un teléfono físico, Safari, consumo de batería o aprendizaje con participantes. En una sesión del navegador automatizado apareció la alternativa sin WebGL de la lente: los controles, geodésicas y diagrama siguieron operativos; esa sesión no permite certificar la imagen WebGL en todos los dispositivos. No se modificó el renderizador de la lente para ocultar esa limitación.

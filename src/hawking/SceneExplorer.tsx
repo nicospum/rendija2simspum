@@ -136,7 +136,7 @@ export default function SceneExplorer({
   return (
     <>
       <div
-        className="hk-scene hk-explorer"
+        className="hk-scene hk-explorer spum-live-stage"
         ref={scene}
         onPointerLeave={() => setHovered(null)}
         onKeyDown={(event) => {

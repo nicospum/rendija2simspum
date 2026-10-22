@@ -99,7 +99,7 @@ export default function ElevatorApp() {
               Compará lo que pasa dentro de la cabina con el contexto exterior y
               descubrí qué podés deducir con un experimento local.
             </p>
-            <a href="#as-views">Jugar sobre la escena ↓</a>
+            <a data-scene-play href="#as-views">Jugar sobre la escena ↓</a>
           </div>
         </section>
         <LabNavigation
@@ -124,6 +124,7 @@ export default function ElevatorApp() {
         />
         <section
           id="as-views"
+          data-scene-workspace
           className="rl-observatory"
           aria-label="Interior y referencia exterior del ascensor"
         >
@@ -151,6 +152,7 @@ export default function ElevatorApp() {
               {isLight ? 'ns' : 's'}
             </span>
           </div>
+          <div className="spum-live-stage">
           <div
             className="rl-mobile-views"
             role="group"
@@ -219,8 +221,25 @@ export default function ElevatorApp() {
               </article>
             ))}
           </div>
+          </div>
           <SceneConsole
             challengeHref="#as-challenges"
+            viewHref="#as-views"
+            challenge={{
+              index: s.index,
+              lessons: LESSONS,
+              question: l.question,
+              choices: l.choices,
+              prediction: s.prediction,
+              steps: l.steps.map((label, i) => ({ label, done: checks[i] })),
+              verified: s.feedback.startsWith('¡Descubrimiento completo!'),
+              feedback: s.feedback,
+              meaning: l.meaning,
+              onPredict: (choice) => dispatch({ type: 'predict', choice }),
+              onLesson: start,
+              onCheck: () => dispatch({ type: 'check' }),
+              onRestore: () => start(s.index),
+            }}
             hint="Tocá cualquiera de las pelotas para soltar ambas a la vez. Podés pausar y recorrer el ensayo sin esperar. En modo luz, arrastrá el pulso por su trayectoria. Cambiar cabina, masa o intensidad prepara un ensayo nuevo. La balanza sostiene otro objeto: mide apoyo, mientras las pelotas caen libres."
           >
             <div className="spum-console-row">

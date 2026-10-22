@@ -97,7 +97,7 @@ export default function LightClockApp() {
               camino y descubrí cómo dos sistemas miden tiempos diferentes para
               el mismo tic.
             </p>
-            <a href="#rl-views">Jugar con el reloj ↓</a> · <a href="#rl-challenges">Elegir un reto</a>
+            <a data-scene-play href="#rl-views">Jugar con el reloj ↓</a> · <a href="#rl-challenges">Elegir un reto</a>
           </div>
         </section>
         <LabNavigation
@@ -121,6 +121,7 @@ export default function LightClockApp() {
           onNext={done ? () => start((s.index + 1) % 4) : undefined}
         />
         <section
+          data-scene-workspace
           className="rl-observatory"
           id="rl-views"
           aria-label="Dos sistemas para el mismo pulso"
@@ -140,6 +141,7 @@ export default function LightClockApp() {
                   : 'PAUSADO · PODÉS EXPLORAR'}
             </span>
           </div>
+          <div className="spum-live-stage">
           <div
             className="rl-mobile-views"
             role="group"
@@ -181,8 +183,25 @@ export default function LightClockApp() {
               </article>
             ))}
           </div>
+          </div>
           <SceneConsole
             challengeHref="#rl-challenges"
+            viewHref="#rl-views"
+            challenge={{
+              index: s.index,
+              lessons: LESSONS,
+              question: lesson.question,
+              choices: lesson.choices,
+              prediction: s.prediction,
+              steps: lesson.steps.map((label, i) => ({ label, done: checked[i] })),
+              verified: s.feedback.startsWith('¡Descubrimiento completo!'),
+              feedback: s.feedback,
+              meaning: lesson.meaning,
+              onPredict: (choice) => dispatch({ type: 'predict', choice }),
+              onLesson: start,
+              onCheck: () => dispatch({ type: 'check' }),
+              onRestore: () => start(s.index),
+            }}
             hint="Tocá el camino o arrastrá la luz. Ida y vuelta se superponen en reposo: usá Espejo o Regreso para elegir el tramo. Cambiar velocidad vuelve a la emisión."
           >
             <div className="spum-console-row">
@@ -211,6 +230,14 @@ export default function LightClockApp() {
               aria-valuetext={`${n(s.setup.beta * 100, 1)} por ciento de la velocidad de la luz`}
               onChange={(e) => beta(Number(e.target.value))}
             />
+            <p className="spum-console-impact">
+              Ritmo móvil: {n(100 / g, 1)} % · Tic propio: {n(OWN_PERIOD * 1e6)} µs ·
+              En la {name(other)}: {n(g * OWN_PERIOD * 1e6)} µs.
+              <br />
+              Ahora: {n(s.setup.fraction * OWN_PERIOD * 1e6)} µs en el reloj seguido ·{' '}
+              {n(moving.point.t * 1e6)} µs en el otro · pulso{' '}
+              {n(s.setup.fraction * 100, 0)}%.
+            </p>
             <div className="spum-console-buttons">
               <button
                 aria-label={
@@ -255,10 +282,7 @@ export default function LightClockApp() {
                 </button>
               </div>
             )}
-            <p className="spum-console-impact">
-              Ritmo móvil: {n(100 / g, 1)} % · Tic propio: {n(OWN_PERIOD * 1e6)} µs
-              · En la {name(other)}: {n(g * OWN_PERIOD * 1e6)} µs.
-            </p>
+
           </SceneConsole>
           <div
             className="rl-comparison"

@@ -136,7 +136,7 @@ export default function AccretionApp() {
               Encendé el gas, mirá cómo viaja su luz y usá una estrella para
               pesar algo que no podés ver.
             </p>
-            <a href="#ac-view">Jugar sobre la escena ↓</a>
+            <a data-scene-play href="#ac-view">Jugar sobre la escena ↓</a>
           </div>
         </section>
         <LabNavigation
@@ -162,7 +162,8 @@ export default function AccretionApp() {
           onNext={complete ? () => start((learning.index + 1) % 4) : undefined}
         />
         <section id="ac-view" className="ac-workbench" aria-label="Mesa de observación">
-          <div className="ac-visual">
+          <div data-scene-workspace className="ac-visual">
+            <div className="spum-live-stage">
             <div className="ac-toolbar">
               <div role="group" aria-label="Elegir la pista que observamos">
                 <button
@@ -226,8 +227,28 @@ export default function AccretionApp() {
                 </strong>
               )}
             </div>
+            </div>
             <SceneConsole
               challengeHref="#ac-challenges"
+              viewHref="#ac-view"
+              challenge={{
+                index: learning.index,
+                lessons: LESSONS,
+                question: lesson.question,
+                choices: lesson.choices,
+                prediction: learning.prediction,
+                steps: observationSteps(learning.index, learning.observations),
+                verified: feedback.startsWith('¡Descubrimiento completo!'),
+                feedback: feedback,
+                meaning: lesson.meaning,
+                onPredict: (prediction) => {
+                  setFeedback('')
+                  setState((s) => ({ ...s, learning: { ...s.learning, prediction } }))
+                },
+                onLesson: start,
+                onCheck: check,
+                onRestore: () => start(learning.index),
+              }}
               hint="Los dos mandos sobre el disco cambian alimentación e inclinación: no hacen girar el espacio-tiempo. Arrastrar la estrella recorre su órbita de radio fijo y pausa el movimiento; cambiar la masa reinicia sus fases. La luz brillante viene del gas exterior, no del horizonte ni de Hawking. Los colores indican cambios de frecuencia de forma ilustrativa. En referencia, volvé a tu prueba para editar."
             >
               <fieldset

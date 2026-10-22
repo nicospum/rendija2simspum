@@ -26,8 +26,8 @@ export function challengeGuide(
   return {
     phase: 'explain',
     prompt: automatic
-      ? 'Comparación lista. Volvé a la pregunta: revisá tu idea con el resultado. La huella se guarda cuando la explicación coincide.'
-      : 'Comparación lista. Volvé a la pregunta y tocá «Comprobar» para revisar tu explicación y guardar el descubrimiento.',
+      ? 'Comparación lista. Revisá tu idea en «Mi reto», junto al visor. La huella se guarda cuando la explicación coincide.'
+      : 'Comparación lista. Tocá «Comprobar explicación» en «Mi reto», junto al visor, para revisar tu explicación y guardar el descubrimiento.',
     action: 'Revisar mi explicación ↓',
   }
 }

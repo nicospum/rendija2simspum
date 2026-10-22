@@ -113,7 +113,7 @@ export default function TrainApp() {
               señales y medí el vagón. Descubrí por qué recibir, fechar y medir
               son tareas diferentes.
             </p>
-            <a href="#tr-views">Jugar sobre la escena ↓</a>
+            <a data-scene-play href="#tr-views">Jugar sobre la escena ↓</a>
           </div>
         </section>
         <LabNavigation
@@ -138,6 +138,7 @@ export default function TrainApp() {
         />
         <section
           id="tr-views"
+          data-scene-workspace
           className="rl-observatory"
           aria-label="Andén y tren, dos sistemas del mismo experimento"
         >
@@ -156,6 +157,7 @@ export default function TrainApp() {
                   : 'PAUSADO · PODÉS EXPLORAR'}
             </span>
           </div>
+          <div className="spum-live-stage">
           <div
             className="rl-mobile-views"
             role="group"
@@ -256,9 +258,26 @@ export default function TrainApp() {
               )
             })}
           </div>
+          </div>
           <SceneConsole
             challengeHref="#tr-challenges"
-            hint="Arrastrá el círculo P para mover al pasajero; el ensayo vuelve al inicio. Tocá A o B para lanzar los dos destellos. Mover a P cambia las llegadas, no las fechas de emisión. Las dos vistas muestran coordenadas, no fotografías. Podés usar también los botones o las flechas del teclado."
+            viewHref="#tr-views"
+            challenge={{
+              index: s.index,
+              lessons: LESSONS,
+              question: l.question,
+              choices: l.choices,
+              prediction: s.prediction,
+              steps: l.steps.map((label, i) => ({ label, done: checks[i] })),
+              verified: s.feedback.startsWith('¡Descubrimiento completo!'),
+              feedback: s.feedback,
+              meaning: l.meaning,
+              onPredict: (choice) => dispatch({ type: 'predict', choice }),
+              onLesson: start,
+              onCheck: () => dispatch({ type: 'check' }),
+              onRestore: () => start(s.index),
+            }}
+            hint="Arrastrá el círculo P para mover al pasajero; el ensayo vuelve al inicio. Tocá A o B para lanzar los dos destellos. Mover a P cambia las llegadas, no las fechas de emisión. Δt significa fecha de B menos fecha de A: si es negativa, B ocurre primero. Las dos vistas muestran coordenadas, no fotografías. Podés usar también los botones o las flechas del teclado."
           >
             <div className="spum-console-row">
               <label htmlFor="tr-live-speed">Velocidad del tren</label>
@@ -279,6 +298,9 @@ export default function TrainApp() {
               En el tren: emisión{' '}
               {order(train.emissionGap).replace('Primero', 'primero')}; llegada a P{' '}
               {order(train.arrivalGap).replace('Primero', 'primero')}.
+              <br />
+              Δt (B − A): emisión {n(train.emissionGap * 1e6)} µs · llegada{' '}
+              {n(train.arrivalGap * 1e6)} µs.
             </p>
             <div className="spum-console-buttons">
               <button onClick={flash}>Lanzar destellos</button>

@@ -1,0 +1,390 @@
+{
+  "date": "2026-10-22",
+  "environment": "Chromium, localhost:1024, viewport emulation",
+  "cases": [
+    {
+      "lab": "reloj",
+      "challenge": 1,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! Con v = 0, los sistemas coinciden: el recorrido mide 300 m y el tic dura 1,001 µs en ambos. Esta es la referencia para descubrir qué cambia al moverse."
+    },
+    {
+      "lab": "reloj",
+      "challenge": 2,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! El camino medido desde la estación aumenta de 375 a 500 m. A la misma velocidad c, el tic tarda 1,251 y 1,668 µs. En la nave sigue durando 1,001 µs: la separación transversal entre espejos no cambia."
+    },
+    {
+      "lab": "reloj",
+      "challenge": 3,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! La comparación es recíproca: cada sistema asigna un tic más largo al reloj móvil. Cambiamos el reloj seguido y, por tanto, el par de sucesos comparados. La simultaneidad también depende del sistema; esto no compara edades al reencontrarse."
+    },
+    {
+      "lab": "reloj",
+      "challenge": 4,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! Con v = √3/2 · c ≈ 0,866 c, γ = 2. El mismo tic dura 1,001 µs en su reloj y 2,001 µs en el otro sistema. No hace falta alcanzar c: cuanto más te acercás, mayor es la diferencia."
+    },
+    {
+      "lab": "tren",
+      "challenge": 1,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! El andén asigna tA = tB = 0. El tren asigna a B una fecha anterior a la de A. Es una diferencia entre redes de relojes sincronizados, incluso después de descontar los tiempos de viaje de las señales."
+    },
+    {
+      "lab": "tren",
+      "challenge": 2,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! Acercar el receptor a B acorta ese viaje de luz: llega antes. Los destellos conservan la misma fecha de emisión. Este retraso de propagación se puede corregir y es distinto de la relatividad de la simultaneidad."
+    },
+    {
+      "lab": "tren",
+      "challenge": 3,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! Al invertir v se invierte Δt′ = −γvΔx/c². Estos destellos están separados espacialmente y ninguno causa al otro. El orden de sucesos conectados por una señal causal no se invierte así."
+    },
+    {
+      "lab": "tren",
+      "challenge": 4,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! γ = 5/3: la longitud medida en el andén es L₀/γ = 180 m. Tomar extremos simultáneos en el tren da marcas separadas 500 m y 1,334 µs en el andén: esa separación no mide una longitud instantánea. No se está aplastando físicamente el vagón."
+    },
+    {
+      "lab": "gemelos",
+      "challenge": 1,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! En casa transcurren 10 años; en la nave, 6. Los relojes se comparan juntos en el mismo evento: el resultado no depende del retraso de una imagen ni de quién hace la cuenta."
+    },
+    {
+      "lab": "gemelos",
+      "challenge": 2,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! Para la misma duración en casa, una mayor rapidez reduce el tiempo propio de los tramos en movimiento. En esta comparación también cambia la distancia: no mantuvimos fijo el destino."
+    },
+    {
+      "lab": "gemelos",
+      "challenge": 3,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! La nave cambia de sistema inercial al volver: su criterio de simultaneidad con sucesos lejanos cambia. El reloj local sigue continuo y ningún mensaje viaja instantáneamente. Los dos tramos no son un único sistema inercial."
+    },
+    {
+      "lab": "gemelos",
+      "challenge": 4,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! La nave suma 8 × 0,6 + 2 = 6,8 años. La espera reemplaza parte del movimiento y acorta la distancia alcanzada. La diferencia surge de todo el recorrido; no se concentra en un giro mágico."
+    },
+    {
+      "lab": "ascensor",
+      "challenge": 1,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! En ambos casos la pelota cae respecto de la cabina y la balanza ejerce la misma fuerza. El exterior permite reconocer contextos distintos; las mediciones locales no distinguen estos dos casos ideales."
+    },
+    {
+      "lab": "ascensor",
+      "challenge": 2,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! La ingravidez mide la ausencia de fuerza de apoyo, no la ausencia de un campo gravitatorio. En caída libre, cabina y objetos tienen la misma aceleración; en este modelo local su interior se comporta como una nave a la deriva."
+    },
+    {
+      "lab": "ascensor",
+      "challenge": 3,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! La fuerza de apoyo es proporcional a la masa: pasa de 9,81 a 39,24 N. La aceleración relativa es la misma y las pelotas llegan juntas. No hay aire ni diferencias de velocidad inicial."
+    },
+    {
+      "lab": "ascensor",
+      "challenge": 4,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! La cabina acelerada cambia de posición mientras la luz cruza. Un laboratorio libre local describe un rayo recto. El desvío en la cabina acelerada mide aproximadamente 0,49 femtómetros en 3 m: la escala vertical ampliada lo hace visible. La curvatura global de un campo real requiere relatividad general."
+    },
+    {
+      "lab": "altura",
+      "challenge": 1,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! En este modelo terrestre, el reloj elevado acumula cerca de 0,94 ns extra por día. Es una diferencia de tiempo propio, no el retraso de una señal al viajar. A la misma altura y en reposo relativo no aparece esa diferencia."
+    },
+    {
+      "lab": "altura",
+      "challenge": 2,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! La altura fija una diferencia de ritmo. Sostener esa condición más tiempo acumula más desfase: siete días producen siete veces el adelanto de un día. El ritmo del reloj no crece con la duración del ensayo."
+    },
+    {
+      "lab": "altura",
+      "challenge": 3,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! La mayor altura suma unos 46 µs/día y el movimiento orbital resta unos 7 µs/día en este modelo esférico no rotante. El balance sigue siendo positivo, de unos 38 µs/día. La rotación terrestre y el geoide refinan los valores de un GPS real."
+    },
+    {
+      "lab": "altura",
+      "challenge": 4,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! El ajuste ideal compensa la diferencia de ritmo de la señal transmitida. No elimina la diferencia física de tiempo propio. El sesgo cΔt es una pseudodistancia equivalente de una señal: no predice por sí solo el error de posición de un receptor."
+    },
+    {
+      "lab": "orbita",
+      "challenge": 1,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! La órbita de dos cuerpos de Newton cierra una elipse. En Schwarzschild, volver al radio mínimo requiere un ángulo algo mayor que 360°. La dirección del perihelio avanza: eso es precesión."
+    },
+    {
+      "lab": "orbita",
+      "challenge": 2,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! A igual semieje mayor, una órbita más excéntrica se acerca más al Sol. El factor 1/(1−e²) aumenta el avance por vuelta. No estamos cambiando a la vez el tamaño orbital ni la masa."
+    },
+    {
+      "lab": "orbita",
+      "challenge": 3,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! En campo débil, Δϖ es inversamente proporcional a a. Duplicar a reduce a la mitad el avance por vuelta. Por siglo cae todavía más, porque una órbita mayor también tarda más en completarse."
+    },
+    {
+      "lab": "orbita",
+      "challenge": 4,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! El aporte relativista es diminuto pero acumulativo. Ayudó a explicar un residuo que la gravitación newtoniana y las perturbaciones conocidas no resolvían. Los otros planetas también hacen precesar la órbita: nuestro modelo aísla el aporte del Sol esférico."
+    },
+    {
+      "lab": "fotoelectrico",
+      "challenge": 1,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! Cada fotón rojo aporta menos energía de la que necesita un electrón para salir de este sodio ideal. Aumentar su cantidad no suma las energías en un único electrón dentro del modelo de un fotón. El azul sí supera el umbral."
+    },
+    {
+      "lab": "fotoelectrico",
+      "challenge": 2,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! A frecuencia fija, cuatro veces la potencia significa cuatro veces los fotones por segundo. Con nuestra eficiencia fija, hay cuatro veces más electrones y corriente. La energía por fotón hf y la energía máxima hf−φ se mantienen."
+    },
+    {
+      "lab": "fotoelectrico",
+      "challenge": 3,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! La luz mantiene su energía por fotón; cambiar el metal cambia la energía mínima de extracción φ. A 1.000 THz, hf ≈ 4,14 eV: alcanza para el sodio de 2,46 eV, pero no para el zinc de 4,31 eV."
+    },
+    {
+      "lab": "fotoelectrico",
+      "challenge": 4,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! El metal necesita la misma energía de extracción. La energía adicional del fotón aumenta Kmáx. A potencia fija, los fotones más energéticos llegan en menor cantidad: en este modelo de eficiencia fija, puede subir la energía de los electrones y bajar la corriente a la vez."
+    },
+    {
+      "lab": "hawking",
+      "challenge": 1,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "Tu predicción coincide con el modelo. Un agujero negro más grande es más frío. La temperatura no es la del gas que puede rodearlo: es la que predice Hawking para un observador lejano."
+    },
+    {
+      "lab": "hawking",
+      "challenge": 2,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "Tu predicción coincide con el modelo. La emisión sigue existiendo, pero el entorno de 2,7255 K es mucho más caliente. En esta aproximación absorbe más energía: la potencia neta cambia de signo. Emitir y evaporarse no son sinónimos."
+    },
+    {
+      "lab": "hawking",
+      "challenge": 3,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "Tu predicción coincide con el modelo. Al emitir energía pierde masa, aumenta su temperatura y crece la potencia. Es una capacidad calorífica negativa. El reloj está acelerado: la vida ideal de este ejemplo es de billones de años."
+    },
+    {
+      "lab": "hawking",
+      "challenge": 4,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "Tu predicción coincide con el modelo. Bekenstein y Hawking vincularon la entropía al área del horizonte. Conectaron gravedad, teoría cuántica y termodinámica. Es una pista sobre la gravedad cuántica; este modelo no resuelve la paradoja de la información."
+    },
+    {
+      "lab": "horizonte",
+      "challenge": 1,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! Los relojes estáticos a distintas alturas acumulan tiempos propios diferentes. Acercarse reduce el ritmo relativo. Mantenerse quieto exige aceleración; no se puede sostener un reloj estático justo en el horizonte."
+    },
+    {
+      "lab": "horizonte",
+      "challenge": 2,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! El horizonte limita qué señales pueden llegar al exterior. En este modelo el reloj de la sonda sigue durante el cruce: no hay una pared ni una parada local del tiempo. Las coordenadas de Schwarzschild se vuelven singulares ahí; el mapa usa coordenadas regulares."
+    },
+    {
+      "lab": "horizonte",
+      "challenge": 3,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! La recepción combina corrimiento gravitacional y movimiento de la sonda. Al acercarse al horizonte, la frecuencia recibida tiende a cero y la llegada se retrasa sin límite. Una frecuencia muy baja puede salir de la banda visible: rojo es una clave gráfica, no una foto literal."
+    },
+    {
+      "lab": "horizonte",
+      "challenge": 4,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! Fuera, un rayo saliente puede llegar a la antena. En el horizonte queda sobre su generador; dentro, incluso la dirección local saliente lleva a radios menores. La luz siempre se mide localmente a c: dr/dT es una velocidad de coordenadas, no una medición local."
+    },
+    {
+      "lab": "acrecion",
+      "challenge": 1,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! El gas libera energía al perder energía orbital y calentarse. El horizonte no es una superficie luminosa. Sin ese gas, desaparece el disco; eso no demuestra que no haya un agujero negro. Esta luz no es radiación de Hawking."
+    },
+    {
+      "lab": "acrecion",
+      "challenge": 2,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! El disco sigue siendo plano. Rayos de su parte posterior se curvan y alcanzan al observador por encima y por debajo de la sombra. Comparar con luz recta separa perspectiva y lente gravitacional."
+    },
+    {
+      "lab": "acrecion",
+      "challenge": 3,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! El movimiento cambia la frecuencia y concentra la radiación en la dirección de avance. En la intensidad integrada sobre frecuencias aparece un factor g⁴. De frente desaparece la asimetría entre los lados, aunque persisten otros efectos relativistas."
+    },
+    {
+      "lab": "acrecion",
+      "challenge": 4,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "¡Descubrimiento completo! En el régimen de esta órbita, T² = 4π²a³/(GM). Duplicar M divide T por √2. Medir tamaño y período permite inferir masa aunque no haya disco brillante. La estrella es un ejemplo ideal, no datos de una estrella observada."
+    },
+    {
+      "lab": "lente",
+      "challenge": 1,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "Tu predicción coincide con el modelo. La luz llega por otras direcciones. Una imagen desplazada o duplicada no implica varias estrellas: distintos caminos conectan la misma fuente con la cámara. Esa relación permite estudiar masa que no vemos directamente."
+    },
+    {
+      "lab": "lente",
+      "challenge": 2,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "Tu predicción coincide con el modelo. La simetría permite que la luz de la misma fuente llegue por todos los lados. El anillo emerge de las trayectorias calculadas: no está dibujado sobre la imagen. Con desalineación se rompe en arcos e imágenes."
+    },
+    {
+      "lab": "lente",
+      "challenge": 3,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "Tu predicción coincide con el modelo. El rastreo inverso termina en el horizonte: esa dirección no recibe luz de la esfera de fondo. Por fuera del umbral hay rayos que regresan al fondo tras curvarse. La esfera de fotones es una órbita circular inestable; no una superficie material."
+    },
+    {
+      "lab": "lente",
+      "challenge": 4,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "Tu predicción coincide con el modelo. El radio del horizonte crece linealmente con M y la sombra ocupa más ángulo. Si escaláramos también todas las distancias con M, la imagen adimensional sí sería la misma. Acá conservamos metros para que puedas separar ambos casos."
+    },
+    {
+      "lab": "entropia",
+      "challenge": 1,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "Tu predicción coincide con el modelo. El radio crece con M; el área, con M². Por eso duplicar la masa multiplica por cuatro tanto el área como la entropía. El volumen euclídeo de una esfera de ese radio crece por ocho: esa no es la ley de entropía del agujero negro."
+    },
+    {
+      "lab": "entropia",
+      "challenge": 2,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "Tu predicción coincide con el modelo. S/kB = A/(4ℓP²). El factor ¼ divide la cantidad de áreas de Planck por cuatro. Para expresar esa entropía en bits hay que dividir además por ln 2. La lupa es aritmética: no muestra celdas físicas ni un agujero negro microscópico."
+    },
+    {
+      "lab": "entropia",
+      "challenge": 3,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "Tu predicción coincide con el modelo. La entropía del agujero negro disminuye a 0,75² = 0,5625 de la inicial, mientras su temperatura aumenta. Eso no decide qué pasa con la entropía total: la radiación también cuenta. Estamos comparando estados enormemente separados en tiempo, no observando una evaporación rápida real."
+    },
+    {
+      "lab": "entropia",
+      "challenge": 4,
+      "completed": true,
+      "wrongAnswerRejected": true,
+      "sceneVisible": true,
+      "feedback": "Tu predicción coincide con el modelo. En este modelo de fotones ideales, la radiación lleva 4/3 de la entropía que pierde el agujero negro. Al sumar ambas, la entropía térmica total aumenta. Ilustra la segunda ley generalizada; no calcula la entropía de entrelazamiento ni resuelve la paradoja de la información."
+    }
+  ]
+}

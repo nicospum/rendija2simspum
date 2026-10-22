@@ -90,9 +90,9 @@ export function FirstVisit({ name }: { name: string }) {
       </ol>
       <p>
         Los laboratorios están siempre abiertos. Tus huellas se guardan en
-        este navegador; reiniciar un ensayo no las borra. En celular, usá
-        «Controles» y «Retos» para ir y volver sin buscar por toda la
-        página.
+        este navegador; reiniciar un ensayo no las borra. En celular, abrí
+        «Mi reto» junto al visor: podés elegir una idea, usar los mandos y
+        comprobarla sin abandonar la escena.
       </p>
     </details>
   )
