@@ -1,3 +1,4 @@
+import SceneConsole from '../components/ui/SceneConsole'
 import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useReducer, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
@@ -103,7 +104,7 @@ export default function HeightApp() {
               satélite: la gravedad y el movimiento aportan efectos distintos.
               Descubrí por qué el GPS necesita tenerlos en cuenta.
             </p>
-            <a href="#al-challenges">Empezar con una predicción ↓</a>
+            <a href="#al-views">Jugar sobre la escena ↓</a>
           </div>
         </section>
         <LabNavigation
@@ -193,7 +194,22 @@ export default function HeightApp() {
                         : 'Ambos relojes están sostenidos en reposo respecto de la Tierra ideal. La altura de la ilustración usa una escala logarítmica para mostrar desde centímetros hasta kilómetros. Los números son alturas físicas; los aros indican avance del ensayo, no una gran diferencia entre segundos.'}
                   </Info>
                 </div>
-                <Scene setup={s.setup} chart={isChart} />
+                <p className="spum-scene-prompt">
+                  {isChart
+                    ? 'Arrastrá el punto del balance para recorrer el tiempo'
+                    : gps
+                      ? s.setup.motion === 'circular'
+                        ? 'Arrastrá el satélite para recorrer su órbita'
+                        : 'Tocá el satélite para ponerlo en órbita'
+                      : 'Arrastrá el reloj verde hacia arriba o abajo'}
+                </p>
+                <Scene
+                  setup={s.setup}
+                  chart={isChart}
+                  onHeight={(height) => tune({ height })}
+                  onProgress={time}
+                  onMotion={() => tune({ motion: 'circular' })}
+                />
                 <p className="rl-frame-caption">
                   {isChart
                     ? s.setup.expanded
@@ -206,6 +222,139 @@ export default function HeightApp() {
               </article>
             ))}
           </div>
+          <SceneConsole
+            challengeHref="#al-challenges"
+            hint="Subir el reloj cambia su ritmo; el ensayo vuelve a cero. La escala de altura de la torre es logarítmica. Arrastrar el satélite recorre instantes de la misma órbita, y arrastrar el punto del gráfico recorre el mismo ensayo. Los aros muestran avance; el desfase real es diminuto y se mide en ns o µs. Hay botones y teclado como alternativa al arrastre."
+          >
+            <div className="spum-console-row">
+              <label htmlFor="al-live-height">Altura del reloj</label>
+              <output>
+                {n(gps ? s.setup.height / 1000 : s.setup.height)} {gps ? 'km' : 'm'}
+              </output>
+            </div>
+            <input
+              id="al-live-height"
+              type="range"
+              min={gps ? 400 : 0}
+              max={gps ? 36000 : 100}
+              step="any"
+              value={gps ? s.setup.height / 1000 : heightPosition(s.setup.height)}
+              aria-valuetext={`${n(s.setup.height)} metros sobre la referencia`}
+              onChange={(e) =>
+                tune({
+                  height: gps
+                    ? +e.target.value * 1000
+                    : Math.max(
+                        0,
+                        Math.min(4000, heightFromPosition(+e.target.value)),
+                      ),
+                })
+              }
+            />
+            <p className="spum-console-impact">
+              Ritmo: {signed(m.total * DAY * factor)} {unit}/día · Desfase ahora:{' '}
+              <b>
+                {signed(m.physicalOffset * factor)} {unit}
+              </b>
+              {gps && (
+                <>
+                  {' '}
+                  · Señal transmitida: {signed(m.readoutOffset * factor)} {unit}
+                </>
+              )}
+              .
+            </p>
+            <div className="spum-console-buttons">
+              <button onClick={() => dispatch({ type: 'play' })}>
+                {s.playing ? 'Pausar relojes' : 'Ver avanzar los relojes'}
+              </button>
+              <button onClick={() => time(1)}>Ver resultado</button>
+            </div>
+            <div className="spum-console-row">
+              <label htmlFor="al-live-time">Recorrer el ensayo</label>
+              <output>
+                {n(m.elapsed / DAY)} / {s.setup.days} días
+              </output>
+            </div>
+            <input
+              id="al-live-time"
+              type="range"
+              min="0"
+              max="1"
+              step="0.001"
+              value={s.setup.progress}
+              onChange={(e) => time(+e.target.value)}
+            />
+            <div className="spum-console-buttons">
+              <button
+                aria-pressed={!gps}
+                onClick={() => dispatch({ type: 'mode', mode: 'torre' })}
+              >
+                Relojes en altura
+              </button>
+              <button
+                aria-pressed={gps}
+                onClick={() => dispatch({ type: 'mode', mode: 'gps' })}
+              >
+                Satélite y GPS
+              </button>
+            </div>
+            <div className="spum-console-buttons">
+              {gps ? (
+                <>
+                  <button onClick={() => tune({ height: GPS.height })}>
+                    GPS · 20.200 km
+                  </button>
+                  <button
+                    aria-pressed={s.setup.motion === 'quieto'}
+                    onClick={() => tune({ motion: 'quieto' })}
+                  >
+                    Sostener sin movimiento
+                  </button>
+                  <button
+                    aria-pressed={s.setup.motion === 'circular'}
+                    onClick={() => tune({ motion: 'circular' })}
+                  >
+                    Órbita circular
+                  </button>
+                  <button
+                    aria-pressed={s.setup.corrected}
+                    onClick={() => tune({ corrected: !s.setup.corrected })}
+                  >
+                    {s.setup.corrected ? 'Quitar ajuste' : 'Ajuste desde la salida'}
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button onClick={() => tune({ height: 0 })}>
+                    Misma altura · 0 m
+                  </button>
+                  <button onClick={() => tune({ height: 100 })}>
+                    Subir a 100 m
+                  </button>
+                </>
+              )}
+            </div>
+            <div className="spum-console-buttons">
+              <button onClick={() => tune({ days: 1 })}>Observar 1 día</button>
+              <button onClick={() => tune({ days: 7 })}>Observar 7 días</button>
+              <button
+                aria-pressed={s.setup.expanded}
+                onClick={() => tune({ expanded: !s.setup.expanded })}
+              >
+                {s.setup.expanded
+                  ? 'Quitar ampliación del gráfico'
+                  : 'Ampliar diferencias del gráfico'}
+              </button>
+            </div>
+            {gps && (
+              <p>
+                Gravedad: {signed(m.gravity * DAY * 1e6)} µs/día · Movimiento:{' '}
+                {signed(m.motion * DAY * 1e6)} µs/día. El ajuste cambia la señal
+                transmitida; conserva el tiempo propio físico.
+              </p>
+            )}
+          </SceneConsole>
           <div className="al-readings" aria-live={s.playing ? 'off' : 'polite'}>
             <div>
               <span>Tiempo del reloj de referencia</span>
@@ -678,7 +827,7 @@ export default function HeightApp() {
               </ul>
               <div className="rl-challenge-actions">
                 <a href={s.index === 3 ? '#al-gps' : '#al-controls'}>
-                  Ir a los controles ↑
+                  Probar sobre la escena ↑
                 </a>
                 <button onClick={() => start(s.index)}>
                   Reiniciar este reto ↻

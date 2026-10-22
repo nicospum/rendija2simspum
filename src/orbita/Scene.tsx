@@ -1,3 +1,6 @@
+import { useSvgScrub } from '../shared/useSvgScrub'
+import { scrubKey } from '../shared/sceneInteraction'
+import { orbitProgress } from './interaction'
 import { useId, useMemo } from 'react'
 import { ARCSEC, AU, CYCLES, gainFor, point } from './physics'
 import type { Orbit } from './physics'
@@ -11,15 +14,21 @@ export default function Scene({
   progress,
   relativistic,
   expanded,
+  onProgress,
 }: {
   orbit: Orbit
   progress: number
   relativistic: boolean
   expanded: boolean
+  onProgress?: (progress: number) => void
 }) {
   const id = useId().replace(/:/g, ''),
     gain = gainFor({ ...orbit.setup, expanded }),
     scale = 211 / orbit.aphelion
+  const scrub = useSvgScrub((p) => {
+    const f = orbitProgress(orbit, p, progress, relativistic, gain)
+    if (f !== null) onProgress?.(f)
+  })
   const xy = (x: number, y: number) =>
     `${(300 + x * scale).toFixed(2)},${(252 - y * scale).toFixed(2)}`
   const paths = useMemo(
@@ -51,7 +60,7 @@ export default function Scene({
     <svg
       className="or-scene"
       viewBox="0 0 600 520"
-      role="img"
+      role={onProgress ? 'group' : 'img'}
       aria-label={`${relativistic ? 'Einstein: perihelio que avanza' : 'Newton: elipse que se cierra'}. ${n(cycles)} vueltas radiales exploradas. Giro físico acumulado ${n(planet.advance * ARCSEC, 4)} segundos de arco. ${relativistic && expanded ? 'Giro ampliado cien mil veces.' : 'Giro sin ampliar.'}`}
     >
       <defs>
@@ -103,8 +112,8 @@ export default function Scene({
         d={paths[0]}
         fill="none"
         stroke={color}
-        strokeWidth="1"
-        opacity=".22"
+        strokeWidth="2"
+        opacity=".45"
         strokeDasharray="3 6"
       />
       {paths.slice(0, whole).map((path, i) => (
@@ -139,7 +148,13 @@ export default function Scene({
       })}
       <circle cx="300" cy="252" r="40" fill={`url(#${id}-sun)`} />
       <circle cx="300" cy="252" r="11" fill="#ffe1a1" />
-      <text x="300" y="290" textAnchor="middle" fill="#eacda1" fontSize="12">
+      <text
+        x="300"
+        y="290"
+        textAnchor="middle"
+        fill="#eacda1"
+        fontSize="12"
+      >
         SOL · {n(orbit.setup.mass, 1)} M☉
       </text>
       <circle
@@ -157,6 +172,47 @@ export default function Scene({
         stroke={color}
         strokeWidth="2"
       />
+      {onProgress && (
+        <>
+          <circle
+            cx={300 + planet.x * scale}
+            cy={252 - planet.y * scale}
+            r="20"
+            fill="none"
+            stroke={color}
+            strokeDasharray="3 5"
+          />
+          <circle
+            {...scrub}
+            cx={300 + planet.x * scale}
+            cy={252 - planet.y * scale}
+            r="8"
+            fill="transparent"
+            stroke="transparent"
+            strokeWidth="44"
+            vectorEffect="non-scaling-stroke"
+            className="spum-object-handle"
+            role="slider"
+            tabIndex={0}
+            aria-label={
+              relativistic
+                ? 'Recorrer Mercurio según Einstein'
+                : 'Recorrer Mercurio según Newton'
+            }
+            aria-valuemin={0}
+            aria-valuemax={1}
+            aria-valuenow={progress}
+            aria-valuetext={`${n(cycles)} vueltas radiales; no es tiempo uniforme`}
+            onKeyDown={(e) => {
+              const f = scrubKey(e.key, progress, 0, 1, 0.01)
+              if (f !== undefined) {
+                e.preventDefault()
+                onProgress(f)
+              }
+            }}
+          />
+        </>
+      )}
       <text x="24" y="31" fill={color} fontSize="12" letterSpacing="1.5">
         {relativistic
           ? 'EL PERIHELIO AVANZA'

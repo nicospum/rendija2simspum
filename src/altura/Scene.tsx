@@ -1,4 +1,18 @@
-import { DAY, R, heightPosition, snapshot } from './physics'
+import { useSvgScrub } from '../shared/useSvgScrub'
+import { scrubKey } from '../shared/sceneInteraction'
+import {
+  chartProgress,
+  satelliteProgress,
+  towerHeight,
+} from './interaction'
+import SceneAction from '../components/ui/SceneAction'
+import {
+  DAY,
+  R,
+  heightPosition,
+  heightFromPosition,
+  snapshot,
+} from './physics'
 import type { Setup } from './physics'
 import { amount, n, signed } from './format'
 function Dial({
@@ -32,13 +46,39 @@ function Dial({
 export default function Scene({
   setup,
   chart,
+  onHeight,
+  onProgress,
+  onMotion,
 }: {
   setup: Setup
   chart: boolean
+  onHeight?: (height: number) => void
+  onProgress?: (progress: number) => void
+  onMotion?: () => void
 }) {
   const m = snapshot(setup),
     factor = setup.mode === 'gps' ? 1e6 : 1e9,
     unit = setup.mode === 'gps' ? 'µs' : 'ns'
+  const place = useSvgScrub((p) => {
+    if (setup.mode === 'torre') {
+      const h = towerHeight(p.y)
+      if (h !== null) onHeight?.(h)
+    } else {
+      const f = satelliteProgress(setup, p.x, p.y)
+      if (f !== null) onProgress?.(f)
+    }
+  })
+  const plot = useSvgScrub((p) => {
+    const f = chartProgress(p.x)
+    if (f !== null) onProgress?.(f)
+  })
+  const timeKey = (e: import('react').KeyboardEvent<SVGCircleElement>) => {
+    const v = scrubKey(e.key, setup.progress, 0, 1, 0.01)
+    if (v !== undefined) {
+      e.preventDefault()
+      onProgress?.(v)
+    }
+  }
   if (chart) {
     const full = setup.days * DAY,
       expanded = setup.expanded
@@ -66,7 +106,7 @@ export default function Scene({
     return (
       <svg
         viewBox="0 0 600 410"
-        role="img"
+        role={onHeight ? 'group' : 'img'}
         aria-label={`${expanded ? 'Diferencias ampliadas' : 'Tiempos sin ampliar'}. Desfase físico ${signed(m.physicalOffset * factor)} ${unit}, lectura ${signed(m.readoutOffset * factor)} ${unit}.`}
       >
         <defs>
@@ -76,7 +116,12 @@ export default function Scene({
             height="30"
             patternUnits="userSpaceOnUse"
           >
-            <path d="M35 0H0V30" stroke="#7292a5" fill="none" opacity=".15" />
+            <path
+              d="M35 0H0V30"
+              stroke="#7292a5"
+              fill="none"
+              opacity=".15"
+            />
           </pattern>
         </defs>
         <rect x="85" y="60" width="445" height="255" fill="url(#al-grid)" />
@@ -144,6 +189,31 @@ export default function Scene({
             ━━ {e.label}
           </text>
         ))}
+        {onProgress && (
+          <circle
+            {...plot}
+            cx={px(m.elapsed)}
+            cy={py(
+              expanded
+                ? m.total * m.elapsed * factor
+                : (1 + m.total) * m.elapsed,
+            )}
+            r="7"
+            fill="transparent"
+            stroke="transparent"
+            strokeWidth="44"
+            vectorEffect="non-scaling-stroke"
+            className="spum-object-handle"
+            role="slider"
+            tabIndex={0}
+            aria-label="Recorrer el gráfico de los relojes"
+            aria-valuemin={0}
+            aria-valuemax={1}
+            aria-valuenow={setup.progress}
+            aria-valuetext={`${n(m.elapsed / DAY)} días de referencia`}
+            onKeyDown={timeKey}
+          />
+        )}
       </svg>
     )
   }
@@ -157,7 +227,7 @@ export default function Scene({
     return (
       <svg
         viewBox="0 0 600 410"
-        role="img"
+        role={onHeight ? 'group' : 'img'}
         aria-label={`Satélite a ${n(setup.height / 1000)} kilómetros; velocidad ${n(m.velocity)} metros por segundo. Desfase físico ${signed(m.physicalOffset * 1e6)} microsegundos.`}
       >
         <defs>
@@ -192,8 +262,18 @@ export default function Scene({
             fill="#89b896"
             opacity=".75"
           />
-          <path d="M27-22 51-13 46 9 27 21 11 9Z" fill="#93bb94" opacity=".6" />
-          <ellipse rx="57" ry="20" fill="none" stroke="#b2e4e0" opacity=".2" />
+          <path
+            d="M27-22 51-13 46 9 27 21 11 9Z"
+            fill="#93bb94"
+            opacity=".6"
+          />
+          <ellipse
+            rx="57"
+            ry="20"
+            fill="none"
+            stroke="#b2e4e0"
+            opacity=".2"
+          />
           <path
             d="M-45-28Q0-48 45-28M-45 28Q0 8 45 28"
             fill="none"
@@ -246,7 +326,8 @@ export default function Scene({
                 : 'RAPIDEZ ELEGIDA · ALTURA FIJA'}
           </text>
           <text x="30" y="55">
-            h = {n(setup.height / 1000)} km · v = {n(m.velocity / 1000)} km/s
+            h = {n(setup.height / 1000)} km · v = {n(m.velocity / 1000)}{' '}
+            km/s
           </text>
           <text x="30" y="375" fill="#efbf8c">
             ● Superficie: referencia
@@ -259,6 +340,36 @@ export default function Scene({
             automático.
           </text>
         </g>
+        {onProgress &&
+          (setup.motion === 'circular' ? (
+            <circle
+              {...place}
+              cx={x}
+              cy={y}
+              r="9"
+              fill="transparent"
+              stroke="transparent"
+              strokeWidth="44"
+              vectorEffect="non-scaling-stroke"
+              className="spum-object-handle"
+              role="slider"
+              tabIndex={0}
+              aria-label="Recorrer la órbita del satélite"
+              aria-valuemin={0}
+              aria-valuemax={1}
+              aria-valuenow={setup.progress}
+              onKeyDown={timeKey}
+            />
+          ) : (
+            onMotion && (
+              <SceneAction
+                x={x}
+                y={y}
+                label="Poner el reloj en órbita circular"
+                onActivate={onMotion}
+              />
+            )
+          ))}
       </svg>
     )
   }
@@ -267,7 +378,7 @@ export default function Scene({
   return (
     <svg
       viewBox="0 0 600 410"
-      role="img"
+      role={onHeight ? 'group' : 'img'}
       aria-label={`Reloj elevado a ${n(setup.height)} metros; desfase ${signed(m.physicalOffset * 1e9)} nanosegundos. Altura dibujada en escala logarítmica.`}
     >
       <defs>
@@ -304,11 +415,15 @@ export default function Scene({
       />
       <Dial x={170} y={310} progress={setup.progress} color="#efbf8c" />
       <Dial x={400} y={upper} progress={setup.progress} color="#9ce6da" />
-      <g fontSize="14" textAnchor="middle">
+      <g fontSize="20" textAnchor="middle">
         <text x="170" y="277" fill="#efbf8c">
           Referencia
         </text>
-        <text x="400" y={upper < 90 ? upper + 48 : upper - 35} fill="#a6ece0">
+        <text
+          x="400"
+          y={upper < 90 ? upper + 48 : upper - 35}
+          fill="#a6ece0"
+        >
           {n(setup.height)} m
         </text>
         <text x="170" y="378" fill="#efbf8c">
@@ -318,6 +433,49 @@ export default function Scene({
           {signed(m.physicalOffset * 1e9)} ns
         </text>
       </g>
+      {onHeight && (
+        <>
+          <circle
+            cx="400"
+            cy={upper}
+            r="33"
+            fill="none"
+            stroke="#a6ece0"
+            strokeDasharray="3 5"
+          />
+          <circle
+            {...place}
+            cx="400"
+            cy={upper}
+            r="10"
+            fill="transparent"
+            stroke="transparent"
+            strokeWidth="44"
+            vectorEffect="non-scaling-stroke"
+            className="spum-object-handle"
+            role="slider"
+            tabIndex={0}
+            aria-label="Subir o bajar el reloj"
+            aria-valuemin={0}
+            aria-valuemax={4000}
+            aria-valuenow={setup.height}
+            aria-valuetext={`${n(setup.height)} metros, escala logarítmica`}
+            onKeyDown={(e) => {
+              const v = scrubKey(
+                e.key,
+                heightPosition(setup.height),
+                0,
+                100,
+                1,
+              )
+              if (v !== undefined) {
+                e.preventDefault()
+                onHeight(Math.max(0, Math.min(4000, heightFromPosition(v))))
+              }
+            }}
+          />
+        </>
+      )}
       <text x="30" y="402" fill="#a9c7d3" fontSize="12">
         Altura en escala logarítmica. Aros: avance del ensayo, no desfase.
       </text>

@@ -1,3 +1,4 @@
+import SceneConsole from '../components/ui/SceneConsole'
 import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useMemo, useReducer, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
@@ -102,7 +103,7 @@ export default function OrbitApp() {
               cuidado: su orientación puede avanzar. Explorá la pista que ayudó
               a poner a prueba la gravedad de Einstein.
             </p>
-            <a href="#or-challenges">Empezar con una predicción ↓</a>
+            <a href="#or-views">Jugar sobre la escena ↓</a>
           </div>
         </section>
         <LabNavigation
@@ -184,11 +185,15 @@ export default function OrbitApp() {
                       : 'La elipse corresponde a un planeta de masa despreciable alrededor de un único Sol esférico y fijo. No aparecen otros planetas: en el Sistema Solar real también hay precesión newtoniana por sus perturbaciones. El Sol está en un foco, no en el centro de la elipse.'}
                   </Info>
                 </div>
+                <p className="spum-scene-prompt">
+                  Arrastrá el planeta por su órbita calculada
+                </p>
                 <Scene
                   orbit={orbit}
                   progress={s.setup.progress}
                   relativistic={rel}
                   expanded={s.setup.expanded}
+                  onProgress={(value) => dispatch({ type: 'time', value })}
                 />
                 <p className="rl-frame-caption">
                   {rel
@@ -200,42 +205,113 @@ export default function OrbitApp() {
               </article>
             ))}
           </div>
-          <div className="or-transport">
-            <div className="rl-control-label">
-              <label htmlFor="or-visor-phase">Avance en el visor</label>
-              <output>{n(s.setup.progress * CYCLES)} / 10 vueltas</output>
+          <SceneConsole
+            challengeHref="#or-challenges"
+            hint="Arrastrá el planeta para recorrer su trayectoria. El gesto sigue la dirección angular de forma continua, incluso cuando las vueltas se cruzan. No estás moviéndolo fuera de la órbita ni aplicándole una fuerza. El recorrido se cuenta por fase radial, no por tiempo uniforme. Cambiar forma, tamaño o masa prepara otra órbita. La lupa amplía solo el exceso angular; las cifras conservan su valor físico."
+          >
+            <div className="spum-console-row">
+              <label htmlFor="or-live-e">Forma de la órbita · e</label>
+              <output>{n(e, 3)}</output>
             </div>
             <input
-              id="or-visor-phase"
+              id="or-live-e"
               type="range"
-              min="0"
-              max="1"
+              min="0.05"
+              max="0.7"
               step="0.001"
-              value={s.setup.progress}
-              aria-valuetext={`${n(s.setup.progress * CYCLES)} vueltas radiales`}
-              onChange={(ev) =>
-                dispatch({ type: 'time', value: +ev.target.value })
-              }
+              value={e}
+              onChange={(ev) => tune({ e: +ev.target.value })}
             />
-            <div className="or-buttons">
+            <p className="spum-console-impact">
+              {n(orbit.delta * ARCSEC, 4)} ″/vuelta · {n(century)} ″/siglo.{' '}
+              {s.setup.expanded ? 'Lupa angular ×100.000.' : 'Escala angular real.'}
+            </p>
+            <div className="spum-console-buttons">
               <button onClick={() => dispatch({ type: 'play' })}>
-                {s.playing
-                  ? 'Pausar órbitas'
-                  : s.setup.progress === 1
-                    ? 'Repetir diez vueltas ↻'
-                    : 'Explorar órbitas ▶'}
+                {s.playing ? 'Pausar órbitas' : 'Explorar órbitas'}
               </button>
               <button onClick={() => dispatch({ type: 'time', value: 1 })}>
                 Ver diez vueltas
               </button>
               <button
+                onClick={() =>
+                  dispatch({
+                    type: 'time',
+                    value: Math.min(
+                      1,
+                      (Math.floor(s.setup.progress * CYCLES + 1e-8) + 1) / CYCLES,
+                    ),
+                  })
+                }
+              >
+                Siguiente perihelio
+              </button>
+            </div>
+            <div className="spum-console-row">
+              <label htmlFor="or-live-phase">Recorrer la órbita</label>
+              <output>{n(s.setup.progress * CYCLES)} / 10 vueltas radiales</output>
+            </div>
+            <input
+              id="or-live-phase"
+              type="range"
+              min="0"
+              max="1"
+              step="0.001"
+              value={s.setup.progress}
+              onChange={(ev) => dispatch({ type: 'time', value: +ev.target.value })}
+            />
+            <div className="spum-console-buttons">
+              <button
                 aria-pressed={s.setup.expanded}
                 onClick={() => tune({ expanded: !s.setup.expanded })}
               >
-                Lupa del visor ×100.000
+                {s.setup.expanded ? 'Giro real' : 'Ampliar giro ×100.000'}
+              </button>
+              <button
+                onClick={() =>
+                  tune({ a: MERCURY.a, e: MERCURY.e, mass: 1, expanded: true })
+                }
+              >
+                Mercurio real
+              </button>
+              <button onClick={() => tune({ e: 0.1 })}>Poco alargada · 0,10</button>
+              <button onClick={() => tune({ e: 0.6 })}>Muy alargada · 0,60</button>
+              <button onClick={() => tune({ a: MERCURY.a })}>
+                Tamaño de Mercurio
+              </button>
+              <button onClick={() => tune({ a: 2 * MERCURY.a })}>
+                Doble tamaño
               </button>
             </div>
-          </div>
+            <details className="spum-console-help">
+              <summary>Ajustar tamaño orbital y masa</summary>
+              <label htmlFor="or-live-a">Semieje mayor: {n(a, 4)} UA</label>
+              <input
+                id="or-live-a"
+                type="range"
+                min="0.25"
+                max="1"
+                step="any"
+                value={a}
+                onChange={(ev) => tune({ a: +ev.target.value })}
+              />
+              <label htmlFor="or-live-mass">Masa central: {n(mass)} M☉</label>
+              <input
+                id="or-live-mass"
+                type="range"
+                min="0.5"
+                max="2"
+                step="0.01"
+                value={mass}
+                onChange={(ev) => tune({ mass: +ev.target.value })}
+              />
+              <p>
+                El visor reencuadra la órbita: compará también los radios físicos.
+                Perihelio {n(orbit.perihelion / AU, 3)} UA; afelio{' '}
+                {n(orbit.aphelion / AU, 3)} UA.
+              </p>
+            </details>
+          </SceneConsole>
           <div className="or-readings" aria-live={s.playing ? 'off' : 'polite'}>
             <div>
               <span>
@@ -592,8 +668,8 @@ export default function OrbitApp() {
             <div>
               <h3>Probalo en las órbitas.</h3>
               <p>{lesson.hint}</p>
-              <a className="or-jump" href="#or-controls">
-                Ir a los controles ↑
+              <a className="or-jump" href="#or-views">
+                Probar sobre la escena ↑
               </a>
               <ul className="rl-observation-list">
                 {lesson.steps.map((step, i) => (

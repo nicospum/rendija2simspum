@@ -1,0 +1,50 @@
+[
+  {
+    "lab": "altura1",
+    "feedback": "¡Descubrimiento completo! En este modelo terrestre, el reloj elevado acumula cerca de 0,94 ns extra por día. Es una diferencia de tiempo propio, no el retraso de una señal al viajar. A la misma altura y en reposo relativo no aparece esa diferencia."
+  },
+  {
+    "lab": "altura2",
+    "feedback": "¡Descubrimiento completo! La altura fija una diferencia de ritmo. Sostener esa condición más tiempo acumula más desfase: siete días producen siete veces el adelanto de un día. El ritmo del reloj no crece con la duración del ensayo."
+  },
+  {
+    "lab": "altura3",
+    "feedback": "¡Descubrimiento completo! La mayor altura suma unos 46 µs/día y el movimiento orbital resta unos 7 µs/día en este modelo esférico no rotante. El balance sigue siendo positivo, de unos 38 µs/día. La rotación terrestre y el geoide refinan los valores de un GPS real."
+  },
+  {
+    "lab": "altura4",
+    "feedback": "¡Descubrimiento completo! El ajuste ideal compensa la diferencia de ritmo de la señal transmitida. No elimina la diferencia física de tiempo propio. El sesgo cΔt es una pseudodistancia equivalente de una señal: no predice por sí solo el error de posición de un receptor."
+  },
+  {
+    "lab": "mercurio1",
+    "feedback": "¡Descubrimiento completo! La órbita de dos cuerpos de Newton cierra una elipse. En Schwarzschild, volver al radio mínimo requiere un ángulo algo mayor que 360°. La dirección del perihelio avanza: eso es precesión."
+  },
+  {
+    "lab": "mercurio2",
+    "feedback": "¡Descubrimiento completo! A igual semieje mayor, una órbita más excéntrica se acerca más al Sol. El factor 1/(1−e²) aumenta el avance por vuelta. No estamos cambiando a la vez el tamaño orbital ni la masa."
+  },
+  {
+    "lab": "mercurio3",
+    "feedback": "¡Descubrimiento completo! En campo débil, Δϖ es inversamente proporcional a a. Duplicar a reduce a la mitad el avance por vuelta. Por siglo cae todavía más, porque una órbita mayor también tarda más en completarse."
+  },
+  {
+    "lab": "mercurio4",
+    "feedback": "¡Descubrimiento completo! El aporte relativista es diminuto pero acumulativo. Ayudó a explicar un residuo que la gravitación newtoniana y las perturbaciones conocidas no resolvían. Los otros planetas también hacen precesar la órbita: nuestro modelo aísla el aporte del Sol esférico."
+  },
+  {
+    "lab": "fotoelectrico1",
+    "feedback": "¡Descubrimiento completo! Cada fotón rojo aporta menos energía de la que necesita un electrón para salir de este sodio ideal. Aumentar su cantidad no suma las energías en un único electrón dentro del modelo de un fotón. El azul sí supera el umbral."
+  },
+  {
+    "lab": "fotoelectrico2",
+    "feedback": "¡Descubrimiento completo! A frecuencia fija, cuatro veces la potencia significa cuatro veces los fotones por segundo. Con nuestra eficiencia fija, hay cuatro veces más electrones y corriente. La energía por fotón hf y la energía máxima hf−φ se mantienen."
+  },
+  {
+    "lab": "fotoelectrico3",
+    "feedback": "¡Descubrimiento completo! La luz mantiene su energía por fotón; cambiar el metal cambia la energía mínima de extracción φ. A 1.000 THz, hf ≈ 4,14 eV: alcanza para el sodio de 2,46 eV, pero no para el zinc de 4,31 eV."
+  },
+  {
+    "lab": "fotoelectrico4",
+    "feedback": "¡Descubrimiento completo! El metal necesita la misma energía de extracción. La energía adicional del fotón aumenta Kmáx. A potencia fija, los fotones más energéticos llegan en menor cantidad: en este modelo de eficiencia fija, puede subir la energía de los electrones y bajar la corriente a la vez."
+  }
+]

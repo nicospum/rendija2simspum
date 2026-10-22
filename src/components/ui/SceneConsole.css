@@ -283,3 +283,37 @@
   color: #f1c48f;
   background: #173240;
 }
+@media (max-width: 850px) {
+  .al-shell .rl-observatory:has(.spum-scene-console) .rl-frame svg,
+  .or-shell .rl-observatory:has(.spum-scene-console) .rl-frame svg,
+  .pe-shell .rl-observatory:has(.spum-scene-console) .rl-frame svg {
+    max-height: 215px;
+  }
+}
+.spum-console-records {
+  border-left: 2px solid var(--console-accent);
+  padding-left: 10px;
+}
+@media (max-width: 370px) {
+  :is(.al-shell, .or-shell, .pe-shell)
+    .rl-observatory:has(.spum-scene-console)
+    .rl-observatory-heading {
+    padding: 10px 14px;
+  }
+  :is(.al-shell, .or-shell, .pe-shell)
+    .rl-observatory:has(.spum-scene-console)
+    .rl-observatory-heading
+    h2 {
+    font-size: 22px;
+    line-height: 1.15;
+  }
+}
+@media (max-width: 370px) {
+  :is(.al-shell, .or-shell, .pe-shell)
+    .spum-scene-console.spum-scene-console {
+    padding-block: 8px;
+  }
+  :is(.al-shell, .or-shell, .pe-shell) .spum-console-heading strong {
+    font-size: 18px;
+  }
+}

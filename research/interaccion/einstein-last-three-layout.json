@@ -1,0 +1,342 @@
+[
+  {
+    "height": 740,
+    "impact": {
+      "bottom": 681.5625,
+      "top": 662.0625
+    },
+    "overflow": false,
+    "route": "/el-tiempo-tiene-altura/",
+    "scene": {
+      "bottom": 524.5625,
+      "top": 339.390625
+    },
+    "slider": {
+      "bottom": 653.0625,
+      "id": "al-live-height",
+      "top": 609.0625
+    },
+    "together": true,
+    "view": "Dónde están",
+    "width": 320
+  },
+  {
+    "height": 740,
+    "impact": {
+      "bottom": 731.53125,
+      "top": 692.53125
+    },
+    "overflow": false,
+    "route": "/orbita-que-no-se-cierra/",
+    "scene": {
+      "bottom": 555.03125,
+      "top": 340.03125
+    },
+    "slider": {
+      "bottom": 683.53125,
+      "id": "or-live-e",
+      "top": 639.53125
+    },
+    "together": true,
+    "view": "Einstein · avanza",
+    "width": 320
+  },
+  {
+    "height": 740,
+    "impact": {
+      "bottom": 713.90625,
+      "top": 674.90625
+    },
+    "overflow": false,
+    "route": "/efecto-fotoelectrico/",
+    "scene": {
+      "bottom": 537.40625,
+      "top": 325.125
+    },
+    "slider": {
+      "bottom": 665.90625,
+      "id": "pe-live-frequency",
+      "top": 621.90625
+    },
+    "together": true,
+    "view": "La celda",
+    "width": 320
+  },
+  {
+    "height": 844,
+    "impact": {
+      "bottom": 707.28125,
+      "top": 687.78125
+    },
+    "overflow": false,
+    "route": "/el-tiempo-tiene-altura/",
+    "scene": {
+      "bottom": 548.28125,
+      "top": 333.28125
+    },
+    "slider": {
+      "bottom": 678.78125,
+      "id": "al-live-height",
+      "top": 634.78125
+    },
+    "together": true,
+    "view": "Dónde están",
+    "width": 390
+  },
+  {
+    "height": 844,
+    "impact": {
+      "bottom": 741.71875,
+      "top": 702.71875
+    },
+    "overflow": false,
+    "route": "/orbita-que-no-se-cierra/",
+    "scene": {
+      "bottom": 563.21875,
+      "top": 348.21875
+    },
+    "slider": {
+      "bottom": 693.71875,
+      "id": "or-live-e",
+      "top": 649.71875
+    },
+    "together": true,
+    "view": "Einstein · avanza",
+    "width": 390
+  },
+  {
+    "height": 844,
+    "impact": {
+      "bottom": 726.84375,
+      "top": 687.84375
+    },
+    "overflow": false,
+    "route": "/efecto-fotoelectrico/",
+    "scene": {
+      "bottom": 548.34375,
+      "top": 333.34375
+    },
+    "slider": {
+      "bottom": 678.84375,
+      "id": "pe-live-frequency",
+      "top": 634.84375
+    },
+    "together": true,
+    "view": "La celda",
+    "width": 390
+  },
+  {
+    "height": 1024,
+    "impact": {
+      "bottom": 676.234375,
+      "top": 656.734375
+    },
+    "overflow": false,
+    "route": "/el-tiempo-tiene-altura/",
+    "scene": {
+      "bottom": 517.234375,
+      "top": 302.234375
+    },
+    "slider": {
+      "bottom": 647.734375,
+      "id": "al-live-height",
+      "top": 603.734375
+    },
+    "together": true,
+    "view": "Dónde están",
+    "width": 768
+  },
+  {
+    "height": 1024,
+    "impact": {
+      "bottom": 676.3125,
+      "top": 656.8125
+    },
+    "overflow": false,
+    "route": "/orbita-que-no-se-cierra/",
+    "scene": {
+      "bottom": 517.3125,
+      "top": 302.3125
+    },
+    "slider": {
+      "bottom": 647.8125,
+      "id": "or-live-e",
+      "top": 603.8125
+    },
+    "together": true,
+    "view": "Einstein · avanza",
+    "width": 768
+  },
+  {
+    "height": 1024,
+    "impact": {
+      "bottom": 676.515625,
+      "top": 657.015625
+    },
+    "overflow": false,
+    "route": "/efecto-fotoelectrico/",
+    "scene": {
+      "bottom": 517.515625,
+      "top": 302.515625
+    },
+    "slider": {
+      "bottom": 648.015625,
+      "id": "pe-live-frequency",
+      "top": 604.015625
+    },
+    "together": true,
+    "view": "La celda",
+    "width": 768
+  },
+  {
+    "height": 900,
+    "impact": {
+      "bottom": 758.671875,
+      "top": 739.171875
+    },
+    "overflow": false,
+    "route": "/el-tiempo-tiene-altura/",
+    "scene": {
+      "bottom": 595.671875,
+      "top": 255.671875
+    },
+    "slider": {
+      "bottom": 730.171875,
+      "id": "al-live-height",
+      "top": 686.171875
+    },
+    "together": true,
+    "view": "Dónde están",
+    "width": 1280
+  },
+  {
+    "height": 900,
+    "impact": {
+      "bottom": 758.296875,
+      "top": 738.796875
+    },
+    "overflow": false,
+    "route": "/orbita-que-no-se-cierra/",
+    "scene": {
+      "bottom": 595.296875,
+      "top": 255.296875
+    },
+    "slider": {
+      "bottom": 729.796875,
+      "id": "or-live-e",
+      "top": 685.796875
+    },
+    "together": true,
+    "view": "Einstein · avanza",
+    "width": 1280
+  },
+  {
+    "height": 900,
+    "impact": {
+      "bottom": 758.671875,
+      "top": 739.171875
+    },
+    "overflow": false,
+    "route": "/efecto-fotoelectrico/",
+    "scene": {
+      "bottom": 595.671875,
+      "top": 255.671875
+    },
+    "slider": {
+      "bottom": 730.171875,
+      "id": "pe-live-frequency",
+      "top": 686.171875
+    },
+    "together": true,
+    "view": "La celda",
+    "width": 1280
+  },
+  {
+    "height": 740,
+    "impact": {
+      "bottom": 701.0625,
+      "top": 662.0625
+    },
+    "overflow": false,
+    "route": "/el-tiempo-tiene-altura/",
+    "scene": {
+      "bottom": 524.5625,
+      "top": 339.390625
+    },
+    "slider": {
+      "bottom": 653.0625,
+      "id": "al-live-height",
+      "top": 609.0625
+    },
+    "together": true,
+    "view": "Dónde están",
+    "width": 320,
+    "variant": "gps"
+  },
+  {
+    "height": 740,
+    "impact": {
+      "bottom": 719.0625,
+      "top": 680.0625
+    },
+    "overflow": false,
+    "route": "/el-tiempo-tiene-altura/",
+    "scene": {
+      "bottom": 542.5625,
+      "top": 357.390625
+    },
+    "slider": {
+      "bottom": 671.0625,
+      "id": "al-live-height",
+      "top": 627.0625
+    },
+    "together": true,
+    "view": "Qué acumulan",
+    "width": 320,
+    "variant": "gps-chart"
+  },
+  {
+    "height": 740,
+    "impact": {
+      "bottom": 713.90625,
+      "top": 674.90625
+    },
+    "overflow": false,
+    "route": "/efecto-fotoelectrico/",
+    "scene": {
+      "bottom": 537.40625,
+      "top": 325.125
+    },
+    "slider": {
+      "bottom": 665.90625,
+      "id": "pe-live-frequency",
+      "top": 621.90625
+    },
+    "together": true,
+    "view": "La celda",
+    "width": 320,
+    "variant": "blue-emission"
+  },
+  {
+    "height": 740,
+    "impact": {
+      "bottom": 731.90625,
+      "top": 692.90625
+    },
+    "overflow": false,
+    "route": "/efecto-fotoelectrico/",
+    "scene": {
+      "bottom": 555.40625,
+      "top": 343.125
+    },
+    "slider": {
+      "bottom": 683.90625,
+      "id": "pe-live-frequency",
+      "top": 639.90625
+    },
+    "together": true,
+    "view": "La energía",
+    "width": 320,
+    "variant": "energy"
+  }
+]

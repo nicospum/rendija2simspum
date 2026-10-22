@@ -1,3 +1,4 @@
+import SceneConsole from '../components/ui/SceneConsole'
 import ChallengeGuide from '../components/ui/ChallengeGuide'
 import { useEffect, useReducer, useState } from 'react'
 import Info from '../components/ui/InfoPopover'
@@ -26,6 +27,14 @@ export default function PhotoelectricApp() {
     done = s.completed.includes(s.index),
     checks = observations(s)
   const tune = (patch: Partial<Setup>) => dispatch({ type: 'tune', patch })
+  const power = () => {
+    tune({brightness:s.setup.brightness > 0 ? 0 : 50})
+    if ((s.setup.brightness > 0 && s.playing) || (s.setup.brightness === 0 && !s.playing)) dispatch({type:'play'})
+  }
+  const nextMaterial = () => {
+    const materials=Object.keys(MATERIALS) as Setup['material'][]
+    tune({material:materials[(materials.indexOf(s.setup.material)+1)%materials.length]})
+  }
   const start = (index: number) => dispatch({ type: 'lesson', index })
   const next = () => {
     start((s.index + 1) % 4)
@@ -95,7 +104,7 @@ export default function PhotoelectricApp() {
               superficie. Descubrí por qué la cantidad de luz y la energía de
               cada fotón cuentan historias diferentes.
             </p>
-            <a href="#pe-challenges">Empezar con una predicción ↓</a>
+            <a href="#pe-views">Jugar sobre la escena ↓</a>
           </div>
         </section>
         <LabNavigation
@@ -140,27 +149,6 @@ export default function PhotoelectricApp() {
               {m.material.name} · {n(s.setup.frequency, 0)} THz
             </span>
           </div>
-          <div className="pe-transport">
-            <div className="pe-buttons">
-              <button onClick={() => dispatch({ type: 'play' })}>
-                {s.playing ? 'Pausar dibujo' : 'Animar flujo'}
-              </button>
-              <button
-                className="rl-primary"
-                onClick={() => dispatch({ type: 'record' })}
-              >
-                Registrar medición
-              </button>
-              <a href="#pe-controls">Cambiar las variables ↓</a>
-            </div>
-            <p>
-              La pausa detiene el dibujo. Los valores muestran el estado
-              estacionario de la fuente y el metal.
-            </p>
-            <p role="status">
-              {s.feedback.startsWith('Medición guardada') ? s.feedback : ''}
-            </p>
-          </div>
           <div
             className="rl-mobile-views"
             role="group"
@@ -189,7 +177,7 @@ export default function PhotoelectricApp() {
                         : 'LO QUE LE PASA AL METAL'}
                     </span>
                     <h3>
-                      {isEnergy ? 'La energía' : 'La celda fotoeléctrica'}
+                      {isEnergy ? 'La energía' : 'La celda'}
                     </h3>
                   </div>
                   <Info
@@ -204,7 +192,19 @@ export default function PhotoelectricApp() {
                       : 'La luz incide en el metal y los puntos turquesa representan fotoelectrones. Son muestras de flujos enormes, no un conteo uno a uno de fotones y electrones. La rapidez de los electrones representa la máxima permitida por hf−φ, en movimiento libre. Los tamaños y tiempos están ampliados; los fotones y electrones no comparten una escala temporal. Un electrón real también puede salir con menos energía.'}
                   </Info>
                 </div>
-                <Scene setup={s.setup} time={s.time} energy={isEnergy} />
+                <p className="spum-scene-prompt">
+                  {isEnergy
+                    ? 'Arrastrá el punto del gráfico para cambiar la frecuencia'
+                    : 'Arrastrá el color · tocá el metal o la lámpara'}
+                </p>
+                <Scene
+                  setup={s.setup}
+                  time={s.time}
+                  energy={isEnergy}
+                  onFrequency={(frequency) => tune({ frequency })}
+                  onMaterial={nextMaterial}
+                  onPower={power}
+                />
                 <p className="rl-frame-caption">
                   {isEnergy
                     ? m.emitting
@@ -217,57 +217,113 @@ export default function PhotoelectricApp() {
               </article>
             ))}
           </div>
-          <div
-            className="pe-inline-controls"
-            role="group"
-            aria-label="Controles junto al visor"
+          <SceneConsole
+            challengeHref="#pe-challenges"
+            hint="Arrastrá el selector de color en la celda o el punto del gráfico para cambiar f. Tocá el metal para cambiar de material y la lámpara para apagarla o encenderla al 50%. El brillo fija potencia: cambia cuántos fotones llegan, no su energía individual. Registrá dos condiciones para compararlas; la pausa solo detiene el dibujo. IR y UV usan colores simbólicos."
           >
-            <div>
-              <label htmlFor="pe-live-frequency">
-                Frecuencia del visor{' '}
-                <output>{n(s.setup.frequency, 0)} THz</output>
-              </label>
-              <input
-                id="pe-live-frequency"
-                type="range"
-                min="350"
-                max="1600"
-                step="any"
-                value={s.setup.frequency}
-                onChange={(ev) => tune({ frequency: +ev.target.value })}
-              />
+            <div className="spum-console-row">
+              <label htmlFor="pe-live-frequency">Frecuencia</label>
+              <output>
+                {n(s.setup.frequency, 0)} THz · {n(m.photonEv)} eV
+              </output>
             </div>
-            <div>
+            <input
+              id="pe-live-frequency"
+              type="range"
+              min="350"
+              max="1600"
+              step="1"
+              value={s.setup.frequency}
+              onChange={(e) => tune({ frequency: +e.target.value })}
+            />
+            <p className="spum-console-impact">
+              {m.material.name}: φ = {n(m.material.work)} eV ·{' '}
+              {m.emitting
+                ? `Kmáx = ${n(m.kineticMax)} eV · I = ${n(m.current * 1e9)} nA`
+                : s.setup.brightness === 0
+                  ? 'Lámpara apagada; sin electrones.'
+                  : 'Sin emisión: cada fotón no supera el umbral.'}
+            </p>
+            <div className="spum-console-row">
               <label htmlFor="pe-live-brightness">
-                Brillo del visor <output>{n(s.setup.brightness, 0)}%</output>
+                Brillo · potencia incidente
               </label>
-              <input
-                id="pe-live-brightness"
-                type="range"
-                min="0"
-                max="100"
-                step="1"
-                value={s.setup.brightness}
-                onChange={(ev) => tune({ brightness: +ev.target.value })}
-              />
+              <output>{n(s.setup.brightness, 0)} %</output>
             </div>
-            <div className="pe-live-material">
-              <label htmlFor="pe-live-material">Material del visor</label>
-              <select
-                id="pe-live-material"
-                value={s.setup.material}
-                onChange={(ev) =>
-                  tune({ material: ev.target.value as Setup['material'] })
-                }
+            <input
+              id="pe-live-brightness"
+              type="range"
+              min="0"
+              max="100"
+              step="1"
+              value={s.setup.brightness}
+              onChange={(e) => tune({ brightness: +e.target.value })}
+            />
+            <div className="spum-console-buttons">
+              <button onClick={() => dispatch({ type: 'record' })}>
+                Registrar medición
+              </button>
+              <button onClick={() => dispatch({ type: 'play' })}>
+                {s.playing ? 'Pausar dibujo' : 'Animar flujo'}
+              </button>
+            </div>
+            <p role="status">
+              {s.feedback.startsWith('Medición guardada') ? s.feedback : ''}
+            </p>
+            <div
+              className="spum-console-buttons"
+              role="group"
+              aria-label="Elegir metal junto a la escena"
+            >
+              {Object.entries(MATERIALS).map(([key, material]) => (
+                <button
+                  key={key}
+                  aria-pressed={s.setup.material === key}
+                  onClick={() => tune({ material: key as Setup['material'] })}
+                >
+                  {material.name} · {n(material.work)} eV
+                </button>
+              ))}
+            </div>
+            <div className="spum-console-buttons">
+              <button onClick={() => tune({ frequency: 450 })}>
+                Rojo · 450 THz
+              </button>
+              <button onClick={() => tune({ frequency: 650 })}>
+                Azul · 650 THz
+              </button>
+              <button onClick={() => tune({ frequency: 1000 })}>
+                UV · 1.000 THz
+              </button>
+              {[25, 50, 100].map((brightness) => (
+                <button key={brightness} onClick={() => tune({ brightness })}>
+                  Brillo {brightness}%
+                </button>
+              ))}
+            </div>
+            {s.records.length > 0 && (
+              <div
+                className="spum-console-records"
+                aria-label="Mediciones recientes"
               >
-                {Object.entries(MATERIALS).map(([key, material]) => (
-                  <option key={key} value={key}>
-                    {material.name} · φ = {n(material.work)} eV
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+                {s.records.map((record, i) => {
+                  const r = snapshot(record.setup)
+                  return (
+                    <p key={i}>
+                      Medición {i + 1}: {r.material.name},{' '}
+                      {n(record.setup.frequency, 0)} THz, {record.setup.brightness}%
+                      → {n(r.current * 1e9)} nA;{' '}
+                      {r.emitting ? `Kmáx ${n(r.kineticMax)} eV.` : 'sin emisión.'}
+                    </p>
+                  )
+                })}
+              </div>
+            )}
+            <p>
+              {light.band} · Umbral del metal: {n(m.threshold, 0)} THz. El flujo
+              muestra representantes de muchas partículas.
+            </p>
+          </SceneConsole>
           <div className="pe-readings" aria-live="polite">
             <div>
               <span>
@@ -609,8 +665,8 @@ export default function PhotoelectricApp() {
             <div>
               <h3>Hacé las dos mediciones.</h3>
               <p>{lesson.hint}</p>
-              <a className="pe-jump" href="#pe-controls">
-                Ir a los controles ↑
+              <a className="pe-jump" href="#pe-views">
+                Probar sobre la escena ↑
               </a>
               <ul className="rl-observation-list">
                 {lesson.steps.map((step, i) => (

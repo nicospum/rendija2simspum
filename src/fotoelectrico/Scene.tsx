@@ -1,3 +1,7 @@
+import { useSvgScrub } from '../shared/useSvgScrub'
+import { scrubKey } from '../shared/sceneInteraction'
+import { frequencyAtX } from './interaction'
+import SceneAction from '../components/ui/SceneAction'
 import { useId } from 'react'
 import { MATERIALS, snapshot, spectrum, stream, H_EV } from './physics'
 import type { Setup } from './physics'
@@ -6,14 +10,44 @@ export default function Scene({
   setup,
   time,
   energy,
+  onFrequency,
+  onMaterial,
+  onPower,
 }: {
   setup: Setup
   time: number
   energy: boolean
+  onFrequency?: (frequency: number) => void
+  onMaterial?: () => void
+  onPower?: () => void
 }) {
   const id = useId().replace(/:/g, ''),
     m = snapshot(setup),
     light = spectrum(setup.frequency)
+  const scrub = useSvgScrub((p) => {
+    const f = frequencyAtX(p.x, energy)
+    if (f !== null) onFrequency?.(f)
+  })
+  const frequencyHandle = {
+    ...scrub,
+    className: 'spum-object-handle',
+    role: 'slider',
+    tabIndex: 0,
+    'aria-label': energy
+      ? 'Cambiar frecuencia en el gráfico'
+      : 'Cambiar frecuencia en la celda',
+    'aria-valuemin': 350,
+    'aria-valuemax': 1600,
+    'aria-valuenow': setup.frequency,
+    'aria-valuetext': `${n(setup.frequency, 0)} THz; ${n(m.photonEv)} eV por fotón`,
+    onKeyDown: (e: import('react').KeyboardEvent<SVGCircleElement>) => {
+      const f = scrubKey(e.key, setup.frequency, 350, 1600, 10)
+      if (f !== undefined) {
+        e.preventDefault()
+        onFrequency?.(f)
+      }
+    },
+  }
   if (energy) {
     const scale = 440 / 7,
       x = (f: number) => 60 + ((f - 350) / 1250) * 480,
@@ -21,7 +55,7 @@ export default function Scene({
     return (
       <svg
         viewBox="0 0 600 470"
-        role="img"
+        role={onFrequency ? 'group' : 'img'}
         aria-label={`Reparto de energía. Cada fotón tiene ${n(m.photonEv)} eV; el ${m.material.name} necesita ${n(m.material.work)} eV. ${m.emitting ? `Energía cinética máxima ${n(m.kineticMax)} eV.` : 'No hay emisión.'}`}
       >
         <text x="32" y="35" fill="#bbd0da" fontSize="14">
@@ -81,7 +115,11 @@ export default function Scene({
         </text>
         {[0, 2, 4].map((k) => (
           <g key={k}>
-            <path d={`M60 ${y(k)}H540`} stroke="#456174" strokeOpacity=".45" />
+            <path
+              d={`M60 ${y(k)}H540`}
+              stroke="#456174"
+              strokeOpacity=".45"
+            />
             <text x="32" y={y(k) + 4} fill="#a5becb" fontSize="12">
               {k}
             </text>
@@ -145,6 +183,18 @@ export default function Scene({
         <text x="32" y="461" fill="#b8cfd7" fontSize="12">
           Vertical: eV · Horizontal: THz · debajo de f₀ no hay fotoemisión
         </text>
+        {onFrequency && (
+          <circle
+            {...frequencyHandle}
+            cx={x(setup.frequency)}
+            cy={y(Math.max(0, m.surplus))}
+            r="7"
+            fill="transparent"
+            stroke="transparent"
+            strokeWidth="44"
+            vectorEffect="non-scaling-stroke"
+          />
+        )}
       </svg>
     )
   }
@@ -160,7 +210,7 @@ export default function Scene({
   return (
     <svg
       viewBox="0 0 600 470"
-      role="img"
+      role={onFrequency ? 'group' : 'img'}
       aria-label={`Celda fotoeléctrica con ${m.material.name}, luz de ${n(setup.frequency, 0)} THz y brillo ${n(setup.brightness, 0)}%. ${m.emitting ? `Emite electrones: corriente ideal ${n(m.current * 1e9)} nanoamperes.` : 'No emite electrones.'}`}
     >
       <defs>
@@ -306,18 +356,88 @@ export default function Scene({
         stroke="#efbb7e"
         strokeWidth="2"
       />
-      <text x="353" y="419" textAnchor="middle" fill="#c7dbe1" fontSize="12">
+      <text
+        x="353"
+        y="419"
+        textAnchor="middle"
+        fill="#c7dbe1"
+        fontSize="12"
+      >
         nA
       </text>
       <text x="410" y="405" fill="#efbb7e" fontSize="17">
         {n(m.current * 1e9)} nA
       </text>
+      {onFrequency && (
+        <>
+          <defs>
+            <linearGradient id={`${id}-spectrum`}>
+              {[
+                350, 400, 450, 500, 550, 600, 650, 700, 789, 1000, 1600,
+              ].map((f) => (
+                <stop
+                  key={f}
+                  offset={(f - 350) / 1250}
+                  stopColor={spectrum(f).color}
+                />
+              ))}
+            </linearGradient>
+          </defs>
+          <path
+            d="M45 90H300"
+            stroke={`url(#${id}-spectrum)`}
+            strokeWidth="7"
+            strokeLinecap="round"
+          />
+          <text x="45" y="64" fill="#b8d6df" fontSize="14">
+            Frecuencia → · IR/UV: colores guía
+          </text>
+          <circle
+            cx={45 + ((setup.frequency - 350) / 1250) * 255}
+            cy="90"
+            r="9"
+            fill={light.color}
+            stroke="#f5f3dc"
+            strokeWidth="2"
+          />
+          <circle
+            {...frequencyHandle}
+            cx={45 + ((setup.frequency - 350) / 1250) * 255}
+            cy="90"
+            r="7"
+            fill="transparent"
+            stroke="transparent"
+            strokeWidth="44"
+            vectorEffect="non-scaling-stroke"
+          />
+        </>
+      )}
+      {onMaterial && (
+        <SceneAction
+          x={223}
+          y={275}
+          label={`Cambiar metal: ${m.material.name}`}
+          onActivate={onMaterial}
+        />
+      )}
+      {onPower && (
+        <SceneAction
+          x={470}
+          y={83}
+          label={
+            setup.brightness > 0
+              ? 'Apagar lámpara'
+              : 'Encender lámpara al 50%'
+          }
+          onActivate={onPower}
+        />
+      )}
       <text x="32" y="461" fill="#b5cbd6" fontSize="13">
         {setup.brightness === 0
           ? 'FUENTE APAGADA'
           : m.canEmit
             ? 'EMISIÓN ACTIVA · ELECTRONES EN TURQUESA'
-            : 'SIN EMISIÓN · CADA FOTÓN ESTÁ DEBAJO DEL UMBRAL'}
+            : 'SIN EMISIÓN · CADA FOTÓN NO SUPERA EL UMBRAL'}
       </text>
     </svg>
   )
