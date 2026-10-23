@@ -214,6 +214,13 @@
     .hk-scene {
     height: 195px;
   }
+  /* The same mass is already beside its control; keep the compact horizon clear. */
+  [data-scene-workspace].hk-observatory:has(
+      .spum-scene-console[data-scene-active='true']
+    )
+    .hk-scene-label {
+    display: none;
+  }
   [data-scene-workspace].en-map:has(
       .spum-scene-console[data-scene-active='true']
     )

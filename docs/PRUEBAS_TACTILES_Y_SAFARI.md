@@ -22,6 +22,7 @@ No se instaló un navegador antiguo para Windows ni se cambió el identificador 
 2. **Una cancelación ajena podía interrumpir un mando.** Los dos manejadores compartidos de arrastre limpiaban el gesto ante cualquier `pointercancel` o `lostpointercapture`, sin comprobar el identificador.
 3. **Hawking no limpiaba la vista al perder captura.** Después de una pérdida de captura, la referencia de arrastre podía seguir activa. Ahora una cancelación o pérdida de captura del propietario termina el gesto sin interpretarlo como una selección informativa.
 4. **La geometría del tren requiere el mismo cuidado.** El pasajero conserva la escala del vagón que existía al iniciar su propio gesto. Liberar o cancelar otro contacto no debe borrar esa referencia.
+5. **La etiqueta de masa de Hawking tapaba el centro en el visor compacto.** Se detectó visualmente en Chromium horizontal. En pantallas de hasta 850 px, el modo compacto conserva esa lectura junto al control y retira su duplicado del dibujo. El visor amplio conserva su etiqueta original. Es una corrección de superposición observada en Chromium, no un resultado atribuido a Safari.
 
 Eran defectos anteriores de la lógica de entrada. Se unificó el ciclo de captura en `usePointerDrag`, empleado por los mandos SVG, los mandos sobre imágenes y el mapa de Hawking. El primer puntero primario posee el gesto; los otros no pueden modificarlo ni cancelarlo. Se procesa la posición final antes de liberar la captura. El tren prepara y limpia su geometría dentro de ese ciclo, sin duplicar los manejadores.
 
