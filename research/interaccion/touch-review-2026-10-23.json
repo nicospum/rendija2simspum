@@ -1,0 +1,740 @@
+{
+  "date": "2026-10-23",
+  "environment": "Chromium in-app browser; emulated viewports and mouse input, not Safari or physical devices",
+  "safari": {
+    "status": "not_tested",
+    "reason": "No accessible Safari browser in this Windows session"
+  },
+  "physicalPhones": {
+    "status": "not_tested",
+    "reason": "No accessible phone found; Android device listing unavailable because ADB is not installed"
+  },
+  "sceneActions": [
+    {
+      "lab": "tren",
+      "method": "Chromium mouse drag, emulated viewport; not physical touch",
+      "before": "0",
+      "after": "0.22",
+      "ok": true
+    },
+    {
+      "lab": "reloj",
+      "method": "Chromium mouse drag on the visible light-path segment, not physical touch",
+      "before": "0",
+      "after": "37",
+      "ok": true
+    },
+    {
+      "lab": "gemelos",
+      "method": "Chromium mouse drag, emulated viewport; not physical touch",
+      "before": "0",
+      "after": "0.3377232142857142",
+      "scrollShift": 0,
+      "ok": true
+    },
+    {
+      "lab": "altura",
+      "method": "Chromium mouse drag, emulated viewport; not physical touch",
+      "before": "0",
+      "after": "8.639731714222533",
+      "scrollShift": 0,
+      "ok": true
+    },
+    {
+      "lab": "orbita",
+      "method": "Chromium mouse drag, emulated viewport; not physical touch",
+      "before": "0",
+      "after": "0.011874480278947885",
+      "scrollShift": 0,
+      "ok": true
+    },
+    {
+      "lab": "fotoelectrico",
+      "method": "Chromium mouse drag, emulated viewport; not physical touch",
+      "before": "450",
+      "after": "777",
+      "scrollShift": 0,
+      "ok": true
+    },
+    {
+      "lab": "horizonte",
+      "method": "Chromium mouse drag, emulated viewport; not physical touch",
+      "before": "4",
+      "after": "2.1422619245054904",
+      "scrollShift": 0,
+      "ok": true
+    },
+    {
+      "lab": "acrecion",
+      "method": "Chromium mouse drag, emulated viewport; not physical touch",
+      "before": "55",
+      "after": "82",
+      "scrollShift": 0,
+      "ok": true
+    },
+    {
+      "lab": "lente",
+      "method": "Chromium mouse drag, emulated viewport; not physical touch",
+      "before": "left: 61.3313%; top: 50%;",
+      "after": "left: 55.3936%; top: 50%;",
+      "scrollShift": 0,
+      "ok": true
+    },
+    {
+      "lab": "entropia",
+      "method": "Chromium mouse drag, emulated viewport; not physical touch",
+      "before": "10",
+      "after": "14.8",
+      "scrollShift": 0,
+      "ok": true
+    },
+    {
+      "lab": "hawking",
+      "method": "Chromium mouse drag, then tap and close; not physical touch",
+      "afterMapTap": "Horizonte de sucesos\n×\n\nEs la frontera a partir de la cual ninguna señal luminosa futura puede llegar al exterior. No es una pared. Su radio actual es 1,49 × 10⁻¹⁵ m: radio ×1 respecto de la referencia. El borde luminoso solo lo señala en este esquema.\n\nProbá duplicar la masa: ¿por qué crece el radio pero baja la temperatura?",
+      "massUnchanged": true,
+      "ok": true
+    },
+    {
+      "lab": "ascensor",
+      "method": "Chromium scene click; not physical touch",
+      "before": "0",
+      "after": "0",
+      "playing": true,
+      "ok": true
+    },
+    {
+      "lab": "entropia-algebra",
+      "method": "Chromium mouse drag, not physical touch",
+      "before": "8",
+      "after": "28",
+      "ok": true
+    }
+  ],
+  "layouts": [
+    {
+      "lab": "reloj",
+      "variant": "controls",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "reloj",
+      "variant": "question",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "tren",
+      "variant": "controls",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "tren",
+      "variant": "question",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "gemelos",
+      "variant": "controls",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "gemelos",
+      "variant": "question",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "ascensor",
+      "variant": "controls",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "ascensor",
+      "variant": "question",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "altura",
+      "variant": "controls",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "altura",
+      "variant": "question",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "orbita",
+      "variant": "controls",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "orbita",
+      "variant": "question",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "fotoelectrico",
+      "variant": "controls",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "fotoelectrico",
+      "variant": "question",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "hawking",
+      "variant": "controls",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "hawking",
+      "variant": "question",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "horizonte",
+      "variant": "controls",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "horizonte",
+      "variant": "question",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "acrecion",
+      "variant": "controls",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "acrecion",
+      "variant": "question",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "lente",
+      "variant": "controls",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "lente",
+      "variant": "question",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "entropia",
+      "variant": "controls",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "entropia",
+      "variant": "question",
+      "viewport": [
+        390,
+        844
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "reloj",
+      "variant": "controls",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "reloj",
+      "variant": "question",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "tren",
+      "variant": "controls",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "tren",
+      "variant": "question",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "gemelos",
+      "variant": "controls",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "gemelos",
+      "variant": "question",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "ascensor",
+      "variant": "controls",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "ascensor",
+      "variant": "question",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "altura",
+      "variant": "controls",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "altura",
+      "variant": "question",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "orbita",
+      "variant": "controls",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "orbita",
+      "variant": "question",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "fotoelectrico",
+      "variant": "controls",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "fotoelectrico",
+      "variant": "question",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "hawking",
+      "variant": "controls",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "hawking",
+      "variant": "question",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "horizonte",
+      "variant": "controls",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "horizonte",
+      "variant": "question",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "acrecion",
+      "variant": "controls",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "acrecion",
+      "variant": "question",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "lente",
+      "variant": "controls",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "lente",
+      "variant": "question",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "entropia",
+      "variant": "controls",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "lab": "entropia",
+      "variant": "question",
+      "viewport": [
+        667,
+        375
+      ],
+      "sceneVisible": true,
+      "primaryTargetUncovered": true,
+      "sceneUncovered": true,
+      "horizontalOverflow": false,
+      "passed": true
+    }
+  ]
+}

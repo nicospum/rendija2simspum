@@ -6,6 +6,7 @@ import type { MapTarget, View } from './exploration'
 import { CMB, scientific, SOLAR_MASS } from './physics'
 import type { blackHole } from './physics'
 import { factor } from './impact'
+import { usePointerDrag } from '../shared/usePointerDrag'
 
 type Reading = ReturnType<typeof blackHole>
 export default function SceneExplorer({
@@ -131,8 +132,29 @@ export default function SceneExplorer({
         )
         setHovered(null)
       }
-    } else if (event.pointerType !== 'touch') setHovered(targetAt(event))
+    }
   }
+  const gesture = usePointerDrag<HTMLDivElement>({
+    // The map deliberately allows native vertical scrolling (touch-action: pan-y).
+    preventDefault: false,
+    onStart(event) {
+      drag.current = { x: event.clientX, y: event.clientY, view, moved: false }
+    },
+    onMove: move,
+    onEnd(event) {
+      if (drag.current && !drag.current.moved) {
+        setPinned(targetAt(event))
+        setHovered(null)
+      }
+      drag.current = null
+    },
+    onCancel() {
+      drag.current = null
+    },
+    onHover(event) {
+      if (event.pointerType !== 'touch') setHovered(targetAt(event))
+    },
+  })
   return (
     <>
       <div
@@ -160,24 +182,7 @@ export default function SceneExplorer({
           role="group"
           tabIndex={0}
           aria-label="Mapa explorable: flechas para desplazar; señalá o tocá para obtener información"
-          onPointerMove={move}
-          onPointerDown={(event) => {
-            if (event.button !== 0) return
-            drag.current = { x: event.clientX, y: event.clientY, view, moved: false }
-            event.currentTarget.setPointerCapture(event.pointerId)
-          }}
-          onPointerUp={(event) => {
-            if (drag.current && !drag.current.moved) {
-              setPinned(targetAt(event))
-              setHovered(null)
-            }
-            drag.current = null
-            if (event.currentTarget.hasPointerCapture(event.pointerId))
-              event.currentTarget.releasePointerCapture(event.pointerId)
-          }}
-          onPointerCancel={() => {
-            drag.current = null
-          }}
+          {...gesture}
           onKeyDown={(event) => {
             const direction = {
               ArrowLeft: [-1, 0],

@@ -1,10 +1,12 @@
-import { useRef } from 'react'
 import type { PointerEvent } from 'react'
 import type { Point2 } from './sceneInteraction'
+import { usePointerDrag } from './usePointerDrag'
 
 /** Capture only the object's hit area; the rest of the scene keeps normal page scrolling. */
-export function useSvgScrub(onPoint: (point: Point2) => void) {
-  const pointer = useRef<number | null>(null)
+export function useSvgScrub(
+  onPoint: (point: Point2) => void,
+  lifecycle: { onStart?: () => void; onFinish?: () => void } = {},
+) {
   const update = (event: PointerEvent<SVGElement>) => {
     const matrix = event.currentTarget.ownerSVGElement?.getScreenCTM()
     if (!matrix) return
@@ -14,29 +16,16 @@ export function useSvgScrub(onPoint: (point: Point2) => void) {
     ).matrixTransform(matrix.inverse())
     onPoint({ x: point.x, y: point.y })
   }
-  return {
-    onPointerDown(event: PointerEvent<SVGElement>) {
-      if (!event.isPrimary || event.button !== 0) return
-      event.preventDefault()
-      pointer.current = event.pointerId
-      event.currentTarget.setPointerCapture(event.pointerId)
+  return usePointerDrag({
+    onStart(event) {
+      lifecycle.onStart?.()
       update(event)
     },
-    onPointerMove(event: PointerEvent<SVGElement>) {
-      if (pointer.current === event.pointerId) update(event)
-    },
-    onPointerUp(event: PointerEvent<SVGElement>) {
-      if (pointer.current !== event.pointerId) return
+    onMove: update,
+    onEnd(event) {
       update(event)
-      pointer.current = null
-      if (event.currentTarget.hasPointerCapture(event.pointerId))
-        event.currentTarget.releasePointerCapture(event.pointerId)
+      lifecycle.onFinish?.()
     },
-    onPointerCancel() {
-      pointer.current = null
-    },
-    onLostPointerCapture() {
-      pointer.current = null
-    },
-  }
+    onCancel: lifecycle.onFinish,
+  })
 }

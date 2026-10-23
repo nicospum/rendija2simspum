@@ -49,11 +49,22 @@ export default function Scene({
   const left = x(m.trainCenter - m.length / 2),
     right = x(m.trainCenter + m.length / 2),
     width = right - left
-  const scrub = useSvgScrub((point) => {
-    const geometry = dragGeometry.current ?? { left, width }
-    const value = passengerOffset(point.x, geometry.left, geometry.width)
-    if (value !== null) onPassenger?.(value)
-  })
+  const scrub = useSvgScrub(
+    (point) => {
+      const geometry = dragGeometry.current ?? { left, width }
+      const value = passengerOffset(point.x, geometry.left, geometry.width)
+      if (value !== null) onPassenger?.(value)
+    },
+    {
+      onStart() {
+        // Keep the original wagon scale while changing the passenger resets the trial.
+        dragGeometry.current = { left, width }
+      },
+      onFinish() {
+        dragGeometry.current = null
+      },
+    },
+  )
   const recorded = sample ? measurement(sample, frame) : null
   const color = frame === 'anden' ? '#f3bb86' : '#89e3dd'
   return (
@@ -273,24 +284,6 @@ export default function Scene({
           />
           <circle
             {...scrub}
-            onPointerDown={(event) => {
-              if (!event.isPrimary || event.button !== 0) return
-              // Changing the passenger starts a new trial; retain the gesture's original wagon scale.
-              dragGeometry.current = { left, width }
-              scrub.onPointerDown(event)
-            }}
-            onPointerUp={(event) => {
-              scrub.onPointerUp(event)
-              dragGeometry.current = null
-            }}
-            onPointerCancel={() => {
-              scrub.onPointerCancel()
-              dragGeometry.current = null
-            }}
-            onLostPointerCapture={() => {
-              scrub.onLostPointerCapture()
-              dragGeometry.current = null
-            }}
             cx={x(m.passengerCenter)}
             cy="155"
             r="6"
