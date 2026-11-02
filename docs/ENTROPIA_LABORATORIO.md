@@ -11,7 +11,13 @@ Ruta pública: `/entropia/`. Integrado al catálogo de SPUM, con enlaces desde H
 3. **Lo que pierde el horizonte:** emitir el equivalente al 25 % de la masa inicial. Queda M/M₀ = 0,75, S/S₀ = 0,5625 y T/T₀ = 4/3.
 4. **Contar todo:** con esa fracción ya emitida, incluir la radiación en la contabilidad: Srad/S₀ = 7/12 y (SBH + Srad)/S₀ = 55/48 ≈ 1,145833. El interruptor cambia qué se cuenta, no el estado físico.
 
-Los atajos restauran las otras condiciones de la referencia del reto para aislar el cambio. Los controles manuales también funcionan. Se exige una predicción para marcar una comparación explorada; una predicción equivocada permite aprender y corregirse, no bloquea el recorrido. Mezclar variables se identifica como exploración, sin atribuir el resultado a un cambio aislado. Las referencias se conservan independientes del estado actual. El progreso es local a la página, sin almacenamiento ni seguimiento.
+Los atajos restauran las otras condiciones de la referencia del reto para aislar el cambio. Los controles manuales también funcionan. Se exige una predicción para marcar una comparación explorada; una predicción equivocada permite aprender y corregirse, no bloquea el recorrido. Mezclar variables se identifica como exploración, sin atribuir el resultado a un cambio aislado. Las referencias se conservan independientes del estado actual. Las huellas de los retos se conservan en el almacenamiento local del navegador mediante la bitácora del especial; no se envían a un servidor.
+
+### Tamaño del visor
+
+En el modo de jugar, escritorio muestra la escena y el reto en columnas, aprovechando el ancho del laboratorio. En pantallas pequeñas o bajas, las vistas «Horizonte» y «Área y entropía» enfocan por separado los mismos objetos calculados. El encuadre de cada vista es fijo: cambiar de masa no cambia el zoom, de modo que duplicar el radio sigue ocupando cuatro veces más área. Los mandos ocultos de la otra vista no reciben foco.
+
+La lupa algebraica usa cuatro columnas de grupos en pantallas pequeñas, sin modificar su significado ni la masa física. Una lectura HTML junto al dibujo mantiene legibles las proporciones y la referencia. «Ampliar visor» permite recuperar el dibujo completo sin reiniciar condiciones, predicción ni huellas. Las restricciones antiguas de 190–320 px que reducían el SVG dentro de una caja ancha fueron retiradas.
 
 ## Ecuaciones y unidades
 

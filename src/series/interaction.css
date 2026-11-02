@@ -169,9 +169,6 @@
     sans-serif;
   pointer-events: none;
 }
-.en-horizon:has(.spum-scene-console) .en-map > svg {
-  max-height: 320px;
-}
 .en-horizon:has(.spum-scene-console) .en-section-top {
   padding: 16px 18px;
 }
@@ -242,9 +239,6 @@
   }
   .ac-workbench:has(.spum-scene-console) .ac-no-gas span {
     font-size: 11px;
-  }
-  .en-horizon:has(.spum-scene-console) .en-map > svg {
-    max-height: 250px;
   }
   .en-horizon:has(.spum-scene-console) .en-section-top h2 {
     font-size: 25px;

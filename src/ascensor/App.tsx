@@ -263,7 +263,7 @@ export default function ElevatorApp() {
             <p className="spum-console-impact">
               {isLight
                 ? `Desvío interior: ${n(m.light.drop * 1e15)} fm · ${s.setup.zoom ? 'eje vertical en femtómetros' : 'escala vertical en metros'}.`
-                : `Altura: ${n(m.ballY)} m · Balanza: ${n(m.normal)} N · Campo: ${n(m.g)} m/s².`}
+                : `Objeto: ${n(s.setup.mass)} kg · Altura: ${n(m.ballY)} m · Balanza: ${n(m.normal)} N · Campo: ${n(m.g)} m/s².`}
             </p>
             <div className="spum-console-buttons">
               <button onClick={release}>
@@ -273,6 +273,9 @@ export default function ElevatorApp() {
                 {s.playing ? 'Pausar ensayo' : 'Continuar ensayo'}
               </button>
               <button onClick={() => time(1)}>Ver resultado</button>
+              <button onClick={() => tune(l.setup)}>
+                Usar condiciones del reto
+              </button>
             </div>
             <div
               className="spum-console-buttons"

@@ -27,7 +27,7 @@ export const LESSONS = [
       'Es otro agujero negro',
     ],
     answer: 1,
-    hint: 'Pasá de 0° a 70° o más. Después apagá y volvé a encender “Curvar la luz”.',
+    hint: 'Con gas en el disco, pasá de 0° a 70° o más. Después apagá y volvé a encender “Curvar la luz”.',
     meaning:
       'El disco sigue siendo plano. Rayos de su parte posterior se curvan y alcanzan al observador por encima y por debajo de la sombra. Comparar con luz recta separa perspectiva y lente gravitacional.',
     setup: { ...DEFAULT, inclination: 0, doppler: false },
@@ -38,7 +38,7 @@ export const LESSONS = [
       'Con el disco inclinado, ¿qué lado se refuerza por el movimiento del gas?',
     choices: ['El que se aleja', 'Ambos por igual', 'El que se acerca'],
     answer: 2,
-    hint: 'Activá “Movimiento relativista” a 70° y después mirá el disco de frente, a 0°.',
+    hint: 'Con gas en el disco, activá “Movimiento relativista” a 70° y después miralo de frente, a 0°.',
     meaning:
       'El movimiento cambia la frecuencia y concentra la radiación en la dirección de avance. En la intensidad integrada sobre frecuencias aparece un factor g⁴. De frente desaparece la asimetría entre los lados, aunque persisten otros efectos relativistas.',
     setup: { ...DEFAULT, inclination: 70, doppler: false },
@@ -71,9 +71,9 @@ export function observe(
   const marks = new Set(previous)
   if (index === 0 && s.gas === 0 && s.view === 'disk') marks.add('off')
   if (index === 0 && s.gas >= 60 && s.view === 'disk') marks.add('gas')
-  if (index === 1 && s.inclination >= 70 && s.view === 'disk')
+  if (index === 1 && s.gas > 0 && s.inclination >= 70 && s.view === 'disk')
     marks.add(s.lens ? 'bent' : 'straight')
-  if (index === 2 && s.view === 'disk' && s.doppler) {
+  if (index === 2 && s.gas > 0 && s.view === 'disk' && s.doppler) {
     if (s.inclination >= 65) marks.add('inclined')
     if (s.inclination <= 5) marks.add('face')
   }
@@ -86,12 +86,12 @@ const REQUIRED = [
     ['gas', 'Disco con gas: alimentación en 60 % o más'],
   ],
   [
-    ['bent', 'Disco a 70° o más con «Curvar la luz»'],
-    ['straight', 'Mismo disco inclinado sin «Curvar la luz»'],
+    ['bent', 'Disco con gas a 70° o más con «Curvar la luz»'],
+    ['straight', 'Mismo disco con gas inclinado sin «Curvar la luz»'],
   ],
   [
-    ['inclined', 'Movimiento relativista activo con el disco a 70°'],
-    ['face', 'Movimiento relativista activo con el disco de frente: 0°'],
+    ['inclined', 'Movimiento relativista activo con gas en el disco a 70°'],
+    ['face', 'Movimiento relativista activo con gas en el disco de frente: 0°'],
   ],
   [['mass', 'Vista de la estrella con 8 millones de masas solares']],
 ] as const

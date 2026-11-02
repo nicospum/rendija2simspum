@@ -4,6 +4,30 @@ import type { ObservationStep } from './trialSteps'
 import './SceneConsole.css'
 import './SceneChallenge.css'
 
+function revealControls(controls: HTMLDivElement | null) {
+  if (!controls) return
+  controls.scrollIntoView({ block: 'start' })
+  const workspace = controls.closest('[data-scene-workspace]')
+  const left = controls.getBoundingClientRect().left
+  // A tall scene beside the controls reaches the end of its grid row sooner.
+  // Keep the whole drawing visible instead of aligning the controls too high.
+  const stage = [
+    ...(workspace?.querySelectorAll<HTMLElement>('.spum-live-stage') ?? []),
+  ].find((element) => {
+    const box = element.getBoundingClientRect()
+    return box.width > 0 && box.right <= left + 2
+  })
+  if (!stage) return
+  const box = stage.getBoundingClientRect()
+  const inset = Number.parseFloat(getComputedStyle(stage).top)
+  if (
+    Number.isFinite(inset) &&
+    box.top < inset &&
+    box.height <= innerHeight - inset
+  )
+    window.scrollBy({ top: box.top - inset, behavior: 'instant' })
+}
+
 export interface SceneChallenge {
   index: number
   lessons: readonly { title: string }[]
@@ -68,8 +92,7 @@ export default function SceneConsole({
         controls.current?.parentElement?.dataset.challengeOpen === 'true'
       pendingControls.current = variables && !alreadyOpen
       setMode('challenge')
-      if (variables && alreadyOpen)
-        controls.current?.scrollIntoView({ block: 'start' })
+      if (variables && alreadyOpen) revealControls(controls.current)
       else
         document
           .getElementById(viewHref.slice(1))
@@ -132,7 +155,7 @@ export default function SceneConsole({
     measure()
     if (pendingControls.current) {
       pendingControls.current = false
-      controls.current?.scrollIntoView({ block: 'start' })
+      revealControls(controls.current)
     }
     return () => {
       observer.disconnect()
@@ -167,6 +190,19 @@ export default function SceneConsole({
           </select>
         ) : (
           <strong>Probá acá.</strong>
+        )}
+        {active && (
+          <button
+            className="spum-challenge-toggle"
+            aria-label="Ampliar visor"
+            title="Ampliar el visor sin reiniciar la prueba"
+            onClick={() => {
+              setMode('wide')
+              returnToScene()
+            }}
+          >
+            ⤢<span className="spum-expand-word"> Ampliar</span>
+          </button>
         )}
         {open && (
           <button
@@ -258,9 +294,7 @@ export default function SceneConsole({
                 </button>
               )}
               <button
-                onClick={() =>
-                  controls.current?.scrollIntoView({ block: 'start' })
-                }
+                onClick={() => revealControls(controls.current)}
               >
                 Probar en la escena ↓
               </button>

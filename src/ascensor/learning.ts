@@ -11,10 +11,10 @@ export const LESSONS = [
       'El motor hace que la masa desaparezca',
     ],
     answer: 1,
-    hint: 'A 9,81 m/s², compará el resultado en “Ascensor sostenido” y “Nave acelerada”. Mirá el interior y luego la referencia exterior.',
+    hint: 'En “Pelotas y balanza”, usá un objeto de 2 kg y una intensidad de 9,81 m/s². Compará el resultado final en “Ascensor sostenido” y “Nave acelerada”. Mirá el interior y luego la referencia exterior.',
     steps: [
-      'Resultado en el ascensor sostenido',
-      'Resultado en la nave acelerada',
+      'Ascensor sostenido: 2 kg, 9,81 m/s² y resultado final',
+      'Nave acelerada: 2 kg, 9,81 m/s² y resultado final',
     ],
     meaning:
       'En ambos casos la pelota cae respecto de la cabina y la balanza ejerce la misma fuerza. El exterior permite reconocer contextos distintos; las mediciones locales no distinguen estos dos casos ideales.',
@@ -30,8 +30,12 @@ export const LESSONS = [
       'Cabina y objetos caen juntos y el soporte deja de empujarlos',
     ],
     answer: 2,
-    hint: 'Compará el resultado en “Ascensor sostenido”, “Caída libre” y “Nave a la deriva”. La balanza puede marcar cero con campo gravitatorio o sin él.',
-    steps: ['Cabina sostenida', 'Cabina en caída libre', 'Nave a la deriva'],
+    hint: 'En “Pelotas y balanza”, mantené 2 kg y 9,81 m/s². Compará el resultado final en “Ascensor sostenido”, “Caída libre” y “Nave a la deriva”. La balanza puede marcar cero con campo gravitatorio o sin él.',
+    steps: [
+      'Cabina sostenida: 2 kg, 9,81 m/s² y resultado final',
+      'Caída libre: 2 kg, 9,81 m/s² y resultado final',
+      'Nave a la deriva: 2 kg, 9,81 m/s² y resultado final',
+    ],
     meaning:
       'La ingravidez mide la ausencia de fuerza de apoyo, no la ausencia de un campo gravitatorio. En caída libre, cabina y objetos tienen la misma aceleración; en este modelo local su interior se comporta como una nave a la deriva.',
     setup: { ...DEFAULT },
@@ -46,8 +50,11 @@ export const LESSONS = [
       'La aceleración depende de la masa',
     ],
     answer: 0,
-    hint: 'En “Pelotas y balanza”, usá la nave acelerada y compará el resultado con “Objeto de 1 kg” y “Objeto de 4 kg”. Ambas pelotas se sueltan a la misma altura y sin velocidad inicial.',
-    steps: ['Resultado con 1 kg', 'Resultado con 4 kg'],
+    hint: 'En “Pelotas y balanza”, usá la nave acelerada a 9,81 m/s² y compará el resultado final con “Objeto de 1 kg” y “Objeto de 4 kg”. Ambas pelotas se sueltan a la misma altura y sin velocidad inicial.',
+    steps: [
+      'Nave acelerada: 1 kg, 9,81 m/s² y resultado final',
+      'Nave acelerada: 4 kg, 9,81 m/s² y resultado final',
+    ],
     meaning:
       'La fuerza de apoyo es proporcional a la masa: pasa de 9,81 a 39,24 N. La aceleración relativa es la misma y las pelotas llegan juntas. No hay aire ni diferencias de velocidad inicial.',
     setup: { ...DEFAULT, scenario: 'cohete' as const, mass: 1 },
@@ -62,10 +69,10 @@ export const LESSONS = [
       'La trayectoria baja en la cabina acelerada y es recta en la cabina libre',
     ],
     answer: 2,
-    hint: 'Elegí “Pulso de luz”, ancho de 3 m y 9,81 m/s². Con el desvío ampliado, compará “Nave acelerada” y “Caída libre” hasta la pared de enfrente.',
+    hint: 'Elegí “Pulso de luz”, ancho de 3 m y 9,81 m/s². Con el desvío ampliado, compará “Nave acelerada” y “Caída libre” hasta la pared de enfrente (100% del recorrido).',
     steps: [
-      'Luz en la cabina acelerada, con ampliación',
-      'Luz en caída libre, con ampliación',
+      'Luz en nave acelerada: 3 m, 9,81 m/s², ampliación y recorrido completo',
+      'Luz en caída libre: 3 m, 9,81 m/s², ampliación y recorrido completo',
     ],
     meaning:
       'La cabina acelerada cambia de posición mientras la luz cruza. Un laboratorio libre local describe un rayo recto. El desvío en la cabina acelerada mide aproximadamente 0,49 femtómetros en 3 m: la escala vertical ampliada lo hace visible. La curvatura global de un campo real requiere relatividad general.',

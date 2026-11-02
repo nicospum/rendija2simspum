@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-02",
+  "environment": "Chromium; emulated viewport, not physical phone",
+  "layout": [
+    {
+      "viewport": "1280x900",
+      "cases": 24,
+      "failures": []
+    },
+    {
+      "viewport": "320x740",
+      "cases": 24,
+      "failures": []
+    },
+    {
+      "viewport": "390x844",
+      "cases": 24,
+      "failures": []
+    },
+    {
+      "viewport": "568x320",
+      "cases": 24,
+      "failures": []
+    },
+    {
+      "viewport": "667x375",
+      "cases": 24,
+      "failures": []
+    },
+    {
+      "viewport": "768x1024",
+      "cases": 24,
+      "failures": []
+    }
+  ],
+  "publicFirstChallenge": [
+    {
+      "lab": "reloj",
+      "ok": true
+    },
+    {
+      "lab": "tren",
+      "ok": true
+    },
+    {
+      "lab": "gemelos",
+      "ok": true
+    },
+    {
+      "lab": "ascensor",
+      "ok": true
+    },
+    {
+      "lab": "altura",
+      "ok": true
+    },
+    {
+      "lab": "orbita",
+      "ok": true
+    },
+    {
+      "lab": "fotoelectrico",
+      "ok": true
+    },
+    {
+      "lab": "hawking",
+      "ok": true
+    },
+    {
+      "lab": "lente",
+      "ok": true
+    },
+    {
+      "lab": "acrecion",
+      "ok": true
+    },
+    {
+      "lab": "horizonte",
+      "ok": true
+    },
+    {
+      "lab": "entropia",
+      "ok": true
+    }
+  ],
+  "entropyChallenges": [
+    {
+      "number": 1,
+      "ok": true
+    },
+    {
+      "number": 2,
+      "ok": true
+    },
+    {
+      "number": 3,
+      "ok": true
+    },
+    {
+      "number": 4,
+      "ok": true
+    }
+  ],
+  "automaticTests": 325,
+  "limitations": [
+    "Not all 56 challenges tested in UI",
+    "No Safari or physical phone",
+    "Geometry checks do not certify text readability or rendering performance"
+  ]
+}

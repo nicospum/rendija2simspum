@@ -4,11 +4,11 @@
 
 `/einstein/` abre el especial. Su primer capítulo disponible es
 `/reloj-de-luz/`; también figura como laboratorio 08 en el catálogo general.
-El tren de Einstein ya está disponible como segundo capítulo; los cuatro
-siguientes se presentan como propuestas, sin enlaces a laboratorios inexistentes. Lente y horizonte conectan con el especial de
-agujeros negros ya disponible.
+El especial tiene siete capítulos disponibles: reloj de luz, tren, gemelos,
+ascensor, relojes a distintas alturas, Mercurio y efecto fotoeléctrico.
+Lente y horizonte conectan con el especial de agujeros negros.
 
-Las dos entradas se compilan con `npm run build` y se ejecutan con `npm run dev`,
+Las diecisiete entradas del portal, especiales y laboratorios se compilan con `npm run build` y se ejecutan con `npm run dev`,
 como el resto de SPUM. No se agregan dependencias. El laboratorio usa SVG
 calculado, sin WebGL ni recursos de imagen externos. La ilustración de Einstein
 y el diagrama de la portada son SVG propios.

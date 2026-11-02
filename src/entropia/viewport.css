@@ -1,0 +1,125 @@
+.en-map .en-visual-stage {
+  min-width: 0;
+  background: #091b27;
+}
+.en-map .en-map-drawing {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+}
+.en-view-choices {
+  display: flex;
+  gap: 8px;
+  padding: 6px 10px;
+  border-bottom: 1px solid #45616b;
+}
+.en-view-choices button {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 6px;
+  border: 1px solid #688d96;
+  border-radius: 5px;
+  background: #15343d;
+  color: #dbeae6;
+  font:
+    13px/1.3 'Segoe UI',
+    sans-serif;
+  cursor: pointer;
+}
+.en-view-choices button[aria-pressed='true'] {
+  border-color: #efd29a;
+  color: #efd29a;
+  background: #344239;
+}
+.en-view-choices button:focus-visible {
+  outline: 3px solid #a5e4db;
+  outline-offset: 2px;
+}
+.en-map-readout {
+  display: grid;
+  gap: 4px;
+  padding: 10px 14px;
+  color: #c1d7d7;
+  font:
+    12px/1.4 'Segoe UI',
+    sans-serif;
+  border-top: 1px solid #35535c;
+}
+.en-map-readout strong {
+  color: #efd29a;
+  font-size: 14px;
+  font-weight: 600;
+}
+/* A focused view keeps the same physical scale for every mass. Switching
+   views changes the drawing window, not the model or the saved comparison. */
+.en-map:has(.spum-scene-console[data-scene-active='true'])
+  > .en-visual-stage[data-focused='true']
+  .en-map-drawing {
+  height: min(250px, calc(100svh - 400px));
+  min-height: 170px;
+}
+.en-lab-grid:has(.spum-scene-console[data-scene-active='true'])
+  > .en-controls {
+  display: none;
+}
+@media (min-width: 851px) and (min-height: 551px) {
+  .en-lab-grid:has(.spum-scene-console[data-scene-active='true']) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  [data-scene-workspace].en-map:has(
+      .spum-scene-console[data-scene-active='true']
+    ) {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(310px, 1fr);
+    align-items: start;
+  }
+  .en-map:has(.spum-scene-console[data-scene-active='true'])
+    > .en-visual-stage
+    .en-map-drawing {
+    max-height: calc(100svh - 190px);
+  }
+  .en-map:has(.spum-scene-console[data-scene-active='true'])
+    > .spum-scene-console {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+  }
+  .en-map:has(.spum-scene-console[data-scene-active='true'])
+    > .bh-scene-details {
+    grid-column: 1/-1;
+  }
+  .en-map
+    .spum-scene-console[data-scene-active='true']
+    > .spum-console-heading {
+    top: 78px;
+    box-shadow:
+      0 -24px 0 #13303d,
+      0 6px 0 #13303d;
+  }
+  .en-map .spum-console-variables,
+  .en-map .spum-scene-challenge,
+  .en-map
+    .spum-scene-console[data-scene-active='true']
+    :is(input, select, button) {
+    scroll-margin-top: 60px;
+  }
+}
+@media (max-height: 550px) and (min-width: 560px) {
+  .en-map:has(.spum-scene-console[data-scene-active='true'])
+    > .en-visual-stage[data-focused='true']
+    .en-map-drawing {
+    height: clamp(100px, calc(100svh - 220px), 190px);
+    min-height: 0;
+  }
+  .en-map:has(.spum-scene-console[data-scene-active='true'])
+    .en-map-readout
+    span {
+    display: none;
+  }
+  .en-map:has(.spum-scene-console[data-scene-active='true'])
+    .en-map-readout {
+    padding: 6px 10px;
+  }
+}

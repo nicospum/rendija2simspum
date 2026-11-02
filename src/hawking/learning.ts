@@ -1,6 +1,9 @@
 import { blackHole, evaporatedMass, MAX_AGE, SOLAR_MASS, MIN_MASS, MAX_MASS } from './physics.ts'
 import type { Environment } from './physics.ts'
 
+// The comparison should be visible at the precision of the displayed ratios.
+export const MIN_OBSERVED_AGE = 0.25
+
 export const LESSONS = [
   {
     id: 'mass',
@@ -35,7 +38,7 @@ export const LESSONS = [
     choices: ['Más débil: se va apagando', 'Más intensa: aumenta su temperatura'],
     answer: 1,
     action: 'Avanzar al 75 % de τ₀',
-    hint: 'Avanzá el reloj o mové Tiempo transcurrido. Masa y temperatura se calculan juntas.',
+    hint: 'Avanzá al menos al 25 % de la vida ideal τ₀ con el reloj o Tiempo transcurrido. Masa y temperatura se calculan juntas.',
     meaning:
       'Al emitir energía pierde masa, aumenta su temperatura y crece la potencia. Es una capacidad calorífica negativa. El reloj está acelerado: la vida ideal de este ejemplo es de billones de años.',
   },
@@ -110,7 +113,7 @@ export function lessonStatus(state: LabState): 'ready' | 'observed' | 'changed' 
   if (state.environment !== ref.environment) return 'changed'
   if (state.lesson === 'time') {
     if (state.mass !== ref.mass) return 'changed'
-    return state.age > 0 ? 'observed' : 'ready'
+    return state.age >= MIN_OBSERVED_AGE ? 'observed' : 'ready'
   }
   if (state.age !== 0) return 'changed'
   const ratio = state.mass / ref.mass

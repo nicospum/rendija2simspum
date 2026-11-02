@@ -130,12 +130,6 @@
   height: 250px;
   min-height: 0;
 }
-[data-scene-workspace].en-map:has(
-    .spum-scene-console[data-scene-active='true']
-  )
-  > svg {
-  max-height: 250px;
-}
 [data-scene-workspace].ac-visual:has(
     .spum-scene-console[data-scene-active='true']
   )
@@ -189,6 +183,9 @@
   height: 230px;
 }
 @media (max-width: 850px) {
+  .spum-expand-word {
+    display: none;
+  }
   [data-scene-workspace].rl-observatory:has(
       .spum-scene-console[data-scene-active='true']
     )
@@ -220,12 +217,6 @@
     )
     .hk-scene-label {
     display: none;
-  }
-  [data-scene-workspace].en-map:has(
-      .spum-scene-console[data-scene-active='true']
-    )
-    > svg {
-    max-height: 190px;
   }
   [data-scene-workspace].ac-visual:has(
       .spum-scene-console[data-scene-active='true']
@@ -366,12 +357,6 @@
     )
     .hk-scene {
     height: 200px;
-  }
-  [data-scene-workspace].en-map:has(
-      .spum-scene-console[data-scene-active='true']
-    )
-    > svg {
-    max-height: 200px;
   }
   .hz-workbench:has(.spum-scene-console[data-scene-active='true'])
     .hz-space-stage,

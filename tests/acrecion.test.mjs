@@ -224,6 +224,67 @@ test('a single state, wrong view, or contrast with movement off cannot complete 
   assert.deepEqual(prior, ['bent'])
   assert.deepEqual(next, ['bent', 'straight'])
 })
+
+test('a dark disk cannot supply the light-bending or Doppler observations', () => {
+  const comparisons = [
+    [
+      { inclination: 70, lens: true },
+      { inclination: 70, lens: false },
+    ],
+    [
+      { inclination: 70, doppler: true },
+      { inclination: 0, doppler: true },
+    ],
+  ]
+  for (const [offset, phases] of comparisons.entries()) {
+    const index = offset + 1
+    let marks = []
+    for (const patch of phases)
+      marks = observe(
+        index,
+        { ...LESSONS[index].setup, ...patch, gas: 0 },
+        marks,
+      )
+    assert.deepEqual(marks, [])
+    assert.equal(
+      checkAnswer({
+        index,
+        prediction: LESSONS[index].answer,
+        observations: marks,
+        completed: [],
+      }),
+      'try',
+    )
+
+    // Any nonzero feeding is valid; these lessons do not impose an unrelated brightness target.
+    marks = observe(
+      index,
+      { ...LESSONS[index].setup, ...phases[0], gas: 1 },
+      marks,
+    )
+    marks = observe(
+      index,
+      { ...LESSONS[index].setup, ...phases[1], gas: 0 },
+      marks,
+    )
+    assert.equal(observed(index, marks), false)
+    marks = observe(
+      index,
+      { ...LESSONS[index].setup, ...phases[1], gas: 1 },
+      marks,
+    )
+    assert.equal(
+      checkAnswer({
+        index,
+        prediction: LESSONS[index].answer,
+        observations: marks,
+        completed: [],
+      }),
+      'complete',
+    )
+  }
+})
+
 test('black-hole special includes each implemented chapter once with valid canonical paths', () => {
   assert.deepEqual(
     blackHoleLabs.map((lab) => lab.id),

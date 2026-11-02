@@ -18,6 +18,7 @@ import {
   scientific,
 } from '../src/hawking/physics.ts'
 import { initialState, reducer, reading, lessonStatus, LESSONS } from '../src/hawking/learning.ts'
+import { factor } from '../src/hawking/impact.ts'
 
 function close(actual, expected, tolerance = 1e-10) {
   assert.ok(
@@ -149,13 +150,35 @@ test('lesson feedback rejects confounded comparisons and all four lessons can be
 test('manual slider steps also complete meaningful comparisons without requiring the shortcut', () => {
   const mass = reducer(initialState('mass'), { type: 'mass', mass: 10 ** 12.3 })
   assert.equal(lessonStatus(mass), 'observed')
-  const time = reducer(initialState('time'), { type: 'age', age: 0.005 })
+  const time = reducer(initialState('time'), { type: 'age', age: 0.25 })
   assert.equal(lessonStatus(time), 'observed')
   assert.equal(
     lessonStatus(reducer(initialState('mass'), { type: 'mass', mass: 1.5e12 })),
     'changed',
   )
 })
+
+test('the evaporation discovery waits for a visible change while smaller clock advances remain physical', () => {
+  let state = reducer(initialState('time'), { type: 'predict', choice: 1 })
+  const reference = reading(state)
+  for (const age of [1e-6, 0.005, 0.249999]) {
+    state = reducer(state, { type: 'age', age })
+    assert.equal(lessonStatus(state), 'ready')
+    assert.deepEqual(state.completed, [])
+    assert.ok(reading(state).massKg < reference.massKg)
+  }
+  state = reducer(state, { type: 'age', age: 0.25 })
+  assert.equal(lessonStatus(state), 'observed')
+  assert.deepEqual(state.completed, ['time'])
+  const current = reading(state)
+  for (const field of ['massKg', 'temperatureK', 'powerW'])
+    assert.notEqual(factor(current[field] / reference[field]), '×1')
+  const shortcut = reducer(initialState('time'), { type: 'try' })
+  assert.equal(shortcut.age, 0.75)
+  assert.equal(lessonStatus(shortcut), 'observed')
+  assert.deepEqual(shortcut.completed, []) // A visible change still needs the explanation.
+})
+
 test('thermal-bath mode resets age and prevents isolated evolution through all clock actions', () => {
   let state = reducer(initialState('time'), { type: 'try' })
   state = reducer(state, { type: 'environment', environment: 'cmb' })

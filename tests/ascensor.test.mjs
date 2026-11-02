@@ -228,6 +228,59 @@ test('wrong intensity, unfinished trials or unamplified light do not satisfy com
   s = reducer(initialState(), { type: 'time', value: 0.5 })
   assert.deepEqual(s.marks, [])
 })
+
+test('restoring the challenge conditions recovers from exploration without losing the prediction, comparisons or achievements', () => {
+  for (const index of [0, 1]) {
+    let s = reducer(initialState(index, [3]), {
+      type: 'predict',
+      choice: LESSONS[index].answer,
+    })
+    s = finish(s)
+    assert.deepEqual(s.marks, ['ground'])
+    s = tune(s, { mass: 1, strength: 10, instrument: 'luz' })
+    s = finish(s)
+    assert.deepEqual(s.marks, ['ground'])
+    s = tune(s, LESSONS[index].setup)
+    assert.deepEqual(s.setup, LESSONS[index].setup)
+    assert.equal(s.prediction, LESSONS[index].answer)
+    assert.equal(s.playing, false)
+    assert.deepEqual(s.marks, ['ground'])
+    assert.deepEqual(s.completed, [3])
+    for (const scenario of index === 0 ? ['cohete'] : ['caida', 'deriva'])
+      s = finish(tune(s, { scenario }))
+    s = reducer(s, { type: 'check' })
+    assert.deepEqual(s.completed, [3, index])
+    assert.match(s.feedback, /Descubrimiento completo/)
+  }
+})
+
+test('restoring mass and light challenges reinstates every required reference setting without awarding progress', () => {
+  for (const index of [2, 3]) {
+    let s = reducer(initialState(index, [0, 1]), {
+      type: 'predict',
+      choice: LESSONS[index].answer,
+    })
+    s = tune(s, {
+      scenario: 'deriva',
+      strength: 20,
+      mass: 5,
+      width: 6,
+      zoom: false,
+      instrument: index === 3 ? 'pelotas' : 'luz',
+    })
+    s = tune(s, LESSONS[index].setup)
+    assert.deepEqual(s.setup, LESSONS[index].setup)
+    assert.equal(s.prediction, LESSONS[index].answer)
+    assert.deepEqual(s.marks, [])
+    assert.deepEqual(s.completed, [0, 1])
+    assert.equal(s.setup.strength, 9.81)
+    if (index === 3) {
+      assert.equal(s.setup.instrument, 'luz')
+      assert.equal(s.setup.width, 3)
+      assert.equal(s.setup.zoom, true)
+    }
+  }
+})
 test('zoom preserves physical event while trial changes restart and pause', () => {
   const s = finish(initialState(3)),
     z = tune(s, { zoom: false })
