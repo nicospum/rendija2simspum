@@ -1,0 +1,2485 @@
+{
+  "project": "SPUM · Experimentos para entender",
+  "domain": "https://www.spumexp.lat/",
+  "generatedFromHead": "effb811cee78e33d78234e12e63fd28232058e6a",
+  "experiments": 19,
+  "mainChallenges": 84,
+  "challenges": 89,
+  "labs": [
+    {
+      "id": "doble-rendija",
+      "name": "La doble rendija",
+      "route": "/doble-rendija/",
+      "discipline": "FÍSICA CUÁNTICA",
+      "publication": "ACTIVO",
+      "objective": "¿Cómo pueden detecciones individuales formar un patrón de interferencia?",
+      "firstAction": "Emití partículas, acumulá impactos y compará qué cambia cuando se mide por cuál rendija pasan.",
+      "model": "Modelo idealizado probabilístico de Fraunhofer",
+      "prerequisites": "Ondas, probabilidad y frecuencias relativas",
+      "sourcesAndLimits": "docs/MODELO_DOBLE_RENDIJA.md",
+      "physics": "src/physics/interference.ts",
+      "controlsAndReadouts": "Emisión individual/continua y pausa; partícula, λ, flujo, tamaño de pulso, número/ancho/separación de aberturas, detector y distancia. Resultados: puntos, histograma normalizado, teoría opcional, referencia y separación/ancho calculados.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx"
+      ],
+      "challengeSource": "src/education/doubleSlitLearning.ts",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "id": "doble-rendija/principal/reto-01",
+          "number": "01",
+          "title": "De un punto a un patrón",
+          "question": "¿Un solo impacto alcanza para descubrir las franjas?",
+          "instruction": "Emití una partícula y después acumulá muchas, sin cambiar el montaje.",
+          "controlId": "emission-controls",
+          "nativeId": "accumulation",
+          "index": 0,
+          "section": "principal",
+          "source": "src/education/doubleSlitLearning.ts",
+          "challengeKind": "open-comparison",
+          "statusReference": "estado.json"
+        },
+        {
+          "id": "doble-rendija/principal/reto-02",
+          "number": "02",
+          "title": "Separar las rendijas",
+          "question": "¿Rendijas más separadas producen franjas más separadas?",
+          "instruction": "Cambiá solo la separación d de 0,30 a 0,45 u y compará dos corridas.",
+          "controlId": "slit-separation",
+          "nativeId": "separation",
+          "index": 1,
+          "section": "principal",
+          "source": "src/education/doubleSlitLearning.ts",
+          "challengeKind": "open-comparison",
+          "statusReference": "estado.json"
+        },
+        {
+          "id": "doble-rendija/principal/reto-03",
+          "number": "03",
+          "title": "Registrar el camino",
+          "question": "¿Qué cambia si el aparato distingue por cuál rendija pasó?",
+          "instruction": "Cambiá solo el detector de 0 a 100 % y acumulá una nueva corrida.",
+          "controlId": "detector-strength",
+          "nativeId": "detector",
+          "index": 2,
+          "section": "principal",
+          "source": "src/education/doubleSlitLearning.ts",
+          "challengeKind": "open-comparison",
+          "statusReference": "estado.json"
+        },
+        {
+          "id": "doble-rendija/principal/reto-04",
+          "number": "04",
+          "title": "Una rendija también difracta",
+          "question": "¿Una abertura más ancha dispersa más o menos el patrón?",
+          "instruction": "Con una rendija, cambiá solo su ancho a de 0,065 a 0,100 u.",
+          "controlId": "slit-width",
+          "nativeId": "single",
+          "index": 3,
+          "section": "principal",
+          "source": "src/education/doubleSlitLearning.ts",
+          "challengeKind": "open-comparison",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "prisma",
+      "name": "El prisma de Newton",
+      "route": "/prisma/",
+      "discipline": "ÓPTICA",
+      "publication": "ACTIVO",
+      "objective": "¿El prisma crea los colores o separa los que componen la luz blanca?",
+      "firstAction": "Dirigí el haz, girá el prisma y compará materiales para descubrir cómo se desvía cada color.",
+      "model": "Óptica geométrica dispersiva",
+      "prerequisites": "Color, rayos y ángulos",
+      "sourcesAndLimits": "docs/MODELO_PRISMA.md",
+      "physics": "src/prisma/physics/optics.ts",
+      "controlsAndReadouts": "Fuente, dirección/posición/ancho/intensidad, material, giro y vértice, distancia de pantalla, pausa de lectura y cámara. Resultados: rayos y colores, incidencia/desviación, n y Δz; comparación con referencia.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx"
+      ],
+      "challengeSource": "src/prisma/education/prismLearning.ts",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "id": "prisma/principal/reto-01",
+          "number": "01",
+          "title": "De la luz blanca al espectro",
+          "question": "¿Qué pasa cuando la luz blanca atraviesa el prisma?",
+          "instruction": "Cambiá solo la dirección de 16° a 0° para que el haz atraviese el prisma.",
+          "controlId": "light-angle",
+          "nativeId": "split",
+          "index": 0,
+          "section": "principal",
+          "source": "src/prisma/education/prismLearning.ts",
+          "challengeKind": "open-comparison",
+          "statusReference": "estado.json"
+        },
+        {
+          "id": "prisma/principal/reto-02",
+          "number": "02",
+          "title": "Brillo y trayectoria",
+          "question": "¿Más brillo significa más desviación?",
+          "instruction": "Cambiá solo la intensidad y compará el brillo con la desviación medida.",
+          "controlId": "intensity",
+          "nativeId": "brightness",
+          "index": 1,
+          "section": "principal",
+          "source": "src/prisma/education/prismLearning.ts",
+          "challengeKind": "open-comparison",
+          "statusReference": "estado.json"
+        },
+        {
+          "id": "prisma/principal/reto-03",
+          "number": "03",
+          "title": "Una pantalla más lejos",
+          "question": "¿Se separan más los colores o cambia su dirección?",
+          "instruction": "Cambiá solo la distancia de la pantalla de 3,2 a 4,2 u y compará Δz.",
+          "controlId": "screen-distance",
+          "nativeId": "distance",
+          "index": 2,
+          "section": "principal",
+          "source": "src/prisma/education/prismLearning.ts",
+          "challengeKind": "open-comparison",
+          "statusReference": "estado.json"
+        },
+        {
+          "id": "prisma/principal/reto-04",
+          "number": "04",
+          "title": "Un material diferente",
+          "question": "¿Todos los materiales separan igual la luz?",
+          "instruction": "Cambiá solo el material de vidrio a cuarzo y compará la separación.",
+          "controlId": "prism-material",
+          "nativeId": "material",
+          "index": 3,
+          "section": "principal",
+          "source": "src/prisma/education/prismLearning.ts",
+          "challengeKind": "open-comparison",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "hawking",
+      "name": "Radiación de Hawking",
+      "route": "/hawking/",
+      "discipline": "AGUJEROS NEGROS",
+      "publication": "ACTIVO",
+      "objective": "¿Por qué un agujero negro que pierde masa se vuelve más caliente?",
+      "firstAction": "Explorá masa, temperatura, entorno y entropía con cuatro retos y un modelo de evaporación ideal.",
+      "model": "Modelo semiclásico de Schwarzschild con emisión idealizada",
+      "prerequisites": "Masa, temperatura y balance térmico",
+      "sourcesAndLimits": "docs/HAWKING_LABORATORIO.md",
+      "physics": "src/hawking/physics.ts",
+      "controlsAndReadouts": "Masa, entorno/fondo térmico, fracción temporal y reproducción; navegación del visor. Resultados: radio, temperatura, potencia, balance, vida ideal y entropía. Los puntos son ayudas de representación.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx",
+        "src/components/ui/SceneConsole.tsx"
+      ],
+      "challengeSource": "src/hawking/learning.ts",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "id": "hawking/principal/reto-01",
+          "title": "Más masa, ¿más calor?",
+          "short": "Masa y temperatura",
+          "question": "Si duplicás la masa, ¿qué le pasa a la temperatura?",
+          "choices": [
+            "Se reduce a la mitad",
+            "Se duplica"
+          ],
+          "answer": 0,
+          "action": "Duplicar la masa",
+          "hint": "Mové Masa o usá el botón. Compará radio y temperatura con la referencia.",
+          "meaning": "Un agujero negro más grande es más frío. La temperatura no es la del gas que puede rodearlo: es la que predice Hawking para un observador lejano.",
+          "nativeId": "mass",
+          "index": 0,
+          "section": "principal",
+          "source": "src/hawking/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "id": "hawking/principal/reto-02",
+          "title": "Emitir no siempre es perder",
+          "short": "El entorno importa",
+          "question": "Una masa solar emite radiación. Rodeada por el fondo cósmico actual, ¿pierde masa en este modelo?",
+          "choices": [
+            "Sí, porque emite",
+            "No: absorbe más de lo que emite"
+          ],
+          "answer": 1,
+          "action": "Activar fondo cósmico",
+          "hint": "Cambiá de Vacío ideal a Fondo cósmico, manteniendo la masa. Mirá la potencia neta.",
+          "meaning": "La emisión sigue existiendo, pero el entorno de 2,7255 K es mucho más caliente. En esta aproximación absorbe más energía: la potencia neta cambia de signo. Emitir y evaporarse no son sinónimos.",
+          "nativeId": "bath",
+          "index": 1,
+          "section": "principal",
+          "source": "src/hawking/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "id": "hawking/principal/reto-03",
+          "title": "Perder masa lo calienta",
+          "short": "Evaporación",
+          "question": "Al perder masa en el vacío, ¿la emisión ideal se vuelve más débil o más intensa?",
+          "choices": [
+            "Más débil: se va apagando",
+            "Más intensa: aumenta su temperatura"
+          ],
+          "answer": 1,
+          "action": "Avanzar al 75 % de τ₀",
+          "hint": "Avanzá al menos al 25 % de la vida ideal τ₀ con el reloj o Tiempo transcurrido. Masa y temperatura se calculan juntas.",
+          "meaning": "Al emitir energía pierde masa, aumenta su temperatura y crece la potencia. Es una capacidad calorífica negativa. El reloj está acelerado: la vida ideal de este ejemplo es de billones de años.",
+          "nativeId": "time",
+          "index": 2,
+          "section": "principal",
+          "source": "src/hawking/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "id": "hawking/principal/reto-04",
+          "title": "La información mira al área",
+          "short": "Área y entropía",
+          "question": "Si duplicás la masa, ¿por cuánto se multiplica la entropía del agujero negro?",
+          "choices": [
+            "Por dos, como el radio",
+            "Por cuatro, como el área"
+          ],
+          "answer": 1,
+          "action": "Duplicar la masa",
+          "hint": "Duplicá la masa. Compará área y S/kB: ambas crecen con M².",
+          "meaning": "Bekenstein y Hawking vincularon la entropía al área del horizonte. Conectaron gravedad, teoría cuántica y termodinámica. Es una pista sobre la gravedad cuántica; este modelo no resuelve la paradoja de la información.",
+          "nativeId": "entropy",
+          "index": 3,
+          "section": "principal",
+          "source": "src/hawking/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "lente-gravitacional",
+      "name": "Lente gravitacional",
+      "route": "/lente-gravitacional/",
+      "discipline": "RELATIVIDAD GENERAL",
+      "publication": "ACTIVO",
+      "objective": "¿Podés ver lo que hay detrás de un agujero negro?",
+      "firstAction": "Compará la imagen con los caminos de la luz: alineá una fuente, explorá la sombra y cambiá la masa con cuatro retos.",
+      "model": "Geodésicas nulas de Schwarzschild",
+      "prerequisites": "Rayos de luz y distancias",
+      "sourcesAndLimits": "docs/LENTE_GRAVITACIONAL.md",
+      "physics": "src/lente/physics.ts",
+      "controlsAndReadouts": "Masa, lente activada, fuente/cámara, dirección y azimut del rayo, imagen/recorridos. Resultados: geodésicas, captura/escape, sombra y escalas físicas.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx",
+        "src/components/ui/SceneConsole.tsx"
+      ],
+      "challengeSource": "src/lente/learning.ts",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "id": "lente-gravitacional/principal/reto-01",
+          "name": "Luz que se desvía",
+          "title": "¿La estrella está donde la ves?",
+          "question": "Quitá la gravedad sin mover la cámara ni la fuente. ¿Qué esperás que cambie?",
+          "choices": [
+            "La posición y la forma de las imágenes",
+            "Solo el brillo de la estrella"
+          ],
+          "answer": 0,
+          "action": "Comparar sin lente",
+          "hint": "Alterná con/sin lente. La misma esfera de fondo ilumina ambas imágenes.",
+          "meaning": "La luz llega por otras direcciones. Una imagen desplazada o duplicada no implica varias estrellas: distintos caminos conectan la misma fuente con la cámara. Esa relación permite estudiar masa que no vemos directamente.",
+          "nativeId": "bend",
+          "index": 0,
+          "section": "principal",
+          "source": "src/lente/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "id": "lente-gravitacional/principal/reto-02",
+          "name": "Encontrar el anillo",
+          "title": "Una fuente. Muchas direcciones.",
+          "question": "¿Qué aparece al alinear fuente, agujero negro y cámara?",
+          "choices": [
+            "Un anillo alrededor de la sombra",
+            "La fuente desaparece por completo"
+          ],
+          "answer": 0,
+          "action": "Alinear la fuente",
+          "hint": "Mové la fuente hacia 0° con la cámara en 0°. También podés alinear moviendo solo la cámara.",
+          "meaning": "La simetría permite que la luz de la misma fuente llegue por todos los lados. El anillo emerge de las trayectorias calculadas: no está dibujado sobre la imagen. Con desalineación se rompe en arcos e imágenes.",
+          "nativeId": "ring",
+          "index": 1,
+          "section": "principal",
+          "source": "src/lente/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "id": "lente-gravitacional/principal/reto-03",
+          "name": "Captura o escape",
+          "title": "No todas las direcciones traen luz.",
+          "question": "El rayo seleccionado está fuera de la sombra. ¿Qué ocurre al apuntarlo más cerca del centro?",
+          "choices": [
+            "El rastreo alcanza el horizonte",
+            "Siempre atraviesa el agujero negro"
+          ],
+          "answer": 0,
+          "action": "Apuntar a 3° del centro",
+          "hint": "Seleccioná un píxel o mové la dirección del rayo. El umbral depende de b, no de tocar una esfera de fotones sólida.",
+          "meaning": "El rastreo inverso termina en el horizonte: esa dirección no recibe luz de la esfera de fondo. Por fuera del umbral hay rayos que regresan al fondo tras curvarse. La esfera de fotones es una órbita circular inestable; no una superficie material.",
+          "nativeId": "capture",
+          "index": 2,
+          "section": "principal",
+          "source": "src/lente/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "id": "lente-gravitacional/principal/reto-04",
+          "name": "La escala de la masa",
+          "title": "Más masa, ¿la misma imagen?",
+          "question": "Duplicá la masa dejando fijas las distancias físicas a la cámara y al fondo. ¿Qué cambia?",
+          "choices": [
+            "Crecen el horizonte y el tamaño angular de la sombra",
+            "Nada: toda imagen es independiente de la masa"
+          ],
+          "answer": 0,
+          "action": "Duplicar la masa",
+          "hint": "Llevá la masa de 4 a 8 millones M☉. Conservá las distancias indicadas en UA y la escala del diagrama para comparar sólo el efecto de duplicar la masa.",
+          "meaning": "El radio del horizonte crece linealmente con M y la sombra ocupa más ángulo. Si escaláramos también todas las distancias con M, la imagen adimensional sí sería la misma. Acá conservamos metros para que puedas separar ambos casos.",
+          "nativeId": "mass",
+          "index": 3,
+          "section": "principal",
+          "source": "src/lente/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "entropia",
+      "name": "Entropía de Bekenstein–Hawking",
+      "route": "/entropia/",
+      "discipline": "AGUJEROS NEGROS",
+      "publication": "ACTIVO",
+      "objective": "¿Por qué la entropía de un agujero negro sigue al área de su horizonte?",
+      "firstAction": "Agrandá el horizonte, descifrá la fórmula y contá la radiación con cuatro retos sobre área, entropía y segunda ley.",
+      "model": "Termodinámica idealizada de Schwarzschild",
+      "prerequisites": "Área, proporciones e información",
+      "sourcesAndLimits": "docs/ENTROPIA_LABORATORIO.md",
+      "physics": "src/entropia/physics.ts",
+      "controlsAndReadouts": "Masa inicial, evaporación fraccional, lupa, vista área/contabilidad y factores de lectura. Resultados: área, S/kB, bits, balance térmico exterior; el puente de información tiene controles propios.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx",
+        "src/components/ui/SceneConsole.tsx"
+      ],
+      "challengeSource": "src/entropia/learning.ts",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "id": "entropia/principal/reto-01",
+          "name": "El área manda",
+          "title": "Doble masa. ¿Doble entropía?",
+          "question": "Sin emitir radiación, duplicá la masa inicial. ¿Por cuánto se multiplica la entropía?",
+          "choices": [
+            "Por 4, igual que el área",
+            "Por 2, igual que el radio",
+            "Por 8, como el volumen asociado"
+          ],
+          "answer": 0,
+          "action": "Duplicar la masa",
+          "target": "#en-map",
+          "hint": "Llevá la masa de 10 a 20 M☉. La cámara y la referencia de 10 M☉ conservan su escala.",
+          "meaning": "El radio crece con M; el área, con M². Por eso duplicar la masa multiplica por cuatro tanto el área como la entropía. El volumen euclídeo de una esfera de ese radio crece por ocho: esa no es la ley de entropía del agujero negro.",
+          "nativeId": "area",
+          "index": 0,
+          "section": "principal",
+          "source": "src/entropia/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "id": "entropia/principal/reto-02",
+          "name": "Descifrar el ¼",
+          "title": "Contar área no alcanza.",
+          "question": "En la lupa algebraica, un área de ejemplo de 16 ℓP² corresponde a…",
+          "choices": [
+            "16 unidades de S/kB",
+            "4 unidades de S/kB",
+            "4 bits exactos"
+          ],
+          "answer": 1,
+          "action": "Probar 16 áreas de Planck",
+          "target": "#en-formula",
+          "hint": "Mové el área de ejemplo de 8 a 16. Cada grupo de cuatro cuadrados representa una unidad de S/kB; no un bit.",
+          "meaning": "S/kB = A/(4ℓP²). El factor ¼ divide la cantidad de áreas de Planck por cuatro. Para expresar esa entropía en bits hay que dividir además por ln 2. La lupa es aritmética: no muestra celdas físicas ni un agujero negro microscópico.",
+          "nativeId": "quarter",
+          "index": 1,
+          "section": "principal",
+          "source": "src/entropia/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "id": "entropia/principal/reto-03",
+          "name": "Lo que pierde el horizonte",
+          "title": "Si pierde masa, ¿pierde entropía?",
+          "question": "Emití el equivalente al 25 % de la masa inicial en el modelo ideal. ¿Qué queda en el agujero negro?",
+          "choices": [
+            "El 75 % de su entropía inicial",
+            "El 56,25 % de su entropía inicial",
+            "La misma entropía, aunque se achique"
+          ],
+          "answer": 1,
+          "action": "Emitir el 25 % de la masa",
+          "target": "#en-map",
+          "hint": "Llevá la fracción emitida a 25 %. Queda M/M₀ = 0,75 y S/S₀ = 0,75².",
+          "meaning": "La entropía del agujero negro disminuye a 0,75² = 0,5625 de la inicial, mientras su temperatura aumenta. Eso no decide qué pasa con la entropía total: la radiación también cuenta. Estamos comparando estados enormemente separados en tiempo, no observando una evaporación rápida real.",
+          "nativeId": "evaporate",
+          "index": 2,
+          "section": "principal",
+          "source": "src/entropia/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "id": "entropia/principal/reto-04",
+          "name": "Contar todo",
+          "title": "¿La segunda ley se rompió?",
+          "question": "Ya se emitió el 25 % de la masa. Si sumás la entropía térmica de la radiación a la del agujero negro…",
+          "choices": [
+            "La suma disminuye como el horizonte",
+            "La suma supera el valor inicial",
+            "La entropía total siempre es cero"
+          ],
+          "answer": 1,
+          "action": "Contar también la radiación",
+          "target": "#en-ledger",
+          "hint": "Activá “Incluir la radiación”. No cambia el agujero negro: ampliás qué parte del sistema estás contando.",
+          "meaning": "En este modelo de fotones ideales, la radiación lleva 4/3 de la entropía que pierde el agujero negro. Al sumar ambas, la entropía térmica total aumenta. Ilustra la segunda ley generalizada; no calcula la entropía de entrelazamiento ni resuelve la paradoja de la información.",
+          "nativeId": "total",
+          "index": 3,
+          "section": "principal",
+          "source": "src/entropia/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "acrecion",
+      "name": "Cómo vemos lo invisible",
+      "route": "/acrecion/",
+      "discipline": "AGUJEROS NEGROS",
+      "publication": "ACTIVO",
+      "objective": "¿Cómo detectamos un agujero negro si su interior no deja escapar luz?",
+      "firstAction": "Encendé el disco de acreción, curvá su luz y pesá una masa invisible con una estrella testigo y cuatro retos.",
+      "model": "Disco delgado aproximado y transferencia relativista",
+      "prerequisites": "Órbitas, luz y temperatura",
+      "sourcesAndLimits": "docs/ACRECION_LABORATORIO.md",
+      "physics": "src/acrecion/physics.ts",
+      "controlsAndReadouts": "Masa, alimentación de gas, inclinación, transferencia/Doppler, luz curvada, vista disco/estrella y órbita testigo. Resultados: imagen, flujo/temperatura, frecuencia y período/inferencia de masa.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx",
+        "src/components/ui/SceneConsole.tsx"
+      ],
+      "challengeSource": "src/acrecion/learning.ts",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "title": "¿Quién enciende la oscuridad?",
+          "question": "Sin gas alrededor, ¿el agujero negro conserva este disco brillante?",
+          "choices": [
+            "Sí: brilla el interior",
+            "No: la luz viene del gas exterior",
+            "Se convierte en una estrella"
+          ],
+          "answer": 1,
+          "hint": "Llevá la alimentación a 0 y después a 60 % o más. ¿Qué desaparece y qué vuelve a brillar?",
+          "meaning": "El gas libera energía al perder energía orbital y calentarse. El horizonte no es una superficie luminosa. Sin ese gas, desaparece el disco; eso no demuestra que no haya un agujero negro. Esta luz no es radiación de Hawking.",
+          "setup": {
+            "gas": 0
+          },
+          "id": "acrecion/principal/reto-01",
+          "nativeId": null,
+          "index": 0,
+          "section": "principal",
+          "source": "src/acrecion/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Un disco. Dos apariencias.",
+          "question": "Al inclinar el disco, ¿la parte que parece levantarse es gas que salió de su plano?",
+          "choices": [
+            "Sí: el gas forma una cúpula",
+            "No: la gravedad curva el camino de su luz",
+            "Es otro agujero negro"
+          ],
+          "answer": 1,
+          "hint": "Con gas en el disco, pasá de 0° a 70° o más. Después apagá y volvé a encender “Curvar la luz”.",
+          "meaning": "El disco sigue siendo plano. Rayos de su parte posterior se curvan y alcanzan al observador por encima y por debajo de la sombra. Comparar con luz recta separa perspectiva y lente gravitacional.",
+          "setup": {
+            "inclination": 0,
+            "doppler": "false"
+          },
+          "id": "acrecion/principal/reto-02",
+          "nativeId": null,
+          "index": 1,
+          "section": "principal",
+          "source": "src/acrecion/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "El lado que viene hacia vos",
+          "question": "Con el disco inclinado, ¿qué lado se refuerza por el movimiento del gas?",
+          "choices": [
+            "El que se aleja",
+            "Ambos por igual",
+            "El que se acerca"
+          ],
+          "answer": 2,
+          "hint": "Con gas en el disco, activá “Movimiento relativista” a 70° y después miralo de frente, a 0°.",
+          "meaning": "El movimiento cambia la frecuencia y concentra la radiación en la dirección de avance. En la intensidad integrada sobre frecuencias aparece un factor g⁴. De frente desaparece la asimetría entre los lados, aunque persisten otros efectos relativistas.",
+          "setup": {
+            "inclination": 70,
+            "doppler": "false"
+          },
+          "id": "acrecion/principal/reto-03",
+          "nativeId": null,
+          "index": 2,
+          "section": "principal",
+          "source": "src/acrecion/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Pesar algo que no vemos",
+          "question": "A igual radio orbital, si la masa invisible se duplica, ¿qué pasa con el período?",
+          "choices": [
+            "Se reduce a 1/√2 del original",
+            "Se duplica",
+            "No cambia"
+          ],
+          "answer": 0,
+          "hint": "La estrella está a 100 UA. Llevá la masa de 4 a 8 millones de soles y compará con la órbita de referencia.",
+          "meaning": "En el régimen de esta órbita, T² = 4π²a³/(GM). Duplicar M divide T por √2. Medir tamaño y período permite inferir masa aunque no haya disco brillante. La estrella es un ejemplo ideal, no datos de una estrella observada.",
+          "setup": {
+            "gas": 0,
+            "mass": 4,
+            "view": "star"
+          },
+          "id": "acrecion/principal/reto-04",
+          "nativeId": null,
+          "index": 3,
+          "section": "principal",
+          "source": "src/acrecion/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "horizonte",
+      "name": "Al borde del horizonte",
+      "route": "/horizonte/",
+      "discipline": "AGUJEROS NEGROS",
+      "publication": "ACTIVO",
+      "objective": "¿Qué pasa con el tiempo y la luz cuando una sonda cruza el horizonte?",
+      "firstAction": "Compará caída libre y relojes sostenidos, enviá señales y descubrí qué puede recibir alguien que espera afuera con cuatro retos.",
+      "model": "Caída y luz radial en coordenadas regulares",
+      "prerequisites": "Relojes y señales",
+      "sourcesAndLimits": "docs/HORIZONTE_LABORATORIO.md",
+      "physics": "src/horizonte/physics.ts",
+      "controlsAndReadouts": "Sostener/caer, radio, tiempo del mapa, masa, separación de pulsos, emisión/escucha y reproducción. Resultados: tiempos propios, llegadas/corrimiento, mapa de futuros y señales sin llegada.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx",
+        "src/components/ui/SceneConsole.tsx"
+      ],
+      "challengeSource": "src/horizonte/learning.ts",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "title": "Dos alturas, dos ritmos",
+          "question": "Si sostenés un reloj más cerca del horizonte, ¿cómo marcha frente al reloj de la antena?",
+          "choices": [
+            "Más lento respecto de la antena",
+            "Más rápido respecto de la antena",
+            "Se rompe y deja de medir tiempo"
+          ],
+          "answer": 0,
+          "hint": "Con “Sostenida”, compará el reloj a 4 rs y a 1,2 rs. El número de ritmo compara ambos relojes; cada uno funciona normalmente en su lugar.",
+          "meaning": "Los relojes estáticos a distintas alturas acumulan tiempos propios diferentes. Acercarse reduce el ritmo relativo. Mantenerse quieto exige aceleración; no se puede sostener un reloj estático justo en el horizonte.",
+          "setup": {},
+          "id": "horizonte/principal/reto-01",
+          "nativeId": null,
+          "index": 0,
+          "section": "principal",
+          "source": "src/horizonte/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Cruzar sin parar el reloj",
+          "question": "¿Qué le pasa al reloj propio de una sonda en caída libre cuando cruza el horizonte?",
+          "choices": [
+            "Necesita un tiempo propio infinito",
+            "Sigue midiendo y cruza en un tiempo propio finito",
+            "El horizonte es una pared que la detiene"
+          ],
+          "answer": 1,
+          "hint": "Elegí “Caída libre”. Visitá “En el horizonte” y después “Un poco adentro”. Compará el reloj propio antes y después del cruce.",
+          "meaning": "El horizonte limita qué señales pueden llegar al exterior. En este modelo el reloj de la sonda sigue durante el cruce: no hay una pared ni una parada local del tiempo. Las coordenadas de Schwarzschild se vuelven singulares ahí; el mapa usa coordenadas regulares.",
+          "setup": {
+            "mode": "fall",
+            "time": 0
+          },
+          "id": "horizonte/principal/reto-02",
+          "nativeId": null,
+          "index": 1,
+          "section": "principal",
+          "source": "src/horizonte/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Mensajes cada vez más rojos",
+          "question": "La sonda emite pulsos con la misma separación en su reloj. Cerca del horizonte, ¿cómo se reciben afuera?",
+          "choices": [
+            "Cada vez más juntos y azules",
+            "Igual que al principio",
+            "Más separados y con menor frecuencia"
+          ],
+          "answer": 2,
+          "hint": "En caída libre, enviá un pulso a 3 rs y otro con “Muy cerca”, a 1,05 rs. Compará frecuencia y demora en las dos tarjetas de envío.",
+          "meaning": "La recepción combina corrimiento gravitacional y movimiento de la sonda. Al acercarse al horizonte, la frecuencia recibida tiende a cero y la llegada se retrasa sin límite. Una frecuencia muy baja puede salir de la banda visible: rojo es una clave gráfica, no una foto literal.",
+          "setup": {
+            "mode": "fall",
+            "time": 0
+          },
+          "id": "horizonte/principal/reto-03",
+          "nativeId": null,
+          "index": 2,
+          "section": "principal",
+          "source": "src/horizonte/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "El último lugar para avisar",
+          "question": "Un pulso apuntado hacia afuera, emitido dentro del horizonte, ¿puede alcanzar la antena exterior?",
+          "choices": [
+            "Sí, si es lo bastante brillante",
+            "No: sus caminos futuros siguen hacia radios menores",
+            "Sí, porque la luz acelera por encima de c"
+          ],
+          "answer": 1,
+          "hint": "Enviá un pulso con “Afuera” (1,2 rs) y otro con “Un poco adentro” (0,8 rs). En la tarjeta del exterior, tocá “Recibir este pulso” y compará sus destinos.",
+          "meaning": "Fuera, un rayo saliente puede llegar a la antena. En el horizonte queda sobre su generador; dentro, incluso la dirección local saliente lleva a radios menores. La luz siempre se mide localmente a c: dr/dT es una velocidad de coordenadas, no una medición local.",
+          "setup": {
+            "mode": "fall",
+            "time": 0
+          },
+          "id": "horizonte/principal/reto-04",
+          "nativeId": null,
+          "index": 3,
+          "section": "principal",
+          "source": "src/horizonte/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "reloj-de-luz",
+      "name": "El reloj de luz",
+      "route": "/reloj-de-luz/",
+      "discipline": "RELATIVIDAD ESPECIAL",
+      "publication": "ACTIVO",
+      "objective": "¿Un segundo dura lo mismo para todos?",
+      "firstAction": "Seguí un pulso desde la nave y la estación: cambiá la velocidad y descubrí la dilatación temporal con cuatro retos.",
+      "model": "Relatividad especial, reloj ideal",
+      "prerequisites": "Distancia, rapidez y duración",
+      "sourcesAndLimits": "docs/RELOJ_DE_LUZ.md",
+      "physics": "src/reloj/physics.ts",
+      "controlsAndReadouts": "Rapidez, reloj seguido, fracción del tic, reproducción, vistas y referencias. Resultados: caminos, fechas del mismo evento, período propio/coordinado y ritmo.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx",
+        "src/components/ui/SceneConsole.tsx"
+      ],
+      "challengeSource": "src/reloj/learning.ts",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "title": "Primero, el mismo ritmo",
+          "question": "Sin movimiento relativo, ¿cuánto tarda el mismo tic en los dos sistemas?",
+          "choices": [
+            "Lo mismo en ambos",
+            "El doble desde la estación",
+            "La luz se queda quieta"
+          ],
+          "answer": 0,
+          "hint": "Llevá la velocidad a 0 y completá la ida y vuelta. Compará las dos lecturas.",
+          "meaning": "Con v = 0, los sistemas coinciden: el recorrido mide 300 m y el tic dura 1,001 µs en ambos. Esta es la referencia para descubrir qué cambia al moverse.",
+          "beta": 0.6,
+          "steps": [
+            "Completá un tic con v = 0"
+          ],
+          "id": "reloj-de-luz/principal/reto-01",
+          "nativeId": null,
+          "index": 0,
+          "section": "principal",
+          "source": "src/reloj/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Más camino, la misma luz",
+          "question": "Al pasar de 0,6 c a 0,8 c, ¿por qué tarda más el tic móvil?",
+          "choices": [
+            "La luz pierde velocidad",
+            "Recorre más distancia a la misma c",
+            "Los espejos se separan verticalmente"
+          ],
+          "answer": 1,
+          "hint": "Completá un tic a 0,6 c y otro a 0,8 c, siguiendo la nave. Mirá la diagonal y los tiempos.",
+          "meaning": "El camino medido desde la estación aumenta de 375 a 500 m. A la misma velocidad c, el tic tarda 1,251 y 1,668 µs. En la nave sigue durando 1,001 µs: la separación transversal entre espejos no cambia.",
+          "beta": 0.6,
+          "steps": [
+            "Tic completo a 0,6 c · nave",
+            "Tic completo a 0,8 c · nave"
+          ],
+          "id": "reloj-de-luz/principal/reto-02",
+          "nativeId": null,
+          "index": 1,
+          "section": "principal",
+          "source": "src/reloj/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "¿Quién se mueve?",
+          "question": "Si ahora seguimos el reloj de la estación, ¿qué mide la nave?",
+          "choices": [
+            "La estación tiene un tiempo absoluto",
+            "Solo los relojes de las naves se retrasan",
+            "El reloj de la estación también marcha más lento respecto de la nave"
+          ],
+          "answer": 2,
+          "hint": "A 0,8 c, completá un tic de la nave. Tocá “Seguir reloj de la estación” junto al visor y completá otro tic.",
+          "meaning": "La comparación es recíproca: cada sistema asigna un tic más largo al reloj móvil. Cambiamos el reloj seguido y, por tanto, el par de sucesos comparados. La simultaneidad también depende del sistema; esto no compara edades al reencontrarse.",
+          "beta": 0.8,
+          "steps": [
+            "Tic de la nave a 0,8 c",
+            "Tic de la estación a 0,8 c"
+          ],
+          "id": "reloj-de-luz/principal/reto-03",
+          "nativeId": null,
+          "index": 2,
+          "section": "principal",
+          "source": "src/reloj/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Encontrá el medio ritmo",
+          "question": "¿A qué velocidad el reloj móvil avanza aproximadamente a la mitad del ritmo del sistema que lo mide?",
+          "choices": [
+            "Cerca de 0,866 c",
+            "Exactamente a 0,5 c",
+            "Solo si supera la velocidad de la luz"
+          ],
+          "answer": 0,
+          "hint": "Buscá “Ritmo móvil” cerca del 50 %. Completá el tic y comprobá que el tiempo asignado sea el doble del propio.",
+          "meaning": "Con v = √3/2 · c ≈ 0,866 c, γ = 2. El mismo tic dura 1,001 µs en su reloj y 2,001 µs en el otro sistema. No hace falta alcanzar c: cuanto más te acercás, mayor es la diferencia.",
+          "beta": 0.6,
+          "steps": [
+            "Tic con ritmo móvil entre 49,5 % y 50,5 %"
+          ],
+          "id": "reloj-de-luz/principal/reto-04",
+          "nativeId": null,
+          "index": 3,
+          "section": "principal",
+          "source": "src/reloj/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "tren-de-einstein",
+      "name": "El tren de Einstein",
+      "route": "/tren-de-einstein/",
+      "discipline": "RELATIVIDAD ESPECIAL",
+      "publication": "ACTIVO",
+      "objective": "¿Qué significa “al mismo tiempo”?",
+      "firstAction": "Compará fechas y llegadas de luz desde el tren y el andén. Medí longitudes con cuatro retos de simultaneidad y relatividad especial.",
+      "model": "Transformaciones de Lorentz y protocolos de medida",
+      "prerequisites": "Emisión frente a recepción",
+      "sourcesAndLimits": "docs/TREN_DE_EINSTEIN.md",
+      "physics": "src/tren/physics.ts",
+      "controlsAndReadouts": "Rapidez, emisiones y protocolo de simultaneidad, receptor, reproducción/instante y medición de extremos. Resultados: fechas, recepciones, registros y longitudes por sistema.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx",
+        "src/components/ui/SceneConsole.tsx"
+      ],
+      "challengeSource": "src/tren/learning.ts",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "title": "Dos destellos, dos fechas",
+          "question": "A y B ocurren a la vez en el andén. Con el tren a +0,6 c, ¿qué fechas les asigna el tren?",
+          "choices": [
+            "También son simultáneos en el tren",
+            "B ocurre antes que A en el tren",
+            "A ocurre antes que B en el tren"
+          ],
+          "answer": 1,
+          "hint": "Usá +0,6 c y “Simultáneos en el andén”. Mirá todas las llegadas y compará las tarjetas “Fecha de emisión” de ambas vistas.",
+          "meaning": "El andén asigna tA = tB = 0. El tren asigna a B una fecha anterior a la de A. Es una diferencia entre redes de relojes sincronizados, incluso después de descontar los tiempos de viaje de las señales.",
+          "setup": {},
+          "steps": [
+            "Comparar el ensayo a +0,6 c hasta todas las llegadas"
+          ],
+          "id": "tren-de-einstein/principal/reto-01",
+          "nativeId": null,
+          "index": 0,
+          "section": "principal",
+          "source": "src/tren/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Llegar no es ocurrir",
+          "question": "Con v = 0 y destellos simultáneos, movemos al pasajero hacia B. ¿Qué cambia?",
+          "choices": [
+            "B ocurre antes",
+            "Cambia la velocidad de la luz",
+            "B llega antes, pero las fechas de emisión siguen siendo iguales"
+          ],
+          "answer": 2,
+          "hint": "Con velocidad 0 y emisiones simultáneas en el tren, compará todas las llegadas con el pasajero en el centro y luego hacia B (+¼ L₀).",
+          "meaning": "Acercar el receptor a B acorta ese viaje de luz: llega antes. Los destellos conservan la misma fecha de emisión. Este retraso de propagación se puede corregir y es distinto de la relatividad de la simultaneidad.",
+          "setup": {
+            "beta": 0,
+            "sync": "tren"
+          },
+          "steps": [
+            "Llegadas con pasajero en el centro",
+            "Llegadas con pasajero hacia B · +¼ L₀"
+          ],
+          "id": "tren-de-einstein/principal/reto-02",
+          "nativeId": null,
+          "index": 1,
+          "section": "principal",
+          "source": "src/tren/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Invertí el movimiento",
+          "question": "Si cambiás de +0,6 c a −0,6 c sin cambiar la simultaneidad del andén, ¿qué ocurre?",
+          "choices": [
+            "Se invierte el orden de los destellos asignado por el tren",
+            "La luz viaja más rápido hacia A",
+            "El orden no puede cambiar nunca"
+          ],
+          "answer": 0,
+          "hint": "Completá las llegadas a +0,6 c y a −0,6 c, con el pasajero en el centro y emisiones simultáneas en el andén.",
+          "meaning": "Al invertir v se invierte Δt′ = −γvΔx/c². Estos destellos están separados espacialmente y ninguno causa al otro. El orden de sucesos conectados por una señal causal no se invierte así.",
+          "setup": {},
+          "steps": [
+            "Ensayo a +0,6 c",
+            "Ensayo a −0,6 c"
+          ],
+          "id": "tren-de-einstein/principal/reto-03",
+          "nativeId": null,
+          "index": 2,
+          "section": "principal",
+          "source": "src/tren/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Un tren, no dos instantes",
+          "question": "Un tren de longitud propia 300 m pasa a 0,8 c. ¿Qué medición da su longitud en el andén?",
+          "choices": [
+            "500 m, usando extremos simultáneos en el tren",
+            "180 m, registrando ambos extremos al mismo tiempo en el andén",
+            "300 m en cualquier sistema"
+          ],
+          "answer": 1,
+          "hint": "A 0,8 c y L₀ = 300 m, marcá los extremos con cada método. Compará la separación y Δt de las dos marcas en el andén.",
+          "meaning": "γ = 5/3: la longitud medida en el andén es L₀/γ = 180 m. Tomar extremos simultáneos en el tren da marcas separadas 500 m y 1,334 µs en el andén: esa separación no mide una longitud instantánea. No se está aplastando físicamente el vagón.",
+          "setup": {
+            "beta": 0.8,
+            "time": 0
+          },
+          "steps": [
+            "Marcas simultáneas en cada sistema",
+            "Marcas tomadas al mismo tiempo del tren"
+          ],
+          "id": "tren-de-einstein/principal/reto-04",
+          "nativeId": null,
+          "index": 3,
+          "section": "principal",
+          "source": "src/tren/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "nos-vemos-a-la-vuelta",
+      "name": "Nos vemos a la vuelta",
+      "route": "/nos-vemos-a-la-vuelta/",
+      "discipline": "RELATIVIDAD ESPECIAL",
+      "publication": "ACTIVO",
+      "objective": "¿Podemos volver con edades diferentes?",
+      "firstAction": "Planeá el viaje de los gemelos, compará sus relojes y explorá el tiempo propio, los giros y la simultaneidad con dos vistas y cuatro retos.",
+      "model": "Tiempo propio en trayectos inerciales por tramos",
+      "prerequisites": "Reloj de luz y sistemas de referencia",
+      "sourcesAndLimits": "docs/GEMELOS_LABORATORIO.md",
+      "physics": "src/gemelos/physics.ts",
+      "controlsAndReadouts": "Rapideces por tramo, duración en casa, espera, instante del viaje/giro y vistas. Resultados: tiempo propio acumulado, simultaneidad remota, líneas de universo y reencuentro.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx",
+        "src/components/ui/SceneConsole.tsx"
+      ],
+      "challengeSource": "src/gemelos/learning.ts",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "title": "La cita de los relojes",
+          "question": "Tras 10 años en casa y un viaje a 0,8 c de ida y vuelta, ¿cuánto envejece quien viaja?",
+          "choices": [
+            "10 años, porque vuelven al mismo lugar",
+            "6 años: su recorrido acumula menos tiempo propio",
+            "El reloj de casa se detiene"
+          ],
+          "answer": 1,
+          "hint": "Usá el viaje de 10 años, a 0,8 c en ambos tramos y sin espera. Llegá al reencuentro y compará los relojes.",
+          "steps": [
+            "Reencontrar los relojes a 0,8 c"
+          ],
+          "meaning": "En casa transcurren 10 años; en la nave, 6. Los relojes se comparan juntos en el mismo evento: el resultado no depende del retraso de una imagen ni de quién hace la cuenta.",
+          "setup": {},
+          "id": "nos-vemos-a-la-vuelta/principal/reto-01",
+          "nativeId": null,
+          "index": 0,
+          "section": "principal",
+          "source": "src/gemelos/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Más rápido, menos tiempo propio",
+          "question": "Manteniendo 10 años de viaje en casa, ¿qué cambia al pasar de 0,6 c a 0,8 c en ambos tramos?",
+          "choices": [
+            "La nave pasa de acumular 8 años a acumular 6",
+            "La nave pasa de 6 a 8 años",
+            "Solo cambia la animación"
+          ],
+          "answer": 0,
+          "hint": "Compará el reencuentro con los botones “Ambos a 0,6 c” y “Ambos a 0,8 c”. La duración en casa queda fija; la distancia alcanzada cambia.",
+          "steps": [
+            "Reencuentro a 0,6 c",
+            "Reencuentro a 0,8 c"
+          ],
+          "meaning": "Para la misma duración en casa, una mayor rapidez reduce el tiempo propio de los tramos en movimiento. En esta comparación también cambia la distancia: no mantuvimos fijo el destino.",
+          "setup": {
+            "outbound": 0.6,
+            "inbound": 0.6
+          },
+          "id": "nos-vemos-a-la-vuelta/principal/reto-02",
+          "nativeId": null,
+          "index": 1,
+          "section": "principal",
+          "source": "src/gemelos/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "El giro cambia el «ahora»",
+          "question": "En el giro, el “ahora” asignado al reloj de casa pasa de 1,8 a 8,2 años. ¿Qué significa?",
+          "choices": [
+            "En casa envejecen 6,4 años de golpe",
+            "El reloj de la nave salta hacia atrás",
+            "Cambia la simultaneidad del sistema comóvil; ningún reloj salta"
+          ],
+          "answer": 2,
+          "hint": "Sin espera y a 0,8 c, usá “Antes del giro” y “Después del giro” junto a la escena. Compará el “ahora” remoto y el reloj de la nave, que conserva 3 años.",
+          "steps": [
+            "Mirar justo antes del giro",
+            "Mirar justo después del giro"
+          ],
+          "meaning": "La nave cambia de sistema inercial al volver: su criterio de simultaneidad con sucesos lejanos cambia. El reloj local sigue continuo y ningún mensaje viaja instantáneamente. Los dos tramos no son un único sistema inercial.",
+          "setup": {},
+          "id": "nos-vemos-a-la-vuelta/principal/reto-03",
+          "nativeId": null,
+          "index": 2,
+          "section": "principal",
+          "source": "src/gemelos/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "El tiempo se suma por tramos",
+          "question": "Con 10 años totales en casa y rapidez 0,8 c, agregamos 2 años de espera en el destino. ¿Qué ocurre?",
+          "choices": [
+            "La diferencia final aumenta",
+            "La nave acumula 6,8 años en vez de 6",
+            "Los giros borran el tiempo acumulado"
+          ],
+          "answer": 1,
+          "hint": "Compará “Sin espera” y “Esperar 2 de 10 años”, llegando al reencuentro en ambos casos. Durante la espera la nave está en reposo respecto de casa y ambos relojes avanzan al mismo ritmo.",
+          "steps": [
+            "Viaje sin espera al reencuentro",
+            "Viaje con 20 % de espera al reencuentro"
+          ],
+          "meaning": "La nave suma 8 × 0,6 + 2 = 6,8 años. La espera reemplaza parte del movimiento y acorta la distancia alcanzada. La diferencia surge de todo el recorrido; no se concentra en un giro mágico.",
+          "setup": {},
+          "id": "nos-vemos-a-la-vuelta/principal/reto-04",
+          "nativeId": null,
+          "index": 3,
+          "section": "principal",
+          "source": "src/gemelos/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "ascensor-de-einstein",
+      "name": "El ascensor de Einstein",
+      "route": "/ascensor-de-einstein/",
+      "discipline": "RELATIVIDAD GENERAL",
+      "publication": "ACTIVO",
+      "objective": "¿Gravedad o aceleración?",
+      "firstAction": "Soltá pelotas, compará la balanza y seguí un pulso de luz en cuatro escenarios para descubrir el principio de equivalencia con cuatro retos.",
+      "model": "Equivalencia local, cabina acelerada ideal",
+      "prerequisites": "Caída libre y fuerza de apoyo",
+      "sourcesAndLimits": "docs/ASCENSOR_LABORATORIO.md",
+      "physics": "src/ascensor/physics.ts",
+      "controlsAndReadouts": "Cabina/nave apoyada, acelerada o libre, intensidad de aceleración, masas y objetos/luz. Resultados: balanza, trayectorias relativas, ausencia de apoyo y caída ampliada del rayo.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx",
+        "src/components/ui/SceneConsole.tsx"
+      ],
+      "challengeSource": "src/ascensor/learning.ts",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "title": "¿Gravedad o motor?",
+          "question": "Con la misma intensidad, ¿qué distingue la pelota y la balanza entre una cabina sostenida y una nave acelerada?",
+          "choices": [
+            "La pelota cae solo si hay un planeta",
+            "En este laboratorio local producen el mismo resultado",
+            "El motor hace que la masa desaparezca"
+          ],
+          "answer": 1,
+          "hint": "En “Pelotas y balanza”, usá un objeto de 2 kg y una intensidad de 9,81 m/s². Compará el resultado final en “Ascensor sostenido” y “Nave acelerada”. Mirá el interior y luego la referencia exterior.",
+          "steps": [
+            "Ascensor sostenido: 2 kg, 9,81 m/s² y resultado final",
+            "Nave acelerada: 2 kg, 9,81 m/s² y resultado final"
+          ],
+          "meaning": "En ambos casos la pelota cae respecto de la cabina y la balanza ejerce la misma fuerza. El exterior permite reconocer contextos distintos; las mediciones locales no distinguen estos dos casos ideales.",
+          "setup": {},
+          "id": "ascensor-de-einstein/principal/reto-01",
+          "nativeId": null,
+          "index": 0,
+          "section": "principal",
+          "source": "src/ascensor/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Caer sin sentir peso",
+          "question": "Al pasar del ascensor sostenido a caída libre, ¿por qué la balanza marca cero?",
+          "choices": [
+            "El campo gravitatorio se apaga",
+            "Porque la masa se vuelve cero",
+            "Cabina y objetos caen juntos y el soporte deja de empujarlos"
+          ],
+          "answer": 2,
+          "hint": "En “Pelotas y balanza”, mantené 2 kg y 9,81 m/s². Compará el resultado final en “Ascensor sostenido”, “Caída libre” y “Nave a la deriva”. La balanza puede marcar cero con campo gravitatorio o sin él.",
+          "steps": [
+            "Cabina sostenida: 2 kg, 9,81 m/s² y resultado final",
+            "Caída libre: 2 kg, 9,81 m/s² y resultado final",
+            "Nave a la deriva: 2 kg, 9,81 m/s² y resultado final"
+          ],
+          "meaning": "La ingravidez mide la ausencia de fuerza de apoyo, no la ausencia de un campo gravitatorio. En caída libre, cabina y objetos tienen la misma aceleración; en este modelo local su interior se comporta como una nave a la deriva.",
+          "setup": {},
+          "id": "ascensor-de-einstein/principal/reto-02",
+          "nativeId": null,
+          "index": 1,
+          "section": "principal",
+          "source": "src/ascensor/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Dos masas, una caída",
+          "question": "En la nave acelerada cambiamos el objeto de 1 a 4 kg. ¿Qué ocurre?",
+          "choices": [
+            "La lectura de la balanza se cuadruplica, pero la caída relativa no cambia",
+            "El objeto de 4 kg cae cuatro veces más rápido",
+            "La aceleración depende de la masa"
+          ],
+          "answer": 0,
+          "hint": "En “Pelotas y balanza”, usá la nave acelerada a 9,81 m/s² y compará el resultado final con “Objeto de 1 kg” y “Objeto de 4 kg”. Ambas pelotas se sueltan a la misma altura y sin velocidad inicial.",
+          "steps": [
+            "Nave acelerada: 1 kg, 9,81 m/s² y resultado final",
+            "Nave acelerada: 4 kg, 9,81 m/s² y resultado final"
+          ],
+          "meaning": "La fuerza de apoyo es proporcional a la masa: pasa de 9,81 a 39,24 N. La aceleración relativa es la misma y las pelotas llegan juntas. No hay aire ni diferencias de velocidad inicial.",
+          "setup": {
+            "scenario": "cohete",
+            "mass": 1
+          },
+          "id": "ascensor-de-einstein/principal/reto-03",
+          "nativeId": null,
+          "index": 2,
+          "section": "principal",
+          "source": "src/ascensor/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "También le pasa a la luz",
+          "question": "Al ampliar la escala vertical, ¿qué vemos en la cabina acelerada y en caída libre?",
+          "choices": [
+            "La luz pierde su velocidad c",
+            "En ambos interiores la luz cae como una pelota durante segundos",
+            "La trayectoria baja en la cabina acelerada y es recta en la cabina libre"
+          ],
+          "answer": 2,
+          "hint": "Elegí “Pulso de luz”, ancho de 3 m y 9,81 m/s². Con el desvío ampliado, compará “Nave acelerada” y “Caída libre” hasta la pared de enfrente (100% del recorrido).",
+          "steps": [
+            "Luz en nave acelerada: 3 m, 9,81 m/s², ampliación y recorrido completo",
+            "Luz en caída libre: 3 m, 9,81 m/s², ampliación y recorrido completo"
+          ],
+          "meaning": "La cabina acelerada cambia de posición mientras la luz cruza. Un laboratorio libre local describe un rayo recto. El desvío en la cabina acelerada mide aproximadamente 0,49 femtómetros en 3 m: la escala vertical ampliada lo hace visible. La curvatura global de un campo real requiere relatividad general.",
+          "setup": {
+            "scenario": "cohete",
+            "instrument": "luz"
+          },
+          "id": "ascensor-de-einstein/principal/reto-04",
+          "nativeId": null,
+          "index": 3,
+          "section": "principal",
+          "source": "src/ascensor/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "el-tiempo-tiene-altura",
+      "name": "El tiempo tiene altura",
+      "route": "/el-tiempo-tiene-altura/",
+      "discipline": "RELATIVIDAD GENERAL",
+      "publication": "ACTIVO",
+      "objective": "¿Un segundo pasa igual en el suelo y en órbita?",
+      "firstAction": "Elevá un reloj, compará el tiempo propio y explorá el balance entre gravedad y movimiento en el GPS con cuatro retos educativos.",
+      "model": "Relojes estáticos y orbitales en Schwarzschild",
+      "prerequisites": "Tiempo propio y movimiento",
+      "sourcesAndLimits": "docs/ALTURA_LABORATORIO.md",
+      "physics": "src/altura/physics.ts",
+      "controlsAndReadouts": "Altura, duración, movimiento orbital y ajuste GPS, referencias y medición. Resultados: deriva temporal, componentes gravitatoria/cinemática y lectura ajustada frente a tiempo propio.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx",
+        "src/components/ui/SceneConsole.tsx"
+      ],
+      "challengeSource": "src/altura/learning.ts",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "title": "Un reloj más arriba",
+          "question": "Dos relojes están quietos respecto de la Tierra. Subimos uno 100 m. ¿Qué cambia después de un día?",
+          "choices": [
+            "El de arriba acumula un poco más de tiempo propio",
+            "El reloj de arriba se detiene",
+            "No cambia nada si ambos relojes son iguales"
+          ],
+          "answer": 0,
+          "hint": "En “Relojes en altura”, compará “Misma altura · 0 m” y “Subir a 100 m”. En ambos casos, observá un día completo.",
+          "steps": [
+            "Un día a la misma altura",
+            "Un día a 100 m"
+          ],
+          "meaning": "En este modelo terrestre, el reloj elevado acumula cerca de 0,94 ns extra por día. Es una diferencia de tiempo propio, no el retraso de una señal al viajar. A la misma altura y en reposo relativo no aparece esa diferencia.",
+          "setup": {
+            "height": 0
+          },
+          "id": "el-tiempo-tiene-altura/principal/reto-01",
+          "nativeId": null,
+          "index": 0,
+          "section": "principal",
+          "source": "src/altura/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Una diferencia que se acumula",
+          "question": "Mantenemos un reloj a 100 m. Si pasamos de 1 a 7 días, ¿qué ocurre con su adelanto?",
+          "choices": [
+            "La diferencia se borra cada medianoche",
+            "Se multiplica por siete, mientras la diferencia de ritmo sigue igual",
+            "El reloj se vuelve siete veces más rápido"
+          ],
+          "answer": 1,
+          "hint": "A 100 m, compará “Observar 1 día” y “Observar 7 días”, avanzando al final en ambos ensayos. Separá el ritmo diario del desfase acumulado.",
+          "steps": [
+            "Resultado de 1 día a 100 m",
+            "Resultado de 7 días a 100 m"
+          ],
+          "meaning": "La altura fija una diferencia de ritmo. Sostener esa condición más tiempo acumula más desfase: siete días producen siete veces el adelanto de un día. El ritmo del reloj no crece con la duración del ensayo.",
+          "setup": {},
+          "id": "el-tiempo-tiene-altura/principal/reto-02",
+          "nativeId": null,
+          "index": 1,
+          "section": "principal",
+          "source": "src/altura/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "El satélite tiene dos efectos",
+          "question": "A la altura GPS, comparamos un reloj sostenido sin movimiento con uno en órbita circular. ¿Qué aporta moverse?",
+          "choices": [
+            "Suma otro adelanto igual al gravitatorio",
+            "Borra la gravedad",
+            "Resta tiempo propio, aunque a esta altura gana el efecto gravitatorio"
+          ],
+          "answer": 2,
+          "hint": "En “Satélite y GPS”, usá “GPS · 20.200 km” y 1 día. Compará “Sostener sin movimiento” y “Órbita circular”. Mirá las contribuciones de gravedad y movimiento.",
+          "steps": [
+            "Un día a altura GPS, sin movimiento",
+            "Un día a altura GPS, en órbita"
+          ],
+          "meaning": "La mayor altura suma unos 46 µs/día y el movimiento orbital resta unos 7 µs/día en este modelo esférico no rotante. El balance sigue siendo positivo, de unos 38 µs/día. La rotación terrestre y el geoide refinan los valores de un GPS real.",
+          "setup": {
+            "motion": "quieto"
+          },
+          "id": "el-tiempo-tiene-altura/principal/reto-03",
+          "nativeId": null,
+          "index": 2,
+          "section": "principal",
+          "source": "src/altura/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "El GPS necesita un ajuste",
+          "question": "Al comparar una señal de tiempo ajustada desde la salida, ¿qué se corrige?",
+          "choices": [
+            "La física deja de afectar al satélite",
+            "La lectura transmitida queda alineada; el tiempo propio físico sigue siendo distinto",
+            "El satélite baja hasta el suelo"
+          ],
+          "answer": 1,
+          "hint": "A altura GPS, órbita circular y 1 día, compará “Sin ajuste” y “Ajuste desde la salida”. Mirá la lectura transmitida y el desfase físico por separado.",
+          "steps": [
+            "Un día de GPS sin ajuste",
+            "El mismo ensayo con ajuste ideal desde el inicio"
+          ],
+          "meaning": "El ajuste ideal compensa la diferencia de ritmo de la señal transmitida. No elimina la diferencia física de tiempo propio. El sesgo cΔt es una pseudodistancia equivalente de una señal: no predice por sí solo el error de posición de un receptor.",
+          "setup": {},
+          "id": "el-tiempo-tiene-altura/principal/reto-04",
+          "nativeId": null,
+          "index": 3,
+          "section": "principal",
+          "source": "src/altura/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "orbita-que-no-se-cierra",
+      "name": "La órbita que no se cierra",
+      "route": "/orbita-que-no-se-cierra/",
+      "discipline": "RELATIVIDAD GENERAL",
+      "publication": "ACTIVO",
+      "objective": "¿Qué nos contó la órbita de Mercurio?",
+      "firstAction": "Compará las órbitas de Newton y Einstein, cambiá forma, distancia y masa, y descubrí la precesión de Mercurio con cuatro retos.",
+      "model": "Órbitas ligadas de Schwarzschild y comparación newtoniana",
+      "prerequisites": "Órbita, perihelio y ángulos",
+      "sourcesAndLimits": "docs/ORBITA_MERCURIO.md",
+      "physics": "src/orbita/physics.ts",
+      "controlsAndReadouts": "Newton/Einstein, tamaño orbital, excentricidad, fase/vueltas, lupa y registros. Resultados: perihelio, avance por vuelta/siglo, comparación y órbitas calculadas.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx",
+        "src/components/ui/SceneConsole.tsx"
+      ],
+      "challengeSource": "src/orbita/learning.ts",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "title": "La vuelta no empata",
+          "question": "Después de diez recorridos entre perihelio y perihelio, ¿qué cambia al pasar de Newton a Einstein?",
+          "choices": [
+            "El perihelio relativista avanza; el newtoniano conserva su dirección",
+            "Mercurio se escapa del Sol",
+            "El Sol se mueve al centro de la elipse"
+          ],
+          "answer": 0,
+          "hint": "Con Mercurio, completá diez vueltas con “Ampliar giro ×100.000”. Compará las dos vistas y las marcas de perihelio.",
+          "steps": [
+            "Diez vueltas de Mercurio con el giro ampliado"
+          ],
+          "meaning": "La órbita de dos cuerpos de Newton cierra una elipse. En Schwarzschild, volver al radio mínimo requiere un ángulo algo mayor que 360°. La dirección del perihelio avanza: eso es precesión.",
+          "setup": {},
+          "id": "orbita-que-no-se-cierra/principal/reto-01",
+          "nativeId": null,
+          "index": 0,
+          "section": "principal",
+          "source": "src/orbita/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "La forma importa",
+          "question": "Con igual tamaño orbital y masa central, ¿qué pasa al subir la excentricidad de 0,10 a 0,60?",
+          "choices": [
+            "El giro por vuelta desaparece",
+            "Aumenta la precesión por vuelta",
+            "Solo cambia el color"
+          ],
+          "answer": 1,
+          "hint": "Mantené a = 0,3871 UA y una masa solar. Usá “Poco alargada · 0,10” y “Muy alargada · 0,60”; completá diez vueltas en cada ensayo.",
+          "steps": [
+            "Diez vueltas con e = 0,10",
+            "Diez vueltas con e = 0,60"
+          ],
+          "meaning": "A igual semieje mayor, una órbita más excéntrica se acerca más al Sol. El factor 1/(1−e²) aumenta el avance por vuelta. No estamos cambiando a la vez el tamaño orbital ni la masa.",
+          "setup": {
+            "e": 0.1
+          },
+          "id": "orbita-que-no-se-cierra/principal/reto-02",
+          "nativeId": null,
+          "index": 1,
+          "section": "principal",
+          "source": "src/orbita/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Más cerca, más giro",
+          "question": "Si duplicamos el semieje mayor manteniendo masa y excentricidad, ¿qué pasa con el avance por vuelta?",
+          "choices": [
+            "Se duplica",
+            "Se mantiene exactamente igual",
+            "Se reduce aproximadamente a la mitad"
+          ],
+          "answer": 2,
+          "hint": "Con e = 0,2056 y una masa solar, compará “Tamaño de Mercurio” y “Doble tamaño”. Completá diez vueltas en cada caso. Mirá el avance POR VUELTA.",
+          "steps": [
+            "Diez vueltas al tamaño de Mercurio",
+            "Diez vueltas al doble de tamaño"
+          ],
+          "meaning": "En campo débil, Δϖ es inversamente proporcional a a. Duplicar a reduce a la mitad el avance por vuelta. Por siglo cae todavía más, porque una órbita mayor también tarda más en completarse.",
+          "setup": {},
+          "id": "orbita-que-no-se-cierra/principal/reto-03",
+          "nativeId": null,
+          "index": 2,
+          "section": "principal",
+          "source": "src/orbita/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "La pista de los 43 segundos",
+          "question": "¿Qué representa el famoso aporte de unos 43″ por siglo en Mercurio?",
+          "choices": [
+            "Una vuelta completa por año",
+            "Un aporte relativista adicional a la precesión ya explicada por otros efectos",
+            "El giro total observado, sin ninguna otra contribución"
+          ],
+          "answer": 1,
+          "hint": "Restaurá “Mercurio real”. Completá las diez vueltas con “Giro real” y con “Ampliar giro ×100.000”. Leé el valor por siglo: la lupa no lo cambia.",
+          "steps": [
+            "Mercurio con giro real, diez vueltas",
+            "Mercurio con giro ampliado, diez vueltas"
+          ],
+          "meaning": "El aporte relativista es diminuto pero acumulativo. Ayudó a explicar un residuo que la gravitación newtoniana y las perturbaciones conocidas no resolvían. Los otros planetas también hacen precesar la órbita: nuestro modelo aísla el aporte del Sol esférico.",
+          "setup": {
+            "expanded": "false"
+          },
+          "id": "orbita-que-no-se-cierra/principal/reto-04",
+          "nativeId": null,
+          "index": 3,
+          "section": "principal",
+          "source": "src/orbita/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "efecto-fotoelectrico",
+      "name": "El efecto fotoeléctrico",
+      "route": "/efecto-fotoelectrico/",
+      "discipline": "FÍSICA CUÁNTICA",
+      "publication": "ACTIVO",
+      "objective": "¿Más luz alcanza para arrancar un electrón?",
+      "firstAction": "Cambiá frecuencia, brillo y material; compará emisión y energía con cuatro retos sobre la ley que le valió el Nobel a Einstein.",
+      "model": "Balance energético ideal de fotones y electrones",
+      "prerequisites": "Frecuencia, energía y potencia",
+      "sourcesAndLimits": "docs/EFECTO_FOTOELECTRICO.md",
+      "physics": "src/fotoelectrico/physics.ts",
+      "controlsAndReadouts": "Frecuencia, potencia/brillo, material y registros. Resultados: umbral, emisión, energía máxima/potencial de frenado y corriente ideal; fotones/electrones ilustrativos.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx",
+        "src/components/ui/SceneConsole.tsx"
+      ],
+      "challengeSource": "src/fotoelectrico/learning.ts",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "title": "La frecuencia abre la puerta",
+          "question": "Sobre sodio, ¿qué consigue emitir electrones: rojo muy brillante o azul con el mismo brillo?",
+          "choices": [
+            "Los dos: alcanza con iluminar fuerte",
+            "Solo el azul de este ensayo: cada fotón supera el umbral",
+            "El rojo, porque su onda es más larga"
+          ],
+          "answer": 1,
+          "hint": "Usá sodio y brillo 100%. Registrá “Rojo · 450 THz” y después “Azul · 650 THz”. Compará si hay emisión.",
+          "steps": [
+            "Medición con rojo, sodio y brillo 100%",
+            "Medición con azul, sodio y brillo 100%"
+          ],
+          "meaning": "Cada fotón rojo aporta menos energía de la que necesita un electrón para salir de este sodio ideal. Aumentar su cantidad no suma las energías en un único electrón dentro del modelo de un fotón. El azul sí supera el umbral.",
+          "setup": {
+            "frequency": 450,
+            "brightness": 100
+          },
+          "id": "efecto-fotoelectrico/principal/reto-01",
+          "nativeId": null,
+          "index": 0,
+          "section": "principal",
+          "source": "src/fotoelectrico/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Más brillo, más electrones",
+          "question": "Con sodio y luz azul de 650 THz, ¿qué cambia al pasar de brillo 25% a 100%?",
+          "choices": [
+            "La corriente ideal se cuadruplica; la energía máxima de cada electrón no cambia",
+            "Cada electrón sale con cuatro veces más energía",
+            "El material cambia su frecuencia umbral"
+          ],
+          "answer": 0,
+          "hint": "Mantené sodio y “Azul · 650 THz”. Registrá “Brillo 25%” y “Brillo 100%”. Mirá la corriente y la energía máxima por separado.",
+          "steps": [
+            "Medición azul con brillo 25%",
+            "Medición azul con brillo 100%"
+          ],
+          "meaning": "A frecuencia fija, cuatro veces la potencia significa cuatro veces los fotones por segundo. Con nuestra eficiencia fija, hay cuatro veces más electrones y corriente. La energía por fotón hf y la energía máxima hf−φ se mantienen.",
+          "setup": {
+            "brightness": 25
+          },
+          "id": "efecto-fotoelectrico/principal/reto-02",
+          "nativeId": null,
+          "index": 1,
+          "section": "principal",
+          "source": "src/fotoelectrico/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Cada metal tiene su umbral",
+          "question": "Iluminamos sodio y zinc con 1.000 THz y el mismo brillo. ¿Por qué uno emite y el otro no?",
+          "choices": [
+            "El zinc recibe fotones de otra frecuencia",
+            "La función trabajo del zinc es mayor que la energía de esos fotones",
+            "El sodio transforma los fotones en otro color antes de emitir"
+          ],
+          "answer": 1,
+          "hint": "Usá “UV · 1.000 THz” y brillo 50%. Registrá sodio y zinc. Compará la energía por fotón con la función trabajo de cada metal.",
+          "steps": [
+            "Medición UV de 1.000 THz sobre sodio",
+            "La misma luz y brillo sobre zinc"
+          ],
+          "meaning": "La luz mantiene su energía por fotón; cambiar el metal cambia la energía mínima de extracción φ. A 1.000 THz, hf ≈ 4,14 eV: alcanza para el sodio de 2,46 eV, pero no para el zinc de 4,31 eV.",
+          "setup": {
+            "frequency": 1000
+          },
+          "id": "efecto-fotoelectrico/principal/reto-03",
+          "nativeId": null,
+          "index": 2,
+          "section": "principal",
+          "source": "src/fotoelectrico/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "¿Adónde va la energía extra?",
+          "question": "Con sodio y brillo 50%, subimos de 650 a 1.000 THz. ¿Qué pasa con los electrones emitidos?",
+          "choices": [
+            "Salen con más energía máxima, aunque a igual potencia llegan menos fotones por segundo",
+            "El brillo fijo obliga a que cada electrón conserve la misma energía",
+            "La función trabajo aumenta para consumir toda la energía extra"
+          ],
+          "answer": 0,
+          "hint": "Mantené sodio y brillo 50%. Registrá “Azul · 650 THz” y “UV · 1.000 THz”. Compará el reparto de energía y la corriente ideal.",
+          "steps": [
+            "Medición azul de 650 THz, brillo 50%",
+            "Medición UV de 1.000 THz, brillo 50%"
+          ],
+          "meaning": "El metal necesita la misma energía de extracción. La energía adicional del fotón aumenta Kmáx. A potencia fija, los fotones más energéticos llegan en menor cantidad: en este modelo de eficiencia fija, puede subir la energía de los electrones y bajar la corriente a la vez.",
+          "setup": {},
+          "id": "efecto-fotoelectrico/principal/reto-04",
+          "nativeId": null,
+          "index": 3,
+          "section": "principal",
+          "source": "src/fotoelectrico/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "entrelazados",
+      "name": "Entrelazados",
+      "route": "/entrelazados/",
+      "discipline": "INFORMACIÓN CUÁNTICA",
+      "publication": "ACTIVO",
+      "objective": "¿El todo puede saber más que sus partes?",
+      "firstAction": "Prepará pares de qubits, cambiá la base de medición y compará entrelazamiento con una mezcla clásica.",
+      "model": "Dos qubits y muestreo de Born",
+      "prerequisites": "Probabilidad e información del todo y las partes",
+      "sourcesAndLimits": "docs/MALDACENA_INFORMACION.md",
+      "physics": "src/maldacena/quantum/physics.ts",
+      "controlsAndReadouts": "Preparación θ y pureza/mezcla, bases Z/X por lado, muestreo de pares, inspección local/conjunta. Resultados: probabilidades, frecuencias, coincidencias y entropías de estados.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx",
+        "src/components/ui/SceneConsole.tsx"
+      ],
+      "challengeSource": "src/maldacena/quantum/EntanglementLab.tsx",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "title": "Un par predecible",
+          "question": "Prepará el par |00⟩: A da 0 y B da 0 en Z. ¿Qué debería aparecer al medirlos juntos?",
+          "choices": [
+            "Siempre 00",
+            "Cuatro resultados igualmente probables",
+            "Una señal que viaja de A a B"
+          ],
+          "answer": 0,
+          "hint": "Elegí «Sin entrelazar», después «Ambos en Z» y «Medir 200 pares nuevos». 00 significa resultado 0 en A y 0 en B.",
+          "meaning": "El estado producto |00⟩ tiene resultados definidos en Z. Tener dos sistemas no implica que estén entrelazados. Cambiar la base de medida puede crear incertidumbre de resultados sin crear entrelazamiento.",
+          "id": "entrelazados/principal/reto-01",
+          "nativeId": null,
+          "index": 0,
+          "section": "principal",
+          "source": "src/maldacena/quantum/EntanglementLab.tsx",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Juntos, pero impredecibles",
+          "question": "Al pasar de |00⟩ al estado de Bell, ¿qué cambia en Z/Z?",
+          "choices": [
+            "Cada lado puede elegirse para enviar un mensaje",
+            "Cada lado es incierto, pero los resultados coinciden",
+            "Los dos resultados dejan de estar relacionados"
+          ],
+          "answer": 1,
+          "hint": "Medí 200 pares sin entrelazar y otros 200 con «Máximo entrelazamiento», ambos en Z/Z.",
+          "meaning": "En el estado (|00⟩+|11⟩)/√2, cada lado tiene probabilidad ½, pero juntos dan 00 o 11. Las coincidencias por sí solas no distinguen entrelazamiento de una mezcla clásica: vamos a cambiar de base.",
+          "id": "entrelazados/principal/reto-02",
+          "nativeId": null,
+          "index": 1,
+          "section": "principal",
+          "source": "src/maldacena/quantum/EntanglementLab.tsx",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "La prueba de otra base",
+          "question": "La mezcla de 00 y 11 coincide con Bell en Z. ¿Qué pasa al medir en X/X?",
+          "choices": [
+            "Siguen siendo indistinguibles",
+            "Bell da coincidencia perfecta; la mezcla da 50 %",
+            "La mezcla permite controlar el resultado remoto"
+          ],
+          "answer": 1,
+          "hint": "Elegí «Máximo entrelazamiento». Medí «Estado puro» y «Mezcla clásica» con «Ambos en Z»; repetí ambos con «Ambos en X». La tabla guarda las cuatro comparaciones.",
+          "meaning": "En X/X el estado de Bell conserva las coincidencias; la mezcla clásica reparte ¼ en cada resultado. Comparten el mismo estado local, pero no el estado conjunto. Esta comparación específica no es un ensayo de Bell ni prueba toda interpretación cuántica.",
+          "id": "entrelazados/principal/reto-03",
+          "nativeId": null,
+          "index": 2,
+          "section": "principal",
+          "source": "src/maldacena/quantum/EntanglementLab.tsx",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "El todo y una parte",
+          "question": "En el estado de Bell puro, ¿cuánta entropía tiene A y cuánta el conjunto AB?",
+          "choices": [
+            "A: 0 bits; AB: 1 bit",
+            "A: 1 bit; AB: 0 bits",
+            "A: 1 bit; AB: 2 bits siempre"
+          ],
+          "answer": 1,
+          "hint": "Con «Estado puro» y «Máximo entrelazamiento», tocá A (o B) y después «Ver el conjunto AB».",
+          "meaning": "El estado conjunto puro tiene entropía de von Neumann cero. Al describir solo una parte, su estado reducido es mixto y tiene un bit. Esa entropía no cuenta los resultados de una base elegida: describe el estado. Ignorar una parte puede ocultar información accesible en las correlaciones.",
+          "id": "entrelazados/principal/reto-04",
+          "nativeId": null,
+          "index": 3,
+          "section": "principal",
+          "source": "src/maldacena/quantum/EntanglementLab.tsx",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "holografia",
+      "name": "Holografía: geometría y frontera",
+      "route": "/holografia/",
+      "discipline": "HOLOGRAFÍA · TRES SECCIONES",
+      "publication": "ACTIVO",
+      "objective": "¿Cómo se traduce información en geometría?",
+      "firstAction": "Explorá geometría AdS, compará información y longitudes, y calentá la frontera: tres secciones conectadas, con 12 retos en un solo laboratorio.",
+      "model": "AdS3/CFT2 y BTZ estacionario idealizados",
+      "prerequisites": "Entrelazamiento, longitudes y regulador",
+      "sourcesAndLimits": "docs/MALDACENA_GEOMETRIA.md",
+      "physics": "src/maldacena/geometry/physics.ts",
+      "controlsAndReadouts": "Sección, intervalo, centro, regulador, temperatura, vistas y registro. Resultados: geodésica/recta, entropía CFT/geométrica, residuo regulado, horizonte BTZ y pendiente térmica.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx",
+        "src/components/ui/SceneConsole.tsx"
+      ],
+      "challengeSource": "src/maldacena/geometry/learning.ts",
+      "challengeCount": 12,
+      "challenges": [
+        {
+          "title": "La recta pierde la carrera",
+          "question": "Entre los mismos extremos, ¿qué camino mide menos distancia física en este espacio?",
+          "choices": [
+            "La recta del papel",
+            "El arco que entra en el interior",
+            "Los dos siempre miden igual"
+          ],
+          "answer": 1,
+          "hint": "Con ℓ=2 y ε=0,2, tocá «Medir los dos caminos». Compará la regla física, no la longitud en píxeles.",
+          "meaning": "La métrica pesa cada tramo como ds=√(dx²+dz²)/z. Cerca de z=0, avanzar un poco en el dibujo cuesta mucha distancia física. El arco aprovecha regiones más profundas: es la geodésica espacial, no el recorrido de una señal luminosa.",
+          "id": "holografia/geometria/reto-01",
+          "nativeId": null,
+          "index": 0,
+          "section": "geometria",
+          "source": "src/maldacena/geometry/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Una mano mueve el camino",
+          "question": "Si separás los extremos con el mismo corte ε, ¿qué le pasa al camino más corto?",
+          "choices": [
+            "Tiene menos longitud física",
+            "Cambia de color pero mide lo mismo",
+            "Crece su longitud física"
+          ],
+          "answer": 2,
+          "hint": "Arrastrá un extremo o usá «Separar a ℓ=3». Mantené ε=0,2 y medí. El arco punteado conserva la referencia ℓ=2.",
+          "meaning": "El arco se vuelve más profundo y su longitud aumenta. La relación no es lineal: 2 asinh(ℓ/2ε) crece aproximadamente como un logaritmo cuando el intervalo supera mucho al corte.",
+          "id": "holografia/geometria/reto-02",
+          "nativeId": null,
+          "index": 1,
+          "section": "geometria",
+          "source": "src/maldacena/geometry/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "El borde no está cerquita",
+          "question": "Al bajar el corte desde ε=0,2 hasta ε=0,04, sin cambiar ℓ, la longitud regulada…",
+          "choices": [
+            "Aumenta",
+            "Disminuye",
+            "No depende del corte"
+          ],
+          "answer": 0,
+          "hint": "Con ℓ=2, acercá la línea rosa a ε=0,04 y tocá «Medir los dos caminos». No estamos moviendo una pared material.",
+          "meaning": "La frontera z=0 está a distancia espacial infinita en esta rebanada. ε mantiene los extremos a una distancia regulada: al reducirlo incluimos más recorrido cercano a la frontera. El corte es una elección de resolución del cálculo, no una altura física de nuestro universo.",
+          "id": "holografia/geometria/reto-03",
+          "nativeId": null,
+          "index": 2,
+          "section": "geometria",
+          "source": "src/maldacena/geometry/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "¿Hasta dónde llega?",
+          "question": "Con el mismo ε, ¿qué intervalo tiene una geodésica que alcanza mayor z?",
+          "choices": [
+            "El intervalo más corto",
+            "El intervalo más ancho",
+            "Todos alcanzan el mismo z"
+          ],
+          "answer": 1,
+          "hint": "Conservá ε=0,2, llevá ℓ a 4 y medí. Compará la profundidad máxima con la referencia punteada de ℓ=2.",
+          "meaning": "La profundidad máxima es R=√[(ℓ/2)²+ε²]. Una región más amplia de la frontera se asocia a un camino que entra más en AdS. La siguiente sección usa esa geometría para calcular una entropía, dentro de un caso concreto de holografía.",
+          "id": "holografia/geometria/reto-04",
+          "nativeId": null,
+          "index": 3,
+          "section": "geometria",
+          "source": "src/maldacena/geometry/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Una región más grande",
+          "question": "En el vacío de esta CFT, si duplicás el intervalo manteniendo ε, ¿la entropía se duplica?",
+          "choices": [
+            "Sí, sigue linealmente a ℓ",
+            "No: suma 13,86 nats, no se multiplica por dos",
+            "No cambia"
+          ],
+          "answer": 1,
+          "hint": "Pasá de ℓ=2 a ℓ=4 con ε=0,1 y medí. Compará el aumento respecto de la referencia: no necesitás calcular el logaritmo.",
+          "meaning": "En este ejemplo cCFT=60: duplicar ℓ suma 20 ln 2 ≈ 13,86 nats, en vez de duplicar la entropía. Un nat es una unidad de información, como el bit, pero usa logaritmo natural. Para un intervalo del vacío de una CFT₂ en una línea infinita, S=(cCFT/3) ln(ℓ/ε). La longitud geométrica se aproxima a esa misma ley al acercar el corte a la frontera.",
+          "id": "holografia/diccionario/reto-01",
+          "nativeId": null,
+          "index": 0,
+          "section": "diccionario",
+          "source": "src/maldacena/geometry/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Mover no es agrandar",
+          "question": "Si trasladás todo el intervalo sin cambiar su longitud en este vacío homogéneo, ¿qué cambia en la entropía?",
+          "choices": [
+            "Aumenta hacia la derecha",
+            "Disminuye hacia la izquierda",
+            "No cambia"
+          ],
+          "answer": 2,
+          "hint": "Usá «Mover el intervalo a +1» o arrastrá la manija central. Mantené ℓ=2 y ε=0,1; después medí.",
+          "meaning": "El vacío sobre la línea infinita es invariante por traslaciones. Cambiar el centro mueve el arco y la región, pero ambas descripciones conservan la entropía. No estamos rotando una cámara ni cambiando de observador.",
+          "id": "holografia/diccionario/reto-02",
+          "nativeId": null,
+          "index": 1,
+          "section": "diccionario",
+          "source": "src/maldacena/geometry/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "La diferencia del corte",
+          "question": "¿Qué debería pasar con la pequeña diferencia entre longitud regulada y fórmula logarítmica al reducir ε?",
+          "choices": [
+            "Se hace menor",
+            "Siempre es exactamente cero",
+            "Demuestra que la dualidad es falsa"
+          ],
+          "answer": 0,
+          "hint": "Medí primero con ε=0,3. Después elegí ε=0,03 y volvé a medir, sin cambiar ℓ=2. Las dos mediciones deben quedar registradas.",
+          "meaning": "Nuestros extremos están a z=ε: la longitud exacta es 2L asinh(ℓ/2ε). El logaritmo CFT mostrado es el límite asintótico, en una convención de constante aditiva fijada. A corte finito no fingimos igualdad exacta ni interpretamos la diferencia como un fallo de AdS/CFT.",
+          "id": "holografia/diccionario/reto-03",
+          "nativeId": null,
+          "index": 2,
+          "section": "diccionario",
+          "source": "src/maldacena/geometry/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Comparar lo que cambia",
+          "question": "Si comparás ℓ=2 y ℓ=4 con el mismo corte, ¿qué incremento queda al acercar ε a cero?",
+          "choices": [
+            "Cero: se cancela todo",
+            "13,86 nats en este ejemplo, independiente del corte",
+            "Un incremento que crece sin límite"
+          ],
+          "answer": 1,
+          "hint": "Con ℓ=4, medí la diferencia respecto de ℓ=2 a ε=0,1. Repetí a ε=0,02. Compará ΔS, no la entropía total divergente.",
+          "meaning": "Al restar entropías de dos intervalos usando el mismo esquema, la contribución divergente común se cancela. ΔS_CFT=(cCFT/3) ln(4/2). La diferencia geométrica converge a ese valor. Es una comprobación acotada del diccionario semiclásico, no una prueba de toda la conjetura.",
+          "id": "holografia/diccionario/reto-04",
+          "nativeId": null,
+          "index": 3,
+          "section": "diccionario",
+          "source": "src/maldacena/geometry/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Volver al frío",
+          "question": "Si bajás la temperatura a cero, ¿qué recupera el intervalo?",
+          "choices": [
+            "El resultado del vacío de AdS",
+            "Entropía local cero para cualquier intervalo",
+            "Una evaporación de Schwarzschild"
+          ],
+          "answer": 0,
+          "hint": "Tocá «T=0,16» para registrar el estado cálido y después «T=0», con la misma longitud 2. Cada ajuste elige un estado estacionario nuevo.",
+          "meaning": "Al bajar T, la escala térmica crece y el resultado tiende al vacío. La región sigue teniendo entropía de entrelazamiento: vacío no significa ausencia de correlaciones.",
+          "id": "holografia/temperatura/reto-01",
+          "nativeId": null,
+          "index": 0,
+          "section": "temperatura",
+          "source": "src/maldacena/thermal/ThermalLab.tsx",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Chico frente a grande",
+          "question": "A T=0,24, ¿qué intervalo se acerca más al horizonte?",
+          "choices": [
+            "El de longitud 0,5",
+            "El de longitud 6",
+            "Ambos llegan exactamente al horizonte"
+          ],
+          "answer": 1,
+          "hint": "A T=0,24 compará ℓ=0,5 y ℓ=6. La línea rosa marca el horizonte en coordenadas z.",
+          "meaning": "Una región grande respecto de la escala térmica explora mayor profundidad. La curva se aproxima al horizonte desde el exterior y no lo cruza.",
+          "id": "holografia/temperatura/reto-02",
+          "nativeId": null,
+          "index": 1,
+          "section": "temperatura",
+          "source": "src/maldacena/thermal/ThermalLab.tsx",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Separar la contribución térmica",
+          "question": "Para un intervalo grande, ¿cómo cambia la entropía al agrandarlo un poco?",
+          "choices": [
+            "Disminuye",
+            "Crece aproximadamente con su longitud",
+            "Se vuelve exactamente cero"
+          ],
+          "answer": 1,
+          "hint": "Con T=0,32, compará ℓ=4 y ℓ=6. Activá «Ver pendiente térmica» para comparar ΔS/Δℓ con s térmica.",
+          "meaning": "A escalas grandes, S contiene un término aproximadamente extensivo: s·ℓ, con s=πcCFT T/3. El estado global térmico no es el estado puro del capítulo de dos qubits.",
+          "id": "holografia/temperatura/reto-03",
+          "nativeId": null,
+          "index": 2,
+          "section": "temperatura",
+          "source": "src/maldacena/thermal/ThermalLab.tsx",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Otro agujero negro",
+          "question": "En este modelo BTZ, al duplicar la temperatura de 0,08 a 0,16, ¿qué pasa con el radio areal del horizonte?",
+          "choices": [
+            "Se duplica; el parámetro de masa se cuadruplica",
+            "Se reduce a la mitad como en Schwarzschild",
+            "El horizonte queda igual"
+          ],
+          "answer": 0,
+          "hint": "Usá T=0,08 y T=0,16 manteniendo ℓ=2. Leé r₊/L y el parámetro m, en unidades L=1.",
+          "meaning": "Aquí r₊=2πT y m=r₊². BTZ tiene 2+1 dimensiones y constante cosmológica negativa. La regla de Schwarzschild «más masa, más frío» no se traslada a esta familia.",
+          "id": "holografia/temperatura/reto-04",
+          "nativeId": null,
+          "index": 3,
+          "section": "temperatura",
+          "source": "src/maldacena/thermal/ThermalLab.tsx",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "curva-de-page",
+      "name": "La paradoja de la información",
+      "route": "/curva-de-page/",
+      "discipline": "INFORMACIÓN Y AGUJEROS NEGROS",
+      "publication": "ACTIVO",
+      "objective": "¿Por qué la curva de Page primero sube y después baja?",
+      "firstAction": "Pasá qubits a la radiación, compará el conjunto con sus partes y explorá cuatro retos sobre información, pureza y la curva de Page.",
+      "model": "Particiones de estados puros de qubits; no dinámica de evaporación",
+      "prerequisites": "Entropía reducida y correlaciones",
+      "sourcesAndLimits": "docs/PAGE_MODELO.md",
+      "physics": "src/maldacena/page/physics.ts",
+      "controlsAndReadouts": "Reparto B/R, número/preparación de qubits, referencias Page/independiente y lectura conjunta/separada. Resultados: espectros reducidos, S(R), suma individual, curva y extremos puros.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx",
+        "src/components/ui/SceneConsole.tsx"
+      ],
+      "challengeSource": "src/maldacena/page/learning.ts",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "title": "El todo y lo que sale",
+          "question": "El conjunto BR está en un estado puro. Si mirás solo el primer qubit emitido, ¿su entropía tiene que ser cero?",
+          "choices": [
+            "Sí: puro significa que cada parte tiene entropía cero",
+            "No: una parte puede tener entropía aunque el conjunto sea puro",
+            "Emitir crea información de la nada"
+          ],
+          "answer": 1,
+          "hint": "Usá 6 qubits. Compará «Inicio: 0» con «Primer qubit: 1». Mirá S(R) y el estado del conjunto BR, sin cambiar la preparación.",
+          "meaning": "El conjunto sigue siendo puro, con S(BR)=0. Al ignorar B, R puede tener entropía de entrelazamiento. Es la misma distinción que exploraste con A y B: pureza del todo no significa pureza de cada parte.",
+          "id": "curva-de-page/principal/reto-01",
+          "nativeId": null,
+          "index": 0,
+          "section": "principal",
+          "source": "src/maldacena/page/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Dibujar la vuelta",
+          "question": "Si el conjunto permanece puro y al final todos los qubits están en R, ¿qué debe pasar con S(R)?",
+          "choices": [
+            "Debe seguir creciendo hasta N",
+            "Vuelve a cero al reunir el conjunto completo",
+            "Se vuelve negativa"
+          ],
+          "answer": 1,
+          "hint": "Con 6 qubits, compará «Mitad: 3» y «Todo en R: 6». Activá «Promedio de Page». La línea dorada es una media, no la curva exacta de cada preparación.",
+          "meaning": "Cuando R contiene el sistema completo, su estado es puro y S(R)=0. En estados aleatorios típicos, la entropía primero crece y después baja. La fórmula de Page da una media sobre preparaciones; una curva individual puede fluctuar. El punto de giro del modelo no es un tiempo físico de evaporación.",
+          "id": "curva-de-page/principal/reto-02",
+          "nativeId": null,
+          "index": 1,
+          "section": "principal",
+          "source": "src/maldacena/page/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "La tensión de la paradoja",
+          "question": "Al terminar, ¿qué contraste aparece si aproximás la radiación como qubits térmicos independientes y máximamente mezclados?",
+          "choices": [
+            "Esa aproximación deja S(R)=N; el modelo puro da S(R)=0",
+            "Las dos cuentas dan siempre lo mismo",
+            "La aproximación demuestra que la información desaparece"
+          ],
+          "answer": 0,
+          "hint": "Con 6 qubits, llevá todo a R. Compará la referencia «Emisión independiente» apagada y encendida. Cambia la cuenta de referencia, no el estado calculado.",
+          "meaning": "Si B desaparece y el estado final de toda la radiación fuera mixto, no sería el estado puro que exige una evolución unitaria desde un estado puro. Esa tensión es el núcleo de la paradoja. La línea coral es una hipótesis simplificada de qubits independientes; no es el cálculo gravitatorio completo de Hawking ni la entropía térmica 4/3 del otro capítulo.",
+          "id": "curva-de-page/principal/reto-03",
+          "nativeId": null,
+          "index": 2,
+          "section": "principal",
+          "source": "src/maldacena/page/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Las pistas están juntas",
+          "question": "Al reunir toda la radiación, cada qubit puede parecer incierto pero el conjunto es puro. ¿Qué falta al sumar las entropías individuales?",
+          "choices": [
+            "Las correlaciones entre las partes",
+            "Un observador que mire con más atención",
+            "Más radiación: todavía quedan qubits en B"
+          ],
+          "answer": 0,
+          "hint": "Con 6 qubits, llevá «Todo en R: 6». Alterná «R como conjunto» y «Qubits por separado». Compará S(R) con ΣS(Rᵢ), sin cambiar la preparación.",
+          "meaning": "Sumar las entropías de las partes ignora sus correlaciones. Aquí ΣS(Rᵢ)−S(R) es la correlación total: puede incluir correlaciones clásicas y cuánticas, no es una medida general de entrelazamiento. El ejemplo conserva una descripción conjunta pura; no implementa un decodificador de información de un agujero negro real.",
+          "id": "curva-de-page/principal/reto-04",
+          "nativeId": null,
+          "index": 3,
+          "section": "principal",
+          "source": "src/maldacena/page/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "eratostenes",
+      "name": "Dos sombras, una Tierra",
+      "route": "/eratostenes/",
+      "discipline": "GEOMETRÍA · ASTRONOMÍA",
+      "publication": "ACTIVO",
+      "objective": "¿Podés medir la Tierra sin dar la vuelta al mundo?",
+      "firstAction": "Mové dos lugares, medí sus sombras y reconstruí la circunferencia de la Tierra con cuatro retos inspirados en Eratóstenes.",
+      "model": "Geometría esférica idealizada con dos sombras al mediodía solar y rayos paralelos",
+      "prerequisites": "Sombras, ángulos y proporciones; se explican en el recorrido",
+      "sourcesAndLimits": "docs/ERATOSTENES_LABORATORIO.md",
+      "physics": "src/eratostenes/physics.ts",
+      "controlsAndReadouts": "Dos latitudes sobre un meridiano, altura de la varilla, declinación solar y margen angular; vistas planeta/sombras. El radio del modelo es fijo. Sombras firmadas, ángulo central, mediciones guardadas y circunferencia inferida. No prueba aislada de la forma terrestre sin supuestos.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx",
+        "src/components/ui/SceneConsole.tsx"
+      ],
+      "challengeSource": "src/eratostenes/learning.ts",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "title": "Dos sombras, dos verticales",
+          "question": "Con rayos solares paralelos, ¿por qué dos palos verticales pueden dar sombras distintas?",
+          "choices": [
+            "Porque el Sol está mucho más cerca de una ciudad",
+            "Porque las verticales locales cambian sobre una superficie curva",
+            "Porque el palo de más al norte debe ser más alto"
+          ],
+          "answer": 1,
+          "hint": "Medí con «Mismo lugar» y después con «Separar 800 km». Seguí las verticales y los rayos amarillos.",
+          "steps": [
+            "Medir los dos palos en el mismo lugar",
+            "Medir con 800 km entre los sitios"
+          ],
+          "meaning": "Los rayos llegan paralelos, pero las verticales locales no lo son. En el mismo sitio no hay diferencia angular para inferir el tamaño; al separar los sitios aparece el ángulo entre sus verticales.",
+          "setup": {
+            "latitudeB": "DEFAULT.latitudeA"
+          },
+          "id": "eratostenes/principal/reto-01",
+          "nativeId": null,
+          "index": 0,
+          "section": "principal",
+          "source": "src/eratostenes/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Un pedazo permite medir el todo",
+          "question": "Si duplicamos la distancia entre sitios en este mismo planeta, ¿qué debería pasar con el ángulo y la circunferencia calculada?",
+          "choices": [
+            "El ángulo se duplica y la circunferencia calculada se conserva",
+            "La circunferencia se duplica aunque el planeta sea el mismo",
+            "El ángulo no cambia"
+          ],
+          "answer": 0,
+          "hint": "Medí con «Separar 800 km» y «Separar 1600 km». Compará la proporción d/Δθ en tus dos registros.",
+          "steps": [
+            "Medir una base de 800 km",
+            "Medir una base de 1600 km"
+          ],
+          "meaning": "800 km son 7,2° y 1600 km son 14,4° en este mundo ideal. En ambos casos, C = 360° × d / Δθ da 40.000 km. Medir un arco y su ángulo permite inferir la vuelta completa.",
+          "setup": {},
+          "id": "eratostenes/principal/reto-02",
+          "nativeId": null,
+          "index": 1,
+          "section": "principal",
+          "source": "src/eratostenes/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "¿Importa el tamaño del palo?",
+          "question": "Sin mover las ciudades ni el Sol, duplicamos la altura de los palos. ¿Qué cambia?",
+          "choices": [
+            "Se duplica el ángulo y cambia el tamaño de la Tierra",
+            "No cambia ninguna longitud de sombra",
+            "Se duplican las sombras; los ángulos y la circunferencia se conservan"
+          ],
+          "answer": 2,
+          "hint": "Con 800 km entre sitios, medí «Palos de 1 m» y «Palos de 2 m». También podés estirar la punta del palo en la vista Sombras.",
+          "steps": [
+            "Medir con palos de 1 m",
+            "Medir con palos de 2 m"
+          ],
+          "meaning": "El ángulo depende de sombra/altura: θ = arctan(s/h), con dirección norte/sur. Duplicar ambas longitudes conserva la razón. Un palo alto no hace más grande al planeta.",
+          "setup": {},
+          "id": "eratostenes/principal/reto-03",
+          "nativeId": null,
+          "index": 2,
+          "section": "principal",
+          "source": "src/eratostenes/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Medir también es equivocarse",
+          "question": "Si la diferencia angular tiene el mismo margen de ±0,2°, ¿qué base permite acotar mejor la circunferencia?",
+          "choices": [
+            "400 km, porque toda distancia menor es más precisa",
+            "800 km: el mismo margen pesa menos frente a un ángulo mayor",
+            "Ambas dan necesariamente un valor exacto"
+          ],
+          "answer": 1,
+          "hint": "Dejá el margen en ±0,2°. Medí «Separar 400 km» y «Separar 800 km» y compará los intervalos posibles.",
+          "steps": [
+            "Medir 400 km con margen ±0,2°",
+            "Medir 800 km con margen ±0,2°"
+          ],
+          "meaning": "El mismo margen angular produce un intervalo más estrecho con la base de 800 km. Estas cotas suponen distancia exacta: no son una probabilidad ni la precisión histórica de Eratóstenes.",
+          "setup": {
+            "latitudeB": "DEFAULT.latitudeA + 3.6",
+            "angularError": 0.2
+          },
+          "id": "eratostenes/principal/reto-04",
+          "nativeId": null,
+          "index": 3,
+          "section": "principal",
+          "source": "src/eratostenes/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "bell",
+      "name": "Bell: ¿respuestas escritas?",
+      "route": "/bell/",
+      "discipline": "INFORMACIÓN CUÁNTICA",
+      "publication": "ACTIVO",
+      "objective": "¿Las partículas pueden traer todas las respuestas preparadas?",
+      "firstAction": "Girá dos analizadores, reuní pares de resultados y construí una desigualdad de Bell con cuatro retos sobre correlaciones y modelos locales.",
+      "model": "Pares de fotones Φ+ ideales, muestreo Born, tarjetas locales y CHSH",
+      "prerequisites": "Porcentajes y comparación de resultados; signos, orientaciones y correlación se introducen aquí",
+      "sourcesAndLimits": "docs/BELL_LABORATORIO.md",
+      "physics": "src/bell/physics.ts",
+      "controlsAndReadouts": "Giro de analizadores A/B, ajustes 0/1, emisión, lotes de 200 pares, tarjetas ±1, lotes CHSH de 4×50 o 4×1000. Datos sintéticos medidos separados de E teórico; suma S y cota local. No ensayo experimental ni comunicación instantánea.",
+      "sharedComponents": [
+        "src/components/ui/LabJourney.tsx",
+        "src/education/HelpMode.tsx",
+        "src/components/ui/SceneConsole.tsx"
+      ],
+      "challengeSource": "src/bell/learning.ts",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "title": "Azar de cada lado, relación entre ambos",
+          "question": "Al girar B de 0° a 45°, manteniendo A en 0°, ¿qué cambia?",
+          "choices": [
+            "Podés elegir si A dará + o −",
+            "Cambian las coincidencias; cada lado sigue teniendo 50 % de probabilidad de +",
+            "Cada pareja empieza a dar cuatro resultados a la vez"
+          ],
+          "answer": 1,
+          "wrongFeedback": [
+            "Girar el analizador cambia cómo medís, pero no permite elegir la salida de A. En ambos montajes A tiene 50 % de probabilidad de +; lo que cambia es cuántas parejas coinciden.",
+            "",
+            "Cada pareja deja una salida en A y una en B. ++, +−, −+ y −− son cuatro posibilidades; no cuatro resultados simultáneos."
+          ],
+          "hint": "En «Experimento», usá A₀B₀. Medí un lote nuevo de 200 con «B a 0°» y otro con «B a 45°». Compará iguales/distintos y la lectura local de A.",
+          "steps": [
+            "200 pares nuevos con A₀=0°, B₀=0°",
+            "200 pares nuevos con A₀=0°, B₀=45°"
+          ],
+          "meaning": "En 0°/0° siempre coinciden (E=+1); en 0°/45° coinciden la mitad en promedio (E=0). En ambos, P(A+)=P(B+)=½. El azar local no basta para distinguir una fuente cuántica de una mezcla local bien construida.",
+          "angles": "SAME_ANGLES",
+          "id": "bell/principal/reto-01",
+          "nativeId": null,
+          "index": 0,
+          "section": "principal",
+          "source": "src/bell/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Intentá superar el límite con tarjetas",
+          "question": "Una tarjeta trae cuatro respuestas locales ±1. ¿Qué valores puede dar su suma CHSH?",
+          "choices": [
+            "Cualquier número hasta 4 si elegís bien los signos",
+            "Siempre cero, porque hay azar",
+            "Sólo +2 o −2; mezclar tarjetas mantiene la media entre esos límites"
+          ],
+          "answer": 2,
+          "wrongFeedback": [
+            "Los cuatro productos comparten las mismas respuestas. No podés elegir sus signos por separado: uno de los paréntesis es cero y el otro ±2.",
+            "Una tarjeta concreta da +2 o −2. Mezclar tarjetas con sumas opuestas puede dar media cero; el azar local por sí solo no obliga a ello.",
+            ""
+          ],
+          "hint": "Abrí «Tarjetas locales». Guardá la tarjeta inicial y después cambiá A₀ de + a − y guardá otra. Mirá qué paréntesis es cero y cuál vale ±2; cambiar B₁ intercambia sus papeles.",
+          "steps": [
+            "Guardar una tarjeta con S=+2",
+            "Guardar otra tarjeta con S=−2"
+          ],
+          "meaning": "Si B₀ y B₁ son iguales, B₀−B₁=0; si son opuestos, B₀+B₁=0. El otro paréntesis vale ±2. Por eso cada tarjeta da ±2 y cualquier mezcla independiente de los ajustes satisface |S|≤2.",
+          "angles": "BELL_ANGLES",
+          "id": "bell/principal/reto-02",
+          "nativeId": null,
+          "index": 1,
+          "section": "principal",
+          "source": "src/bell/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Cuatro ajustes, una prueba estadística",
+          "question": "Con los ángulos de Bell, ¿cómo deben interpretarse la predicción exacta y los lotes de 50 o 1000 pares por combinación?",
+          "choices": [
+            "La predicción es 2√2; los lotes fluctúan y una muestra mayor acota mejor la estimación",
+            "Superar 2 una vez con pocos pares prueba por sí solo una ley de la naturaleza",
+            "Cambiar N cambia la predicción exacta de la fuente"
+          ],
+          "answer": 0,
+          "wrongFeedback": [
+            "",
+            "Superar 2 en un lote no alcanza por sí solo: las muestras fluctúan. Además, esta simulación usa probabilidades programadas; probar la naturaleza requiere un experimento y su análisis estadístico.",
+            "N es la cantidad de parejas medidas, no un ajuste de la fuente. Con estos ángulos la predicción sigue en 2√2; más datos reducen la incertidumbre de la estimación."
+          ],
+          "hint": "Usá «Ángulos de Bell» y medí «4 × 50 pares» y «4 × 1000 pares». Son lotes nuevos: compará las cuatro filas y sus cotas, no sólo una coincidencia.",
+          "steps": [
+            "Un ensayo completo de 50 pares por combinación con ángulos de Bell",
+            "Otro ensayo completo de 1000 por combinación con los mismos ángulos"
+          ],
+          "meaning": "S=E₀₀+E₀₁+E₁₀−E₁₁. La predicción ideal es 2√2≈2,828, superior al límite local 2. Los datos fluctúan; el margen simultáneo corresponde a cada lote fijado de antemano. Esta simulación no es una prueba experimental ni su intervalo es un p-valor.",
+          "angles": "BELL_ANGLES",
+          "id": "bell/principal/reto-03",
+          "nativeId": null,
+          "index": 2,
+          "section": "principal",
+          "source": "src/bell/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "¿Podés mandar un mensaje?",
+          "question": "B alterna entre 0° y 90° sin avisar. Si A sólo mira su propia lista de resultados, ¿puede leer ese mensaje?",
+          "choices": [
+            "Sí: + significa que B eligió 0°",
+            "No: su distribución sigue siendo 50/50; las correlaciones se revelan al comparar las listas",
+            "Sí, porque las coincidencias siempre son visibles desde A"
+          ],
+          "answer": 1,
+          "wrongFeedback": [
+            "A puede obtener + tanto si B eligió 0° como 90°: en ambos casos tiene probabilidad 50 %. Un signo local no revela la elección remota.",
+            "",
+            "Una coincidencia compara dos registros. A necesita la lista de B para reconocerla; reunir ambas listas exige comunicación ordinaria."
+          ],
+          "hint": "En A₀B₀, medí 200 pares con «B a 0°» y otros con «B a 90°», dejando A₀=0°. Compará la lista local A y después los resultados emparejados.",
+          "steps": [
+            "200 pares con B₀=0° y A₀=0°",
+            "200 pares con B₀=90° y A₀=0°"
+          ],
+          "meaning": "Las parejas pasan de coincidir a diferir, pero los resultados locales de A conservan probabilidad ½ para cada salida. Comparar correlaciones requiere reunir las listas por un canal ordinario; el entrelazamiento no transmite un mensaje controlable más rápido que la luz.",
+          "angles": "SAME_ANGLES",
+          "id": "bell/principal/reto-04",
+          "nativeId": null,
+          "index": 3,
+          "section": "principal",
+          "source": "src/bell/learning.ts",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ],
+      "statusReference": "estado.json"
+    }
+  ],
+  "aliases": {
+    "/espacio-con-frontera/": "holografia/geometria",
+    "/dos-lenguajes/": "holografia/diccionario",
+    "/frontera-caliente/": "holografia/temperatura"
+  },
+  "auxiliaryActivities": [
+    {
+      "id": "contar-informacion",
+      "route": "/entropia/#information-bridge",
+      "source": "src/maldacena/quantum/CountingBridge.tsx",
+      "statusReference": "estado.json",
+      "challengeCount": 4,
+      "challenges": [
+        {
+          "title": "Conocer todo",
+          "question": "Si conocés las cuatro variables, ¿cuántas configuraciones siguen siendo compatibles?",
+          "choices": [
+            "Una; incertidumbre cero",
+            "Dieciséis, aunque ya las conozca",
+            "Ninguna"
+          ],
+          "answer": 0,
+          "hint": "Revelá las cuatro casillas tocándolas o con «Mostrar todas».",
+          "meaning": "Una configuración conocida tiene probabilidad uno: −log₂1 = 0 bits de incertidumbre.",
+          "id": "contar-informacion/principal/reto-01",
+          "nativeId": null,
+          "index": 0,
+          "source": "src/maldacena/quantum/CountingBridge.tsx",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Cuatro posibilidades",
+          "question": "Dos variables ocultas e independientes, con 0 y 1 equiprobables: ¿cuánta incertidumbre?",
+          "choices": [
+            "Cuatro bits",
+            "Dos bits: log₂4",
+            "Cero, porque son clásicas"
+          ],
+          "answer": 1,
+          "hint": "Elegí dos variables, ocultalas y usá «0 y 1 iguales».",
+          "meaning": "Las cuatro configuraciones 00, 01, 10 y 11 tienen probabilidad ¼. H = log₂4 = 2 bits.",
+          "id": "contar-informacion/principal/reto-02",
+          "nativeId": null,
+          "index": 1,
+          "source": "src/maldacena/quantum/CountingBridge.tsx",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Las probabilidades importan",
+          "question": "Si el 1 pasa a tener probabilidad 90 %, ¿qué ocurre con las mismas cuatro posibilidades?",
+          "choices": [
+            "La incertidumbre baja de dos bits",
+            "Sube necesariamente a cuatro bits",
+            "No cambia: solo importa contar"
+          ],
+          "answer": 0,
+          "hint": "Con dos variables ocultas, compará «0 y 1 iguales» con «1 más probable».",
+          "meaning": "Hay cuatro posibilidades, pero no son equiprobables. H = −Σ pᵢ log₂pᵢ ≈ 0,938 bits. log₂Ω solo coincide con H cuando las Ω posibilidades tienen igual probabilidad.",
+          "id": "contar-informacion/principal/reto-03",
+          "nativeId": null,
+          "index": 2,
+          "source": "src/maldacena/quantum/CountingBridge.tsx",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        },
+        {
+          "title": "Volver al horizonte",
+          "question": "¿Estas casillas muestran los componentes microscópicos de un agujero negro?",
+          "choices": [
+            "Sí, son una fotografía de bits del horizonte",
+            "Son un modelo de información, no celdas físicas observadas",
+            "Sí, cada casilla es exactamente un área de Planck"
+          ],
+          "answer": 1,
+          "hint": "Tocá «Comparar con el horizonte» y separá el modelo de información de la ley de área.",
+          "meaning": "La ley de Bekenstein–Hawking asigna entropía al área. No identifica por sí sola microestados ni prueba una cuadrícula microscópica. Aquí contamos registros clásicos independientes para aprender qué significa información parcial.",
+          "id": "contar-informacion/principal/reto-04",
+          "nativeId": null,
+          "index": 3,
+          "source": "src/maldacena/quantum/CountingBridge.tsx",
+          "challengeKind": "choice-observation",
+          "statusReference": "estado.json"
+        }
+      ]
+    },
+    {
+      "id": "energia-en-reposo",
+      "route": "/einstein/",
+      "source": "src/einstein/EnergyNotebook.tsx",
+      "statusReference": "estado.json"
+    },
+    {
+      "id": "ecuacion-de-campo",
+      "route": "/einstein/#en-field",
+      "source": "src/einstein/FieldEquationNotebook.tsx",
+      "statusReference": "estado.json",
+      "challengeCount": 1,
+      "challenges": [
+        {
+          "id": "ecuacion-de-campo/principal/reto-01",
+          "index": 0,
+          "source": "src/einstein/FieldEquationNotebook.tsx",
+          "question": "¿Puede haber gravedad donde no hay materia local?",
+          "choices": [
+            "Sí: por ejemplo, fuera de una estrella",
+            "El vacío siempre es espacio-tiempo plano"
+          ],
+          "answer": 0,
+          "challengeKind": "choice-knowledge",
+          "statusReference": "estado.json"
+        }
+      ]
+    },
+    {
+      "id": "escalas-agujeros-negros",
+      "route": "/agujeros-negros/",
+      "source": "src/series",
+      "statusReference": "estado.json"
+    }
+  ],
+  "htmlEntries": [
+    "index.html",
+    "doble-rendija/index.html",
+    "prisma/index.html",
+    "hawking/index.html",
+    "lente-gravitacional/index.html",
+    "entropia/index.html",
+    "acrecion/index.html",
+    "horizonte/index.html",
+    "agujeros-negros/index.html",
+    "reloj-de-luz/index.html",
+    "einstein/index.html",
+    "tren-de-einstein/index.html",
+    "nos-vemos-a-la-vuelta/index.html",
+    "ascensor-de-einstein/index.html",
+    "el-tiempo-tiene-altura/index.html",
+    "orbita-que-no-se-cierra/index.html",
+    "efecto-fotoelectrico/index.html",
+    "maldacena/index.html",
+    "entrelazados/index.html",
+    "espacio-con-frontera/index.html",
+    "dos-lenguajes/index.html",
+    "frontera-caliente/index.html",
+    "curva-de-page/index.html",
+    "holografia/index.html",
+    "eratostenes/index.html",
+    "bell/index.html"
+  ],
+  "excluded": [
+    {
+      "id": "legacy-holography-duplicates",
+      "reason": "Tres URL históricas son alias activos, probados como compatibilidad; no tres laboratorios adicionales."
+    }
+  ],
+  "unpublishedDrafts": "No hay entradas activas sin clasificar. No se encontraron borradores o funciones deshabilitadas en los catálogos; el historial Git no se cuenta como producto activo.",
+  "inheritedMetadata": "Objetivos técnicos de los 17 laboratorios anteriores conservados tras contrastar el código; consignas extraídas de las fuentes actuales. La pregunta auxiliar inline se controla mediante hash y revisión explícita.",
+  "sourceHashes": {
+    "src/portal/catalog.ts": "2b1d3915ec3efa5c9a57983a85a8f02486c98bdddef60fedeefc925b55015a3e",
+    "src/education/doubleSlitLearning.ts": "a6653101ea4ddcb1c02efbd495ba826b3d1f78dac96cb5fa380c82fe11014e79",
+    "src/prisma/education/prismLearning.ts": "26e42004b5eb58b1815c09471ee8c39195a4494274111ec0f5c7e84f0e93c435",
+    "src/hawking/learning.ts": "923be3ed04f34c10a6ed7ebc2eff2c94c73d9e173a9696b2b1d1795bd44e1969",
+    "src/lente/learning.ts": "026be088ee977642789ebd42fb0f0fd94e20d0c6457fdf6366061d777ae09701",
+    "src/entropia/learning.ts": "3c3b30ff31372f829e979b31fd07cce5fdab11646410e4c64dc47eafbaaf5301",
+    "src/acrecion/learning.ts": "2fed819482aafb07c5ebf4739377d9046846ee66c6bb5c644923877868683361",
+    "src/horizonte/learning.ts": "d481af79e88ece979b6f9419afa522d8ecf3fc77887c94dca30ef7008ca124f1",
+    "src/reloj/learning.ts": "7fa878925cc587c6694503112b3ad342380d7ee64fe832274df0e603b525daca",
+    "src/tren/learning.ts": "1801045e52b15c8850a9ca8091f68f4a6bb491e630a32cbf946015741ea1fc7f",
+    "src/gemelos/learning.ts": "cfcba2278d2b0fac53a748e6fee2fe34a5fcc7de617fba8b909c8631886d8e12",
+    "src/ascensor/learning.ts": "45f7d3f83ee8c8dd2d88b0edaa993df72de858585eac197f9c9fb03fdfb7c8da",
+    "src/altura/learning.ts": "6a7c99b285dffcaf6bc47cdb77e2fd293fbf7ee9f7893efc37681fbb3923b78c",
+    "src/orbita/learning.ts": "fb1c0efb81b028abee059beb998fc7aed54a3e27f59a5077f27b6dadc1a4e7fa",
+    "src/fotoelectrico/learning.ts": "ae37e368e080c75a6c86132b71fb804dbd506a5b06d31330744c8ec6311d10ba",
+    "src/maldacena/quantum/EntanglementLab.tsx": "181ec57c300e139e04b448aa9e158badde73d34edf57fde7ee5e93545774b95b",
+    "src/maldacena/geometry/learning.ts": "1b807c8c19f97fce149d9383390968bb3024f9fa8d12456bb595f15a4b60d5b0",
+    "src/maldacena/thermal/ThermalLab.tsx": "2bcee34b85f5ff69ae5b9bf30ebaf09cc2d0094e88f99b43640564f440c0182b",
+    "src/maldacena/page/learning.ts": "8141201a20df8c1a7f01c5cdf230f10720cf6942ab40f305f91d34df124f356e",
+    "src/eratostenes/learning.ts": "e11c6fdae1d41cb8a4f30fc9061f5d86948bbea0c53d40754f832241bd50bacc",
+    "src/bell/learning.ts": "b0d2cfaf3748b098f9e9edc8714cc072634a1b55a7e03b6cdfc1aeb7c14e3d09",
+    "src/maldacena/quantum/CountingBridge.tsx": "dfd658570bdfc71919260ccb797ecc0bcda8f5667e1123f81ec6571e99fffed7",
+    "src/einstein/EnergyNotebook.tsx": "20778234d7b381c4f5ac7c4976fdba1a602624044d95b3a15a5b129cf867971e",
+    "src/einstein/FieldEquationNotebook.tsx": "95954d6c7ac06c044e31e2ab649f67c220f669d3e897da93030555fed3bd2b35",
+    "vite.config.ts": "a68d07a41b39d76f0df36fe98ff844bb00055b006745768f75591bf6fedad8ee"
+  }
+}

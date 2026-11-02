@@ -1,0 +1,2252 @@
+{
+  "phase": "REVISION_INTERNA_CERRADA",
+  "base": "effb811cee78e33d78234e12e63fd28232058e6a",
+  "candidate": "Base + SCI-01, UX-01 y UX-02; archivos identificados por los hashes de los tres dictámenes",
+  "deliveryEvidence": "../../../../qa-integral-seguimiento-2026-11-02/release-verification.json",
+  "counts": {
+    "labs": 19,
+    "approvedLabs": 19,
+    "correctedLabs": 3,
+    "mainChallenges": 84,
+    "auxiliaryChallenges": 5,
+    "totalChallenges": 89,
+    "approvedChallenges": 89,
+    "failedChallenges": 0,
+    "blockedChallenges": 0
+  },
+  "labs": [
+    {
+      "id": "doble-rendija",
+      "route": "/doble-rendija/",
+      "challengeIds": [
+        "doble-rendija/principal/reto-01",
+        "doble-rendija/principal/reto-02",
+        "doble-rendija/principal/reto-03",
+        "doble-rendija/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "prisma",
+      "route": "/prisma/",
+      "challengeIds": [
+        "prisma/principal/reto-01",
+        "prisma/principal/reto-02",
+        "prisma/principal/reto-03",
+        "prisma/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "hawking",
+      "route": "/hawking/",
+      "challengeIds": [
+        "hawking/principal/reto-01",
+        "hawking/principal/reto-02",
+        "hawking/principal/reto-03",
+        "hawking/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "lente-gravitacional",
+      "route": "/lente-gravitacional/",
+      "challengeIds": [
+        "lente-gravitacional/principal/reto-01",
+        "lente-gravitacional/principal/reto-02",
+        "lente-gravitacional/principal/reto-03",
+        "lente-gravitacional/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "entropia",
+      "route": "/entropia/",
+      "challengeIds": [
+        "entropia/principal/reto-01",
+        "entropia/principal/reto-02",
+        "entropia/principal/reto-03",
+        "entropia/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "acrecion",
+      "route": "/acrecion/",
+      "challengeIds": [
+        "acrecion/principal/reto-01",
+        "acrecion/principal/reto-02",
+        "acrecion/principal/reto-03",
+        "acrecion/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "horizonte",
+      "route": "/horizonte/",
+      "challengeIds": [
+        "horizonte/principal/reto-01",
+        "horizonte/principal/reto-02",
+        "horizonte/principal/reto-03",
+        "horizonte/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "reloj-de-luz",
+      "route": "/reloj-de-luz/",
+      "challengeIds": [
+        "reloj-de-luz/principal/reto-01",
+        "reloj-de-luz/principal/reto-02",
+        "reloj-de-luz/principal/reto-03",
+        "reloj-de-luz/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "tren-de-einstein",
+      "route": "/tren-de-einstein/",
+      "challengeIds": [
+        "tren-de-einstein/principal/reto-01",
+        "tren-de-einstein/principal/reto-02",
+        "tren-de-einstein/principal/reto-03",
+        "tren-de-einstein/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "nos-vemos-a-la-vuelta",
+      "route": "/nos-vemos-a-la-vuelta/",
+      "challengeIds": [
+        "nos-vemos-a-la-vuelta/principal/reto-01",
+        "nos-vemos-a-la-vuelta/principal/reto-02",
+        "nos-vemos-a-la-vuelta/principal/reto-03",
+        "nos-vemos-a-la-vuelta/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "ascensor-de-einstein",
+      "route": "/ascensor-de-einstein/",
+      "challengeIds": [
+        "ascensor-de-einstein/principal/reto-01",
+        "ascensor-de-einstein/principal/reto-02",
+        "ascensor-de-einstein/principal/reto-03",
+        "ascensor-de-einstein/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "el-tiempo-tiene-altura",
+      "route": "/el-tiempo-tiene-altura/",
+      "challengeIds": [
+        "el-tiempo-tiene-altura/principal/reto-01",
+        "el-tiempo-tiene-altura/principal/reto-02",
+        "el-tiempo-tiene-altura/principal/reto-03",
+        "el-tiempo-tiene-altura/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "orbita-que-no-se-cierra",
+      "route": "/orbita-que-no-se-cierra/",
+      "challengeIds": [
+        "orbita-que-no-se-cierra/principal/reto-01",
+        "orbita-que-no-se-cierra/principal/reto-02",
+        "orbita-que-no-se-cierra/principal/reto-03",
+        "orbita-que-no-se-cierra/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "efecto-fotoelectrico",
+      "route": "/efecto-fotoelectrico/",
+      "challengeIds": [
+        "efecto-fotoelectrico/principal/reto-01",
+        "efecto-fotoelectrico/principal/reto-02",
+        "efecto-fotoelectrico/principal/reto-03",
+        "efecto-fotoelectrico/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "entrelazados",
+      "route": "/entrelazados/",
+      "challengeIds": [
+        "entrelazados/principal/reto-01",
+        "entrelazados/principal/reto-02",
+        "entrelazados/principal/reto-03",
+        "entrelazados/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "holografia",
+      "route": "/holografia/",
+      "challengeIds": [
+        "holografia/geometria/reto-01",
+        "holografia/geometria/reto-02",
+        "holografia/geometria/reto-03",
+        "holografia/geometria/reto-04",
+        "holografia/diccionario/reto-01",
+        "holografia/diccionario/reto-02",
+        "holografia/diccionario/reto-03",
+        "holografia/diccionario/reto-04",
+        "holografia/temperatura/reto-01",
+        "holografia/temperatura/reto-02",
+        "holografia/temperatura/reto-03",
+        "holografia/temperatura/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "curva-de-page",
+      "route": "/curva-de-page/",
+      "challengeIds": [
+        "curva-de-page/principal/reto-01",
+        "curva-de-page/principal/reto-02",
+        "curva-de-page/principal/reto-03",
+        "curva-de-page/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "eratostenes",
+      "route": "/eratostenes/",
+      "challengeIds": [
+        "eratostenes/principal/reto-01",
+        "eratostenes/principal/reto-02",
+        "eratostenes/principal/reto-03",
+        "eratostenes/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    },
+    {
+      "id": "bell",
+      "route": "/bell/",
+      "challengeIds": [
+        "bell/principal/reto-01",
+        "bell/principal/reto-02",
+        "bell/principal/reto-03",
+        "bell/principal/reto-04"
+      ],
+      "science": "APROBADO",
+      "product": "APROBADO",
+      "acceptance": "APROBADO_EN_ALCANCE_DOCUMENTADO"
+    }
+  ],
+  "challenges": [
+    {
+      "id": "doble-rendija/principal/reto-01",
+      "source": "src/education/doubleSlitLearning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/0/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/0"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "doble-rendija/principal/reto-02",
+      "source": "src/education/doubleSlitLearning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/0/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/1"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "doble-rendija/principal/reto-03",
+      "source": "src/education/doubleSlitLearning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/0/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/2"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "doble-rendija/principal/reto-04",
+      "source": "src/education/doubleSlitLearning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/0/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/3"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "prisma/principal/reto-01",
+      "source": "src/prisma/education/prismLearning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/1/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/4"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "prisma/principal/reto-02",
+      "source": "src/prisma/education/prismLearning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/1/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/5"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "prisma/principal/reto-03",
+      "source": "src/prisma/education/prismLearning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/1/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/6"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "prisma/principal/reto-04",
+      "source": "src/prisma/education/prismLearning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/1/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/7"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "hawking/principal/reto-01",
+      "source": "src/hawking/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/2/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/40"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "hawking/principal/reto-02",
+      "source": "src/hawking/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/2/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/41"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "hawking/principal/reto-03",
+      "source": "src/hawking/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/2/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/42"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "hawking/principal/reto-04",
+      "source": "src/hawking/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/2/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/43"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "lente-gravitacional/principal/reto-01",
+      "source": "src/lente/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/3/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/28"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "lente-gravitacional/principal/reto-02",
+      "source": "src/lente/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/3/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/29"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "lente-gravitacional/principal/reto-03",
+      "source": "src/lente/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/3/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/30"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "lente-gravitacional/principal/reto-04",
+      "source": "src/lente/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/3/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/31"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "entropia/principal/reto-01",
+      "source": "src/entropia/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/4/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/44"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "entropia/principal/reto-02",
+      "source": "src/entropia/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/4/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/45"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "entropia/principal/reto-03",
+      "source": "src/entropia/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/4/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/46"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "entropia/principal/reto-04",
+      "source": "src/entropia/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/4/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/47"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "acrecion/principal/reto-01",
+      "source": "src/acrecion/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/5/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/32"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "acrecion/principal/reto-02",
+      "source": "src/acrecion/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/5/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/33"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "acrecion/principal/reto-03",
+      "source": "src/acrecion/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/5/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/34"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "acrecion/principal/reto-04",
+      "source": "src/acrecion/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/5/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/35"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "horizonte/principal/reto-01",
+      "source": "src/horizonte/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/6/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/36"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "horizonte/principal/reto-02",
+      "source": "src/horizonte/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/6/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/37"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "horizonte/principal/reto-03",
+      "source": "src/horizonte/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/6/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/38"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "horizonte/principal/reto-04",
+      "source": "src/horizonte/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/6/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/39"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "reloj-de-luz/principal/reto-01",
+      "source": "src/reloj/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/7/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/0"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "reloj-de-luz/principal/reto-02",
+      "source": "src/reloj/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/7/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/1"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "reloj-de-luz/principal/reto-03",
+      "source": "src/reloj/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/7/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/2"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "reloj-de-luz/principal/reto-04",
+      "source": "src/reloj/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/7/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/3"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "tren-de-einstein/principal/reto-01",
+      "source": "src/tren/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/8/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/4"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "tren-de-einstein/principal/reto-02",
+      "source": "src/tren/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/8/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/5"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "tren-de-einstein/principal/reto-03",
+      "source": "src/tren/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/8/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/6"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "tren-de-einstein/principal/reto-04",
+      "source": "src/tren/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/8/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/7"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "nos-vemos-a-la-vuelta/principal/reto-01",
+      "source": "src/gemelos/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/9/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/8"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "nos-vemos-a-la-vuelta/principal/reto-02",
+      "source": "src/gemelos/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/9/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/9"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "nos-vemos-a-la-vuelta/principal/reto-03",
+      "source": "src/gemelos/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/9/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/10"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "nos-vemos-a-la-vuelta/principal/reto-04",
+      "source": "src/gemelos/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/9/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/11"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "ascensor-de-einstein/principal/reto-01",
+      "source": "src/ascensor/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/10/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/12"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "ascensor-de-einstein/principal/reto-02",
+      "source": "src/ascensor/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/10/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/13"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "ascensor-de-einstein/principal/reto-03",
+      "source": "src/ascensor/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/10/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/14"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "ascensor-de-einstein/principal/reto-04",
+      "source": "src/ascensor/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/10/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/15"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "el-tiempo-tiene-altura/principal/reto-01",
+      "source": "src/altura/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/11/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/16"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "el-tiempo-tiene-altura/principal/reto-02",
+      "source": "src/altura/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/11/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/17"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "el-tiempo-tiene-altura/principal/reto-03",
+      "source": "src/altura/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/11/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/18"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "el-tiempo-tiene-altura/principal/reto-04",
+      "source": "src/altura/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/11/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/19"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "orbita-que-no-se-cierra/principal/reto-01",
+      "source": "src/orbita/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/12/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/20"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "orbita-que-no-se-cierra/principal/reto-02",
+      "source": "src/orbita/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/12/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/21"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "orbita-que-no-se-cierra/principal/reto-03",
+      "source": "src/orbita/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/12/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/22"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "orbita-que-no-se-cierra/principal/reto-04",
+      "source": "src/orbita/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/12/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/23"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "efecto-fotoelectrico/principal/reto-01",
+      "source": "src/fotoelectrico/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/13/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/24"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "efecto-fotoelectrico/principal/reto-02",
+      "source": "src/fotoelectrico/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/13/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/25"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "efecto-fotoelectrico/principal/reto-03",
+      "source": "src/fotoelectrico/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/13/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/26"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "efecto-fotoelectrico/principal/reto-04",
+      "source": "src/fotoelectrico/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/13/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/27"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "entrelazados/principal/reto-01",
+      "source": "src/maldacena/quantum/EntanglementLab.tsx",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/14/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/8"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "entrelazados/principal/reto-02",
+      "source": "src/maldacena/quantum/EntanglementLab.tsx",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/14/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/9"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "entrelazados/principal/reto-03",
+      "source": "src/maldacena/quantum/EntanglementLab.tsx",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/14/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/10"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "entrelazados/principal/reto-04",
+      "source": "src/maldacena/quantum/EntanglementLab.tsx",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/14/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/11"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "holografia/geometria/reto-01",
+      "source": "src/maldacena/geometry/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/15/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/12"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "holografia/geometria/reto-02",
+      "source": "src/maldacena/geometry/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/15/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/13"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "holografia/geometria/reto-03",
+      "source": "src/maldacena/geometry/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/15/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/14"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "holografia/geometria/reto-04",
+      "source": "src/maldacena/geometry/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/15/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/15"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "holografia/diccionario/reto-01",
+      "source": "src/maldacena/geometry/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/15/challenges/4"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/16"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "holografia/diccionario/reto-02",
+      "source": "src/maldacena/geometry/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/15/challenges/5"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/17"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "holografia/diccionario/reto-03",
+      "source": "src/maldacena/geometry/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/15/challenges/6"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/18"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "holografia/diccionario/reto-04",
+      "source": "src/maldacena/geometry/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/15/challenges/7"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/19"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "holografia/temperatura/reto-01",
+      "source": "src/maldacena/thermal/ThermalLab.tsx",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/15/challenges/8"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/20"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "holografia/temperatura/reto-02",
+      "source": "src/maldacena/thermal/ThermalLab.tsx",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/15/challenges/9"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/21"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "holografia/temperatura/reto-03",
+      "source": "src/maldacena/thermal/ThermalLab.tsx",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/15/challenges/10"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/22"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "holografia/temperatura/reto-04",
+      "source": "src/maldacena/thermal/ThermalLab.tsx",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/15/challenges/11"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/23"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "curva-de-page/principal/reto-01",
+      "source": "src/maldacena/page/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/16/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/24"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "curva-de-page/principal/reto-02",
+      "source": "src/maldacena/page/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/16/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/25"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "curva-de-page/principal/reto-03",
+      "source": "src/maldacena/page/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/16/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/26"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "curva-de-page/principal/reto-04",
+      "source": "src/maldacena/page/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/16/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/27"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "eratostenes/principal/reto-01",
+      "source": "src/eratostenes/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/17/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/28"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "eratostenes/principal/reto-02",
+      "source": "src/eratostenes/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/17/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/29"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "eratostenes/principal/reto-03",
+      "source": "src/eratostenes/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/17/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/30"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "eratostenes/principal/reto-04",
+      "source": "src/eratostenes/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/17/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/31"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "bell/principal/reto-01",
+      "source": "src/bell/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/18/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/32"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "bell/principal/reto-02",
+      "source": "src/bell/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/18/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/33"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "bell/principal/reto-03",
+      "source": "src/bell/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/18/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/34"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "bell/principal/reto-04",
+      "source": "src/bell/learning.ts",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/labs/18/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/35"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "contar-informacion/principal/reto-01",
+      "source": "src/maldacena/quantum/CountingBridge.tsx",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/auxiliaryActivities/0/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/36"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "contar-informacion/principal/reto-02",
+      "source": "src/maldacena/quantum/CountingBridge.tsx",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/auxiliaryActivities/0/challenges/1"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/37"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "contar-informacion/principal/reto-03",
+      "source": "src/maldacena/quantum/CountingBridge.tsx",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/auxiliaryActivities/0/challenges/2"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/38"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "contar-informacion/principal/reto-04",
+      "source": "src/maldacena/quantum/CountingBridge.tsx",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/auxiliaryActivities/0/challenges/3"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "file": "producto-optica-cuantica.json",
+        "pointer": "/challenges/39"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    },
+    {
+      "id": "ecuacion-de-campo/principal/reto-01",
+      "source": "src/einstein/FieldEquationNotebook.tsx",
+      "status": "APROBADO",
+      "science": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "file": "ciencia.json",
+        "pointer": "/auxiliaryActivities/2/challenges/0"
+      },
+      "product": {
+        "status": "APROBADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "file": "producto-einstein-cosmos.json",
+        "pointer": "/challenges/48"
+      },
+      "acceptance": {
+        "status": "APROBADO_EN_ALCANCE_DOCUMENTADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "basis": "QA y aceptación independientes de implementación; recorridos actuales y conservación justificada de aceptación histórica. Los casos nuevos se enumeran en el manifest de producto, no se infieren de esta fila."
+      }
+    }
+  ],
+  "ungraded": {
+    "activities": [
+      "energia-en-reposo",
+      "escalas-agujeros-negros"
+    ],
+    "evidence": "producto-einstein-cosmos.json#/ungradedExplorations",
+    "science": "ciencia.json#/auxiliaryActivities",
+    "countedAsChallenges": false
+  },
+  "findings": "hallazgos.md",
+  "options": "opciones.md",
+  "pending": [
+    "12 avisos moderados de herramientas de desarrollo; producción sin avisos",
+    "Safari y dispositivos físicos sin acceso, pendientes por decisión del usuario",
+    "Prueba educativa con participantes; no reemplazada por QA de agentes"
+  ],
+  "next": "No quedan reparaciones de los tres hallazgos de producto. Verificar y registrar la publicación; las ampliaciones quedan a elección del usuario.",
+  "limitations": "No es certificación externa. Las89aprobaciones reúnen evidencia conservada y casos actuales: no son89nuevos recorridos exhaustivos en cada tamaño o dispositivo."
+}

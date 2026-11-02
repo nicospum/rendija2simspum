@@ -1,0 +1,2402 @@
+{
+  "reviewer": "qa_ciencia_actual",
+  "date": "2026-11-02",
+  "scope": "Revisión interna documentada; QA científico separado de producto, navegador y eficacia educativa",
+  "base": "effb811cee78e33d78234e12e63fd28232058e6a",
+  "candidate": "effb811 + SCI-01, UX-01 y UX-02; hashes registrados",
+  "status": "APROBADO_CIENTIFICO",
+  "counts": {
+    "labs": 19,
+    "mainChallenges": 84,
+    "auxiliaryChallenges": 5,
+    "totalChallenges": 89,
+    "scientificApproved": 89,
+    "scientificFailed": 0,
+    "scientificBlocked": 0
+  },
+  "labs": [
+    {
+      "id": "doble-rendija",
+      "name": "La doble rendija",
+      "route": "/doble-rendija/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../qa-ciencia-estado.json",
+      "method": "Revalidación de todos los retos por equivalencia de archivos; nueva lectura del modelo y ejecución de pruebas actuales",
+      "sources": [
+        "S03"
+      ],
+      "challenges": [
+        {
+          "id": "doble-rendija/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/education/doubleSlitLearning.ts"
+        },
+        {
+          "id": "doble-rendija/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/education/doubleSlitLearning.ts"
+        },
+        {
+          "id": "doble-rendija/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/education/doubleSlitLearning.ts"
+        },
+        {
+          "id": "doble-rendija/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/education/doubleSlitLearning.ts"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_optica_cuantica",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/0",
+            "id": "doble-rendija/principal/reto-01"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/1",
+            "id": "doble-rendija/principal/reto-02"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/2",
+            "id": "doble-rendija/principal/reto-03"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/3",
+            "id": "doble-rendija/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": []
+    },
+    {
+      "id": "prisma",
+      "name": "El prisma de Newton",
+      "route": "/prisma/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../qa-ciencia-estado.json",
+      "method": "Revalidación de todos los retos por equivalencia de archivos; nueva lectura del modelo y ejecución de pruebas actuales",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "challenges": [
+        {
+          "id": "prisma/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/prisma/education/prismLearning.ts"
+        },
+        {
+          "id": "prisma/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/prisma/education/prismLearning.ts"
+        },
+        {
+          "id": "prisma/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/prisma/education/prismLearning.ts"
+        },
+        {
+          "id": "prisma/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/prisma/education/prismLearning.ts"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_optica_cuantica",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/4",
+            "id": "prisma/principal/reto-01"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/5",
+            "id": "prisma/principal/reto-02"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/6",
+            "id": "prisma/principal/reto-03"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/7",
+            "id": "prisma/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": []
+    },
+    {
+      "id": "hawking",
+      "name": "Radiación de Hawking",
+      "route": "/hawking/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../qa-ciencia-estado.json",
+      "method": "Revalidación de todos los retos por equivalencia de archivos; nueva lectura del modelo y ejecución de pruebas actuales",
+      "sources": [
+        "S01",
+        "S13",
+        "S14",
+        "S24",
+        "S26"
+      ],
+      "challenges": [
+        {
+          "id": "hawking/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/hawking/learning.ts"
+        },
+        {
+          "id": "hawking/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/hawking/learning.ts"
+        },
+        {
+          "id": "hawking/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/hawking/learning.ts"
+        },
+        {
+          "id": "hawking/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/hawking/learning.ts"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_einstein_cosmos",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/40",
+            "id": "hawking/principal/reto-01"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/41",
+            "id": "hawking/principal/reto-02"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/42",
+            "id": "hawking/principal/reto-03"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/43",
+            "id": "hawking/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": []
+    },
+    {
+      "id": "lente-gravitacional",
+      "name": "Lente gravitacional",
+      "route": "/lente-gravitacional/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../qa-ciencia-estado.json",
+      "method": "Revalidación de todos los retos por equivalencia de archivos; nueva lectura del modelo y ejecución de pruebas actuales",
+      "sources": [
+        "S15",
+        "S16"
+      ],
+      "challenges": [
+        {
+          "id": "lente-gravitacional/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/lente/learning.ts"
+        },
+        {
+          "id": "lente-gravitacional/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/lente/learning.ts"
+        },
+        {
+          "id": "lente-gravitacional/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/lente/learning.ts"
+        },
+        {
+          "id": "lente-gravitacional/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/lente/learning.ts"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_einstein_cosmos",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/28",
+            "id": "lente-gravitacional/principal/reto-01"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/29",
+            "id": "lente-gravitacional/principal/reto-02"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/30",
+            "id": "lente-gravitacional/principal/reto-03"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/31",
+            "id": "lente-gravitacional/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": []
+    },
+    {
+      "id": "entropia",
+      "name": "Entropía de Bekenstein–Hawking",
+      "route": "/entropia/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../qa-ciencia-estado.json",
+      "method": "Revalidación de todos los retos por equivalencia de archivos; nueva lectura del modelo y ejecución de pruebas actuales",
+      "sources": [
+        "S01",
+        "S13",
+        "S14",
+        "S23"
+      ],
+      "challenges": [
+        {
+          "id": "entropia/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/entropia/learning.ts"
+        },
+        {
+          "id": "entropia/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/entropia/learning.ts"
+        },
+        {
+          "id": "entropia/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/entropia/learning.ts"
+        },
+        {
+          "id": "entropia/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/entropia/learning.ts"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_einstein_cosmos",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/44",
+            "id": "entropia/principal/reto-01"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/45",
+            "id": "entropia/principal/reto-02"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/46",
+            "id": "entropia/principal/reto-03"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/47",
+            "id": "entropia/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": []
+    },
+    {
+      "id": "acrecion",
+      "name": "Cómo vemos lo invisible",
+      "route": "/acrecion/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../qa-ciencia-estado.json",
+      "method": "Revalidación de todos los retos por equivalencia de archivos; nueva lectura del modelo y ejecución de pruebas actuales",
+      "sources": [
+        "S15",
+        "S25"
+      ],
+      "challenges": [
+        {
+          "id": "acrecion/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/acrecion/learning.ts"
+        },
+        {
+          "id": "acrecion/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/acrecion/learning.ts"
+        },
+        {
+          "id": "acrecion/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/acrecion/learning.ts"
+        },
+        {
+          "id": "acrecion/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/acrecion/learning.ts"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_einstein_cosmos",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/32",
+            "id": "acrecion/principal/reto-01"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/33",
+            "id": "acrecion/principal/reto-02"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/34",
+            "id": "acrecion/principal/reto-03"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/35",
+            "id": "acrecion/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": []
+    },
+    {
+      "id": "horizonte",
+      "name": "Al borde del horizonte",
+      "route": "/horizonte/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../qa-ciencia-estado.json",
+      "method": "Revalidación de todos los retos por equivalencia de archivos; nueva lectura del modelo y ejecución de pruebas actuales",
+      "sources": [
+        "S16"
+      ],
+      "challenges": [
+        {
+          "id": "horizonte/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/horizonte/learning.ts"
+        },
+        {
+          "id": "horizonte/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/horizonte/learning.ts"
+        },
+        {
+          "id": "horizonte/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/horizonte/learning.ts"
+        },
+        {
+          "id": "horizonte/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/horizonte/learning.ts"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_einstein_cosmos",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/36",
+            "id": "horizonte/principal/reto-01"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/37",
+            "id": "horizonte/principal/reto-02"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/38",
+            "id": "horizonte/principal/reto-03"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/39",
+            "id": "horizonte/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": []
+    },
+    {
+      "id": "reloj-de-luz",
+      "name": "El reloj de luz",
+      "route": "/reloj-de-luz/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../qa-ciencia-estado.json",
+      "method": "Revalidación de todos los retos por equivalencia de archivos; nueva lectura del modelo y ejecución de pruebas actuales",
+      "sources": [
+        "S04",
+        "S05"
+      ],
+      "challenges": [
+        {
+          "id": "reloj-de-luz/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/reloj/learning.ts"
+        },
+        {
+          "id": "reloj-de-luz/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/reloj/learning.ts"
+        },
+        {
+          "id": "reloj-de-luz/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/reloj/learning.ts"
+        },
+        {
+          "id": "reloj-de-luz/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/reloj/learning.ts"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_einstein_cosmos",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/0",
+            "id": "reloj-de-luz/principal/reto-01"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/1",
+            "id": "reloj-de-luz/principal/reto-02"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/2",
+            "id": "reloj-de-luz/principal/reto-03"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/3",
+            "id": "reloj-de-luz/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": []
+    },
+    {
+      "id": "tren-de-einstein",
+      "name": "El tren de Einstein",
+      "route": "/tren-de-einstein/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../qa-ciencia-estado.json",
+      "method": "Revalidación de todos los retos por equivalencia de archivos; nueva lectura del modelo y ejecución de pruebas actuales",
+      "sources": [
+        "S04"
+      ],
+      "challenges": [
+        {
+          "id": "tren-de-einstein/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/tren/learning.ts"
+        },
+        {
+          "id": "tren-de-einstein/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/tren/learning.ts"
+        },
+        {
+          "id": "tren-de-einstein/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/tren/learning.ts"
+        },
+        {
+          "id": "tren-de-einstein/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/tren/learning.ts"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_einstein_cosmos",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/4",
+            "id": "tren-de-einstein/principal/reto-01"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/5",
+            "id": "tren-de-einstein/principal/reto-02"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/6",
+            "id": "tren-de-einstein/principal/reto-03"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/7",
+            "id": "tren-de-einstein/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": []
+    },
+    {
+      "id": "nos-vemos-a-la-vuelta",
+      "name": "Nos vemos a la vuelta",
+      "route": "/nos-vemos-a-la-vuelta/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../qa-ciencia-estado.json",
+      "method": "Revalidación de todos los retos por equivalencia de archivos; nueva lectura del modelo y ejecución de pruebas actuales",
+      "sources": [
+        "S04",
+        "S06"
+      ],
+      "challenges": [
+        {
+          "id": "nos-vemos-a-la-vuelta/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/gemelos/learning.ts"
+        },
+        {
+          "id": "nos-vemos-a-la-vuelta/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/gemelos/learning.ts"
+        },
+        {
+          "id": "nos-vemos-a-la-vuelta/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/gemelos/learning.ts"
+        },
+        {
+          "id": "nos-vemos-a-la-vuelta/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/gemelos/learning.ts"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_einstein_cosmos",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/8",
+            "id": "nos-vemos-a-la-vuelta/principal/reto-01"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/9",
+            "id": "nos-vemos-a-la-vuelta/principal/reto-02"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/10",
+            "id": "nos-vemos-a-la-vuelta/principal/reto-03"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/11",
+            "id": "nos-vemos-a-la-vuelta/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": []
+    },
+    {
+      "id": "ascensor-de-einstein",
+      "name": "El ascensor de Einstein",
+      "route": "/ascensor-de-einstein/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../qa-ciencia-estado.json",
+      "method": "Revalidación de todos los retos por equivalencia de archivos; nueva lectura del modelo y ejecución de pruebas actuales",
+      "sources": [
+        "S07"
+      ],
+      "challenges": [
+        {
+          "id": "ascensor-de-einstein/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/ascensor/learning.ts"
+        },
+        {
+          "id": "ascensor-de-einstein/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/ascensor/learning.ts"
+        },
+        {
+          "id": "ascensor-de-einstein/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/ascensor/learning.ts"
+        },
+        {
+          "id": "ascensor-de-einstein/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/ascensor/learning.ts"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_einstein_cosmos",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/12",
+            "id": "ascensor-de-einstein/principal/reto-01"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/13",
+            "id": "ascensor-de-einstein/principal/reto-02"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/14",
+            "id": "ascensor-de-einstein/principal/reto-03"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/15",
+            "id": "ascensor-de-einstein/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": []
+    },
+    {
+      "id": "el-tiempo-tiene-altura",
+      "name": "El tiempo tiene altura",
+      "route": "/el-tiempo-tiene-altura/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../qa-ciencia-estado.json",
+      "method": "Revalidación de todos los retos por equivalencia de archivos; nueva lectura del modelo y ejecución de pruebas actuales",
+      "sources": [
+        "S01",
+        "S08"
+      ],
+      "challenges": [
+        {
+          "id": "el-tiempo-tiene-altura/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/altura/learning.ts"
+        },
+        {
+          "id": "el-tiempo-tiene-altura/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/altura/learning.ts"
+        },
+        {
+          "id": "el-tiempo-tiene-altura/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/altura/learning.ts"
+        },
+        {
+          "id": "el-tiempo-tiene-altura/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/altura/learning.ts"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_einstein_cosmos",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/16",
+            "id": "el-tiempo-tiene-altura/principal/reto-01"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/17",
+            "id": "el-tiempo-tiene-altura/principal/reto-02"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/18",
+            "id": "el-tiempo-tiene-altura/principal/reto-03"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/19",
+            "id": "el-tiempo-tiene-altura/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": []
+    },
+    {
+      "id": "orbita-que-no-se-cierra",
+      "name": "La órbita que no se cierra",
+      "route": "/orbita-que-no-se-cierra/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../qa-ciencia-estado.json",
+      "method": "Revalidación de todos los retos por equivalencia de archivos; nueva lectura del modelo y ejecución de pruebas actuales",
+      "sources": [
+        "S09",
+        "S10"
+      ],
+      "challenges": [
+        {
+          "id": "orbita-que-no-se-cierra/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/orbita/learning.ts"
+        },
+        {
+          "id": "orbita-que-no-se-cierra/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/orbita/learning.ts"
+        },
+        {
+          "id": "orbita-que-no-se-cierra/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/orbita/learning.ts"
+        },
+        {
+          "id": "orbita-que-no-se-cierra/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/orbita/learning.ts"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_einstein_cosmos",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/20",
+            "id": "orbita-que-no-se-cierra/principal/reto-01"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/21",
+            "id": "orbita-que-no-se-cierra/principal/reto-02"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/22",
+            "id": "orbita-que-no-se-cierra/principal/reto-03"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/23",
+            "id": "orbita-que-no-se-cierra/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": [
+        "UX-01 corregido y aprobado científicamente"
+      ]
+    },
+    {
+      "id": "efecto-fotoelectrico",
+      "name": "El efecto fotoeléctrico",
+      "route": "/efecto-fotoelectrico/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../qa-ciencia-estado.json",
+      "method": "Revalidación de todos los retos por equivalencia de archivos; nueva lectura del modelo y ejecución de pruebas actuales",
+      "sources": [
+        "S01",
+        "S11",
+        "S12"
+      ],
+      "challenges": [
+        {
+          "id": "efecto-fotoelectrico/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/fotoelectrico/learning.ts"
+        },
+        {
+          "id": "efecto-fotoelectrico/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/fotoelectrico/learning.ts"
+        },
+        {
+          "id": "efecto-fotoelectrico/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/fotoelectrico/learning.ts"
+        },
+        {
+          "id": "efecto-fotoelectrico/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/fotoelectrico/learning.ts"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_einstein_cosmos",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/24",
+            "id": "efecto-fotoelectrico/principal/reto-01"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/25",
+            "id": "efecto-fotoelectrico/principal/reto-02"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/26",
+            "id": "efecto-fotoelectrico/principal/reto-03"
+          },
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/27",
+            "id": "efecto-fotoelectrico/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": []
+    },
+    {
+      "id": "entrelazados",
+      "name": "Entrelazados",
+      "route": "/entrelazados/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../qa-ciencia-estado.json",
+      "method": "Revalidación de todos los retos por equivalencia de archivos; nueva lectura del modelo y ejecución de pruebas actuales; reapertura y lectura del diff completo de UX-02 sin cambio del modelo",
+      "sources": [
+        "S17"
+      ],
+      "challenges": [
+        {
+          "id": "entrelazados/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/quantum/EntanglementLab.tsx"
+        },
+        {
+          "id": "entrelazados/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/quantum/EntanglementLab.tsx"
+        },
+        {
+          "id": "entrelazados/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/quantum/EntanglementLab.tsx"
+        },
+        {
+          "id": "entrelazados/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/quantum/EntanglementLab.tsx"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_optica_cuantica",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/8",
+            "id": "entrelazados/principal/reto-01"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/9",
+            "id": "entrelazados/principal/reto-02"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/10",
+            "id": "entrelazados/principal/reto-03"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/11",
+            "id": "entrelazados/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": [
+        "UX-02 corregido y aprobado científicamente; producto acepta el efecto en los conteos"
+      ]
+    },
+    {
+      "id": "holografia",
+      "name": "Holografía: geometría y frontera",
+      "route": "/holografia/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../qa-ciencia-estado.json",
+      "method": "Revalidación de todos los retos por equivalencia de archivos; nueva lectura del modelo y ejecución de pruebas actuales",
+      "sources": [
+        "S18",
+        "S20"
+      ],
+      "challenges": [
+        {
+          "id": "holografia/geometria/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/geometry/learning.ts"
+        },
+        {
+          "id": "holografia/geometria/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/geometry/learning.ts"
+        },
+        {
+          "id": "holografia/geometria/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/geometry/learning.ts"
+        },
+        {
+          "id": "holografia/geometria/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/geometry/learning.ts"
+        },
+        {
+          "id": "holografia/diccionario/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/geometry/learning.ts"
+        },
+        {
+          "id": "holografia/diccionario/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/geometry/learning.ts"
+        },
+        {
+          "id": "holografia/diccionario/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/geometry/learning.ts"
+        },
+        {
+          "id": "holografia/diccionario/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/geometry/learning.ts"
+        },
+        {
+          "id": "holografia/temperatura/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/thermal/ThermalLab.tsx"
+        },
+        {
+          "id": "holografia/temperatura/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/thermal/ThermalLab.tsx"
+        },
+        {
+          "id": "holografia/temperatura/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/thermal/ThermalLab.tsx"
+        },
+        {
+          "id": "holografia/temperatura/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/thermal/ThermalLab.tsx"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_optica_cuantica",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/12",
+            "id": "holografia/geometria/reto-01"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/13",
+            "id": "holografia/geometria/reto-02"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/14",
+            "id": "holografia/geometria/reto-03"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/15",
+            "id": "holografia/geometria/reto-04"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/16",
+            "id": "holografia/diccionario/reto-01"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/17",
+            "id": "holografia/diccionario/reto-02"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/18",
+            "id": "holografia/diccionario/reto-03"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/19",
+            "id": "holografia/diccionario/reto-04"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/20",
+            "id": "holografia/temperatura/reto-01"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/21",
+            "id": "holografia/temperatura/reto-02"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/22",
+            "id": "holografia/temperatura/reto-03"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/23",
+            "id": "holografia/temperatura/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": []
+    },
+    {
+      "id": "curva-de-page",
+      "name": "La paradoja de la información",
+      "route": "/curva-de-page/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../qa-ciencia-estado.json",
+      "method": "Revalidación de todos los retos por equivalencia de archivos; nueva lectura del modelo y ejecución de pruebas actuales",
+      "sources": [
+        "S17",
+        "S19",
+        "S21"
+      ],
+      "challenges": [
+        {
+          "id": "curva-de-page/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/page/learning.ts"
+        },
+        {
+          "id": "curva-de-page/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/page/learning.ts"
+        },
+        {
+          "id": "curva-de-page/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/page/learning.ts"
+        },
+        {
+          "id": "curva-de-page/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/maldacena/page/learning.ts"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_optica_cuantica",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/24",
+            "id": "curva-de-page/principal/reto-01"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/25",
+            "id": "curva-de-page/principal/reto-02"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/26",
+            "id": "curva-de-page/principal/reto-03"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/27",
+            "id": "curva-de-page/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": []
+    },
+    {
+      "id": "eratostenes",
+      "name": "Dos sombras, una Tierra",
+      "route": "/eratostenes/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../../../research/eratostenes/estado-cientifico.json",
+      "method": "Lectura directa actual de modelo, evaluador y tests, comparación con revisión científica previa; sin nuevo navegador por ciencia",
+      "sources": [
+        "ER01",
+        "ER02",
+        "ER03",
+        "ER04",
+        "ER05",
+        "ER06",
+        "ER07"
+      ],
+      "challenges": [
+        {
+          "id": "eratostenes/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/eratostenes/learning.ts"
+        },
+        {
+          "id": "eratostenes/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/eratostenes/learning.ts"
+        },
+        {
+          "id": "eratostenes/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/eratostenes/learning.ts"
+        },
+        {
+          "id": "eratostenes/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/eratostenes/learning.ts"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_optica_cuantica",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/28",
+            "id": "eratostenes/principal/reto-01"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/29",
+            "id": "eratostenes/principal/reto-02"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/30",
+            "id": "eratostenes/principal/reto-03"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/31",
+            "id": "eratostenes/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": []
+    },
+    {
+      "id": "bell",
+      "name": "Bell: ¿respuestas escritas?",
+      "route": "/bell/",
+      "status": "APROBADO",
+      "reviewedBy": "qa_ciencia_actual",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + SCI-01, UX-01 y UX-02; hashes registrados",
+      "evidence": "qa-ciencia.md",
+      "previousEvidence": "../../../research/bell/estado-cientifico.json",
+      "method": "Lectura directa actual de modelo, evaluador y tests, comparación con revisión científica previa; sin nuevo navegador por ciencia",
+      "sources": [
+        "BE01",
+        "BE02",
+        "BE03",
+        "BE04",
+        "BE05"
+      ],
+      "challenges": [
+        {
+          "id": "bell/principal/reto-01",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/bell/learning.ts"
+        },
+        {
+          "id": "bell/principal/reto-02",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/bell/learning.ts"
+        },
+        {
+          "id": "bell/principal/reto-03",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/bell/learning.ts"
+        },
+        {
+          "id": "bell/principal/reto-04",
+          "status": "APROBADO",
+          "basis": "Modelo, conclusión/opciones y condiciones de observación; pruebas de correcta/incorrecta/incompleta y límites existentes vigentes. Producto y aceptación independientes.",
+          "source": "src/bell/learning.ts"
+        }
+      ],
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_optica_cuantica",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/32",
+            "id": "bell/principal/reto-01"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/33",
+            "id": "bell/principal/reto-02"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/34",
+            "id": "bell/principal/reto-03"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/35",
+            "id": "bell/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      },
+      "findings": [
+        "SCI-01 corregido y aprobado científicamente"
+      ]
+    }
+  ],
+  "auxiliaryActivities": [
+    {
+      "id": "contar-informacion",
+      "status": "APROBADO",
+      "sources": [
+        "S27",
+        "S13"
+      ],
+      "challenges": [
+        {
+          "id": "contar-informacion/principal/reto-01",
+          "status": "APROBADO",
+          "answerIndex": 0,
+          "evidence": "qa-ciencia.md, cuatro retos auxiliares"
+        },
+        {
+          "id": "contar-informacion/principal/reto-02",
+          "status": "APROBADO",
+          "answerIndex": 1,
+          "evidence": "qa-ciencia.md, cuatro retos auxiliares"
+        },
+        {
+          "id": "contar-informacion/principal/reto-03",
+          "status": "APROBADO",
+          "answerIndex": 0,
+          "evidence": "qa-ciencia.md, cuatro retos auxiliares"
+        },
+        {
+          "id": "contar-informacion/principal/reto-04",
+          "status": "APROBADO",
+          "answerIndex": 1,
+          "evidence": "qa-ciencia.md, cuatro retos auxiliares"
+        }
+      ],
+      "evidence": "qa-ciencia.md; evidencia histórica ../qa-ciencia.md",
+      "method": "Archivos y contratos idénticos; pruebas actuales PASS",
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_optica_cuantica",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/36",
+            "id": "contar-informacion/principal/reto-01"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/37",
+            "id": "contar-informacion/principal/reto-02"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/38",
+            "id": "contar-informacion/principal/reto-03"
+          },
+          {
+            "file": "producto-optica-cuantica.json",
+            "pointer": "/challenges/39",
+            "id": "contar-informacion/principal/reto-04"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      }
+    },
+    {
+      "id": "energia-en-reposo",
+      "status": "APROBADO",
+      "sources": [
+        "S01",
+        "S04"
+      ],
+      "evidence": "qa-ciencia.md; evidencia histórica ../qa-ciencia.md",
+      "method": "Archivos y contratos idénticos; pruebas actuales PASS",
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_einstein_cosmos",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/ungradedExplorations/0"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      }
+    },
+    {
+      "id": "ecuacion-de-campo",
+      "status": "APROBADO",
+      "sources": [
+        "S22"
+      ],
+      "evidence": "qa-ciencia.md; evidencia histórica ../qa-ciencia.md",
+      "challenges": [
+        {
+          "id": "ecuacion-de-campo/principal/reto-01",
+          "status": "APROBADO",
+          "answerIndex": 0,
+          "sources": [
+            "S22"
+          ],
+          "evidence": "qa-ciencia.md, pregunta sobre vacío local y curvatura"
+        }
+      ],
+      "method": "Archivos y contratos idénticos; pruebas actuales PASS",
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_einstein_cosmos",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/challenges/48",
+            "id": "ecuacion-de-campo/principal/reto-01"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      }
+    },
+    {
+      "id": "escalas-agujeros-negros",
+      "status": "APROBADO",
+      "sources": [
+        "S01",
+        "S13"
+      ],
+      "evidence": "qa-ciencia.md; evidencia histórica ../qa-ciencia.md",
+      "method": "Archivos y contratos idénticos; pruebas actuales PASS",
+      "acceptanceReview": {
+        "status": "APROBADO",
+        "reviewer": "qa_ciencia_actual",
+        "productReviewer": "qa_producto_einstein_cosmos",
+        "method": "Lectura independiente del dictamen de producto, cobertura por ID, evidencia actual y continuidad justificada por hashes. No ejecución de navegador por este rol.",
+        "evidence": [
+          {
+            "file": "producto-einstein-cosmos.json",
+            "pointer": "/ungradedExplorations/1"
+          }
+        ],
+        "limitation": "Se aprueba el alcance declarado por producto; no se infieren nuevos recorridos completos de cada reto, dispositivo físico ni eficacia educativa con participantes."
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "SCI-01",
+      "status": "CORREGIDO_APROBADO",
+      "file": "src/education/helpContent.ts",
+      "problem": "La ayuda podía confundirse entre límite de medias locales y estimación finita",
+      "plan": "Precisar medias y fluctuación; conservar modelo y evaluadores",
+      "review": "Diff final leído; la nueva explicación distingue ambas magnitudes y necesidad de incertidumbre",
+      "source": "BE02 CHSH1969 p881; BE05 Hoeffding1963",
+      "productAcceptance": {
+        "status": "APROBADO_REVISADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "finalReviewBy": "qa_ciencia_actual",
+        "evidence": "producto-optica-cuantica.json",
+        "scope": "Texto CHSH sobre medias e incertidumbre visible en 390/320; X cierra la tarjeta y Salir/Escape desactiva ayuda antes de volver a medir."
+      }
+    },
+    {
+      "id": "UX-01",
+      "status": "CORREGIDO_APROBADO_CIENTIFICO",
+      "file": "src/orbita/App.tsx",
+      "problem": "aria-pressed de la ampliación acompañado por etiqueta de acción contraria",
+      "plan": "Etiqueta estable Ampliar giro ×100.000 con mismo aria-pressed y acción",
+      "review": "Diff final de una línea leído; magnitudes, estado, ganancia y evaluadores intactos",
+      "productAcceptance": {
+        "status": "APROBADO_REVISADO",
+        "reviewer": "qa_producto_einstein_cosmos",
+        "finalReviewBy": "qa_ciencia_actual",
+        "evidence": "producto-einstein-cosmos.json",
+        "scope": "Etiqueta y aria-pressed coherentes, magnitudes físicas iguales al cambiar ampliación; R4 y controles reprobados."
+      }
+    },
+    {
+      "id": "UX-02",
+      "status": "CORREGIDO_APROBADO_CIENTIFICO",
+      "file": "src/maldacena/quantum/EntanglementLab.tsx",
+      "problem": "Repetir un ajuste activo borraba la muestra sin cambiar el montaje",
+      "plan": "Comparación estricta de theta/preparation/basisA/basisB antes de actualizar montaje y limpiar conteos",
+      "review": "Diff final leído. Cambio real limpia sólo conteos activos; no-op conserva datos. restore/choose siguen reinicios explícitos; Born, evaluadores y referencias intactos.",
+      "productAcceptance": {
+        "status": "APROBADO_REVISADO",
+        "reviewer": "qa_producto_optica_cuantica",
+        "finalReviewBy": "qa_ciencia_actual",
+        "evidence": "producto-optica-cuantica.json",
+        "scope": "Seis presets idénticos conservan N200; cambios reales limpian activos; referencias históricas se conservan; reinicios explícitos siguen limpiando."
+      }
+    }
+  ],
+  "checks": {
+    "baselineTests": {
+      "command": "node --test tests/*test.mjs",
+      "pass": 449,
+      "fail": 0,
+      "skipped": 0,
+      "node": "24.22.2",
+      "file": "../../../../qa-ciencia-actual-2026-11-02/tests-449.txt"
+    },
+    "followupTests": {
+      "command": "node --test tests/help-content.test.mjs tests/orbita.test.mjs",
+      "pass": 20,
+      "fail": 0,
+      "skipped": 0,
+      "file": "../../../../qa-ciencia-actual-2026-11-02/followup-tests.txt"
+    },
+    "pageSvd": {
+      "oracle": "complex Schmidt singular values via numpy.linalg.svd",
+      "numpy": "1.26.4",
+      "states": 25,
+      "partitions": 175,
+      "absoluteTolerance": 1e-10,
+      "maxSpectrumError": 1.5543122344752192e-15,
+      "maxEntropyErrorBits": 2.2423985526704407e-15,
+      "result": "APROBADO"
+    },
+    "quantumFollowup": {
+      "command": "node --test tests/maldacena-quantum.test.mjs tests/maldacena-integration.test.mjs",
+      "pass": 15,
+      "fail": 0,
+      "skipped": 0,
+      "file": "../../../../qa-ciencia-actual-2026-11-02/quantum-followup-tests.txt",
+      "scope": "Modelo Born, observaciones e integración; la regresión de counts del handler se comprueba en navegador por producto, no se atribuye a estos tests"
+    }
+  },
+  "priorHashComparison": [
+    {
+      "file": "src/acrecion/App.tsx",
+      "historicalSha256": "780423ba2084ff8685a564b7b0b189ff119b8a02a46dece91bb6e6820ffedb83",
+      "currentSha256": "780423ba2084ff8685a564b7b0b189ff119b8a02a46dece91bb6e6820ffedb83",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/acrecion/learning.ts",
+      "historicalSha256": "2fed819482aafb07c5ebf4739377d9046846ee66c6bb5c644923877868683361",
+      "currentSha256": "2fed819482aafb07c5ebf4739377d9046846ee66c6bb5c644923877868683361",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/acrecion/physics.ts",
+      "historicalSha256": "2c70016ca01ae224e6b2b0e307b15b226a0b344c76741357a76bf8f252bebdde",
+      "currentSha256": "2c70016ca01ae224e6b2b0e307b15b226a0b344c76741357a76bf8f252bebdde",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/altura/App.tsx",
+      "historicalSha256": "4cd5759b02bde0fe1d86b021e0a5a5a92e8a62da3423a80b9d03b9b6f968751f",
+      "currentSha256": "4cd5759b02bde0fe1d86b021e0a5a5a92e8a62da3423a80b9d03b9b6f968751f",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/altura/learning.ts",
+      "historicalSha256": "6a7c99b285dffcaf6bc47cdb77e2fd293fbf7ee9f7893efc37681fbb3923b78c",
+      "currentSha256": "6a7c99b285dffcaf6bc47cdb77e2fd293fbf7ee9f7893efc37681fbb3923b78c",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/altura/physics.ts",
+      "historicalSha256": "82a28be2b5891e4c9ddff16a89575ab29173a27f1c609cfd4249ff6042140b54",
+      "currentSha256": "82a28be2b5891e4c9ddff16a89575ab29173a27f1c609cfd4249ff6042140b54",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/ascensor/App.tsx",
+      "historicalSha256": "9c21a177e03c50622fef57453e77c5dd49f3c03844c416347aa8ae5734b2a659",
+      "currentSha256": "9c21a177e03c50622fef57453e77c5dd49f3c03844c416347aa8ae5734b2a659",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/ascensor/learning.ts",
+      "historicalSha256": "45f7d3f83ee8c8dd2d88b0edaa993df72de858585eac197f9c9fb03fdfb7c8da",
+      "currentSha256": "45f7d3f83ee8c8dd2d88b0edaa993df72de858585eac197f9c9fb03fdfb7c8da",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/ascensor/physics.ts",
+      "historicalSha256": "09618a1d4c81327c00ec7171bb290a8536df7d7a686f7ff5f281f293e141bcdb",
+      "currentSha256": "09618a1d4c81327c00ec7171bb290a8536df7d7a686f7ff5f281f293e141bcdb",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/components/ui/LabJourney.tsx",
+      "historicalSha256": "83afce1fd53ccaa6869a11feb2b844cd91850f5d9d68735a73289ba92d514846",
+      "currentSha256": "83afce1fd53ccaa6869a11feb2b844cd91850f5d9d68735a73289ba92d514846",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/components/ui/SceneChallenge.css",
+      "historicalSha256": "ff5e074ad5943b1098ee9b2e42aec5b63525d73bae5aab5e1da4e7804bf34519",
+      "currentSha256": "ff5e074ad5943b1098ee9b2e42aec5b63525d73bae5aab5e1da4e7804bf34519",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/education/doubleSlitLearning.ts",
+      "historicalSha256": "a6653101ea4ddcb1c02efbd495ba826b3d1f78dac96cb5fa380c82fe11014e79",
+      "currentSha256": "a6653101ea4ddcb1c02efbd495ba826b3d1f78dac96cb5fa380c82fe11014e79",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/einstein/EnergyNotebook.tsx",
+      "historicalSha256": "20778234d7b381c4f5ac7c4976fdba1a602624044d95b3a15a5b129cf867971e",
+      "currentSha256": "20778234d7b381c4f5ac7c4976fdba1a602624044d95b3a15a5b129cf867971e",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/einstein/FieldEquationNotebook.tsx",
+      "historicalSha256": "95954d6c7ac06c044e31e2ab649f67c220f669d3e897da93030555fed3bd2b35",
+      "currentSha256": "95954d6c7ac06c044e31e2ab649f67c220f669d3e897da93030555fed3bd2b35",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/einstein/energy.ts",
+      "historicalSha256": "8792c3945e4a4b792d9ff5c3b35add938e22e57a66e70802bd4f62b09f70ddaf",
+      "currentSha256": "8792c3945e4a4b792d9ff5c3b35add938e22e57a66e70802bd4f62b09f70ddaf",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/entropia/learning.ts",
+      "historicalSha256": "3c3b30ff31372f829e979b31fd07cce5fdab11646410e4c64dc47eafbaaf5301",
+      "currentSha256": "3c3b30ff31372f829e979b31fd07cce5fdab11646410e4c64dc47eafbaaf5301",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/entropia/physics.ts",
+      "historicalSha256": "3112ee2e4b3a982659048625fdbe8bd286ac1931bc2c37458badacd2cf77a068",
+      "currentSha256": "3112ee2e4b3a982659048625fdbe8bd286ac1931bc2c37458badacd2cf77a068",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/fotoelectrico/App.tsx",
+      "historicalSha256": "4eaa8682d31386e6f91042b84881ef2f86237d18368787518941431cc0e1033c",
+      "currentSha256": "4eaa8682d31386e6f91042b84881ef2f86237d18368787518941431cc0e1033c",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/fotoelectrico/learning.ts",
+      "historicalSha256": "ae37e368e080c75a6c86132b71fb804dbd506a5b06d31330744c8ec6311d10ba",
+      "currentSha256": "ae37e368e080c75a6c86132b71fb804dbd506a5b06d31330744c8ec6311d10ba",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/fotoelectrico/physics.ts",
+      "historicalSha256": "01af65a0ab8307482466352ad74cc4f7a6045690fecf3f1c525e63a97dac87ab",
+      "currentSha256": "01af65a0ab8307482466352ad74cc4f7a6045690fecf3f1c525e63a97dac87ab",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/gemelos/App.tsx",
+      "historicalSha256": "158dc40dd5cab4857c93651fda2b6ec5db5b36c51cb1968f0cf617a75cf11647",
+      "currentSha256": "158dc40dd5cab4857c93651fda2b6ec5db5b36c51cb1968f0cf617a75cf11647",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/gemelos/learning.ts",
+      "historicalSha256": "cfcba2278d2b0fac53a748e6fee2fe34a5fcc7de617fba8b909c8631886d8e12",
+      "currentSha256": "cfcba2278d2b0fac53a748e6fee2fe34a5fcc7de617fba8b909c8631886d8e12",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/gemelos/physics.ts",
+      "historicalSha256": "4cb3ec299ba14da95a8ca989a32594ad3fdc5f3e890da9e92174003c932d7203",
+      "currentSha256": "4cb3ec299ba14da95a8ca989a32594ad3fdc5f3e890da9e92174003c932d7203",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/hawking/learning.ts",
+      "historicalSha256": "923be3ed04f34c10a6ed7ebc2eff2c94c73d9e173a9696b2b1d1795bd44e1969",
+      "currentSha256": "923be3ed04f34c10a6ed7ebc2eff2c94c73d9e173a9696b2b1d1795bd44e1969",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/hawking/physics.ts",
+      "historicalSha256": "8d179bf1c7f39e05a61cb991a1d050a1c05df3bc6cfcc1d8f4e0fa37ef49d0b1",
+      "currentSha256": "8d179bf1c7f39e05a61cb991a1d050a1c05df3bc6cfcc1d8f4e0fa37ef49d0b1",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/horizonte/App.tsx",
+      "historicalSha256": "217e8df26e7000b635fd3ce508d8e142dfae404a547d6db7df7c314287090101",
+      "currentSha256": "217e8df26e7000b635fd3ce508d8e142dfae404a547d6db7df7c314287090101",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/horizonte/learning.ts",
+      "historicalSha256": "d481af79e88ece979b6f9419afa522d8ecf3fc77887c94dca30ef7008ca124f1",
+      "currentSha256": "d481af79e88ece979b6f9419afa522d8ecf3fc77887c94dca30ef7008ca124f1",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/horizonte/physics.ts",
+      "historicalSha256": "9e913f0dcf56bd7067fa227080cbc177de3f4a3a15a5050d6c8ac999f888a147",
+      "currentSha256": "9e913f0dcf56bd7067fa227080cbc177de3f4a3a15a5050d6c8ac999f888a147",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/lente/learning.ts",
+      "historicalSha256": "026be088ee977642789ebd42fb0f0fd94e20d0c6457fdf6366061d777ae09701",
+      "currentSha256": "026be088ee977642789ebd42fb0f0fd94e20d0c6457fdf6366061d777ae09701",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/lente/physics.ts",
+      "historicalSha256": "2f40d905771d28680108fe96ca73a0b7629d463d3389f1d88cbe9720a57586d5",
+      "currentSha256": "2f40d905771d28680108fe96ca73a0b7629d463d3389f1d88cbe9720a57586d5",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/maldacena/geometry/learning.ts",
+      "historicalSha256": "1b807c8c19f97fce149d9383390968bb3024f9fa8d12456bb595f15a4b60d5b0",
+      "currentSha256": "1b807c8c19f97fce149d9383390968bb3024f9fa8d12456bb595f15a4b60d5b0",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/maldacena/geometry/physics.ts",
+      "historicalSha256": "f47c485aaa2667690a791d5605317fd2518e5183633bbc297a6af0bffe875985",
+      "currentSha256": "f47c485aaa2667690a791d5605317fd2518e5183633bbc297a6af0bffe875985",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/maldacena/page/learning.ts",
+      "historicalSha256": "8141201a20df8c1a7f01c5cdf230f10720cf6942ab40f305f91d34df124f356e",
+      "currentSha256": "8141201a20df8c1a7f01c5cdf230f10720cf6942ab40f305f91d34df124f356e",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/maldacena/page/physics.ts",
+      "historicalSha256": "2c4e7ccd75c65d925a2e0df74460f7154a7475974955f2ade9ea157f04495f7d",
+      "currentSha256": "2c4e7ccd75c65d925a2e0df74460f7154a7475974955f2ade9ea157f04495f7d",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/maldacena/quantum/CountingBridge.tsx",
+      "historicalSha256": "dfd658570bdfc71919260ccb797ecc0bcda8f5667e1123f81ec6571e99fffed7",
+      "currentSha256": "dfd658570bdfc71919260ccb797ecc0bcda8f5667e1123f81ec6571e99fffed7",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/maldacena/quantum/EntanglementLab.tsx",
+      "historicalSha256": "25d0b9c7fc691bbaae7f3f26ecf2bf3c332627c971cd2ac0826297e435002ff5",
+      "currentSha256": "181ec57c300e139e04b448aa9e158badde73d34edf57fde7ee5e93545774b95b",
+      "unchanged": false,
+      "closure": "UX-02: guarda estricta de los cuatro campos de preparación y medición; la acción idéntica conserva datos, cambios reales los limpian. Fórmulas, requisitos, referencias y reinicio intactos; revisión independiente del diff y 15 tests físicos/integración."
+    },
+    {
+      "file": "src/maldacena/quantum/physics.ts",
+      "historicalSha256": "87576109ecef970da57a62c91a846ed3451deb3658f00abb1f7e90a1c843dec2",
+      "currentSha256": "87576109ecef970da57a62c91a846ed3451deb3658f00abb1f7e90a1c843dec2",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/maldacena/thermal/ThermalLab.tsx",
+      "historicalSha256": "2bcee34b85f5ff69ae5b9bf30ebaf09cc2d0094e88f99b43640564f440c0182b",
+      "currentSha256": "2bcee34b85f5ff69ae5b9bf30ebaf09cc2d0094e88f99b43640564f440c0182b",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/maldacena/thermal/physics.ts",
+      "historicalSha256": "15e10f3fbc31e11742e95d23ce6de016aba02c5c5b6c0e8bb05c1765d1e9f076",
+      "currentSha256": "15e10f3fbc31e11742e95d23ce6de016aba02c5c5b6c0e8bb05c1765d1e9f076",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/orbita/App.tsx",
+      "historicalSha256": "de01d1664ac58d1731f895b67140825b81f32772bc84a5740db13a55340a589c",
+      "currentSha256": "49382eb396ee4a3cda3a132420f4bb2e351ee681c2b69728d2b8c42f76d76261",
+      "unchanged": false,
+      "closure": "UX-01: una etiqueta constante; lógica y datos sin cambios; revisión independiente del diff y tests 20/20"
+    },
+    {
+      "file": "src/orbita/learning.ts",
+      "historicalSha256": "fb1c0efb81b028abee059beb998fc7aed54a3e27f59a5077f27b6dadc1a4e7fa",
+      "currentSha256": "fb1c0efb81b028abee059beb998fc7aed54a3e27f59a5077f27b6dadc1a4e7fa",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/orbita/physics.ts",
+      "historicalSha256": "f04fe2ba2414e0a9990b62c764080328293c5287c0dff1b64ea8ab832ded1652",
+      "currentSha256": "f04fe2ba2414e0a9990b62c764080328293c5287c0dff1b64ea8ab832ded1652",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/physics/interference.ts",
+      "historicalSha256": "b6e98b6c36ba7d22203ebb0751ec3714f4e459f14acbf80a383ec2c73ee20295",
+      "currentSha256": "b6e98b6c36ba7d22203ebb0751ec3714f4e459f14acbf80a383ec2c73ee20295",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/prisma/education/prismLearning.ts",
+      "historicalSha256": "26e42004b5eb58b1815c09471ee8c39195a4494274111ec0f5c7e84f0e93c435",
+      "currentSha256": "26e42004b5eb58b1815c09471ee8c39195a4494274111ec0f5c7e84f0e93c435",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/prisma/physics/optics.ts",
+      "historicalSha256": "e5b4f47d7e17a95f638e077789d2f232f09bd0a4c2b862551da78e54c478b52d",
+      "currentSha256": "e5b4f47d7e17a95f638e077789d2f232f09bd0a4c2b862551da78e54c478b52d",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/reloj/App.tsx",
+      "historicalSha256": "dac560fc0bdf5400fe7f68065fb9ffbe55998eb293e999fbbabc7b37503c9316",
+      "currentSha256": "dac560fc0bdf5400fe7f68065fb9ffbe55998eb293e999fbbabc7b37503c9316",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/reloj/learning.ts",
+      "historicalSha256": "7fa878925cc587c6694503112b3ad342380d7ee64fe832274df0e603b525daca",
+      "currentSha256": "7fa878925cc587c6694503112b3ad342380d7ee64fe832274df0e603b525daca",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/reloj/physics.ts",
+      "historicalSha256": "79ff41e1757b01dc0910786a5acf255070fce2edf7db0554b84de2e69bfb0ce5",
+      "currentSha256": "79ff41e1757b01dc0910786a5acf255070fce2edf7db0554b84de2e69bfb0ce5",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/series/scales.ts",
+      "historicalSha256": "1b4aba0d558cb3cd51bd3fb005933816b0a458da41ad15dfb9997454e901a53b",
+      "currentSha256": "1b4aba0d558cb3cd51bd3fb005933816b0a458da41ad15dfb9997454e901a53b",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/tren/App.tsx",
+      "historicalSha256": "8ad2bf7201335e192b2ef985f421128150e0f84347a8cd21f71fc1a7fbef284c",
+      "currentSha256": "8ad2bf7201335e192b2ef985f421128150e0f84347a8cd21f71fc1a7fbef284c",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/tren/learning.ts",
+      "historicalSha256": "1801045e52b15c8850a9ca8091f68f4a6bb491e630a32cbf946015741ea1fc7f",
+      "currentSha256": "1801045e52b15c8850a9ca8091f68f4a6bb491e630a32cbf946015741ea1fc7f",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/tren/physics.ts",
+      "historicalSha256": "886d0de264b7ef951192929198ddecf9c832f428437f2df55a5c7a84cb7d6455",
+      "currentSha256": "886d0de264b7ef951192929198ddecf9c832f428437f2df55a5c7a84cb7d6455",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/App.tsx",
+      "historicalSha256": "fe4d4a3c74697f5d1d5b06d662b758e812b384a787f16d5fccc26be84e9b1094",
+      "currentSha256": "fe4d4a3c74697f5d1d5b06d662b758e812b384a787f16d5fccc26be84e9b1094",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/components/ui/DistributionChart.tsx",
+      "historicalSha256": "acc1b141720b134ae86ee42753c37469d9590670a2653fc31f929bf6bcb09020",
+      "currentSha256": "acc1b141720b134ae86ee42753c37469d9590670a2653fc31f929bf6bcb09020",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/components/ui/DoubleSlitEvidence.tsx",
+      "historicalSha256": "abad4b7a5d191685eeaf668f1d9af764477b1ffca79a24eb8c79b592db841365",
+      "currentSha256": "abad4b7a5d191685eeaf668f1d9af764477b1ffca79a24eb8c79b592db841365",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/components/ui/DoubleSlitLearning.css",
+      "historicalSha256": "efde5faaeb5025de5f13a9a27b9565c6ba93a07de317f27cd561ffe082d2cd46",
+      "currentSha256": "efde5faaeb5025de5f13a9a27b9565c6ba93a07de317f27cd561ffe082d2cd46",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/components/ui/LabControls.tsx",
+      "historicalSha256": "387c74bbf2b2caa5885f73530db035889db5749cdbd745161f63763cdbc305af",
+      "currentSha256": "387c74bbf2b2caa5885f73530db035889db5749cdbd745161f63763cdbc305af",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/prisma/App.tsx",
+      "historicalSha256": "4d539e7f6d085384871f1c542a61d29a6e22f1034ae140cd68be9231e45e111d",
+      "currentSha256": "4d539e7f6d085384871f1c542a61d29a6e22f1034ae140cd68be9231e45e111d",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/prisma/components/ui/ControlPanel.tsx",
+      "historicalSha256": "680648fecdf890a1a506605ea02600b579b9da2e1ccc1056bb44c45ac162f4c5",
+      "currentSha256": "680648fecdf890a1a506605ea02600b579b9da2e1ccc1056bb44c45ac162f4c5",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/prisma/components/ui/PrismLearning.css",
+      "historicalSha256": "8bb471ed05b4940e197a19ba9a961f21a44f793d6b154b9480e7a7bc7fbffd67",
+      "currentSha256": "8bb471ed05b4940e197a19ba9a961f21a44f793d6b154b9480e7a7bc7fbffd67",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/prisma/components/ui/PrismLearning.tsx",
+      "historicalSha256": "ef67bbdf97c952f96a3b09a7347bf73336b0d7446abb55572e0a8165c92d2887",
+      "currentSha256": "ef67bbdf97c952f96a3b09a7347bf73336b0d7446abb55572e0a8165c92d2887",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/eratostenes/physics.ts",
+      "historicalSha256": "f6c7b3507fa7fe709418e8af3d9fa48d855c22b91df056f01a6b4eb756fefa8a",
+      "currentSha256": "f6c7b3507fa7fe709418e8af3d9fa48d855c22b91df056f01a6b4eb756fefa8a",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/eratostenes/learning.ts",
+      "historicalSha256": "e11c6fdae1d41cb8a4f30fc9061f5d86948bbea0c53d40754f832241bd50bacc",
+      "currentSha256": "e11c6fdae1d41cb8a4f30fc9061f5d86948bbea0c53d40754f832241bd50bacc",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/eratostenes/Scene.tsx",
+      "historicalSha256": "2617973a894bb95441b3fd6659593941d8039ba2159088f5f09337119037a98a",
+      "currentSha256": "2617973a894bb95441b3fd6659593941d8039ba2159088f5f09337119037a98a",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/eratostenes/App.tsx",
+      "historicalSha256": "3c0cd96c76bb1a5645ef364d2a3f603d1c00bfa5086d39d54b4496a3dd007544",
+      "currentSha256": "3c0cd96c76bb1a5645ef364d2a3f603d1c00bfa5086d39d54b4496a3dd007544",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/eratostenes/main.tsx",
+      "historicalSha256": "8e860afbc954a4ce7a218e85ebaad2929460452c2c12f5142bd6cd1914d99e6d",
+      "currentSha256": "8e860afbc954a4ce7a218e85ebaad2929460452c2c12f5142bd6cd1914d99e6d",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/eratostenes/eratostenes.css",
+      "historicalSha256": "add1413d1560fd6a2bf957df5a7e69d2bde59311a2a02823659852e118ef5e29",
+      "currentSha256": "add1413d1560fd6a2bf957df5a7e69d2bde59311a2a02823659852e118ef5e29",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/eratostenes/format.ts",
+      "historicalSha256": "2258fb8d944a41c93798db881ffb37384f9d7122bd064ce467436c6cefa295d2",
+      "currentSha256": "2258fb8d944a41c93798db881ffb37384f9d7122bd064ce467436c6cefa295d2",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "tests/eratostenes.test.mjs",
+      "historicalSha256": "65a7d5cc92ffa0b74f00436aaf235bec667dc6b756a9cc3c6733508f7f91801c",
+      "currentSha256": "65a7d5cc92ffa0b74f00436aaf235bec667dc6b756a9cc3c6733508f7f91801c",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/bell/physics.ts",
+      "historicalSha256": "1b13b0c9cc19404fb6654cd6c9f786859162108225657aaa89c1fdc49a48b882",
+      "currentSha256": "1b13b0c9cc19404fb6654cd6c9f786859162108225657aaa89c1fdc49a48b882",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/bell/learning.ts",
+      "historicalSha256": "b0d2cfaf3748b098f9e9edc8714cc072634a1b55a7e03b6cdfc1aeb7c14e3d09",
+      "currentSha256": "b0d2cfaf3748b098f9e9edc8714cc072634a1b55a7e03b6cdfc1aeb7c14e3d09",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/bell/Scene.tsx",
+      "historicalSha256": "0c1101e98a3113b0921ec486cf37ab5d109a9cf03001861bee8859cd653ed5e0",
+      "currentSha256": "0c1101e98a3113b0921ec486cf37ab5d109a9cf03001861bee8859cd653ed5e0",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/bell/App.tsx",
+      "historicalSha256": "1eef994a4ebee74752fedd0ba87b7d4ab3231fcf5895b60c588a44df55b9b50d",
+      "currentSha256": "1eef994a4ebee74752fedd0ba87b7d4ab3231fcf5895b60c588a44df55b9b50d",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/bell/main.tsx",
+      "historicalSha256": "7a4932a3d0ea4fadbc2d364748e9429576ec24392d9e88ea69aed66048660107",
+      "currentSha256": "7a4932a3d0ea4fadbc2d364748e9429576ec24392d9e88ea69aed66048660107",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/bell/bell.css",
+      "historicalSha256": "538a96cff9730eb504bf9f07ffe05803cacbef585ad5a34a27a149076dc625a4",
+      "currentSha256": "538a96cff9730eb504bf9f07ffe05803cacbef585ad5a34a27a149076dc625a4",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "src/bell/format.ts",
+      "historicalSha256": "f93d9a7d84b67afa567adc5925976be66b789a77b729b1dff5b2a5fed56270d8",
+      "currentSha256": "f93d9a7d84b67afa567adc5925976be66b789a77b729b1dff5b2a5fed56270d8",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    },
+    {
+      "file": "tests/bell.test.mjs",
+      "historicalSha256": "f2f8d1ca1a5d624ed785d836da2996d7b9912cf4c31c0fb2ff34e93e2d2ec9c1",
+      "currentSha256": "f2f8d1ca1a5d624ed785d836da2996d7b9912cf4c31c0fb2ff34e93e2d2ec9c1",
+      "unchanged": true,
+      "closure": "Equivalencia verificada"
+    }
+  ],
+  "reviewedFileSha256": {
+    "src/acrecion/App.tsx": "780423ba2084ff8685a564b7b0b189ff119b8a02a46dece91bb6e6820ffedb83",
+    "src/acrecion/learning.ts": "2fed819482aafb07c5ebf4739377d9046846ee66c6bb5c644923877868683361",
+    "src/acrecion/physics.ts": "2c70016ca01ae224e6b2b0e307b15b226a0b344c76741357a76bf8f252bebdde",
+    "src/altura/App.tsx": "4cd5759b02bde0fe1d86b021e0a5a5a92e8a62da3423a80b9d03b9b6f968751f",
+    "src/altura/learning.ts": "6a7c99b285dffcaf6bc47cdb77e2fd293fbf7ee9f7893efc37681fbb3923b78c",
+    "src/altura/physics.ts": "82a28be2b5891e4c9ddff16a89575ab29173a27f1c609cfd4249ff6042140b54",
+    "src/ascensor/App.tsx": "9c21a177e03c50622fef57453e77c5dd49f3c03844c416347aa8ae5734b2a659",
+    "src/ascensor/learning.ts": "45f7d3f83ee8c8dd2d88b0edaa993df72de858585eac197f9c9fb03fdfb7c8da",
+    "src/ascensor/physics.ts": "09618a1d4c81327c00ec7171bb290a8536df7d7a686f7ff5f281f293e141bcdb",
+    "src/components/ui/LabJourney.tsx": "83afce1fd53ccaa6869a11feb2b844cd91850f5d9d68735a73289ba92d514846",
+    "src/components/ui/SceneChallenge.css": "ff5e074ad5943b1098ee9b2e42aec5b63525d73bae5aab5e1da4e7804bf34519",
+    "src/education/doubleSlitLearning.ts": "a6653101ea4ddcb1c02efbd495ba826b3d1f78dac96cb5fa380c82fe11014e79",
+    "src/einstein/EnergyNotebook.tsx": "20778234d7b381c4f5ac7c4976fdba1a602624044d95b3a15a5b129cf867971e",
+    "src/einstein/FieldEquationNotebook.tsx": "95954d6c7ac06c044e31e2ab649f67c220f669d3e897da93030555fed3bd2b35",
+    "src/einstein/energy.ts": "8792c3945e4a4b792d9ff5c3b35add938e22e57a66e70802bd4f62b09f70ddaf",
+    "src/entropia/learning.ts": "3c3b30ff31372f829e979b31fd07cce5fdab11646410e4c64dc47eafbaaf5301",
+    "src/entropia/physics.ts": "3112ee2e4b3a982659048625fdbe8bd286ac1931bc2c37458badacd2cf77a068",
+    "src/fotoelectrico/App.tsx": "4eaa8682d31386e6f91042b84881ef2f86237d18368787518941431cc0e1033c",
+    "src/fotoelectrico/learning.ts": "ae37e368e080c75a6c86132b71fb804dbd506a5b06d31330744c8ec6311d10ba",
+    "src/fotoelectrico/physics.ts": "01af65a0ab8307482466352ad74cc4f7a6045690fecf3f1c525e63a97dac87ab",
+    "src/gemelos/App.tsx": "158dc40dd5cab4857c93651fda2b6ec5db5b36c51cb1968f0cf617a75cf11647",
+    "src/gemelos/learning.ts": "cfcba2278d2b0fac53a748e6fee2fe34a5fcc7de617fba8b909c8631886d8e12",
+    "src/gemelos/physics.ts": "4cb3ec299ba14da95a8ca989a32594ad3fdc5f3e890da9e92174003c932d7203",
+    "src/hawking/learning.ts": "923be3ed04f34c10a6ed7ebc2eff2c94c73d9e173a9696b2b1d1795bd44e1969",
+    "src/hawking/physics.ts": "8d179bf1c7f39e05a61cb991a1d050a1c05df3bc6cfcc1d8f4e0fa37ef49d0b1",
+    "src/horizonte/App.tsx": "217e8df26e7000b635fd3ce508d8e142dfae404a547d6db7df7c314287090101",
+    "src/horizonte/learning.ts": "d481af79e88ece979b6f9419afa522d8ecf3fc77887c94dca30ef7008ca124f1",
+    "src/horizonte/physics.ts": "9e913f0dcf56bd7067fa227080cbc177de3f4a3a15a5050d6c8ac999f888a147",
+    "src/lente/learning.ts": "026be088ee977642789ebd42fb0f0fd94e20d0c6457fdf6366061d777ae09701",
+    "src/lente/physics.ts": "2f40d905771d28680108fe96ca73a0b7629d463d3389f1d88cbe9720a57586d5",
+    "src/maldacena/geometry/learning.ts": "1b807c8c19f97fce149d9383390968bb3024f9fa8d12456bb595f15a4b60d5b0",
+    "src/maldacena/geometry/physics.ts": "f47c485aaa2667690a791d5605317fd2518e5183633bbc297a6af0bffe875985",
+    "src/maldacena/page/learning.ts": "8141201a20df8c1a7f01c5cdf230f10720cf6942ab40f305f91d34df124f356e",
+    "src/maldacena/page/physics.ts": "2c4e7ccd75c65d925a2e0df74460f7154a7475974955f2ade9ea157f04495f7d",
+    "src/maldacena/quantum/CountingBridge.tsx": "dfd658570bdfc71919260ccb797ecc0bcda8f5667e1123f81ec6571e99fffed7",
+    "src/maldacena/quantum/EntanglementLab.tsx": "181ec57c300e139e04b448aa9e158badde73d34edf57fde7ee5e93545774b95b",
+    "src/maldacena/quantum/physics.ts": "87576109ecef970da57a62c91a846ed3451deb3658f00abb1f7e90a1c843dec2",
+    "src/maldacena/thermal/ThermalLab.tsx": "2bcee34b85f5ff69ae5b9bf30ebaf09cc2d0094e88f99b43640564f440c0182b",
+    "src/maldacena/thermal/physics.ts": "15e10f3fbc31e11742e95d23ce6de016aba02c5c5b6c0e8bb05c1765d1e9f076",
+    "src/orbita/App.tsx": "49382eb396ee4a3cda3a132420f4bb2e351ee681c2b69728d2b8c42f76d76261",
+    "src/orbita/learning.ts": "fb1c0efb81b028abee059beb998fc7aed54a3e27f59a5077f27b6dadc1a4e7fa",
+    "src/orbita/physics.ts": "f04fe2ba2414e0a9990b62c764080328293c5287c0dff1b64ea8ab832ded1652",
+    "src/physics/interference.ts": "b6e98b6c36ba7d22203ebb0751ec3714f4e459f14acbf80a383ec2c73ee20295",
+    "src/prisma/education/prismLearning.ts": "26e42004b5eb58b1815c09471ee8c39195a4494274111ec0f5c7e84f0e93c435",
+    "src/prisma/physics/optics.ts": "e5b4f47d7e17a95f638e077789d2f232f09bd0a4c2b862551da78e54c478b52d",
+    "src/reloj/App.tsx": "dac560fc0bdf5400fe7f68065fb9ffbe55998eb293e999fbbabc7b37503c9316",
+    "src/reloj/learning.ts": "7fa878925cc587c6694503112b3ad342380d7ee64fe832274df0e603b525daca",
+    "src/reloj/physics.ts": "79ff41e1757b01dc0910786a5acf255070fce2edf7db0554b84de2e69bfb0ce5",
+    "src/series/scales.ts": "1b4aba0d558cb3cd51bd3fb005933816b0a458da41ad15dfb9997454e901a53b",
+    "src/tren/App.tsx": "8ad2bf7201335e192b2ef985f421128150e0f84347a8cd21f71fc1a7fbef284c",
+    "src/tren/learning.ts": "1801045e52b15c8850a9ca8091f68f4a6bb491e630a32cbf946015741ea1fc7f",
+    "src/tren/physics.ts": "886d0de264b7ef951192929198ddecf9c832f428437f2df55a5c7a84cb7d6455",
+    "src/App.tsx": "fe4d4a3c74697f5d1d5b06d662b758e812b384a787f16d5fccc26be84e9b1094",
+    "src/components/ui/DistributionChart.tsx": "acc1b141720b134ae86ee42753c37469d9590670a2653fc31f929bf6bcb09020",
+    "src/components/ui/DoubleSlitEvidence.tsx": "abad4b7a5d191685eeaf668f1d9af764477b1ffca79a24eb8c79b592db841365",
+    "src/components/ui/DoubleSlitLearning.css": "efde5faaeb5025de5f13a9a27b9565c6ba93a07de317f27cd561ffe082d2cd46",
+    "src/components/ui/LabControls.tsx": "387c74bbf2b2caa5885f73530db035889db5749cdbd745161f63763cdbc305af",
+    "src/prisma/App.tsx": "4d539e7f6d085384871f1c542a61d29a6e22f1034ae140cd68be9231e45e111d",
+    "src/prisma/components/ui/ControlPanel.tsx": "680648fecdf890a1a506605ea02600b579b9da2e1ccc1056bb44c45ac162f4c5",
+    "src/prisma/components/ui/PrismLearning.css": "8bb471ed05b4940e197a19ba9a961f21a44f793d6b154b9480e7a7bc7fbffd67",
+    "src/prisma/components/ui/PrismLearning.tsx": "ef67bbdf97c952f96a3b09a7347bf73336b0d7446abb55572e0a8165c92d2887",
+    "src/eratostenes/physics.ts": "f6c7b3507fa7fe709418e8af3d9fa48d855c22b91df056f01a6b4eb756fefa8a",
+    "src/eratostenes/learning.ts": "e11c6fdae1d41cb8a4f30fc9061f5d86948bbea0c53d40754f832241bd50bacc",
+    "src/eratostenes/Scene.tsx": "2617973a894bb95441b3fd6659593941d8039ba2159088f5f09337119037a98a",
+    "src/eratostenes/App.tsx": "3c0cd96c76bb1a5645ef364d2a3f603d1c00bfa5086d39d54b4496a3dd007544",
+    "src/eratostenes/main.tsx": "8e860afbc954a4ce7a218e85ebaad2929460452c2c12f5142bd6cd1914d99e6d",
+    "src/eratostenes/eratostenes.css": "add1413d1560fd6a2bf957df5a7e69d2bde59311a2a02823659852e118ef5e29",
+    "src/eratostenes/format.ts": "2258fb8d944a41c93798db881ffb37384f9d7122bd064ce467436c6cefa295d2",
+    "tests/eratostenes.test.mjs": "65a7d5cc92ffa0b74f00436aaf235bec667dc6b756a9cc3c6733508f7f91801c",
+    "src/bell/physics.ts": "1b13b0c9cc19404fb6654cd6c9f786859162108225657aaa89c1fdc49a48b882",
+    "src/bell/learning.ts": "b0d2cfaf3748b098f9e9edc8714cc072634a1b55a7e03b6cdfc1aeb7c14e3d09",
+    "src/bell/Scene.tsx": "0c1101e98a3113b0921ec486cf37ab5d109a9cf03001861bee8859cd653ed5e0",
+    "src/bell/App.tsx": "1eef994a4ebee74752fedd0ba87b7d4ab3231fcf5895b60c588a44df55b9b50d",
+    "src/bell/main.tsx": "7a4932a3d0ea4fadbc2d364748e9429576ec24392d9e88ea69aed66048660107",
+    "src/bell/bell.css": "538a96cff9730eb504bf9f07ffe05803cacbef585ad5a34a27a149076dc625a4",
+    "src/bell/format.ts": "f93d9a7d84b67afa567adc5925976be66b789a77b729b1dff5b2a5fed56270d8",
+    "tests/bell.test.mjs": "f2f8d1ca1a5d624ed785d836da2996d7b9912cf4c31c0fb2ff34e93e2d2ec9c1",
+    "src/education/helpContent.ts": "952e45fdb6051231e6589045661eaaef993c7f97795385652aa356ba61dab8bb",
+    "src/education/helpMode.css": "608ae3559e8833fbdc11726e638914e3487b5a39a8d28f2f2754430b9d0cf1eb",
+    "src/education/helpPolicy.ts": "96d39eac7e1404e1478eeba7c9d05d000a5fc238d0677868d99a299f809b1be1",
+    "src/portal/catalog.ts": "2b1d3915ec3efa5c9a57983a85a8f02486c98bdddef60fedeefc925b55015a3e",
+    "src/maldacena/Series.tsx": "762da05ba33b8506d8fd7651f755e054f8f7f43910ec7bf0725a879ff6e9b910"
+  },
+  "currentSourceConsultation": {
+    "matrix": "qa-ciencia.md",
+    "registries": [
+      "../fuentes.json",
+      "../../../research/eratostenes/fuentes.json",
+      "../../../research/bell/fuentes.json"
+    ],
+    "reReadThisCycle": 9,
+    "limits": "Reutilización bibliográfica trazable; no una segunda búsqueda exhaustiva ni lectura completa de todos los originales. WaldPMC bloqueado, alternativa autoral arXiv leída."
+  },
+  "browserExecutedByThisRole": false,
+  "limits": [
+    "No certificación externa ni validación con personas",
+    "Safari y dispositivos físicos pendientes por decisión previa del usuario",
+    "No se presenta equivalencia de hashes como nueva prueba de navegador",
+    "Los modelos ideales y dominios declarados limitan las conclusiones"
+  ],
+  "reopenOn": "Cualquier cambio de modelo, evaluador, texto científico o representación relevante requiere revisión; comparar hashes y diff antes de reutilizar.",
+  "documentationReview": {
+    "status": "APROBADO",
+    "reviewer": "qa_ciencia_actual",
+    "inventory": {
+      "file": "inventario.mjs",
+      "sha256": "5bf68faa01c8f5da53457de080df289e6e41f69f5b8a910e560b08af41524e86",
+      "counts": {
+        "labs": 19,
+        "mainChallenges": 84,
+        "auxiliaryChallenges": 5,
+        "htmlEntries": 26
+      },
+      "method": "Lectura del extractor AST y contraste del inventario con fuentes actuales; IDs estables e historial conservado. DOC-02 corregido: Eratóstenes usa dos sombras en esfera de radio fijo, no control de radio ni modelo de suelo plano."
+    },
+    "options": {
+      "file": "opciones.md",
+      "sha256": "f1124af6d1f126ecbe6a7c80954acb69bd2c3eeb86611a5796c6eb809e3da5f5",
+      "scope": "Seis propuestas no implementadas; teletransporte ideal como progresión hacia Maldacena y mareas para intuición visual. Fundamento, límites y controles independientes propuestos son viables; no aprobación de modelos aún inexistentes."
+    }
+  },
+  "finalAcceptanceReview": {
+    "status": "APROBADO",
+    "reviewer": "qa_ciencia_actual",
+    "date": "2026-11-02",
+    "scope": "Cierre científico independiente después de leer y contrastar ambos dictámenes de producto; 19 laboratorios, 89 retos evaluables y dos exploraciones no puntuables.",
+    "productManifests": [
+      "producto-einstein-cosmos.json",
+      "producto-optica-cuantica.json"
+    ],
+    "independentEvidence": "../../../../qa-ciencia-actual-2026-11-02/product-evidence-review.json",
+    "checkedIDs": 89,
+    "checkedPointers": 514,
+    "sourceHashesMatched": 82,
+    "productCurrentRecords": {
+      "einsteinCosmos": 95,
+      "opticsQuantum": 117,
+      "meaning": "Snapshots con consignas, acciones y diagnósticos; no equivalen a 212 retos ni 89 ejecuciones completas nuevas."
+    },
+    "extraEvidenceRead": "../../../../qa-integral-seguimiento-2026-11-02/root-acceptance.json",
+    "helpCloseClarificationReviewed": {
+      "file": "../../../../qa-integral-seguimiento-2026-11-02/bell-help-close-recheck.json",
+      "status": "APROBADO",
+      "scope": "Cuatro snapshots adicionales de producto leídos: abrir tarjeta, X conserva ayuda, Salir global desactiva y medir produce N200. Aclaración documental; no modifica el código ni los 117 registros previos."
+    },
+    "changedCasesRead": [
+      "SCI-01: ayuda CHSH",
+      "UX-01: Mercurio real/ampliado",
+      "UX-02: muestra activa, cuatro referencias y reinicio de Entrelazados"
+    ],
+    "browserExecutedByThisRole": false,
+    "publication": "Pendiente de verificación posterior del coordinador; esta aprobación corresponde al candidato identificado por hashes.",
+    "limitations": [
+      "Cobertura histórica mantenida sólo cuando código/contratos son equivalentes y cambios revisados",
+      "Chromium con dimensiones emuladas; Safari y dispositivos físicos pendientes por falta de acceso",
+      "Sin participantes principiantes ni certificación educativa externa"
+    ]
+  }
+}

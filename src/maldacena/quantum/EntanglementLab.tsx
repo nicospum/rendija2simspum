@@ -100,7 +100,15 @@ export default function EntanglementLab() {
   const m = quantumModel(state.theta, state.preparation, state.basisA, state.basisB)
   const count = counts.reduce((a, b) => a + b, 0)
   const tune = (patch: Partial<QuantumState>) => {
-    setState((s) => ({ ...s, ...patch }))
+    const next = { ...state, ...patch }
+    // Selecting an already active setting is not a new physical experiment.
+    if (
+      next.theta === state.theta &&
+      next.preparation === state.preparation &&
+      next.basisA === state.basisA &&
+      next.basisB === state.basisB
+    ) return
+    setState(next)
     setCounts([0, 0, 0, 0])
   }
   const record = (action: 'sample' | 'local' | 'whole') =>

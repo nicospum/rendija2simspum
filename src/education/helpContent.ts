@@ -32,7 +32,7 @@ export const HELP_TOPICS: readonly HelpTopic[] = [
     ['bell'],
     /chsh|correlacion|limite/,
     'Cuatro correlaciones forman una prueba',
-    'Cada correlación E es el promedio del producto de las dos salidas: +1 si coinciden y −1 si difieren. CHSH combina cuatro parejas de orientaciones. Bajo los supuestos locales y de independencia de ajustes que explica el laboratorio, su magnitud no supera 2. La predicción cuántica ideal puede superar ese límite con ciertas orientaciones.',
+    'Cada correlación E es el promedio del producto de las dos salidas: +1 si coinciden y −1 si difieren. CHSH combina cuatro parejas de orientaciones. Bajo los supuestos locales y de independencia de ajustes que explica el laboratorio, la magnitud de esa suma de correlaciones medias no supera 2. Una estimación con pocos pares puede fluctuar fuera del límite: superar 2 en una muestra no basta para concluir, hay que analizar su incertidumbre. La predicción cuántica ideal sí puede superar ese límite con ciertas orientaciones.',
   ),
   topic(
     ['bell'],

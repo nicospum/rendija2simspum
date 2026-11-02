@@ -1,0 +1,4220 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-02",
+  "reviewer": "qa_producto_einstein_cosmos",
+  "role": "QA de producto/aprendizaje independiente de implementación; no dictamen científico",
+  "base": "effb811cee78e33d78234e12e63fd28232058e6a",
+  "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01, SCI-01 y UX-02. Sólo UX-01 afecta este bloque; hashes adjuntos.",
+  "historicalCommit": "2f812e4eae5d06e42c6549a2b3616de1f3d8c1aa",
+  "status": "APROBADO_PRODUCTO",
+  "counts": {
+    "labs": 12,
+    "mainChallenges": 48,
+    "auxiliaryChallenges": 1,
+    "totalChallenges": 49,
+    "currentMainChallengeSelections": 48,
+    "currentMainWrongCorrectPairs": 13,
+    "currentAuxiliaryWrongCorrectPairs": 1,
+    "currentSceneRecords": 95,
+    "historicalCoverageRevalidated": 49
+  },
+  "environment": {
+    "production": "https://www.spumexp.lat",
+    "candidate": "http://127.0.0.1:1027",
+    "browser": "Chromium del navegador integrado",
+    "primaryViewport": [
+      390,
+      844
+    ],
+    "additionalViewports": [
+      [
+        320,
+        667
+      ],
+      [
+        667,
+        375
+      ],
+      [
+        1280,
+        900
+      ]
+    ],
+    "deviceScope": "Tamaños emulados; no teléfonos físicos"
+  },
+  "sourceIdentity": {
+    "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json",
+    "files": 171,
+    "identical": 167,
+    "reviewedDifferences": [
+      "src/education/helpContent.ts",
+      "src/education/helpMode.css",
+      "src/education/helpPolicy.ts",
+      "src/orbita/App.tsx"
+    ]
+  },
+  "findings": [
+    {
+      "id": "UX-01",
+      "severity": "P2",
+      "lab": "orbita-que-no-se-cierra",
+      "status": "CORREGIDO_Y_ACEPTADO",
+      "problem": "El toggle destacado decía Giro real cuando la escena usaba ampliación ×100.000.",
+      "fix": "Etiqueta estable Ampliar giro ×100.000 y aria-pressed asociado al estado existente.",
+      "implementationReviewer": "qa_producto_einstein_cosmos",
+      "implementedBy": "root",
+      "acceptance": "Real↔ampliado mantiene 10 órbitas, 0.1035″/órbita y 42.98″/siglo; R4 incompleta/incorrecta/correcta/reinicio; teclado y arrastre sobre escena; tamaños320,390,667 y1280.",
+      "evidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/orbita-lupa-toggle-current.json"
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/orbita-lupa-corrected-320.jpg"
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/orbita-lupa-corrected-desktop.jpg"
+        }
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "id": "reloj-de-luz/principal/reto-01",
+      "activity": "reloj-de-luz",
+      "route": "/reloj-de-luz/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica + nueva ejecución de respuesta incorrecta y correcta, observación y consigna móvil",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/28",
+          "expected": {
+            "id": "reloj-de-luz/principal/reto-01"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/0/challenges/0",
+          "expected": {
+            "id": "reloj-de-luz/principal/reto-01"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/0",
+          "expected": {
+            "label": "reloj/1-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/1",
+          "expected": {
+            "label": "reloj/1-medio-tic-no-acepta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/2",
+          "expected": {
+            "label": "reloj/1-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/3",
+          "expected": {
+            "label": "reloj/1-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/4",
+          "expected": {
+            "label": "reloj/1-reinicio"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/131",
+          "expected": {
+            "label": "reloj-de-luz/1-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/0",
+          "expected": {
+            "label": "reloj-initial390"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/1",
+          "expected": {
+            "label": "reloj-r1-wrong390"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/2",
+          "expected": {
+            "label": "reloj-r1-correct390"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "reloj-de-luz/principal/reto-02",
+      "activity": "reloj-de-luz",
+      "route": "/reloj-de-luz/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/29",
+          "expected": {
+            "id": "reloj-de-luz/principal/reto-02"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/0/challenges/1",
+          "expected": {
+            "id": "reloj-de-luz/principal/reto-02"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/5",
+          "expected": {
+            "label": "reloj/2-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/6",
+          "expected": {
+            "label": "reloj/2-solo-primera-observacion"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/7",
+          "expected": {
+            "label": "reloj/2-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/8",
+          "expected": {
+            "label": "reloj/2-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/132",
+          "expected": {
+            "label": "reloj-de-luz/2-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/3",
+          "expected": {
+            "label": "reloj-r2-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "reloj-de-luz/principal/reto-03",
+      "activity": "reloj-de-luz",
+      "route": "/reloj-de-luz/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/30",
+          "expected": {
+            "id": "reloj-de-luz/principal/reto-03"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/0/challenges/2",
+          "expected": {
+            "id": "reloj-de-luz/principal/reto-03"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/9",
+          "expected": {
+            "label": "reloj/3-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/10",
+          "expected": {
+            "label": "reloj/3-solo-nave"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/11",
+          "expected": {
+            "label": "reloj/3-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/12",
+          "expected": {
+            "label": "reloj/3-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/133",
+          "expected": {
+            "label": "reloj-de-luz/3-reinicio-huella-no-acepta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/161",
+          "expected": {
+            "label": "reloj/3-320-incorrecto-huella"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/162",
+          "expected": {
+            "label": "reloj/3-320-hint-inline-correcto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/4",
+          "expected": {
+            "label": "reloj-r3-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "reloj-de-luz/principal/reto-04",
+      "activity": "reloj-de-luz",
+      "route": "/reloj-de-luz/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/31",
+          "expected": {
+            "id": "reloj-de-luz/principal/reto-04"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/0/challenges/3",
+          "expected": {
+            "id": "reloj-de-luz/principal/reto-04"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/13",
+          "expected": {
+            "label": "reloj/4-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/14",
+          "expected": {
+            "label": "reloj/4-ritmo60-no-acepta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/15",
+          "expected": {
+            "label": "reloj/4-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/16",
+          "expected": {
+            "label": "reloj/4-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/134",
+          "expected": {
+            "label": "reloj-de-luz/4-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/5",
+          "expected": {
+            "label": "reloj-r4-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "tren-de-einstein/principal/reto-01",
+      "activity": "tren-de-einstein",
+      "route": "/tren-de-einstein/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica + nueva ejecución de respuesta incorrecta y correcta, observación y consigna móvil",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/32",
+          "expected": {
+            "id": "tren-de-einstein/principal/reto-01"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/1/challenges/0",
+          "expected": {
+            "id": "tren-de-einstein/principal/reto-01"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/17",
+          "expected": {
+            "label": "tren/1-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/18",
+          "expected": {
+            "label": "tren/1-encuentro-no-basta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/19",
+          "expected": {
+            "label": "tren/1-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/20",
+          "expected": {
+            "label": "tren/1-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/135",
+          "expected": {
+            "label": "tren-de-einstein/1-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/6",
+          "expected": {
+            "label": "tren-r1-empty"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/10",
+          "expected": {
+            "label": "tren-r1-wrong"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/11",
+          "expected": {
+            "label": "tren-r1-correct"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "tren-de-einstein/principal/reto-02",
+      "activity": "tren-de-einstein",
+      "route": "/tren-de-einstein/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/33",
+          "expected": {
+            "id": "tren-de-einstein/principal/reto-02"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/1/challenges/1",
+          "expected": {
+            "id": "tren-de-einstein/principal/reto-02"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/21",
+          "expected": {
+            "label": "tren/2-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/22",
+          "expected": {
+            "label": "tren/2-solo-centro"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/23",
+          "expected": {
+            "label": "tren/2-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/24",
+          "expected": {
+            "label": "tren/2-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/136",
+          "expected": {
+            "label": "tren-de-einstein/2-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/7",
+          "expected": {
+            "label": "tren-r2-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "tren-de-einstein/principal/reto-03",
+      "activity": "tren-de-einstein",
+      "route": "/tren-de-einstein/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/34",
+          "expected": {
+            "id": "tren-de-einstein/principal/reto-03"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/1/challenges/2",
+          "expected": {
+            "id": "tren-de-einstein/principal/reto-03"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/25",
+          "expected": {
+            "label": "tren/3-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/26",
+          "expected": {
+            "label": "tren/3-solo-positivo"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/27",
+          "expected": {
+            "label": "tren/3-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/28",
+          "expected": {
+            "label": "tren/3-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/137",
+          "expected": {
+            "label": "tren-de-einstein/3-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/8",
+          "expected": {
+            "label": "tren-r3-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "tren-de-einstein/principal/reto-04",
+      "activity": "tren-de-einstein",
+      "route": "/tren-de-einstein/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/35",
+          "expected": {
+            "id": "tren-de-einstein/principal/reto-04"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/1/challenges/3",
+          "expected": {
+            "id": "tren-de-einstein/principal/reto-04"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/29",
+          "expected": {
+            "label": "tren/4-llegadas-sin-medicion-no-acepta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/30",
+          "expected": {
+            "label": "tren/4-solo-protocolo-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/31",
+          "expected": {
+            "label": "tren/4-ensayo-distinto-no-acepta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/32",
+          "expected": {
+            "label": "tren/4-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/33",
+          "expected": {
+            "label": "tren/4-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/34",
+          "expected": {
+            "label": "tren/4-reinicio"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/138",
+          "expected": {
+            "label": "tren-de-einstein/4-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/9",
+          "expected": {
+            "label": "tren-r4-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "nos-vemos-a-la-vuelta/principal/reto-01",
+      "activity": "nos-vemos-a-la-vuelta",
+      "route": "/nos-vemos-a-la-vuelta/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica + nueva ejecución de respuesta incorrecta y correcta, observación y consigna móvil",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/36",
+          "expected": {
+            "id": "nos-vemos-a-la-vuelta/principal/reto-01"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/2/challenges/0",
+          "expected": {
+            "id": "nos-vemos-a-la-vuelta/principal/reto-01"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/35",
+          "expected": {
+            "label": "gemelos/1-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/36",
+          "expected": {
+            "label": "gemelos/1-giro-no-es-reencuentro"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/37",
+          "expected": {
+            "label": "gemelos/1-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/38",
+          "expected": {
+            "label": "gemelos/1-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/139",
+          "expected": {
+            "label": "nos-vemos-a-la-vuelta/1-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/12",
+          "expected": {
+            "label": "gemelos-r1-empty"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/16",
+          "expected": {
+            "label": "gemelos-r1-incomplete-giro"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/17",
+          "expected": {
+            "label": "gemelos-r1-wrong"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/18",
+          "expected": {
+            "label": "gemelos-r1-correct"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "nos-vemos-a-la-vuelta/principal/reto-02",
+      "activity": "nos-vemos-a-la-vuelta",
+      "route": "/nos-vemos-a-la-vuelta/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/37",
+          "expected": {
+            "id": "nos-vemos-a-la-vuelta/principal/reto-02"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/2/challenges/1",
+          "expected": {
+            "id": "nos-vemos-a-la-vuelta/principal/reto-02"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/39",
+          "expected": {
+            "label": "gemelos/2-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/40",
+          "expected": {
+            "label": "gemelos/2-solo-lento"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/41",
+          "expected": {
+            "label": "gemelos/2-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/42",
+          "expected": {
+            "label": "gemelos/2-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/140",
+          "expected": {
+            "label": "nos-vemos-a-la-vuelta/2-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/13",
+          "expected": {
+            "label": "gemelos-r2-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "nos-vemos-a-la-vuelta/principal/reto-03",
+      "activity": "nos-vemos-a-la-vuelta",
+      "route": "/nos-vemos-a-la-vuelta/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/38",
+          "expected": {
+            "id": "nos-vemos-a-la-vuelta/principal/reto-03"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/2/challenges/2",
+          "expected": {
+            "id": "nos-vemos-a-la-vuelta/principal/reto-03"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/43",
+          "expected": {
+            "label": "gemelos/3-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/44",
+          "expected": {
+            "label": "gemelos/3-antes"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/45",
+          "expected": {
+            "label": "gemelos/3-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/46",
+          "expected": {
+            "label": "gemelos/3-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/52",
+          "expected": {
+            "label": "gemelos/3-solo-despues-no-reutiliza"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/53",
+          "expected": {
+            "label": "gemelos/3-inline-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/54",
+          "expected": {
+            "label": "gemelos/3-reinicio"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/141",
+          "expected": {
+            "label": "nos-vemos-a-la-vuelta/3-reinicio-huella-no-acepta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/163",
+          "expected": {
+            "label": "gemelos/3-667-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/164",
+          "expected": {
+            "label": "gemelos/3-667-correcto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/14",
+          "expected": {
+            "label": "gemelos-r3-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "nos-vemos-a-la-vuelta/principal/reto-04",
+      "activity": "nos-vemos-a-la-vuelta",
+      "route": "/nos-vemos-a-la-vuelta/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/39",
+          "expected": {
+            "id": "nos-vemos-a-la-vuelta/principal/reto-04"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/2/challenges/3",
+          "expected": {
+            "id": "nos-vemos-a-la-vuelta/principal/reto-04"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/47",
+          "expected": {
+            "label": "gemelos/4-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/48",
+          "expected": {
+            "label": "gemelos/4-sin-espera"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/49",
+          "expected": {
+            "label": "gemelos/4-plan-nuevo-no-completa"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/50",
+          "expected": {
+            "label": "gemelos/4-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/51",
+          "expected": {
+            "label": "gemelos/4-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/142",
+          "expected": {
+            "label": "nos-vemos-a-la-vuelta/4-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/15",
+          "expected": {
+            "label": "gemelos-r4-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "ascensor-de-einstein/principal/reto-01",
+      "activity": "ascensor-de-einstein",
+      "route": "/ascensor-de-einstein/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica + nueva ejecución de respuesta incorrecta y correcta, observación y consigna móvil",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/40",
+          "expected": {
+            "id": "ascensor-de-einstein/principal/reto-01"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/3/challenges/0",
+          "expected": {
+            "id": "ascensor-de-einstein/principal/reto-01"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/55",
+          "expected": {
+            "label": "ascensor/1-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/56",
+          "expected": {
+            "label": "ascensor/1-solo-sostenido"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/57",
+          "expected": {
+            "label": "ascensor/1-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/58",
+          "expected": {
+            "label": "ascensor/1-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/143",
+          "expected": {
+            "label": "ascensor-de-einstein/1-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/19",
+          "expected": {
+            "label": "ascensor-r1-empty"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/23",
+          "expected": {
+            "label": "ascensor-r1-incomplete-one"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/24",
+          "expected": {
+            "label": "ascensor-r1-wrong"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/25",
+          "expected": {
+            "label": "ascensor-r1-correct"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "ascensor-de-einstein/principal/reto-02",
+      "activity": "ascensor-de-einstein",
+      "route": "/ascensor-de-einstein/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/41",
+          "expected": {
+            "id": "ascensor-de-einstein/principal/reto-02"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/3/challenges/1",
+          "expected": {
+            "id": "ascensor-de-einstein/principal/reto-02"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/59",
+          "expected": {
+            "label": "ascensor/2-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/60",
+          "expected": {
+            "label": "ascensor/2-falta-deriva"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/61",
+          "expected": {
+            "label": "ascensor/2-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/62",
+          "expected": {
+            "label": "ascensor/2-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/144",
+          "expected": {
+            "label": "ascensor-de-einstein/2-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/20",
+          "expected": {
+            "label": "ascensor-r2-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "ascensor-de-einstein/principal/reto-03",
+      "activity": "ascensor-de-einstein",
+      "route": "/ascensor-de-einstein/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/42",
+          "expected": {
+            "id": "ascensor-de-einstein/principal/reto-03"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/3/challenges/2",
+          "expected": {
+            "id": "ascensor-de-einstein/principal/reto-03"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/63",
+          "expected": {
+            "label": "ascensor/3-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/64",
+          "expected": {
+            "label": "ascensor/3-solo-un-kg"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/65",
+          "expected": {
+            "label": "ascensor/3-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/66",
+          "expected": {
+            "label": "ascensor/3-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/145",
+          "expected": {
+            "label": "ascensor-de-einstein/3-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/21",
+          "expected": {
+            "label": "ascensor-r3-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "ascensor-de-einstein/principal/reto-04",
+      "activity": "ascensor-de-einstein",
+      "route": "/ascensor-de-einstein/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/43",
+          "expected": {
+            "id": "ascensor-de-einstein/principal/reto-04"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/3/challenges/3",
+          "expected": {
+            "id": "ascensor-de-einstein/principal/reto-04"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/67",
+          "expected": {
+            "label": "ascensor/4-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/68",
+          "expected": {
+            "label": "ascensor/4-sin-ampliacion-no-acepta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/69",
+          "expected": {
+            "label": "ascensor/4-solo-cohete"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/70",
+          "expected": {
+            "label": "ascensor/4-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/71",
+          "expected": {
+            "label": "ascensor/4-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/72",
+          "expected": {
+            "label": "ascensor/4-reinicio"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/146",
+          "expected": {
+            "label": "ascensor-de-einstein/4-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/22",
+          "expected": {
+            "label": "ascensor-r4-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "el-tiempo-tiene-altura/principal/reto-01",
+      "activity": "el-tiempo-tiene-altura",
+      "route": "/el-tiempo-tiene-altura/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica + nueva ejecución de respuesta incorrecta y correcta, observación y consigna móvil",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/44",
+          "expected": {
+            "id": "el-tiempo-tiene-altura/principal/reto-01"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/4/challenges/0",
+          "expected": {
+            "id": "el-tiempo-tiene-altura/principal/reto-01"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/73",
+          "expected": {
+            "label": "altura/1-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/74",
+          "expected": {
+            "label": "altura/1-solo-altura-cero"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/75",
+          "expected": {
+            "label": "altura/1-nueva-altura-sin-tiempo"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/76",
+          "expected": {
+            "label": "altura/1-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/77",
+          "expected": {
+            "label": "altura/1-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/147",
+          "expected": {
+            "label": "el-tiempo-tiene-altura/1-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/26",
+          "expected": {
+            "label": "altura-r1-empty"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/30",
+          "expected": {
+            "label": "altura-r1-incomplete-one"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/31",
+          "expected": {
+            "label": "altura-r1-wrong"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/32",
+          "expected": {
+            "label": "altura-r1-correct"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "el-tiempo-tiene-altura/principal/reto-02",
+      "activity": "el-tiempo-tiene-altura",
+      "route": "/el-tiempo-tiene-altura/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/45",
+          "expected": {
+            "id": "el-tiempo-tiene-altura/principal/reto-02"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/4/challenges/1",
+          "expected": {
+            "id": "el-tiempo-tiene-altura/principal/reto-02"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/78",
+          "expected": {
+            "label": "altura/2-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/79",
+          "expected": {
+            "label": "altura/2-solo-un-dia"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/80",
+          "expected": {
+            "label": "altura/2-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/81",
+          "expected": {
+            "label": "altura/2-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/148",
+          "expected": {
+            "label": "el-tiempo-tiene-altura/2-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/27",
+          "expected": {
+            "label": "altura-r2-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "el-tiempo-tiene-altura/principal/reto-03",
+      "activity": "el-tiempo-tiene-altura",
+      "route": "/el-tiempo-tiene-altura/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/46",
+          "expected": {
+            "id": "el-tiempo-tiene-altura/principal/reto-03"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/4/challenges/2",
+          "expected": {
+            "id": "el-tiempo-tiene-altura/principal/reto-03"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/82",
+          "expected": {
+            "label": "altura/3-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/83",
+          "expected": {
+            "label": "altura/3-solo-sostenido"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/84",
+          "expected": {
+            "label": "altura/3-orbita-nueva-sin-observar"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/85",
+          "expected": {
+            "label": "altura/3-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/86",
+          "expected": {
+            "label": "altura/3-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/149",
+          "expected": {
+            "label": "el-tiempo-tiene-altura/3-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/28",
+          "expected": {
+            "label": "altura-r3-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "el-tiempo-tiene-altura/principal/reto-04",
+      "activity": "el-tiempo-tiene-altura",
+      "route": "/el-tiempo-tiene-altura/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/47",
+          "expected": {
+            "id": "el-tiempo-tiene-altura/principal/reto-04"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/4/challenges/3",
+          "expected": {
+            "id": "el-tiempo-tiene-altura/principal/reto-04"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/87",
+          "expected": {
+            "label": "altura/4-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/88",
+          "expected": {
+            "label": "altura/4-solo-sin-ajuste"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/89",
+          "expected": {
+            "label": "altura/4-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/90",
+          "expected": {
+            "label": "altura/4-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/91",
+          "expected": {
+            "label": "altura/4-reinicio"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/150",
+          "expected": {
+            "label": "el-tiempo-tiene-altura/4-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/29",
+          "expected": {
+            "label": "altura-r4-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "orbita-que-no-se-cierra/principal/reto-01",
+      "activity": "orbita-que-no-se-cierra",
+      "route": "/orbita-que-no-se-cierra/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica + nueva ejecución de respuesta incorrecta y correcta, observación y consigna móvil",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/48",
+          "expected": {
+            "id": "orbita-que-no-se-cierra/principal/reto-01"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/5/challenges/0",
+          "expected": {
+            "id": "orbita-que-no-se-cierra/principal/reto-01"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/92",
+          "expected": {
+            "label": "orbita/1-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/93",
+          "expected": {
+            "label": "orbita/1-una-vuelta-no-basta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/94",
+          "expected": {
+            "label": "orbita/1-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/95",
+          "expected": {
+            "label": "orbita/1-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/151",
+          "expected": {
+            "label": "orbita-que-no-se-cierra/1-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/33",
+          "expected": {
+            "label": "orbita-r1-empty"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/37",
+          "expected": {
+            "label": "orbita-r1-incomplete-one"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/38",
+          "expected": {
+            "label": "orbita-r1-wrong"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/39",
+          "expected": {
+            "label": "orbita-r1-correct"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "orbita-que-no-se-cierra/principal/reto-02",
+      "activity": "orbita-que-no-se-cierra",
+      "route": "/orbita-que-no-se-cierra/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/49",
+          "expected": {
+            "id": "orbita-que-no-se-cierra/principal/reto-02"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/5/challenges/1",
+          "expected": {
+            "id": "orbita-que-no-se-cierra/principal/reto-02"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/96",
+          "expected": {
+            "label": "orbita/2-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/97",
+          "expected": {
+            "label": "orbita/2-solo-redonda"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/98",
+          "expected": {
+            "label": "orbita/2-forma-nueva-sin-observar"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/99",
+          "expected": {
+            "label": "orbita/2-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/100",
+          "expected": {
+            "label": "orbita/2-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/152",
+          "expected": {
+            "label": "orbita-que-no-se-cierra/2-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/34",
+          "expected": {
+            "label": "orbita-r2-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "orbita-que-no-se-cierra/principal/reto-03",
+      "activity": "orbita-que-no-se-cierra",
+      "route": "/orbita-que-no-se-cierra/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/50",
+          "expected": {
+            "id": "orbita-que-no-se-cierra/principal/reto-03"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/5/challenges/2",
+          "expected": {
+            "id": "orbita-que-no-se-cierra/principal/reto-03"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/101",
+          "expected": {
+            "label": "orbita/3-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/102",
+          "expected": {
+            "label": "orbita/3-solo-tamano-mercurio"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/103",
+          "expected": {
+            "label": "orbita/3-doble-tamano-solo-una-vuelta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/104",
+          "expected": {
+            "label": "orbita/3-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/105",
+          "expected": {
+            "label": "orbita/3-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/153",
+          "expected": {
+            "label": "orbita-que-no-se-cierra/3-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/35",
+          "expected": {
+            "label": "orbita-r3-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "orbita-que-no-se-cierra/principal/reto-04",
+      "activity": "orbita-que-no-se-cierra",
+      "route": "/orbita-que-no-se-cierra/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica + nueva ejecución completa de R4 y aceptación UX-01 móvil/escritorio",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/51",
+          "expected": {
+            "id": "orbita-que-no-se-cierra/principal/reto-04"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/5/challenges/3",
+          "expected": {
+            "id": "orbita-que-no-se-cierra/principal/reto-04"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/106",
+          "expected": {
+            "label": "orbita/4-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/107",
+          "expected": {
+            "label": "orbita/4-solo-real"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/108",
+          "expected": {
+            "label": "orbita/4-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/109",
+          "expected": {
+            "label": "orbita/4-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/110",
+          "expected": {
+            "label": "orbita/4-reinicio"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/154",
+          "expected": {
+            "label": "orbita-que-no-se-cierra/4-reinicio-huella-no-acepta"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/36",
+          "expected": {
+            "label": "orbita-r4-empty"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/84",
+          "expected": {
+            "label": "orbita-local320-r4-ampliado"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/85",
+          "expected": {
+            "label": "orbita-local320-r4-wrong"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/86",
+          "expected": {
+            "label": "orbita-local320-r4-correct"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/87",
+          "expected": {
+            "label": "orbita-local667-controls"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/88",
+          "expected": {
+            "label": "orbita-local-desktop"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/89",
+          "expected": {
+            "label": "orbita-local-desktop-real"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/90",
+          "expected": {
+            "label": "orbita-local-scene-keyboard"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/91",
+          "expected": {
+            "label": "orbita-local-r4-reset"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/92",
+          "expected": {
+            "label": "orbita-local-scene-keyboard-from-zero"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/93",
+          "expected": {
+            "label": "orbita-local390-native-drag"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/94",
+          "expected": {
+            "label": "orbita-local390-native-drag-targeted"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "efecto-fotoelectrico/principal/reto-01",
+      "activity": "efecto-fotoelectrico",
+      "route": "/efecto-fotoelectrico/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica + nueva ejecución de respuesta incorrecta y correcta, observación y consigna móvil",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/52",
+          "expected": {
+            "id": "efecto-fotoelectrico/principal/reto-01"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/6/challenges/0",
+          "expected": {
+            "id": "efecto-fotoelectrico/principal/reto-01"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/111",
+          "expected": {
+            "label": "fotoelectrico/1-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/112",
+          "expected": {
+            "label": "fotoelectrico/1-cambiar-sin-registrar"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/113",
+          "expected": {
+            "label": "fotoelectrico/1-solo-rojo"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/114",
+          "expected": {
+            "label": "fotoelectrico/1-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/115",
+          "expected": {
+            "label": "fotoelectrico/1-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/155",
+          "expected": {
+            "label": "efecto-fotoelectrico/1-reinicio-huella-no-acepta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/165",
+          "expected": {
+            "label": "fotoelectrico/1-desktop-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/166",
+          "expected": {
+            "label": "fotoelectrico/1-desktop-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/167",
+          "expected": {
+            "label": "fotoelectrico/1-desktop-correcto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/41",
+          "expected": {
+            "label": "fotoelectrico-r1-empty"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/45",
+          "expected": {
+            "label": "fotoelectrico-r1-incomplete-rojo"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/46",
+          "expected": {
+            "label": "fotoelectrico-r1-wrong"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/47",
+          "expected": {
+            "label": "fotoelectrico-r1-correct"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "efecto-fotoelectrico/principal/reto-02",
+      "activity": "efecto-fotoelectrico",
+      "route": "/efecto-fotoelectrico/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/53",
+          "expected": {
+            "id": "efecto-fotoelectrico/principal/reto-02"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/6/challenges/1",
+          "expected": {
+            "id": "efecto-fotoelectrico/principal/reto-02"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/116",
+          "expected": {
+            "label": "fotoelectrico/2-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/117",
+          "expected": {
+            "label": "fotoelectrico/2-solo-brillo25"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/118",
+          "expected": {
+            "label": "fotoelectrico/2-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/119",
+          "expected": {
+            "label": "fotoelectrico/2-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/156",
+          "expected": {
+            "label": "efecto-fotoelectrico/2-reinicio-huella-no-acepta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/168",
+          "expected": {
+            "label": "fotoelectrico/2-desktop-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/169",
+          "expected": {
+            "label": "fotoelectrico/2-desktop-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/170",
+          "expected": {
+            "label": "fotoelectrico/2-desktop-correcto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/42",
+          "expected": {
+            "label": "fotoelectrico-r2-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "efecto-fotoelectrico/principal/reto-03",
+      "activity": "efecto-fotoelectrico",
+      "route": "/efecto-fotoelectrico/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/54",
+          "expected": {
+            "id": "efecto-fotoelectrico/principal/reto-03"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/6/challenges/2",
+          "expected": {
+            "id": "efecto-fotoelectrico/principal/reto-03"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/120",
+          "expected": {
+            "label": "fotoelectrico/3-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/121",
+          "expected": {
+            "label": "fotoelectrico/3-solo-sodio"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/122",
+          "expected": {
+            "label": "fotoelectrico/3-brillo-incompatible-no-acepta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/123",
+          "expected": {
+            "label": "fotoelectrico/3-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/124",
+          "expected": {
+            "label": "fotoelectrico/3-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/157",
+          "expected": {
+            "label": "efecto-fotoelectrico/3-reinicio-huella-no-acepta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/171",
+          "expected": {
+            "label": "fotoelectrico/3-desktop-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/172",
+          "expected": {
+            "label": "fotoelectrico/3-desktop-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/173",
+          "expected": {
+            "label": "fotoelectrico/3-desktop-correcto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/43",
+          "expected": {
+            "label": "fotoelectrico-r3-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "efecto-fotoelectrico/principal/reto-04",
+      "activity": "efecto-fotoelectrico",
+      "route": "/efecto-fotoelectrico/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/55",
+          "expected": {
+            "id": "efecto-fotoelectrico/principal/reto-04"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/laboratories/6/challenges/3",
+          "expected": {
+            "id": "efecto-fotoelectrico/principal/reto-04"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/125",
+          "expected": {
+            "label": "fotoelectrico/4-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/126",
+          "expected": {
+            "label": "fotoelectrico/4-solo-azul"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/127",
+          "expected": {
+            "label": "fotoelectrico/4-nuevo-color-sin-registro"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/128",
+          "expected": {
+            "label": "fotoelectrico/4-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/129",
+          "expected": {
+            "label": "fotoelectrico/4-correcto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/130",
+          "expected": {
+            "label": "fotoelectrico/4-reinicio"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/158",
+          "expected": {
+            "label": "efecto-fotoelectrico/4-reinicio-huella-no-acepta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/159",
+          "expected": {
+            "label": "fotoelectrico/4-huella-no-convierte-error-en-exito"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/160",
+          "expected": {
+            "label": "fotoelectrico/4-intento-actual-correcto-con-huella"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/174",
+          "expected": {
+            "label": "fotoelectrico/4-desktop-incompleto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/175",
+          "expected": {
+            "label": "fotoelectrico/4-desktop-incorrecto"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-results.json",
+          "pointer": "/176",
+          "expected": {
+            "label": "fotoelectrico/4-desktop-correcto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/44",
+          "expected": {
+            "label": "fotoelectrico-r4-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "lente-gravitacional/principal/reto-01",
+      "activity": "lente-gravitacional",
+      "route": "/lente-gravitacional/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica + nueva ejecución de respuesta incorrecta y correcta, observación y consigna móvil",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/12",
+          "expected": {
+            "id": "lente-gravitacional/principal/reto-01"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/0",
+          "expected": {
+            "id": "lente-gravitacional/principal/reto-01"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/2",
+          "expected": {
+            "label": "lente-bend-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/1",
+          "expected": {
+            "label": "lente-bend-incorrecta-observacion"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/0",
+          "expected": {
+            "label": "lente-bend-incompleto-sin-prediccion"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/49",
+          "expected": {
+            "label": "lente-r1-empty"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/53",
+          "expected": {
+            "label": "lente-r1-incomplete"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/54",
+          "expected": {
+            "label": "lente-r1-wrong"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/55",
+          "expected": {
+            "label": "lente-r1-correct"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "lente-gravitacional/principal/reto-02",
+      "activity": "lente-gravitacional",
+      "route": "/lente-gravitacional/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/13",
+          "expected": {
+            "id": "lente-gravitacional/principal/reto-02"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/1",
+          "expected": {
+            "id": "lente-gravitacional/principal/reto-02"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/6",
+          "expected": {
+            "label": "lente-ring-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/5",
+          "expected": {
+            "label": "lente-ring-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/4",
+          "expected": {
+            "label": "lente-ring-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/50",
+          "expected": {
+            "label": "lente-r2-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "lente-gravitacional/principal/reto-03",
+      "activity": "lente-gravitacional",
+      "route": "/lente-gravitacional/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/14",
+          "expected": {
+            "id": "lente-gravitacional/principal/reto-03"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/2",
+          "expected": {
+            "id": "lente-gravitacional/principal/reto-03"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/10",
+          "expected": {
+            "label": "lente-capture-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/9",
+          "expected": {
+            "label": "lente-capture-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/8",
+          "expected": {
+            "label": "lente-capture-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/51",
+          "expected": {
+            "label": "lente-r3-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "lente-gravitacional/principal/reto-04",
+      "activity": "lente-gravitacional",
+      "route": "/lente-gravitacional/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/15",
+          "expected": {
+            "id": "lente-gravitacional/principal/reto-04"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/3",
+          "expected": {
+            "id": "lente-gravitacional/principal/reto-04"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/14",
+          "expected": {
+            "label": "lente-mass-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/13",
+          "expected": {
+            "label": "lente-mass-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/12",
+          "expected": {
+            "label": "lente-mass-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/52",
+          "expected": {
+            "label": "lente-r4-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "acrecion/principal/reto-01",
+      "activity": "acrecion",
+      "route": "/acrecion/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica + nueva ejecución de respuesta incorrecta y correcta, observación y consigna móvil",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/20",
+          "expected": {
+            "id": "acrecion/principal/reto-01"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/12",
+          "expected": {
+            "id": "acrecion/principal/reto-01"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/63",
+          "expected": {
+            "label": "acrecion-gas-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/62",
+          "expected": {
+            "label": "acrecion-gas-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/60",
+          "expected": {
+            "label": "acrecion-gas-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/56",
+          "expected": {
+            "label": "acrecion-r1-empty"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/60",
+          "expected": {
+            "label": "acrecion-r1-incomplete-no-gas"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/61",
+          "expected": {
+            "label": "acrecion-r1-wrong"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/62",
+          "expected": {
+            "label": "acrecion-r1-correct"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "acrecion/principal/reto-02",
+      "activity": "acrecion",
+      "route": "/acrecion/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/21",
+          "expected": {
+            "id": "acrecion/principal/reto-02"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/13",
+          "expected": {
+            "id": "acrecion/principal/reto-02"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/67",
+          "expected": {
+            "label": "acrecion-lens-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/66",
+          "expected": {
+            "label": "acrecion-lens-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/64",
+          "expected": {
+            "label": "acrecion-lens-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/57",
+          "expected": {
+            "label": "acrecion-r2-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "acrecion/principal/reto-03",
+      "activity": "acrecion",
+      "route": "/acrecion/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/22",
+          "expected": {
+            "id": "acrecion/principal/reto-03"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/14",
+          "expected": {
+            "id": "acrecion/principal/reto-03"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/71",
+          "expected": {
+            "label": "acrecion-doppler-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/70",
+          "expected": {
+            "label": "acrecion-doppler-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/68",
+          "expected": {
+            "label": "acrecion-doppler-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/58",
+          "expected": {
+            "label": "acrecion-r3-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "acrecion/principal/reto-04",
+      "activity": "acrecion",
+      "route": "/acrecion/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/23",
+          "expected": {
+            "id": "acrecion/principal/reto-04"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/15",
+          "expected": {
+            "id": "acrecion/principal/reto-04"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/74",
+          "expected": {
+            "label": "acrecion-star-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/73",
+          "expected": {
+            "label": "acrecion-star-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/72",
+          "expected": {
+            "label": "acrecion-star-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/59",
+          "expected": {
+            "label": "acrecion-r4-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "horizonte/principal/reto-01",
+      "activity": "horizonte",
+      "route": "/horizonte/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica + nueva ejecución de respuesta incorrecta y correcta, observación y consigna móvil",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/24",
+          "expected": {
+            "id": "horizonte/principal/reto-01"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/16",
+          "expected": {
+            "id": "horizonte/principal/reto-01"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/83",
+          "expected": {
+            "label": "horizonte-held-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/82",
+          "expected": {
+            "label": "horizonte-held-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/81",
+          "expected": {
+            "label": "horizonte-held-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/63",
+          "expected": {
+            "label": "horizonte-r1-empty"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/67",
+          "expected": {
+            "label": "horizonte-r1-incomplete"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/68",
+          "expected": {
+            "label": "horizonte-r1-wrong"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/69",
+          "expected": {
+            "label": "horizonte-r1-correct"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "horizonte/principal/reto-02",
+      "activity": "horizonte",
+      "route": "/horizonte/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/25",
+          "expected": {
+            "id": "horizonte/principal/reto-02"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/17",
+          "expected": {
+            "id": "horizonte/principal/reto-02"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/87",
+          "expected": {
+            "label": "horizonte-crossing-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/86",
+          "expected": {
+            "label": "horizonte-crossing-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/84",
+          "expected": {
+            "label": "horizonte-crossing-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/64",
+          "expected": {
+            "label": "horizonte-r2-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "horizonte/principal/reto-03",
+      "activity": "horizonte",
+      "route": "/horizonte/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/26",
+          "expected": {
+            "id": "horizonte/principal/reto-03"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/18",
+          "expected": {
+            "id": "horizonte/principal/reto-03"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/90",
+          "expected": {
+            "label": "horizonte-redshift-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/89",
+          "expected": {
+            "label": "horizonte-redshift-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/88",
+          "expected": {
+            "label": "horizonte-redshift-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/65",
+          "expected": {
+            "label": "horizonte-r3-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "horizonte/principal/reto-04",
+      "activity": "horizonte",
+      "route": "/horizonte/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/27",
+          "expected": {
+            "id": "horizonte/principal/reto-04"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/19",
+          "expected": {
+            "id": "horizonte/principal/reto-04"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/95",
+          "expected": {
+            "label": "horizonte-causal-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/94",
+          "expected": {
+            "label": "horizonte-causal-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/91",
+          "expected": {
+            "label": "horizonte-causal-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/66",
+          "expected": {
+            "label": "horizonte-r4-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "hawking/principal/reto-01",
+      "activity": "hawking",
+      "route": "/hawking/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica + nueva ejecución de respuesta incorrecta y correcta, observación y consigna móvil",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/8",
+          "expected": {
+            "id": "hawking/principal/reto-01"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/4",
+          "expected": {
+            "id": "hawking/principal/reto-01"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/22",
+          "expected": {
+            "label": "hawking-mass-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/21",
+          "expected": {
+            "label": "hawking-mass-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/20",
+          "expected": {
+            "label": "hawking-mass-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/70",
+          "expected": {
+            "label": "hawking-r1-empty"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/74",
+          "expected": {
+            "label": "hawking-r1-incomplete"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/75",
+          "expected": {
+            "label": "hawking-r1-wrong"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/76",
+          "expected": {
+            "label": "hawking-r1-correct"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "hawking/principal/reto-02",
+      "activity": "hawking",
+      "route": "/hawking/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/9",
+          "expected": {
+            "id": "hawking/principal/reto-02"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/5",
+          "expected": {
+            "id": "hawking/principal/reto-02"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/26",
+          "expected": {
+            "label": "hawking-bath-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/25",
+          "expected": {
+            "label": "hawking-bath-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/24",
+          "expected": {
+            "label": "hawking-bath-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/71",
+          "expected": {
+            "label": "hawking-r2-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "hawking/principal/reto-03",
+      "activity": "hawking",
+      "route": "/hawking/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/10",
+          "expected": {
+            "id": "hawking/principal/reto-03"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/6",
+          "expected": {
+            "id": "hawking/principal/reto-03"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/30",
+          "expected": {
+            "label": "hawking-time-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/29",
+          "expected": {
+            "label": "hawking-time-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/28",
+          "expected": {
+            "label": "hawking-time-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/72",
+          "expected": {
+            "label": "hawking-r3-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "hawking/principal/reto-04",
+      "activity": "hawking",
+      "route": "/hawking/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/11",
+          "expected": {
+            "id": "hawking/principal/reto-04"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/7",
+          "expected": {
+            "id": "hawking/principal/reto-04"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/35",
+          "expected": {
+            "label": "hawking-entropy-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/34",
+          "expected": {
+            "label": "hawking-entropy-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/33",
+          "expected": {
+            "label": "hawking-entropy-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/73",
+          "expected": {
+            "label": "hawking-r4-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "entropia/principal/reto-01",
+      "activity": "entropia",
+      "route": "/entropia/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica + nueva ejecución de respuesta incorrecta y correcta, observación y consigna móvil",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/16",
+          "expected": {
+            "id": "entropia/principal/reto-01"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/8",
+          "expected": {
+            "id": "entropia/principal/reto-01"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/42",
+          "expected": {
+            "label": "entropia-area-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/41",
+          "expected": {
+            "label": "entropia-area-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/40",
+          "expected": {
+            "label": "entropia-area-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/77",
+          "expected": {
+            "label": "entropia-r1-empty"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/81",
+          "expected": {
+            "label": "entropia-r1-incomplete"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/82",
+          "expected": {
+            "label": "entropia-r1-wrong"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/83",
+          "expected": {
+            "label": "entropia-r1-correct"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "entropia/principal/reto-02",
+      "activity": "entropia",
+      "route": "/entropia/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/17",
+          "expected": {
+            "id": "entropia/principal/reto-02"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/9",
+          "expected": {
+            "id": "entropia/principal/reto-02"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/46",
+          "expected": {
+            "label": "entropia-quarter-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/45",
+          "expected": {
+            "label": "entropia-quarter-incorrecta-bits"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/44",
+          "expected": {
+            "label": "entropia-quarter-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/78",
+          "expected": {
+            "label": "entropia-r2-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "entropia/principal/reto-03",
+      "activity": "entropia",
+      "route": "/entropia/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/18",
+          "expected": {
+            "id": "entropia/principal/reto-03"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/10",
+          "expected": {
+            "id": "entropia/principal/reto-03"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/50",
+          "expected": {
+            "label": "entropia-evaporate-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/49",
+          "expected": {
+            "label": "entropia-evaporate-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/48",
+          "expected": {
+            "label": "entropia-evaporate-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/79",
+          "expected": {
+            "label": "entropia-r3-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "entropia/principal/reto-04",
+      "activity": "entropia",
+      "route": "/entropia/",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a + UX-01 (hashes registrados)",
+      "method": "Revalidación histórica por identidad del código + nueva selección y lectura de consigna/controles junto a escena",
+      "historicalCoverage": "Correcta, incorrecta, incompleta, umbrales y reinicios según los casos trazables del informe previo. No se afirman ejecuciones nuevas de todos esos casos.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/19",
+          "expected": {
+            "id": "entropia/principal/reto-04"
+          }
+        },
+        {
+          "file": "../qa-agujeros-negros.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-coverage.json",
+          "pointer": "/results/11",
+          "expected": {
+            "id": "entropia/principal/reto-04"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/54",
+          "expected": {
+            "label": "entropia-total-correcta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/53",
+          "expected": {
+            "label": "entropia-total-incorrecta"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/qa-agujeros-cases.json",
+          "pointer": "/52",
+          "expected": {
+            "label": "entropia-total-incompleto"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-current.json",
+          "pointer": "/80",
+          "expected": {
+            "label": "entropia-r4-empty"
+          }
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      },
+      "currentNoOverflow": true
+    },
+    {
+      "id": "ecuacion-de-campo/principal/reto-01",
+      "activity": "ecuacion-de-campo",
+      "route": "/einstein/#en-field",
+      "status": "APROBADO",
+      "reviewer": "qa_producto_einstein_cosmos",
+      "candidate": "effb811cee78e33d78234e12e63fd28232058e6a",
+      "method": "Código idéntico; respuesta incorrecta/correcta repetidas actualmente en 390×844. Ausencia de selección y recarga preservadas por evidencia histórica.",
+      "historicalEvidence": [
+        {
+          "file": "../estado.json",
+          "pointer": "/challenges/80",
+          "expected": {
+            "id": "ecuacion-de-campo/principal/reto-01"
+          }
+        },
+        {
+          "file": "../qa-einstein.md"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-product-manifest.json",
+          "pointer": "/auxiliaryChallenge",
+          "expected": {
+            "id": "ecuacion-de-campo/principal/reto-01"
+          }
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-widget-results.json",
+          "pointer": "/field"
+        },
+        {
+          "file": "../../../../qa-integral-retos-2026-11-02/einstein-field-reset.json",
+          "expected": {
+            "id": "ecuacion-de-campo/principal/reto-01"
+          }
+        }
+      ],
+      "currentEvidence": [
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-field-current.json",
+          "pointer": "/fieldWrong"
+        },
+        {
+          "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-field-current.json",
+          "pointer": "/fieldCorrect"
+        }
+      ],
+      "sourceEvidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-source-identity.json"
+      }
+    }
+  ],
+  "ungradedExplorations": [
+    {
+      "id": "einstein-energia-en-reposo",
+      "status": "APROBADO",
+      "scope": "Extremos de la masa, escala logarítmica y cambio de energía; no reto puntuable.",
+      "evidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-energy-current.json"
+      }
+    },
+    {
+      "id": "atlas-agujeros-negros",
+      "status": "APROBADO",
+      "scope": "Botones5/10/20 M☉ y cambios de radio, temperatura y entropía; no reto puntuable.",
+      "evidence": {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/atlas-scales-current.json"
+      }
+    }
+  ],
+  "sharedUX": {
+    "status": "APROBADO_EN_ALCANCE",
+    "navigation": "Navegación real desde los mapas de especiales por los doce capítulos y siguiente/anterior; acceso directo del candidato a Mercurio.",
+    "sceneVisibility": "Primera pasada390×844 en las doce rutas; selecciones y controles de reto preservan escena. Muestras320 Fotoeléctrico y Mercurio,667 Mercurio,1280 Mercurio.",
+    "help": "Ayuda activada/cerrada en Reloj y Acreción; lectura en zona inferior y vuelta a controles, sin bloqueo persistente de escena.",
+    "console": {
+      "file": "../../../../qa-integral-seguimiento-2026-11-02/einstein-cosmos-final-console.json"
+    }
+  },
+  "limits": [
+    "Son49IDs con revalidación de evidencia histórica y regresiones actuales selectivas; no49repeticiones exhaustivas nuevas ni todos los tamaños en cada reto.",
+    "Los95 registros DOM incluyen estados diagnósticos y no equivalen a95 pruebas independientes.",
+    "Sin Safari ni teléfonos físicos; pendientes por decisión previa del usuario. No lector de pantalla real.",
+    "Revisión interna de agentes; no estudio de comprensión con participantes ni certificación de física.",
+    "Producción observada antes del parche; aceptación del parche sobrelocalhost1027. Publicación y verificación pública final corresponden al coordinador.",
+    "Un arrastre inicial no acertó al asa del planeta; se retargeteó por geometría DOM y captura fresca. Se conserva el intento como diagnóstico, no como defecto."
+  ],
+  "finalReview": {
+    "date": "2026-11-02",
+    "reviewer": "qa_producto_einstein_cosmos",
+    "status": "CIERRE_DE_CANDIDATO_APROBADO",
+    "scope": "Cierre de mis 12 laboratorios / 49 retos tras leer ciencia, el otro bloque de producto, aceptación del coordinador y logs finales. No agrega ejecuciones de navegador ni acredita despliegue.",
+    "science": {
+      "file": "ciencia.json",
+      "status": "APROBADO_CIENTIFICO",
+      "ourIdsApproved": 49,
+      "totalIdsApproved": 89
+    },
+    "otherProduct": {
+      "file": "producto-optica-cuantica.json",
+      "status": "APROBADO_PRODUCTO",
+      "ids": 40,
+      "currentRecords": 117,
+      "recordCountNote": "117 es el total final; 101 era una versión anterior, no se suman."
+    },
+    "combinedProduct": {
+      "uniqueIds": 89,
+      "overlap": 0
+    },
+    "rootAcceptance": {
+      "file": "../../../../qa-integral-seguimiento-2026-11-02/root-acceptance.json",
+      "note": "Mercurio es comprobación adicional del implementador; la aceptación independiente de UX-01 es la de este agente. Holografía es muestra independiente del coordinador."
+    },
+    "validationRead": [
+      {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/candidate-tests.txt",
+        "result": "449/449, sin fallos ni omisiones"
+      },
+      {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/candidate-lint.txt",
+        "result": "ESLint sin incidencias"
+      },
+      {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/candidate-build.txt",
+        "result": "Compilación completada"
+      }
+    ],
+    "validationAuthorship": "Resultados ejecutados por el coordinador y leídos por este agente; no nuevas ejecuciones propias.",
+    "reactReview": {
+      "status": "APROBADO",
+      "skill": "C:/Users/User/.codex/plugins/cache/openai-curated-remote/vercel/0.54.1/skills/react-best-practices/SKILL.md",
+      "files": {
+        "src/education/helpContent.ts": "952e45fdb6051231e6589045661eaaef993c7f97795385652aa356ba61dab8bb",
+        "src/orbita/App.tsx": "49382eb396ee4a3cda3a132420f4bb2e351ee681c2b69728d2b8c42f76d76261",
+        "src/maldacena/quantum/EntanglementLab.tsx": "181ec57c300e139e04b448aa9e158badde73d34edf57fde7ee5e93545774b95b"
+      },
+      "checks": [
+        "Mercurio: texto estable coherente con aria-pressed existente; sin estado nuevo, efectos, renderizadores o cambios de cálculo.",
+        "Entrelazados: igualdad de los cuatro campos primitivos de QuantumState antes de cambiar estado/conteos; no-op sin setters ni efectos. Cambios reales conservan borrado; restore/choose siguen explícitos.",
+        "tune usa estado del render actual; las llamadas existentes son eventos síncronos con un ajuste por acción. Se revisaron useSvgScrub/usePointerDrag; no callback persistido, promesa, temporizador ni secuencia de varios tune que exija una actualización funcional nueva.",
+        "Ayuda de Bell: contenido estático, sin HTML inyectado, dependencia o suscripción nueva.",
+        "Sin hooks condicionales, mutación de estado, memoización innecesaria, listeners añadidos ni complejidad de red/bundle. La regresión funcional del guard se acredita por navegador del otro agente."
+      ]
+    },
+    "remaining": [
+      "Comprobación del despliegue público por el coordinador.",
+      "Safari, dispositivos físicos y prueba con participantes mantienen los límites ya declarados."
+    ]
+  }
+}

@@ -1,0 +1,1818 @@
+{
+  "schemaVersion": 1,
+  "reviewed": "2026-11-02",
+  "reviewer": "qa_producto_optica_cuantica",
+  "base": "effb811cee78e33d78234e12e63fd28232058e6a",
+  "candidate": "effb811 + SCI-01 + UX-02; otras correcciones del coordinador fuera del alcance de este lote",
+  "status": "APROBADO_PRODUCTO",
+  "scope": "7 laboratorios canónicos / Holografía en 3 capítulos / 36 retos principales + 4 auxiliares. Revisión interna de producto, no certificación científica ni eficacia educativa con alumnos.",
+  "counts": {
+    "labs": 7,
+    "mainChallenges": 36,
+    "auxiliaryChallenges": 4,
+    "totalChallenges": 40,
+    "currentBrowserRecords": 117,
+    "approved": 40,
+    "failed": 0,
+    "blocked": 0
+  },
+  "targets": [
+    "https://www.spumexp.lat/",
+    "http://127.0.0.1:1027/"
+  ],
+  "viewports": [
+    "390x844 principal",
+    "320x700 ayuda Bell",
+    "320x740 selector Eratóstenes",
+    "667x375 Holografía",
+    "1280x900 Entrelazados"
+  ],
+  "inheritance": {
+    "baseline": "2f812e4",
+    "filesCompared": 85,
+    "lfEquivalent": 80,
+    "rawHashesAndLf": "../../../../qa-integral-seguimiento-2026-11-02/product-source-continuity.json",
+    "sourceManifestSha256": "7a200e75a11be16f5ec1b1a85c9de9175553af79802e8dad46cbb8d94c62506c",
+    "bellFilesIdentical": 9,
+    "eratostenesFilesIdentical": 7,
+    "sharedChangesReviewed": [
+      "helpContent.ts: Bell/Eratóstenes y SCI-01",
+      "helpMode.css: pointer-events del dock, probado con salida y controles",
+      "helpPolicy.ts: rutas nuevas",
+      "Series.tsx: enlace opcional Bell",
+      "EntanglementLab.tsx: UX-02 no-op, retesteado en 4 retos"
+    ]
+  },
+  "currentCasesSha256": "89a52f010803a92b4f473cb061f7be5735d36b7b2fafe564138c26d66775049a",
+  "corrections": [
+    {
+      "id": "UX-02",
+      "status": "APROBADO",
+      "origin": "Preexistente en producción",
+      "repro": "Entrelazados R1, medir200 en Z/Z; repetir Ambos en Z borra la muestra sin cambiar montaje.",
+      "fix": "Guard de igualdad en theta/preparation/basisA/basisB antes de cambiar estado y limpiar conteos.",
+      "acceptance": "No-op conserva N200 en seis presets; cambios reales en cuatro campos borran sólo activos. R3 conserva referencias; reinicio explícito las borra. R1/R2/R3/R4 reprobados con alcance en registros."
+    },
+    {
+      "id": "SCI-01",
+      "status": "APROBADO_PRODUCTO",
+      "origin": "Hallazgo independiente del agente científico",
+      "fix": "Ayuda genérica CHSH distingue límite de medias, estimación finita e incertidumbre.",
+      "acceptance": "Texto real sobre Suma CHSH390/320; ayuda desplazable, escena visible. X cierra tarjeta y mantiene ayuda; salir global desactiva, luego mediciónN200. Reprueba puntual4estados en Chrome390 guardada aparte."
+    }
+  ],
+  "challenges": [
+    {
+      "id": "doble-rendija/principal/reto-01",
+      "activity": "doble-rendija",
+      "route": "/doble-rendija/",
+      "title": "De un punto a un patrón",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "open-comparison",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/0/qaProduct",
+        "acceptancePointer": "/challenges/0/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/16",
+          "rawId": "doble-rendija/principal/reto-01",
+          "state": "incomplete",
+          "target": "https://www.spumexp.lat/doble-rendija/"
+        },
+        {
+          "pointer": "/17",
+          "rawId": "doble-rendija/principal/reto-01",
+          "state": "valid",
+          "target": "https://www.spumexp.lat/doble-rendija/"
+        },
+        {
+          "pointer": "/18",
+          "rawId": "doble-rendija/principal/reto-01",
+          "state": "wrong-variable",
+          "target": "https://www.spumexp.lat/doble-rendija/"
+        },
+        {
+          "pointer": "/19",
+          "rawId": "doble-rendija/principal/reto-01",
+          "state": "reset",
+          "target": "https://www.spumexp.lat/doble-rendija/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "doble-rendija/principal/reto-02",
+      "activity": "doble-rendija",
+      "route": "/doble-rendija/",
+      "title": "Separar las rendijas",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "open-comparison",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/1/qaProduct",
+        "acceptancePointer": "/challenges/1/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/20",
+          "rawId": "doble-rendija/principal/reto-02",
+          "state": "incomplete",
+          "target": "https://www.spumexp.lat/doble-rendija/"
+        },
+        {
+          "pointer": "/21",
+          "rawId": "doble-rendija/principal/reto-02",
+          "state": "valid",
+          "target": "https://www.spumexp.lat/doble-rendija/"
+        },
+        {
+          "pointer": "/22",
+          "rawId": "doble-rendija/principal/reto-02",
+          "state": "wrong-variable",
+          "target": "https://www.spumexp.lat/doble-rendija/"
+        },
+        {
+          "pointer": "/23",
+          "rawId": "doble-rendija/principal/reto-02",
+          "state": "reset",
+          "target": "https://www.spumexp.lat/doble-rendija/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "doble-rendija/principal/reto-03",
+      "activity": "doble-rendija",
+      "route": "/doble-rendija/",
+      "title": "Registrar el camino",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "open-comparison",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/2/qaProduct",
+        "acceptancePointer": "/challenges/2/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/24",
+          "rawId": "doble-rendija/principal/reto-03",
+          "state": "incomplete",
+          "target": "https://www.spumexp.lat/doble-rendija/"
+        },
+        {
+          "pointer": "/25",
+          "rawId": "doble-rendija/principal/reto-03",
+          "state": "valid",
+          "target": "https://www.spumexp.lat/doble-rendija/"
+        },
+        {
+          "pointer": "/26",
+          "rawId": "doble-rendija/principal/reto-03",
+          "state": "wrong-variable",
+          "target": "https://www.spumexp.lat/doble-rendija/"
+        },
+        {
+          "pointer": "/27",
+          "rawId": "doble-rendija/principal/reto-03",
+          "state": "reset",
+          "target": "https://www.spumexp.lat/doble-rendija/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "doble-rendija/principal/reto-04",
+      "activity": "doble-rendija",
+      "route": "/doble-rendija/",
+      "title": "Una rendija también difracta",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "open-comparison",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/3/qaProduct",
+        "acceptancePointer": "/challenges/3/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/28",
+          "rawId": "doble-rendija/principal/reto-04",
+          "state": "incomplete",
+          "target": "https://www.spumexp.lat/doble-rendija/"
+        },
+        {
+          "pointer": "/29",
+          "rawId": "doble-rendija/principal/reto-04",
+          "state": "valid",
+          "target": "https://www.spumexp.lat/doble-rendija/"
+        },
+        {
+          "pointer": "/30",
+          "rawId": "doble-rendija/principal/reto-04",
+          "state": "wrong-variable",
+          "target": "https://www.spumexp.lat/doble-rendija/"
+        },
+        {
+          "pointer": "/31",
+          "rawId": "doble-rendija/principal/reto-04",
+          "state": "reset",
+          "target": "https://www.spumexp.lat/doble-rendija/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "prisma/principal/reto-01",
+      "activity": "prisma",
+      "route": "/prisma/",
+      "title": "De la luz blanca al espectro",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "open-comparison",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/4/qaProduct",
+        "acceptancePointer": "/challenges/4/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/0",
+          "rawId": "prisma/principal/reto-01",
+          "state": "incomplete",
+          "target": "https://www.spumexp.lat/prisma/"
+        },
+        {
+          "pointer": "/1",
+          "rawId": "prisma/principal/reto-01",
+          "state": "valid",
+          "target": "https://www.spumexp.lat/prisma/"
+        },
+        {
+          "pointer": "/2",
+          "rawId": "prisma/principal/reto-01",
+          "state": "no-light",
+          "target": "https://www.spumexp.lat/prisma/"
+        },
+        {
+          "pointer": "/3",
+          "rawId": "prisma/principal/reto-01",
+          "state": "reset",
+          "target": "https://www.spumexp.lat/prisma/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "prisma/principal/reto-02",
+      "activity": "prisma",
+      "route": "/prisma/",
+      "title": "Brillo y trayectoria",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "open-comparison",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/5/qaProduct",
+        "acceptancePointer": "/challenges/5/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/4",
+          "rawId": "prisma/principal/reto-02",
+          "state": "incomplete",
+          "target": "https://www.spumexp.lat/prisma/"
+        },
+        {
+          "pointer": "/5",
+          "rawId": "prisma/principal/reto-02",
+          "state": "valid",
+          "target": "https://www.spumexp.lat/prisma/"
+        },
+        {
+          "pointer": "/6",
+          "rawId": "prisma/principal/reto-02",
+          "state": "wrong-variable",
+          "target": "https://www.spumexp.lat/prisma/"
+        },
+        {
+          "pointer": "/7",
+          "rawId": "prisma/principal/reto-02",
+          "state": "reset",
+          "target": "https://www.spumexp.lat/prisma/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "prisma/principal/reto-03",
+      "activity": "prisma",
+      "route": "/prisma/",
+      "title": "Una pantalla más lejos",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "open-comparison",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/6/qaProduct",
+        "acceptancePointer": "/challenges/6/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/8",
+          "rawId": "prisma/principal/reto-03",
+          "state": "incomplete",
+          "target": "https://www.spumexp.lat/prisma/"
+        },
+        {
+          "pointer": "/9",
+          "rawId": "prisma/principal/reto-03",
+          "state": "valid",
+          "target": "https://www.spumexp.lat/prisma/"
+        },
+        {
+          "pointer": "/10",
+          "rawId": "prisma/principal/reto-03",
+          "state": "wrong-variable",
+          "target": "https://www.spumexp.lat/prisma/"
+        },
+        {
+          "pointer": "/11",
+          "rawId": "prisma/principal/reto-03",
+          "state": "reset",
+          "target": "https://www.spumexp.lat/prisma/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "prisma/principal/reto-04",
+      "activity": "prisma",
+      "route": "/prisma/",
+      "title": "Un material diferente",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "open-comparison",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/7/qaProduct",
+        "acceptancePointer": "/challenges/7/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/12",
+          "rawId": "prisma/principal/reto-04",
+          "state": "incomplete",
+          "target": "https://www.spumexp.lat/prisma/"
+        },
+        {
+          "pointer": "/13",
+          "rawId": "prisma/principal/reto-04",
+          "state": "valid",
+          "target": "https://www.spumexp.lat/prisma/"
+        },
+        {
+          "pointer": "/14",
+          "rawId": "prisma/principal/reto-04",
+          "state": "wrong-variable",
+          "target": "https://www.spumexp.lat/prisma/"
+        },
+        {
+          "pointer": "/15",
+          "rawId": "prisma/principal/reto-04",
+          "state": "reset",
+          "target": "https://www.spumexp.lat/prisma/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "entrelazados/principal/reto-01",
+      "activity": "entrelazados",
+      "route": "/entrelazados/",
+      "title": "Un par predecible",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/56/qaProduct",
+        "acceptancePointer": "/challenges/56/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/74",
+          "rawId": "entrelazados/UX-02",
+          "state": "R1-before-N200",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/75",
+          "rawId": "entrelazados/UX-02",
+          "state": "R1-no-op-Ambos en Z",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/76",
+          "rawId": "entrelazados/UX-02",
+          "state": "R1-no-op-Estado puro",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/77",
+          "rawId": "entrelazados/UX-02",
+          "state": "R1-no-op-Sin entrelazar",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/78",
+          "rawId": "entrelazados/UX-02",
+          "state": "R1-correct",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "entrelazados/principal/reto-02",
+      "activity": "entrelazados",
+      "route": "/entrelazados/",
+      "title": "Juntos, pero impredecibles",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/57/qaProduct",
+        "acceptancePointer": "/challenges/57/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/88",
+          "rawId": "entrelazados/UX-02",
+          "state": "R2-incomplete",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/89",
+          "rawId": "entrelazados/UX-02",
+          "state": "R2-theta-real-change-clears",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/90",
+          "rawId": "entrelazados/UX-02",
+          "state": "R2-correct",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/91",
+          "rawId": "entrelazados/UX-02",
+          "state": "R2-wrong",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/92",
+          "rawId": "entrelazados/UX-02",
+          "state": "R2-reset",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "entrelazados/principal/reto-03",
+      "activity": "entrelazados",
+      "route": "/entrelazados/",
+      "title": "La prueba de otra base",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/58/qaProduct",
+        "acceptancePointer": "/challenges/58/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/38",
+          "rawId": "entrelazados/principal/reto-03",
+          "state": "correct-but-incomplete",
+          "target": "https://www.spumexp.lat/entrelazados/"
+        },
+        {
+          "pointer": "/39",
+          "rawId": "entrelazados/principal/reto-03",
+          "state": "one-pair",
+          "target": "https://www.spumexp.lat/entrelazados/"
+        },
+        {
+          "pointer": "/40",
+          "rawId": "entrelazados/principal/reto-03",
+          "state": "one-comparison-missing",
+          "target": "https://www.spumexp.lat/entrelazados/"
+        },
+        {
+          "pointer": "/41",
+          "rawId": "entrelazados/principal/reto-03",
+          "state": "correct",
+          "target": "https://www.spumexp.lat/entrelazados/"
+        },
+        {
+          "pointer": "/42",
+          "rawId": "entrelazados/principal/reto-03",
+          "state": "wrong-after-valid",
+          "target": "https://www.spumexp.lat/entrelazados/"
+        },
+        {
+          "pointer": "/79",
+          "rawId": "entrelazados/UX-02",
+          "state": "R3-reset-new-lesson",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/80",
+          "rawId": "entrelazados/UX-02",
+          "state": "R3-max-no-op",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/81",
+          "rawId": "entrelazados/UX-02",
+          "state": "R3-real-preparation-clears-keeps-reference",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/82",
+          "rawId": "entrelazados/UX-02",
+          "state": "R3-mixture-no-op",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/83",
+          "rawId": "entrelazados/UX-02",
+          "state": "R3-real-bases-clears-keeps-references",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/84",
+          "rawId": "entrelazados/UX-02",
+          "state": "R3-X-no-op",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/85",
+          "rawId": "entrelazados/UX-02",
+          "state": "R3-correct-4references",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/86",
+          "rawId": "entrelazados/UX-02",
+          "state": "R3-wrong-after-observations",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/87",
+          "rawId": "entrelazados/UX-02",
+          "state": "R3-explicit-reset",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "entrelazados/principal/reto-04",
+      "activity": "entrelazados",
+      "route": "/entrelazados/",
+      "title": "El todo y una parte",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/59/qaProduct",
+        "acceptancePointer": "/challenges/59/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/93",
+          "rawId": "entrelazados/UX-02",
+          "state": "R4-incomplete",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/94",
+          "rawId": "entrelazados/UX-02",
+          "state": "R4-one-inspection",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/95",
+          "rawId": "entrelazados/UX-02",
+          "state": "R4-correct",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/96",
+          "rawId": "entrelazados/UX-02",
+          "state": "R4-wrong",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        },
+        {
+          "pointer": "/97",
+          "rawId": "entrelazados/UX-02",
+          "state": "R4-reset",
+          "target": "http://127.0.0.1:1027/entrelazados/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "holografia/geometria/reto-01",
+      "activity": "holografia",
+      "route": "/holografia/",
+      "title": "La recta pierde la carrera",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/60/qaProduct",
+        "acceptancePointer": "/challenges/60/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/45",
+          "rawId": "holografia/geometria/reto-01",
+          "state": "correct-but-incomplete",
+          "target": "https://www.spumexp.lat/holografia/?seccion=geometria"
+        },
+        {
+          "pointer": "/46",
+          "rawId": "holografia/geometria/reto-01",
+          "state": "correct",
+          "target": "https://www.spumexp.lat/holografia/?seccion=geometria"
+        },
+        {
+          "pointer": "/47",
+          "rawId": "holografia/geometria/reto-01",
+          "state": "wrong",
+          "target": "https://www.spumexp.lat/holografia/?seccion=geometria"
+        },
+        {
+          "pointer": "/101",
+          "rawId": "holografia/geometria/reto-01",
+          "state": "current-consigna-candidate",
+          "target": "http://127.0.0.1:1027/holografia/?seccion=geometria"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "holografia/geometria/reto-02",
+      "activity": "holografia",
+      "route": "/holografia/",
+      "title": "Una mano mueve el camino",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/61/qaProduct",
+        "acceptancePointer": "/challenges/61/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/102",
+          "rawId": "holografia/geometria/reto-02",
+          "state": "current-consigna-candidate",
+          "target": "http://127.0.0.1:1027/holografia/?seccion=geometria"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "holografia/geometria/reto-03",
+      "activity": "holografia",
+      "route": "/holografia/",
+      "title": "El borde no está cerquita",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/62/qaProduct",
+        "acceptancePointer": "/challenges/62/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/103",
+          "rawId": "holografia/geometria/reto-03",
+          "state": "current-consigna-candidate",
+          "target": "http://127.0.0.1:1027/holografia/?seccion=geometria"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "holografia/geometria/reto-04",
+      "activity": "holografia",
+      "route": "/holografia/",
+      "title": "¿Hasta dónde llega?",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/63/qaProduct",
+        "acceptancePointer": "/challenges/63/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/104",
+          "rawId": "holografia/geometria/reto-04",
+          "state": "current-consigna-candidate",
+          "target": "http://127.0.0.1:1027/holografia/?seccion=geometria"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "holografia/diccionario/reto-01",
+      "activity": "holografia",
+      "route": "/holografia/",
+      "title": "Una región más grande",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/64/qaProduct",
+        "acceptancePointer": "/challenges/64/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/105",
+          "rawId": "holografia/diccionario/reto-01",
+          "state": "current-consigna-candidate",
+          "target": "http://127.0.0.1:1027/holografia/?seccion=diccionario"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "holografia/diccionario/reto-02",
+      "activity": "holografia",
+      "route": "/holografia/",
+      "title": "Mover no es agrandar",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/65/qaProduct",
+        "acceptancePointer": "/challenges/65/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/106",
+          "rawId": "holografia/diccionario/reto-02",
+          "state": "current-consigna-candidate",
+          "target": "http://127.0.0.1:1027/holografia/?seccion=diccionario"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "holografia/diccionario/reto-03",
+      "activity": "holografia",
+      "route": "/holografia/",
+      "title": "La diferencia del corte",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/66/qaProduct",
+        "acceptancePointer": "/challenges/66/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/49",
+          "rawId": "holografia/diccionario/reto-03",
+          "state": "correct-but-incomplete",
+          "target": "https://www.spumexp.lat/holografia/?seccion=diccionario"
+        },
+        {
+          "pointer": "/50",
+          "rawId": "holografia/diccionario/reto-03",
+          "state": "one-observation",
+          "target": "https://www.spumexp.lat/holografia/?seccion=diccionario"
+        },
+        {
+          "pointer": "/51",
+          "rawId": "holografia/diccionario/reto-03",
+          "state": "correct",
+          "target": "https://www.spumexp.lat/holografia/?seccion=diccionario"
+        },
+        {
+          "pointer": "/52",
+          "rawId": "holografia/diccionario/reto-03",
+          "state": "wrong",
+          "target": "https://www.spumexp.lat/holografia/?seccion=diccionario"
+        },
+        {
+          "pointer": "/107",
+          "rawId": "holografia/diccionario/reto-03",
+          "state": "current-consigna-candidate",
+          "target": "http://127.0.0.1:1027/holografia/?seccion=diccionario"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "holografia/diccionario/reto-04",
+      "activity": "holografia",
+      "route": "/holografia/",
+      "title": "Comparar lo que cambia",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/67/qaProduct",
+        "acceptancePointer": "/challenges/67/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/108",
+          "rawId": "holografia/diccionario/reto-04",
+          "state": "current-consigna-candidate",
+          "target": "http://127.0.0.1:1027/holografia/?seccion=diccionario"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "holografia/temperatura/reto-01",
+      "activity": "holografia",
+      "route": "/holografia/",
+      "title": "Volver al frío",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/68/qaProduct",
+        "acceptancePointer": "/challenges/68/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/109",
+          "rawId": "holografia/temperatura/reto-01",
+          "state": "current-consigna-candidate",
+          "target": "http://127.0.0.1:1027/holografia/?seccion=temperatura"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "holografia/temperatura/reto-02",
+      "activity": "holografia",
+      "route": "/holografia/",
+      "title": "Chico frente a grande",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/69/qaProduct",
+        "acceptancePointer": "/challenges/69/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/110",
+          "rawId": "holografia/temperatura/reto-02",
+          "state": "current-consigna-candidate",
+          "target": "http://127.0.0.1:1027/holografia/?seccion=temperatura"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "holografia/temperatura/reto-03",
+      "activity": "holografia",
+      "route": "/holografia/",
+      "title": "Separar la contribución térmica",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/70/qaProduct",
+        "acceptancePointer": "/challenges/70/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/111",
+          "rawId": "holografia/temperatura/reto-03",
+          "state": "current-consigna-candidate",
+          "target": "http://127.0.0.1:1027/holografia/?seccion=temperatura"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "holografia/temperatura/reto-04",
+      "activity": "holografia",
+      "route": "/holografia/",
+      "title": "Otro agujero negro",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/71/qaProduct",
+        "acceptancePointer": "/challenges/71/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/53",
+          "rawId": "holografia/temperatura/reto-04",
+          "state": "correct-but-incomplete",
+          "target": "https://www.spumexp.lat/holografia/?seccion=temperatura"
+        },
+        {
+          "pointer": "/54",
+          "rawId": "holografia/temperatura/reto-04",
+          "state": "one-observation",
+          "target": "https://www.spumexp.lat/holografia/?seccion=temperatura"
+        },
+        {
+          "pointer": "/55",
+          "rawId": "holografia/temperatura/reto-04",
+          "state": "correct",
+          "target": "https://www.spumexp.lat/holografia/?seccion=temperatura"
+        },
+        {
+          "pointer": "/56",
+          "rawId": "holografia/temperatura/reto-04",
+          "state": "wrong",
+          "target": "https://www.spumexp.lat/holografia/?seccion=temperatura"
+        },
+        {
+          "pointer": "/112",
+          "rawId": "holografia/temperatura/reto-04",
+          "state": "current-consigna-candidate",
+          "target": "http://127.0.0.1:1027/holografia/?seccion=temperatura"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "curva-de-page/principal/reto-01",
+      "activity": "curva-de-page",
+      "route": "/curva-de-page/",
+      "title": "El todo y lo que sale",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/72/qaProduct",
+        "acceptancePointer": "/challenges/72/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/113",
+          "rawId": "curva-de-page/principal/reto-01",
+          "state": "current-consigna-candidate",
+          "target": "http://127.0.0.1:1027/curva-de-page/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "curva-de-page/principal/reto-02",
+      "activity": "curva-de-page",
+      "route": "/curva-de-page/",
+      "title": "Dibujar la vuelta",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/73/qaProduct",
+        "acceptancePointer": "/challenges/73/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/57",
+          "rawId": "curva-de-page/principal/reto-02",
+          "state": "correct-but-incomplete",
+          "target": "https://www.spumexp.lat/curva-de-page/"
+        },
+        {
+          "pointer": "/58",
+          "rawId": "curva-de-page/principal/reto-02",
+          "state": "middle",
+          "target": "https://www.spumexp.lat/curva-de-page/"
+        },
+        {
+          "pointer": "/59",
+          "rawId": "curva-de-page/principal/reto-02",
+          "state": "no-average",
+          "target": "https://www.spumexp.lat/curva-de-page/"
+        },
+        {
+          "pointer": "/60",
+          "rawId": "curva-de-page/principal/reto-02",
+          "state": "correct",
+          "target": "https://www.spumexp.lat/curva-de-page/"
+        },
+        {
+          "pointer": "/61",
+          "rawId": "curva-de-page/principal/reto-02",
+          "state": "wrong",
+          "target": "https://www.spumexp.lat/curva-de-page/"
+        },
+        {
+          "pointer": "/114",
+          "rawId": "curva-de-page/principal/reto-02",
+          "state": "current-consigna-candidate",
+          "target": "http://127.0.0.1:1027/curva-de-page/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "curva-de-page/principal/reto-03",
+      "activity": "curva-de-page",
+      "route": "/curva-de-page/",
+      "title": "La tensión de la paradoja",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/74/qaProduct",
+        "acceptancePointer": "/challenges/74/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/115",
+          "rawId": "curva-de-page/principal/reto-03",
+          "state": "current-consigna-candidate",
+          "target": "http://127.0.0.1:1027/curva-de-page/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "curva-de-page/principal/reto-04",
+      "activity": "curva-de-page",
+      "route": "/curva-de-page/",
+      "title": "Las pistas están juntas",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/75/qaProduct",
+        "acceptancePointer": "/challenges/75/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/116",
+          "rawId": "curva-de-page/principal/reto-04",
+          "state": "current-consigna-candidate",
+          "target": "http://127.0.0.1:1027/curva-de-page/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "eratostenes/principal/reto-01",
+      "activity": "eratostenes",
+      "route": "/eratostenes/",
+      "title": "Dos sombras, dos verticales",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../../../../qa-eratostenes-2026-11-02/product-cases.json",
+        "cases": [
+          {
+            "pointer": "/cases/0",
+            "id": "eratostenes/principal/reto-01",
+            "case": "correcta sin observar"
+          },
+          {
+            "pointer": "/cases/1",
+            "id": "eratostenes/principal/reto-01",
+            "case": "sólo sitios coincidentes"
+          },
+          {
+            "pointer": "/cases/2",
+            "id": "eratostenes/principal/reto-01",
+            "case": "incorrecta tras observar"
+          },
+          {
+            "pointer": "/cases/3",
+            "id": "eratostenes/principal/reto-01",
+            "case": "correcta tras dos observaciones"
+          },
+          {
+            "pointer": "/cases/4",
+            "id": "eratostenes/principal/reto-01",
+            "case": "reinicio con hallazgo previo"
+          }
+        ],
+        "scope": "39 casos previos: C/I/incompleto/reinicio de los cuatro retos y 320/390/667/1280. Siete hashes idénticos."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/34",
+          "rawId": "eratostenes/principal/reto-01",
+          "state": "correct-but-incomplete",
+          "target": "https://www.spumexp.lat/eratostenes/"
+        },
+        {
+          "pointer": "/35",
+          "rawId": "eratostenes/principal/reto-01",
+          "state": "one-observation",
+          "target": "https://www.spumexp.lat/eratostenes/"
+        },
+        {
+          "pointer": "/36",
+          "rawId": "eratostenes/principal/reto-01",
+          "state": "wrong",
+          "target": "https://www.spumexp.lat/eratostenes/"
+        },
+        {
+          "pointer": "/37",
+          "rawId": "eratostenes/principal/reto-01",
+          "state": "correct",
+          "target": "https://www.spumexp.lat/eratostenes/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "Estados concretos enumerados: no todos implican repetir C/I; current-consigna-candidate sólo significa lectura de pregunta/opciones/estado inicial."
+    },
+    {
+      "id": "eratostenes/principal/reto-02",
+      "activity": "eratostenes",
+      "route": "/eratostenes/",
+      "title": "Un pedazo permite medir el todo",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_PASE_ACTUAL_DEL_LABORATORIO",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../../../../qa-eratostenes-2026-11-02/product-cases.json",
+        "cases": [
+          {
+            "pointer": "/cases/5",
+            "id": "eratostenes/principal/reto-02",
+            "case": "correcta sin observar"
+          },
+          {
+            "pointer": "/cases/6",
+            "id": "eratostenes/principal/reto-02",
+            "case": "único registro 800"
+          },
+          {
+            "pointer": "/cases/7",
+            "id": "eratostenes/principal/reto-02",
+            "case": "incorrecta tras observar"
+          },
+          {
+            "pointer": "/cases/8",
+            "id": "eratostenes/principal/reto-02",
+            "case": "correcta tras observar"
+          },
+          {
+            "pointer": "/cases/9",
+            "id": "eratostenes/principal/reto-02",
+            "case": "reinicio con hallazgo previo"
+          }
+        ],
+        "scope": "39 casos previos: C/I/incompleto/reinicio de los cuatro retos y 320/390/667/1280. Siete hashes idénticos."
+      },
+      "currentEvidence": [],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "C/I y extremos acreditados por evidencia previa vigente; no se afirma repetición completa hoy."
+    },
+    {
+      "id": "eratostenes/principal/reto-03",
+      "activity": "eratostenes",
+      "route": "/eratostenes/",
+      "title": "¿Importa el tamaño del palo?",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_PASE_ACTUAL_DEL_LABORATORIO",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../../../../qa-eratostenes-2026-11-02/product-cases.json",
+        "cases": [
+          {
+            "pointer": "/cases/10",
+            "id": "eratostenes/principal/reto-03",
+            "case": "correcta sin observar"
+          },
+          {
+            "pointer": "/cases/11",
+            "id": "eratostenes/principal/reto-03",
+            "case": "único registro1m"
+          },
+          {
+            "pointer": "/cases/12",
+            "id": "eratostenes/principal/reto-03",
+            "case": "gesto directo palo1→2"
+          },
+          {
+            "pointer": "/cases/13",
+            "id": "eratostenes/principal/reto-03",
+            "case": "incorrecta tras observar"
+          },
+          {
+            "pointer": "/cases/14",
+            "id": "eratostenes/principal/reto-03",
+            "case": "correcta tras observar"
+          },
+          {
+            "pointer": "/cases/15",
+            "id": "eratostenes/principal/reto-03",
+            "case": "reinicio con huella"
+          }
+        ],
+        "scope": "39 casos previos: C/I/incompleto/reinicio de los cuatro retos y 320/390/667/1280. Siete hashes idénticos."
+      },
+      "currentEvidence": [],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "C/I y extremos acreditados por evidencia previa vigente; no se afirma repetición completa hoy."
+    },
+    {
+      "id": "eratostenes/principal/reto-04",
+      "activity": "eratostenes",
+      "route": "/eratostenes/",
+      "title": "Medir también es equivocarse",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_PASE_ACTUAL_DEL_LABORATORIO",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../../../../qa-eratostenes-2026-11-02/product-cases.json",
+        "cases": [
+          {
+            "pointer": "/cases/16",
+            "id": "eratostenes/principal/reto-04",
+            "case": "correcta sin observar"
+          },
+          {
+            "pointer": "/cases/17",
+            "id": "eratostenes/principal/reto-04",
+            "case": "sólo400conmargen"
+          },
+          {
+            "pointer": "/cases/18",
+            "id": "eratostenes/principal/reto-04",
+            "case": "incorrecta tras observar"
+          },
+          {
+            "pointer": "/cases/19",
+            "id": "eratostenes/principal/reto-04",
+            "case": "correcta tras observar"
+          },
+          {
+            "pointer": "/cases/20",
+            "id": "eratostenes/principal/reto-04",
+            "case": "reinicio con huella"
+          },
+          {
+            "pointer": "/cases/21",
+            "id": "eratostenes/principal/reto-04",
+            "case": "margen incorrecto para comparación"
+          },
+          {
+            "pointer": "/cases/22",
+            "id": "eratostenes/principal/reto-04",
+            "case": "extra conserva los dos registros requeridos"
+          }
+        ],
+        "scope": "39 casos previos: C/I/incompleto/reinicio de los cuatro retos y 320/390/667/1280. Siete hashes idénticos."
+      },
+      "currentEvidence": [],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "C/I y extremos acreditados por evidencia previa vigente; no se afirma repetición completa hoy."
+    },
+    {
+      "id": "bell/principal/reto-01",
+      "activity": "bell",
+      "route": "/bell/",
+      "title": "Azar de cada lado, relación entre ambos",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../../../../qa-bell-followup-2026-11-02/candidate-cases.json",
+        "cases": [
+          {
+            "pointer": "/cases/4",
+            "id": "R1-source-one"
+          },
+          {
+            "pointer": "/cases/5",
+            "id": "R1-incomplete"
+          },
+          {
+            "pointer": "/cases/6",
+            "id": "R1-one-lot"
+          },
+          {
+            "pointer": "/cases/8",
+            "id": "R1-angle-only"
+          },
+          {
+            "pointer": "/cases/9",
+            "id": "R1-wrong"
+          },
+          {
+            "pointer": "/cases/10",
+            "id": "R1-correct"
+          },
+          {
+            "pointer": "/cases/11",
+            "id": "R1-reset"
+          },
+          {
+            "pointer": "/cases/33",
+            "id": "R1-wrong-2"
+          }
+        ],
+        "scope": "77 casos previos: C/I/incompleto/reinicio de los cuatro retos, 8 distractores y 320/390/667/1280. Nueve hashes de archivos idénticos."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/67",
+          "rawId": "bell/principal/reto-01",
+          "state": "production-measure200",
+          "target": "https://www.spumexp.lat/bell/"
+        },
+        {
+          "pointer": "/68",
+          "rawId": "bell/principal/reto-01",
+          "state": "production-noop",
+          "target": "https://www.spumexp.lat/bell/"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "En este pase Bell R1 sólo N200 y no-op, más ayuda genérica CHSH 390/320; no repetir C/I de Bell se declara expresamente."
+    },
+    {
+      "id": "bell/principal/reto-02",
+      "activity": "bell",
+      "route": "/bell/",
+      "title": "Intentá superar el límite con tarjetas",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_PASE_ACTUAL_DEL_LABORATORIO",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../../../../qa-bell-followup-2026-11-02/candidate-cases.json",
+        "cases": [
+          {
+            "pointer": "/cases/12",
+            "id": "R2-incomplete"
+          },
+          {
+            "pointer": "/cases/13",
+            "id": "R2-global-inverse"
+          },
+          {
+            "pointer": "/cases/14",
+            "id": "R2-unsaved"
+          },
+          {
+            "pointer": "/cases/15",
+            "id": "R2-wrong-0"
+          },
+          {
+            "pointer": "/cases/16",
+            "id": "R2-wrong-1"
+          },
+          {
+            "pointer": "/cases/17",
+            "id": "R2-correct"
+          }
+        ],
+        "scope": "77 casos previos: C/I/incompleto/reinicio de los cuatro retos, 8 distractores y 320/390/667/1280. Nueve hashes de archivos idénticos."
+      },
+      "currentEvidence": [],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "En este pase Bell R1 sólo N200 y no-op, más ayuda genérica CHSH 390/320; no repetir C/I de Bell se declara expresamente."
+    },
+    {
+      "id": "bell/principal/reto-03",
+      "activity": "bell",
+      "route": "/bell/",
+      "title": "Cuatro ajustes, una prueba estadística",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_PASE_ACTUAL_DEL_LABORATORIO",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../../../../qa-bell-followup-2026-11-02/candidate-cases.json",
+        "cases": [
+          {
+            "pointer": "/cases/19",
+            "id": "R3-initial"
+          },
+          {
+            "pointer": "/cases/20",
+            "id": "R3-small-only"
+          },
+          {
+            "pointer": "/cases/21",
+            "id": "R3-near-angle"
+          },
+          {
+            "pointer": "/cases/22",
+            "id": "R3-wrong-1"
+          },
+          {
+            "pointer": "/cases/23",
+            "id": "R3-wrong-2"
+          },
+          {
+            "pointer": "/cases/24",
+            "id": "R3-correct"
+          },
+          {
+            "pointer": "/cases/25",
+            "id": "R3-reset"
+          }
+        ],
+        "scope": "77 casos previos: C/I/incompleto/reinicio de los cuatro retos, 8 distractores y 320/390/667/1280. Nueve hashes de archivos idénticos."
+      },
+      "currentEvidence": [],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "En este pase Bell R1 sólo N200 y no-op, más ayuda genérica CHSH 390/320; no repetir C/I de Bell se declara expresamente."
+    },
+    {
+      "id": "bell/principal/reto-04",
+      "activity": "bell",
+      "route": "/bell/",
+      "title": "¿Podés mandar un mensaje?",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_PASE_ACTUAL_DEL_LABORATORIO",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../../../../qa-bell-followup-2026-11-02/candidate-cases.json",
+        "cases": [
+          {
+            "pointer": "/cases/26",
+            "id": "R4-incomplete"
+          },
+          {
+            "pointer": "/cases/27",
+            "id": "R4-one-lot"
+          },
+          {
+            "pointer": "/cases/28",
+            "id": "R4-angle-only"
+          },
+          {
+            "pointer": "/cases/29",
+            "id": "R4-wrong-0"
+          },
+          {
+            "pointer": "/cases/30",
+            "id": "R4-wrong-2"
+          },
+          {
+            "pointer": "/cases/31",
+            "id": "R4-correct"
+          },
+          {
+            "pointer": "/cases/32",
+            "id": "R4-reset"
+          }
+        ],
+        "scope": "77 casos previos: C/I/incompleto/reinicio de los cuatro retos, 8 distractores y 320/390/667/1280. Nueve hashes de archivos idénticos."
+      },
+      "currentEvidence": [],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "En este pase Bell R1 sólo N200 y no-op, más ayuda genérica CHSH 390/320; no repetir C/I de Bell se declara expresamente."
+    },
+    {
+      "id": "contar-informacion/principal/reto-01",
+      "activity": "contar-informacion",
+      "route": "/entropia/#information-bridge",
+      "title": "Conocer todo",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_REPRUEBA_ACTUAL",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/76/qaProduct",
+        "acceptancePointer": "/challenges/76/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [
+        {
+          "pointer": "/64",
+          "rawId": "contar-informacion/auxiliar/reto-01",
+          "state": "correct-but-incomplete",
+          "target": "https://www.spumexp.lat/entropia/#information-bridge"
+        },
+        {
+          "pointer": "/65",
+          "rawId": "contar-informacion/auxiliar/reto-01",
+          "state": "correct",
+          "target": "https://www.spumexp.lat/entropia/#information-bridge"
+        },
+        {
+          "pointer": "/66",
+          "rawId": "contar-informacion/auxiliar/reto-01",
+          "state": "wrong",
+          "target": "https://www.spumexp.lat/entropia/#information-bridge"
+        }
+      ],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "R1 actual C/I/incompleto; los otros tres conservan la cobertura documentada por código sin cambios."
+    },
+    {
+      "id": "contar-informacion/principal/reto-02",
+      "activity": "contar-informacion",
+      "route": "/entropia/#information-bridge",
+      "title": "Cuatro posibilidades",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_PASE_ACTUAL_DEL_LABORATORIO",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/77/qaProduct",
+        "acceptancePointer": "/challenges/77/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "R1 actual C/I/incompleto; los otros tres conservan la cobertura documentada por código sin cambios."
+    },
+    {
+      "id": "contar-informacion/principal/reto-03",
+      "activity": "contar-informacion",
+      "route": "/entropia/#information-bridge",
+      "title": "Las probabilidades importan",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_PASE_ACTUAL_DEL_LABORATORIO",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/78/qaProduct",
+        "acceptancePointer": "/challenges/78/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "R1 actual C/I/incompleto; los otros tres conservan la cobertura documentada por código sin cambios."
+    },
+    {
+      "id": "contar-informacion/principal/reto-04",
+      "activity": "contar-informacion",
+      "route": "/entropia/#information-bridge",
+      "title": "Volver al horizonte",
+      "status": "APROBADO",
+      "qaProduct": "APROBADO",
+      "reviewer": "qa_producto_optica_cuantica",
+      "method": "CONTINUIDAD_DOCUMENTADA_MAS_PASE_ACTUAL_DEL_LABORATORIO",
+      "challengeKind": "choice-observation",
+      "previousEvidence": {
+        "file": "../estado.json",
+        "pointer": "/challenges/79/qaProduct",
+        "acceptancePointer": "/challenges/79/acceptance",
+        "scope": "Cobertura C/I/incompleto, umbrales y reinicios de la revisión integral previa, con aceptación independiente. Se conserva por equivalencia del código salvo tune de Entrelazados, repetido en este pase."
+      },
+      "currentEvidence": [],
+      "currentEvidenceFile": "../../../../qa-integral-seguimiento-2026-11-02/optica-cuantica-browser-cases.json",
+      "currentScope": "R1 actual C/I/incompleto; los otros tres conservan la cobertura documentada por código sin cambios."
+    }
+  ],
+  "limitations": [
+    "Tamaños emulados Chromium/IAB, no Safari ni teléfonos físicos; pendientes por instrucción del usuario.",
+    "No evaluación con principiantes o estudiantes reales; claridad es juicio experto interno.",
+    "Producción comprobada antes de cambios; candidato1027 aprobado. Publicación posterior y aceptación final competen al coordinador.",
+    "Fallos iniciales de acceso a localhost eran aislamiento del servidor/herramienta. Repetidos correctamente tras relanzar; no defecto del producto.",
+    "117 registros son snapshots de estados y no 117 casos científicos independientes. Bell77 y Eratóstenes39 son evidencia previa vigente, no repetición de este pase."
+  ],
+  "finalReview": {
+    "date": "2026-11-02",
+    "reviewer": "qa_producto_optica_cuantica",
+    "status": "CIERRE_DE_CANDIDATO_APROBADO",
+    "scope": "Cierre de mis7laboratorios/40IDs con continuidad explícita, pruebas actuales y lectura cruzada. No agrega nuevas pruebas C/I a los117registros ni afirma despliegue.",
+    "science": {
+      "file": "ciencia.json",
+      "status": "APROBADO_CIENTIFICO",
+      "ourIdsApproved": 40,
+      "totalIdsApproved": 89
+    },
+    "otherProduct": {
+      "file": "producto-einstein-cosmos.json",
+      "status": "APROBADO_PRODUCTO",
+      "ids": 49,
+      "finalReviewRead": true
+    },
+    "combinedProduct": {
+      "uniqueIds": 89,
+      "overlap": 0
+    },
+    "rootAcceptance": {
+      "file": "../../../../qa-integral-seguimiento-2026-11-02/root-acceptance.json",
+      "scope": "HolografíaR1C/I/incompleto; navegación3capítulos y3aliases. UX02 fue implementado por coordinador; aceptación independiente corresponde a este agente."
+    },
+    "validationRead": [
+      {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/candidate-tests.txt",
+        "result": "449/449;0fallos,0omisiones"
+      },
+      {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/candidate-lint.txt",
+        "result": "ESLint sin incidencias"
+      },
+      {
+        "file": "../../../../qa-integral-seguimiento-2026-11-02/candidate-build.txt",
+        "result": "Build completado"
+      }
+    ],
+    "validationAuthorship": "Logs del coordinador leídos; no atribuidos a ejecución de este agente.",
+    "traceabilityScriptReview": {
+      "file": "verificar.mjs",
+      "result": "Verifica IDs,punteros,hashes y decisiones ya registradas; no reemplaza UI ni ciencia.",
+      "inventoryMetadata": "DOC02 de Eratóstenes revisado como cambio documental sin evaluadores."
+    },
+    "helpCloseClarification": {
+      "status": "CORREGIDO_DOCUMENTO_Y_REPROBADO",
+      "file": "../../../../qa-integral-seguimiento-2026-11-02/bell-help-close-recheck.json",
+      "sha256": "7d54cad87cb16141c509db4ef5dd95be934a3833b0a43de856b5013917d5b0ba",
+      "browser": "Chrome extensión",
+      "viewport": "390x844",
+      "newRecords": 4,
+      "actions": [
+        "Abrir explicación sobre SumaCHSH",
+        "X elimina tarjeta y conserva ayuda activa",
+        "Botón global salir desactiva ayuda",
+        "Medir200registraN200"
+      ],
+      "old117RecordsUnchanged": true,
+      "applicationChange": false
+    },
+    "codeReview": {
+      "files": {
+        "src/education/helpContent.ts": "952e45fdb6051231e6589045661eaaef993c7f97795385652aa356ba61dab8bb",
+        "src/maldacena/quantum/EntanglementLab.tsx": "181ec57c300e139e04b448aa9e158badde73d34edf57fde7ee5e93545774b95b",
+        "src/education/HelpMode.tsx": "bc1def5064fde84f69a869a846df3fade41673fca19ca37817e960a94d4c733e"
+      },
+      "result": "Guard UX02, ayuda SCI01 y handler X coinciden con dictámenes y pruebas. Se leyó revisión React del otro agente; no se atribuye su skill a este agente."
+    },
+    "remaining": [
+      "Publicación y verificación pública por coordinador",
+      "Safari y teléfonos físicos pendientes por falta de acceso",
+      "Aprendizaje con participantes no evaluado"
+    ]
+  }
+}

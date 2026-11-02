@@ -4,6 +4,8 @@ Una colección de laboratorios interactivos para aprender ciencia haciendo pregu
 
 La [revisión integral de retos y modelos](docs/revision-integral/README.md) documenta la versión anterior a Eratóstenes: 17 laboratorios, 81 retos y preguntas, correcciones, controles de QA independientes y límites de las pruebas móviles. Se conserva como registro fechado; el catálogo actual añade Eratóstenes y Bell, con cuatro retos propios cada uno y revisiones independientes.
 
+El [seguimiento del catálogo completo](docs/revision-integral/seguimiento/README.md) reúne los 19 laboratorios actuales y sus 89 retos/preguntas. Distingue las nuevas pruebas de uso, las correcciones y la evidencia anterior revalidada mediante hashes; no amplía retroactivamente la revisión histórica.
+
 - `/`: portada y catálogo de experimentos.
 - `/doble-rendija/`: detecciones individuales, interferencia, difracción e información del camino.
 - `/prisma/`: refracción y dispersión de la luz blanca, con trazado óptico en tiempo real.
@@ -144,7 +146,7 @@ src/fotoelectrico/            Fotoemisión ideal, flujo, energía, mediciones y 
 src/eratostenes/               Varillas, sombras, circunferencia terrestre y cuatro retos
 src/bell/                      Analizadores, correlaciones CHSH y cuatro retos
 tests/                        Pruebas de física, retos e interacción de los laboratorios
-vite.config.ts                Veinticinco entradas y separación de bundles
+vite.config.ts                Veintiséis entradas y separación de bundles
 vercel.json                   Compilación y publicación estáticas
 ```
 

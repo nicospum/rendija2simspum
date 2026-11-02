@@ -280,7 +280,7 @@ export default function OrbitApp() {
                 aria-pressed={s.setup.expanded}
                 onClick={() => tune({ expanded: !s.setup.expanded })}
               >
-                {s.setup.expanded ? 'Giro real' : 'Ampliar giro ×100.000'}
+                Ampliar giro ×100.000
               </button>
               <button
                 onClick={() =>
