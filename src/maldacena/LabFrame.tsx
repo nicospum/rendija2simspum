@@ -75,6 +75,7 @@ export default function LabFrame({
   const current = lessons[lesson]
   const observed = steps.length > 0 && steps.every((s) => s.done)
   const verified = observed && prediction === current.answer
+  const focusScene = () => document.getElementById('md-map')?.focus({ preventScroll: true })
   useEffect(() => {
     if (verified && chapters.some((c) => c.id === id))
       passport.saveCompleted(id as ChapterId, [lesson])
@@ -98,8 +99,8 @@ export default function LabFrame({
             Entrar y probar ↓
           </a>
           <p className="md-small">
-            Modelo calculado en vivo. Una relación de un modelo no demuestra toda la
-            conjetura AdS/CFT.
+            No necesitás empezar por las fórmulas: elegí una idea, cambiá una cosa y
+            compará. Cada reto te indica qué observar en el modelo.
           </p>
         </section>
         <LabMission
@@ -112,6 +113,7 @@ export default function LabFrame({
           id="md-map"
           className="md-workspace"
           data-scene-workspace
+          tabIndex={-1}
           aria-label={`Laboratorio ${title}`}
         >
           <div className="spum-live-stage md-stage">
@@ -146,6 +148,9 @@ export default function LabFrame({
           </SceneConsole>
         </section>
         <section className="md-notebook" id="md-understand">
+          <a className="md-return-to-scene" data-scene-play href="#md-map" onClick={focusScene}>
+            Volver a mi escena y mi reto ↑
+          </a>
           <p className="md-eyebrow">LO QUE DESCUBRISTE / Y HASTA DÓNDE LLEGA</p>
           <h2>Del gesto a la idea.</h2>
           {explanation}
@@ -165,6 +170,9 @@ export default function LabFrame({
               ))}
             </ul>
           </details>
+          <a className="md-return-to-scene" data-scene-play href="#md-map" onClick={focusScene}>
+            Seguir probando con mi montaje ↑
+          </a>
         </section>
         <JourneyNavigation id={id} />
       </main>

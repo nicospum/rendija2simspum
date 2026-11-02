@@ -40,6 +40,12 @@ export function GeometryExperience({ kind }: { kind: LabKind }) {
   const patch = (value: Partial<GeometrySettings>) =>
     change({ ...trial.setup, ...value })
   const onLesson = (index: number) => setTrial(initialTrial(kind, index))
+  const lastRecord = trial.records[trial.records.length - 1]
+  const currentRecorded =
+    lastRecord &&
+    lastRecord.interval === trial.setup.interval &&
+    lastRecord.center === trial.setup.center &&
+    lastRecord.cutoff === trial.setup.cutoff
   const controls = (
     <div className="geo-controls">
       <label htmlFor={`${id}-interval`}>
@@ -127,15 +133,41 @@ export function GeometryExperience({ kind }: { kind: LabKind }) {
         )}
       </div>
       <p role="status">
-        {trial.measurements
-          ? `${trial.measurements} comparación${trial.measurements === 1 ? '' : 'es'} registrada${trial.measurements === 1 ? '' : 's'} en este reto.`
-          : 'Explorá y después registrá una medida para contrastar tu predicción.'}
+        {currentRecorded
+          ? `Esta lectura está registrada. Guardaste ${trial.measurements} comparación${trial.measurements === 1 ? '' : 'es'} en este reto.`
+          : lastRecord
+            ? `Lectura en vivo sin registrar. Tu última medida usó ℓ=${n(lastRecord.interval)}, centro=${n(lastRecord.center)} y ε=${n(lastRecord.cutoff)}.`
+            : 'Las cifras cambian en vivo. Tocá el botón de medir para guardar una comparación y avanzar en el reto.'}
       </p>
       <p>
         Las asas cambian las mismas variables que estas barras. El fondo
         conserva su escala. Cambiar ε modifica el regulador; cambiar ℓ
         modifica la región estudiada.
       </p>
+      <details className="geo-control-help">
+        <summary>Qué cambia cada mando y qué significa la unidad</summary>
+        <p>
+          ℓ es el ancho de la región entre A y B. El centro mueve ambas puntas sin
+          cambiar ese ancho. ε es el corte: mantiene las puntas separadas de la frontera
+          ideal z=0 para poder calcular una distancia finita. Reducir ε incluye más
+          recorrido cerca de esa frontera; no mueve una pared física.
+        </p>
+        <p>
+          {kind === 'geometry'
+            ? 'Las distancias se expresan en L, la unidad de longitud del modelo. Una geodésica es el camino de menor distancia según la regla de esta geometría.'
+            : 'S mide entropía de una región: información que falta al ignorar el resto. Usamos nats, una unidad de información: 1 nat equivale a unos 1,44 bits. Frontera e interior son los dos cálculos del mismo ejemplo; la cifra interior se aproxima a la de frontera cuando ε es pequeño.'}
+        </p>
+        {kind === 'duality' && (
+          <p>
+            Con cCFT=60, pasar de ℓ=2 a ℓ=4 suma 13,86 nats a la fórmula de frontera.
+            Mirá el incremento, no esperes que el número total se duplique.
+          </p>
+        )}
+        <p>
+          Explorar mueve el dibujo y actualiza sus cifras. Medir guarda esas
+          condiciones; las comparaciones anteriores quedan en «Mis últimas medidas».
+        </p>
+      </details>
       <details className="geo-numerical">
         <summary>Comprobar el cálculo</summary>
         <p>
@@ -193,17 +225,17 @@ export function GeometryExperience({ kind }: { kind: LabKind }) {
       </div>
       {kind === 'geometry' ? (
         <p>
-          Referencia: {n(ref.length)} L · Profundidad: {n(ref.radius)} →{' '}
-          {n(m.radius)}.
+          ℓ={n(trial.setup.interval, 2)} · ε={n(trial.setup.cutoff, 2)} · Profundidad:{' '}
+          {n(ref.radius)} → {n(m.radius)}.
         </p>
       ) : (
         <>
           <p>
-            <strong>Residuo finito: {n(m.difference, 5)} nats</strong>
+            ℓ={n(trial.setup.interval, 2)} · ε={n(trial.setup.cutoff, 2)} ·{' '}
+            <strong>Diferencia: {n(m.difference, 5)} nats</strong>
             <span className="geo-residual-description">
               {' '}
-              ({n(m.relativeDifference * 100, 4)} %). Esperable al comparar
-              con el límite logarítmico.
+              Corte finito frente al límite logarítmico.
             </span>
           </p>
           {trial.lesson === 3 && (

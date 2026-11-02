@@ -42,8 +42,10 @@ export function quantumModel(
     probabilities,
     localEntropy,
     totalEntropy: preparation === 'pure' ? 0 : localEntropy,
-    probabilityA0: probabilities[0] + probabilities[1],
-    probabilityB0: probabilities[0] + probabilities[2],
+    // Marginal sums can exceed one by roundoff (for example |00> in Z/X).
+    // Keep physical probabilities bounded before displaying their complements.
+    probabilityA0: bounded(probabilities[0] + probabilities[1], 0, 1, 0),
+    probabilityB0: bounded(probabilities[0] + probabilities[2], 0, 1, 0),
     same: probabilities[0] + probabilities[3],
   }
 }

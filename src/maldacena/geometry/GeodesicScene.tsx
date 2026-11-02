@@ -217,7 +217,7 @@ export default function GeodesicScene({
           <text x="35" y="39" className="geo-caption">
             Frontera ideal z=0
           </text>
-          <text x="535" y="326" className="geo-tick">
+          <text x="570" y="326" className="geo-tick">
             x
           </text>
           <path

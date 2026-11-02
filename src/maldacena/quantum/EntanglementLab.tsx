@@ -11,14 +11,15 @@ import './quantum.css'
 const QUANTUM_LESSONS: readonly Lesson[] = [
   {
     title: 'Un par predecible',
-    question: 'Prepará |00⟩ y medí ambos sistemas en Z. ¿Qué debería aparecer?',
+    question:
+      'Prepará el par |00⟩: A da 0 y B da 0 en Z. ¿Qué debería aparecer al medirlos juntos?',
     choices: [
       'Siempre 00',
       'Cuatro resultados igualmente probables',
       'Una señal que viaja de A a B',
     ],
     answer: 0,
-    hint: 'Elegí «Sin entrelazar», analizadores Z/Z y medí 200 pares nuevos.',
+    hint: 'Elegí «Sin entrelazar», después «Ambos en Z» y «Medir 200 pares nuevos». 00 significa resultado 0 en A y 0 en B.',
     meaning:
       'El estado producto |00⟩ tiene resultados definidos en Z. Tener dos sistemas no implica que estén entrelazados. Cambiar la base de medida puede crear incertidumbre de resultados sin crear entrelazamiento.',
   },
@@ -44,7 +45,7 @@ const QUANTUM_LESSONS: readonly Lesson[] = [
       'La mezcla permite controlar el resultado remoto',
     ],
     answer: 1,
-    hint: 'A θ = 45°, medí Bell y mezcla en Z/Z; repetí ambos en X/X. Cada medición prepara pares nuevos.',
+    hint: 'Elegí «Máximo entrelazamiento». Medí «Estado puro» y «Mezcla clásica» con «Ambos en Z»; repetí ambos con «Ambos en X». La tabla guarda las cuatro comparaciones.',
     meaning:
       'En X/X el estado de Bell conserva las coincidencias; la mezcla clásica reparte ¼ en cada resultado. Comparten el mismo estado local, pero no el estado conjunto. Esta comparación específica no es un ensayo de Bell ni prueba toda interpretación cuántica.',
   },
@@ -150,7 +151,7 @@ export default function EntanglementLab() {
     <LabFrame
       id="entrelazados"
       title="El todo sabe más que sus partes."
-      intro="Prepará pares, medí en dos bases y descubrí qué se pierde al mirar una sola parte. Un laboratorio exacto de dos qubits: el primer puente hacia la holografía."
+      intro="A y B son dos sistemas cuánticos, cada uno con dos resultados posibles: 0 o 1. Prepará pares nuevos, elegí cómo medirlos y compará lo que sabés de cada parte con lo que sabés del conjunto."
       lessons={QUANTUM_LESSONS}
       lesson={lesson}
       onLesson={choose}
@@ -168,19 +169,49 @@ export default function EntanglementLab() {
             {fmt(inspected === 'AB' ? m.totalEntropy : m.localEntropy)} bits de entropía
             del estado
           </strong>
-          <span>
-            Coincidencia prevista: {fmt(m.same * 100)} % · muestra:{' '}
-            {count
-              ? fmt(((counts[0] + counts[3]) / count) * 100) +
-                ' % en ' +
-                count +
-                ' pares'
-              : 'todavía sin medir'}
-          </span>
+          {inspected === 'AB' ? (
+            <span>
+              En AB, coincidencia prevista: {fmt(m.same * 100)} % · muestra:{' '}
+              {count
+                ? fmt(((counts[0] + counts[3]) / count) * 100) +
+                  ' % en ' +
+                  count +
+                  ' pares'
+                : 'todavía sin medir'}
+            </span>
+          ) : (
+            <span>
+              Probabilidades de {inspected} en{' '}
+              {inspected === 'A' ? state.basisA : state.basisB}: 0 →{' '}
+              {fmt((inspected === 'A' ? m.probabilityA0 : m.probabilityB0) * 100)} % · 1 →{' '}
+              {fmt((1 - (inspected === 'A' ? m.probabilityA0 : m.probabilityB0)) * 100)}{' '}
+              %.
+            </span>
+          )}
         </>
       }
       controls={
         <>
+          <details className="q-before-measuring">
+            <summary>¿Qué son A/B, Z/X y Bell?</summary>
+            <p>
+              A y B nombran las dos partes de cada par. Un qubit es un sistema de dos
+              niveles; los círculos son símbolos, no bolitas que se mandan mensajes. En
+              00, el primer resultado es de A y el segundo, de B.
+            </p>
+            <p>
+              Z y X son dos formas diferentes de medir cada qubit, como elegir qué
+              pregunta le hacemos. El botón junto a cada círculo cambia esa elección.
+              «Máximo entrelazamiento» prepara aquí el estado llamado Bell; «Mezcla
+              clásica» prepara al azar 00 o 11, sin la coherencia del estado de Bell.
+            </p>
+            <p>
+              Tocá A o B para leer sus probabilidades locales. Mirá AB para comparar ambos
+              registros. Cambiar la forma de medir B no cambia las probabilidades de A:
+              las coincidencias se conocen reuniendo los registros. Al medir 200 pares se
+              preparan 200 copias nuevas, no se mide 200 veces el mismo par.
+            </p>
+          </details>
           <label htmlFor="quantum-theta">Preparación θ: {state.theta}°</label>
           <input
             id="quantum-theta"
@@ -192,8 +223,9 @@ export default function EntanglementLab() {
             onChange={(e) => tune({ theta: +e.target.value })}
           />
           <p>
-            θ cambia el estado preparado; no gira los analizadores. A 0° es |00⟩ y a 45°
-            es Bell.
+            θ cambia el estado preparado; no gira los analizadores. Con «Estado puro», a
+            0° es |00⟩ y a 45° es Bell. Los botones de abajo permiten comparar esos
+            extremos sin ajustar la barra con precisión.
           </p>
           <div className="spum-console-buttons">
             <button onClick={() => tune({ theta: 0 })}>Sin entrelazar</button>
@@ -212,12 +244,8 @@ export default function EntanglementLab() {
             >
               Mezcla clásica
             </button>
-            <button onClick={() => tune({ basisA: 'Z', basisB: 'Z' })}>
-              Ambos en Z
-            </button>
-            <button onClick={() => tune({ basisA: 'X', basisB: 'X' })}>
-              Ambos en X
-            </button>
+            <button onClick={() => tune({ basisA: 'Z', basisB: 'Z' })}>Ambos en Z</button>
+            <button onClick={() => tune({ basisA: 'X', basisB: 'X' })}>Ambos en X</button>
           </div>
           <div className="spum-console-buttons">
             <button onClick={() => measure(1)}>Medir un par nuevo</button>
@@ -242,9 +270,7 @@ export default function EntanglementLab() {
                       {key.endsWith('Z') ? 'Z/Z' : 'X/X'}
                     </th>
                     <td>
-                      {references[key]
-                        ? fmt(references[key].expected * 100) + ' %'
-                        : '—'}
+                      {references[key] ? fmt(references[key].expected * 100) + ' %' : '—'}
                     </td>
                     <td>
                       {references[key]
@@ -273,9 +299,9 @@ export default function EntanglementLab() {
           </p>
           <p>
             Preparamos cos(θ)|00⟩ + sin(θ)|11⟩. Al ignorar B, A tiene probabilidades
-            propias p = cos²θ y 1−p. Su entropía es −p log₂p − (1−p) log₂(1−p). La
-            mezcla clásica elimina los términos de coherencia del estado conjunto;
-            conserva los estados locales.
+            propias p = cos²θ y 1−p. Su entropía es −p log₂p − (1−p) log₂(1−p). La mezcla
+            clásica elimina los términos de coherencia del estado conjunto; conserva los
+            estados locales.
           </p>
           <p>
             Los círculos representan sistemas abstractos de dos niveles, no esferas que
@@ -284,13 +310,15 @@ export default function EntanglementLab() {
             comunicación ordinaria.
           </p>
           <Info name="Bases Z y X">
-            Z mide en |0⟩, |1⟩. X mide en (|0⟩+|1⟩)/√2 y (|0⟩−|1⟩)/√2. En X mostramos
-            resultados 0 y 1 como etiquetas de + y −, respectivamente.
+            Una base elige qué resultados distingue el aparato. Z mide en |0⟩, |1⟩; X mide
+            en (|0⟩+|1⟩)/√2 y (|0⟩−|1⟩)/√2. En X, las etiquetas 0 y 1 de las barras
+            representan + y −. Cambiar la base no prepara un estado nuevo: cambia cómo lo
+            medimos; cada ensayo sí usa copias recién preparadas.
           </Info>
           <p>
-            Conexión con Maldacena: necesitaremos distinguir la información de una
-            región de la del sistema completo. Dos qubits enseñan esa distinción; no
-            simulan un agujero negro ni la correspondencia AdS/CFT.
+            Conexión con Maldacena: necesitaremos distinguir la información de una región
+            de la del sistema completo. Dos qubits enseñan esa distinción; no simulan un
+            agujero negro ni la correspondencia AdS/CFT.
           </p>
         </>
       }
@@ -426,14 +454,7 @@ export default function EntanglementLab() {
         </g>
         {m.probabilities.map((p, i) => (
           <g key={i}>
-            <rect
-              x={66 + i * 130}
-              y="280"
-              width="78"
-              height="76"
-              rx="4"
-              fill="#244056"
-            />
+            <rect x={66 + i * 130} y="280" width="78" height="76" rx="4" fill="#244056" />
             <rect
               x={66 + i * 130}
               y={356 - p * 76}

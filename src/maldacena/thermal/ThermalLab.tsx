@@ -3,6 +3,8 @@ import LabFrame from '../LabFrame'
 import type { Lesson } from '../LabFrame'
 import { thermalModel, integratedLength, CENTRAL_CHARGE, G3 } from './physics'
 import { useSvgScrub } from '../../shared/useSvgScrub'
+import { intervalAtEdgeX, intervalAtPlotX, roundedInterval } from './interaction'
+import type { KeyboardEvent } from 'react'
 const n = (v: number, d = 2) => v.toLocaleString('es-AR', { maximumFractionDigits: d })
 const LESSONS: readonly Lesson[] = [
   {
@@ -72,11 +74,13 @@ export default function ThermalLab() {
     setTemperature(index === 1 ? 0.24 : index === 2 ? 0.32 : index === 3 ? 0.08 : 0.16)
     setMarks([])
     setSlope(false)
+    setView(index === 2 ? 'entropy' : 'geometry')
   }
   const change = (length: number, t: number, showSlope = slope) => {
     const model = thermalModel(length, t)
     setEll(model.ell)
     setTemperature(model.t)
+    if (model.t !== 0.32) setSlope(false)
     setMarks((old) => [
       ...new Set([
         ...old,
@@ -115,9 +119,21 @@ export default function ThermalLab() {
     scaleZ = 90,
     y0 = 50,
     cx = 250
-  const dragEnd = useSvgScrub((p) =>
-    change(Math.max(0.5, Math.min(6, ((p.x - cx) / scaleX) * 2)), temperature),
-  )
+  const dragEnd = useSvgScrub((p) => change(intervalAtEdgeX(p.x), temperature))
+  const dragPlot = useSvgScrub((p) => change(intervalAtPlotX(p.x), temperature))
+  const lengthKey = (e: KeyboardEvent<SVGElement>) => {
+    if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) {
+      e.preventDefault()
+      change(
+        e.key === 'Home'
+          ? 0.5
+          : e.key === 'End'
+            ? 6
+            : roundedInterval(ell + (e.key === 'ArrowLeft' ? -0.1 : 0.1)),
+        temperature,
+      )
+    }
+  }
   const dragHeat = useSvgScrub((p) =>
     change(ell, Math.round(Math.max(0, Math.min(0.32, (285 - p.y) / 650)) * 100) / 100),
   )
@@ -126,6 +142,7 @@ export default function ThermalLab() {
     return `${cx + x * scaleX},${y0 + m.zAt(x) * scaleZ}`
   }).join(' ')
   const finiteGap = m.geometricEntropy - m.entropy
+  const finiteGapLabel = finiteGap > 0 && finiteGap < 0.0001 ? '<0,0001' : n(finiteGap, 4)
   const deltaSlope = (thermalModel(6, 0.32).entropy - thermalModel(4, 0.32).entropy) / 2
   return (
     <LabFrame
@@ -152,15 +169,22 @@ export default function ThermalLab() {
             · ℓ={n(ell)}
           </strong>
           <p>
-            S CFT={n(m.entropy)} · curva/(4G₃)={n(m.geometricEntropy)} · diferencia por
-            corte finito={n(finiteGap, 4)}.
+            {lesson === 3
+              ? `Radio físico r₊/L=${n(m.horizonRadius)} · parámetro de masa m=${n(m.massParameter)}.`
+              : lesson === 1
+                ? temperature === 0
+                  ? `Curva z*=${n(m.depth, 4)} · sin horizonte a z finito en el vacío.`
+                  : `Curva z*=${n(m.depth, 4)} · horizonte zₕ=${n(m.zh, 4)} · separación en z=${n(m.zh - m.depth, 6)} (>0).`
+                : lesson === 2 && slope
+                  ? `Entre ℓ=4 y 6: ΔS/Δℓ=${n(deltaSlope)} · tendencia térmica s=${n(m.entropyDensity)} (T=0,32).`
+                  : `S frontera=${n(m.entropy)} · curva/(4G₃)=${n(m.geometricEntropy)} · diferencia de corte=${finiteGapLabel} nats.`}
           </p>
         </>
       }
       controls={
         <>
           <label htmlFor="btz-temperature">
-            Temperatura T <output>{n(temperature)}</output>
+            Temperatura T · unidades del modelo <output>{n(temperature)}</output>
           </label>
           <input
             id="btz-temperature"
@@ -171,6 +195,7 @@ export default function ThermalLab() {
             value={temperature}
             onChange={(e) => change(ell, +e.target.value)}
           />
+          <p>Esta escala no está en kelvin ni en grados Celsius.</p>
           <label htmlFor="btz-length">
             Longitud del intervalo ℓ <output>{n(ell)}</output>
           </label>
@@ -187,6 +212,27 @@ export default function ThermalLab() {
             r₊/L={n(m.horizonRadius)} · m={n(m.massParameter)} · profundidad z*=
             {n(m.depth)}. Unidades naturales, L=1.
           </p>
+          <details>
+            <summary>Cómo leer la temperatura, el horizonte y S</summary>
+            <p>
+              ℓ es el ancho de la región verde de la frontera. T elige su temperatura en
+              unidades del modelo, no en grados Celsius. Cada ajuste compara un estado
+              estacionario nuevo; no es un vídeo de formación o evaporación.
+            </p>
+            <p>
+              La línea coral marca el horizonte. zₕ dice dónde está en el mapa; r₊/L mide
+              su tamaño físico en unidades L. Al calentar, el número zₕ disminuye y la
+              línea sube en el mapa, aunque r₊ crece: coordenada y tamaño no son lo mismo.
+              BTZ es el nombre de este modelo de agujero negro con una geometría distinta
+              a Schwarzschild.
+            </p>
+            <p>
+              S CFT calcula la entropía de la región desde la teoría de frontera;
+              curva/(4G₃) la calcula desde su geometría interior. S se expresa en nats: 1
+              nat equivale a unos 1,44 bits de información. Su pequeña diferencia se debe
+              al corte finito usado en la curva.
+            </p>
+          </details>
           <div className="spum-console-buttons">
             {(lesson === 0
               ? [0.16, 0]
@@ -213,16 +259,19 @@ export default function ThermalLab() {
                 </button>
               ))}
           </div>
-          <button
-            aria-pressed={slope}
-            onClick={() => {
-              setSlope(!slope)
-              change(ell, !slope ? 0.32 : temperature, !slope)
-            }}
-          >
-            Ver pendiente térmica
-          </button>
-          {slope && (
+          {lesson === 2 && (
+            <button
+              aria-pressed={slope}
+              onClick={() => {
+                setSlope(!slope)
+                if (!slope) setView('entropy')
+                change(ell, !slope ? 0.32 : temperature, !slope)
+              }}
+            >
+              Ver pendiente térmica
+            </button>
+          )}
+          {lesson === 2 && slope && (
             <p>
               Entre ℓ=4 y 6 a T=0,32: ΔS/Δℓ={n(deltaSlope)}; s térmica=
               {n(thermalModel(6, 0.32).entropyDensity)}. La aproximación mejora para
@@ -377,19 +426,7 @@ export default function ThermalLab() {
               aria-valuenow={ell}
               style={{ touchAction: 'none', cursor: 'ew-resize' }}
               {...dragEnd}
-              onKeyDown={(e) => {
-                if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) {
-                  e.preventDefault()
-                  change(
-                    e.key === 'Home'
-                      ? 0.5
-                      : e.key === 'End'
-                        ? 6
-                        : ell + (e.key === 'ArrowLeft' ? -0.1 : 0.1),
-                    temperature,
-                  )
-                }
-              }}
+              onKeyDown={lengthKey}
             />
             <text x="410" y="25" fill="#ffad9e" fontSize="13">
               T
@@ -463,6 +500,24 @@ export default function ThermalLab() {
               r="8"
               fill="#ffad9e"
             />
+            <circle
+              cx={45 + (ell / 6) * 405}
+              cy={286 - (m.entropy / 260) * 220}
+              r="40"
+              fill="transparent"
+              role="slider"
+              tabIndex={0}
+              aria-label="Cambiar longitud desde el gráfico de entropía"
+              aria-valuemin={0.5}
+              aria-valuemax={6}
+              aria-valuenow={ell}
+              style={{ touchAction: 'none', cursor: 'ew-resize' }}
+              {...dragPlot}
+              onKeyDown={lengthKey}
+            />
+            <text x="65" y="91" fill="#ddd2f4" fontSize="14">
+              Arrastrá el punto coral para cambiar ℓ.
+            </text>
             <text x="58" y="311" fill="#bba5ff" fontSize="13">
               Punteada: vacío
             </text>

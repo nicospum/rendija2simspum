@@ -201,6 +201,15 @@
   color: #f6d5ae;
 }
 @media (max-width: 850px) {
+  .geo-caption {
+    font-size: 24px;
+  }
+  .geo-tick {
+    font-size: 22px;
+  }
+  .geo-end-label {
+    font-size: 30px;
+  }
   .geo-hit {
     r: 48px;
   }

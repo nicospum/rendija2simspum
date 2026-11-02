@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-02",
+  "baselineCommit": "08d6b0766cfeeee5a39265654680a107babd21ea",
+  "environment": "Chromium; emulated viewport, mouse and keyboard",
+  "checks": [
+    {
+      "viewport": "390x844",
+      "cases": 32,
+      "failures": 0
+    },
+    {
+      "viewport": "320x740",
+      "cases": 32,
+      "failures": 0
+    },
+    {
+      "viewport": "667x375",
+      "cases": 32,
+      "failures": 0
+    },
+    {
+      "openHelpCases": 12,
+      "failures": 0
+    }
+  ],
+  "functional": {
+    "publishedBaselineChallenges": 16,
+    "revisedLocalChallenges": 16,
+    "countingQuestions": 4
+  },
+  "automaticTests": 355,
+  "limitations": [
+    "No physical phone or Safari",
+    "No comprehension study with new participants",
+    "No GPU/FPS measurements"
+  ]
+}

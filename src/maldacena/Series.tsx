@@ -23,10 +23,18 @@ export default function MaldacenaSeries() {
             física? Entrá por una pregunta sencilla, jugá con cada modelo y conectá las
             pistas.
           </p>
+          <p>
+            Primero vas a distinguir lo que sabemos de un par y de cada parte. Después vas
+            a medir caminos en una geometría distinta. Al final, vas a comparar dos
+            cuentas: una sobre información y otra sobre una curva. Ese es nuestro puente
+            hacia la idea de Maldacena.
+          </p>
           <a className="md-primary" href="/entrelazados/">
             Empezar por dos qubits →
           </a>{' '}
-          <a href="/entropia/#information-bridge">Antes: ¿qué cuenta la entropía?</a>
+          <a href="/entropia/#information-bridge">
+            ¿Empezás de cero? Probá contar información primero →
+          </a>
           <svg
             className="md-atlas-art"
             viewBox="0 0 900 260"
@@ -68,6 +76,27 @@ export default function MaldacenaSeries() {
           <p className="md-progress">
             {passport.completedCount(progress)} / 16 descubrimientos guardados en este
             navegador
+          </p>
+        </section>
+        <section className="md-first-steps" aria-labelledby="md-first-title">
+          <h2 id="md-first-title">Una pregunta, una prueba, una explicación.</h2>
+          <ol>
+            <li>
+              <strong>Elegí una idea.</strong> La predicción es un punto de partida; podés
+              revisarla después.
+            </li>
+            <li>
+              <strong>Tocá la escena o sus controles.</strong> Mirá el cambio y, cuando el
+              reto lo pida, registrá la comparación.
+            </li>
+            <li>
+              <strong>Conectá las pistas.</strong> Cada capítulo prepara una pregunta que
+              el siguiente ayuda a responder.
+            </li>
+          </ol>
+          <p>
+            En estos modelos, «frontera» e «interior» son dos descripciones vinculadas de
+            ciertos sistemas. No representan una pared material de nuestro universo.
           </p>
         </section>
         <div className="md-map-grid">

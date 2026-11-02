@@ -43,6 +43,8 @@ Safari y teléfonos físicos permanecen pendientes por la decisión previa del u
 
 ## Verificación de la entrega
 
+Una [segunda revisión de claridad y uso](QA_MALDACENA_SEGUIMIENTO_2026-11-02.md), realizada después de la primera publicación, añadió contexto para principiantes, lecturas locales correctas, comparación visible antes de responder y mejoras de gestos y precisión. Su cierre aprueba 355 pruebas y repite 96 estados móviles más 12 casos de ayudas abiertas. El bloque siguiente conserva la verificación de la construcción inicial.
+
 Se aprobaron las **352 pruebas** del repositorio, ESLint, TypeScript y la compilación de producción. Los agentes completaron los 16 retos nuevos y las cuatro preguntas de conteo, probaron respuestas incorrectas, teclado, arrastres reales de ratón y persistencia 16/16 después de recargar. La revisión de disposición cubrió 160 estados en 390×844, 320×740, 667×375, 568×320 y 1280×900. Se repitieron 16 comprobaciones adicionales sobre el build de producción en 320×740 y 1280×900: escena y control/predicción accesibles, sin desbordamiento. El resumen está en [qa/maldacena-2026-11-02.json](qa/maldacena-2026-11-02.json).
 
 Los hallazgos de tamaño, desplazamiento y límite frío se introdujeron durante esta construcción y se corrigieron antes de publicar. La cobertura no implica que se hayan vuelto a recorrer todos los retos de los catorce laboratorios previos en navegador; sí se ejecutó su suite automática completa. La verificación posterior del sitio público contrasta HTML, JS y CSS con la compilación local y abre de nuevo las escenas publicadas.

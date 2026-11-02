@@ -106,9 +106,9 @@ export default function CountingBridge() {
       <p className="q-eyebrow">PUENTE HACIA MALDACENA / INFORMACIÓN PARCIAL</p>
       <h2 id="q-count-title">Contar lo que no vemos.</h2>
       <p>
-        Un registro de juguete guarda 0 y 1. Tocá una casilla para revelarla u
-        ocultarla: cambia lo que sabés, no el objeto. Las variables ocultas son
-        independientes y comparten la probabilidad elegida.
+        Un registro de juguete guarda 0 y 1. Tocá una casilla para revelarla u ocultarla:
+        cambia lo que sabés, no el objeto. Las variables ocultas son independientes y
+        comparten la probabilidad elegida.
       </p>
       <div className="q-count-workspace">
         <div>
@@ -200,12 +200,8 @@ export default function CountingBridge() {
             }
           />
           <div className="q-scene-actions">
-            <button onClick={() => reveal(Array(bits).fill(false))}>
-              Ocultar todas
-            </button>
-            <button onClick={() => reveal(Array(bits).fill(true))}>
-              Mostrar todas
-            </button>
+            <button onClick={() => reveal(Array(bits).fill(false))}>Ocultar todas</button>
+            <button onClick={() => reveal(Array(bits).fill(true))}>Mostrar todas</button>
           </div>
           <label htmlFor="q-probability">
             Probabilidad de 1 en cada variable oculta: {Math.round(probability * 100)} %
@@ -249,10 +245,7 @@ export default function CountingBridge() {
         </select>
         <h3>{l.question}</h3>
         <div className="q-mini-live">
-          <div
-            className="q-mini-live-register"
-            aria-label="Registro junto a la pregunta"
-          >
+          <div className="q-mini-live-register" aria-label="Registro junto a la pregunta">
             {visible.map((known, i) => (
               <button
                 key={i}
@@ -318,6 +311,30 @@ export default function CountingBridge() {
             Comparar con el horizonte
           </button>
         )}
+        {lesson === 3 && compared && (
+          <div
+            className="q-horizon-comparison"
+            aria-label="Registro y horizonte: dos modelos distintos"
+          >
+            <h4>¿Qué comparaste?</h4>
+            <p>
+              <strong>En este registro:</strong> quedan {m.possibilities} posibilidades
+              compatibles con lo que revelaste. Su incertidumbre es{' '}
+              {pretty(m.entropyBits)} bits; también depende de las probabilidades.
+            </p>
+            <p>
+              <strong>En el agujero negro:</strong> la ley de Bekenstein–Hawking asigna
+              entropía al área del horizonte: S/kB = A/(4ℓP²). La masa cambia esa área.
+              Esta fórmula no dice que las casillas del registro sean piezas reales del
+              horizonte.
+            </p>
+            <p>
+              La conexión es la pregunta por cuánta información falta; cada modelo calcula
+              una cantidad distinta. No estamos contando los microestados de un agujero
+              negro con estas casillas.
+            </p>
+          </div>
+        )}
         <div className="q-count-feedback" role="status">
           {prediction === null
             ? 'Elegí una idea y probá el cambio. Podés corregir tu predicción.'
@@ -335,8 +352,8 @@ export default function CountingBridge() {
         )}
       </div>
       <p className="q-small-note">
-        Este puente calcula entropía de Shannon de registros clásicos. Las casillas no
-        son celdas físicas observadas, microestados identificados ni entrelazamiento.
+        Este puente calcula entropía de Shannon de registros clásicos. Las casillas no son
+        celdas físicas observadas, microestados identificados ni entrelazamiento.
       </p>
       <a className="q-next-link" href="/entrelazados/">
         Ahora probá algo distinto: el todo sabe más que sus partes →

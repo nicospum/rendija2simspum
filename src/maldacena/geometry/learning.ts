@@ -43,8 +43,7 @@ export const GEOMETRY_LESSONS: readonly Lesson[] = [
   },
   {
     title: '¿Hasta dónde llega?',
-    question:
-      'Con el mismo ε, ¿qué intervalo tiene una geodésica que alcanza mayor z?',
+    question: 'Con el mismo ε, ¿qué intervalo tiene una geodésica que alcanza mayor z?',
     choices: [
       'El intervalo más corto',
       'El intervalo más ancho',
@@ -63,23 +62,19 @@ export const DUALITY_LESSONS: readonly Lesson[] = [
       'En el vacío de esta CFT, si duplicás el intervalo manteniendo ε, ¿la entropía se duplica?',
     choices: [
       'Sí, sigue linealmente a ℓ',
-      'No: aumenta por (cCFT/3) ln 2',
+      'No: suma 13,86 nats, no se multiplica por dos',
       'No cambia',
     ],
     answer: 1,
-    hint: 'Pasá de ℓ=2 a ℓ=4 con ε=0,1 y medí. Mirá el incremento respecto de la referencia, no solo las cifras totales.',
+    hint: 'Pasá de ℓ=2 a ℓ=4 con ε=0,1 y medí. Compará el aumento respecto de la referencia: no necesitás calcular el logaritmo.',
     meaning:
-      'Para un intervalo en el vacío de una CFT₂ sobre una línea infinita, la parte universal es S=(cCFT/3) ln(ℓ/ε). Duplicar ℓ suma (cCFT/3) ln 2. La longitud geométrica se aproxima a esa misma ley al acercar el corte a la frontera.',
+      'En este ejemplo cCFT=60: duplicar ℓ suma 20 ln 2 ≈ 13,86 nats, en vez de duplicar la entropía. Un nat es una unidad de información, como el bit, pero usa logaritmo natural. Para un intervalo del vacío de una CFT₂ en una línea infinita, S=(cCFT/3) ln(ℓ/ε). La longitud geométrica se aproxima a esa misma ley al acercar el corte a la frontera.',
   },
   {
     title: 'Mover no es agrandar',
     question:
       'Si trasladás todo el intervalo sin cambiar su longitud en este vacío homogéneo, ¿qué cambia en la entropía?',
-    choices: [
-      'Aumenta hacia la derecha',
-      'Disminuye hacia la izquierda',
-      'No cambia',
-    ],
+    choices: ['Aumenta hacia la derecha', 'Disminuye hacia la izquierda', 'No cambia'],
     answer: 2,
     hint: 'Usá «Mover el intervalo a +1» o arrastrá la manija central. Mantené ℓ=2 y ε=0,1; después medí.',
     meaning:
@@ -105,7 +100,7 @@ export const DUALITY_LESSONS: readonly Lesson[] = [
       'Si comparás ℓ=2 y ℓ=4 con el mismo corte, ¿qué incremento queda al acercar ε a cero?',
     choices: [
       'Cero: se cancela todo',
-      '(cCFT/3) ln 2, independiente del corte',
+      '13,86 nats en este ejemplo, independiente del corte',
       'Un incremento que crece sin límite',
     ],
     answer: 1,
@@ -146,17 +141,12 @@ export function measure(trial: GeometryTrial): GeometryTrial {
   const marks = new Set(trial.marks)
   const same = (a: number, b: number) => Math.abs(a - b) < 0.001
   if (kind === 'geometry') {
-    if (lesson === 0 && same(s.interval, 2) && same(s.cutoff, 0.2))
-      marks.add('compare')
-    if (lesson === 1 && s.interval >= 3 && same(s.cutoff, 0.2))
-      marks.add('wide')
-    if (lesson === 2 && same(s.interval, 2) && s.cutoff <= 0.04)
-      marks.add('edge')
-    if (lesson === 3 && s.interval >= 3.9 && same(s.cutoff, 0.2))
-      marks.add('deep')
+    if (lesson === 0 && same(s.interval, 2) && same(s.cutoff, 0.2)) marks.add('compare')
+    if (lesson === 1 && s.interval >= 3 && same(s.cutoff, 0.2)) marks.add('wide')
+    if (lesson === 2 && same(s.interval, 2) && s.cutoff <= 0.04) marks.add('edge')
+    if (lesson === 3 && s.interval >= 3.9 && same(s.cutoff, 0.2)) marks.add('deep')
   } else {
-    if (lesson === 0 && same(s.interval, 4) && same(s.cutoff, 0.1))
-      marks.add('double')
+    if (lesson === 0 && same(s.interval, 4) && same(s.cutoff, 0.1)) marks.add('double')
     if (
       lesson === 1 &&
       same(s.interval, 2) &&

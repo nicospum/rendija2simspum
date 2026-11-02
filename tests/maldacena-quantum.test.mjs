@@ -65,6 +65,17 @@ test('Born calculation at nonmaximal angle matches independent X correlation exp
     near(quantumModel(theta, 'mixture', 'X', 'X').same, 0.5)
   }
 })
+
+test('local probabilities and complements stay in the physical interval at certain outcomes', () => {
+  const zx = quantumModel(0, 'pure', 'Z', 'X'),
+    xz = quantumModel(0, 'pure', 'X', 'Z')
+  assert.equal(zx.probabilityA0, 1)
+  assert.equal(1 - zx.probabilityA0, 0)
+  assert.equal(xz.probabilityB0, 1)
+  assert.equal(1 - xz.probabilityB0, 0)
+  for (const m of [zx, xz])
+    for (const p of [m.probabilityA0, m.probabilityB0]) assert.ok(p >= 0 && p <= 1)
+})
 test('sampling uses probabilities for fresh pairs with deterministic boundary checks', () => {
   let i = 0
   const draws = [0.1, 0.3, 0.6, 0.9]
@@ -117,10 +128,9 @@ test('observation keys require appropriate state and action, not a preset alone'
   assert.deepEqual(observationKeys(0, bell, 'sample'), [])
   assert.deepEqual(observationKeys(1, bell, 'sample'), ['bell'])
   assert.deepEqual(observationKeys(2, { ...bell, basisA: 'X' }, 'sample'), [])
-  assert.deepEqual(
-    observationKeys(2, { ...bell, basisA: 'X', basisB: 'X' }, 'sample'),
-    ['pure-X'],
-  )
+  assert.deepEqual(observationKeys(2, { ...bell, basisA: 'X', basisB: 'X' }, 'sample'), [
+    'pure-X',
+  ])
   assert.deepEqual(observationKeys(3, bell, 'sample'), [])
   assert.deepEqual(observationKeys(3, bell, 'local'), ['local'])
   assert.deepEqual(observationKeys(3, { ...bell, preparation: 'mixture' }, 'whole'), [])
@@ -130,5 +140,5 @@ test('a degenerate classical preparation at theta zero is also the product state
   const product = { theta: 0, preparation: 'mixture', basisA: 'Z', basisB: 'Z' }
   assert.deepEqual(observationKeys(0, product, 'sample'), ['product'])
   assert.deepEqual(observationKeys(1, product, 'sample'), ['product'])
-  assert.deepEqual(observationKeys(1, {...product, theta: 45}, 'sample'), [])
+  assert.deepEqual(observationKeys(1, { ...product, theta: 45 }, 'sample'), [])
 })

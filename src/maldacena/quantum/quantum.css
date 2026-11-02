@@ -217,6 +217,19 @@
     sans-serif;
   color: #bee4de;
 }
+.q-horizon-comparison {
+  margin-top: 16px;
+  padding: 14px;
+  border-left: 3px solid #f0d297;
+  background: #17394a;
+}
+.q-horizon-comparison h4 {
+  margin: 0;
+  color: #f0d297;
+}
+.q-horizon-comparison p {
+  margin: 8px 0 0;
+}
 .q-next-link {
   display: inline-block;
   color: #f0d297;
