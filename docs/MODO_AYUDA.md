@@ -10,6 +10,10 @@ Las explicaciones distinguen qué representa el elemento, cómo se manipula al v
 
 El modo bloquea acciones de puntero y teclado sobre el montaje mientras se consulta, incluido el zoom sobre canvas; no pausa automáticamente un reloj o simulación que ya está reproduciéndose. No modifica fórmulas, ensayos ni pasaportes. La tarjeta se retira al salir, junto con los listeners y atributos de selección temporales. Las descripciones ARIA previas se restauran.
 
+Las tarjetas de controles y asas SVG protegen el mismo conjunto de vistas visibles que las consultas 3D: se ubican al lado, debajo o encima del dibujo según el espacio disponible. Las dos vistas de un laboratorio se consideran juntas. En ventanas donde no cabe toda la escena y una tarjeta, la explicación se compacta y evita el punto consultado; se puede cerrar o salir sin reiniciar la prueba. Ctrl/Meta/Alt con flechas, Enter o Espacio tampoco acciona los controles durante la consulta; Tab y los atajos de copiar o del navegador siguen disponibles.
+
+Los menús del reto, predicción, comprobación y ampliación tienen ayuda propia: explican una acción de la interfaz en lugar de confundirla con un cambio físico. Al completar una comparación, el acceso «↑ Pregunta» pasa a «✓ Resultado» para volver a la devolución sin desplazar automáticamente el experimento mientras se manipulan variables.
+
 ## Mantenimiento
 
 - `src/education/helpContent.ts`: catálogo de explicaciones y resolución del elemento por contexto. Una anotación `data-help-title` / `data-help-body` tiene prioridad sobre el catálogo. `data-help-scope` identifica la unidad activa de Holografía.
@@ -18,4 +22,4 @@ El modo bloquea acciones de puntero y teclado sobre el montaje mientras se consu
 - `sceneHelp.ts` registra proveedores con selección y listado por escena. `SceneHelpR3F.tsx` y `sceneHelpThree.ts` resuelven geometrías Three; los shaders tienen sus propios clasificadores coherentes con el render. El registro se retira al desmontar.
 - Para contenido SVG con significado propio, anotar el grupo o el elemento; no inferir la unidad solo del texto de un número. Para un input, conservar su label e ID accesibles.
 
-Las pruebas contrastan efectos físicos opuestos entre laboratorios, prioridades de contexto, exclusión de mapas y disposición de la tarjeta. QA independiente registra pruebas reales de navegador en [QA de ayuda y Holografía](QA_AYUDA_HOLOGRAFIA_2026-11-02.md). Safari y dispositivos físicos siguen pendientes; una ventana móvil de Chromium no reemplaza esas comprobaciones.
+Las pruebas contrastan efectos físicos opuestos entre laboratorios, prioridades de contexto, exclusión de mapas y disposición de la tarjeta. Ver el pase transversal con cobertura y límites en [QA de todos los laboratorios](QA_AYUDA_TOTAL_2026-11-02.md), además de [QA de ayuda y Holografía](QA_AYUDA_HOLOGRAFIA_2026-11-02.md). Safari y dispositivos físicos siguen pendientes; una ventana móvil de Chromium no reemplaza esas comprobaciones.

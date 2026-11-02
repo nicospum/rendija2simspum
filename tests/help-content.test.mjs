@@ -43,6 +43,19 @@ test('Page explanations distinguish state, comparison hypothesis and correlation
     /no es por sí sola una medida general de entrelazamiento/,
   )
   assert.match(helpForText('/curva-de-page/', 'Dibujar la curva').body, /no es tiempo/)
+  const button = {
+    tagName: 'BUTTON',
+    textContent: 'Emitir un qubit →',
+    getAttribute: () => null,
+    ownerDocument: { querySelectorAll: () => [] },
+    closest(selector) {
+      return selector.startsWith('button,') ? this : null
+    },
+  }
+  const emission = resolveHelp('/curva-de-page/', button)
+  assert.match(emission.body, /Pasás un qubit de B/)
+  assert.match(emission.body, /recalcula su entropía/)
+  assert.match(emission.body, /no una emisión de Hawking/)
 })
 
 test('geometry explanations identify handles and regulator without inventing physical objects', () => {
@@ -59,6 +72,39 @@ test('geometry explanations identify handles and regulator without inventing phy
     /no la velocidad de la luz/,
   )
   assert.match(helpForText('/entropia/', 'masa').body, /asa para cambiar masa/)
+})
+
+test('the numeric cCFT legend explains its constants and units rather than matching CFT', () => {
+  for (const label of [
+    'cCFT=60',
+    'Misma escala: 0 a 100 nats. cCFT=60; G₃=0,025',
+  ]) {
+    const entry = helpForText('/dos-lenguajes/', label)
+    assert.match(entry.body, /carga central/)
+    assert.match(entry.body, /no la velocidad de la luz/)
+    assert.match(entry.body, /nats/)
+  }
+  assert.match(helpForText('/dos-lenguajes/', 'S CFT asintótica').body, /corte finito/)
+})
+
+test('shared challenge actions explain their action instead of a scientific scene', () => {
+  assert.match(
+    helpForText('/curva-de-page/', 'Comprobar explicación').body,
+    /predicción con observaciones/,
+  )
+  const explicit = {
+    getAttribute: (key) => ({
+      'data-help-title': 'Elegir una idea antes de probar',
+      'data-help-body': 'Registra tu predicción; no cambia las condiciones físicas.',
+    })[key] ?? null,
+  }
+  // These routes have broad scene/visor topics. Authored UI actions must win.
+  for (const route of ['hawking', 'el-tiempo-tiene-altura', 'orbita-que-no-se-cierra']) {
+    assert.equal(
+      resolveHelp(`/${route}/`, {closest: () => explicit}).body,
+      'Registra tu predicción; no cambia las condiciones físicas.',
+    )
+  }
 })
 
 test('all legacy laboratory groups have useful control or scene explanations', () => {

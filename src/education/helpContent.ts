@@ -439,7 +439,7 @@ export const HELP_TOPICS: readonly HelpTopic[] = [
   ),
   topic(
     geometry,
-    /cft|4g|dos lenguajes|holograf|residuo|diferencia/,
+    /\bcft\b|4g|dos lenguajes|holograf|residuo|diferencia/,
     'Dos cuentas de una misma región',
     'Comparamos la entropía de un intervalo de una CFT₂ con una longitud en AdS₃ dividida por 4G₃. La fórmula CFT mostrada es asintótica; el corte finito deja un residuo visible. Este caso ilustra el diccionario holográfico, no demuestra que nuestro universo tenga una pared física.',
   ),
@@ -911,7 +911,7 @@ export const COMMON_HELP: readonly Omit<HelpTopic, 'paths'>[] = [
     body: 'Abre la lista de laboratorios del especial para ubicar dónde estás y elegir el siguiente. Los capítulos relacionados comparten una pregunta de fondo; sus retos y los sellos ya guardados se conservan al navegar.',
   },
   {
-    match: /comprobar mi explicacion|empezar el primer reto/,
+    match: /comprobar (?:mi )?explicacion|empezar el primer reto/,
     title: 'Probar y explicar',
     body: 'El reto combina una predicción con observaciones requeridas. Primero explorá las condiciones indicadas; después contrastá tu explicación con lo observado. Una respuesta acertada sin las comparaciones no completa la actividad.',
   },

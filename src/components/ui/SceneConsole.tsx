@@ -176,6 +176,8 @@ export default function SceneConsole({
         {open ? (
           <select
             aria-label="Elegir reto junto a la escena"
+            data-help-title="Elegir una pregunta para explorar"
+            data-help-body="Elegís cuál de los cuatro retos querés explorar. Cada uno propone una pregunta, una predicción y observaciones distintas. Este menú cambia el reto, no una magnitud física del experimento."
             value={challenge.index}
             onChange={(event) => {
               challenge.onLesson(+event.target.value)
@@ -196,6 +198,8 @@ export default function SceneConsole({
             className="spum-challenge-toggle"
             aria-label="Ampliar visor"
             title="Ampliar el visor sin reiniciar la prueba"
+            data-help-title="Dar más lugar al experimento"
+            data-help-body="Amplía el espacio disponible para mirar la escena y conserva las condiciones de tu prueba. Cambia la distribución de la página, no la escala física ni los resultados del modelo."
             onClick={() => {
               setMode('wide')
               returnToScene()
@@ -207,11 +211,13 @@ export default function SceneConsole({
         {open && (
           <button
             className="spum-challenge-toggle"
+            data-help-title="Volver a la pregunta y el resultado"
+            data-help-body="Desplaza la página hasta la pregunta, tu predicción y la devolución del reto actual. La marca Resultado avisa que completaste la comparación. No reinicia el ensayo ni cambia las variables: podés volver a los controles con Probar en la escena."
             onClick={() =>
               question.current?.scrollIntoView({ block: 'start' })
             }
           >
-            ↑ Pregunta
+            {challenge.verified ? '✓ Resultado' : '↑ Pregunta'}
           </button>
         )}
         <button
@@ -219,6 +225,12 @@ export default function SceneConsole({
           aria-label={open ? 'Cerrar reto' : 'Mi reto'}
           aria-expanded={open}
           aria-controls={id}
+          data-help-title={
+            open
+              ? 'Cerrar la pregunta y seguir jugando'
+              : 'Abrir el reto junto a la escena'
+          }
+          data-help-body="Muestra u oculta la pregunta, la predicción y los pasos del reto junto al experimento. Conserva las condiciones del ensayo para que puedas pasar de explorar a comprobar tu idea."
           onClick={() => {
             setMode(open ? 'play' : 'challenge')
             returnToScene()
@@ -242,6 +254,8 @@ export default function SceneConsole({
               <span>Tu predicción</span>
               <select
                 aria-label="Tu predicción junto a la escena"
+                data-help-title="Elegir una idea antes de probar"
+                data-help-body="Elegí lo que esperás que ocurra y contrastalo con el experimento. No se trata de adivinar: podés cambiar tu idea después de observar. El menú registra tu explicación propuesta; no cambia las condiciones físicas."
                 value={challenge.prediction ?? ''}
                 onChange={(event) => {
                   if (event.target.value !== '')
@@ -275,7 +289,12 @@ export default function SceneConsole({
             </p>
             <div className="spum-console-buttons spum-challenge-actions">
               {challenge.onCheck && (
-                <button disabled={!ready} onClick={challenge.onCheck}>
+                <button
+                  disabled={!ready}
+                  onClick={challenge.onCheck}
+                  data-help-title="Contrastar tu explicación con lo observado"
+                  data-help-body="Compara tu predicción con las observaciones que pide el reto. Se habilita cuando elegiste una idea y completaste sus pasos; si falta algo, la línea Probá indica qué observar. No vuelve a medir ni modifica el experimento."
+                >
                   Comprobar explicación
                 </button>
               )}
@@ -295,6 +314,8 @@ export default function SceneConsole({
               )}
               <button
                 onClick={() => revealControls(controls.current)}
+                data-help-title="Volver a los controles del ensayo"
+                data-help-body="Desplaza la página hasta los mandos junto a la escena para realizar la comparación que pide el reto. Conserva la pregunta, la predicción y las condiciones actuales."
               >
                 Probar en la escena ↓
               </button>
@@ -305,7 +326,12 @@ export default function SceneConsole({
               </p>
             )}
             <details className="spum-console-help">
-              <summary>Pasos del reto y referencia</summary>
+              <summary
+                data-help-title="Consultar qué falta observar"
+                data-help-body="Despliega las observaciones necesarias para este reto y las acciones de comparación. La marca de cada paso indica si ya registraste esa observación; no dice por sí sola si tu explicación es correcta."
+              >
+                Pasos del reto y referencia
+              </summary>
               <ul>
                 {challenge.steps.map((step) => (
                   <li key={step.label}>

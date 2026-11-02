@@ -25,6 +25,56 @@ export function isLabPath(path: string) {
   return LAB_PATHS.has(path.replace(/^\/+|\/+$/g, ''))
 }
 
+/** Consultation freezes controls, including native ranges with modified arrows. */
+export function consultHelpKey(
+  key: string,
+  {
+    editable,
+    control,
+    modified,
+  }: { editable: boolean; control: boolean; modified: boolean },
+) {
+  if (key === 'Tab') return false
+  const navigationKey = [
+    'ArrowLeft',
+    'ArrowRight',
+    'ArrowUp',
+    'ArrowDown',
+    'Home',
+    'End',
+    'PageUp',
+    'PageDown',
+  ].includes(key)
+  const activationKey = key === 'Enter' || key === ' '
+  if (modified && !(control && (navigationKey || activationKey))) return false
+  return editable || activationKey || (control && navigationKey)
+}
+
+type Rect = { left: number; right: number; top: number; bottom: number }
+
+/** Union visible renderers, excluding decorative icons and off-screen sections. */
+export function visibleSceneBounds(
+  rects: readonly Rect[],
+  viewport: { width: number; height: number },
+) {
+  const visible = rects.filter(
+    (r) =>
+      r.right - r.left >= 100 &&
+      r.bottom - r.top >= 70 &&
+      r.bottom > 0 &&
+      r.top < viewport.height &&
+      r.right > 0 &&
+      r.left < viewport.width,
+  )
+  if (!visible.length) return null
+  return {
+    left: Math.min(...visible.map((r) => r.left)),
+    right: Math.max(...visible.map((r) => r.right)),
+    top: Math.min(...visible.map((r) => r.top)),
+    bottom: Math.max(...visible.map((r) => r.bottom)),
+  }
+}
+
 /** Clamp the reading card to the viewport, including narrow and short windows. */
 export function helpPosition(
   box: { left: number; right: number; top: number; bottom: number },

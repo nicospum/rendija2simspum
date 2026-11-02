@@ -78,12 +78,16 @@ export default function PageLab() {
             <button
               disabled={trial.emitted === trial.n}
               onClick={() => emit(trial.emitted + 1)}
+              data-help-title="Incluir un qubit más en la radiación R"
+              data-help-body="Pasa el próximo qubit de B, lo que queda, a la colección R, lo que reunís. Mirá cómo cambia S(R): la entropía de esa colección al ignorar B. El estado puro del conjunto se conserva; cambia qué parte estudiás. Es un reparto abstracto, no una emisión física de Hawking calculada en el tiempo."
             >
               Emitir un qubit →
             </button>
             <button
               disabled={trial.emitted === 0}
               onClick={() => emit(trial.emitted - 1)}
+              data-help-title="Revisar el reparto anterior"
+              data-help-body="Devuelve un qubit de R a B para comparar de nuevo la entropía S(R) con una colección menor, conservando la misma preparación. Rebobina el reparto abstracto del modelo: no absorbe físicamente una partícula ni borra una medición."
             >
               ← Volver un paso
             </button>

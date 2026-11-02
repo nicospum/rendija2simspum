@@ -1,7 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { resolveHelp } from './helpContent'
 import type { HelpEntry } from './helpContent'
-import { helpPosition, sceneHelpPosition } from './helpPolicy'
+import {
+  consultHelpKey,
+  helpPosition,
+  sceneHelpPosition,
+  visibleSceneBounds,
+} from './helpPolicy'
 import { availableSceneHelp, sceneHelpAt, SCENE_HELP_CHANGED } from './sceneHelp'
 import type { SceneHelpHit } from './sceneHelp'
 import './helpMode.css'
@@ -15,24 +20,29 @@ function protectedSceneRect(scene: Element) {
   const visualRects = [
     ...(workspace?.querySelectorAll('.spum-live-stage canvas,.spum-live-stage svg') ??
       []),
-  ]
-    .map((element) => element.getBoundingClientRect())
-    .filter(
-      (r) =>
-        r.width >= 100 &&
-        r.height >= 70 &&
-        r.bottom > 0 &&
-        r.top < innerHeight &&
-        r.right > 0 &&
-        r.left < innerWidth,
-    )
-  if (!visualRects.length) return scene.getBoundingClientRect()
-  return {
-    left: Math.min(...visualRects.map((r) => r.left)),
-    right: Math.max(...visualRects.map((r) => r.right)),
-    top: Math.min(...visualRects.map((r) => r.top)),
-    bottom: Math.max(...visualRects.map((r) => r.bottom)),
-  }
+  ].map((element) => element.getBoundingClientRect())
+  return visibleSceneBounds(
+    visualRects.length ? visualRects : [scene.getBoundingClientRect()],
+    { width: innerWidth, height: innerHeight },
+  )
+}
+
+/** DOM controls and SVG handles must protect the same views as WebGL objects. */
+function visualContext(target: Element) {
+  const workspace = target.closest('[data-scene-workspace]')
+  const visible = (element: Element) =>
+    visibleSceneBounds([element.getBoundingClientRect()], {
+      width: innerWidth,
+      height: innerHeight,
+    })
+  const ownVisual = target.closest('svg,canvas')
+  return (
+    workspace?.querySelector('.spum-live-stage') ??
+    (ownVisual && visible(ownVisual) ? ownVisual : undefined) ??
+    // Legacy optical controls and the question above a workspace also share
+    // the viewport with the experiment. Protect it even outside its DOM subtree.
+    [...document.querySelectorAll('.spum-live-stage,canvas')].find(visible)
+  )
 }
 
 export default function HelpMode() {
@@ -48,6 +58,7 @@ export default function HelpMode() {
     target: Element
     hit?: SceneHelpHit
     scene?: Element
+    visual?: Element
     rect?: DOMRect
   } | null>(null)
   const [objects, setObjects] = useState<readonly SceneHelpHit[]>([])
@@ -184,7 +195,10 @@ export default function HelpMode() {
         return
       }
       const entry = resolveHelp(location.pathname, target)
-      if (entry) setTip((old) => (old?.target === target ? old : { entry, target }))
+      if (entry)
+        setTip((old) =>
+          old?.target === target ? old : { entry, target, visual: visualContext(target) },
+        )
       else setTip(null)
     }
     const move = (event: PointerEvent) => {
@@ -218,7 +232,6 @@ export default function HelpMode() {
         pin(false)
         return
       }
-      if (event.key === 'Tab' || event.ctrlKey || event.metaKey || event.altKey) return
       const editable =
         event.target instanceof Element &&
         event.target.matches('input,select,textarea,[contenteditable="true"]')
@@ -228,19 +241,11 @@ export default function HelpMode() {
           'button,a,input,select,textarea,summary,[role="slider"],[role="button"],[role="switch"],[data-scene-help-surface],canvas',
         )
       if (
-        editable ||
-        ['Enter', ' '].includes(event.key) ||
-        (control &&
-          [
-            'ArrowLeft',
-            'ArrowRight',
-            'ArrowUp',
-            'ArrowDown',
-            'Home',
-            'End',
-            'PageUp',
-            'PageDown',
-          ].includes(event.key))
+        consultHelpKey(event.key, {
+          editable: Boolean(editable),
+          control: Boolean(control),
+          modified: event.ctrlKey || event.metaKey || event.altKey,
+        })
       )
         consult(event)
     }
@@ -289,8 +294,10 @@ export default function HelpMode() {
         width: document.documentElement.clientWidth || innerWidth,
         height: innerHeight,
       }
-      if (tip.scene) {
-        const rect = tip.scene.getBoundingClientRect()
+      const visual = tip.scene ?? tip.visual
+      const protectedRect = visual ? protectedSceneRect(visual) : null
+      if (visual && protectedRect) {
+        const rect = visual.getBoundingClientRect()
         const anchor =
           tip.hit?.anchor &&
           tip.rect &&
@@ -302,7 +309,17 @@ export default function HelpMode() {
               }
             : undefined
         setMarker(anchor ?? null)
-        setPosition(sceneHelpPosition(protectedSceneRect(tip.scene), viewport, anchor))
+        const targetRect = target.getBoundingClientRect()
+        setPosition(
+          sceneHelpPosition(
+            protectedRect,
+            viewport,
+            anchor ?? {
+              x: (targetRect.left + targetRect.right) / 2,
+              y: (targetRect.top + targetRect.bottom) / 2,
+            },
+          ),
+        )
       } else {
         setMarker(null)
         setPosition(
@@ -338,7 +355,7 @@ export default function HelpMode() {
         <section
           key={tip.hit?.id ?? tip.entry.title}
           id="spum-help-card"
-          className={`lab-help-card${tip.scene ? ' lab-help-scene-card' : ''}`}
+          className={`lab-help-card${tip.scene || tip.visual ? ' lab-help-scene-card' : ''}`}
           data-scene-help-id={tip.hit?.id}
           style={position}
           aria-label="Explicación del elemento"
