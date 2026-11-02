@@ -20,6 +20,7 @@ export default function ExperimentIllustration({ kind }: { kind: Experiment['id'
     )
   if (
     [
+      'holografia',
       'entrelazados',
       'espacio-con-frontera',
       'dos-lenguajes',
@@ -81,7 +82,7 @@ export default function ExperimentIllustration({ kind }: { kind: Experiment['id'
             ))}
             <circle cx="135" cy="64" r="8" fill="#a0edcf" />
             <circle cx="425" cy="64" r="8" fill="#a0edcf" />
-            {kind === 'frontera-caliente' && (
+            {(kind === 'frontera-caliente' || kind === 'holografia') && (
               <path
                 d="M65 209H495"
                 stroke="#ffad9e"
@@ -90,7 +91,9 @@ export default function ExperimentIllustration({ kind }: { kind: Experiment['id'
               />
             )}
             <text x="280" y="280" textAnchor="middle" fill="#ffd58c" fontSize="16">
-              {kind === 'dos-lenguajes'
+              {kind === 'holografia'
+                ? 'AdS / DICCIONARIO / FRONTERA CALIENTE'
+                : kind === 'dos-lenguajes'
                 ? 'S = longitud / 4G₃'
                 : kind === 'frontera-caliente'
                   ? 'FRONTERA TÉRMICA / INTERIOR BTZ'

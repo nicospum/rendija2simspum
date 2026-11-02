@@ -47,6 +47,8 @@ function Endpoint({
     <g
       {...drag}
       className="geo-handle"
+      data-help-title="Extremo del intervalo"
+      data-help-body="Este punto es un asa para elegir dónde empieza o termina la región A–B. No es una partícula. Arrastrarlo en modo juego cambia la longitud del intervalo y se recalculan el camino y las cuentas; la geodésica une esos extremos al mismo corte ε."
       role="slider"
       tabIndex={0}
       aria-label={`Extremo ${side === 'left' ? 'izquierdo' : 'derecho'} del intervalo`}
@@ -186,7 +188,11 @@ export default function GeodesicScene({
             />
           ))}
           {[-3, -2, -1, 0, 1, 2, 3].map((x) => (
-            <g key={x}>
+            <g
+              key={x}
+              data-help-title={`Coordenada x=${x}`}
+              data-help-body="Esta marca indica posición a lo largo de la frontera en las coordenadas del dibujo. No son metros euclídeos ni tiempo. La distancia física usa la métrica de AdS y depende también de la profundidad z."
+            >
               <line
                 x1={px(x)}
                 x2={px(x)}
@@ -225,6 +231,8 @@ export default function GeodesicScene({
             fill={`url(#${id}-region)`}
           />
           <path
+            data-help-title="Camino de referencia"
+            data-help-body="La curva violeta conserva el montaje de comparación del reto. Permite ver qué cambió al mover una sola variable; no es un segundo objeto físico."
             d={path(curvePoints(reference))}
             fill="none"
             stroke="#ac98e8"
@@ -241,6 +249,8 @@ export default function GeodesicScene({
             strokeWidth="4"
           />
           <path
+            data-help-title="Geodésica espacial"
+            data-help-body="La curva verde minimiza la longitud espacial entre los extremos según la métrica de AdS. No es una órbita ni la trayectoria temporal de un fotón. En el diccionario holográfico su longitud regulada se relaciona con una entropía bajo los supuestos explicados."
             d={path(points)}
             fill="none"
             stroke="#8cf3d9"
@@ -262,6 +272,8 @@ export default function GeodesicScene({
             role="slider"
             tabIndex={0}
             aria-label="Mover el centro del intervalo"
+            data-help-title="Trasladar la región completa"
+            data-help-body="La flecha es un asa: mueve A y B juntos sin cambiar su separación ni el corte. En este espacio homogéneo, trasladar el intervalo no cambia su longitud física. Sirve para distinguir posición de tamaño."
             aria-valuemin={-1}
             aria-valuemax={1}
             aria-valuenow={setup.center}
@@ -291,6 +303,8 @@ export default function GeodesicScene({
             role="slider"
             tabIndex={0}
             aria-label="Mover el corte regulador"
+            data-help-title="Corte regulador ε"
+            data-help-body="La manija rosa elige una pequeña profundidad positiva para detener la cuenta antes de la frontera ideal z=0. Acercarla a cero aumenta las longitudes reguladas y mejora el régimen asintótico del diccionario. Su regla es logarítmica: no representa la coordenada z a escala lineal ni una pared física."
             aria-valuemin={MIN_CUTOFF}
             aria-valuemax={MAX_CUTOFF}
             aria-valuenow={setup.cutoff}
@@ -468,7 +482,8 @@ export default function GeodesicScene({
           />
           <text x="40" y="321" className="geo-tick">
             Misma escala: 0 a {ENTROPY_AXIS_MAX} nats. cCFT={CENTRAL_CHARGE}
-            ; G₃={n(G3, 4)}.
+            ; G₃=
+            {n(G3, 4)}.
           </text>
         </svg>
       )}

@@ -2,7 +2,7 @@
 
 ## Recorrido disponible
 
-La portada `/maldacena/` conecta cinco laboratorios y su pasaporte local de 20 descubrimientos. Cada capítulo tiene cuatro predicciones y una lista explícita de observaciones requeridas. La actividad previa de conteo está integrada en `/entropia/#information-bridge`: cuatro preguntas sobre variables clásicas, probabilidades y unidades. No añade una tarjeta vacía ni modifica el estado físico del horizonte.
+La portada `/maldacena/` conecta tres laboratorios y su pasaporte local de 20 descubrimientos. Holografía reúne las tres unidades de geometría, diccionario y temperatura, con doce retos; Entrelazados y Page permanecen separados. Las cinco unidades internas conservan sus sellos previos. Cada unidad tiene cuatro predicciones y una lista explícita de observaciones requeridas. La actividad previa de conteo está integrada en `/entropia/#information-bridge`: cuatro preguntas sobre variables clásicas, probabilidades y unidades. No añade una tarjeta vacía ni modifica el estado físico del horizonte.
 
 1. `/entrelazados/`: estado puro `cosθ|00⟩+sinθ|11⟩`, mezcla clásica comparable, analizadores Z/X y muestras de Born de pares preparados de nuevo. Entropías de von Neumann del estado conjunto y de sus partes, separadas de la incertidumbre de los resultados de medición.
 2. `/espacio-con-frontera/`: corte espacial de AdS₃ en coordenadas de Poincaré. Asas de extremos, centro y corte; comparación entre recta de coordenadas y geodésica espacial según la métrica.
@@ -25,13 +25,15 @@ En BTZ, `zₕ=1/(2πT)`, en unidades naturales. Con extremos regulados, `z*²=z�
 
 La entropía térmica de la radiación de Hawking del capítulo anterior no es la entropía fina de entrelazamiento de la radiación. No se reutiliza como curva de Page. Estos modelos no prueban que nuestro universo tenga una frontera AdS, una pared de bits o un holograma óptico.
 
+La ruta canónica `/holografia/` ofrece las tres subsecciones en un solo laboratorio. La [documentación de unificación](HOLOGRAFIA_UNIFICACION.md) explica los enlaces y la conservación del progreso.
+
 ## Implementación y uso
 
 Se conserva Vite/React y no se añaden dependencias. `src/maldacena/main.tsx` carga cada capítulo por separado. `LabFrame` reutiliza `SceneConsole`, con escena y controles contiguos en escritorio, escena fija durante el reto en móvil y visor amplio recuperable. Las gráficas SVG se calculan a partir del modelo; asas con captura de puntero y controles de teclado, botones nativos y barras equivalentes permiten explorar sin depender del ratón.
 
 La información extensa queda fuera de la escena o en desplegables. Se distinguen resultados exactos, muestras aleatorias y ayudas gráficas. Cada cambio tiene una lectura HTML; la validación requiere observaciones y predicción adecuada, no solo abrir un capítulo. El progreso usa el esquema defensivo existente con la clave nueva `spum.maldacena.passport.v1`; almacenamiento bloqueado o corrupto no impide jugar ni borra los otros especiales.
 
-Ejecutar con Node ≥22.18: `npm ci`, `npm run dev`; comprobar `npm test`, `npm run lint` y `npm run build`. Se compilan 23 entradas HTML: 19 laboratorios, portada y tres especiales. Para revisión local aislada: `npm run dev -- --port 1027 --strictPort`.
+Ejecutar con Node ≥22.18: `npm ci`, `npm run dev`; comprobar `npm test`, `npm run lint` y `npm run build`. Se compilan 24 entradas HTML: 17 laboratorios en el catálogo, tres rutas históricas compatibles, portada y tres especiales. Para revisión local aislada: `npm run dev -- --port 1027 --strictPort`.
 
 ## Fuentes primarias
 

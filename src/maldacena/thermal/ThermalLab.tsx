@@ -158,7 +158,10 @@ export default function ThermalLab() {
       }}
       prediction={prediction}
       onPredict={setPrediction}
-      steps={required.map((key) => ({ label: labels[key], done: marks.includes(key) }))}
+      steps={required.map((key) => ({
+        label: labels[key],
+        done: marks.includes(key),
+      }))}
       onRestore={() => setup(lesson)}
       readout={
         <>
@@ -355,7 +358,12 @@ export default function ThermalLab() {
         {view === 'geometry' ? (
           <>
             {[1, 2, 3, 4].map((z) => (
-              <g key={z} opacity=".4">
+              <g
+                key={z}
+                opacity=".4"
+                data-help-title={`Profundidad z=${z}`}
+                data-help-body="Es una coordenada de profundidad del exterior BTZ. Aumenta hacia abajo en este mapa; no es una distancia física euclídea ni el radio areal r₊. Por eso un horizonte que sube al calentar puede tener un radio areal mayor."
+              >
                 <path
                   d={`M35 ${y0 + z * scaleZ}H440`}
                   stroke="#9c91be"
@@ -406,7 +414,14 @@ export default function ThermalLab() {
                 T=0: límite de vacío · sin horizonte finito
               </text>
             )}
-            <polyline points={points} fill="none" stroke="#a0edcf" strokeWidth="4" />
+            <polyline
+              data-help-title="Curva espacial en el exterior BTZ"
+              data-help-body="Esta geodésica espacial une los extremos regulados de la región. Al aumentar su longitud se acerca al horizonte desde afuera; no lo cruza. No es una trayectoria de caída libre o un rayo de luz."
+              points={points}
+              fill="none"
+              stroke="#a0edcf"
+              strokeWidth="4"
+            />
             <circle
               cx={cx + (ell / 2) * scaleX}
               cy={y0 + m.eps * scaleZ}
@@ -421,6 +436,8 @@ export default function ThermalLab() {
               role="slider"
               tabIndex={0}
               aria-label="Arrastrar longitud del intervalo térmico"
+              data-help-title="Asa del intervalo térmico"
+              data-help-body="Este punto es un control geométrico: al arrastrarlo en modo juego elegís la longitud ℓ de la región de frontera. La curva interior y su entropía se recalculan. No es una partícula que cae ni una señal de luz."
               aria-valuemin={0.5}
               aria-valuemax={6}
               aria-valuenow={ell}
@@ -453,6 +470,8 @@ export default function ThermalLab() {
               role="slider"
               tabIndex={0}
               aria-label="Termómetro de la frontera"
+              data-help-title="Temperatura de la frontera"
+              data-help-body="El termómetro selecciona otro estado térmico de esta familia BTZ, en unidades naturales. Al subir T cambia la curva y el horizonte: su coordenada zₕ disminuye, mientras el radio areal r₊ aumenta. No anima un colapso o una evaporación real."
               aria-valuemin={0}
               aria-valuemax={0.32}
               aria-valuenow={temperature}
@@ -508,6 +527,8 @@ export default function ThermalLab() {
               role="slider"
               tabIndex={0}
               aria-label="Cambiar longitud desde el gráfico de entropía"
+              data-help-title="Elegir una región desde la gráfica"
+              data-help-body="El punto coral es un asa. Su posición horizontal elige la longitud del intervalo y su altura muestra la entropía CFT calculada en nats para T actual. La curva punteada es la referencia de vacío. No es una partícula ni una temperatura que evoluciona con el tiempo."
               aria-valuemin={0.5}
               aria-valuemax={6}
               aria-valuenow={ell}

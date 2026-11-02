@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 import { usePassportStore } from '../shared/usePassportStore'
-import { chapters, passport } from './catalog'
+import { chapters, laboratories, passport } from './catalog'
 import { experiments } from '../portal/catalog'
 import { JourneyNavigation } from './LabFrame'
 export default function MaldacenaSeries() {
@@ -25,10 +25,10 @@ export default function MaldacenaSeries() {
             pistas.
           </p>
           <p>
-            Primero vas a distinguir lo que sabemos de un par y de cada parte. Después vas
-            a medir caminos en una geometría distinta. Al final, vas a comparar dos
-            cuentas: una sobre información y otra sobre una curva. Ese es nuestro puente
-            hacia la idea de Maldacena.
+            Empezá distinguiendo el todo de sus partes con dos qubits. Después entrá en
+            Holografía: un solo laboratorio con geometría AdS, el diccionario entre
+            información y longitudes, y una frontera caliente. La curva de Page tiene su
+            propio laboratorio para investigar la paradoja de la información.
           </p>
           <a className="md-primary" href="/entrelazados/">
             Empezar por dos qubits →
@@ -101,10 +101,10 @@ export default function MaldacenaSeries() {
           </p>
         </section>
         <div className="md-map-grid">
-          {chapters.map((c, i) => (
+          {laboratories.map((c, i) => (
             <a
               className="md-chapter"
-              href={`/${c.id}/`}
+              href={c.href}
               key={c.id}
               style={{ '--chapter-color': c.color } as CSSProperties}
             >
@@ -112,14 +112,17 @@ export default function MaldacenaSeries() {
                 {c.symbol}
               </span>
               <p className="md-eyebrow">
-                CAPÍTULO {i + 1} / {chapters.length}
+                LABORATORIO {i + 1} / {laboratories.length}
               </p>
               <h2>{c.title}</h2>
               <p>
                 <strong>{c.question}</strong>
               </p>
               <p>{c.detail}</p>
-              <small>{progress[c.id].length} / 4 retos · Entrar y jugar →</small>
+              <small>
+                {c.chapterIds.reduce((sum, id) => sum + progress[id].length, 0)} /{' '}
+                {c.chapterIds.length * 4} retos · Entrar y jugar →
+              </small>
             </a>
           ))}
         </div>

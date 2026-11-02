@@ -1,3 +1,4 @@
+import { mountLabHelp } from '../education/mountLabHelp'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import EntropyApp from './App'
@@ -9,3 +10,5 @@ createRoot(document.getElementById('root')!).render(
     <EntropyApp />
   </StrictMode>,
 )
+
+mountLabHelp()

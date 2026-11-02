@@ -240,6 +240,8 @@ export default function HorizonMap({
                 role="slider"
                 tabIndex={0}
                 aria-label="Cambiar área de ejemplo en la escena"
+                data-help-title="Manija de un ejemplo algebraico"
+                data-help-body="Arrastrar aquí cambia el área de un ejemplo pequeño para visualizar la división por cuatro. No modifica la masa del agujero negro del montaje. Las casillas son una ayuda de conteo, no celdas de Planck observadas ni bits individuales."
                 aria-valuemin={4}
                 aria-valuemax={64}
                 aria-valuenow={exampleArea}
@@ -384,6 +386,8 @@ export default function HorizonMap({
                   role="slider"
                   tabIndex={0}
                   aria-label="Cambiar masa inicial desde el horizonte"
+                  data-help-title="Cambiar la masa desde el borde"
+                  data-help-body="Este punto es un asa de control, no una partícula sobre el horizonte. Arrastrarlo en modo juego cambia la masa inicial: el radio crece proporcionalmente a M, el área y la entropía como M². La escala de referencia permanece fija para que se note el efecto."
                   aria-valuemin={5}
                   aria-valuemax={20}
                   aria-valuenow={mass}
@@ -453,6 +457,8 @@ export default function HorizonMap({
                   role="slider"
                   tabIndex={0}
                   aria-label="Emitir masa desde el cuadro de área"
+                  data-help-title="Elegir cuánta masa se emitió"
+                  data-help-body="El punto en la esquina del cuadrado es una manija para avanzar o retroceder la fracción emitida del modelo. El cuadrado representa el cociente de áreas del horizonte: al reducirse la masa disminuyen área y entropía del agujero negro. No es una partícula ni la superficie física del horizonte."
                   aria-valuemin={0}
                   aria-valuemax={0.5}
                   aria-valuenow={emitted}

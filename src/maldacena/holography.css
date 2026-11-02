@@ -1,0 +1,47 @@
+.md-holography-tabs {
+  margin: 10px 0 22px;
+  color: #ded8f3;
+}
+.md-holography-tabs > p {
+  font:
+    11px/1.6 Consolas,
+    monospace;
+  letter-spacing: 1px;
+}
+.md-holography-tabs > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 8px 0;
+}
+.md-holography-tabs a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  border: 1px solid #817398;
+  border-radius: 6px;
+  padding: 9px 12px;
+  text-decoration: none;
+  background: #28263c;
+  font-size: 13px;
+}
+.md-holography-tabs a[aria-current] {
+  background: #244c4b;
+  border-color: #a0edcf;
+  color: #d5fff0;
+}
+.md-holography-tabs small {
+  display: block;
+  max-width: 700px;
+  line-height: 1.6;
+}
+.md-holography-heading {
+  font:
+    600 clamp(23px, 3vw, 33px) / 1.2 Georgia,
+    serif;
+  margin-bottom: 12px;
+}
+.md-holography-context {
+  border-left: 3px solid #bba5ff;
+  padding-left: 16px;
+}

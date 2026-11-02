@@ -1,8 +1,10 @@
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import type { ReactNode } from 'react'
 import SceneConsole from '../components/ui/SceneConsole'
 import { LabMission } from '../components/ui/LabJourney'
-import { chapters, passport } from './catalog'
+import { chapters, laboratories, chapterHref, passport } from './catalog'
+import { HolographyContext } from './HolographyContext'
+import HolographyNavigation from './HolographyNavigation'
 import type { ChapterId } from './catalog'
 import './maldacena.css'
 
@@ -15,19 +17,27 @@ export interface Lesson {
   meaning: string
 }
 export function JourneyNavigation({ id }: { id?: string }) {
-  const index = chapters.findIndex((c) => c.id === id)
+  const index = laboratories.findIndex((c) =>
+    c.chapterIds.some((chapterId) => chapterId === id),
+  )
+  const unitIndex = chapters.findIndex((c) => c.id === id)
   return (
     <nav className="md-journey" aria-label="Recorrido Maldacena">
       <a href="/maldacena/">↟ Mapa del especial</a>
       <details>
         <summary>
-          Los {chapters.length} capítulos{' '}
-          {index >= 0 && `· ${index + 1}/${chapters.length}`}
+          Los {laboratories.length} laboratorios{' '}
+          {index >= 0 && `· ${index + 1}/${laboratories.length}`}
         </summary>
         <ol>
-          {chapters.map((c) => (
+          {laboratories.map((c) => (
             <li key={c.id}>
-              <a href={`/${c.id}/`} aria-current={id === c.id ? 'page' : undefined}>
+              <a
+                href={c.href}
+                aria-current={
+                  c.chapterIds.some((chapterId) => chapterId === id) ? 'page' : undefined
+                }
+              >
                 {c.title}
               </a>
             </li>
@@ -37,10 +47,16 @@ export function JourneyNavigation({ id }: { id?: string }) {
       {index >= 0 && (
         <a
           href={
-            index < chapters.length - 1 ? `/${chapters[index + 1].id}/` : '/maldacena/'
+            unitIndex < chapters.length - 1
+              ? chapterHref(chapters[unitIndex + 1].id)
+              : '/maldacena/'
           }
         >
-          {index < chapters.length - 1 ? 'Siguiente capítulo →' : 'Volver al recorrido →'}
+          {unitIndex < chapters.length - 1
+            ? index === 1 && unitIndex < 3
+              ? 'Siguiente sección →'
+              : 'Siguiente laboratorio →'
+            : 'Volver al recorrido →'}
         </a>
       )}
     </nav>
@@ -79,6 +95,7 @@ export default function LabFrame({
   explanation: ReactNode
   sources: readonly { label: string; url: string }[]
 }) {
+  const holography = useContext(HolographyContext)
   const current = lessons[lesson]
   const observed = steps.length > 0 && steps.every((s) => s.done)
   const verified = observed && prediction === current.answer
@@ -88,6 +105,10 @@ export default function LabFrame({
     if (verified && chapters.some((c) => c.id === id))
       passport.saveCompleted(id as ChapterId, [lesson])
   }, [verified, id, lesson])
+  useEffect(() => {
+    if (holography?.focusScene)
+      document.getElementById('md-map')?.scrollIntoView({ block: 'start' })
+  }, [holography?.section, holography?.focusScene])
   return (
     <div className="md-shell">
       <a className="md-skip" href="#md-map">
@@ -101,7 +122,19 @@ export default function LabFrame({
         <JourneyNavigation id={id} />
         <section className="md-intro">
           <p className="md-eyebrow">ESPECIAL MALDACENA / JUGAR · MEDIR · CONECTAR</p>
-          <h1>{title}</h1>
+          <h1>{holography ? 'Holografía: geometría y frontera' : title}</h1>
+          {holography && (
+            <>
+              <p className="md-holography-context">
+                Primero explorá la geometría de anti-de Sitter (AdS); después conectá una
+                longitud con información y calentá la frontera. La primera sección prepara
+                el lenguaje geométrico: por sí sola no demuestra holografía. AdS y de
+                Sitter (dS) son espacios distintos.
+              </p>
+              <HolographyNavigation />
+              <h2 className="md-holography-heading">{title}</h2>
+            </>
+          )}
           <p>{intro}</p>
           <a className="md-primary" data-scene-play href="#md-map">
             Entrar y probar ↓
@@ -123,6 +156,7 @@ export default function LabFrame({
           data-scene-workspace
           tabIndex={-1}
           aria-label={`Laboratorio ${title}`}
+          data-help-scope={id}
         >
           <div className="spum-live-stage md-stage">
             <div className="md-drawing">{children}</div>
@@ -152,6 +186,7 @@ export default function LabFrame({
               onRestore,
             }}
           >
+            {holography && <HolographyNavigation compact />}
             {controls}
           </SceneConsole>
         </section>

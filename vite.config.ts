@@ -40,6 +40,7 @@ export default defineConfig({
         dosLenguajes: 'dos-lenguajes/index.html',
         fronteraCaliente: 'frontera-caliente/index.html',
         curvaDePage: 'curva-de-page/index.html',
+        holografia: 'holografia/index.html',
       },
       output: {
         manualChunks(id) {

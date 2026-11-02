@@ -134,7 +134,7 @@ export function GeometryExperience({ kind }: { kind: LabKind }) {
       </div>
       <p role="status">
         {currentRecorded
-          ? `Esta lectura está registrada. Guardaste ${trial.measurements} comparación${trial.measurements === 1 ? '' : 'es'} en este reto.`
+          ? `Esta lectura está registrada. Guardaste ${trial.measurements} ${trial.measurements === 1 ? 'comparación' : 'comparaciones'} en este reto.`
           : lastRecord
             ? `Lectura en vivo sin registrar. Tu última medida usó ℓ=${n(lastRecord.interval)}, centro=${n(lastRecord.center)} y ε=${n(lastRecord.cutoff)}.`
             : 'Las cifras cambian en vivo. Tocá el botón de medir para guardar una comparación y avanzar en el reto.'}
@@ -320,8 +320,8 @@ export function GeometryExperience({ kind }: { kind: LabKind }) {
             <h3>La pregunta que viene</h3>
             <p>
               ¿Qué tendría que ver esta longitud con la información que
-              falta al observar una sola región? En el siguiente
-              laboratorio, una relación de holografía conecta ambas cuentas.
+                falta al observar una sola región? En la siguiente
+                sección, una relación de holografía conecta ambas cuentas.
             </p>
           </>
         ) : (

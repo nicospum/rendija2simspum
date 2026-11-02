@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-02",
+  "scope": {
+    "laboratoriesInCatalog": 17,
+    "labRoutesIncludingAliases": 20,
+    "excludedHubs": 4,
+    "maldacenaLabs": 3,
+    "holographyChallenges": 12,
+    "maldacenaChallenges": 20,
+    "legacyPassportPreserved": true
+  },
+  "automated": {
+    "passedTests": 376,
+    "lint": "pass",
+    "typescript": "pass",
+    "buildHtmlEntries": 24,
+    "newDependencies": 0
+  },
+  "independentBrowserQA": {
+    "routes": 20,
+    "rangeConsultDoesNotChangeValue": true,
+    "sizes": [
+      "1280x900",
+      "390x844",
+      "320x740",
+      "667x375"
+    ],
+    "completedHolographyChallenges": 3,
+    "negativePrediction": true,
+    "legacyLinks": true,
+    "history": true,
+    "helpOffRestoresInteraction": true,
+    "consoleErrors": 0
+  },
+  "primaryBrowserQA": {
+    "completedHolographyChallenges": 12,
+    "size": "390x844",
+    "productionPreview": "Page help at 320x740; value preserved; card/dock gap 12px"
+  },
+  "helpContent": {
+    "labTopics": 144,
+    "interfaceTopics": 15,
+    "domInventoryControls": 883,
+    "svgAnnotations": [
+      "Page axes, handles, references, qubit indices",
+      "AdS handles, x coordinates, geodesic",
+      "BTZ handles, depth coordinates",
+      "Entropy mass/emission/example handles"
+    ],
+    "canvasScope": "Whole scene, not per-object raycasting"
+  },
+  "pending": [
+    "Safari",
+    "Physical phones and real touch gestures",
+    "Novice participant study"
+  ],
+  "publicVerification": "Recorded separately after deployment in local QA artifacts"
+}

@@ -132,6 +132,8 @@ export default function PageScene({
               tabIndex={k < n ? 0 : -1}
               aria-disabled={k === n}
               aria-label="Pasar un qubit de B a R"
+              data-help-title="B: lo que todavía queda"
+              data-help-body="El círculo agrupa los qubits que aún no incluís en la radiación R. Tocarlo en modo juego pasa uno a R: cambia qué parte estudiás, conservando el estado puro conjunto. No representa un horizonte geométrico a escala."
               onClick={() => k < n && select(k + 1)}
               onKeyDown={(event) => k < n && buttonKey(event, k + 1)}
             >
@@ -192,6 +194,8 @@ export default function PageScene({
               tabIndex={k > 0 ? 0 : -1}
               aria-disabled={k === 0}
               aria-label="Devolver un qubit de R a B"
+              data-help-title="R: la radiación reunida"
+              data-help-body="Este recuadro reúne los qubits que elegiste estudiar como radiación. Tocarlo en modo juego devuelve uno a B para revisar otro reparto; es rebobinar el modelo, no absorber físicamente una partícula real."
               onClick={() => k > 0 && select(k - 1)}
               onKeyDown={(event) => k > 0 && buttonKey(event, k - 1)}
             >
@@ -209,6 +213,14 @@ export default function PageScene({
               {Array.from({ length: n }, (_, i) => (
                 <g
                   key={i}
+                  data-help-title={
+                    i < k ? `Qubit ${i + 1} de R` : 'Lugar para un qubit de R'
+                  }
+                  data-help-body={
+                    i < k
+                      ? 'El número identifica este qubit dentro de la colección; no es un resultado de medición ni su valor cuántico. Un qubit tiene dos niveles, pero la información del conjunto incluye sus correlaciones. Compará la cuenta conjunta con la suma por separado.'
+                      : 'Este casillero punteado está vacío: ese qubit todavía queda en B. Al cambiar el reparto se incorpora a la colección R; los casilleros ordenan el modelo, no dibujan posiciones físicas de partículas.'
+                  }
                   transform={`translate(${302 + (i % 4) * 44},${109 + Math.floor(i / 4) * 58})`}
                 >
                   <rect
@@ -271,6 +283,8 @@ export default function PageScene({
               role="slider"
               tabIndex={0}
               aria-label="Cambiar reparto de qubits desde la escena"
+              data-help-title="Asa para cambiar el reparto"
+              data-help-body="El punto verde es una manija de la interfaz, no una partícula. Arrastralo en modo juego para elegir cuántos qubits están en R. S(R) se recalcula al ignorar los que quedan en B; la preparación cuántica completa no cambia."
               aria-valuemin={0}
               aria-valuemax={n}
               aria-valuenow={k}
@@ -285,7 +299,11 @@ export default function PageScene({
               S(R) · bits
             </text>
             {[0, n / 2, n].map((value) => (
-              <g key={value}>
+              <g
+                key={value}
+                data-help-title={`Escala vertical: ${value} bits`}
+                data-help-body="Es una marca del eje de entropía S(R), no una cantidad de partículas. Un bit es la unidad de esta cuenta cuántica. La altura de la curva, no la marca por sí sola, dice la entropía del reparto elegido; cero corresponde aquí a R vacío o al conjunto puro completo."
+              >
                 <path
                   d={`M64 ${y(value)}H456`}
                   stroke="#756d90"
@@ -300,6 +318,8 @@ export default function PageScene({
             <path d="M64 50V250H456" fill="none" stroke="#b7b0cd" strokeWidth="1.5" />
             {showThermal && (
               <polyline
+                data-help-title="Referencia independiente"
+                data-help-body="La línea coral supone qubits independientes y máximamente mezclados: cada uno aporta un bit, por lo que suma k bits. Es otra hipótesis de descripción; no cambia el estado puro calculado ni reproduce todo el cálculo gravitatorio de Hawking."
                 points={line('thermal')}
                 stroke="#ffad9e"
                 strokeWidth="3"
@@ -307,6 +327,8 @@ export default function PageScene({
               />
             )}
             <polyline
+              data-help-title="Límite por tamaño"
+              data-help-body="La línea gris marca min(k,N−k) bits: la entropía de una parte de un estado puro no puede superar la capacidad de la parte menor. Es una cota; no es la entropía calculada ni la fórmula de Bekenstein–Hawking."
               points={line('bound')}
               stroke="#85829a"
               strokeWidth="2"
@@ -315,6 +337,8 @@ export default function PageScene({
             />
             {showAverage && (
               <polyline
+                data-help-title="Promedio de Page"
+                data-help-body="La línea dorada da la entropía media entre muchos estados puros aleatorios complejos. La verde pertenece a una preparación concreta y puede fluctuar alrededor de esta media."
                 points={line('average')}
                 stroke="#ffd58c"
                 strokeWidth="3"
@@ -327,6 +351,8 @@ export default function PageScene({
               fill={`url(#${id}-curve)`}
             />
             <polyline
+              data-help-title="Entropía del estado elegido"
+              data-help-body="Cada punto verde se obtiene de la matriz cuántica reducida de R para esa preparación. Primero puede crecer por las correlaciones con B; al reunir todo en R, el estado conjunto es puro y su entropía vuelve a cero."
               points={line('entropy')}
               stroke="#a0edcf"
               strokeWidth="4"
@@ -365,6 +391,8 @@ export default function PageScene({
               role="slider"
               tabIndex={0}
               aria-label="Cambiar reparto desde la curva de Page"
+              data-help-title="Tu reparto actual en la curva"
+              data-help-body="La posición horizontal indica cuántos qubits reuniste en R; la altura es su entropía conjunta en bits. El punto grande se arrastra para cambiar el reparto. No es un qubit viajando ni una posición en el espacio."
               aria-valuemin={0}
               aria-valuemax={n}
               aria-valuenow={k}
@@ -375,6 +403,8 @@ export default function PageScene({
             {Array.from({ length: n + 1 }, (_, i) => (
               <text
                 key={i}
+                data-help-title={`${i} qubits en la radiación R`}
+                data-help-body={`Esta marca horizontal cuenta qubits incluidos en R, de un total de ${n}. No mide segundos ni porcentaje de masa evaporada. Cambiar el reparto permite comparar cómo una parte incierta termina formando el conjunto puro completo.`}
                 x={x(i)}
                 y="273"
                 className="pg-axis-label"

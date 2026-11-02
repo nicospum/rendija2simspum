@@ -1,0 +1,116 @@
+.lab-help {
+  --help-paper: #f4f5ed;
+  --help-ink: #15313a;
+  --help-accent: #57ccb9;
+  color: var(--help-ink);
+  font:
+    14px/1.5 'Segoe UI',
+    Arial,
+    sans-serif;
+}
+.lab-help button {
+  font: inherit;
+  cursor: pointer;
+  min-height: 44px;
+  min-width: 44px;
+}
+.lab-help-dock {
+  position: fixed;
+  z-index: 2000;
+  right: max(12px, env(safe-area-inset-right));
+  bottom: max(12px, env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lab-help-dock > span {
+  max-width: 280px;
+  padding: 5px 9px;
+  border-radius: 6px;
+  background: var(--help-paper);
+  box-shadow: 0 3px 18px #0005;
+  font-size: 12px;
+}
+.lab-help-toggle {
+  border: 1px solid #9ae6d8;
+  border-radius: 24px;
+  padding: 7px 16px;
+  color: #eafff6;
+  background: #173c48;
+  box-shadow: 0 3px 16px #0005;
+}
+.lab-help-toggle[aria-pressed='true'] {
+  color: #102d32;
+  background: #a0edcf;
+}
+.lab-help-card {
+  position: fixed;
+  z-index: 2001;
+  box-sizing: border-box;
+  max-height: min(290px, calc(100svh - 96px));
+  overflow-y: auto;
+  padding: 12px 16px;
+  border: 2px solid var(--help-accent);
+  border-radius: 12px;
+  color: var(--help-ink);
+  background: var(--help-paper);
+  box-shadow: 0 10px 36px #0007;
+}
+.lab-help-card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.lab-help-card-heading strong {
+  font-size: 16px;
+}
+.lab-help-card-heading button {
+  flex: 0 0 44px;
+  border: 0;
+  border-radius: 8px;
+  background: #15313a14;
+  color: var(--help-ink);
+  font-size: 24px;
+}
+.lab-help-card p {
+  margin: 6px 0 0;
+}
+.lab-help button:focus-visible {
+  outline: 3px solid #f5bd5e;
+  outline-offset: 3px;
+}
+html[data-lab-help='true'] [data-help-selected] {
+  outline: 2px dashed #ffd58c;
+  outline-offset: 3px;
+}
+html[data-lab-help='true'] canvas,
+html[data-lab-help='true'] svg {
+  cursor: help;
+}
+@media (max-width: 600px) {
+  .lab-help-dock {
+    left: 12px;
+    justify-content: flex-end;
+  }
+  .lab-help-dock > span {
+    max-width: 155px;
+    font-size: 11px;
+    line-height: 1.3;
+  }
+  .lab-help-card {
+    left: 12px !important;
+    top: auto !important;
+    bottom: calc(82px + env(safe-area-inset-bottom));
+    width: calc(100% - 24px) !important;
+    max-height: min(250px, 34svh);
+  }
+}
+@media (max-height: 480px) and (min-width: 601px) {
+  .lab-help-card {
+    max-height: calc(100svh - 90px);
+  }
+  .lab-help-dock > span {
+    max-width: 210px;
+  }
+}

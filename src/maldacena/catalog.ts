@@ -46,6 +46,48 @@ export const chapters = [
   },
 ] as const
 export type ChapterId = (typeof chapters)[number]['id']
+
+// Learning-unit IDs remain stable so earlier discoveries keep their passport stamps.
+export const holographySections = [
+  { ...chapters[1], slug: 'geometria', label: 'Geometría AdS' },
+  { ...chapters[2], slug: 'diccionario', label: 'Dos lenguajes' },
+  { ...chapters[3], slug: 'temperatura', label: 'Frontera caliente' },
+] as const
+export type HolographySection = (typeof holographySections)[number]['slug']
+export const laboratories = [
+  { ...chapters[0], href: '/entrelazados/', chapterIds: [chapters[0].id] },
+  {
+    id: 'holografia',
+    title: 'Holografía: geometría y frontera',
+    question: '¿Cómo se traduce información en geometría?',
+    detail:
+      'Un laboratorio, tres secciones: geometría AdS, el diccionario holográfico y una frontera caliente.',
+    symbol: '≍',
+    color: '#bba5ff',
+    href: '/holografia/',
+    chapterIds: [chapters[1].id, chapters[2].id, chapters[3].id],
+  },
+  { ...chapters[4], href: '/curva-de-page/', chapterIds: [chapters[4].id] },
+] as const
+export function chapterHref(id: string) {
+  const section = holographySections.find((section) => section.id === id)
+  return section ? `/holografia/?seccion=${section.slug}` : `/${id}/`
+}
+export function resolveHolographySection(
+  pathname: string,
+  hash: string,
+  search = '',
+): HolographySection {
+  const explicit = holographySections.find((section) => hash === `#${section.slug}`)
+  if (explicit) return explicit.slug
+  const requested = new URLSearchParams(search).get('seccion')
+  const queried = holographySections.find((section) => section.slug === requested)
+  if (queried) return queried.slug
+  const legacy = holographySections.find(
+    (section) => pathname.replace(/\/$/, '') === `/${section.id}`,
+  )
+  return legacy?.slug ?? 'geometria'
+}
 export const passport = createPassportStore(
   chapters.map((c) => c.id),
   'spum.maldacena.passport.v1',

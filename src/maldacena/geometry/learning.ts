@@ -52,7 +52,7 @@ export const GEOMETRY_LESSONS: readonly Lesson[] = [
     answer: 1,
     hint: 'Conservá ε=0,2, llevá ℓ a 4 y medí. Compará la profundidad máxima con la referencia punteada de ℓ=2.',
     meaning:
-      'La profundidad máxima es R=√[(ℓ/2)²+ε²]. Una región más amplia de la frontera se asocia a un camino que entra más en AdS. El siguiente laboratorio usa esa geometría para calcular una entropía, dentro de un caso concreto de holografía.',
+      'La profundidad máxima es R=√[(ℓ/2)²+ε²]. Una región más amplia de la frontera se asocia a un camino que entra más en AdS. La siguiente sección usa esa geometría para calcular una entropía, dentro de un caso concreto de holografía.',
   },
 ]
 export const DUALITY_LESSONS: readonly Lesson[] = [

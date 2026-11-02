@@ -20,11 +20,9 @@ Una colección de laboratorios interactivos para aprender ciencia haciendo pregu
 - `/efecto-fotoelectrico/`: frecuencia, brillo, materiales, emisión de electrones y cuatro retos sobre el Nobel de Einstein.
 - `/einstein/`: cuaderno ilustrado con tres laboratorios de relatividad especial, tres de relatividad general y el efecto fotoeléctrico; 28 retos, pasaporte local, ecuación de campo interactiva y exploración de E₀ = mc².
 
-- `/maldacena/`: El diccionario del universo; recorrido de cinco laboratorios y 20 retos sobre información cuántica, AdS/CFT, BTZ y la curva de Page.
+- `/maldacena/`: El diccionario del universo; recorrido de tres laboratorios y 20 retos sobre información cuántica, AdS/CFT, BTZ y la curva de Page.
 - `/entrelazados/`: pares de qubits, bases de medición, mezcla clásica, entropía del estado y cuatro retos.
-- `/espacio-con-frontera/`: geodésicas espaciales en AdS₃, distancia física, corte regulador y cuatro retos.
-- `/dos-lenguajes/`: entropía de un intervalo CFT₂, longitud en AdS₃, convergencia a corte pequeño y cuatro retos.
-- `/frontera-caliente/`: temperatura de la frontera, exterior BTZ no giratorio, régimen térmico y cuatro retos.
+- `/holografia/`: geometría AdS, diccionario holográfico y frontera caliente, tres subsecciones y doce retos. Las tres rutas anteriores siguen funcionando. Ver [reorganización y compatibilidad](docs/HOLOGRAFIA_UNIFICACION.md).
 - `/curva-de-page/`: paradoja de la información, entropía calculada de qubits, correlaciones y cuatro retos. Ver [modelo y límites](docs/PAGE_MODELO.md) y [revisión independiente](docs/QA_PAGE_2026-11-02.md).
 
 La actividad **Contar lo que no vemos** está dentro de `/entropia/#information-bridge`; no agrega otra tarjeta de laboratorio.
@@ -63,6 +61,10 @@ npm audit
 ```
 
 Las pruebas cubren las fórmulas con referencias analíticas y numéricas independientes, muestreo estadístico determinista, estado y límites de memoria, pausa, cámaras y recorridos educativos de los laboratorios. La inspección visual en navegador sigue siendo necesaria para comprobar WebGL, interacción y responsive.
+
+## Ayuda dentro de los laboratorios
+
+El botón «Modo ayuda» permite consultar controles, lecturas y elementos de las escenas con mouse, teclado o toque. Mientras está activo las consultas no accionan el montaje; desactivalo o pulsá Escape para volver a jugar. La preferencia se guarda por pestaña y no aparece en las portadas ni en los mapas de especiales. Ver [alcance y mantenimiento](docs/MODO_AYUDA.md).
 
 ## Cómo explorar la doble rendija
 
