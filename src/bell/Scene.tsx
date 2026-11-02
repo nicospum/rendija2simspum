@@ -215,7 +215,7 @@ export function LocalCards({
       className="bl-local-game"
       aria-label="Construir una tarjeta de respuestas locales"
     >
-      <p className="bl-kicker">INTENTÁ SUPERAR |S| = 2</p>
+      <p className="bl-kicker">TOCÁ ± · INTENTÁ SUPERAR 2</p>
       <div className="bl-card-bits">
         {['A₀', 'A₁', 'B₀', 'B₁'].map((label, i) => (
           <button
@@ -270,7 +270,7 @@ export function QuantumSum({
     ci = trial ? interval(trial.rows) : null
   return (
     <div className="bl-sum-stage">
-      <p className="bl-kicker">CUATRO CORRELACIONES · EL ÚLTIMO TÉRMINO SE RESTA</p>
+      <p className="bl-kicker">SUMÁ LAS CUATRO RELACIONES · LA ÚLTIMA SE RESTA</p>
       <div className="bl-terms">
         {q.correlations.map((e, i) => (
           <button
@@ -291,7 +291,7 @@ export function QuantumSum({
       <ScoreBar exact={q.S} observed={ci?.estimate} lower={ci?.lower} upper={ci?.upper} />
       <p className="bl-sum-caption">
         {trial
-          ? `${trial.n} pares por combinación · cota 95 % [${signed(ci!.lower, 2)}; ${signed(ci!.upper, 2)}]. Blanco: lote y cota; verde: modelo.`
+          ? `${trial.n} pares por combinación · cota 95 % [${signed(ci!.lower, 2)}; ${signed(ci!.upper, 2)}]. Blanco: lote y margen de muestreo; verde: modelo.`
           : 'Sin ensayo todavía: la marca de color es la predicción, no datos.'}{' '}
         Tocá un término para explorar sus ajustes.
       </p>
@@ -345,6 +345,7 @@ export function ScoreBar({
         {local ? 'Tarjeta' : 'Predicción'} S = <b>{signed(exact, 3)}</b>
         {observed === undefined ? '' : ` · Lote: ${signed(observed, 3)}`}
       </p>
+      <p className="bl-band-key">Dorado: promedio local de −2 a +2.</p>
     </div>
   )
 }

@@ -14,6 +14,8 @@ Tres vistas comparten el montaje y los registros:
 
 El reto 3 abre la vista de suma y pliega la exploración de un solo par para acercar los mandos pertinentes. Los ensayos guardados de ambos tamaños se conservan con sus filas y se identifican por los ángulos usados; no se reinterpretan como datos del montaje actual al girar otro analizador. La consola compartida mantiene pregunta, pasos y controles próximos a la escena. En celular horizontal se distribuyen escena y pregunta lado a lado.
 
+La revisión de uso posterior acerca los datos a la acción: el visor de Experimento muestra N medido, el último par, porcentaje de iguales, E observado y la frecuencia de A+, separados de la predicción. Los atajos B y «Medir 200 pares» están en esa misma franja. La leyenda define estaciones, orientaciones y salidas; la tabla explica el orden A/B de los signos. Los textos redundantes se compactan en celular para conservar espacio para la pregunta. Los botones CHSH dicen «4 × 50 pares» y «4 × 1000 pares», con los totales de 200 y 4000 explícitos.
+
 ## Cuatro retos
 
 | ID | Observaciones necesarias | Conclusión |
@@ -24,6 +26,8 @@ El reto 3 abre la vista de suma y pliega la exploración de un solo par para ace
 | `bell/principal/reto-04` | Con A₀=0°, reunir al menos 200 pares con B₀=0° y otros con B₀=90°. | Coincidir frente a diferir no permite que A lea un mensaje de B: su distribución local sigue siendo 50/50. Las correlaciones requieren reunir las listas. |
 
 Se requiere observación y explicación correcta, no una cifra afortunada. Un ensayo con S estimada mayor que 2 **no aprueba por sí solo** ningún reto. Predicciones erróneas e incompletas reciben devoluciones distintas. Reiniciar borra observaciones y verificación del intento; los hallazgos de esta visita no sustituyen una observación nueva. No se persiste este progreso entre recargas.
+
+Cada una de las ocho opciones incorrectas tiene una devolución propia sobre el error conceptual. Los pasos faltantes se mantienen visibles en la consola. Al cambiar o reiniciar el reto, el foco vuelve a su selector si está abierto; no se pierde el recorrido de teclado. Guardar tarjetas pertenece al reto 2; desde otras vistas se ofrece ir a ese reto, sin anunciar un registro inexistente. Invertir las cuatro respuestas se rotula como una transformación que conserva S.
 
 ## Modelo cuántico
 
@@ -58,6 +62,8 @@ La exploración de un par está separada del ensayo CHSH. Emitir de a uno agrega
 
 Los atajos «B a…» preparan A₀B₀, restauran A₀=0° y eligen el valor de B₀ indicado; se declara junto a esos botones. Para variar sólo un ángulo sin ese preparado se usan el dial o su rango.
 
+Repetir exactamente la orientación, combinación activa o preparado actual no borra las mediciones. Cambiar el montaje sí las invalida; preparar A₀B₀ cuando se estaba mirando otra combinación también selecciona esa combinación y limpia la colección activa. Reiniciar un reto continúa siendo una acción explícita independiente.
+
 Cada botón CHSH genera cuatro lotes **nuevos y de tamaño prefijado**, 50 o 1000 por combinación, todos con la misma instantánea de orientaciones. Girar cualquier orientación limpia la colección y tabla activas, evitando sumar filas de montajes incompatibles. Los registros requeridos conservan sus instantáneas y valores reales. Cambiar sólo la combinación mostrada no altera el ensayo completo ya registrado.
 
 El muestreo usa un PRNG Mulberry32 con semilla transportada por la acción del reducer. Esto permite repetir los cálculos y mantiene puro el reducer bajo StrictMode. No es un generador de aleatoriedad física o criptográfica.
@@ -72,7 +78,9 @@ La [revisión científica independiente](../research/bell/REVISION_CIENTIFICA.md
 
 [Estado científico y hashes](../research/bell/estado-cientifico.json). [QA de producto y capturas](QA_BELL_2026-11-02.md). Los revisores son diferentes de la implementación; son revisiones internas documentadas, no certificaciones externas ni estudios con estudiantes.
 
-Las 24 pruebas nuevas de `tests/bell.test.mjs` contrastan Born mediante vectores independientes en 169 parejas de ángulos, enumeran las 16 tarjetas, prueban marginales, complementos, mezclas, periodicidad, muestreo, límites de conteos, cotas y cuatro evaluadores con aciertos, errores y observaciones incompletas. También verifican limpieza de datos activos y conservación de ambas referencias reales. Se suman a las 419 anteriores: 443 pruebas en la suite.
+[Seguimiento de uso y correcciones](QA_BELL_SEGUIMIENTO_2026-11-02.md): conserva los problemas reproducidos sobre el primer despliegue y la repetición del candidato corregido. Ninguna aprobación anterior se extiende automáticamente a archivos modificados.
+
+Las 30 pruebas de `tests/bell.test.mjs` contrastan Born mediante vectores independientes en 169 parejas de ángulos, enumeran las 16 tarjetas, prueban marginales, complementos, mezclas, periodicidad, muestreo, límites de conteos, cotas y cuatro evaluadores con aciertos, errores y observaciones incompletas. También verifican limpieza de datos activos, conservación de ambas referencias reales, acciones idénticas sin pérdida de datos, las ocho devoluciones y los conteos reales de las referencias. Se suman a las 419 anteriores: 449 pruebas en la suite.
 
 Los tamaños de celular se emulan en Chromium. Safari, dispositivos físicos, lectores de pantalla completos y eficacia de aprendizaje con participantes siguen pendientes conforme al acuerdo con el usuario. La comprobación de publicación distingue build local, commit desplegado, coincidencia de assets públicos y una muestra de uso en el dominio.
 

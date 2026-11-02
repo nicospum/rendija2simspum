@@ -98,12 +98,18 @@ export default function App() {
   const start = (index: number) => {
     dispatch({ type: 'lesson', index })
     setView(index === 1 ? 'cards' : index === 2 ? 'score' : 'experiment')
+    requestAnimationFrame(() =>
+      document
+        .querySelector<HTMLSelectElement>(
+          '#bl-views select[aria-label="Elegir reto junto a la escena"]',
+        )
+        ?.focus({ preventScroll: true }),
+    )
   }
   const angle = (index: number, value: number) =>
     dispatch({ type: 'angle', index, value })
   const bPreset = (value: number) => {
     setView('experiment')
-    dispatch({ type: 'pair', pair: 0 })
     dispatch({ type: 'preset', angles: [0, s.angles[1], value, s.angles[3]] })
   }
   const sample = (size: 1 | 200) => dispatch({ type: 'sample', size, seed: seed() })
@@ -114,7 +120,7 @@ export default function App() {
       </a>
       <header className="md-header">
         <a href="/">∿ SPUM</a>
-        <a href="/maldacena/">INFORMACIÓN CUÁNTICA · EXTENSIÓN MALDACENA</a>
+        <a href="/maldacena/">RECORRIDO MALDACENA ↗</a>
       </header>
       <main>
         <JourneyNavigation />
@@ -126,9 +132,9 @@ export default function App() {
             <em>las respuestas escritas?</em>
           </h1>
           <p>
-            Descubrí qué cuenta una correlación. Intentá construir una tarjeta que supere
-            el límite local y comparala con cuatro correlaciones cuánticas. La sorpresa
-            aparece en la relación entre las listas.
+            Una fuente envía un fotón a A y otro a B. Girá sus filtros y compará los
+            resultados: ¿podrían traer las respuestas preparadas? Primero jugá con las
+            coincidencias; después poné a prueba el límite que descubrió Bell.
           </p>
           <a className="md-primary" data-scene-play href="#bl-views">
             Entrar, girar y poner a prueba ↓
@@ -140,7 +146,7 @@ export default function App() {
         </section>
         <LabNavigation
           links={[
-            ['Experimento', '#bl-views'],
+            ['Escena', '#bl-views'],
             ['Controles', '#bl-controls'],
             ['Cuatro retos', '#bl-challenges'],
             ['Qué significa', '#bl-understand'],
@@ -180,6 +186,11 @@ export default function App() {
                 Suma CHSH
               </button>
             </div>
+            {view === 'experiment' && (
+              <p className="bl-scene-key">
+                Un fotón a A, otro a B. ₀/₁: orientaciones; +/−: salidas, no cargas.
+              </p>
+            )}
             <div className="md-drawing bl-drawing">
               {view === 'experiment' ? (
                 <Apparatus
@@ -238,8 +249,74 @@ export default function App() {
                 </div>
                 <div className="bl-e-ends">
                   <span>−1 · distintos</span>
-                  <span>0</span>
+                  <span>0 · mitad iguales</span>
                   <span>+1 · iguales</span>
+                </div>
+                <div
+                  className="bl-live-sample"
+                  role="status"
+                  aria-live="polite"
+                  data-help-title="Tus detecciones, separadas de la predicción"
+                  data-help-body="Medidos cuenta parejas de fotones de este montaje. Cada pareja aporta una salida en A y otra en B: el primer signo del último resultado es A. Iguales compara ambas listas; A ve + usa sólo su propia lista. Las frecuencias de una muestra pequeña pueden alejarse mucho de sus probabilidades. Medir 200 reemplaza la colección; cambiar una orientación limpia los datos activos."
+                >
+                  <p>
+                    <strong>Medidos: {current.N} pares</strong>
+                    <span>
+                      {s.last === null
+                        ? 'Tocá la fuente.'
+                        : `Último: ${['++', '+−', '−+', '−−'][s.last]} (A, B)`}
+                    </span>
+                  </p>
+                  <p>
+                    {current.N === 0 ? (
+                      'Iguales: sin datos · E observado: sin datos'
+                    ) : (
+                      <>
+                        Iguales: <b>{n((current.same / current.N) * 100, 1)} %</b> · E
+                        observado: <b>{signed(current.E!, 3)}</b>
+                      </>
+                    )}
+                  </p>
+                  <p>
+                    A ve +:{' '}
+                    <b>
+                      {current.aPlus === null
+                        ? 'sin datos'
+                        : `${n(current.aPlus * 100, 1)} %`}
+                    </b>{' '}
+                    · esperado: 50 %.
+                  </p>
+                </div>
+                {s.index !== 2 && (
+                  <p className="bl-quick-context">Atajos: A₀=0°, elegí B₀ y medí.</p>
+                )}
+                <div className="bl-quick-controls" aria-label="Medir junto a la escena">
+                  {s.index !== 2 && (
+                    <>
+                      <button
+                        onClick={() => bPreset(0)}
+                        data-help-title="Comparar los filtros alineados"
+                        data-help-body="Prepara A₀B₀ con A₀=0° y B₀=0°. Si cambia el montaje, limpia los datos activos; repetir el mismo atajo los conserva. Las referencias del reto se conservan. En esta fuente ideal ambas salidas siempre coinciden, aunque cada lado siga siendo azaroso."
+                      >
+                        B a 0°
+                      </button>
+                      <button
+                        onClick={() => bPreset(s.index === 3 ? 90 : 45)}
+                        data-help-title="Preparar el segundo montaje de comparación"
+                        data-help-body={`Prepara A₀B₀ con A₀=0° y B₀=${s.index === 3 ? '90' : '45'}°. Si cambia el montaje, limpia los datos activos; repetir el mismo atajo los conserva. Las referencias se conservan. Después medí otro lote: compará las coincidencias entre ambas listas y la frecuencia local de A.`}
+                      >
+                        B a {s.index === 3 ? '90' : '45'}°
+                      </button>
+                    </>
+                  )}
+                  <button
+                    className="bl-quick-measure"
+                    onClick={() => sample(200)}
+                    data-help-title="Medir 200 parejas nuevas"
+                    data-help-body="Reemplaza tu colección exploratoria por 200 parejas nuevas con los ángulos actuales. Mirá los medidos, el porcentaje de iguales y A ve + junto a la escena. No cambia la predicción ni añade datos al ensayo de cuatro combinaciones CHSH."
+                  >
+                    Medir 200 pares
+                  </button>
                 </div>
               </div>
             ) : view === 'cards' ? (
@@ -275,17 +352,21 @@ export default function App() {
             {view === 'cards' ? (
               <>
                 <div className="spum-console-buttons">
-                  <button onClick={() => dispatch({ type: 'saveCard' })}>
-                    Guardar tarjeta
-                  </button>
+                  {s.index === 1 ? (
+                    <button onClick={() => dispatch({ type: 'saveCard' })}>
+                      Guardar tarjeta
+                    </button>
+                  ) : (
+                    <button onClick={() => start(1)}>Ir al reto de tarjetas</button>
+                  )}
                   <button onClick={() => dispatch({ type: 'card', index: s.card ^ 15 })}>
-                    Invertir todas las respuestas
+                    Invertir las cuatro (S se conserva)
                   </button>
                 </div>
                 <p>
-                  Las tarjetas contestan cuatro preguntas etiquetadas. Se fijan antes de
-                  elegir qué preguntar. No hay un mecanismo que consulte el ajuste del
-                  otro lado.
+                  La tarjeta es un plan de cuatro respuestas, preparado antes de elegir
+                  una pregunta por lado. No son cuatro mediciones del mismo par. Ninguna
+                  respuesta consulta la orientación elegida en la otra estación.
                 </p>
                 <details>
                   <summary>¿Por qué ninguna tarjeta supera 2?</summary>
@@ -350,7 +431,9 @@ export default function App() {
                     ))}
                   </div>
                   <p className="md-small">
-                    Un ajuste de A y uno de B por pareja; cuatro combinaciones para CHSH.
+                    A y B son las estaciones. ₀ y ₁ son dos orientaciones guardadas en
+                    cada una; sólo se usa una por lado en cada pareja. A₀B₁ elige la
+                    primera orientación de A y la segunda de B.
                   </p>
                   <div className="spum-console-row">
                     <label htmlFor="bl-angle-a">
@@ -382,19 +465,6 @@ export default function App() {
                     value={s.angles[bi]}
                     onChange={(e) => angle(bi, +e.target.value)}
                   />
-                  {s.index !== 2 && (
-                    <>
-                      <p className="md-small">
-                        Estos atajos preparan A₀B₀ con A₀=0° y el B₀ elegido.
-                      </p>
-                      <div className="spum-console-buttons">
-                        <button onClick={() => bPreset(0)}>B a 0°</button>
-                        <button onClick={() => bPreset(s.index === 3 ? 90 : 45)}>
-                          B a {s.index === 3 ? '90' : '45'}°
-                        </button>
-                      </div>
-                    </>
-                  )}
                   <div className="spum-console-buttons">
                     <button onClick={() => sample(1)} disabled={current.N >= 4096}>
                       Emitir un par
@@ -416,6 +486,10 @@ export default function App() {
                         </div>
                       ))}
                     </div>
+                    <p className="md-small">
+                      Primer signo: A; segundo: B. ++ y −− son iguales; +− y −+,
+                      distintos. Cada pareja aporta un solo resultado a esta tabla.
+                    </p>
                     <p>
                       Iguales: {current.same} · Distintos: {current.different}
                       <br />E observado:{' '}
@@ -450,8 +524,13 @@ export default function App() {
                 <div className="bl-four-settings">
                   <h3>Las cuatro preguntas de Bell</h3>
                   <p>
-                    S = E₀₀ + E₀₁ + E₁₀ − E₁₁. Cada E debe pertenecer al mismo conjunto de
-                    cuatro orientaciones.
+                    CHSH es esta suma de cuatro correlaciones: S = E₀₀ + E₀₁ + E₁₀ − E₁₁.
+                    Cada E pertenece al mismo conjunto de cuatro orientaciones.
+                  </p>
+                  <p className="md-small">
+                    E compara ambas listas: +1 siempre iguales, 0 mitad iguales en
+                    promedio, −1 siempre distintos. Cada ensayo mide las cuatro
+                    combinaciones: 4 × 50 = 200 parejas o 4 × 1000 = 4000 parejas.
                   </p>
                   <div className="spum-console-buttons">
                     <button
@@ -482,7 +561,7 @@ export default function App() {
                         dispatch({ type: 'sweep', n: 50, seed: seed() })
                       }}
                     >
-                      4 ajustes · 50 por par
+                      4 × 50 pares
                     </button>
                     <button
                       onClick={() => {
@@ -490,7 +569,7 @@ export default function App() {
                         dispatch({ type: 'sweep', n: 1000, seed: seed() })
                       }}
                     >
-                      4 ajustes · 1000 por par
+                      4 × 1000 pares
                     </button>
                   </div>
                   {s.trial ? (

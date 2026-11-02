@@ -349,6 +349,137 @@ for (let index = 0; index < 4; index++) {
     assert.equal(check(predict(restarted, correct)).verified, false)
   })
 }
+test('each wrong explanation addresses its own misconception after all observations', () => {
+  const topics = [
+    [/no permite elegir la salida de A/, null, /no cuatro resultados simultáneos/],
+    [/productos comparten/, /tarjeta concreta da \+2 o −2/, null],
+    [null, /simulación usa probabilidades programadas/, /N es la cantidad de parejas/],
+    [/ambos casos tiene probabilidad 50 %/, null, /necesita la lista de B/],
+  ]
+  const feedback = new Set()
+  for (let index = 0; index < 4; index++) {
+    const observed = observe(index)
+    for (let choice = 0; choice < 3; choice++) {
+      if (choice === LESSONS[index].answer) continue
+      const result = check(predict(observed, choice))
+      assert.equal(result.verified, false)
+      assert.equal(result.completed.includes(index), false)
+      assert.match(result.feedback, topics[index][choice])
+      assert.deepEqual(observations(result), [true, true])
+      feedback.add(result.feedback)
+    }
+  }
+  assert.equal(feedback.size, 8)
+})
+test('incomplete comparisons name only missing observations and a relevant action', () => {
+  for (let index = 0; index < 4; index++) {
+    const correct = LESSONS[index].answer,
+      empty = check(predict(initialState(index), correct)),
+      action = index === 1 ? /Guardar tarjeta/ : index === 2 ? /Ángulos de Bell/ : /A₀B₀/
+    for (const step of LESSONS[index].steps) assert.ok(empty.feedback.includes(step))
+    assert.match(empty.feedback, action)
+    assert.equal(empty.verified, false)
+    let partial = initialState(index)
+    partial = reducer(
+      partial,
+      index === 1
+        ? { type: 'saveCard' }
+        : index === 2
+          ? { type: 'sweep', n: 50, seed: 1 }
+          : { type: 'sample', size: 200, seed: 1 },
+    )
+    assert.deepEqual(observations(partial), [true, false])
+    const result = check(predict(partial, correct)),
+      mistaken = check(predict(partial, (correct + 1) % 3))
+    assert.equal(result.verified, false)
+    assert.ok(!result.feedback.includes(LESSONS[index].steps[0]))
+    assert.ok(result.feedback.includes(LESSONS[index].steps[1]))
+    assert.match(result.feedback, action)
+    assert.equal(mistaken.feedback, result.feedback)
+    assert.deepEqual(result.evidence, partial.evidence)
+  }
+})
+test('selecting an unchanged angle or active pair preserves the full state by reference', () => {
+  for (let index = 0; index < 4; index++) {
+    const observed = observe(index),
+      correct = LESSONS[index].answer
+    for (const state of [
+      check(predict(observed, correct)),
+      check(predict(observed, (correct + 1) % 3)),
+    ]) {
+      for (let axis = 0; axis < 4; axis++)
+        assert.equal(tune(state, axis, state.angles[axis]), state)
+      assert.equal(reducer(state, { type: 'pair', pair: state.pair }), state)
+    }
+  }
+})
+test('repeating the active preset preserves data, while selecting pair zero or any changed angle prepares a new run', () => {
+  const measured = reducer(initialState(), { type: 'sample', size: 200, seed: 11 }),
+    explained = check(predict(observe(2), LESSONS[2].answer))
+  for (const state of [measured, explained])
+    assert.equal(reducer(state, { type: 'preset', angles: [...state.angles] }), state)
+
+  let otherPair = reducer(measured, { type: 'pair', pair: 1 })
+  otherPair = reducer(otherPair, { type: 'sample', size: 200, seed: 12 })
+  assert.equal(otherPair.pair, 1)
+  assert.equal(stats(otherPair.run.counts).N, 200)
+  const selected = reducer(otherPair, { type: 'preset', angles: [...otherPair.angles] })
+  assert.notEqual(selected, otherPair)
+  assert.equal(selected.pair, 0)
+  assert.equal(selected.run, null)
+  assert.equal(selected.last, null)
+
+  const tinyChange = [...measured.angles]
+  tinyChange[0] += 1e-9
+  const retuned = reducer(measured, { type: 'preset', angles: tinyChange })
+  assert.notEqual(retuned, measured)
+  assert.equal(retuned.angles[0], tinyChange[0])
+  assert.equal(retuned.run, null)
+  assert.equal(retuned.trial, null)
+  assert.equal(retuned.last, null)
+})
+test('examining a local card outside challenge 2 does not claim an unrecorded observation', () => {
+  for (const index of [0, 2, 3]) {
+    for (const [cardIndex, expectedScore] of [
+      [15, '+2'],
+      [14, '-2'],
+    ]) {
+      const state = reducer(observe(index), { type: 'card', index: cardIndex }),
+        result = reducer(state, { type: 'saveCard' })
+      assert.equal(result.evidence, state.evidence)
+      assert.deepEqual(observations(result), observations(state))
+      assert.ok(result.feedback.includes(`S=${expectedScore}`))
+      assert.match(result.feedback, /elegí el reto 2/)
+      assert.doesNotMatch(result.feedback, /Tarjeta guardada/)
+      assert.equal(result.verified, false)
+    }
+  }
+})
+test('saved pair comparisons describe their actual coincidences and sampled frequency', () => {
+  const format = (value) =>
+    value.toLocaleString('es-AR', {
+      maximumFractionDigits: 1,
+      minimumFractionDigits: 1,
+    })
+  for (const index of [0, 3]) {
+    for (const angle of [0, index === 0 ? 45 : 90]) {
+      let state = tune(initialState(index), 2, angle)
+      state = reducer(state, { type: 'sample', size: 200, seed: 37 })
+      state = reducer(state, { type: 'sample', size: 1, seed: 9 })
+      const [pp, pm, mp, mm] = state.run.counts,
+        same = pp + mm,
+        different = pm + mp,
+        total = same + different,
+        key = angle === 0 ? 'same' : index === 0 ? 'tilted' : 'opposite',
+        text = state.evidence[key].text
+      assert.equal(total, 201)
+      assert.ok(text.includes(`${total} pares`))
+      assert.ok(text.includes(`${same} iguales / ${different} distintos`))
+      assert.ok(text.includes(`${format((same / total) * 100)} % iguales`))
+      assert.ok(text.includes(`A+ ${format(((pp + pm) / total) * 100)} %`))
+    }
+  }
+})
 test('single, unrecorded, wrong-pair and near-but-different comparisons cannot satisfy the steps', () => {
   let s = initialState(0)
   s = tune(s, 2, 45)

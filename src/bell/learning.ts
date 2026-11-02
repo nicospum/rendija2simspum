@@ -21,6 +21,11 @@ export const LESSONS = [
       'Cada pareja empieza a dar cuatro resultados a la vez',
     ],
     answer: 1,
+    wrongFeedback: [
+      'Girar el analizador cambia cómo medís, pero no permite elegir la salida de A. En ambos montajes A tiene 50 % de probabilidad de +; lo que cambia es cuántas parejas coinciden.',
+      '',
+      'Cada pareja deja una salida en A y una en B. ++, +−, −+ y −− son cuatro posibilidades; no cuatro resultados simultáneos.',
+    ],
     hint: 'En «Experimento», usá A₀B₀. Medí un lote nuevo de 200 con «B a 0°» y otro con «B a 45°». Compará iguales/distintos y la lectura local de A.',
     steps: ['200 pares nuevos con A₀=0°, B₀=0°', '200 pares nuevos con A₀=0°, B₀=45°'],
     meaning:
@@ -37,6 +42,11 @@ export const LESSONS = [
       'Sólo +2 o −2; mezclar tarjetas mantiene la media entre esos límites',
     ],
     answer: 2,
+    wrongFeedback: [
+      'Los cuatro productos comparten las mismas respuestas. No podés elegir sus signos por separado: uno de los paréntesis es cero y el otro ±2.',
+      'Una tarjeta concreta da +2 o −2. Mezclar tarjetas con sumas opuestas puede dar media cero; el azar local por sí solo no obliga a ello.',
+      '',
+    ],
     hint: 'Abrí «Tarjetas locales». Guardá la tarjeta inicial y después cambiá A₀ de + a − y guardá otra. Mirá qué paréntesis es cero y cuál vale ±2; cambiar B₁ intercambia sus papeles.',
     steps: ['Guardar una tarjeta con S=+2', 'Guardar otra tarjeta con S=−2'],
     meaning:
@@ -53,7 +63,12 @@ export const LESSONS = [
       'Cambiar N cambia la predicción exacta de la fuente',
     ],
     answer: 0,
-    hint: 'Usá «Ángulos de Bell» y medí «4 ajustes · 50 por par» y «4 ajustes · 1000 por par». Son lotes nuevos: compará las cuatro filas y sus cotas, no sólo una coincidencia.',
+    wrongFeedback: [
+      '',
+      'Superar 2 en un lote no alcanza por sí solo: las muestras fluctúan. Además, esta simulación usa probabilidades programadas; probar la naturaleza requiere un experimento y su análisis estadístico.',
+      'N es la cantidad de parejas medidas, no un ajuste de la fuente. Con estos ángulos la predicción sigue en 2√2; más datos reducen la incertidumbre de la estimación.',
+    ],
+    hint: 'Usá «Ángulos de Bell» y medí «4 × 50 pares» y «4 × 1000 pares». Son lotes nuevos: compará las cuatro filas y sus cotas, no sólo una coincidencia.',
     steps: [
       'Un ensayo completo de 50 pares por combinación con ángulos de Bell',
       'Otro ensayo completo de 1000 por combinación con los mismos ángulos',
@@ -72,6 +87,11 @@ export const LESSONS = [
       'Sí, porque las coincidencias siempre son visibles desde A',
     ],
     answer: 1,
+    wrongFeedback: [
+      'A puede obtener + tanto si B eligió 0° como 90°: en ambos casos tiene probabilidad 50 %. Un signo local no revela la elección remota.',
+      '',
+      'Una coincidencia compara dos registros. A necesita la lista de B para reconocerla; reunir ambas listas exige comunicación ordinaria.',
+    ],
     hint: 'En A₀B₀, medí 200 pares con «B a 0°» y otros con «B a 90°», dejando A₀=0°. Compará la lista local A y después los resultados emparejados.',
     steps: ['200 pares con B₀=0° y A₀=0°', '200 pares con B₀=90° y A₀=0°'],
     meaning:
@@ -143,6 +163,15 @@ const close = (a: number, b: number) => Math.abs(a - b) < 1e-7
 const sameAngles = (a: Angles, b: Angles) => a.every((v, i) => close(v, b[i]))
 export const observations = (s: State) =>
   REQUIRED[s.index].map((k) => Boolean(s.evidence[k]))
+function missingFeedback(s: State) {
+  const done = observations(s),
+    missing = LESSONS[s.index].steps.filter((_, i) => !done[i]).join('; ')
+  if (s.index === 1)
+    return `Todavía falta registrar: ${missing}. Tocá una respuesta para cambiar su signo y después usá «Guardar tarjeta».`
+  if (s.index === 2)
+    return `Todavía falta medir: ${missing}. Usá «Ángulos de Bell»: estos pasos necesitan los cuatro ángulos indicados y dos ensayos nuevos de distinto tamaño.`
+  return `Todavía falta comparar: ${missing}. Usá A₀B₀ y los atajos B; cada colección necesita al menos 200 parejas con los ajustes pedidos.`
+}
 function sampled(s: State, size: 1 | 200, seed: number): State {
   if (size === 1 && s.run && stats(s.run.counts).N >= 4096)
     return {
@@ -179,7 +208,7 @@ function sampled(s: State, size: 1 | 200, seed: number): State {
     if (key)
       evidence[key] = {
         label: `A₀=0° / B₀=${s.angles[2]}°`,
-        text: `${m.N} pares · E observado ${n(m.E ?? 0, 3)} · A+ ${n((m.aPlus ?? 0) * 100, 1)} %; predicción local 50 %.`,
+        text: `${m.N} pares · ${m.same} iguales / ${m.different} distintos (${n((m.same / m.N) * 100, 1)} % iguales) · E observado ${n(m.E ?? 0, 3)} · A+ ${n((m.aPlus ?? 0) * 100, 1)} %; predicción local 50 %.`,
       }
   }
   return {
@@ -201,6 +230,7 @@ export function reducer(s: State, a: Action): State {
         : s
     case 'angle': {
       if (!Number.isInteger(a.index) || a.index < 0 || a.index > 3) return s
+      if (s.angles[a.index] === a.value) return s
       const angles = [...s.angles] as Angles
       angles[a.index] = a.value
       try {
@@ -222,6 +252,7 @@ export function reducer(s: State, a: Action): State {
     case 'preset':
       try {
         validateAngles(a.angles)
+        if (s.pair === 0 && a.angles.every((value, i) => value === s.angles[i])) return s
         return {
           ...s,
           angles: [...a.angles],
@@ -236,7 +267,7 @@ export function reducer(s: State, a: Action): State {
         return s
       }
     case 'pair':
-      return PAIRS[a.pair]
+      return PAIRS[a.pair] && a.pair !== s.pair
         ? { ...s, pair: a.pair, run: null, last: null, feedback: '', verified: false }
         : s
     case 'card':
@@ -259,7 +290,10 @@ export function reducer(s: State, a: Action): State {
       return {
         ...s,
         evidence,
-        feedback: 'Tarjeta guardada. Ninguna de las 16 puede superar |S|=2.',
+        feedback:
+          s.index === 1
+            ? 'Tarjeta guardada. Ninguna de las 16 puede superar |S|=2.'
+            : `Esta tarjeta da S=${c.S > 0 ? '+' : ''}${c.S}. Para registrarla en la comparación, elegí el reto 2.`,
         verified: false,
       }
     }
@@ -305,15 +339,13 @@ export function reducer(s: State, a: Action): State {
       if (!observations(s).every(Boolean))
         return {
           ...s,
-          feedback:
-            'Falta una comparación del reto. Seguí los pasos y medí con los ajustes pedidos.',
+          feedback: missingFeedback(s),
           verified: false,
         }
       if (s.prediction !== LESSONS[s.index].answer)
         return {
           ...s,
-          feedback:
-            'Revisá tu idea: una lista local, una correlación y la suma de cuatro correlaciones son cosas distintas. Podés cambiar tu explicación.',
+          feedback: `Revisá tu idea: ${LESSONS[s.index].wrongFeedback[s.prediction]} Podés cambiar tu explicación.`,
           verified: false,
         }
       return {

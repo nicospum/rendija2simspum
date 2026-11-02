@@ -2,9 +2,9 @@
   "reviewer": "bell_ciencia",
   "reviewed": "2026-11-02",
   "baseline": "2007560",
-  "candidate": "Implementación local de Bell/CHSH sobre la base indicada; archivos identificados por SHA256.",
+  "candidate": "Seguimiento local sobre la publicación 20d6262; ocho archivos de fuente y pruebas congelados e identificados por SHA256. La muestra de navegador inicial es histórica; el QA de producto actual se registra por separado.",
   "status": "APROBADO",
-  "scope": "Revisión interna científica independiente de implementación. No certificación externa ni prueba de aprendizaje con participantes.",
+  "scope": "Revisión interna científica del modelo, requisitos y representación; revisión cruzada documentada para los cambios implementados por este agente. No certificación externa ni prueba de aprendizaje con participantes.",
   "sources": [
     "BE01",
     "BE02",
@@ -36,12 +36,15 @@
   ],
   "tests": {
     "file": "tests/bell.test.mjs",
-    "result": "24/24 PASS",
+    "result": "30/30 PASS",
     "independentOrientationPairs": 169,
     "localCards": 16,
     "independentMonteCarloEvents": 16384,
     "fileLint": "PASS",
-    "command": "node --test tests/bell.test.mjs"
+    "command": "node --test tests/bell.test.mjs",
+    "initialTests": 24,
+    "followupRegressions": 6,
+    "completeSuite": "449 pruebas; ejecución de la suite corresponde a root/integración, no a este pase focal"
   },
   "browserSample": {
     "origin": "http://127.0.0.1:1027/bell/",
@@ -63,13 +66,13 @@
   },
   "fileSha256": {
     "src/bell/physics.ts": "1b13b0c9cc19404fb6654cd6c9f786859162108225657aaa89c1fdc49a48b882",
-    "src/bell/learning.ts": "874636f51bd3dd752f49da77ee14ea3c78fdfffc433451c89268e6ced7d6ece3",
-    "src/bell/Scene.tsx": "7e53d61b9dfa607d24f5c1bd4e8ef89746d8212204a82d5d44b1c444e1a16613",
-    "src/bell/App.tsx": "17b87da637ef97606274989372a46611538bd936631fa907944838cba614d9ba",
+    "src/bell/learning.ts": "b0d2cfaf3748b098f9e9edc8714cc072634a1b55a7e03b6cdfc1aeb7c14e3d09",
+    "src/bell/Scene.tsx": "0c1101e98a3113b0921ec486cf37ab5d109a9cf03001861bee8859cd653ed5e0",
+    "src/bell/App.tsx": "1eef994a4ebee74752fedd0ba87b7d4ab3231fcf5895b60c588a44df55b9b50d",
     "src/bell/main.tsx": "7a4932a3d0ea4fadbc2d364748e9429576ec24392d9e88ea69aed66048660107",
-    "src/bell/bell.css": "3a01f1a2038ca83cb0a19b5398f02a2ba762208900fe0cae33d84d445bf20ccf",
-    "src/bell/format.ts": "77344320fcb60ade75d55886b7bd86313a30a2a37d6aee59f023ad336fff721a",
-    "tests/bell.test.mjs": "1f6e08025be12ce488ef121f2e0eb2b80b03ac924cc727c49d948ee04d55c8e7"
+    "src/bell/bell.css": "538a96cff9730eb504bf9f07ffe05803cacbef585ad5a34a27a149076dc625a4",
+    "src/bell/format.ts": "f93d9a7d84b67afa567adc5925976be66b789a77b729b1dff5b2a5fed56270d8",
+    "tests/bell.test.mjs": "f2f8d1ca1a5d624ed785d836da2996d7b9912cf4c31c0fb2ff34e93e2d2ec9c1"
   },
   "reopenOn": "Cambiar ecuaciones, dominio, respuestas, requisitos o significado físico de la representación reabre los controles afectados. Verificar estos hashes antes de reutilizar el dictamen.",
   "representationClosure": {
@@ -85,11 +88,57 @@
     "documentation": "docs/BELL_LABORATORIO.md leído: Born, Phi+, límite de medias locales, hipótesis, cotas prefijadas, requisitos de retos y límites experimentales coherentes con implementación y revisión primaria.",
     "documentationSha256": "077aaca8a4eacbd592b259fb40d0df13a46dba0cfb4fa1f897fbaaec09d4cfc9",
     "productEvidence": "Implementación informa cuatro retos de producto y regresión de ayuda en dos rutas aprobados por agente independiente; estos resultados no se cuentan como una repetición científica de móvil.",
-    "limits": "Sin nuevo pase completo de navegador: cambios de presentación acotados, no cambio del modelo. Safari, dispositivos físicos y aprendizaje con participantes continúan pendientes."
+    "limits": "Sin nuevo pase completo de navegador: cambios de presentación acotados, no cambio del modelo. Safari, dispositivos físicos y aprendizaje con participantes continúan pendientes.",
+    "historical": true
   },
   "decimalSeparatorClosure": {
     "status": "APROBADO",
     "scope": "Sólo separador tipográfico de extremos: punto y coma en tres intervalos de App y uno de Scene para distinguirlo de la coma decimal.",
-    "verification": "Se revirtieron esos cuatro separadores en memoria; los SHA256 reconstruidos coinciden exactamente con los anteriores. Los otros seis archivos conservan sus hashes. Sin repetición de navegador ni tests de modelo porque no cambió ningún dato, ecuación ni evaluador."
+    "verification": "Se revirtieron esos cuatro separadores en memoria; los SHA256 reconstruidos coinciden exactamente con los anteriores. Los otros seis archivos conservan sus hashes. Sin repetición de navegador ni tests de modelo porque no cambió ningún dato, ecuación ni evaluador.",
+    "historical": true
+  },
+  "usageFollowupClosure": {
+    "baseline": "20d6262",
+    "status": "APROBADO_CIENTIFICO",
+    "sourceFrozen": "Root confirmó la fuente final congelada para este cierre.",
+    "responsibilities": {
+      "implementation": "Root implementó UI/escena/CSS/formato; bell_ciencia implementó feedback/no-op/referencias en learning.ts y seis regresiones adicionales.",
+      "scientificReview": "bell_ciencia revisó independientemente el modelo sin cambios y la representación de root; 30 pruebas focales y lint del reducer y tests PASS.",
+      "crossReview": "Root confirmó lectura y aprobación independiente del diff completo de learning.ts y tests, incluido el preparado estricto. Integración revisó por separado la fuente final y sus ocho hashes."
+    },
+    "changes": [
+      "Datos medidos N/último/porcentaje de iguales/E/A+ junto a la escena, separados del modelo",
+      "Definiciones visibles de estaciones, salidas, orientaciones, cuatro combinaciones y franja de medias locales",
+      "Ocho devoluciones específicas y observaciones faltantes con acciones pertinentes",
+      "Acciones idénticas de ángulo/par/preparado conservan el estado por referencia; cambios reales limpian datos activos",
+      "Preparado sólo nulo con las cuatro orientaciones exactamente iguales y par cero activo; reinicio explícito separado",
+      "Referencias conservan conteos y porcentajes de la colección real; no prometen guardar fuera del reto 2",
+      "Etiquetas 4 x 50 y 4 x 1000 indican cuatro combinaciones; cero negativo normalizado sólo en presentación"
+    ],
+    "requirementsUnchanged": "Mismos cuatro retos, respuestas, umbral de observación, ajustes requeridos, probabilidades, muestreo y cotas. physics.ts conserva su hash.",
+    "documentation": {
+      "path": "docs/BELL_LABORATORIO.md",
+      "status": "LEIDO_Y_COHERENTE",
+      "sha256": "f4bd907e16324307373f259027b631f4f2ac786ea4039eb410c04d9d33d2a507",
+      "counts": "30 Bell; 419 anteriores; 449 en suite"
+    },
+    "productReview": {
+      "path": "docs/QA_BELL_SEGUIMIENTO_2026-11-02.md",
+      "relationship": "Pase separado de navegador, cuatro retos y tamaños de celular. Su matriz, capturas y aceptación final son responsabilidad de bell_producto y no se atribuyen a una nueva repetición de ciencia."
+    },
+    "browserByScienceThisFollowup": false,
+    "limitations": [
+      "No se repitió navegador por ciencia en este seguimiento; la muestra de escritorio anterior es evidencia histórica",
+      "La aprobación científica no certifica automáticamente la publicación ni sustituye el QA de producto",
+      "Safari y teléfonos físicos siguen pendientes por decisión previa del usuario",
+      "Sin prueba de aprendizaje con participantes ni certificación externa"
+    ]
+  },
+  "finalLayoutFollowup": {
+    "status": "FUERA_DEL_ALCANCE_CIENTIFICO",
+    "file": "src/bell/bell.css",
+    "scope": "Apilamiento del dock móvil y encabezado horizontal, más altura responsiva del SVG en escritorio de poca altura para conservar el control Medir 200 junto a la escena. Integración y producto revisan el cierre de layout; no se atribuye a una repetición científica.",
+    "unchanged": "Los otros siete hashes conservados. Modelo, requisitos, 30 pruebas focales y dictamen científico sin cambios.",
+    "desktopHeightEvidence": "Root reprodujo el problema a1280x600 y midió la corrección: SVG150px, botón569px, escena582px. Las pruebas dirigidas finales600/720 corresponden a producto."
   }
 }

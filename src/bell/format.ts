@@ -1,5 +1,5 @@
 export const n = (value: number, digits = 2) =>
-  value.toLocaleString('es-AR', {
+  (Object.is(value, -0) ? 0 : value).toLocaleString('es-AR', {
     minimumFractionDigits: digits,
     maximumFractionDigits: digits,
   })
