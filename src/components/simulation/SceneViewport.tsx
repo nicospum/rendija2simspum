@@ -1,3 +1,4 @@
+import SceneHelpR3F from '../../education/SceneHelpR3F'
 import { useEffect, useMemo, useRef, useState, type ComponentRef, type RefObject } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei/core/OrbitControls'
@@ -169,6 +170,7 @@ export default function SceneViewport({ touchCamera = false }: { touchCamera?: b
         >
           <color attach="background" args={['#0c1924']} />
           <fog attach="fog" args={['#0c1924', 25, 70]} />
+          <SceneHelpR3F />
           <CameraRig />
           <ExperimentScene />
           <ProjectedLabels references={references} />

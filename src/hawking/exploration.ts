@@ -67,7 +67,7 @@ export function mapTarget(
     target: MapTarget | null = null
   for (let i = 0; i < 40; i++) {
     for (const incoming of [false, true]) {
-      if (incoming && absorption === 0) continue
+      if ((incoming ? absorption : emission) <= 0) continue
       const p = markerPosition(i, time, radius, incoming ? absorption : emission, incoming)
       const distance = Math.hypot(p.x - point.x, p.y - point.y)
       if (p.visible && distance < nearest) {

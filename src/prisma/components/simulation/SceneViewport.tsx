@@ -1,3 +1,4 @@
+import SceneHelpR3F from '../../../education/SceneHelpR3F'
 import { useEffect, useMemo, useRef, type ComponentRef, type RefObject } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei/core/OrbitControls'
@@ -141,7 +142,8 @@ export default function SceneViewport(props: SceneViewportProps) {
         }}
       >
         <color attach="background" args={['#101c20']} />
-        <CameraRig view={props.view} cameraResetKey={props.cameraResetKey} points={framingPoints} />
+        <SceneHelpR3F />
+          <CameraRig view={props.view} cameraResetKey={props.cameraResetKey} points={framingPoints} />
         <ExperimentScene {...props} minimumZ={layout.minimumZ} maximumZ={layout.maximumZ} />
         <ProjectionLabels references={references} positions={labelPositions} view={props.view} />
       </Canvas>

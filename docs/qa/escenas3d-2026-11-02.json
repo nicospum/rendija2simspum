@@ -1,0 +1,60 @@
+{
+  "date": "2026-11-02",
+  "scope": [
+    "hawking",
+    "lente-gravitacional",
+    "acrecion",
+    "prisma",
+    "doble-rendija"
+  ],
+  "automated": {
+    "testsPassed": 397,
+    "lint": "pass",
+    "typescript": "pass",
+    "htmlEntries": 24,
+    "newDependencies": 0,
+    "additionalPointQueries": 4320,
+    "models": "No physical equations changed"
+  },
+  "independentQA": {
+    "desktopLabs": 5,
+    "mobile390Labs": 5,
+    "mobile320Labs": [
+      "hawking",
+      "lente-gravitacional"
+    ],
+    "landscape667Labs": [
+      "lente-gravitacional",
+      "prisma"
+    ],
+    "consoleErrors": 0,
+    "directHitsObserved": [
+      "Hawking horizon/interior/emission",
+      "Lens shadow",
+      "Accretion gas",
+      "Prism incident beam and 700nm ray"
+    ],
+    "newDetectionsList": "empty -> 20 -> cleared; verified",
+    "pointBrowserHit": "Not confirmed by independent browser pass; exact and tolerance cases verified numerically"
+  },
+  "primaryQA": {
+    "productionPreview": "Accretion gas help at 390x844; canvas remains visible",
+    "regression": "Page axis help preserved; no 3D objects button on SVG lab"
+  },
+  "fixes": [
+    "Card scroll resets for new object",
+    "Protect both lens renderers",
+    "Invalidate updated Points and wave-guide bounds",
+    "Correct occlusion test through actual fine-object position",
+    "Pin list consultations across automatic scroll",
+    "Short landscape prism framing",
+    "Account for scrollbar gutter"
+  ],
+  "limitations": [
+    "Cards may overlap empty canvas margins in very short windows; selected object remains visible",
+    "Scene lists are inventory, not pixel occlusion proofs",
+    "Safari and real mobile devices pending",
+    "No novice participant learning study"
+  ],
+  "publicVerification": "Recorded separately in local QA artifacts after deployment"
+}

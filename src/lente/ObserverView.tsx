@@ -3,10 +3,20 @@ import { pickedDirection } from './interaction'
 import { Component, useEffect, useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { DataTexture, FloatType, NearestFilter, RGBAFormat, ShaderMaterial, Vector2 } from 'three'
+import {
+  DataTexture,
+  FloatType,
+  NearestFilter,
+  RGBAFormat,
+  ShaderMaterial,
+  Vector2,
+} from 'three'
 import { degrees, directionForPixel, HALF_FOV, MAX_ANGLE, radians } from './physics'
 import type { Setup } from './learning'
 import type { Transfer } from './useTransfer'
+import { observerRegionAt, observerRegionEntry } from './sceneHelp'
+import { registerSceneHelp } from '../education/sceneHelp'
+import type { SceneHelpHit } from '../education/sceneHelp'
 
 const fragment = `
 precision highp float;
@@ -64,11 +74,25 @@ void main(){
   gl_FragColor=vec4(pow(color,vec3(.4545)),1.);
 }`
 
-function Field({ transfer, setup, grid }: { transfer: Transfer; setup: Setup; grid: boolean }) {
+function Field({
+  transfer,
+  setup,
+  grid,
+}: {
+  transfer: Transfer
+  setup: Setup
+  grid: boolean
+}) {
   const ref = useRef<ShaderMaterial>(null)
   const invalidate = useThree((state) => state.invalidate)
   const texture = useMemo(() => {
-    const value = new DataTexture(transfer.data, transfer.data.length / 4, 1, RGBAFormat, FloatType)
+    const value = new DataTexture(
+      transfer.data,
+      transfer.data.length / 4,
+      1,
+      RGBAFormat,
+      FloatType,
+    )
     value.minFilter = NearestFilter
     value.magFilter = NearestFilter
     value.needsUpdate = true
@@ -162,13 +186,96 @@ export default function ObserverView({
   })
   const alpha = radians(setup.rayAngle)
   const x =
-    50 +
-    (50 * Math.tan(alpha) * Math.cos(setup.azimuth)) /
-      (Math.tan(HALF_FOV) * aspect)
-  const y =
-    50 -
-    (50 * Math.tan(alpha) * Math.sin(setup.azimuth)) / Math.tan(HALF_FOV)
+    50 + (50 * Math.tan(alpha) * Math.cos(setup.azimuth)) / (Math.tan(HALF_FOV) * aspect)
+  const y = 50 - (50 * Math.tan(alpha) * Math.sin(setup.azimuth)) / Math.tan(HALF_FOV)
   const visible = x > 0 && x < 100 && y > 0 && y < 100
+  useEffect(() => {
+    const element = area.current
+    if (!element || !transfer || pending) return
+    const imageState = { ...transfer, source: setup.source, yaw: setup.yaw }
+    const selectedEntry = () => ({
+      title: 'Selector del rayo elegido',
+      body: `La retícula es un control, no una partícula. Marca la dirección de ${setup.rayAngle.toLocaleString('es-AR', { maximumFractionDigits: 2 })}° que estudia el diagrama. En modo juego podés arrastrarla para elegir otro rayo. La imagen muestra de dónde llega su luz; el diagrama explica su recorrido.`,
+    })
+    const pick = (point: {
+      x: number
+      y: number
+      pointerType: string
+    }): SceneHelpHit | null => {
+      if (!element.querySelector('canvas')) return null
+      const bounds = element.getBoundingClientRect()
+      if (
+        bounds.width <= 0 ||
+        bounds.height <= 0 ||
+        point.x < bounds.left ||
+        point.x > bounds.right ||
+        point.y < bounds.top ||
+        point.y > bounds.bottom
+      )
+        return null
+      const anchor = { x: point.x, y: point.y }
+      if (
+        visible &&
+        Math.hypot(
+          point.x - bounds.left - (bounds.width * x) / 100,
+          point.y - bounds.top - (bounds.height * y) / 100,
+        ) <= (point.pointerType === 'touch' ? 22 : 12)
+      )
+        return { id: 'lens-selected-ray', entry: selectedEntry(), anchor }
+      const region = observerRegionAt(
+        (2 * (point.x - bounds.left)) / bounds.width - 1,
+        1 - (2 * (point.y - bounds.top)) / bounds.height,
+        bounds.width / bounds.height,
+        imageState,
+      )
+      return {
+        id: `lens-${region.kind}`,
+        entry: observerRegionEntry(region, transfer.model.gravity),
+        anchor,
+      }
+    }
+    return registerSceneHelp(element, {
+      pick,
+      items: () => {
+        if (!element.querySelector('canvas')) return []
+        const bounds = element.getBoundingClientRect()
+        if (bounds.width <= 0 || bounds.height <= 0) return []
+        const found = new Map<string, SceneHelpHit>()
+        // Representatives are classified from the current image transfer, not fixed hotspots.
+        for (let j = 0; j < 40; j++)
+          for (let i = 0; i < 64; i++) {
+            const u = (i + 0.5) / 64,
+              v = (j + 0.5) / 40
+            const region = observerRegionAt(
+              2 * u - 1,
+              1 - 2 * v,
+              bounds.width / bounds.height,
+              imageState,
+            )
+            const id = `lens-${region.kind}`
+            if (!found.has(id))
+              found.set(id, {
+                id,
+                entry: observerRegionEntry(region, transfer.model.gravity),
+                anchor: {
+                  x: bounds.left + u * bounds.width,
+                  y: bounds.top + v * bounds.height,
+                },
+              })
+          }
+        if (visible)
+          found.set('lens-selected-ray', {
+            id: 'lens-selected-ray',
+            entry: selectedEntry(),
+            anchor: {
+              x: bounds.left + (bounds.width * x) / 100,
+              y: bounds.top + (bounds.height * y) / 100,
+            },
+          })
+        return [...found.values()]
+      },
+    })
+  }, [transfer, setup.source, setup.yaw, setup.rayAngle, pending, x, y, visible])
   return (
     <div ref={area} className="ln-observer-image">
       {transfer && (
@@ -189,6 +296,7 @@ export default function ObserverView({
         </Boundary>
       )}
       <button
+        data-scene-help-surface
         className="ln-pick-surface"
         aria-label="Elegir un rayo en la imagen; Enter selecciona la dirección de 14 grados"
         disabled={pending}
@@ -200,11 +308,7 @@ export default function ObserverView({
           const bounds = event.currentTarget.getBoundingClientRect()
           const px = (2 * (event.clientX - bounds.left)) / bounds.width - 1
           const py = 1 - (2 * (event.clientY - bounds.top)) / bounds.height
-          const direction = directionForPixel(
-            px,
-            py,
-            bounds.width / bounds.height,
-          )
+          const direction = directionForPixel(px, py, bounds.width / bounds.height)
           onPick(degrees(direction.angle), direction.azimuth)
         }}
       />
@@ -216,6 +320,7 @@ export default function ObserverView({
       </div>
       {visible && (
         <button
+          data-scene-help-surface
           {...drag}
           type="button"
           className="ln-selected-pixel ln-ray-handle"
@@ -236,11 +341,7 @@ export default function ObserverView({
             )[e.key]
             if (delta) {
               e.preventDefault()
-              const v = pickedDirection(
-                x / 100 + delta[0],
-                y / 100 + delta[1],
-                aspect,
-              )
+              const v = pickedDirection(x / 100 + delta[0], y / 100 + delta[1], aspect)
               if (v) onPick(v.angle, v.azimuth)
             }
           }}
@@ -253,8 +354,7 @@ export default function ObserverView({
       </p>
       {pending && (
         <div className="ln-calculating" role="status">
-          Integrando trayectorias…{' '}
-          {transfer ? 'Se conserva la imagen anterior.' : ''}
+          Integrando trayectorias… {transfer ? 'Se conserva la imagen anterior.' : ''}
         </div>
       )}
     </div>

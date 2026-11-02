@@ -1,8 +1,10 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef } from 'react'
 import { Line } from '@react-three/drei/core/Line'
 import { AdditiveBlending, DataTexture, LinearFilter, RGBAFormat } from 'three'
+import type { BufferGeometry } from 'three'
 import { slitCenters } from '../../physics/interference'
 import { useLabStore } from '../../store/store'
+import { SLIT_SCENE_HELP, pathDetectorHelp, invalidatePickingBounds } from './sceneHelp'
 
 const METAL = '#526877'
 const DARK = '#182b39'
@@ -73,7 +75,7 @@ function Emitter() {
   const color =
     particleType === 'photon' ? '#ffe2a5' : particleType === 'neutron' ? '#bdabff' : MINT
   return (
-    <group position={[-3.2, 0, 0]}>
+    <group position={[-3.2, 0, 0]} userData={{ sceneHelp: SLIT_SCENE_HELP.emitter }}>
       <Box position={[-0.18, 0.17, 0]} size={[1.05, 0.2, 0.8]} color="#2d4553" />
       <Box position={[-0.18, 0.58, 0]} size={[0.21, 0.7, 0.2]} />
       <group position={[-0.2, 1.13, 0]} rotation={[0, 0, -Math.PI / 2]}>
@@ -113,8 +115,9 @@ function Barrier() {
     1.45,
   ]
   const detection = config.detectorStrength > 0 && config.slitCount > 1
+  const detectorHelp = pathDetectorHelp(detection, config.detectorStrength)
   return (
-    <group>
+    <group userData={{ sceneHelp: SLIT_SCENE_HELP.barrier }}>
       <Box position={[0, 0.13, 0]} size={[0.75, 0.2, 3.18]} color="#2e4554" />
       <Box position={[0, 0.37, 0]} size={[0.17, 0.3, 2.9]} color={DARK} />
       <Box position={[0, 1.92, 0]} size={[0.17, 0.35, 2.9]} color={DARK} />
@@ -132,7 +135,7 @@ function Barrier() {
             ),
         )}
       {centers.map((z) => (
-        <group key={z}>
+        <group key={z} userData={{ sceneHelp: SLIT_SCENE_HELP.aperture }}>
           {[-1, 1].map((side) => (
             <Box
               key={side}
@@ -142,12 +145,12 @@ function Barrier() {
               metalness={0.82}
             />
           ))}
-          <mesh position={[-0.11, 1.76, z]}>
+          <mesh position={[-0.11, 1.76, z]} userData={{ sceneHelp: detectorHelp }}>
             <sphereGeometry args={[0.035, 12, 8]} />
             <meshBasicMaterial color={detection ? '#ffbf85' : '#75939c'} />
           </mesh>
           {detection && (
-            <mesh position={[-0.135, 1.13, z]}>
+            <mesh position={[-0.135, 1.13, z]} userData={{ sceneHelp: detectorHelp }}>
               <boxGeometry args={[0.015, 1.1, config.slitWidth * 0.7]} />
               <meshBasicMaterial
                 color="#ffbd80"
@@ -196,7 +199,7 @@ function TheoryBands() {
     ])
   }, [distribution, distance])
   return (
-    <group>
+    <group userData={{ sceneHelp: SLIT_SCENE_HELP.theory }}>
       <mesh position={[distance - 0.111, 1.17, 0]} rotation={[0, -Math.PI / 2, 0]}>
         <planeGeometry args={[6, 1.7]} />
         <meshBasicMaterial map={texture} transparent depthWrite={false} />
@@ -207,6 +210,7 @@ function TheoryBands() {
 }
 
 function DetectionScreen() {
+  const hitGeometry = useRef<BufferGeometry>(null)
   const distance = useLabStore((state) => state.config.screenDistance)
   const recentHits = useLabStore((state) => state.recentHits)
   const showTheory = useLabStore((state) => state.showTheory)
@@ -238,8 +242,9 @@ function DetectionScreen() {
     }
     return positions
   }, [recentHits, distance])
+  useLayoutEffect(() => invalidatePickingBounds(hitGeometry.current), [points])
   return (
-    <group>
+    <group userData={{ sceneHelp: SLIT_SCENE_HELP.screen }}>
       <Box
         position={[distance, 1.17, 0]}
         size={[0.2, 1.94, 6.08]}
@@ -256,8 +261,8 @@ function DetectionScreen() {
         </group>
       ))}
       {showTheory && <TheoryBands />}
-      <points frustumCulled={false}>
-        <bufferGeometry>
+      <points frustumCulled={false} userData={recentHits.length ? { sceneHelp: SLIT_SCENE_HELP.detections } : {}}>
+        <bufferGeometry ref={hitGeometry}>
           <bufferAttribute attach="attributes-position" args={[points, 3]} />
         </bufferGeometry>
         <pointsMaterial
@@ -278,6 +283,7 @@ function DetectionScreen() {
 
 /** Static wavefront guide, deliberately separate from measured particle impacts. */
 function WaveGuide() {
+  const waveGeometry = useRef<BufferGeometry>(null)
   const config = useLabStore((state) => state.config)
   const centers = useMemo(() => slitCenters(config), [config])
   const waves = useMemo(() => {
@@ -307,9 +313,10 @@ function WaveGuide() {
     for (let x = -2.6; x < -0.2; x += spacing) result.push(x, 1.12, -0.72, x, 1.12, 0.72)
     return new Float32Array(result)
   }, [config, centers])
+  useLayoutEffect(() => invalidatePickingBounds(waveGeometry.current), [waves])
   return (
-    <lineSegments>
-      <bufferGeometry>
+    <lineSegments userData={{ sceneHelp: SLIT_SCENE_HELP.waveGuide }}>
+      <bufferGeometry ref={waveGeometry}>
         <bufferAttribute attach="attributes-position" args={[waves, 3]} />
       </bufferGeometry>
       <lineBasicMaterial

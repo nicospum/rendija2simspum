@@ -7,6 +7,9 @@ import LightEmitter from './LightEmitter'
 import Prism from './Prism'
 import SpectrumScreen from './SpectrumScreen'
 import OpticalBench from './OpticalBench'
+import type { Intersection } from 'three'
+import { PRISM_SCENE_HELP, opticalSegmentHelp } from './sceneHelp'
+import type { OpticalSegmentHelp } from './sceneHelp'
 
 type HoverTarget = 'lamp' | 'prism' | 'screen' | 'beam' | null
 
@@ -23,6 +26,8 @@ interface ExperimentSceneProps {
 
 function LightPaths({ experiment, intensity, onHover }: { experiment: ExperimentResult; intensity: number; onHover: (target: HoverTarget) => void }) {
   const geometries = useMemo(() => {
+    const coreHelp: OpticalSegmentHelp[] = []
+    const glowHelp: OpticalSegmentHelp[] = []
     const positions: number[] = []
     const colors: number[] = []
     const glowPositions: number[] = []
@@ -42,6 +47,7 @@ function LightPaths({ experiment, intensity, onHover }: { experiment: Experiment
         const { from, to } = segment
         const representative = ray.offset === 0 && [380, 440, 490, 550, 580, 620, 700].includes(ray.wavelength)
         if (incident || representative) {
+          coreHelp.push({ incident, wavelength: ray.wavelength, medium: original.medium, internalReflections: ray.internalReflections })
           positions.push(from.x, 0.84, from.z, to.x, 0.84, to.z)
           colors.push(color.r, color.g, color.b, color.r, color.g, color.b)
         }
@@ -53,6 +59,7 @@ function LightPaths({ experiment, intensity, onHover }: { experiment: Experiment
         const b = [from.x - normalX, 0.84, from.z - normalZ]
         const c = [to.x + normalX, 0.84, to.z + normalZ]
         const d = [to.x - normalX, 0.84, to.z - normalZ]
+        glowHelp.push({ incident, wavelength: ray.wavelength, medium: original.medium, internalReflections: ray.internalReflections })
         glowPositions.push(...a, ...b, ...c, ...b, ...d, ...c)
         // The incoming white paths are deduplicated; spectral paths divide
         // their display power over the 33 wavelength samples.
@@ -66,20 +73,38 @@ function LightPaths({ experiment, intensity, onHover }: { experiment: Experiment
     const glow = new BufferGeometry()
     glow.setAttribute('position', new Float32BufferAttribute(glowPositions, 3))
     glow.setAttribute('color', new Float32BufferAttribute(glowColors, 3))
-    return { core, glow }
+    return { core, glow, coreHelp, glowHelp }
   }, [experiment])
   useEffect(() => () => { geometries.core.dispose(); geometries.glow.dispose() }, [geometries])
+  const helpItems = [
+    ...(geometries.coreHelp.some((segment) => segment.incident) ? [PRISM_SCENE_HELP.incident] : []),
+    ...(geometries.glowHelp.some((segment) => !segment.incident) ? [PRISM_SCENE_HELP.spectral] : []),
+  ]
+  const glowHelp = {
+    sceneHelp: (hit: Intersection) => opticalSegmentHelp(
+      geometries.glowHelp, Math.floor((hit.faceIndex ?? -2) / 2),
+    ),
+    sceneHelpItems: helpItems,
+  }
+  const coreHelp = {
+    sceneHelp: (hit: Intersection) => opticalSegmentHelp(
+      geometries.coreHelp, Math.floor((hit.index ?? -2) / 2),
+    ),
+    sceneHelpItems: helpItems,
+  }
 
   return (
     <group>
       <mesh geometry={geometries.glow} renderOrder={8}
+        userData={glowHelp}
         onPointerOver={(event) => { event.stopPropagation(); onHover('beam') }}
         onPointerOut={() => onHover(null)}
         onClick={(event) => { event.stopPropagation(); onHover('beam') }}
       >
         <meshBasicMaterial vertexColors transparent opacity={intensity * 0.12} side={DoubleSide} blending={AdditiveBlending} depthWrite={false} toneMapped={false} />
       </mesh>
-      <lineSegments geometry={geometries.core} renderOrder={9} raycast={() => undefined}>
+      <lineSegments geometry={geometries.core} renderOrder={9}
+        userData={coreHelp}>
         <lineBasicMaterial vertexColors transparent opacity={intensity * 0.38} blending={AdditiveBlending} depthWrite={false} toneMapped={false} />
       </lineSegments>
     </group>
@@ -98,9 +123,13 @@ export default function ExperimentScene({ experiment, config, intensity, lightEn
       <LightEmitter experiment={experiment} config={config} intensity={intensity} lightEnabled={lightEnabled} onEnter={() => onHover('lamp')} onLeave={() => onHover(null)} />
       <Prism experiment={experiment} onEnter={() => onHover('prism')} onLeave={() => onHover(null)} />
       <SpectrumScreen experiment={experiment} minimumZ={minimumZ} maximumZ={maximumZ} intensity={intensity} lightEnabled={lightEnabled} onEnter={() => onHover('screen')} onLeave={() => onHover(null)} />
-      {lightEnabled && <LightPaths experiment={experiment} intensity={intensity} onHover={onHover} />}
+      {lightEnabled && intensity > 0 && <LightPaths experiment={experiment} intensity={intensity} onHover={onHover} />}
       {showNormals && central?.interactions.map((interaction, index) => (
         <Line key={index}
+          userData={{ sceneHelp: {
+            id: 'prisma-normal', title: 'Normal de la cara',
+            body: 'La línea discontinua es perpendicular a la cara en el punto de interacción. Los ángulos de incidencia y refracción se miden desde esta normal, no desde la superficie. Es una guía geométrica; no un rayo adicional.',
+          } }}
           points={[
             [interaction.point.x - interaction.normal.x * 0.36, 0.846, interaction.point.z - interaction.normal.z * 0.36],
             [interaction.point.x + interaction.normal.x * 0.56, 0.846, interaction.point.z + interaction.normal.z * 0.56],

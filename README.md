@@ -64,7 +64,7 @@ Las pruebas cubren las fórmulas con referencias analíticas y numéricas indepe
 
 ## Ayuda dentro de los laboratorios
 
-El botón «Modo ayuda» permite consultar controles, lecturas y elementos de las escenas con mouse, teclado o toque. Mientras está activo las consultas no accionan el montaje; desactivalo o pulsá Escape para volver a jugar. La preferencia se guarda por pestaña y no aparece en las portadas ni en los mapas de especiales. Ver [alcance y mantenimiento](docs/MODO_AYUDA.md).
+El botón «Modo ayuda» permite consultar controles, lecturas y elementos de las escenas con mouse, teclado o toque. Mientras está activo las consultas no accionan el montaje; desactivalo o pulsá Escape para volver a jugar. La preferencia se guarda por pestaña y no aparece en las portadas ni en los mapas de especiales. En los cinco visores WebGL también reconoce objetos: horizonte, rayos, gas e impactos, con la alternativa «Objetos de la escena». Ver [alcance y mantenimiento](docs/MODO_AYUDA.md) y [selección 3D](docs/AYUDA_ESCENAS_3D.md).
 
 ## Cómo explorar la doble rendija
 

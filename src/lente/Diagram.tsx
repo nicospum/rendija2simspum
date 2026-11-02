@@ -80,6 +80,12 @@ export default function Diagram({
         {paths.map((item, i) => (
           <polyline
             key={i}
+            data-help-title={
+              i === paths.length - 1
+                ? 'Rayo de luz elegido'
+                : 'Dirección de luz vecina'
+            }
+            data-help-body={`Es una geodésica nula calculada, no una animación prefabricada. La trazamos desde la cámara hacia su origen; la luz recibida viaja en sentido contrario. ${item.outcome === 'sky' ? 'Este recorrido alcanza la esfera de fondo.' : item.outcome === 'captured' ? 'Esta dirección entra en la región de captura: no trae luz del fondo ni nos permite recibir señales del interior del horizonte.' : 'El integrador no resuelve su destino dentro del límite numérico; no se declara captura por ese motivo.'} El grosor y el color distinguen direcciones; no son la intensidad ni el tamaño de un fotón.`}
             points={item.points.map(overview).join(' ')}
             fill="none"
             stroke={i === paths.length - 1 ? '#f4c789' : '#78b7c5'}
@@ -91,12 +97,21 @@ export default function Diagram({
           <circle
             cx="320"
             cy="320"
+            data-help-title="Horizonte en el diagrama"
+            data-help-body="Este círculo marca el radio areal rₛ=2GM/c² en el plano de coordenadas del rayo. Es una frontera causal, no una pared. No tiene el mismo tamaño que la sombra aparente del visor del observador, que depende de la captura de luz."
             r={3.15 * scale}
             fill="#03090d"
             stroke="#ddae72"
           />
         )}
-        <circle cx="395.6" cy="320" r="7" fill="#b8e0e7" />
+        <circle
+          cx="395.6"
+          cy="320"
+          r="7"
+          fill="#b8e0e7"
+          data-help-title="La cámara del observador"
+          data-help-body="Este punto fija dónde se reciben los rayos. El rastreo parte de la cámara hacia el fondo para construir la imagen; la luz física que llega recorre el trayecto en sentido opuesto. La distancia física se mantiene al comparar masas."
+        />
         <circle
           cx={320 + sourceX * 3.15}
           cy={320 - sourceY * 3.15}
@@ -184,6 +199,8 @@ export default function Diagram({
                 {setup.gravity && (
                   <circle
                     r={1.5 * scale}
+                    data-help-title="Esfera de fotones"
+                    data-help-body="En Schwarzschild, r=1,5 rₛ admite órbitas circulares de luz inestables. Una pequeña perturbación puede llevar a captura o escape. No es el horizonte ni una esfera sólida luminosa."
                     fill="none"
                     stroke="#7eaab5"
                     strokeWidth=".12"
@@ -193,6 +210,12 @@ export default function Diagram({
                 {paths.map((item, i) => (
                   <polyline
                     key={i}
+                    data-help-title={
+                      i === paths.length - 1
+                        ? 'Rayo elegido en la ampliación'
+                        : 'Rayo vecino en la ampliación'
+                    }
+                    data-help-body="Es el mismo recorrido calculado que en la vista amplia, con otra ampliación. Las coordenadas del dibujo no son una regla euclídea del espacio curvo. La dirección elegida comparte sus parámetros con la imagen del observador."
                     points={item.points.map(near).join(' ')}
                     fill="none"
                     stroke={i === paths.length - 1 ? '#f4c789' : '#78b7c5'}
@@ -203,6 +226,8 @@ export default function Diagram({
                 {setup.gravity && (
                   <circle
                     r={scale}
+                    data-help-title="El horizonte: rₛ"
+                    data-help-body="Marca la frontera causal del agujero negro en este plano de coordenadas. El rastreo inverso que la alcanza no permite ver luz saliendo de su interior. La sombra del visor es una región angular de captura, no este círculo físico superpuesto a la imagen."
                     fill="#02070a"
                     stroke="#cfa76f"
                     strokeWidth=".12"

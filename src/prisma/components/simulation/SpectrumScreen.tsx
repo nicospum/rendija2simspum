@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from 'react'
 import { BufferGeometry, Color, DoubleSide, Float32BufferAttribute } from 'three'
 import type { ExperimentResult } from '../../physics/optics'
+import { PRISM_SCENE_HELP } from './sceneHelp'
 
 interface SpectrumScreenProps {
   experiment: ExperimentResult
@@ -78,6 +79,7 @@ export default function SpectrumScreen({ experiment, minimumZ, maximumZ, intensi
   return (
     <group>
       <group
+        userData={{ sceneHelp: PRISM_SCENE_HELP.screen }}
         position={[experiment.screenX + 0.035, 0.97, centerZ]}
         onPointerOver={(event) => { event.stopPropagation(); onEnter() }}
         onPointerOut={onLeave}
@@ -104,8 +106,8 @@ export default function SpectrumScreen({ experiment, minimumZ, maximumZ, intensi
           </mesh>
         </group>
       ))}
-      {lightEnabled && (
-        <mesh geometry={spectrum} renderOrder={12}>
+      {lightEnabled && intensity > 0 && (
+        <mesh geometry={spectrum} renderOrder={12} userData={{ sceneHelp: PRISM_SCENE_HELP.spectrum }}>
           <meshBasicMaterial vertexColors transparent opacity={0.94 * intensity} side={DoubleSide} depthWrite={false} toneMapped={false} />
         </mesh>
       )}

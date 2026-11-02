@@ -1,4 +1,5 @@
 import type { ExperimentConfig, ExperimentResult } from '../../physics/optics'
+import { PRISM_SCENE_HELP } from './sceneHelp'
 
 interface LightEmitterProps {
   experiment: ExperimentResult
@@ -11,7 +12,7 @@ interface LightEmitterProps {
 
 export default function LightEmitter({ experiment, config, intensity, lightEnabled, onEnter, onLeave }: LightEmitterProps) {
   return (
-    <group position={[experiment.source.x, 0, experiment.source.z]}>
+    <group position={[experiment.source.x, 0, experiment.source.z]} userData={{ sceneHelp: PRISM_SCENE_HELP.lamp }}>
       <mesh position={[-0.24, 0.065, 0]}>
         <boxGeometry args={[0.76, 0.13, 0.64]} />
         <meshStandardMaterial color="#1c2b30" metalness={0.65} roughness={0.4} />

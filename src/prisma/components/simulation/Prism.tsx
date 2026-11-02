@@ -2,6 +2,7 @@ import { useEffect, useMemo } from 'react'
 import { Edges } from '@react-three/drei/core/Edges'
 import { BufferGeometry, Float32BufferAttribute, DoubleSide } from 'three'
 import type { ExperimentResult } from '../../physics/optics'
+import { PRISM_SCENE_HELP } from './sceneHelp'
 
 interface PrismProps {
   experiment: ExperimentResult
@@ -47,6 +48,7 @@ export default function Prism({ experiment, onEnter, onLeave }: PrismProps) {
       </mesh>
       <mesh
         geometry={geometry}
+        userData={{ sceneHelp: PRISM_SCENE_HELP.prism }}
         onPointerOver={(event) => { event.stopPropagation(); onEnter() }}
         onPointerOut={onLeave}
         onClick={(event) => { event.stopPropagation(); onEnter() }}

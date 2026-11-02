@@ -39,3 +39,34 @@ export function helpPosition(
     width,
   }
 }
+
+/** Prefer space outside the renderer. The fallback protects the point being inspected. */
+export function sceneHelpPosition(
+  scene: { left: number; right: number; top: number; bottom: number },
+  viewport: { width: number; height: number },
+  anchor?: { x: number; y: number },
+) {
+  const width = Math.min(340, viewport.width - 24)
+  const rightSpace = viewport.width - scene.right - 20
+  const leftSpace = scene.left - 20
+  if (rightSpace >= 280 || leftSpace >= 280)
+    return {
+      left: rightSpace >= 280 ? scene.right + 8 : 12,
+      top: Math.max(12, Math.min(viewport.height - 360, scene.top)),
+      width: Math.min(width, rightSpace >= 280 ? rightSpace : leftSpace),
+      maxHeight: Math.min(290, viewport.height - 110),
+    }
+  const below = viewport.height - 94 - Math.max(0, scene.bottom)
+  if (below >= 110)
+    return { left: 12, top: scene.bottom + 8, width, maxHeight: Math.min(250, below) }
+  if (scene.top >= 140)
+    return { left: 12, top: 12, width, maxHeight: Math.min(250, scene.top - 24) }
+  const maxHeight = Math.min(160, viewport.height * 0.27)
+  const bottomTop = viewport.height - 94 - maxHeight
+  return {
+    left: 12,
+    top: anchor && anchor.y > bottomTop - 20 ? 12 : bottomTop,
+    width,
+    maxHeight,
+  }
+}

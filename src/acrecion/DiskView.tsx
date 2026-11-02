@@ -20,6 +20,9 @@ import {
   PEAK_RADIUS,
 } from './physics'
 import type { Setup } from './physics'
+import { diskRegionAt, diskRegionEntry } from './sceneHelp'
+import { registerSceneHelp } from '../education/sceneHelp'
+import type { SceneHelpHit } from '../education/sceneHelp'
 
 const fragment = `
 precision highp float;
@@ -245,6 +248,63 @@ export default function DiskView({
       worker?.terminate()
     }
   }, [])
+  useEffect(() => {
+    const element = area.current
+    if (!element || !map) return
+    const hit = (nx: number, ny: number, bounds: DOMRect): SceneHelpHit => {
+      const region = diskRegionAt(
+        nx,
+        ny,
+        bounds.width / bounds.height,
+        map,
+        setup,
+      )
+      return {
+        id: region.id,
+        entry: diskRegionEntry(region, setup),
+        anchor: {
+          x: bounds.left + ((nx + 1) * bounds.width) / 2,
+          y: bounds.top + ((1 - ny) * bounds.height) / 2,
+        },
+      }
+    }
+    return registerSceneHelp(element, {
+      pick: (point) => {
+        if (!element.querySelector('canvas')) return null
+        const bounds = element.getBoundingClientRect()
+        if (
+          bounds.width <= 0 ||
+          bounds.height <= 0 ||
+          point.x < bounds.left ||
+          point.x > bounds.right ||
+          point.y < bounds.top ||
+          point.y > bounds.bottom
+        )
+          return null
+        return hit(
+          (2 * (point.x - bounds.left)) / bounds.width - 1,
+          1 - (2 * (point.y - bounds.top)) / bounds.height,
+          bounds,
+        )
+      },
+      items: () => {
+        if (!element.querySelector('canvas')) return []
+        const bounds = element.getBoundingClientRect()
+        if (bounds.width <= 0 || bounds.height <= 0) return []
+        const found = new Map<string, SceneHelpHit>()
+        for (let j = 0; j < 32; j++)
+          for (let i = 0; i < 48; i++) {
+            const candidate = hit(
+              (2 * (i + 0.5)) / 48 - 1,
+              1 - (2 * (j + 0.5)) / 32,
+              bounds,
+            )
+            if (!found.has(candidate.id)) found.set(candidate.id, candidate)
+          }
+        return [...found.values()]
+      },
+    })
+  }, [map, setup])
   return (
     <div
       className="ac-disk"

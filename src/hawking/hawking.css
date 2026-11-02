@@ -2016,3 +2016,4 @@ input[type='range'] {
     transition: none !important;
   }
 }
+html[data-lab-help='true'] .hk-map-bubble { display: none; }
