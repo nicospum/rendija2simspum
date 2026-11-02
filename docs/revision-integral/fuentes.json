@@ -1,0 +1,314 @@
+{
+  "reviewed": "2026-11-02",
+  "baseline": "e2e07a7",
+  "scope": "Revisión interna, fuentes centrales leídas en las secciones indicadas; no censo exhaustivo de literatura",
+  "sources": [
+    {
+      "id": "S01",
+      "author": "NIST / CODATA",
+      "title": "Fundamental Physical Constants — 2022 adjustment",
+      "version": "2022",
+      "url": "https://physics.nist.gov/cuu/Constants/Table/allascii.txt",
+      "section": "Tabla: c, h, kB, G, masa del electrón, longitud de Planck",
+      "readScope": "Texto de tabla leído; c,h,kB exactos SI, G y me medidos."
+    },
+    {
+      "id": "S02",
+      "author": "OpenStax / Rice University",
+      "title": "University Physics III, Refraction / Dispersion",
+      "version": "Edición web consultada 2026-11-02",
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/1-3-refraction",
+      "section": "§1.3 ecuación1.4; §1.5 tabla1.2 y figura1.22",
+      "readScope": "Se leyeron ambas secciones. Segunda URL: https://openstax.org/books/university-physics-volume-3/pages/1-5-dispersion. No valida los coeficientes sintéticos originales de Cauchy como fichas de materiales."
+    },
+    {
+      "id": "S03",
+      "author": "R. Feynman / Caltech",
+      "title": "The Feynman Lectures, III-1 Quantum Behavior",
+      "version": "1963–1965, edición web",
+      "url": "https://www.feynmanlectures.caltech.edu/III_01.html",
+      "section": "§1-3 a1-6; ecuaciones1.2–1.4 y detecciones de electrones",
+      "readScope": "Amplitudes, interferencia e información de camino. No se toma el experimento mental de la clase como una medición nueva."
+    },
+    {
+      "id": "S04",
+      "author": "R. Feynman / Caltech",
+      "title": "The Feynman Lectures, I-17 Space-Time",
+      "version": "1963, edición web",
+      "url": "https://www.feynmanlectures.caltech.edu/I_17.html",
+      "section": "§17-1/17-2; ecuaciones17.1 y17.3",
+      "readScope": "Transformación de Lorentz e intervalo; se usa también para energía en reposo sólo con el alcance de la relación relativista, no conversión total automática."
+    },
+    {
+      "id": "S05",
+      "author": "Markus Pössel / Max Planck AEI",
+      "title": "From light clocks to time dilation",
+      "version": "Edición web consultada 2026-11-02",
+      "url": "https://www.einstein-online.info/en/spotlight/light-clocks-time-dilation/",
+      "section": "Time measurement / Light clock in motion",
+      "readScope": "Reloj transversal y tiempos de sistemas inerciales."
+    },
+    {
+      "id": "S06",
+      "author": "Markus Pössel / Max Planck AEI",
+      "title": "Twins on the road",
+      "version": "Edición web consultada 2026-11-02",
+      "url": "https://www.einstein-online.info/en/spotlight/twinsroad/",
+      "section": "Introducción y analogía geométrica del recorrido",
+      "readScope": "El giro no contiene mágicamente todo el envejecimiento; la duración depende del recorrido."
+    },
+    {
+      "id": "S07",
+      "author": "Markus Pössel / Max Planck AEI",
+      "title": "The elevator, the rocket, and gravity",
+      "version": "Edición web consultada 2026-11-02",
+      "url": "https://www.einstein-online.info/en/spotlight/equivalence_principle/",
+      "section": "Equivalence principle: simplified definition y límites locales",
+      "readScope": "Aceleración/apoyo, caída libre, campos homogéneos y límites de la equivalencia."
+    },
+    {
+      "id": "S08",
+      "author": "NIST",
+      "title": "Putting Einstein to the Test",
+      "version": "Edición web consultada 2026-11-02",
+      "url": "https://www.nist.gov/atomic-clocks/a-powerful-tool-for-science/putting-einstein-test",
+      "section": "Apartado de relojes/GPS, párrafos de7,45y38µs por día",
+      "readScope": "Es referencia experimental/institucional de signo y escala GPS. El laboratorio declara Tierra no rotante y no reproduce cada corrección del GPS real."
+    },
+    {
+      "id": "S09",
+      "author": "S. Hopper, E. Forseth, T. Osburn, C. R. Evans",
+      "title": "Fast spectral source integration in black hole perturbation calculations",
+      "version": "2015, manuscrito aceptado PRD92,044048",
+      "url": "https://link.aps.org/accepted/10.1103/PhysRevD.92.044048",
+      "section": "§II, ecuaciones2.4–2.7, pp.3–4 delPDF",
+      "readScope": "Geodésicas excéntricas en anomalía de Darwin. Se convirtió p adimensional a longitud SI."
+    },
+    {
+      "id": "S10",
+      "author": "A. Genova y colaboradores / NASA MESSENGER",
+      "title": "Solar System Expansion and Strong Equivalence Principle as seen by NASA MESSENGER",
+      "version": "2018",
+      "url": "https://ntrs.nasa.gov/api/citations/20180000952/downloads/20180000952.pdf",
+      "section": "Introducción, p.2:531,63″ y aporte relativista42,98″/siglo",
+      "readScope": "Distingue contribuciones planetarias, relativistas y solares; no presenta43″ como precesión total."
+    },
+    {
+      "id": "S11",
+      "author": "OpenStax / Rice University",
+      "title": "Photoelectric Effect",
+      "version": "Edición web consultada 2026-11-02",
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/6-2-photoelectric-effect",
+      "section": "§6.2 ecuaciones6.12–6.16 y tabla6.1",
+      "readScope": "Ley energética, potencial de frenado y valores nominalesNa2,46,Zn4,31,Ag4,73eV. Son valores típicos, no universales de toda superficie."
+    },
+    {
+      "id": "S12",
+      "author": "Nobel Foundation",
+      "title": "Nobel Prize in Physics1921",
+      "version": "Premio1921, otorgado1922",
+      "url": "https://www.nobelprize.org/prizes/physics/1921/summary/",
+      "section": "Motivación del premio",
+      "readScope": "La ley del efecto fotoeléctrico figura especialmente en la motivación; no se adjudica el premio a Mercurio ni a relatividad."
+    },
+    {
+      "id": "S13",
+      "author": "Robert M. Wald",
+      "title": "The Thermodynamics of Black Holes",
+      "version": "2001, Living Reviews4:6",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5253844/",
+      "section": "§2–4, ecuaciones9–12 y Hawking Radiation",
+      "readScope": "Texto completo abierto consultado en las secciones pertinentes. Temperatura lejana, entropía de área, GSL y distinción Hawking/Unruh."
+    },
+    {
+      "id": "S14",
+      "author": "S. Aghapour y K. Hajian",
+      "title": "Black Hole Entropy from Entropy of Hawking Radiation",
+      "version": "arXiv1603.02866v3,12Nov2016",
+      "url": "https://arxiv.org/pdf/1603.02866",
+      "section": "§2, Proposición1 y ecuaciones1–3, pp.2–3",
+      "readScope": "Relación3/4 para pérdida del emisor frente a entropía radiada de cuerpo negro, no entropía fina de Page."
+    },
+    {
+      "id": "S15",
+      "author": "ESA Advanced Concepts Team, A. Wittig / J. Grover",
+      "title": "Black hole visualization",
+      "version": "2016",
+      "url": "https://www.esa.int/gsp/ACT/phy/Projects/Blackholes/WebGL/",
+      "section": "What is this? / How do you do this?",
+      "readScope": "Trazado inverso en espacio-tiempo curvo. Las frases históricas sobre futuroEHT no se usan como noticia actual."
+    },
+    {
+      "id": "S16",
+      "author": "A. J. S. Hamilton y J. P. Lisle",
+      "title": "The river model of black holes",
+      "version": "arXivgr-qc/0411060v2,31Aug2006; AJP2008",
+      "url": "https://arxiv.org/pdf/gr-qc/0411060",
+      "section": "§II, métricaPG y ecuaciones3–5",
+      "readScope": "Se leyó la formulación esférica. La velocidad coordenada del río no es una velocidad material local superlumínica."
+    },
+    {
+      "id": "S17",
+      "author": "John Preskill / Caltech",
+      "title": "Quantum Information, Chapter2: States and Ensembles",
+      "version": "Notas de curso, versión disponible2026-11-02",
+      "url": "https://www.preskill.caltech.edu/ph229/notes/chap2.pdf",
+      "section": "§2.1,2.3,2.4; ecuaciones2.6,2.57–2.61,2.88–2.92",
+      "readScope": "Probabilidades de Born, densidad, traza parcial y Schmidt; no señalización, pureza del conjunto y de las partes."
+    },
+    {
+      "id": "S18",
+      "author": "S. Ryu y T. Takayanagi",
+      "title": "Holographic Derivation of Entanglement Entropy from AdS/CFT",
+      "version": "hep-th/0603001v2,7Mar2006",
+      "url": "https://arxiv.org/html/hep-th/0603001",
+      "section": "§I/II, ecuaciones5,6,9,10,13,14 y métricaPoincaré",
+      "readScope": "Área mínima semiclásica, CFT2 y temperatura. Se distingue versión2006 del sello automático de renderHTML2026."
+    },
+    {
+      "id": "S19",
+      "author": "Don N. Page",
+      "title": "Average Entropy of a Subsystem",
+      "version": "gr-qc/9305007v2,31Aug1993",
+      "url": "https://arxiv.org/html/gr-qc/9305007",
+      "section": "Ecuaciones1–3,7,11 y definición de mediaHaar",
+      "readScope": "La expresión exacta fue conjeturada allí; la media es del ensamble, no de cada estado particular."
+    },
+    {
+      "id": "S20",
+      "author": "Juan Maldacena",
+      "title": "The Large N Limit of Superconformal field theories and supergravity",
+      "version": "hep-th/9711200v3,22Jan1998; propuesta1997",
+      "url": "https://arxiv.org/pdf/hep-th/9711200",
+      "section": "Abstract y alcance del límitenear-horizon",
+      "readScope": "Referencia histórica y alcance de ciertas dualidades; no se afirma que el laboratorio pruebe toda la correspondencia ni que describa nuestro universo."
+    },
+    {
+      "id": "S21",
+      "author": "Siddhartha Sen",
+      "title": "Average Entropy of a Subsystem",
+      "version": "hep-th/9601132v1,24Jan1996",
+      "url": "https://arxiv.org/pdf/hep-th/9601132",
+      "section": "Teorema inicial y fórmula de media;2páginas",
+      "readScope": "Demostración posterior de la conjetura de Page. La fecha automática delPDF no se usa como fecha original."
+    },
+    {
+      "id": "S22",
+      "author": "MIT Physics8.033",
+      "title": "Einstein’s Field Equations",
+      "version": "Revisión4,2Dec2002; cursoFall2006",
+      "url": "https://ocw.mit.edu/courses/8-033-relativity-fall-2006/02415213222b845bbec6e734c64d1718_fieldeqs.pdf",
+      "section": "Métrica, tensor energía-momento y ecuación de campo; aplicación exterior esférica",
+      "readScope": "Sirve al cuaderno de ecuaciones; el vacío local puede tener curvatura aun conTμν=0."
+    },
+    {
+      "id": "S23",
+      "author": "Jacob D. Bekenstein",
+      "title": "Black Holes and Entropy",
+      "version": "PRD7,2333,15Apr1973",
+      "url": "https://doi.org/10.1103/PhysRevD.7.2333",
+      "section": "Resumen editorial del autor",
+      "readScope": "Sólo se leyó resumen accesible; normalización1/4 y ecuaciones se validan con Wald/Hawking, no se finge texto completo del original."
+    },
+    {
+      "id": "S24",
+      "author": "Jérémy Auffinger",
+      "title": "Primordial black hole constraints with Hawking radiation — a review",
+      "version": "2206.02672v1,6Jun2022",
+      "url": "https://arxiv.org/html/2206.02672v1#S3.SS3",
+      "section": "§3.3 ecuaciones17–20",
+      "readScope": "Temperatura Schwarzschild y espectro con cuerpos grises/especies. No se adoptan los límites cosmológicos de2022 como estado observacional2026."
+    },
+    {
+      "id": "S25",
+      "author": "M. A. Abramowicz y P. C. Fragile",
+      "title": "Foundations of Black Hole Accretion Disk Theory",
+      "version": "Living Reviews16:1,14Jan2013",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5256006/",
+      "section": "Discos delgados, parte radiativa y§5.3",
+      "readScope": "Supuestos de eficiencia local/torque interior y diferencia entre disco delgado y otros regímenes. El presupuesto newtoniano se contrastó además con integración independiente de las dos caras."
+    },
+    {
+      "id": "S26",
+      "author": "R. Felipe-Elizarraras y colaboradores",
+      "title": "Measurement of analogue Hawking radiation stimulated by a single photon",
+      "version": "Nature Communications17,7012,30May2026",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42218176/",
+      "section": "Abstract del autor y leyendas de figuras accesibles; DOI10.1038/s41467-026-73812-8",
+      "readScope": "Comprueba la afirmación acotada de análogo óptico estimulado. El texto completoNature/PMC estuvo bloqueado; no se validaron todos los detalles experimentales ni se usa como prueba de evaporación gravitatoria."
+    },
+    {
+      "id": "S27",
+      "author": "Claude E. Shannon",
+      "title": "A Mathematical Theory of Communication",
+      "version": "1948, reimpresión corregida del Bell System Technical Journal",
+      "url": "https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf",
+      "section": "Introducción, §6 Choice, Uncertainty and Entropy, teorema 2 y propiedades 1–4 (pp. 10–12 de la reimpresión)",
+      "readScope": "Se leyeron definición, máximo equiprobable, certeza H=0, aditividad independiente y unidades. Sustenta las cuatro respuestas del puente clásico, no identifica microestados gravitatorios."
+    }
+  ],
+  "proposalSources": [
+    {
+      "id": "P01",
+      "author": "Clauser, Horne, Shimony, Holt",
+      "title": "Proposed Experiment to Test Local Hidden-Variable Theories",
+      "version": "PRL 23, 880–883, 1969; errata 1970",
+      "url": "https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.23.880",
+      "readScope": "Resumen y pp. 880–883, desigualdad y aplicación a polarizaciones con condiciones de detección. Propuesta CHSH ideal explicita su convención."
+    },
+    {
+      "id": "P02",
+      "author": "Markus Pössel / AEI",
+      "title": "Gravity: from weightlessness to curvature",
+      "url": "https://www.einstein-online.info/en/spotlight/geometry_force/",
+      "readScope": "Apartados sobre caída libre, fuerzas residuales y distancias relativas. Propuesta de mareas necesitaría además derivación de sus ecuaciones en el régimen elegido."
+    },
+    {
+      "id": "P03",
+      "author": "OpenStax / Rice University",
+      "title": "University Physics III — 5.1 Invariance of Physical Laws",
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/5-1-invariance-of-physical-laws",
+      "readScope": "Apartado del interferómetro de Michelson–Morley y distinción del papel histórico respecto de postulados."
+    },
+    {
+      "id": "P04",
+      "author": "Bertotti, Iess, Tortora",
+      "title": "A test of general relativity using radio links with the Cassini spacecraft",
+      "version": "Nature 425, 374–376, 2003",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/14508481/",
+      "readScope": "Resumen autoral leído. Confirma medición de corrimiento de frecuencia a ida/vuelta cerca del Sol; no se finge lectura completa de la derivación. Contexto leído en https://www.jpl.nasa.gov/news/saturn-bound-spacecraft-tests-einsteins-theory/."
+    },
+    {
+      "id": "P05",
+      "author": "LIGO Scientific Collaboration / Virgo Collaboration",
+      "title": "Observation of Gravitational Waves from a Binary Black Hole Merger",
+      "version": "2016, GW150914",
+      "url": "https://dcc.ligo.org/public/0122/P150914/014/LIGO-P150914_Detection_of_GW150914.pdf",
+      "readScope": "Resumen, explicación de chirp y masa chirp, detector y distinción inspiración/fusión/ringdown. Publicación de datos leída en https://gwosc.org/events/GW150914/, con filtros y procedencia de reconstrucciones."
+    },
+    {
+      "id": "P06",
+      "author": "OpenStax / Rice University",
+      "title": "University Physics III — 5.7 Doppler Effect for Light",
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/5-7-doppler-effect-for-light",
+      "readScope": "Derivación de frecuencias/longitudes, velocidad radial positiva al alejarse y ejemplo. No se usa redshift cosmológico como velocidad global."
+    },
+    {
+      "id": "P07",
+      "author": "Bennett, Brassard, Crépeau, Jozsa, Peres, Wootters",
+      "title": "Teleporting an unknown quantum state via dual classical and Einstein-Podolsky-Rosen channels",
+      "version": "PRL 70, 1895, 1993",
+      "url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.70.1895",
+      "readScope": "Resumen autoral leído. Par compartido, medición conjunta, mensaje clásico y corrección; derivación completa del circuito pendiente de una eventual implementación."
+    }
+  ],
+  "opticalRepresentationReview": {
+    "reviewed": "2026-11-02",
+    "sources": [
+      "S02",
+      "S03"
+    ],
+    "scope": "UX-05 comparte lecturas y gráfico; no introduce nueva física. Se revalidó distinción posición/brillo y predicción/muestra. No se agregaron citas nuevas por un cambio sólo de presentación.",
+    "evidence": "aceptacion-optica.md"
+  }
+}

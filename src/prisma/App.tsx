@@ -8,7 +8,12 @@ import HelpDialog from './components/ui/HelpDialog'
 import Icon from './components/ui/Icon'
 import NewtonDiscovery from './components/ui/NewtonDiscovery'
 import { LabMission, LabNavigation, MoreLabs } from '../components/ui/LabJourney'
-import { PrismLearningGuide, PrismEvidence, type ActiveLesson } from './components/ui/PrismLearning'
+import {
+  PrismLearningGuide,
+  PrismEvidence,
+  PrismControlComparison,
+  type ActiveLesson,
+} from './components/ui/PrismLearning'
 import { LESSONS, makeReading, describeLesson, type LessonId } from './education/prismLearning'
 
 const SceneViewport = lazy(() => import('./components/simulation/SceneViewport'))
@@ -431,6 +436,13 @@ function App() {
           </section>
           <ControlPanel
             activeControl={LESSONS.find((item) => item.id === lesson?.id)?.controlId}
+            comparison={lesson ? (
+              <PrismControlComparison
+                active={lesson}
+                current={reading}
+                frozen={!!state.pausedConfig}
+              />
+            ) : undefined}
             onReset={() => {
               closeInformation()
               setLesson(null)

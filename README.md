@@ -2,6 +2,8 @@
 
 Una colección de laboratorios interactivos para aprender ciencia haciendo preguntas, cambiando una variable y comparando resultados.
 
+La [revisión integral de retos y modelos](docs/revision-integral/README.md) documenta los 17 laboratorios, sus 81 retos y preguntas, correcciones, controles de QA independientes y límites de las pruebas móviles.
+
 - `/`: portada y catálogo de experimentos.
 - `/doble-rendija/`: detecciones individuales, interferencia, difracción e información del camino.
 - `/prisma/`: refracción y dispersión de la luz blanca, con trazado óptico en tiempo real.
@@ -27,7 +29,7 @@ Una colección de laboratorios interactivos para aprender ciencia haciendo pregu
 
 La actividad **Contar lo que no vemos** está dentro de `/entropia/#information-bridge`; no agrega otra tarjeta de laboratorio.
 
-El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las veintidós páginas (dieciocho laboratorios, portada y tres especiales) se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada, los especiales, entropía, horizonte y los laboratorios de Einstein y Maldacena no cargan Three.js. Los capítulos de Maldacena se cargan por separado. Su marco reutiliza los controles de escena y guarda un pasaporte local independiente; no altera las huellas anteriores. Ver [modelos, alcance y ejecución](docs/MALDACENA_LABORATORIOS.md).
+El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las 24 entradas HTML (17 laboratorios canónicos, tres enlaces históricos de Holografía, portada y tres especiales) se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada, los especiales, entropía, horizonte y los laboratorios de Einstein y Maldacena no cargan Three.js. Los capítulos de Maldacena se cargan por separado. Su marco reutiliza los controles de escena y guarda un pasaporte local independiente; no altera las huellas anteriores. Ver [modelos, alcance y ejecución](docs/MALDACENA_LABORATORIOS.md).
 
 ## Ejecutar localmente
 

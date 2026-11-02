@@ -64,7 +64,7 @@ export const LESSONS = [
     ],
     answer: 0,
     action: 'Duplicar la masa',
-    hint: 'Las distancias indicadas en UA se conservan. La escala del diagrama también permanece fija.',
+    hint: 'Llevá la masa de 4 a 8 millones M☉. Conservá las distancias indicadas en UA y la escala del diagrama para comparar sólo el efecto de duplicar la masa.',
     meaning:
       'El radio del horizonte crece linealmente con M y la sombra ocupa más ángulo. Si escaláramos también todas las distancias con M, la imagen adimensional sí sería la misma. Acá conservamos metros para que puedas separar ambos casos.',
   },

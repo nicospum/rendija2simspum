@@ -129,11 +129,7 @@ export default function TrainApp() {
           title={l.title}
           instruction={l.hint}
           href="#tr-challenges"
-          result={
-            done
-              ? 'Reto completado. Podés seguir explorando o pasar al siguiente.'
-              : undefined
-          }
+          saved={done}
           onNext={done ? () => start((s.index + 1) % 4) : undefined}
         />
         <section

@@ -30,6 +30,7 @@ export function LabMission({
   instruction,
   index,
   result,
+  saved = false,
   href,
   onStart,
   onNext,
@@ -40,12 +41,18 @@ export function LabMission({
   instruction: string
   index?: number
   result?: string
+  saved?: boolean
   href: string
   onStart?: () => void
   onNext?: () => void
   live?: boolean
   light?: boolean
 }) {
+  const status =
+    result ??
+    (saved
+      ? 'Huella guardada. Podés repetir este reto para contrastar una nueva predicción.'
+      : undefined)
   const activate = (action: () => void) => {
     action()
     requestAnimationFrame(() =>
@@ -69,13 +76,13 @@ export function LabMission({
         </span>
         <h2>{title ?? '¿Qué te gustaría descubrir?'}</h2>
         <p>{instruction}</p>
-        {result && (
+        {status && (
           <p
             className="spum-mission-result"
             role="status"
             aria-live={live ? 'polite' : 'off'}
           >
-            ↳ {result}
+            ↳ {status}
           </p>
         )}
       </div>
@@ -86,7 +93,7 @@ export function LabMission({
           </button>
         )}
         <a href={href}>
-          {result ? 'Entender y comparar ↓' : 'Predicción y comparación ↓'}
+          {status ? 'Entender y comparar ↓' : 'Predicción y comparación ↓'}
         </a>
         {onNext && (
           <button onClick={() => activate(onNext)}>

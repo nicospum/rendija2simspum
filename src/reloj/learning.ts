@@ -42,7 +42,7 @@ export const LESSONS = [
       'El reloj de la estación también marcha más lento respecto de la nave',
     ],
     answer: 2,
-    hint: 'A 0,8 c, completá un tic de la nave. Cambiá “Reloj que seguimos” a Estación y completá otro.',
+    hint: 'A 0,8 c, completá un tic de la nave. Tocá “Seguir reloj de la estación” junto al visor y completá otro tic.',
     meaning:
       'La comparación es recíproca: cada sistema asigna un tic más largo al reloj móvil. Cambiamos el reloj seguido y, por tanto, el par de sucesos comparados. La simultaneidad también depende del sistema; esto no compara edades al reencontrarse.',
     beta: 0.8,

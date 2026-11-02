@@ -1,5 +1,6 @@
 import { useLabStore } from '../../store/store'
 import { CONFIG_LIMITS, type ParticleType } from '../../physics/interference'
+import type { ReactNode } from 'react'
 
 function Range({
   id,
@@ -11,6 +12,7 @@ function Range({
   suffix = '',
   description,
   active = false,
+  comparison,
   onChange,
 }: {
   id: string
@@ -22,6 +24,7 @@ function Range({
   suffix?: string
   description: string
   active?: boolean
+  comparison?: ReactNode
   onChange: (value: number) => void
 }) {
   const decimals = step < 0.01 ? 3 : step < 1 ? 2 : 0
@@ -47,7 +50,8 @@ function Range({
         onChange={(e) => onChange(Number(e.target.value))}
       />
       <p id={`${id}-help`}>{description}</p>
-      {active && (
+      {active && comparison}
+      {active && !comparison && (
         <a className="q-control-link" href="#slit-evidence-title">
           Ver la comparación ↑
         </a>
@@ -58,9 +62,11 @@ function Range({
 
 export default function LabControls({
   activeControl,
+  comparison,
   onReset,
 }: {
   activeControl?: string
+  comparison?: ReactNode
   onReset?: () => void
 }) {
   const config = useLabStore((s) => s.config)
@@ -156,6 +162,7 @@ export default function LabControls({
         <Range
           id="slit-width"
           active={activeControl === 'slit-width'}
+          comparison={comparison}
           title="Ancho a"
           min={CONFIG_LIMITS.slitWidth.min}
           max={Math.min(CONFIG_LIMITS.slitWidth.max, config.slitSeparation - 0.02)}
@@ -168,6 +175,7 @@ export default function LabControls({
         <Range
           id="slit-separation"
           active={activeControl === 'slit-separation'}
+          comparison={comparison}
           title="Separación entre centros d"
           min={CONFIG_LIMITS.slitSeparation.min}
           max={CONFIG_LIMITS.slitSeparation.max}
@@ -199,6 +207,7 @@ export default function LabControls({
         <Range
           id="detector-strength"
           active={activeControl === 'detector-strength'}
+          comparison={comparison}
           title="Fracción con camino marcado"
           min={0}
           max={100}

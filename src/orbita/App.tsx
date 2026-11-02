@@ -119,11 +119,7 @@ export default function OrbitApp() {
           title={lesson.title}
           instruction={lesson.hint}
           href="#or-challenges"
-          result={
-            done
-              ? 'Reto completado. Seguí explorando o pasá al siguiente.'
-              : undefined
-          }
+          saved={done}
           onNext={done ? next : undefined}
         />
         <section

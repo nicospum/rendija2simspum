@@ -120,11 +120,7 @@ export default function HeightApp() {
           title={l.title}
           instruction={l.hint}
           href="#al-challenges"
-          result={
-            done
-              ? 'Reto completado. Podés seguir comparando o pasar al siguiente.'
-              : undefined
-          }
+          saved={done}
           onNext={done ? () => start((s.index + 1) % 4) : undefined}
         />
         <section

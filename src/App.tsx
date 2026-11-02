@@ -4,7 +4,7 @@ import { fringeSpacing } from './physics/interference'
 import LabControls from './components/ui/LabControls'
 import DistributionChart from './components/ui/DistributionChart'
 import LearningGuide from './components/ui/LearningGuide'
-import DoubleSlitEvidence, { type ActiveLesson } from './components/ui/DoubleSlitEvidence'
+import DoubleSlitEvidence, { DoubleSlitControlComparison, type ActiveLesson } from './components/ui/DoubleSlitEvidence'
 import DoubleSlitDiscovery from './components/ui/DoubleSlitDiscovery'
 import { LabMission, LabNavigation, MoreLabs } from './components/ui/LabJourney'
 import {
@@ -272,9 +272,12 @@ export default function App() {
               </button>
             </div>
             {lesson?.id === 'accumulation' && (
-              <a className="q-control-link" href="#slit-evidence-title">
-                Ver la comparación ↓
-              </a>
+              <DoubleSlitControlComparison
+                active={lesson}
+                current={reading}
+                paused={isPaused}
+                onGather={() => useLabStore.getState().emit(1600)}
+              />
             )}
             <div className="q-metrics" aria-label="Lecturas del experimento">
               <div>
@@ -336,6 +339,14 @@ export default function App() {
           </div>
           <LabControls
             activeControl={activeControl}
+            comparison={lesson && lesson.id !== 'accumulation' ? (
+              <DoubleSlitControlComparison
+                active={lesson}
+                current={reading}
+                paused={isPaused}
+                onGather={() => useLabStore.getState().emit(1600)}
+              />
+            ) : undefined}
             onReset={() => {
               setLesson(null)
               useLabStore.getState().resetAll()

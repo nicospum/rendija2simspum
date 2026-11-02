@@ -70,7 +70,7 @@
 }
 .spum-console-variables,
 .spum-scene-challenge,
-.spum-scene-console[data-scene-active='true'] :is(input, select, button) {
+.spum-scene-console[data-scene-active='true'] :is(input, select, button, summary, a) {
   scroll-margin-top: calc(
     var(--spum-stage-height, 250px) + var(--spum-stage-offset, 78px) - 20px
   );
@@ -311,7 +311,7 @@
   }
   .spum-console-variables,
   .spum-scene-challenge,
-  .spum-scene-console[data-scene-active='true'] :is(input, select, button) {
+  .spum-scene-console[data-scene-active='true'] :is(input, select, button, summary, a) {
     scroll-margin-top: 60px;
   }
   [data-scene-workspace].rl-observatory:has(

@@ -113,11 +113,7 @@ export default function LightClockApp() {
           title={lesson.title}
           instruction={lesson.hint}
           href="#rl-challenges"
-          result={
-            done
-              ? 'Reto completado. Seguí explorando o pasá al siguiente.'
-              : undefined
-          }
+          saved={done}
           onNext={done ? () => start((s.index + 1) % 4) : undefined}
         />
         <section

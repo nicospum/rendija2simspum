@@ -1,0 +1,29 @@
+# Registro único de hallazgos
+
+Base: `e2e07a7`. Revisión interna documentada, noviembre de 2026. Los cambios se mantienen en lotes limitados y no modifican los modelos ni el resultado esperado de los retos.
+
+| ID | Alcance | Esperado y observado | Causa y corrección | Aceptación / estado |
+| --- | --- | --- | --- | --- |
+| UX-01 | Lente, reto 4 | El paso pendiente debe indicar el objetivo; con masa 1,99× sólo repetía que las distancias se conservan. | La pista omitía duplicar de 4 a 8 millones M☉; ahora explicita ambas condiciones. | QA independiente repitió 1,99× y 2× y leyó el objetivo: corregido y aceptado. |
+| UX-02 | Gemelos, reto 3; Reloj, reto 3 | La consigna debe nombrar los controles próximos; remitía a nombres distintos o al bloque remoto. | Se unifican «Antes del giro» y «Después del giro» y se nombra «Seguir reloj de la estación», ya presente junto al visor. | QA Einstein repitió en anchos de 320 y 667 px, con respuestas incorrectas/correctas y cambios de reloj: corregido y aceptado. |
+| UX-03 | Consola compartida; reproducido en entropía | El foco y desplazamiento automático de «Pasos del reto» no deben dejar su `summary` detrás del visor. | El contrato de `scroll-margin` omitía `summary` y enlaces; se añadieron a las mismas reglas de los demás controles. | QA independiente repitió clic, comprobación con `elementFromPoint` y reinicio: corregido y aceptado. |
+| UX-04 | Siete laboratorios de Einstein, acreción y horizonte | Al volver con pasaporte previo no debe presentarse una prueba nueva como aprobada. | El texto de misión usaba el logro histórico `completed`. La propiedad `saved` diferencia «Huella guardada» del resultado de la observación actual; no cambia evaluadores ni progreso. | QA Einstein repitió los 28 reinicios y una respuesta incorrecta con huella; QA de agujeros negros revalidó los capítulos afectados. El intento nuevo conserva sus requisitos y devolución: corregido y aceptado. |
+| UX-05 | Prisma, 4 retos; doble rendija, 4 retos | Mover el control activo debe permitir ver su consecuencia sin volver a buscar la referencia. | El visor 3D y la comparación completa quedaban fuera de pantalla al bajar al panel. Se reutiliza una comparación compacta junto al control activo, sin estado físico adicional ni quiz; el visor sigue accesible por navegación. | QA independiente probó los 8 controles activos en móvil, estados inválidos y muestras a 320 y 667 px; la revisión científica de los 9 archivos de representación confirma que se conservan modelos y datos: corregido y aceptado. No se afirma que todo el visor permanezca visible. |
+| UX-06 | Doble rendija, comparación compacta de acumulación | La flecha del enlace de explicación debe corresponder a la posición del destino; el nuevo componente mostraba ↑ cuando la explicación estaba debajo. | Detalle introducido durante este lote, detectado en la revisión independiente del diff. Se usa ↓ para acumulación y se conserva ↑ en los demás retos. | Retest de coordinación en la compilación local 1028 confirma texto y destino; la aceptación óptica independiente también comprobó el enlace: corregido y aceptado. No era un problema preexistente. |
+| DOC-01 | README | La cantidad de páginas y laboratorios debe ser coherente con el catálogo y la compilación. | Texto obsoleto de 22 páginas y 18 laboratorios; corregido a 24 entradas: 17 laboratorios canónicos, 3 alias, portada y 3 especiales. | Inventario AST y compilación confirman el conteo: corregido. |
+| SEC-01 | Vite, dependencia de desarrollo | La versión resuelta 6.4.4 tenía un aviso de seguridad corregible mediante una actualización compatible. | Se actualizó Vite de 6.4.4 a 6.4.5 y se sincronizaron manifiesto y archivo de bloqueo. La auditoría total pasó de 13 a 12 avisos moderados. | Corrección aplicada; la auditoría final ya no incluye el aviso de Vite. |
+| SEC-02 | Cadena ESLint / minimatch, sólo desarrollo | Quedan 12 avisos moderados en herramientas de desarrollo; `npm audit --omit=dev` informa 0 vulnerabilidades. | No se comprobó una solución compatible para esa cadena. La sugerencia automática incluye bajar `typescript-eslint` a 8.14.0; no se aplicaron `--force` ni downgrades. | Pendiente de una actualización compatible y validada. No se presenta el proyecto como libre de avisos. |
+
+Evidencia de seguridad: [auditoría final](../../../qa-integral-retos-2026-11-02/npm-audit-final.json) y [auditoría sin dependencias de desarrollo](../../../qa-integral-retos-2026-11-02/npm-audit-production.json). Los 12 avisos corresponden a paquetes afectados de la misma cadena; no se cuentan como 12 vulnerabilidades independientes de la aplicación publicada.
+
+## Hallazgos descartados o delimitados
+
+- El contenido alternativo dentro de `canvas` no constituye un aviso visible de fallo WebGL: el render se comprobó con captura.
+- Reloj ya tenía ambos botones de reloj seguido en el reto 3. Se corrigió el nombre de la consigna, sin duplicar componentes.
+- Una captura inmediatamente después de cambiar de 320 a 1280 px mostró momentáneamente una pregunta detrás del visor. La repetición con distribución estable y «↑ Pregunta» pasó; no se rehízo la grilla basándose sólo en ese estado transitorio.
+- Modo ayuda es un inspector: permite consultar y evita la acción accidental. Desactivarlo o pulsar Escape recupera la manipulación. No se presenta como ayuda y juego simultáneos.
+- Los 8 retos ópticos son predicciones abiertas con comparación física. Se probaron intentos incorrectos mediante configuraciones incompatibles, ausencia de luz o muestras, o varias variables; no existe un selector de respuestas cuya corrección se pueda certificar.
+
+## Pendientes externos y opciones
+
+Safari y teléfonos físicos continúan pendientes por falta de acceso, conforme a la indicación del usuario. Una revisión de agentes no acredita eficacia con estudiantes. Las ampliaciones nuevas se separan en [propuestas](propuestas.md) y no se implementan durante esta revisión.

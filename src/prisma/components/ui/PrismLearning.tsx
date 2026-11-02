@@ -14,7 +14,11 @@ export function PrismLearningGuide({
   onSelect: (id: LessonId) => void
 }) {
   return (
-    <section className="prism-learning-guide" id="prism-retos" aria-labelledby="prism-learning-title">
+    <section
+      className="prism-learning-guide"
+      id="prism-retos"
+      aria-labelledby="prism-learning-title"
+    >
       <div className="prism-learning-heading">
         <div>
           <span className="eyebrow">UNA PREGUNTA ANTES DE MOVER UN CONTROL</span>
@@ -46,7 +50,7 @@ export function PrismLearningGuide({
   )
 }
 
-function ReadingComparison({ before, current }: { before: Reading; current: Reading }) {
+export function ReadingComparison({ before, current }: { before: Reading; current: Reading }) {
   const spans = [before, current].map((reading) => {
     const positions = reading.centralSpectrum.map((sample) => sample.z)
     return positions.length ? Math.max(...positions) - Math.min(...positions) : 0
@@ -127,6 +131,39 @@ function ReadingComparison({ before, current }: { before: Reading; current: Read
             </p>
           </div>
         ))}
+      </div>
+    </div>
+  )
+}
+
+export function PrismControlComparison({
+  active,
+  current,
+  frozen,
+}: {
+  active: ActiveLesson
+  current: Reading
+  frozen: boolean
+}) {
+  const feedback = describeLesson(active.id, active.baseline, current, frozen)
+  const observed =
+    current.lightEnabled && current.intensity > 0 ? current : { ...current, centralSpectrum: [] }
+  return (
+    <div
+      className="prism-control-comparison"
+      role="group"
+      aria-label="Comparación junto al control"
+    >
+      <ReadingComparison before={active.baseline} current={observed} />
+      <p className="prism-control-result">{feedback.heading}</p>
+      {frozen && <p>La lectura está congelada. Aplicá y reanudá para observar tus cambios.</p>}
+      <div className="prism-control-links">
+        <a className="learning-jump" href="#prism-evidence-title">
+          Ver la explicación completa ↑
+        </a>
+        <a className="learning-jump" href="#spum-mission">
+          Volver al visor ↑
+        </a>
       </div>
     </div>
   )

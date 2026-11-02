@@ -547,6 +547,72 @@
   line-height: 1.7;
   margin: 12px 0;
 }
+.prism-control-comparison {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #d9e1ce;
+}
+.prism-control-comparison .prism-comparison {
+  padding-top: 0;
+  border: 0;
+}
+.prism-control-comparison .prism-comparison-heading {
+  flex-wrap: wrap;
+  gap: 4px;
+  color: #526443;
+}
+.prism-control-comparison .prism-spectrum-comparison {
+  margin-top: 8px;
+  gap: 6px;
+}
+.prism-control-comparison .prism-spectrum-row {
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 6px;
+}
+.prism-control-comparison .prism-comparison-caption {
+  margin: 6px 0;
+  font-size: 11px;
+}
+.prism-control-comparison .prism-comparison-metrics {
+  margin: 8px 0;
+}
+.prism-control-comparison .prism-comparison-metrics > div {
+  padding-left: 10px;
+}
+.prism-control-comparison .prism-comparison-metrics > div:first-child {
+  padding-left: 0;
+}
+.prism-control-comparison .prism-comparison-metrics strong {
+  font-size: 20px;
+  margin-top: 3px;
+}
+.prism-control-comparison .prism-comparison-metrics small {
+  margin-bottom: 4px;
+}
+.prism-control-comparison p,
+.prism-control-comparison .prism-comparison-metrics p {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #526443;
+}
+.prism-control-comparison .prism-control-result {
+  font-weight: 600;
+  margin: 8px 0 0;
+}
+.prism-control-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 12px;
+}
+.prism-control-links a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.learning-control-active input,
+.learning-control-active select {
+  scroll-margin-top: 96px;
+}
 @media (max-width: 500px) {
   .prism-learning-grid p,
   .prism-prediction {

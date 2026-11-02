@@ -157,12 +157,11 @@ export default function HorizonApp() {
           instruction={l.hint}
           index={learning.index}
           href="#hz-challenges"
+          saved={complete}
           result={
-            complete
-              ? 'Reto completado. Seguí explorando o pasá al siguiente.'
-              : observed(learning)
-                ? 'Comparación realizada. Comprobá tu explicación.'
-                : undefined
+            observed(learning)
+              ? 'Comparación realizada. Comprobá tu explicación.'
+              : undefined
           }
           onNext={complete ? () => start((learning.index + 1) % 4) : undefined}
         />

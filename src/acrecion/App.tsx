@@ -152,12 +152,11 @@ export default function AccretionApp() {
           instruction={lesson.hint}
           index={learning.index}
           href="#ac-challenges"
+          saved={complete}
           result={
-            complete
-              ? 'Reto completado. Podés seguir explorando o pasar al siguiente.'
-              : ready
-                ? 'Comparación realizada. Volvé a tu predicción y comprobala.'
-                : undefined
+            ready
+              ? 'Comparación realizada. Volvé a tu predicción y comprobala.'
+              : undefined
           }
           onNext={complete ? () => start((learning.index + 1) % 4) : undefined}
         />

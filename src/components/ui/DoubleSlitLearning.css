@@ -116,6 +116,63 @@
 .q-reading-comparison b {
   font-weight: 600;
 }
+.q-control-comparison {
+  margin: 10px 0;
+  min-width: 0;
+}
+.q-control-comparison .q-reading-comparison {
+  gap: 10px;
+  padding-top: 8px;
+}
+.q-control-comparison .q-reading-comparison strong {
+  font-size: 21px;
+  margin: 3px 0 0;
+}
+.q-control-comparison .q-reading-comparison small {
+  margin-bottom: 4px;
+}
+.q-control-comparison p,
+.q-control-comparison .q-reading-comparison p {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #465340;
+  margin: 5px 0;
+}
+.q-control-comparison .q-chart--compact {
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 6px;
+}
+.q-chart--compact .q-chart-legend {
+  margin: 0 0 5px;
+  gap: 5px 12px;
+  font-size: 10px;
+  color: #465340;
+}
+.q-chart--compact .q-distribution-svg {
+  height: 94px;
+}
+.q-control-comparison .q-control-result {
+  font-weight: 600;
+}
+.q-control-comparison > button {
+  min-height: 44px;
+  font-size: 12px;
+  margin-top: 6px;
+}
+.q-control-comparison-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 12px;
+}
+.q-control-comparison-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.q-control-active input {
+  scroll-margin-top: 96px;
+}
 .q-evidence-actions {
   display: flex;
   align-items: center;

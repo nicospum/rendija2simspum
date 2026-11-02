@@ -115,11 +115,7 @@ export default function ElevatorApp() {
           title={l.title}
           instruction={l.hint}
           href="#as-challenges"
-          result={
-            done
-              ? 'Reto completado. Compará otro caso o seguí al siguiente.'
-              : undefined
-          }
+          saved={done}
           onNext={done ? () => start((s.index + 1) % 4) : undefined}
         />
         <section

@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import { useStore, MATERIAL_LABELS } from '../../store/store'
 import type { Material } from '../../physics/optics'
 import Icon from './Icon'
@@ -15,6 +15,7 @@ interface SliderProps {
   hint: string
   ends?: [string, string]
   active?: boolean
+  comparison?: ReactNode
 }
 function Slider({
   id,
@@ -28,6 +29,7 @@ function Slider({
   hint,
   ends,
   active,
+  comparison,
 }: SliderProps) {
   return (
     <div className={`slider-control${active ? ' learning-control-active' : ''}`}>
@@ -56,7 +58,8 @@ function Slider({
       <p className="control-hint" id={`${id}-hint`}>
         {hint}
       </p>
-      {active && (
+      {active && comparison}
+      {active && !comparison && (
         <a className="learning-jump" href="#prism-evidence-title">
           Ver la comparación ↑
         </a>
@@ -66,9 +69,11 @@ function Slider({
 }
 export default function ControlPanel({
   activeControl,
+  comparison,
   onReset,
 }: {
   activeControl?: string
+  comparison?: ReactNode
   onReset?: () => void
 }) {
   const state = useStore()
@@ -111,6 +116,7 @@ export default function ControlPanel({
         </div>
         <Slider
           active={activeControl === 'light-angle'}
+          comparison={comparison}
           id="light-angle"
           label="Dirección"
           value={config.lightAngle}
@@ -134,6 +140,7 @@ export default function ControlPanel({
         />
         <Slider
           active={activeControl === 'intensity'}
+          comparison={comparison}
           id="intensity"
           label="Intensidad"
           value={state.lightIntensity}
@@ -190,7 +197,8 @@ export default function ControlPanel({
             Cada material cambia n con el color de forma distinta. Compará la desviación y Δz
             manteniendo la geometría.
           </p>
-          {activeControl === 'prism-material' && (
+          {activeControl === 'prism-material' && comparison}
+          {activeControl === 'prism-material' && !comparison && (
             <a className="learning-jump" href="#prism-evidence-title">
               Ver la comparación ↑
             </a>
@@ -225,6 +233,7 @@ export default function ControlPanel({
         </div>
         <Slider
           active={activeControl === 'screen-distance'}
+          comparison={comparison}
           id="screen-distance"
           label="Distancia al prisma"
           value={config.screenDistance}

@@ -4,6 +4,7 @@ import {
   type LessonId,
   type Reading,
 } from '../../education/doubleSlitLearning'
+import DistributionChart from './DistributionChart'
 
 export interface ActiveLesson {
   id: LessonId
@@ -11,6 +12,82 @@ export interface ActiveLesson {
 }
 
 const value = (number: number) => number.toFixed(3).replace('.', ',')
+
+export function DoubleSlitReadingComparison({
+  before,
+  current,
+  lesson,
+}: {
+  before: Reading
+  current: Reading
+  lesson: LessonId
+}) {
+  return (
+    <div className="q-reading-comparison" aria-label="Referencia y corrida actual">
+      {[before, current].map((reading, index) => (
+        <div key={index}>
+          <span className="q-eyebrow">{index === 0 ? 'REFERENCIA' : 'AHORA'}</span>
+          <strong>{reading.detected.toLocaleString('es-AR')}</strong>
+          <small>impactos simulados</small>
+          <p>
+            Camino marcado: <b>{Math.round(reading.config.detectorStrength * 100)} %</b>
+          </p>
+          {lesson === 'single' ? (
+            <p>
+              Ancho central del modelo: <b>{value(reading.centralLobeWidth)} u</b>
+            </p>
+          ) : (
+            <p>
+              Δz del modelo:{' '}
+              <b>
+                {reading.fringeSpacing === null
+                  ? 'sin franjas entre caminos'
+                  : `${value(reading.fringeSpacing)} u`}
+              </b>
+            </p>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+export function DoubleSlitControlComparison({
+  active,
+  current,
+  paused,
+  onGather,
+}: {
+  active: ActiveLesson
+  current: Reading
+  paused: boolean
+  onGather: () => void
+}) {
+  const feedback = describeLesson(active.id, active.baseline, current, paused)
+  return (
+    <div className="q-control-comparison" role="group" aria-label="Comparación junto al control">
+      <DoubleSlitReadingComparison before={active.baseline} current={current} lesson={active.id} />
+      <DistributionChart
+        compact
+        guided
+        comparisonOverride={active.id === 'accumulation' ? null : active.baseline}
+      />
+      <p className="q-control-result">{feedback.heading}</p>
+      <button className="q-button" disabled={paused} onClick={onGather}>
+        Sumar 1600 impactos
+      </button>
+      {paused && <p>Reanudá el experimento para registrar detecciones nuevas.</p>}
+      <div className="q-control-comparison-links">
+        <a className="q-control-link" href="#slit-evidence-title">
+          Ver la explicación completa {active.id === 'accumulation' ? '↓' : '↑'}
+        </a>
+        <a className="q-control-link" href="#laboratorio">
+          Volver al visor ↑
+        </a>
+      </div>
+    </div>
+  )
+}
 
 export default function DoubleSlitEvidence({
   active,
@@ -53,32 +130,7 @@ export default function DoubleSlitEvidence({
         <strong>{feedback.heading}</strong>
         <p>{feedback.text}</p>
       </div>
-      <div className="q-reading-comparison" aria-label="Referencia y corrida actual">
-        {[active.baseline, current].map((reading, index) => (
-          <div key={index}>
-            <span className="q-eyebrow">{index === 0 ? 'REFERENCIA' : 'AHORA'}</span>
-            <strong>{reading.detected.toLocaleString('es-AR')}</strong>
-            <small>impactos simulados</small>
-            <p>
-              Camino marcado: <b>{Math.round(reading.config.detectorStrength * 100)} %</b>
-            </p>
-            {active.id === 'single' ? (
-              <p>
-                Ancho central del modelo: <b>{value(reading.centralLobeWidth)} u</b>
-              </p>
-            ) : (
-              <p>
-                Δz del modelo:{' '}
-                <b>
-                  {reading.fringeSpacing === null
-                    ? 'sin franjas entre caminos'
-                    : `${value(reading.fringeSpacing)} u`}
-                </b>
-              </p>
-            )}
-          </div>
-        ))}
-      </div>
+      <DoubleSlitReadingComparison before={active.baseline} current={current} lesson={active.id} />
       <div className="q-evidence-actions">
         <button className="q-button q-lesson-primary" disabled={paused} onClick={onTry}>
           {active.id === 'accumulation'

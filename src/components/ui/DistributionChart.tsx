@@ -12,9 +12,11 @@ function line(values: number[], scale: number) {
 export default function DistributionChart({
   comparisonOverride,
   guided = false,
+  compact = false,
 }: {
   comparisonOverride?: Comparison | null
   guided?: boolean
+  compact?: boolean
 }) {
   const histogram = useLabStore((s) => s.histogram)
   const detected = useLabStore((s) => s.detected)
@@ -38,19 +40,25 @@ export default function DistributionChart({
     []
   const scale = Math.max(0.01, ...observed, ...reference, ...(showTheory ? theory : [])) * 1.07
   return (
-    <section className="q-chart" aria-labelledby="chart-title">
-      <div className="q-chart-header">
-        <div>
-          <span className="q-eyebrow">DE LOS PUNTOS A LA EVIDENCIA</span>
-          <h2 id="chart-title">Lo que se acumula en la pantalla</h2>
+    <section
+      className={`q-chart${compact ? ' q-chart--compact' : ''}`}
+      aria-labelledby={compact ? undefined : 'chart-title'}
+      aria-label={compact ? 'Distribuciones junto al control' : undefined}
+    >
+      {!compact && (
+        <div className="q-chart-header">
+          <div>
+            <span className="q-eyebrow">DE LOS PUNTOS A LA EVIDENCIA</span>
+            <h2 id="chart-title">Lo que se acumula en la pantalla</h2>
+          </div>
+          <button
+            aria-pressed={showTheory}
+            onClick={() => useLabStore.getState().setShowTheory(!showTheory)}
+          >
+            Curva teórica
+          </button>
         </div>
-        <button
-          aria-pressed={showTheory}
-          onClick={() => useLabStore.getState().setShowTheory(!showTheory)}
-        >
-          Curva teórica
-        </button>
-      </div>
+      )}
       <div className="q-chart-legend">
         <span>
           <i className="q-key-dots" />
@@ -107,7 +115,7 @@ export default function DistributionChart({
         <span>Posición transversal z</span>
         <span>+3 u</span>
       </div>
-      {!guided && (
+      {!compact && !guided && (
         <div className="q-comparison-actions">
           <button disabled={detected === 0} onClick={() => useLabStore.getState().saveComparison()}>
             Guardar esta corrida para comparar
@@ -119,7 +127,7 @@ export default function DistributionChart({
           )}
         </div>
       )}
-      {comparison && (
+      {!compact && comparison && (
         <p className="q-comparison-note">
           {guided ? 'Referencia' : 'Guardada'}: {comparison.detected.toLocaleString('es-AR')}{' '}
           impactos · {comparison.config.slitCount}{' '}
@@ -131,13 +139,22 @@ export default function DistributionChart({
           relativa.
         </p>
       )}
-      <p className="q-chart-note">
-        {showTheory
-          ? 'La línea verde indica la probabilidad calculada. '
-          : 'La curva calculada está oculta. '}
-        Las barras cuentan detecciones muestreadas en esta simulación; al principio fluctúan mucho.
-        Las corridas usan el mismo eje de posición y la misma escala de frecuencias relativas.
-      </p>
+      {compact ? (
+        <p className="q-chart-note">
+          {showTheory ? 'Línea verde: predicción. ' : 'Predicción oculta. '}
+          Barras: detecciones de esta corrida; una muestra pequeña fluctúa.
+          {detected === 0 ? ' Sumá impactos para observar el patrón nuevo.' : ''}
+        </p>
+      ) : (
+        <p className="q-chart-note">
+          {showTheory
+            ? 'La línea verde indica la probabilidad calculada. '
+            : 'La curva calculada está oculta. '}
+          Las barras cuentan detecciones muestreadas en esta simulación; al principio fluctúan
+          mucho. Las corridas usan el mismo eje de posición y la misma escala de frecuencias
+          relativas.
+        </p>
+      )}
     </section>
   )
 }

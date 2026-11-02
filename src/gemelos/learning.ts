@@ -43,7 +43,7 @@ export const LESSONS = [
       'Cambia la simultaneidad del sistema comóvil; ningún reloj salta',
     ],
     answer: 2,
-    hint: 'Sin espera y a 0,8 c, usá “Antes de cambiar” y “Después de cambiar”. Compará el “ahora” remoto y el reloj de la nave, que conserva 3 años.',
+    hint: 'Sin espera y a 0,8 c, usá “Antes del giro” y “Después del giro” junto a la escena. Compará el “ahora” remoto y el reloj de la nave, que conserva 3 años.',
     steps: ['Mirar justo antes del giro', 'Mirar justo después del giro'],
     meaning:
       'La nave cambia de sistema inercial al volver: su criterio de simultaneidad con sucesos lejanos cambia. El reloj local sigue continuo y ningún mensaje viaja instantáneamente. Los dos tramos no son un único sistema inercial.',

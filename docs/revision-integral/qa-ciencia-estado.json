@@ -1,0 +1,1126 @@
+{
+  "reviewer": "ciencia_integral",
+  "reviewed": "2026-11-02",
+  "baseline": "e2e07a7",
+  "candidate": "e2e07a7 + lote de hints Reloj/Gemelos/Lente, etiquetas Gemelos, scroll-margin y LabMission.saved en nueve Apps + representación óptica UX-05 (9 archivos), flecha contextual final de acumulación y Vite 6.4.5; hashes de cada lote conservados separadamente",
+  "scope": "Revisión interna documentada de ciencia. Estado de producto y aceptación se conservan separados. No certificado externo.",
+  "labs": [
+    {
+      "id": "doble-rendija",
+      "status": "APROBADO",
+      "sources": [
+        "S03"
+      ],
+      "evidence": "qa-ciencia.md, matriz por laboratorio y evidencia ejecutada",
+      "challenges": [
+        {
+          "id": "doble-rendija/principal/reto-01",
+          "nativeId": "accumulation",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S03"
+          ]
+        },
+        {
+          "id": "doble-rendija/principal/reto-02",
+          "nativeId": "separation",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S03"
+          ]
+        },
+        {
+          "id": "doble-rendija/principal/reto-03",
+          "nativeId": "detector",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S03"
+          ]
+        },
+        {
+          "id": "doble-rendija/principal/reto-04",
+          "nativeId": "single",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S03"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prisma",
+      "status": "APROBADO",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "qa-ciencia.md, matriz por laboratorio y evidencia ejecutada",
+      "challenges": [
+        {
+          "id": "prisma/principal/reto-01",
+          "nativeId": "split",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S02"
+          ]
+        },
+        {
+          "id": "prisma/principal/reto-02",
+          "nativeId": "brightness",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S02"
+          ]
+        },
+        {
+          "id": "prisma/principal/reto-03",
+          "nativeId": "distance",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S02"
+          ]
+        },
+        {
+          "id": "prisma/principal/reto-04",
+          "nativeId": "material",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S02"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hawking",
+      "status": "APROBADO",
+      "sources": [
+        "S01",
+        "S13",
+        "S14",
+        "S24",
+        "S26"
+      ],
+      "evidence": "qa-ciencia.md, matriz por laboratorio y evidencia ejecutada",
+      "challenges": [
+        {
+          "id": "hawking/principal/reto-01",
+          "nativeId": "mass",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S13",
+            "S14",
+            "S24",
+            "S26"
+          ]
+        },
+        {
+          "id": "hawking/principal/reto-02",
+          "nativeId": "bath",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S13",
+            "S14",
+            "S24",
+            "S26"
+          ]
+        },
+        {
+          "id": "hawking/principal/reto-03",
+          "nativeId": "time",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S13",
+            "S14",
+            "S24",
+            "S26"
+          ]
+        },
+        {
+          "id": "hawking/principal/reto-04",
+          "nativeId": "entropy",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S13",
+            "S14",
+            "S24",
+            "S26"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lente-gravitacional",
+      "status": "APROBADO",
+      "sources": [
+        "S15",
+        "S16"
+      ],
+      "evidence": "qa-ciencia.md, matriz por laboratorio y evidencia ejecutada",
+      "challenges": [
+        {
+          "id": "lente-gravitacional/principal/reto-01",
+          "nativeId": "bend",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S15",
+            "S16"
+          ]
+        },
+        {
+          "id": "lente-gravitacional/principal/reto-02",
+          "nativeId": "ring",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S15",
+            "S16"
+          ]
+        },
+        {
+          "id": "lente-gravitacional/principal/reto-03",
+          "nativeId": "capture",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S15",
+            "S16"
+          ]
+        },
+        {
+          "id": "lente-gravitacional/principal/reto-04",
+          "nativeId": "mass",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S15",
+            "S16"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entropia",
+      "status": "APROBADO",
+      "sources": [
+        "S01",
+        "S13",
+        "S14",
+        "S23"
+      ],
+      "evidence": "qa-ciencia.md, matriz por laboratorio y evidencia ejecutada",
+      "challenges": [
+        {
+          "id": "entropia/principal/reto-01",
+          "nativeId": "area",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S13",
+            "S14",
+            "S23"
+          ]
+        },
+        {
+          "id": "entropia/principal/reto-02",
+          "nativeId": "quarter",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S13",
+            "S14",
+            "S23"
+          ]
+        },
+        {
+          "id": "entropia/principal/reto-03",
+          "nativeId": "evaporate",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S13",
+            "S14",
+            "S23"
+          ]
+        },
+        {
+          "id": "entropia/principal/reto-04",
+          "nativeId": "total",
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S13",
+            "S14",
+            "S23"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acrecion",
+      "status": "APROBADO",
+      "sources": [
+        "S15",
+        "S25"
+      ],
+      "evidence": "qa-ciencia.md, matriz por laboratorio y evidencia ejecutada",
+      "challenges": [
+        {
+          "id": "acrecion/principal/reto-01",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S15",
+            "S25"
+          ]
+        },
+        {
+          "id": "acrecion/principal/reto-02",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S15",
+            "S25"
+          ]
+        },
+        {
+          "id": "acrecion/principal/reto-03",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S15",
+            "S25"
+          ]
+        },
+        {
+          "id": "acrecion/principal/reto-04",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S15",
+            "S25"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "horizonte",
+      "status": "APROBADO",
+      "sources": [
+        "S16"
+      ],
+      "evidence": "qa-ciencia.md, matriz por laboratorio y evidencia ejecutada",
+      "challenges": [
+        {
+          "id": "horizonte/principal/reto-01",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S16"
+          ]
+        },
+        {
+          "id": "horizonte/principal/reto-02",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S16"
+          ]
+        },
+        {
+          "id": "horizonte/principal/reto-03",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S16"
+          ]
+        },
+        {
+          "id": "horizonte/principal/reto-04",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S16"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reloj-de-luz",
+      "status": "APROBADO",
+      "sources": [
+        "S04",
+        "S05"
+      ],
+      "evidence": "qa-ciencia.md, matriz por laboratorio y evidencia ejecutada",
+      "challenges": [
+        {
+          "id": "reloj-de-luz/principal/reto-01",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S04",
+            "S05"
+          ]
+        },
+        {
+          "id": "reloj-de-luz/principal/reto-02",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S04",
+            "S05"
+          ]
+        },
+        {
+          "id": "reloj-de-luz/principal/reto-03",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S04",
+            "S05"
+          ]
+        },
+        {
+          "id": "reloj-de-luz/principal/reto-04",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S04",
+            "S05"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tren-de-einstein",
+      "status": "APROBADO",
+      "sources": [
+        "S04"
+      ],
+      "evidence": "qa-ciencia.md, matriz por laboratorio y evidencia ejecutada",
+      "challenges": [
+        {
+          "id": "tren-de-einstein/principal/reto-01",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S04"
+          ]
+        },
+        {
+          "id": "tren-de-einstein/principal/reto-02",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S04"
+          ]
+        },
+        {
+          "id": "tren-de-einstein/principal/reto-03",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S04"
+          ]
+        },
+        {
+          "id": "tren-de-einstein/principal/reto-04",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S04"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nos-vemos-a-la-vuelta",
+      "status": "APROBADO",
+      "sources": [
+        "S04",
+        "S06"
+      ],
+      "evidence": "qa-ciencia.md, matriz por laboratorio y evidencia ejecutada",
+      "challenges": [
+        {
+          "id": "nos-vemos-a-la-vuelta/principal/reto-01",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S04",
+            "S06"
+          ]
+        },
+        {
+          "id": "nos-vemos-a-la-vuelta/principal/reto-02",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S04",
+            "S06"
+          ]
+        },
+        {
+          "id": "nos-vemos-a-la-vuelta/principal/reto-03",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S04",
+            "S06"
+          ]
+        },
+        {
+          "id": "nos-vemos-a-la-vuelta/principal/reto-04",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S04",
+            "S06"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ascensor-de-einstein",
+      "status": "APROBADO",
+      "sources": [
+        "S07"
+      ],
+      "evidence": "qa-ciencia.md, matriz por laboratorio y evidencia ejecutada",
+      "challenges": [
+        {
+          "id": "ascensor-de-einstein/principal/reto-01",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S07"
+          ]
+        },
+        {
+          "id": "ascensor-de-einstein/principal/reto-02",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S07"
+          ]
+        },
+        {
+          "id": "ascensor-de-einstein/principal/reto-03",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S07"
+          ]
+        },
+        {
+          "id": "ascensor-de-einstein/principal/reto-04",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S07"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "el-tiempo-tiene-altura",
+      "status": "APROBADO",
+      "sources": [
+        "S01",
+        "S08"
+      ],
+      "evidence": "qa-ciencia.md, matriz por laboratorio y evidencia ejecutada",
+      "challenges": [
+        {
+          "id": "el-tiempo-tiene-altura/principal/reto-01",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S08"
+          ]
+        },
+        {
+          "id": "el-tiempo-tiene-altura/principal/reto-02",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S08"
+          ]
+        },
+        {
+          "id": "el-tiempo-tiene-altura/principal/reto-03",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S08"
+          ]
+        },
+        {
+          "id": "el-tiempo-tiene-altura/principal/reto-04",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S08"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "orbita-que-no-se-cierra",
+      "status": "APROBADO",
+      "sources": [
+        "S09",
+        "S10"
+      ],
+      "evidence": "qa-ciencia.md, matriz por laboratorio y evidencia ejecutada",
+      "challenges": [
+        {
+          "id": "orbita-que-no-se-cierra/principal/reto-01",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S09",
+            "S10"
+          ]
+        },
+        {
+          "id": "orbita-que-no-se-cierra/principal/reto-02",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S09",
+            "S10"
+          ]
+        },
+        {
+          "id": "orbita-que-no-se-cierra/principal/reto-03",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S09",
+            "S10"
+          ]
+        },
+        {
+          "id": "orbita-que-no-se-cierra/principal/reto-04",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S09",
+            "S10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "efecto-fotoelectrico",
+      "status": "APROBADO",
+      "sources": [
+        "S01",
+        "S11",
+        "S12"
+      ],
+      "evidence": "qa-ciencia.md, matriz por laboratorio y evidencia ejecutada",
+      "challenges": [
+        {
+          "id": "efecto-fotoelectrico/principal/reto-01",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S11",
+            "S12"
+          ]
+        },
+        {
+          "id": "efecto-fotoelectrico/principal/reto-02",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S11",
+            "S12"
+          ]
+        },
+        {
+          "id": "efecto-fotoelectrico/principal/reto-03",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S11",
+            "S12"
+          ]
+        },
+        {
+          "id": "efecto-fotoelectrico/principal/reto-04",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S01",
+            "S11",
+            "S12"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entrelazados",
+      "status": "APROBADO",
+      "sources": [
+        "S17"
+      ],
+      "evidence": "qa-ciencia.md, matriz por laboratorio y evidencia ejecutada",
+      "challenges": [
+        {
+          "id": "entrelazados/principal/reto-01",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S17"
+          ]
+        },
+        {
+          "id": "entrelazados/principal/reto-02",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S17"
+          ]
+        },
+        {
+          "id": "entrelazados/principal/reto-03",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S17"
+          ]
+        },
+        {
+          "id": "entrelazados/principal/reto-04",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S17"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "holografia",
+      "status": "APROBADO",
+      "sources": [
+        "S18",
+        "S20"
+      ],
+      "evidence": "qa-ciencia.md, matriz por laboratorio y evidencia ejecutada",
+      "challenges": [
+        {
+          "id": "holografia/geometria/reto-01",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S18",
+            "S20"
+          ]
+        },
+        {
+          "id": "holografia/geometria/reto-02",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S18",
+            "S20"
+          ]
+        },
+        {
+          "id": "holografia/geometria/reto-03",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S18",
+            "S20"
+          ]
+        },
+        {
+          "id": "holografia/geometria/reto-04",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S18",
+            "S20"
+          ]
+        },
+        {
+          "id": "holografia/diccionario/reto-01",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S18",
+            "S20"
+          ]
+        },
+        {
+          "id": "holografia/diccionario/reto-02",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S18",
+            "S20"
+          ]
+        },
+        {
+          "id": "holografia/diccionario/reto-03",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S18",
+            "S20"
+          ]
+        },
+        {
+          "id": "holografia/diccionario/reto-04",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S18",
+            "S20"
+          ]
+        },
+        {
+          "id": "holografia/temperatura/reto-01",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S18",
+            "S20"
+          ]
+        },
+        {
+          "id": "holografia/temperatura/reto-02",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S18",
+            "S20"
+          ]
+        },
+        {
+          "id": "holografia/temperatura/reto-03",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S18",
+            "S20"
+          ]
+        },
+        {
+          "id": "holografia/temperatura/reto-04",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S18",
+            "S20"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "curva-de-page",
+      "status": "APROBADO",
+      "sources": [
+        "S17",
+        "S19",
+        "S21"
+      ],
+      "evidence": "qa-ciencia.md, matriz por laboratorio y evidencia ejecutada",
+      "challenges": [
+        {
+          "id": "curva-de-page/principal/reto-01",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S17",
+            "S19",
+            "S21"
+          ]
+        },
+        {
+          "id": "curva-de-page/principal/reto-02",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S17",
+            "S19",
+            "S21"
+          ]
+        },
+        {
+          "id": "curva-de-page/principal/reto-03",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S17",
+            "S19",
+            "S21"
+          ]
+        },
+        {
+          "id": "curva-de-page/principal/reto-04",
+          "nativeId": null,
+          "status": "APROBADO",
+          "scope": "Consigna, respuesta/conclusión, interpretación, modelo y dominio; no aprobación de interacción en navegador",
+          "sources": [
+            "S17",
+            "S19",
+            "S21"
+          ]
+        }
+      ]
+    }
+  ],
+  "auxiliaryActivities": [
+    {
+      "id": "contar-informacion",
+      "status": "APROBADO",
+      "sources": [
+        "S27",
+        "S13"
+      ],
+      "challenges": [
+        {
+          "id": "contar-informacion/principal/reto-01",
+          "status": "APROBADO",
+          "answerIndex": 0,
+          "evidence": "qa-ciencia.md, cuatro retos auxiliares"
+        },
+        {
+          "id": "contar-informacion/principal/reto-02",
+          "status": "APROBADO",
+          "answerIndex": 1,
+          "evidence": "qa-ciencia.md, cuatro retos auxiliares"
+        },
+        {
+          "id": "contar-informacion/principal/reto-03",
+          "status": "APROBADO",
+          "answerIndex": 0,
+          "evidence": "qa-ciencia.md, cuatro retos auxiliares"
+        },
+        {
+          "id": "contar-informacion/principal/reto-04",
+          "status": "APROBADO",
+          "answerIndex": 1,
+          "evidence": "qa-ciencia.md, cuatro retos auxiliares"
+        }
+      ]
+    },
+    {
+      "id": "energia-en-reposo",
+      "status": "APROBADO",
+      "sources": [
+        "S01",
+        "S04"
+      ],
+      "evidence": "qa-ciencia.md, actividades auxiliares"
+    },
+    {
+      "id": "ecuacion-de-campo",
+      "status": "APROBADO",
+      "sources": [
+        "S22"
+      ],
+      "evidence": "qa-ciencia.md, actividades auxiliares",
+      "challenges": [
+        {
+          "id": "ecuacion-de-campo/principal/reto-01",
+          "status": "APROBADO",
+          "answerIndex": 0,
+          "sources": [
+            "S22"
+          ],
+          "evidence": "qa-ciencia.md, pregunta sobre vacío local y curvatura"
+        }
+      ]
+    },
+    {
+      "id": "escalas-agujeros-negros",
+      "status": "APROBADO",
+      "sources": [
+        "S01",
+        "S13"
+      ],
+      "evidence": "qa-ciencia.md, actividades auxiliares"
+    }
+  ],
+  "summary": {
+    "experiments": 17,
+    "mainChallengesApproved": 76,
+    "auxiliaryChallengesApproved": 5,
+    "totalChallengesApproved": 81,
+    "scientificBlocked": 0,
+    "scientificCorrectionsRequired": 0
+  },
+  "reviewedFileSha256": {
+    "src/acrecion/App.tsx": "780423ba2084ff8685a564b7b0b189ff119b8a02a46dece91bb6e6820ffedb83",
+    "src/acrecion/learning.ts": "2fed819482aafb07c5ebf4739377d9046846ee66c6bb5c644923877868683361",
+    "src/acrecion/physics.ts": "2c70016ca01ae224e6b2b0e307b15b226a0b344c76741357a76bf8f252bebdde",
+    "src/altura/App.tsx": "4cd5759b02bde0fe1d86b021e0a5a5a92e8a62da3423a80b9d03b9b6f968751f",
+    "src/altura/learning.ts": "6a7c99b285dffcaf6bc47cdb77e2fd293fbf7ee9f7893efc37681fbb3923b78c",
+    "src/altura/physics.ts": "82a28be2b5891e4c9ddff16a89575ab29173a27f1c609cfd4249ff6042140b54",
+    "src/ascensor/App.tsx": "9c21a177e03c50622fef57453e77c5dd49f3c03844c416347aa8ae5734b2a659",
+    "src/ascensor/learning.ts": "45f7d3f83ee8c8dd2d88b0edaa993df72de858585eac197f9c9fb03fdfb7c8da",
+    "src/ascensor/physics.ts": "09618a1d4c81327c00ec7171bb290a8536df7d7a686f7ff5f281f293e141bcdb",
+    "src/components/ui/LabJourney.tsx": "83afce1fd53ccaa6869a11feb2b844cd91850f5d9d68735a73289ba92d514846",
+    "src/components/ui/SceneChallenge.css": "ff5e074ad5943b1098ee9b2e42aec5b63525d73bae5aab5e1da4e7804bf34519",
+    "src/education/doubleSlitLearning.ts": "a6653101ea4ddcb1c02efbd495ba826b3d1f78dac96cb5fa380c82fe11014e79",
+    "src/einstein/EnergyNotebook.tsx": "20778234d7b381c4f5ac7c4976fdba1a602624044d95b3a15a5b129cf867971e",
+    "src/einstein/FieldEquationNotebook.tsx": "95954d6c7ac06c044e31e2ab649f67c220f669d3e897da93030555fed3bd2b35",
+    "src/einstein/energy.ts": "8792c3945e4a4b792d9ff5c3b35add938e22e57a66e70802bd4f62b09f70ddaf",
+    "src/entropia/learning.ts": "3c3b30ff31372f829e979b31fd07cce5fdab11646410e4c64dc47eafbaaf5301",
+    "src/entropia/physics.ts": "3112ee2e4b3a982659048625fdbe8bd286ac1931bc2c37458badacd2cf77a068",
+    "src/fotoelectrico/App.tsx": "4eaa8682d31386e6f91042b84881ef2f86237d18368787518941431cc0e1033c",
+    "src/fotoelectrico/learning.ts": "ae37e368e080c75a6c86132b71fb804dbd506a5b06d31330744c8ec6311d10ba",
+    "src/fotoelectrico/physics.ts": "01af65a0ab8307482466352ad74cc4f7a6045690fecf3f1c525e63a97dac87ab",
+    "src/gemelos/App.tsx": "158dc40dd5cab4857c93651fda2b6ec5db5b36c51cb1968f0cf617a75cf11647",
+    "src/gemelos/learning.ts": "cfcba2278d2b0fac53a748e6fee2fe34a5fcc7de617fba8b909c8631886d8e12",
+    "src/gemelos/physics.ts": "4cb3ec299ba14da95a8ca989a32594ad3fdc5f3e890da9e92174003c932d7203",
+    "src/hawking/learning.ts": "923be3ed04f34c10a6ed7ebc2eff2c94c73d9e173a9696b2b1d1795bd44e1969",
+    "src/hawking/physics.ts": "8d179bf1c7f39e05a61cb991a1d050a1c05df3bc6cfcc1d8f4e0fa37ef49d0b1",
+    "src/horizonte/App.tsx": "217e8df26e7000b635fd3ce508d8e142dfae404a547d6db7df7c314287090101",
+    "src/horizonte/learning.ts": "d481af79e88ece979b6f9419afa522d8ecf3fc77887c94dca30ef7008ca124f1",
+    "src/horizonte/physics.ts": "9e913f0dcf56bd7067fa227080cbc177de3f4a3a15a5050d6c8ac999f888a147",
+    "src/lente/learning.ts": "026be088ee977642789ebd42fb0f0fd94e20d0c6457fdf6366061d777ae09701",
+    "src/lente/physics.ts": "2f40d905771d28680108fe96ca73a0b7629d463d3389f1d88cbe9720a57586d5",
+    "src/maldacena/geometry/learning.ts": "1b807c8c19f97fce149d9383390968bb3024f9fa8d12456bb595f15a4b60d5b0",
+    "src/maldacena/geometry/physics.ts": "f47c485aaa2667690a791d5605317fd2518e5183633bbc297a6af0bffe875985",
+    "src/maldacena/page/learning.ts": "8141201a20df8c1a7f01c5cdf230f10720cf6942ab40f305f91d34df124f356e",
+    "src/maldacena/page/physics.ts": "2c4e7ccd75c65d925a2e0df74460f7154a7475974955f2ade9ea157f04495f7d",
+    "src/maldacena/quantum/CountingBridge.tsx": "dfd658570bdfc71919260ccb797ecc0bcda8f5667e1123f81ec6571e99fffed7",
+    "src/maldacena/quantum/EntanglementLab.tsx": "25d0b9c7fc691bbaae7f3f26ecf2bf3c332627c971cd2ac0826297e435002ff5",
+    "src/maldacena/quantum/physics.ts": "87576109ecef970da57a62c91a846ed3451deb3658f00abb1f7e90a1c843dec2",
+    "src/maldacena/thermal/ThermalLab.tsx": "2bcee34b85f5ff69ae5b9bf30ebaf09cc2d0094e88f99b43640564f440c0182b",
+    "src/maldacena/thermal/physics.ts": "15e10f3fbc31e11742e95d23ce6de016aba02c5c5b6c0e8bb05c1765d1e9f076",
+    "src/orbita/App.tsx": "de01d1664ac58d1731f895b67140825b81f32772bc84a5740db13a55340a589c",
+    "src/orbita/learning.ts": "fb1c0efb81b028abee059beb998fc7aed54a3e27f59a5077f27b6dadc1a4e7fa",
+    "src/orbita/physics.ts": "f04fe2ba2414e0a9990b62c764080328293c5287c0dff1b64ea8ab832ded1652",
+    "src/physics/interference.ts": "b6e98b6c36ba7d22203ebb0751ec3714f4e459f14acbf80a383ec2c73ee20295",
+    "src/prisma/education/prismLearning.ts": "26e42004b5eb58b1815c09471ee8c39195a4494274111ec0f5c7e84f0e93c435",
+    "src/prisma/physics/optics.ts": "e5b4f47d7e17a95f638e077789d2f232f09bd0a4c2b862551da78e54c478b52d",
+    "src/reloj/App.tsx": "dac560fc0bdf5400fe7f68065fb9ffbe55998eb293e999fbbabc7b37503c9316",
+    "src/reloj/learning.ts": "7fa878925cc587c6694503112b3ad342380d7ee64fe832274df0e603b525daca",
+    "src/reloj/physics.ts": "79ff41e1757b01dc0910786a5acf255070fce2edf7db0554b84de2e69bfb0ce5",
+    "src/series/scales.ts": "1b4aba0d558cb3cd51bd3fb005933816b0a458da41ad15dfb9997454e901a53b",
+    "src/tren/App.tsx": "8ad2bf7201335e192b2ef985f421128150e0f84347a8cd21f71fc1a7fbef284c",
+    "src/tren/learning.ts": "1801045e52b15c8850a9ca8091f68f4a6bb491e630a32cbf946015741ea1fc7f",
+    "src/tren/physics.ts": "886d0de264b7ef951192929198ddecf9c832f428437f2df55a5c7a84cb7d6455"
+  },
+  "reopenOn": "Cambios en modelos, conclusiones, condiciones de observación o significado de interfaz; comprobar hashes y revisar sólo afectados.",
+  "opticalRepresentationReview": {
+    "status": "APROBADO",
+    "candidate": "e2e07a7 + UX-05 mini comparación + flecha final contextual de acumulación, Vite 6.4.5 en1027",
+    "reviewer": "ciencia_integral",
+    "reviewed": "2026-11-02",
+    "scope": "Revisión de representación por código y8controles enUI; modelos/evaluadores no cambian",
+    "evidence": "aceptacion-optica.md",
+    "sources": [
+      "S02",
+      "S03"
+    ],
+    "previousHashesChanged": [],
+    "fileSha256": {
+      "src/App.tsx": "fe4d4a3c74697f5d1d5b06d662b758e812b384a787f16d5fccc26be84e9b1094",
+      "src/components/ui/DistributionChart.tsx": "acc1b141720b134ae86ee42753c37469d9590670a2653fc31f929bf6bcb09020",
+      "src/components/ui/DoubleSlitEvidence.tsx": "abad4b7a5d191685eeaf668f1d9af764477b1ffca79a24eb8c79b592db841365",
+      "src/components/ui/DoubleSlitLearning.css": "efde5faaeb5025de5f13a9a27b9565c6ba93a07de317f27cd561ffe082d2cd46",
+      "src/components/ui/LabControls.tsx": "387c74bbf2b2caa5885f73530db035889db5749cdbd745161f63763cdbc305af",
+      "src/prisma/App.tsx": "4d539e7f6d085384871f1c542a61d29a6e22f1034ae140cd68be9231e45e111d",
+      "src/prisma/components/ui/ControlPanel.tsx": "680648fecdf890a1a506605ea02600b579b9da2e1ccc1056bb44c45ac162f4c5",
+      "src/prisma/components/ui/PrismLearning.css": "8bb471ed05b4940e197a19ba9a961f21a44f793d6b154b9480e7a7bc7fbffd67",
+      "src/prisma/components/ui/PrismLearning.tsx": "ef67bbdf97c952f96a3b09a7347bf73336b0d7446abb55572e0a8165c92d2887"
+    }
+  }
+}

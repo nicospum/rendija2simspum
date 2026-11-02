@@ -165,11 +165,7 @@ export default function TwinsApp() {
           title={lesson.title}
           instruction={lesson.hint}
           href="#gv-challenges"
-          result={
-            done
-              ? 'Reto completado. Seguí explorando o probá el siguiente.'
-              : undefined
-          }
+          saved={done}
           onNext={done ? () => start((s.index + 1) % 4) : undefined}
         />
         <section
@@ -578,10 +574,10 @@ export default function TwinsApp() {
           </p>
           <div className="gv-buttons">
             <button onClick={() => time(m.out / s.setup.duration, 'before')}>
-              Antes de cambiar
+              Antes del giro
             </button>
             <button onClick={() => time(m.out / s.setup.duration, 'after')}>
-              Después de cambiar
+              Después del giro
             </button>
           </div>
           <div className="gv-remote" aria-live={s.playing ? 'off' : 'polite'}>

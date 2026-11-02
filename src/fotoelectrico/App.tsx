@@ -120,11 +120,7 @@ export default function PhotoelectricApp() {
           title={lesson.title}
           instruction={lesson.hint}
           href="#pe-challenges"
-          result={
-            done
-              ? 'Reto completado. Probá otras condiciones o seguí al siguiente.'
-              : undefined
-          }
+          saved={done}
           onNext={done ? next : undefined}
         />
         <section
