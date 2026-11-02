@@ -23,6 +23,30 @@ const quantum = ['entrelazados']
 
 export const HELP_TOPICS: readonly HelpTopic[] = [
   topic(
+    ['bell'],
+    /analizador|detector|orientacion|angulo|bell-angle/,
+    'Elegir cómo medir cada lado',
+    'El ángulo es la orientación de un analizador de polarización. Girarlo cambia la pregunta que se hace a cada fotón y, por eso, las probabilidades conjuntas. Las dos salidas se representan como +1 y −1. No es la dirección en la que viaja el fotón ni permite decidir su resultado individual.',
+  ),
+  topic(
+    ['bell'],
+    /chsh|correlacion|limite/,
+    'Cuatro correlaciones forman una prueba',
+    'Cada correlación E es el promedio del producto de las dos salidas: +1 si coinciden y −1 si difieren. CHSH combina cuatro parejas de orientaciones. Bajo los supuestos locales y de independencia de ajustes que explica el laboratorio, su magnitud no supera 2. La predicción cuántica ideal puede superar ese límite con ciertas orientaciones.',
+  ),
+  topic(
+    ['bell'],
+    /local|respuesta.*escrit|estrategia|tarjeta/,
+    'Un modelo local explícito para comparar',
+    'Una estrategia local asigna una respuesta a cada ajuste posible de cada lado. La salida de un lado depende de su propio ajuste y de la información compartida al preparar el par; no del ajuste elegido lejos. Comparar este modelo con la predicción cuántica ayuda a entender las hipótesis del límite, sin presentar la simulación como una prueba experimental de la naturaleza.',
+  ),
+  topic(
+    ['bell'],
+    /emitir|muestra|lote|pares|azar|frecuencia/,
+    'Los datos fluctúan; la predicción es otra lectura',
+    'Cada emisión prepara un par nuevo y genera resultados aleatorios según el modelo elegido. Una muestra pequeña puede dar una correlación muy distinta del promedio previsto. Aumentar los datos permite estudiar la fluctuación; un valor aislado no certifica una violación. Las salidas locales no se convierten en mensajes controlables entre los lados.',
+  ),
+  topic(
     ['eratostenes'],
     /varilla|palo|gnomon|altura/,
     'La varilla convierte un ángulo en una sombra',

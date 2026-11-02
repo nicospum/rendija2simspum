@@ -1,0 +1,95 @@
+{
+  "reviewer": "bell_ciencia",
+  "reviewed": "2026-11-02",
+  "baseline": "2007560",
+  "candidate": "Implementación local de Bell/CHSH sobre la base indicada; archivos identificados por SHA256.",
+  "status": "APROBADO",
+  "scope": "Revisión interna científica independiente de implementación. No certificación externa ni prueba de aprendizaje con participantes.",
+  "sources": [
+    "BE01",
+    "BE02",
+    "BE03",
+    "BE04",
+    "BE05"
+  ],
+  "challenges": [
+    {
+      "id": "bell/principal/reto-01",
+      "status": "APROBADO",
+      "scope": "Ciencia: probabilidades, convenciones, dominio, opciones y requisitos revisados. Correcto, incorrecto, incompleto e intento reiniciado comprobados en tests. Producto móvil en pase independiente."
+    },
+    {
+      "id": "bell/principal/reto-02",
+      "status": "APROBADO",
+      "scope": "Ciencia: probabilidades, convenciones, dominio, opciones y requisitos revisados. Correcto, incorrecto, incompleto e intento reiniciado comprobados en tests. Producto móvil en pase independiente."
+    },
+    {
+      "id": "bell/principal/reto-03",
+      "status": "APROBADO",
+      "scope": "Ciencia: probabilidades, convenciones, dominio, opciones y requisitos revisados. Correcto, incorrecto, incompleto e intento reiniciado comprobados en tests. Producto móvil en pase independiente."
+    },
+    {
+      "id": "bell/principal/reto-04",
+      "status": "APROBADO",
+      "scope": "Ciencia: probabilidades, convenciones, dominio, opciones y requisitos revisados. Correcto, incorrecto, incompleto e intento reiniciado comprobados en tests. Producto móvil en pase independiente."
+    }
+  ],
+  "tests": {
+    "file": "tests/bell.test.mjs",
+    "result": "24/24 PASS",
+    "independentOrientationPairs": 169,
+    "localCards": 16,
+    "independentMonteCarloEvents": 16384,
+    "fileLint": "PASS",
+    "command": "node --test tests/bell.test.mjs"
+  },
+  "browserSample": {
+    "origin": "http://127.0.0.1:1027/bell/",
+    "browser": "Chromium integrado mediante CUA, pestaña propia cerrada al terminar",
+    "viewport": "1280 x 720; escritorio sin override de dispositivo",
+    "cases": [
+      "Reto 2 completo: tarjetas +2 y -2, explicación incorrecta rechazada y correcta aceptada",
+      "Reto 3 completo: nuevos lotes de 50 y 1000 por combinación, evidencia de ambos ensayos conservada",
+      "Cuatro términos con signos y correlación cruda explícitos; S exacta 2sqrt2 distinta de la estimación",
+      "Cotas simultáneas coherentes entre escena, tabla y referencias; no se aprueba por cruzar el límite",
+      "Sin desbordamiento horizontal ni errores de consola durante esta muestra"
+    ],
+    "evidence": "../../../qa-bell-2026-11-02/science-ui-sample.json",
+    "screenshots": [
+      "../../../qa-bell-2026-11-02/science-chsh-desktop.jpg",
+      "../../../qa-bell-2026-11-02/science-local-desktop.jpg"
+    ],
+    "limitations": "Muestra científica de escritorio; cuatro retos completos y tamaños de celular son el pase separado de producto. Safari y teléfonos físicos continúan pendientes por decisión previa del usuario."
+  },
+  "fileSha256": {
+    "src/bell/physics.ts": "1b13b0c9cc19404fb6654cd6c9f786859162108225657aaa89c1fdc49a48b882",
+    "src/bell/learning.ts": "874636f51bd3dd752f49da77ee14ea3c78fdfffc433451c89268e6ced7d6ece3",
+    "src/bell/Scene.tsx": "7e53d61b9dfa607d24f5c1bd4e8ef89746d8212204a82d5d44b1c444e1a16613",
+    "src/bell/App.tsx": "17b87da637ef97606274989372a46611538bd936631fa907944838cba614d9ba",
+    "src/bell/main.tsx": "7a4932a3d0ea4fadbc2d364748e9429576ec24392d9e88ea69aed66048660107",
+    "src/bell/bell.css": "3a01f1a2038ca83cb0a19b5398f02a2ba762208900fe0cae33d84d445bf20ccf",
+    "src/bell/format.ts": "77344320fcb60ade75d55886b7bd86313a30a2a37d6aee59f023ad336fff721a",
+    "tests/bell.test.mjs": "1f6e08025be12ce488ef121f2e0eb2b80b03ac924cc727c49d948ee04d55c8e7"
+  },
+  "reopenOn": "Cambiar ecuaciones, dominio, respuestas, requisitos o significado físico de la representación reabre los controles afectados. Verificar estos hashes antes de reutilizar el dictamen.",
+  "representationClosure": {
+    "status": "APROBADO",
+    "files": [
+      "src/bell/App.tsx",
+      "src/bell/Scene.tsx",
+      "src/bell/bell.css"
+    ],
+    "scope": "Pase acotado de representación: exploración individual plegada en reto 3; botones CHSH muestran la suma; referencias compactas retienen Sweep y declaran sus ángulos canónicos. Fórmula numérica de E sólo con N positivo; N=0 sigue sin datos. Atajos B declaran preparar A0B0 con A0=0. Leyenda blanca/verde y cota numérica correctas; CSS comprime espacios sin alterar modelos, requisitos ni valores.",
+    "evidence": "Inspección independiente del código y cotejo de hashes; no repite los cuatro retos ya cubiertos en el pase de producto.",
+    "unchanged": "physics.ts, learning.ts, main.tsx, format.ts y tests/bell.test.mjs conservan los hashes científicos aprobados.",
+    "documentation": "docs/BELL_LABORATORIO.md leído: Born, Phi+, límite de medias locales, hipótesis, cotas prefijadas, requisitos de retos y límites experimentales coherentes con implementación y revisión primaria.",
+    "documentationSha256": "077aaca8a4eacbd592b259fb40d0df13a46dba0cfb4fa1f897fbaaec09d4cfc9",
+    "productEvidence": "Implementación informa cuatro retos de producto y regresión de ayuda en dos rutas aprobados por agente independiente; estos resultados no se cuentan como una repetición científica de móvil.",
+    "limits": "Sin nuevo pase completo de navegador: cambios de presentación acotados, no cambio del modelo. Safari, dispositivos físicos y aprendizaje con participantes continúan pendientes."
+  },
+  "decimalSeparatorClosure": {
+    "status": "APROBADO",
+    "scope": "Sólo separador tipográfico de extremos: punto y coma en tres intervalos de App y uno de Scene para distinguirlo de la coma decimal.",
+    "verification": "Se revirtieron esos cuatro separadores en memoria; los SHA256 reconstruidos coinciden exactamente con los anteriores. Los otros seis archivos conservan sus hashes. Sin repetición de navegador ni tests de modelo porque no cambió ningún dato, ecuación ni evaluador."
+  }
+}

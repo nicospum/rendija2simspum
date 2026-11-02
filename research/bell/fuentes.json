@@ -1,0 +1,68 @@
+{
+  "reviewed": "2026-11-02",
+  "reviewer": "bell_ciencia",
+  "scope": "Investigación primaria y diseño de contrastes independientes. La aprobación de implementación se registra por separado al revisar el candidato.",
+  "sources": [
+    {
+      "id": "BE01",
+      "title": "On the Einstein Podolsky Rosen paradox",
+      "author": "John S. Bell",
+      "year": 1964,
+      "doi": "10.1103/PhysicsPhysiqueFizika.1.195",
+      "url": "https://journals.aps.org/ppf/pdf/10.1103/PhysicsPhysiqueFizika.1.195",
+      "read": "PDF primario de seis páginas: formulación de localidad, ejemplo de variables ocultas, contradicción y conclusión; algunas ecuaciones escaneadas no se extraen bien a texto.",
+      "supports": "Una explicación con variables ocultas locales no reproduce todas las correlaciones cuánticas; correlación perfecta aislada no basta para distinguir explicaciones.",
+      "limits": "El artículo trabaja con espín singlete; el laboratorio adopta otra convención, fotones y estado Phi+, y deriva sus probabilidades por rotaciones de base. No se trasladan sin cambio signos ni factores angulares."
+    },
+    {
+      "id": "BE02",
+      "title": "Proposed Experiment to Test Local Hidden-Variable Theories",
+      "author": "John F. Clauser, Michael A. Horne, Abner Shimony, Richard A. Holt",
+      "year": 1969,
+      "doi": "10.1103/PhysRevLett.23.880",
+      "url": "https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.23.880",
+      "read": "Artículo primario, páginas impresas 880–883 del PDF editorial: dos canales, localidad, distribución independiente de ajustes, cuatro correlaciones, filtros y supuestos de detección.",
+      "supports": "Construcción de una prueba con dos elecciones por lado, hipótesis de localidad e independencia de ajustes; diferencia entre probabilidades ideales y un montaje con detección imperfecta.",
+      "limits": "La forma de signos de S puede cambiar por renombrar ajustes o salidas. El laboratorio declara su propia convención. No reproduce las eficiencias, fuentes atómicas ni tasas del montaje de 1969."
+    },
+    {
+      "id": "BE03",
+      "title": "Erratum: Proposed Experiment to Test Local Hidden Variable Theories",
+      "author": "John F. Clauser, Michael A. Horne, Abner Shimony, Richard A. Holt",
+      "year": 1970,
+      "doi": "10.1103/PhysRevLett.24.549",
+      "url": "https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.24.549",
+      "read": "Párrafo de errata de CHSH en página 549, antes de otras erratas del número.",
+      "supports": "La errata añade un agradecimiento de financiación omitido.",
+      "limits": "No corrige la desigualdad ni las ecuaciones. No se presenta como una corrección científica del límite."
+    },
+    {
+      "id": "BE04",
+      "title": "Strong Loophole-Free Test of Local Realism",
+      "author": "Lynden K. Shalm y colaboradores",
+      "year": 2015,
+      "doi": "10.1103/PhysRevLett.115.250402",
+      "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=919674",
+      "read": "Resumen y páginas 1–3 del artículo primario: predicciones estadísticas, independencia de elecciones, separación espacial, detección y prueba de hipótesis. No se replica su análisis estadístico completo ni su aparato.",
+      "supports": "Las pruebas reales necesitan controlar lagunas experimentales y usar una inferencia estadística; una simulación de Born no demuestra por sí misma qué ocurre en la naturaleza.",
+      "limits": "El montaje emplea un estado y análisis de detección distintos del laboratorio ideal. No se adjudican a la simulación sus p-valores, nivel de significación o cierre de lagunas."
+    },
+    {
+      "id": "BE05",
+      "title": "Probability Inequalities for Sums of Bounded Random Variables",
+      "author": "Wassily Hoeffding",
+      "year": 1963,
+      "doi": "10.1080/01621459.1963.10500830",
+      "url": "https://www.cs.rpi.edu/academics/courses/spring06/random/hoefding.pdf",
+      "publisherUrl": "https://www.tandfonline.com/doi/abs/10.1080/01621459.1963.10500830",
+      "read": "Artículo original en espejo universitario: páginas impresas 14–15 renderizadas e inspeccionadas, especialmente teorema 1, ecuación 2.3 y transformación a intervalos generales.",
+      "supports": "Cota de desviación para promedios de variables independientes y acotadas; especialización a productos de resultados en [-1,1] y unión de cuatro cotas.",
+      "limits": "La cota es conservadora para un lote de tamaño prefijado. No justifica seleccionar resultados favorables, parada opcional ni un ensayo real con memoria y lagunas. No se instala una dependencia estadística en la aplicación."
+    }
+  ],
+  "accessLimits": [
+    "CERN/CDS de Bell devolvió protección antibots; se leyó la copia editorial de APS.",
+    "Las páginas/PDF de información avanzada y popular del Nobel 2022 devolvieron 403. Se identificaron sus metadatos en búsqueda, pero no se cuentan como lectura completa ni se usan como fundamento de ecuaciones.",
+    "El PDF de Hoeffding no tenía texto legible en el lector web. Se descargó desde el espejo académico y se inspeccionaron las páginas renderizadas; archivo de trabajo fuera del checkout en ../qa-bell-2026-11-02."
+  ]
+}

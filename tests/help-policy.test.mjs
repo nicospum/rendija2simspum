@@ -8,7 +8,7 @@ import {
   consultHelpKey,
 } from '../src/education/helpPolicy.ts'
 test('context help appears only in laboratories, including legacy links', () => {
-  for (const path of ['/curva-de-page/', '/holografia', '/dos-lenguajes/', '/prisma/', '/eratostenes/'])
+  for (const path of ['/curva-de-page/', '/holografia', '/dos-lenguajes/', '/prisma/', '/eratostenes/', '/bell/'])
     assert.equal(isLabPath(path), true)
   for (const path of [
     '/',

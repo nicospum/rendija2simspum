@@ -20,6 +20,7 @@ const LAB_PATHS = new Set([
   'holografia',
   'curva-de-page',
   'eratostenes',
+  'bell',
 ])
 
 export function isLabPath(path: string) {

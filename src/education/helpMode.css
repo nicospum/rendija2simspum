@@ -22,6 +22,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  pointer-events: none;
+}
+.lab-help-dock > button {
+  pointer-events: auto;
 }
 .lab-help-dock > span {
   max-width: 280px;

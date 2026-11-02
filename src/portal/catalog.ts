@@ -1,5 +1,5 @@
 export interface Experiment {
-  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein' | 'el-tiempo-tiene-altura' | 'orbita-que-no-se-cierra' | 'efecto-fotoelectrico' | 'entrelazados' | 'espacio-con-frontera' | 'dos-lenguajes' | 'frontera-caliente' | 'curva-de-page' | 'holografia' | 'eratostenes'
+  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein' | 'el-tiempo-tiene-altura' | 'orbita-que-no-se-cierra' | 'efecto-fotoelectrico' | 'entrelazados' | 'espacio-con-frontera' | 'dos-lenguajes' | 'frontera-caliente' | 'curva-de-page' | 'holografia' | 'eratostenes' | 'bell'
   number: string
   field: string
   title: string
@@ -156,5 +156,17 @@ export const experiments: readonly Experiment[] = [
       'Mové dos lugares, medí sus sombras y reconstruí la circunferencia de la Tierra con cuatro retos inspirados en Eratóstenes.',
     tags: ['Eratóstenes', 'Sombras', 'Geometría'],
     href: '/eratostenes/',
+  },
+  {
+    id: 'bell',
+    number: '19',
+    field: 'INFORMACIÓN CUÁNTICA',
+    title: 'Bell: ¿respuestas escritas?',
+    subtitle: 'El azar individual. Una relación sorprendente.',
+    question: '¿Las partículas pueden traer todas las respuestas preparadas?',
+    discovery:
+      'Girá dos analizadores, reuní pares de resultados y construí una desigualdad de Bell con cuatro retos sobre correlaciones y modelos locales.',
+    tags: ['Bell', 'Correlaciones', 'Información cuántica'],
+    href: '/bell/',
   },
 ]

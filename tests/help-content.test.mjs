@@ -129,6 +129,7 @@ test('all legacy laboratory groups have useful control or scene explanations', (
     'frontera-caliente': 'btz-temperature',
     'curva-de-page': 'page-emitted',
     eratostenes: 'varilla',
+    bell: 'analizador',
   }
   for (const [route, control] of Object.entries(controls)) {
     const entry = helpForText(`/${route}/`, control)

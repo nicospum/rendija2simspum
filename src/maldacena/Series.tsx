@@ -99,6 +99,13 @@ export default function MaldacenaSeries() {
             En estos modelos, «frontera» e «interior» son dos descripciones vinculadas de
             ciertos sistemas. No representan una pared material de nuestro universo.
           </p>
+          <p>
+            Una parada opcional después de Entrelazados:{' '}
+            <a href="/bell/">Bell: ¿las partículas traen respuestas escritas? ↗</a>.
+            Girá los analizadores y compará correlaciones con un modelo local explícito,
+            en cuatro retos propios. Después retomá Holografía para explorar el vínculo
+            entre información y geometría.
+          </p>
         </section>
         <div className="md-map-grid">
           {laboratories.map((c, i) => (

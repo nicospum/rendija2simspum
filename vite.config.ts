@@ -42,6 +42,7 @@ export default defineConfig({
         curvaDePage: 'curva-de-page/index.html',
         holografia: 'holografia/index.html',
         eratostenes: 'eratostenes/index.html',
+        bell: 'bell/index.html',
       },
       output: {
         manualChunks(id) {

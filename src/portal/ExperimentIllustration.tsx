@@ -1,5 +1,40 @@
 import type { Experiment } from './catalog'
 export default function ExperimentIllustration({ kind }: { kind: Experiment['id'] }) {
+  if (kind === 'bell')
+    return (
+      <svg viewBox="0 0 560 296" className="experiment-illustration" aria-hidden="true">
+        <defs>
+          <linearGradient id="bell-portal-field" x2="1" y2="1">
+            <stop stopColor="#142f3f" />
+            <stop offset="1" stopColor="#332545" />
+          </linearGradient>
+          <radialGradient id="bell-portal-source">
+            <stop stopColor="#ffdf9c" stopOpacity=".65" />
+            <stop offset="1" stopColor="#ffdf9c" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        <rect width="560" height="296" fill="url(#bell-portal-field)" />
+        <circle cx="280" cy="130" r="65" fill="url(#bell-portal-source)" />
+        <path d="M280 130H145M280 130H415" stroke="#c6dfe7" strokeWidth="2" strokeDasharray="4 7" />
+        <path d="m231 124-8 6 8 6m98-12 8 6-8 6" fill="none" stroke="#ffdf9c" strokeWidth="2" />
+        {[{x:145,color:'#86e9d4',angle:0},{x:415,color:'#c3a9ff',angle:45}].map(({x,color,angle}) => (
+          <g key={x}>
+            <circle cx={x} cy="130" r="66" fill="none" stroke={color} opacity=".15" />
+            <circle cx={x} cy="130" r="52" fill="#132c40" stroke={color} strokeWidth="2" />
+            <g transform={`rotate(${angle} ${x} 130)`} stroke={color}>
+              {[-24,-12,0,12,24].map(dx => <path key={dx} d={`M${x+dx} 97V163`} strokeWidth="2" opacity={dx === 0 ? 1 : .45} />)}
+              <circle cx={x} cy="78" r="7" fill={color} />
+            </g>
+            <text x={x} y="214" fill={color} textAnchor="middle" fontSize="17" letterSpacing="2">{x === 145 ? 'A / A′' : 'B / B′'}</text>
+          </g>
+        ))}
+        <path d="m280 117 13 13-13 13-13-13Z" fill="#ffe0a0" />
+        <circle cx="201" cy="130" r="5" fill="#86e9d4" />
+        <circle cx="359" cy="130" r="5" fill="#c3a9ff" />
+        <text x="280" y="252" textAnchor="middle" fill="#f0e3cf" fontSize="19" fontFamily="Georgia,serif">E₀₀ + E₀₁ + E₁₀ − E₁₁</text>
+        <text x="280" y="280" textAnchor="middle" fill="#a6bbc8" fontSize="11" letterSpacing="2">DOS LADOS / CUATRO CORRELACIONES</text>
+      </svg>
+    )
   if (kind === 'eratostenes')
     return (
       <svg viewBox="0 0 560 296" className="experiment-illustration" aria-hidden="true">

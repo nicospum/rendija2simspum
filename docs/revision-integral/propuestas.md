@@ -1,5 +1,7 @@
 # Propuestas opcionales después de la revisión
 
+**Nota histórica:** las siete propuestas siguientes corresponden al cierre del snapshot `2f812e4` y se conservan en su redacción original. Después de esa revisión se implementó **Bell**, con cuatro retos propios en [`/bell/`](https://www.spumexp.lat/bell/); su [modelo y documentación](../BELL_LABORATORIO.md) y su [QA independiente](../QA_BELL_2026-11-02.md) se registran por separado. Esto no amplía retroactivamente la auditoría anterior de 17 laboratorios y 81 retos/preguntas.
+
 Son opciones para decidir, **no laboratorios implementados ni compromisos de publicación**. El catálogo actual ya permite empezar el recorrido Maldacena; agregar más tarjetas no es un requisito para comprender sus modelos. La prioridad sugerida favorece interacciones nuevas y observables que aún no tienen un laboratorio propio. Cada propuesta requerirá investigación detallada y QA científico y de producto antes de implementarse.
 
 Esfuerzo relativo: bajo = reutilización de motor y escena simples; medio = nuevo modelo pequeño y nueva interacción; alto = tratamiento de datos o render y validación considerable. No son estimaciones en días. Ninguna opción exige por sí sola instalar un motor nuevo o un servicio de pago.
