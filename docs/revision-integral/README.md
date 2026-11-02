@@ -2,6 +2,8 @@
 
 Revisión interna documentada, 2 de noviembre de 2026. Base de código: `e2e07a7`; candidato: esa base más los lotes descritos en [hallazgos](hallazgos.md). Los hashes de archivos revisados constan en [QA científico](qa-ciencia-estado.json) y los registros de aceptación. No constituye una certificación externa ni un estudio de aprendizaje con estudiantes.
 
+Este informe conserva el catálogo revisado del commit `2f812e4`, anterior al laboratorio de Eratóstenes. `inventario.mjs` lee mediante `git show` las fuentes de ese commit para reproducir los mismos 17 laboratorios y 81 retos, aunque el catálogo actual crezca. Requiere tener ese objeto Git disponible; no sustituye silenciosamente las fuentes por la versión actual. El nuevo laboratorio tiene su revisión separada.
+
 ## Resultado y alcance exacto
 
 Se inventariaron y revisaron **17 laboratorios canónicos, 76 retos principales y cinco preguntas/retos auxiliares: 81 en total**. Holografía contiene tres secciones de cuatro retos; no se contó como tres laboratorios. Los ocho retos ópticos son comparaciones abiertas y no tienen selector de respuestas: se probaron condiciones válidas, inválidas e incompletas. Los restantes 73 tienen opciones (72 con observación y una pregunta conceptual).

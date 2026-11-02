@@ -1,0 +1,98 @@
+{
+  "reviewer": "eratostenes_ciencia",
+  "reviewed": "2026-11-02",
+  "baseline": "2f812e4",
+  "candidate": "Implementación local de Eratóstenes sobre la base indicada; archivos identificados por SHA256.",
+  "status": "APROBADO",
+  "scope": "Revisión interna documentada científica; no certificación externa ni prueba de aprendizaje.",
+  "sources": [
+    "ER01",
+    "ER02",
+    "ER03",
+    "ER04",
+    "ER05",
+    "ER06",
+    "ER07"
+  ],
+  "challenges": [
+    {
+      "id": "eratostenes/principal/reto-01",
+      "status": "APROBADO",
+      "scope": "Ciencia: ecuaciones, dominio, opciones y condiciones de observación; correcto, incorrecto e incompleto comprobados en tests. Producto móvil en revisión separada."
+    },
+    {
+      "id": "eratostenes/principal/reto-02",
+      "status": "APROBADO",
+      "scope": "Ciencia: ecuaciones, dominio, opciones y condiciones de observación; correcto, incorrecto e incompleto comprobados en tests. Producto móvil en revisión separada."
+    },
+    {
+      "id": "eratostenes/principal/reto-03",
+      "status": "APROBADO",
+      "scope": "Ciencia: ecuaciones, dominio, opciones y condiciones de observación; correcto, incorrecto e incompleto comprobados en tests. Producto móvil en revisión separada."
+    },
+    {
+      "id": "eratostenes/principal/reto-04",
+      "status": "APROBADO",
+      "scope": "Ciencia: ecuaciones, dominio, opciones y condiciones de observación; correcto, incorrecto e incompleto comprobados en tests. Producto móvil en revisión separada."
+    }
+  ],
+  "tests": {
+    "file": "tests/eratostenes.test.mjs",
+    "result": "18/18 PASS",
+    "independentProjectionConfigurations": 180,
+    "independentShadows": 360,
+    "fileLint": "PASS"
+  },
+  "browserSample": {
+    "origin": "http://127.0.0.1:1027/eratostenes/",
+    "browser": "Chromium integrado via CUA",
+    "viewport": "Escritorio normal, sin override de dispositivo",
+    "cases": [
+      "Sitios coincidentes sin estimación finita",
+      "800 km, 7.20 grados, 40000 km",
+      "A sin sombra; B 0.126m al norte",
+      "Mediciones guardadas y actuales diferenciadas"
+    ],
+    "screenshot": "../../../qa-eratostenes-2026-11-02/ciencia-sombras-escritorio.jpg",
+    "limitations": "Muestra científica de representación; no repetición exhaustiva de los cuatro retos en móvil."
+  },
+  "fileSha256": {
+    "src/eratostenes/physics.ts": "f6c7b3507fa7fe709418e8af3d9fa48d855c22b91df056f01a6b4eb756fefa8a",
+    "src/eratostenes/learning.ts": "e11c6fdae1d41cb8a4f30fc9061f5d86948bbea0c53d40754f832241bd50bacc",
+    "src/eratostenes/Scene.tsx": "2617973a894bb95441b3fd6659593941d8039ba2159088f5f09337119037a98a",
+    "src/eratostenes/App.tsx": "3c0cd96c76bb1a5645ef364d2a3f603d1c00bfa5086d39d54b4496a3dd007544",
+    "src/eratostenes/main.tsx": "8e860afbc954a4ce7a218e85ebaad2929460452c2c12f5142bd6cd1914d99e6d",
+    "src/eratostenes/eratostenes.css": "add1413d1560fd6a2bf957df5a7e69d2bde59311a2a02823659852e118ef5e29",
+    "src/eratostenes/format.ts": "2258fb8d944a41c93798db881ffb37384f9d7122bd064ce467436c6cefa295d2",
+    "tests/eratostenes.test.mjs": "65a7d5cc92ffa0b74f00436aaf235bec667dc6b756a9cc3c6733508f7f91801c"
+  },
+  "reopenOn": "Cambiar fórmulas, dominio, respuestas, requisitos o significado físico de la representación; comprobar hashes y revisar afectados.",
+  "representationFollowup": {
+    "status": "APROBADO",
+    "scope": "Contraste de terreno y marca del extremo; extracción del formateador numérico y compatibilidad del último registro. Sin cambio de modelos ni condiciones de observación.",
+    "comparedPhysicsLearningHashes": "Sin cambios frente al dictamen anterior",
+    "browser": "Chrome vía CUA, pestaña propia; navegador integrado no disponible durante el seguimiento",
+    "cases": [
+      "800 km y 7.20 grados conservados",
+      "A sin sombra, B0.126m al norte",
+      "Suelo claro y extremo marcado sin mover geometría",
+      "Resultado40000km y registro guardado coherentes"
+    ],
+    "screenshot": "../../../qa-eratostenes-2026-11-02/ciencia-contraste-final-escritorio.jpg",
+    "limitations": "Muestra de escritorio; QA móvil y cuatro retos completos constan en pase separado de producto."
+  },
+  "responsiveClosure": {
+    "status": "APROBADO",
+    "files": [
+      "src/eratostenes/App.tsx",
+      "src/eratostenes/Scene.tsx",
+      "src/eratostenes/eratostenes.css"
+    ],
+    "scope": "Explicación de la proporción 360/ángulo; lectura HTML horizontal de las mismas magnitudes; disposición y márgenes responsivos. Modelos y evaluadores sin cambios. Último ajuste: símbolo solar y gradiente siguen la dirección de declinación; distancia simbólica declarada, sin alterar rayos paralelos ni ecuaciones.",
+    "modelDocumentation": "docs/ERATOSTENES_LABORATORIO.md leído y coherente",
+    "reviewerEvidence": "Inspección acotada del código y comparación de hashes",
+    "independentProductEvidence": "QA de producto informa cuatro retos correctos/incorrectos/incompletos y tamaños 390/320/667/1280 aprobados, con 18 pruebas nuevas y 419 en la suite; no se cuenta como repetición de ciencia",
+    "unchanged": "physics.ts, learning.ts, format.ts, main.tsx y tests/eratostenes.test.mjs mantienen sus hashes",
+    "limitations": "No nuevo pase exhaustivo de navegador por ciencia; modelos no reabiertos porque las ecuaciones y datos no cambiaron."
+  }
+}

@@ -2,7 +2,7 @@
 
 Una colección de laboratorios interactivos para aprender ciencia haciendo preguntas, cambiando una variable y comparando resultados.
 
-La [revisión integral de retos y modelos](docs/revision-integral/README.md) documenta los 17 laboratorios, sus 81 retos y preguntas, correcciones, controles de QA independientes y límites de las pruebas móviles.
+La [revisión integral de retos y modelos](docs/revision-integral/README.md) documenta la versión anterior a Eratóstenes: 17 laboratorios, 81 retos y preguntas, correcciones, controles de QA independientes y límites de las pruebas móviles. Se conserva como registro fechado; el catálogo actual añade el laboratorio 18 y sus cuatro retos.
 
 - `/`: portada y catálogo de experimentos.
 - `/doble-rendija/`: detecciones individuales, interferencia, difracción e información del camino.
@@ -26,10 +26,11 @@ La [revisión integral de retos y modelos](docs/revision-integral/README.md) doc
 - `/entrelazados/`: pares de qubits, bases de medición, mezcla clásica, entropía del estado y cuatro retos.
 - `/holografia/`: geometría AdS, diccionario holográfico y frontera caliente, tres subsecciones y doce retos. Las tres rutas anteriores siguen funcionando. Ver [reorganización y compatibilidad](docs/HOLOGRAFIA_UNIFICACION.md).
 - `/curva-de-page/`: paradoja de la información, entropía calculada de qubits, correlaciones y cuatro retos. Ver [modelo y límites](docs/PAGE_MODELO.md) y [revisión independiente](docs/QA_PAGE_2026-11-02.md).
+- `/eratostenes/`: Dos sombras, una Tierra; dos sitios del mismo meridiano, varillas y sombras manipulables, distancia y ángulos para reconstruir la circunferencia terrestre con cuatro retos. Ver [modelo, interacción y límites](docs/ERATOSTENES_LABORATORIO.md) y [QA de producto](docs/QA_ERATOSTENES_2026-11-02.md).
 
 La actividad **Contar lo que no vemos** está dentro de `/entropia/#information-bridge`; no agrega otra tarjeta de laboratorio.
 
-El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las 24 entradas HTML (17 laboratorios canónicos, tres enlaces históricos de Holografía, portada y tres especiales) se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada, los especiales, entropía, horizonte y los laboratorios de Einstein y Maldacena no cargan Three.js. Los capítulos de Maldacena se cargan por separado. Su marco reutiliza los controles de escena y guarda un pasaporte local independiente; no altera las huellas anteriores. Ver [modelos, alcance y ejecución](docs/MALDACENA_LABORATORIOS.md).
+El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las 25 entradas HTML (18 laboratorios canónicos, tres enlaces históricos de Holografía, portada y tres especiales) se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada, los especiales, entropía, horizonte y los laboratorios de Einstein y Maldacena no cargan Three.js. Los capítulos de Maldacena se cargan por separado. Su marco reutiliza los controles de escena y guarda un pasaporte local independiente; no altera las huellas anteriores. Ver [modelos, alcance y ejecución](docs/MALDACENA_LABORATORIOS.md).
 
 ## Ejecutar localmente
 
@@ -119,6 +120,7 @@ entropia/index.html            Entrada del laboratorio de entropía
 reloj-de-luz/index.html        Entrada del reloj de luz
 einstein/index.html            Entrada del especial Einstein
 tren-de-einstein/index.html    Entrada del tren de Einstein
+eratostenes/index.html         Entrada del laboratorio de sombras y geometría terrestre
 src/portal/                   Catálogo, portada y diagramas SVG
 src/App.tsx                   Laboratorio de doble rendija y emisión automática
 src/physics/interference.ts   Modelo físico puro y muestreo
@@ -137,8 +139,9 @@ src/ascensor/                 Equivalencia local, apoyo, pelotas, luz de Rindler
 src/altura/                   Relojes de Schwarzschild, órbita, ajustes y retos
 src/orbita/                   Geodésicas temporales, precesión de Mercurio y retos
 src/fotoelectrico/            Fotoemisión ideal, flujo, energía, mediciones y retos
-tests/                        Pruebas de los catorce laboratorios
-vite.config.ts                Diecisiete entradas y separación de bundles
+src/eratostenes/               Varillas, sombras, circunferencia terrestre y cuatro retos
+tests/                        Pruebas de física, retos e interacción de los laboratorios
+vite.config.ts                Veinticinco entradas y separación de bundles
 vercel.json                   Compilación y publicación estáticas
 ```
 

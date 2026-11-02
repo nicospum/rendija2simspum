@@ -2,6 +2,7 @@
   "project": "SPUM · Experimentos para entender",
   "domain": "https://www.spumexp.lat/",
   "baseline": "e2e07a7",
+  "historicalSourceRef": "2f812e4eae5d06e42c6549a2b3616de1f3d8c1aa",
   "experiments": 17,
   "mainChallenges": 76,
   "challenges": 81,
@@ -2160,5 +2161,5 @@
       "reason": "Tres URL históricas son alias activos, probados como compatibilidad; no tres laboratorios adicionales."
     }
   ],
-  "unpublishedDrafts": "No hay entradas de borrador ni laboratorios deshabilitados en los catálogos vigentes; contrastar también las24 entradas del build."
+  "unpublishedDrafts": "En el catálogo del commit indicado por historicalSourceRef no hay borradores ni laboratorios deshabilitados; las 24 entradas corresponden a ese build histórico, no al catálogo posterior."
 }

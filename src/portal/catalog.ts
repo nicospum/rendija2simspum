@@ -1,5 +1,5 @@
 export interface Experiment {
-  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein' | 'el-tiempo-tiene-altura' | 'orbita-que-no-se-cierra' | 'efecto-fotoelectrico' | 'entrelazados' | 'espacio-con-frontera' | 'dos-lenguajes' | 'frontera-caliente' | 'curva-de-page' | 'holografia'
+  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein' | 'el-tiempo-tiene-altura' | 'orbita-que-no-se-cierra' | 'efecto-fotoelectrico' | 'entrelazados' | 'espacio-con-frontera' | 'dos-lenguajes' | 'frontera-caliente' | 'curva-de-page' | 'holografia' | 'eratostenes'
   number: string
   field: string
   title: string
@@ -145,4 +145,16 @@ export const experiments: readonly Experiment[] = [
   { id: 'entrelazados', number: '15', field: 'INFORMACIÓN CUÁNTICA', title: 'Entrelazados', subtitle: 'El todo y sus partes.', question: '¿El todo puede saber más que sus partes?', discovery: 'Prepará pares de qubits, cambiá la base de medición y compará entrelazamiento con una mezcla clásica.', tags: ['Maldacena', 'Qubits', 'Entrelazamiento'], href: '/entrelazados/' },
   { id: 'holografia', number: '16', field: 'HOLOGRAFÍA · TRES SECCIONES', title: 'Holografía: geometría y frontera', subtitle: 'Tres miradas. Un mismo diccionario.', question: '¿Cómo se traduce información en geometría?', discovery: 'Explorá geometría AdS, compará información y longitudes, y calentá la frontera: tres secciones conectadas, con 12 retos en un solo laboratorio.', tags: ['Maldacena', 'AdS/CFT', 'BTZ'], href: '/holografia/' },
   { id: 'curva-de-page', number: '17', field: 'INFORMACIÓN Y AGUJEROS NEGROS', title: 'La paradoja de la información', subtitle: 'Las pistas están en las correlaciones.', question: '¿Por qué la curva de Page primero sube y después baja?', discovery: 'Pasá qubits a la radiación, compará el conjunto con sus partes y explorá cuatro retos sobre información, pureza y la curva de Page.', tags: ['Maldacena', 'Page', 'Correlaciones'], href: '/curva-de-page/' },
+  {
+    id: 'eratostenes',
+    number: '18',
+    field: 'GEOMETRÍA · ASTRONOMÍA',
+    title: 'Dos sombras, una Tierra',
+    subtitle: 'Una varilla. Un planeta por medir.',
+    question: '¿Podés medir la Tierra sin dar la vuelta al mundo?',
+    discovery:
+      'Mové dos lugares, medí sus sombras y reconstruí la circunferencia de la Tierra con cuatro retos inspirados en Eratóstenes.',
+    tags: ['Eratóstenes', 'Sombras', 'Geometría'],
+    href: '/eratostenes/',
+  },
 ]

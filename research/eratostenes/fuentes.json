@@ -1,0 +1,76 @@
+{
+  "reviewed": "2026-11-02",
+  "reviewer": "eratostenes_ciencia",
+  "scope": "Investigación y revisión científica de física, cuatro retos y representación, con 18 pruebas independientes aprobadas y una muestra de navegador en escritorio. QA de producto móvil separado.",
+  "sources": [
+    {
+      "id": "ER01",
+      "title": "General Solar Position Calculations",
+      "author": "NOAA Global Monitoring Division",
+      "url": "https://gml.noaa.gov/grad/solcalc/solareqns.PDF",
+      "read": "Dos páginas, ecuación de ángulo cenital y mediodía solar.",
+      "supports": "Especialización H=0: z=|latitud−declinación|; el mediodía solar depende de longitud y ecuación de tiempo.",
+      "limits": "El laboratorio propuesto no calcula efemérides, refracción ni hora civil. Usa declinación como entrada y fija mediodía solar."
+    },
+    {
+      "id": "ER02",
+      "title": "The History of Geodesy",
+      "author": "NOAA National Ocean Service",
+      "url": "https://oceanservice.noaa.gov/education/tutorial_geodesy/geo02_hist.html",
+      "read": "Secciones sobre Eratóstenes, fórmula de circunferencia, meridiano y antecedentes.",
+      "supports": "C=(360°/θ)d, distancia superficial norte-sur y supuestos geométricos.",
+      "limits": "Material docente con cifras históricas/aritméticas inconsistentes; no se usan sus conversiones de estadios, valores de precisión ni equivalencias numéricas como datos exactos."
+    },
+    {
+      "id": "ER03",
+      "title": "This Month in Astronomical History: June — Eratosthenes and the Circumference of the Earth",
+      "author": "Jason E. Ybarra, AAS Historical Astronomy Division",
+      "url": "https://aas.org/posts/news/2019/05/month-astronomical-history-june",
+      "read": "Artículo completo de historia, relato de Cleomedes, supuestos, gnomon y variación del estadio.",
+      "supports": "Siglo III a.C.; relato transmitido posteriormente; sitios idealizados en un meridiano, rayos paralelos y unidad histórica incierta.",
+      "limits": "No se reproduce una conversión a kilómetros ni su porcentaje de error como precisión histórica universal."
+    },
+    {
+      "id": "ER04",
+      "title": "A common-sense approach to the problem of the itinerary stadion",
+      "author": "Irina Tupikova, Archive for History of Exact Sciences 76, 319–361 (2022)",
+      "url": "https://doi.org/10.1007/s00407-022-00287-6",
+      "read": "Resumen, introducción y discusión metrológica y de distancia de itinerario; no se afirma derivar toda la reconstrucción histórica del artículo.",
+      "supports": "La longitud del estadio sigue siendo controvertida; distinguir unidades de patrón físico y distancias estimadas por itinerario.",
+      "limits": "No resuelve un valor definitivo del estadio en esta revisión; se usa para justificar la cautela sobre precisión histórica."
+    },
+    {
+      "id": "ER05",
+      "title": "The Round Earth and Christopher Columbus",
+      "author": "David P. Stern, archivo docente NASA/GSFC",
+      "url": "https://pwg.gsfc.nasa.gov/stargaze/Scolumb.htm",
+      "read": "Sección Eratosthenes, Posidonius and El Mamun y antecedentes de Aristóteles.",
+      "supports": "Eratóstenes estimó el tamaño dentro de un contexto donde ya existían argumentos de esfericidad; no fue la primera prueba de Tierra redonda.",
+      "limits": "Página archivada sin mantenimiento. No se usa como efeméride ni como metrología actual."
+    },
+    {
+      "id": "ER06",
+      "title": "Learning Lesson: The Shadow Knows I",
+      "author": "NOAA JetStream",
+      "url": "https://www.noaa.gov/jetstream/global/learning-lesson-shadow-knows-i",
+      "read": "Fast Facts y secciones de actividad sobre sombras, estaciones y registro de fecha/hora.",
+      "supports": "Palo vertical, sombra, ángulo y comparación entre lugares; importancia de condiciones temporales al repetir una medición.",
+      "limits": "La actividad de estaciones no se confunde con el protocolo simplificado de mediodía del laboratorio; tampoco se adopta su conversión concreta del estadio."
+    },
+    {
+      "id": "ER07",
+      "title": "Eratosthenes Experiment 2018",
+      "author": "CESAR, ESA",
+      "url": "https://cesar.esa.int/index.php?Section=News&Id=161",
+      "read": "Actividad completa de dos escuelas, latitudes, mediodía local, materiales, sombras y discusión de errores.",
+      "supports": "El experimento puede repetirse con un gnomon, medidas de sombra y otra escuela; hora solar y distancia son condiciones de la medición.",
+      "limits": "La página llama diámetro a cantidades comparadas con un radio medio; no se copian esas etiquetas o resultados como valores patrón. Se enlaza como relato de actividad real, no como oracle numérico."
+    }
+  ],
+  "unavailable": [
+    {
+      "url": "https://pumas.nasa.gov/sites/default/files/examples/04_01_13_1.pdf",
+      "result": "Redirige a https://earth.gsfc.nasa.gov/climate/projects/pumas, aviso de recurso temporalmente offline. No se cuenta como PDF leído."
+    }
+  ]
+}

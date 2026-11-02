@@ -19,6 +19,7 @@ const LAB_PATHS = new Set([
   'frontera-caliente',
   'holografia',
   'curva-de-page',
+  'eratostenes',
 ])
 
 export function isLabPath(path: string) {

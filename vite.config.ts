@@ -41,6 +41,7 @@ export default defineConfig({
         fronteraCaliente: 'frontera-caliente/index.html',
         curvaDePage: 'curva-de-page/index.html',
         holografia: 'holografia/index.html',
+        eratostenes: 'eratostenes/index.html',
       },
       output: {
         manualChunks(id) {

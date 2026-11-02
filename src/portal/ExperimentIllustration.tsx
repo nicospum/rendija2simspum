@@ -1,5 +1,33 @@
 import type { Experiment } from './catalog'
 export default function ExperimentIllustration({ kind }: { kind: Experiment['id'] }) {
+  if (kind === 'eratostenes')
+    return (
+      <svg viewBox="0 0 560 296" className="experiment-illustration" aria-hidden="true">
+        <defs>
+          <radialGradient id="eratostenes-portal-earth" cx="72%" cy="30%">
+            <stop stopColor="#448f91" />
+            <stop offset="1" stopColor="#173f52" />
+          </radialGradient>
+        </defs>
+        <rect width="560" height="296" fill="#123c46" />
+        {[65, 110, 155, 200].map((y) => (
+          <path key={y} d={`M516 ${y}H103`} stroke="#ffdb8c" strokeWidth="1.5" opacity=".35" />
+        ))}
+        <circle cx="181" cy="150" r="94" fill="url(#eratostenes-portal-earth)" stroke="#a9dfcc" />
+        <path d="m167 72 25 23-6 28 21 22-13 21 12 29-25 35-17-38-22-23 10-29-17-20 13-30Z" fill="#91bca0" opacity=".7" />
+        <path d="M181 150H275M181 150 242 79" stroke="#c2e3d3" strokeDasharray="4 5" />
+        <path d="M242 79 266 51M275 150H311" stroke="#fff0c7" strokeWidth="5" strokeLinecap="round" />
+        <path d="M218 107a56 56 0 0 1 19 43" stroke="#f8ca77" strokeWidth="2" fill="none" />
+        <circle cx="242" cy="79" r="5" fill="#ffc878" />
+        <circle cx="275" cy="150" r="5" fill="#a7f0d7" />
+        <circle cx="490" cy="71" r="23" fill="#ffdd93" />
+        <circle cx="490" cy="71" r="34" fill="none" stroke="#ffdd93" opacity=".25" />
+        <text x="334" y="177" fill="#ffdb8c" fontSize="26" fontFamily="Georgia,serif">C = 360° d / Δθ</text>
+        <text x="280" y="277" textAnchor="middle" fill="#c5e7d5" fontSize="12" letterSpacing="2">
+          DOS SOMBRAS / UNA TIERRA POR MEDIR
+        </text>
+      </svg>
+    )
   if (kind === 'curva-de-page')
     return (
       <svg viewBox="0 0 560 296" className="experiment-illustration" aria-hidden="true">

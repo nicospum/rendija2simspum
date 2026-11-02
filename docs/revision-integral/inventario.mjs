@@ -1,6 +1,11 @@
-// Reproducible inventory of the real catalog and its authored challenge arrays.
+// Reproduce the reviewed catalog snapshot, not laboratories added after this audit.
 import fs from 'node:fs/promises'
+import { execFileSync } from 'node:child_process'
 import ts from 'typescript'
+
+const historicalSourceRef = '2f812e4eae5d06e42c6549a2b3616de1f3d8c1aa'
+const readReviewedSource = (file) =>
+  execFileSync('git', ['show', `${historicalSourceRef}:${file}`], { encoding: 'utf8' })
 
 const metadata = {
   'doble-rendija': ['src/education/doubleSlitLearning.ts', 'LESSONS', 'src/physics/interference.ts', 'docs/MODELO_DOBLE_RENDIJA.md', 'Modelo idealizado probabilístico de Fraunhofer', 'Ondas, probabilidad y frecuencias relativas'],
@@ -51,7 +56,7 @@ function value(node) {
   return node.getText()
 }
 async function authoredArray(file, name) {
-  const source = ts.createSourceFile(file, await fs.readFile(file, 'utf8'), ts.ScriptTarget.Latest, true)
+  const source = ts.createSourceFile(file, readReviewedSource(file), ts.ScriptTarget.Latest, true)
   let result
   function visit(node) {
     if (ts.isVariableDeclaration(node) && node.name.getText() === name && node.initializer) result = value(node.initializer)
@@ -107,14 +112,14 @@ const auxiliaryActivities = [
 ]
 const inventory = {
   project: 'SPUM · Experimentos para entender', domain: 'https://www.spumexp.lat/',
-  baseline: 'e2e07a7', experiments: experiments.length,
+  baseline: 'e2e07a7', historicalSourceRef, experiments: experiments.length,
   mainChallenges: experiments.reduce((sum, lab) => sum + lab.challengeCount, 0),
   challenges: experiments.reduce((sum, lab) => sum + lab.challengeCount, 0) + auxiliaryActivities.reduce((sum, activity) => sum + (activity.challenges?.length ?? 0), 0),
   labs: experiments,
   aliases: { '/espacio-con-frontera/': 'holografia/geometria', '/dos-lenguajes/': 'holografia/diccionario', '/frontera-caliente/': 'holografia/temperatura' },
   auxiliaryActivities,
   excluded: [ { id: 'legacy-holography-duplicates', reason: 'Tres URL históricas son alias activos, probados como compatibilidad; no tres laboratorios adicionales.' } ],
-  unpublishedDrafts: 'No hay entradas de borrador ni laboratorios deshabilitados en los catálogos vigentes; contrastar también las24 entradas del build.',
+  unpublishedDrafts: 'En el catálogo del commit indicado por historicalSourceRef no hay borradores ni laboratorios deshabilitados; las 24 entradas corresponden a ese build histórico, no al catálogo posterior.',
 }
 await fs.writeFile('docs/revision-integral/inventario.json', JSON.stringify(inventory, null, 2) + '\n')
 console.log(JSON.stringify({ experiments: inventory.experiments, challenges: inventory.challenges, labs: experiments.map(lab => [lab.id, lab.challengeCount]) }, null, 2))

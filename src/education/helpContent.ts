@@ -23,6 +23,30 @@ const quantum = ['entrelazados']
 
 export const HELP_TOPICS: readonly HelpTopic[] = [
   topic(
+    ['eratostenes'],
+    /varilla|palo|gnomon|altura/,
+    'La varilla convierte un ángulo en una sombra',
+    'La varilla o gnomon se coloca perpendicular al suelo local. Su sombra depende de su altura y del ángulo del Sol respecto de la vertical: sombra = altura × tangente del ángulo. Un palo más alto alarga la sombra, pero no cambia ese ángulo. El dibujo amplifica las varillas para poder manipularlas.',
+  ),
+  topic(
+    ['eratostenes'],
+    /mediodia|\bsol\b|rayos|declinacion/,
+    'El mismo Sol, dos verticales distintas',
+    'El modelo usa rayos solares paralelos y dos sitios del mismo meridiano, observados al mediodía solar: el Sol cruza su punto más alto del día. No significa necesariamente las 12 del reloj civil. La declinación fija la latitud donde el Sol queda justo encima; no es la inclinación de cada palo.',
+  ),
+  topic(
+    ['eratostenes'],
+    /circunferencia|distancia|angulo|latitud|ciudad|lugar|tierra|esfera/,
+    'De una parte del círculo al planeta completo',
+    'En una Tierra esférica y con rayos paralelos, la diferencia de los ángulos cenitales con signo equivale a la separación angular entre los lugares del mismo meridiano. La distancia sobre la superficie es esa misma fracción de la circunferencia: C = 360° × distancia / separación angular. Si las sombras apuntan a lados opuestos hay que conservar sus signos.',
+  ),
+  topic(
+    ['eratostenes'],
+    /medir|guardar|registro|error|incertidumbre/,
+    'Una medición necesita condiciones conocidas',
+    'Registrar conserva el montaje y sus lecturas para contrastarlos con otro ensayo. Modificar una variable no sustituye medirla. Un pequeño error angular puede producir una gran diferencia de circunferencia si los lugares están demasiado próximos; el resultado debe interpretarse junto a los supuestos y la precisión de las medidas.',
+  ),
+  topic(
     ['holografia'],
     /^1\.?\s*geometria ads/,
     'Sección 1: preparar la geometría',
