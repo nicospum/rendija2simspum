@@ -775,3 +775,5 @@ svg {
 .portal-experiment-card.el-tiempo-tiene-altura .portal-art-link { background: #122f3d; color: #c3dedc; }
 .portal-experiment-card.orbita-que-no-se-cierra .portal-art-link { background: #18303d; color: #edd1ab; }
 .portal-experiment-card.efecto-fotoelectrico .portal-art-link { background: #1a2b43; color: #cfbdf7; }
+
+.portal-maldacena-link{background:linear-gradient(110deg,#312747,#193d43);border-color:#8b78ab}.portal-maldacena-link strong{display:block;font:26px Georgia,serif;margin:5px 0}.portal-maldacena-link .portal-md-symbol{font:70px/1 Georgia,serif;color:#a0edcf;padding:0 16px}

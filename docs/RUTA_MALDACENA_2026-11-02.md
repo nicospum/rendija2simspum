@@ -1,6 +1,6 @@
 # De SPUM a Maldacena: recorrido propuesto
 
-2 de noviembre de 2026. Investigación y propuesta educativa; estos laboratorios nuevos todavía no están construidos. La revisión se basa en el código, los catálogos y la documentación, no en una prueba de aprendizaje con participantes.
+2 de noviembre de 2026. **Recorrido implementado:** actividad de conteo dentro de entropía y cuatro laboratorios disponibles: entrelazamiento, geometría AdS, correspondencia de un intervalo y estado térmico BTZ. El texto de abajo conserva el razonamiento del plan original; la implementación y sus límites se documentan en [MALDACENA_LABORATORIOS.md](MALDACENA_LABORATORIOS.md). La revisión no sustituye una prueba de aprendizaje con participantes.
 
 ## Decisión
 

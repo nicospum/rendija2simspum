@@ -1,5 +1,5 @@
 export interface Experiment {
-  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein' | 'el-tiempo-tiene-altura' | 'orbita-que-no-se-cierra' | 'efecto-fotoelectrico'
+  id: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein' | 'el-tiempo-tiene-altura' | 'orbita-que-no-se-cierra' | 'efecto-fotoelectrico' | 'entrelazados' | 'espacio-con-frontera' | 'dos-lenguajes' | 'frontera-caliente'
   number: string
   field: string
   title: string
@@ -142,4 +142,8 @@ export const experiments: readonly Experiment[] = [
     discovery:'Cambiá frecuencia, brillo y material; compará emisión y energía con cuatro retos sobre la ley que le valió el Nobel a Einstein.',
     tags:['Einstein','Fotones','Nobel'], href:'/efecto-fotoelectrico/',
   },
+  { id: 'entrelazados', number: '15', field: 'INFORMACIÓN CUÁNTICA', title: 'Entrelazados', subtitle: 'El todo y sus partes.', question: '¿El todo puede saber más que sus partes?', discovery: 'Prepará pares de qubits, cambiá la base de medición y compará entrelazamiento con una mezcla clásica.', tags: ['Maldacena', 'Qubits', 'Entrelazamiento'], href: '/entrelazados/' },
+  { id: 'espacio-con-frontera', number: '16', field: 'GEOMETRÍA ADS', title: 'Un espacio con frontera', subtitle: 'La distancia tiene otra regla.', question: '¿La línea más corta siempre parece recta?', discovery: 'Arrastrá extremos y compará caminos con la métrica de un corte espacial de AdS.', tags: ['Maldacena', 'AdS', 'Geodésicas'], href: '/espacio-con-frontera/' },
+  { id: 'dos-lenguajes', number: '17', field: 'HOLOGRAFÍA', title: 'Dos lenguajes, una misma respuesta', subtitle: 'Una región. Dos cálculos.', question: '¿Podemos calcular información con una geometría?', discovery: 'Compará la entropía de un intervalo con la longitud de una geodésica y descubrí el efecto del regulador.', tags: ['Maldacena', 'AdS/CFT', 'Entropía'], href: '/dos-lenguajes/' },
+  { id: 'frontera-caliente', number: '18', field: 'HOLOGRAFÍA TÉRMICA', title: 'Calentar la frontera', subtitle: 'La temperatura dibuja un horizonte.', question: '¿Cómo se conectan un estado térmico y un agujero negro BTZ?', discovery: 'Cambiá temperatura y longitud del intervalo, seguí su curva y compará el límite frío con el régimen térmico.', tags: ['Maldacena', 'BTZ', 'Temperatura'], href: '/frontera-caliente/' },
 ]

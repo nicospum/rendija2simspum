@@ -1,0 +1,375 @@
+.q-scene-legend,
+.q-prob-label,
+.q-sample {
+  padding: 8px 14px;
+  color: #cfdee7;
+  font:
+    13px/1.45 'Segoe UI',
+    sans-serif;
+  background: #142b3e;
+}
+.q-pair-scene {
+  display: block;
+  width: 100%;
+  max-height: 410px;
+  background: radial-gradient(ellipse at 50% 30%, #17394d, #0a1e31 75%);
+}
+.q-svg-button {
+  cursor: pointer;
+  outline: none;
+}
+.q-svg-button:focus-visible circle,
+.q-svg-button:focus-visible rect {
+  stroke: #fff;
+  stroke-width: 4;
+}
+.q-drag {
+  cursor: ew-resize;
+  touch-action: none;
+  outline: none;
+}
+.q-drag:focus-visible circle {
+  stroke: white;
+  stroke-width: 4;
+}
+.q-scene-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 12px;
+}
+.q-scene-actions button,
+.q-counting button,
+.q-counting select {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #7299aa;
+  border-radius: 9px;
+  background: #173f50;
+  color: #e1eef3;
+  font:
+    14px/1.4 'Segoe UI',
+    sans-serif;
+  cursor: pointer;
+}
+.q-scene-actions button[aria-pressed='true'],
+.q-counting button[aria-pressed='true'] {
+  border-color: #f0d297;
+  background: #38524e;
+}
+.q-scene-actions button:hover,
+.q-counting button:hover {
+  background: #315967;
+}
+.q-counting :is(button, select, input):focus-visible {
+  outline: 3px solid #f3d8a4;
+  outline-offset: 3px;
+}
+.q-counting {
+  --q-gold: #f0d297;
+  max-width: 1180px;
+  margin: 50px auto;
+  padding: 28px;
+  background: linear-gradient(135deg, #102d3b, #17243c);
+  border: 1px solid #537982;
+  border-radius: 14px;
+  color: #deebef;
+  scroll-margin-top: 90px;
+}
+.q-counting h2 {
+  font:
+    clamp(27px, 4vw, 42px) / 1.15 Georgia,
+    serif;
+  color: var(--q-gold);
+  margin: 10px 0 18px;
+}
+.q-counting h3 {
+  font-size: 19px;
+  line-height: 1.5;
+}
+.q-counting p {
+  font:
+    15px/1.6 'Segoe UI',
+    sans-serif;
+  max-width: 80ch;
+}
+.q-eyebrow {
+  letter-spacing: 0.13em;
+  color: #9ad8ce;
+  font-size: 11px !important;
+}
+.q-count-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 24px;
+  margin: 24px 0;
+}
+.q-register {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 10px 0 20px;
+}
+.q-register button {
+  min-width: 64px;
+  min-height: 85px;
+  font-size: 34px;
+  background: #142c40;
+  color: #ebd394;
+}
+.q-register button small {
+  display: block;
+  font-size: 11px;
+  color: #dbe8ec;
+}
+.q-register button[aria-pressed='true'] {
+  background: #335354;
+}
+.q-count-readout {
+  display: grid;
+  gap: 7px;
+  padding: 16px;
+  border: 1px solid #557f87;
+  border-radius: 10px;
+  font:
+    14px/1.5 'Segoe UI',
+    sans-serif;
+}
+.q-count-readout strong {
+  color: #f0d297;
+  font-size: 19px;
+}
+.q-configurations {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+  margin: 14px 0;
+}
+.q-configuration {
+  display: grid;
+  gap: 3px;
+  text-align: center;
+  padding: 9px 3px;
+  border: 1px solid #557780;
+  border-radius: 6px;
+  font: 14px monospace;
+}
+.q-configuration span {
+  font:
+    11px 'Segoe UI',
+    sans-serif;
+  color: #c7dfe5;
+}
+.q-count-controls {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+.q-count-controls input {
+  width: 100%;
+  min-height: 34px;
+  accent-color: #a3e9dc;
+}
+.q-count-controls label,
+.q-mini-challenges label {
+  font:
+    14px/1.5 'Segoe UI',
+    sans-serif;
+}
+.q-count-controls .q-scene-actions {
+  padding: 0;
+}
+.q-counting details {
+  font:
+    14px/1.5 'Segoe UI',
+    sans-serif;
+  padding: 10px 0;
+}
+.q-counting summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding-top: 10px;
+}
+.q-mini-challenges {
+  border-top: 1px solid #557782;
+  padding-top: 18px;
+}
+.q-mini-challenges > select {
+  display: block;
+  margin-top: 8px;
+  max-width: 100%;
+  width: 100%;
+}
+.q-predictions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.q-predictions button {
+  flex: 1 1 180px;
+  text-align: left;
+}
+.q-count-feedback {
+  padding: 16px 0;
+  font:
+    15px/1.6 'Segoe UI',
+    sans-serif;
+  color: #bee4de;
+}
+.q-next-link {
+  display: inline-block;
+  color: #f0d297;
+  min-height: 44px;
+  padding: 12px 0;
+  line-height: 1.5;
+}
+.q-small-note {
+  font-size: 12px !important;
+  color: #b4cdd7 !important;
+}
+.q-compare-horizon {
+  margin-top: 12px;
+}
+@media (max-width: 700px) {
+  .q-counting {
+    margin: 28px 14px;
+    padding: 18px;
+  }
+  .q-count-workspace {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .q-register {
+    gap: 7px;
+  }
+  .q-register button {
+    min-width: 56px;
+    min-height: 76px;
+  }
+  .q-pair-scene {
+    max-height: 300px;
+  }
+  .q-scene-legend,
+  .q-prob-label,
+  .q-sample {
+    font-size: 12px;
+  }
+  .q-scene-actions {
+    padding: 8px;
+    gap: 6px;
+  }
+  .q-scene-actions button {
+    flex: 1;
+    padding: 7px;
+    font-size: 12px;
+  }
+  .q-configurations {
+    gap: 5px;
+  }
+  .q-count-readout {
+    padding: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .q-counting *,
+  .q-pair-scene * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
+.q-reference-table {
+  width: 100%;
+  border-collapse: collapse;
+  font:
+    13px/1.5 Segoe UI,
+    sans-serif;
+  margin: 14px 0;
+}
+.q-reference-table caption {
+  text-align: left;
+  color: #f0d297;
+  padding: 8px 0;
+}
+.q-reference-table th,
+.q-reference-table td {
+  padding: 8px 4px;
+  border-bottom: 1px solid #537a89;
+  text-align: left;
+}
+.q-reference-table th {
+  font-weight: 500;
+}
+
+.q-mini-live {
+  display: none;
+}
+@media (max-width: 700px) {
+  .q-mini-live {
+    display: grid;
+    gap: 8px;
+    padding: 12px;
+    background: #0d2434;
+    border: 1px solid #537982;
+    border-radius: 10px;
+  }
+  .q-mini-live-register {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  .q-mini-live-register button {
+    font: 24px monospace;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .q-mini-live p {
+    margin: 0;
+    font-size: 13px;
+  }
+  .q-mini-live .q-scene-actions {
+    padding: 0;
+  }
+  .q-mini-live strong {
+    color: #efd195;
+  }
+}
+
+.q-hint-short {
+  display: none;
+}
+@media (max-width: 850px) {
+  .md-workspace:has(.spum-scene-console[data-scene-active='true']) .q-pair-scene {
+    height: auto !important;
+    max-height: 240px !important;
+  }
+  .md-workspace:has(.spum-scene-console[data-scene-active='true']) .q-scene-legend {
+    padding: 4px 8px;
+    font-size: 11px;
+    line-height: 1.3;
+  }
+  .md-workspace:has(.spum-scene-console[data-scene-active='true']) .q-hint-long {
+    display: none;
+  }
+  .md-workspace:has(.spum-scene-console[data-scene-active='true']) .q-hint-short {
+    display: inline;
+  }
+  .md-workspace:has(.spum-scene-console[data-scene-active='true']) .q-prob-label {
+    padding: 3px 8px;
+    font-size: 10px;
+    line-height: 1.3;
+  }
+  .md-workspace:has(.spum-scene-console[data-scene-active='true']) .q-sample {
+    display: none;
+  }
+  .md-workspace:has(.spum-scene-console[data-scene-active='true']) .q-scene-actions {
+    padding: 5px 8px;
+  }
+  .md-workspace:has(.spum-scene-console[data-scene-active='true'])
+    .q-scene-actions
+    button {
+    min-height: 44px;
+    font-size: 12px;
+  }
+}

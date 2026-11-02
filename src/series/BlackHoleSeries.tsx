@@ -193,6 +193,7 @@ export default function BlackHoleSeries({
       </main>
       <footer>
         <a href="/">Seguir explorando SPUM ↗</a>
+        <a href="/maldacena/">Del área a la holografía: especial Maldacena →</a>
         <span>Observar. Comparar. Preguntarse otra vez.</span>
       </footer>
     </div>

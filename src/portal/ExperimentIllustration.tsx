@@ -1,8 +1,87 @@
-export default function ExperimentIllustration({
-  kind,
-}: {
-  kind: 'doble-rendija' | 'prisma' | 'hawking' | 'lente-gravitacional' | 'entropia' | 'acrecion' | 'horizonte' | 'reloj-de-luz' | 'tren-de-einstein' | 'nos-vemos-a-la-vuelta' | 'ascensor-de-einstein' | 'el-tiempo-tiene-altura' | 'orbita-que-no-se-cierra' | 'efecto-fotoelectrico'
-}) {
+import type { Experiment } from './catalog'
+export default function ExperimentIllustration({ kind }: { kind: Experiment['id'] }) {
+  if (
+    [
+      'entrelazados',
+      'espacio-con-frontera',
+      'dos-lenguajes',
+      'frontera-caliente',
+    ].includes(kind)
+  )
+    return (
+      <svg viewBox="0 0 560 296" className="experiment-illustration" aria-hidden="true">
+        <defs>
+          <linearGradient id={`md-${kind}`}>
+            <stop stopColor="#3c3157" />
+            <stop offset="1" stopColor="#183b43" />
+          </linearGradient>
+        </defs>
+        <rect width="560" height="296" fill={`url(#md-${kind})`} />
+        {kind === 'entrelazados' ? (
+          <>
+            <circle
+              cx="165"
+              cy="147"
+              r="56"
+              fill="#264752"
+              stroke="#a0edcf"
+              strokeWidth="3"
+            />
+            <circle
+              cx="395"
+              cy="147"
+              r="56"
+              fill="#4c3c64"
+              stroke="#bba5ff"
+              strokeWidth="3"
+            />
+            <path
+              d="M221 147H339"
+              stroke="#ffd58c"
+              strokeWidth="3"
+              strokeDasharray="4 8"
+            />
+            <text x="165" y="159" textAnchor="middle" fill="#a0edcf" fontSize="40">
+              A
+            </text>
+            <text x="395" y="159" textAnchor="middle" fill="#bba5ff" fontSize="40">
+              B
+            </text>
+          </>
+        ) : (
+          <>
+            <path d="M65 64H495" stroke="#bba5ff" strokeWidth="3" />
+            {[95, 145, 195].map((r, i) => (
+              <path
+                key={r}
+                d={`M${280 - r} 64a${r} ${r} 0 0 0 ${r * 2} 0`}
+                fill="none"
+                stroke={i === 1 ? '#a0edcf' : '#bba5ff'}
+                strokeWidth={i === 1 ? 4 : 1}
+                opacity={i === 1 ? 1 : 0.45}
+              />
+            ))}
+            <circle cx="135" cy="64" r="8" fill="#a0edcf" />
+            <circle cx="425" cy="64" r="8" fill="#a0edcf" />
+            {kind === 'frontera-caliente' && (
+              <path
+                d="M65 209H495"
+                stroke="#ffad9e"
+                strokeWidth="3"
+                strokeDasharray="6 5"
+              />
+            )}
+            <text x="280" y="280" textAnchor="middle" fill="#ffd58c" fontSize="16">
+              {kind === 'dos-lenguajes'
+                ? 'S = longitud / 4G₃'
+                : kind === 'frontera-caliente'
+                  ? 'FRONTERA TÉRMICA / INTERIOR BTZ'
+                  : 'LA GEOMETRÍA CAMBIA LA DISTANCIA'}
+            </text>
+          </>
+        )}
+      </svg>
+    )
   if(kind==='efecto-fotoelectrico')return <svg viewBox="0 0 560 296" aria-hidden="true" className="experiment-illustration">
     <rect x="80" y="94" width="400" height="150" rx="32" fill="#183448" stroke="#668da3"/><path d="M380 45 394 64 180 171 180 141Z" fill="#b7a6f7" opacity=".25"/><path d="M387 52 181 156" stroke="#b7a6f7" strokeWidth="2" strokeDasharray="3 9"/>
     <rect x="162" y="126" width="18" height="100" fill="#b8cbd5"/><rect x="432" y="126" width="12" height="100" fill="#547b8d"/>

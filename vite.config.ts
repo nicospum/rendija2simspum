@@ -34,6 +34,11 @@ export default defineConfig({
         altura: 'el-tiempo-tiene-altura/index.html',
         orbita: 'orbita-que-no-se-cierra/index.html',
         fotoelectrico: 'efecto-fotoelectrico/index.html',
+        maldacena: 'maldacena/index.html',
+        entrelazados: 'entrelazados/index.html',
+        espacioConFrontera: 'espacio-con-frontera/index.html',
+        dosLenguajes: 'dos-lenguajes/index.html',
+        fronteraCaliente: 'frontera-caliente/index.html',
       },
       output: {
         manualChunks(id) {

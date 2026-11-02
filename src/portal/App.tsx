@@ -44,6 +44,7 @@ export default function Portal() {
           <a href="#aprender">Aprender haciendo</a>
           <a href="/agujeros-negros/">Especial agujeros negros</a>
           <a href="/einstein/">Especial Einstein</a>
+          <a href="/maldacena/">Especial Maldacena</a>
         </nav>
         <span className="portal-header-note">Ciencia. A un clic de distancia.</span>
       </header>
@@ -106,6 +107,7 @@ export default function Portal() {
               <div><span>ATLAS DE LO INVISIBLE</span><strong>Agujeros negros. Seguí las huellas.</strong>Cinco laboratorios, 20 retos y tu bitácora de exploración.</div>
               <Arrow />
             </a>
+            <a className="portal-special-link portal-maldacena-link" href="/maldacena/"><span className="portal-md-symbol" aria-hidden="true">≍</span><div><span>EL DICCIONARIO DEL UNIVERSO</span><strong>De la información a la geometría.</strong>Cuatro laboratorios y 16 retos para entrar en la idea de Maldacena.</div><Arrow /></a>
             {experiments.map((experiment) => (
               <article className={`portal-experiment-card ${experiment.id}`} key={experiment.id}>
                 <a

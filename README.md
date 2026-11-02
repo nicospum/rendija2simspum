@@ -20,7 +20,15 @@ Una colección de laboratorios interactivos para aprender ciencia haciendo pregu
 - `/efecto-fotoelectrico/`: frecuencia, brillo, materiales, emisión de electrones y cuatro retos sobre el Nobel de Einstein.
 - `/einstein/`: cuaderno ilustrado con tres laboratorios de relatividad especial, tres de relatividad general y el efecto fotoeléctrico; 28 retos, pasaporte local, ecuación de campo interactiva y exploración de E₀ = mc².
 
-El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las diecisiete páginas (catorce laboratorios, portada y dos especiales) se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada, los especiales, entropía, horizonte y los siete laboratorios de Einstein no cargan Three.js.
+- `/maldacena/`: El diccionario del universo; recorrido de cuatro laboratorios y 16 retos sobre información cuántica, AdS/CFT y BTZ.
+- `/entrelazados/`: pares de qubits, bases de medición, mezcla clásica, entropía del estado y cuatro retos.
+- `/espacio-con-frontera/`: geodésicas espaciales en AdS₃, distancia física, corte regulador y cuatro retos.
+- `/dos-lenguajes/`: entropía de un intervalo CFT₂, longitud en AdS₃, convergencia a corte pequeño y cuatro retos.
+- `/frontera-caliente/`: temperatura de la frontera, exterior BTZ no giratorio, régimen térmico y cuatro retos.
+
+La actividad **Contar lo que no vemos** está dentro de `/entropia/#information-bridge`; no agrega otra tarjeta de laboratorio.
+
+El repositorio se publica mediante Vercel en [spumexp.lat](https://www.spumexp.lat/). Las veintidós páginas (dieciocho laboratorios, portada y tres especiales) se compilan juntas y se sirven desde el mismo dominio; cada laboratorio tiene su entrada y estilos independientes. La portada, los especiales, entropía, horizonte y los laboratorios de Einstein y Maldacena no cargan Three.js. Los capítulos de Maldacena se cargan por separado. Su marco reutiliza los controles de escena y guarda un pasaporte local independiente; no altera las huellas anteriores. Ver [modelos, alcance y ejecución](docs/MALDACENA_LABORATORIOS.md).
 
 ## Ejecutar localmente
 

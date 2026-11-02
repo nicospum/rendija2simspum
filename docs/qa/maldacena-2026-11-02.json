@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-02",
+  "environment": "Chromium; emulated viewport, mouse and keyboard",
+  "layout": [
+    {
+      "viewport": "390x844",
+      "checks": 32,
+      "failures": []
+    },
+    {
+      "viewport": "320x740",
+      "checks": 32,
+      "failures": []
+    },
+    {
+      "viewport": "667x375",
+      "checks": 32,
+      "failures": []
+    },
+    {
+      "viewport": "568x320",
+      "checks": 32,
+      "failures": []
+    },
+    {
+      "viewport": "1280x900",
+      "checks": 32,
+      "failures": []
+    }
+  ],
+  "challenges": {
+    "newLaboratories": 16,
+    "newLaboratoriesCompleted": 16,
+    "countingBridge": 4,
+    "countingBridgeCompleted": 4
+  },
+  "passportAfterReload": "16/16",
+  "automaticTests": 352,
+  "limits": [
+    "No Safari or physical phones",
+    "No user study with new participants",
+    "No GPU/FPS measurements"
+  ]
+}

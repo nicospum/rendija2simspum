@@ -1,4 +1,5 @@
 import SceneConsole from '../components/ui/SceneConsole'
+import CountingBridge from '../maldacena/quantum/CountingBridge'
 import '../series/interaction.css'
 import ChallengeGuide from '../components/ui/ChallengeGuide'
 import Info from '../components/ui/InfoPopover'
@@ -725,6 +726,7 @@ export default function EntropyApp() {
             </div>
           </div>
         </section>
+        <CountingBridge />
         <section id="en-science" className="en-science">
           <div>
             <p className="en-eyebrow">POR QUÉ CAMBIÓ NUESTRA IDEA DEL UNIVERSO</p>
