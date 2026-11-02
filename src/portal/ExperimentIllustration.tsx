@@ -1,5 +1,23 @@
 import type { Experiment } from './catalog'
 export default function ExperimentIllustration({ kind }: { kind: Experiment['id'] }) {
+  if (kind === 'curva-de-page')
+    return (
+      <svg viewBox="0 0 560 296" className="experiment-illustration" aria-hidden="true">
+        <rect width="560" height="296" fill="#17283b" />
+        <circle cx="108" cy="112" r="52" fill="#080f1e" stroke="#bba5ff" strokeWidth="2" />
+        {[0, 1, 2, 3, 4].map((i) => (
+          <circle key={i} cx={201 + i * 61} cy={88 + (i % 2) * 46}
+            r="9" fill="#a0edcf" opacity={0.5 + i * 0.1} />
+        ))}
+        <path d="M85 249H493M85 249V171" fill="none" stroke="#7c8da5" />
+        <path d="M91 244 156 216 221 188 286 170 351 190 416 218 481 244"
+          fill="none" stroke="#a0edcf" strokeWidth="4" />
+        <path d="M91 244 481 161" stroke="#ffad9e" strokeDasharray="5 5" />
+        <text x="280" y="284" textAnchor="middle" fill="#d7c7ff" fontSize="16">
+          RADIACIÓN / CONJUNTO / CORRELACIONES
+        </text>
+      </svg>
+    )
   if (
     [
       'entrelazados',

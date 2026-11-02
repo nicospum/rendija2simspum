@@ -2,12 +2,14 @@
 
 ## Recorrido disponible
 
-La portada `/maldacena/` conecta cuatro laboratorios nuevos y su pasaporte local de 16 descubrimientos. Cada capítulo tiene cuatro predicciones y una lista explícita de observaciones requeridas. La actividad previa de conteo está integrada en `/entropia/#information-bridge`: cuatro preguntas sobre variables clásicas, probabilidades y unidades. No añade una tarjeta vacía ni modifica el estado físico del horizonte.
+La portada `/maldacena/` conecta cinco laboratorios y su pasaporte local de 20 descubrimientos. Cada capítulo tiene cuatro predicciones y una lista explícita de observaciones requeridas. La actividad previa de conteo está integrada en `/entropia/#information-bridge`: cuatro preguntas sobre variables clásicas, probabilidades y unidades. No añade una tarjeta vacía ni modifica el estado físico del horizonte.
 
 1. `/entrelazados/`: estado puro `cosθ|00⟩+sinθ|11⟩`, mezcla clásica comparable, analizadores Z/X y muestras de Born de pares preparados de nuevo. Entropías de von Neumann del estado conjunto y de sus partes, separadas de la incertidumbre de los resultados de medición.
 2. `/espacio-con-frontera/`: corte espacial de AdS₃ en coordenadas de Poincaré. Asas de extremos, centro y corte; comparación entre recta de coordenadas y geodésica espacial según la métrica.
 3. `/dos-lenguajes/`: intervalo único del vacío de una CFT₂ en una línea infinita. Fórmula logarítmica de entropía frente a longitud regulada en AdS₃ dividida por `4G₃`; comparación del residuo y de diferencias de entropía al reducir el corte.
 4. `/frontera-caliente/`: estados estacionarios térmicos y exterior de BTZ no giratorio con frontera no compacta. Termómetro e intervalo manipulables, límite frío, crecimiento extensivo y relación entre temperatura, radio areal y parámetro de masa.
+
+5. `/curva-de-page/`: reparto de un estado puro aleatorio complejo de 4 a 8 qubits. Calcula matrices reducidas, entropía de von Neumann y media de Page. Cuatro retos comparan partes/conjunto, vuelta de la curva, emisión independiente ideal y correlaciones; el estado fijo no implementa evaporación física. Ver [modelo, fuentes y límites](PAGE_MODELO.md) y [QA independiente](QA_PAGE_2026-11-02.md).
 
 Documentación de modelos y pruebas: [información y qubits](MALDACENA_INFORMACION.md), [geometría y correspondencia](MALDACENA_GEOMETRIA.md), [revisión independiente](QA_MALDACENA_2026-11-02.md) y [pruebas de conteo/cuántica](QA_MALDACENA_QUANTUM_2026-11-02.md).
 
@@ -29,7 +31,7 @@ Se conserva Vite/React y no se añaden dependencias. `src/maldacena/main.tsx` ca
 
 La información extensa queda fuera de la escena o en desplegables. Se distinguen resultados exactos, muestras aleatorias y ayudas gráficas. Cada cambio tiene una lectura HTML; la validación requiere observaciones y predicción adecuada, no solo abrir un capítulo. El progreso usa el esquema defensivo existente con la clave nueva `spum.maldacena.passport.v1`; almacenamiento bloqueado o corrupto no impide jugar ni borra los otros especiales.
 
-Ejecutar con Node ≥22.18: `npm ci`, `npm run dev`; comprobar `npm test`, `npm run lint` y `npm run build`. Se compilan 22 entradas HTML: 18 laboratorios, portada y tres especiales. Para revisión local aislada: `npm run dev -- --port 1027 --strictPort`.
+Ejecutar con Node ≥22.18: `npm ci`, `npm run dev`; comprobar `npm test`, `npm run lint` y `npm run build`. Se compilan 23 entradas HTML: 19 laboratorios, portada y tres especiales. Para revisión local aislada: `npm run dev -- --port 1027 --strictPort`.
 
 ## Fuentes primarias
 
@@ -42,6 +44,8 @@ Ejecutar con Node ≥22.18: `npm ci`, `npm run dev`; comprobar `npm test`, `npm 
 Safari y teléfonos físicos permanecen pendientes por la decisión previa del usuario; una ventana pequeña de Chromium no equivale a un teléfono real. Tampoco se midió aprendizaje con participantes nuevos. Las pruebas automáticas verifican modelos y estados; la revisión en navegador comprueba escenas, controles, retos y disposición.
 
 ## Verificación de la entrega
+
+La ampliación con Page conserva la clave del pasaporte y los sellos de los cuatro capítulos anteriores. El informe [QA de Page](QA_PAGE_2026-11-02.md) registra las pruebas de esta ampliación; los resultados siguientes corresponden a entregas anteriores.
 
 Una [segunda revisión de claridad y uso](QA_MALDACENA_SEGUIMIENTO_2026-11-02.md), realizada después de la primera publicación, añadió contexto para principiantes, lecturas locales correctas, comparación visible antes de responder y mejoras de gestos y precisión. Su cierre aprueba 355 pruebas y repite 96 estados móviles más 12 casos de ayudas abiertas. El bloque siguiente conserva la verificación de la construcción inicial.
 

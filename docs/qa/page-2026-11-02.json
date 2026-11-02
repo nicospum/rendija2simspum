@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-02",
+  "chapter": "curva-de-page",
+  "model": "Fixed Haar-complex pure state, changing bipartition; not an evaporation dynamics solver",
+  "automated": {
+    "tests": 367,
+    "passed": 367,
+    "lint": "pass",
+    "typescript": "pass",
+    "productionBuild": "pass",
+    "htmlEntries": 23,
+    "newDependencies": 0
+  },
+  "independentNumerical": {
+    "method": "NumPy SVD/eigvalsh and rational harmonic sum",
+    "states": 20,
+    "partitions": 140,
+    "scalarChecks": 1000,
+    "maxAbsoluteError": 3.11e-15
+  },
+  "browser": {
+    "engine": "Chromium",
+    "completeChallenges": {
+      "390x844": 4,
+      "1280x900": 4
+    },
+    "layoutSizes": [
+      "1280x900",
+      "390x844",
+      "320x740",
+      "667x375"
+    ],
+    "questionControlCombinations": 32,
+    "negativePrediction": true,
+    "preparationReset": true,
+    "helpOpen": true,
+    "nativeMouseDrags": true,
+    "keyboard": true,
+    "expandPreservesState": true,
+    "consoleWarningsErrors": 0,
+    "productionPreview": {
+      "size": "320x740",
+      "completedChallenge": 2,
+      "outcome": "Descubrimiento comprobado"
+    }
+  },
+  "integration": {
+    "chapterCount": 5,
+    "challengeCount": 20,
+    "existingPassportKeyPreserved": true,
+    "previousStampsRegressionTest": true
+  },
+  "pending": [
+    "Safari",
+    "Physical mobile devices and touch gestures",
+    "Learning study with novice participants"
+  ],
+  "publicDeployment": "Verified separately after publication; see public-assets.json in local QA artifacts"
+}

@@ -107,7 +107,7 @@ export default function Portal() {
               <div><span>ATLAS DE LO INVISIBLE</span><strong>Agujeros negros. Seguí las huellas.</strong>Cinco laboratorios, 20 retos y tu bitácora de exploración.</div>
               <Arrow />
             </a>
-            <a className="portal-special-link portal-maldacena-link" href="/maldacena/"><span className="portal-md-symbol" aria-hidden="true">≍</span><div><span>EL DICCIONARIO DEL UNIVERSO</span><strong>De la información a la geometría.</strong>Cuatro laboratorios y 16 retos para entrar en la idea de Maldacena.</div><Arrow /></a>
+            <a className="portal-special-link portal-maldacena-link" href="/maldacena/"><span className="portal-md-symbol" aria-hidden="true">≍</span><div><span>EL DICCIONARIO DEL UNIVERSO</span><strong>De la información a la geometría.</strong>Cinco laboratorios y 20 retos: de dos qubits a la curva de Page.</div><Arrow /></a>
             {experiments.map((experiment) => (
               <article className={`portal-experiment-card ${experiment.id}`} key={experiment.id}>
                 <a

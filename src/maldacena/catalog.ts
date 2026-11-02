@@ -35,6 +35,15 @@ export const chapters = [
     symbol: '♨',
     color: '#ffad9e',
   },
+  {
+    id: 'curva-de-page',
+    title: '¿Se pierde la información?',
+    question: '¿Qué nos cuenta la curva de Page?',
+    detail:
+      'Reuní qubits de radiación, compará entropías y buscá las pistas en las correlaciones.',
+    symbol: '⌁',
+    color: '#8fe6ff',
+  },
 ] as const
 export type ChapterId = (typeof chapters)[number]['id']
 export const passport = createPassportStore(

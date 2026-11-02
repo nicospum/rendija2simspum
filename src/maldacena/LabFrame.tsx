@@ -20,7 +20,10 @@ export function JourneyNavigation({ id }: { id?: string }) {
     <nav className="md-journey" aria-label="Recorrido Maldacena">
       <a href="/maldacena/">↟ Mapa del especial</a>
       <details>
-        <summary>Los cuatro capítulos {index >= 0 && `· ${index + 1}/4`}</summary>
+        <summary>
+          Los {chapters.length} capítulos{' '}
+          {index >= 0 && `· ${index + 1}/${chapters.length}`}
+        </summary>
         <ol>
           {chapters.map((c) => (
             <li key={c.id}>
@@ -32,8 +35,12 @@ export function JourneyNavigation({ id }: { id?: string }) {
         </ol>
       </details>
       {index >= 0 && (
-        <a href={index < 3 ? `/${chapters[index + 1].id}/` : '/maldacena/'}>
-          {index < 3 ? 'Siguiente capítulo →' : 'Volver al recorrido →'}
+        <a
+          href={
+            index < chapters.length - 1 ? `/${chapters[index + 1].id}/` : '/maldacena/'
+          }
+        >
+          {index < chapters.length - 1 ? 'Siguiente capítulo →' : 'Volver al recorrido →'}
         </a>
       )}
     </nav>
@@ -75,7 +82,8 @@ export default function LabFrame({
   const current = lessons[lesson]
   const observed = steps.length > 0 && steps.every((s) => s.done)
   const verified = observed && prediction === current.answer
-  const focusScene = () => document.getElementById('md-map')?.focus({ preventScroll: true })
+  const focusScene = () =>
+    document.getElementById('md-map')?.focus({ preventScroll: true })
   useEffect(() => {
     if (verified && chapters.some((c) => c.id === id))
       passport.saveCompleted(id as ChapterId, [lesson])
@@ -148,7 +156,12 @@ export default function LabFrame({
           </SceneConsole>
         </section>
         <section className="md-notebook" id="md-understand">
-          <a className="md-return-to-scene" data-scene-play href="#md-map" onClick={focusScene}>
+          <a
+            className="md-return-to-scene"
+            data-scene-play
+            href="#md-map"
+            onClick={focusScene}
+          >
             Volver a mi escena y mi reto ↑
           </a>
           <p className="md-eyebrow">LO QUE DESCUBRISTE / Y HASTA DÓNDE LLEGA</p>
@@ -170,7 +183,12 @@ export default function LabFrame({
               ))}
             </ul>
           </details>
-          <a className="md-return-to-scene" data-scene-play href="#md-map" onClick={focusScene}>
+          <a
+            className="md-return-to-scene"
+            data-scene-play
+            href="#md-map"
+            onClick={focusScene}
+          >
             Seguir probando con mi montaje ↑
           </a>
         </section>

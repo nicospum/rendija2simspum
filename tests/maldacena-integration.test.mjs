@@ -12,7 +12,7 @@ import {
   G3 as thermalG,
 } from '../src/maldacena/thermal/physics.ts'
 test('all Maldacena chapters are distinct, available and catalogued once', () => {
-  assert.equal(chapters.length, 4)
+  assert.equal(chapters.length, 5)
   assert.equal(new Set(experiments.map((c) => c.id)).size, experiments.length)
   for (const chapter of chapters) {
     assert.equal(experiments.filter((c) => c.id === chapter.id).length, 1)
@@ -37,6 +37,9 @@ test('new passport merges discoveries, survives corrupt storage, and rejects inv
   assert.ok(passport.saveCompleted('dos-lenguajes', [3], storage))
   assert.deepEqual(passport.readPassport(storage).entrelazados, [0, 1, 2])
   assert.equal(passport.completedCount(passport.readPassport(storage)), 4)
+  assert.deepEqual(passport.readPassport(storage)['curva-de-page'], [])
+  assert.ok(passport.saveCompleted('curva-de-page', [0], storage))
+  assert.equal(passport.completedCount(passport.readPassport(storage)), 5)
   assert.equal(passport.saveCompleted('dos-lenguajes', [4], storage), false)
   assert.equal(passport.saveCompleted('entropia', [0], storage), false)
   storage.setItem(passport.key, '{invalid')

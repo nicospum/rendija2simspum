@@ -6,6 +6,7 @@ const Entanglement = lazy(() => import('./quantum/EntanglementLab'))
 const Geometry = lazy(() => import('./geometry/GeometryLab'))
 const Duality = lazy(() => import('./geometry/DualityLab'))
 const Thermal = lazy(() => import('./thermal/ThermalLab'))
+const Page = lazy(() => import('./page/PageLab'))
 const path = location.pathname.replace(/\/$/, '')
 const App =
   path === '/entrelazados'
@@ -16,7 +17,9 @@ const App =
         ? Duality
         : path === '/frontera-caliente'
           ? Thermal
-          : Series
+          : path === '/curva-de-page'
+            ? Page
+            : Series
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Suspense fallback={<p role="status">Preparando el laboratorio de Maldacena…</p>}>

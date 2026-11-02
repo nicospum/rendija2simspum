@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import { usePassportStore } from '../shared/usePassportStore'
 import { chapters, passport } from './catalog'
+import { experiments } from '../portal/catalog'
 import { JourneyNavigation } from './LabFrame'
 export default function MaldacenaSeries() {
   const progress = usePassportStore(passport)
@@ -74,8 +75,8 @@ export default function MaldacenaSeries() {
             </text>
           </svg>
           <p className="md-progress">
-            {passport.completedCount(progress)} / 16 descubrimientos guardados en este
-            navegador
+            {passport.completedCount(progress)} / {chapters.length * 4} descubrimientos
+            guardados en este navegador
           </p>
         </section>
         <section className="md-first-steps" aria-labelledby="md-first-title">
@@ -110,7 +111,9 @@ export default function MaldacenaSeries() {
               <span className="md-symbol" aria-hidden="true">
                 {c.symbol}
               </span>
-              <p className="md-eyebrow">CAPÍTULO {i + 1} / 4</p>
+              <p className="md-eyebrow">
+                CAPÍTULO {i + 1} / {chapters.length}
+              </p>
               <h2>{c.title}</h2>
               <p>
                 <strong>{c.question}</strong>
@@ -146,9 +149,9 @@ export default function MaldacenaSeries() {
               <h3>Lo que todavía está abierto</h3>
               <p>
                 El recorrido no reproduce toda la teoría de cuerdas ni demuestra que
-                nuestro universo sea un holograma. Tampoco convierte la entropía térmica
-                de Hawking en una curva de Page. Identificar el modelo es parte del
-                descubrimiento.
+                nuestro universo sea un holograma. El capítulo de Page distingue la
+                entropía fina de la radiación de la cuenta térmica: una descripción puede
+                ignorar correlaciones que la otra conserva.
               </p>
               <a href="https://www.ias.edu/ideas/ias-shaping-field-epr-adscft-and-beyond">
                 Contexto en IAS ↗
@@ -162,7 +165,7 @@ export default function MaldacenaSeries() {
         <a href="/entropia/#information-bridge">Contar lo que no vemos ↗</a>
         <a href="/agujeros-negros/">Especial agujeros negros ↗</a>
         <a href="/einstein/">Especial Einstein ↗</a>
-        <a href="/">Los 18 laboratorios ↗</a>
+        <a href="/">Los {experiments.length} laboratorios ↗</a>
       </footer>
     </div>
   )

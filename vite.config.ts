@@ -39,6 +39,7 @@ export default defineConfig({
         espacioConFrontera: 'espacio-con-frontera/index.html',
         dosLenguajes: 'dos-lenguajes/index.html',
         fronteraCaliente: 'frontera-caliente/index.html',
+        curvaDePage: 'curva-de-page/index.html',
       },
       output: {
         manualChunks(id) {
